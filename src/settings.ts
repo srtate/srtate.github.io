@@ -1,18 +1,21 @@
 export const profile = {
-	fullName: 'Your Name',
-	title: '',
-	institute: '',
+	fullName: 'Steve Tate',
+	title: 'Professor',
+	institute: 'UNC Greensboro',
 	author_name: '', // Author name to be highlighted in the papers section
 	research_areas: [
 		// { title: 'Physics', description: 'Brief description of the research interest', field: 'physics' },
-	],
+	    { title: 'Security', description: 'Brief description of the research interest', field: 'cs' },
+	    { title: 'Cryptography', description: 'Brief description of the research interest', field: 'cs' },
+	    { title: 'Algorithms', description: 'Brief description of the research interest', field: 'cs' },
+],
 }
 
 // Set equal to an empty string to hide the icon that you don't want to display
 export const social = {
 	email: '',
 	linkedin: '',
-	x: 'https://www.x.com/',
+	x: '',
 	github: '',
 	gitlab: '',
 	scholar: '',
