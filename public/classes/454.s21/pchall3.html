@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 454/654 - Spring 2021 - Assignment 5 - Due April 13, 2021</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../css/class_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+        <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark uncg-navbar fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="https://www.uncg.edu/">
+          <img class="collapse navbar-collapse" src="../img/uncg_class.png" alt="UNC Greensboro">
+          <img class="navbar-toggler" src="../img/uncg_mobile.png" alt="UNCG">
+        </a>
+        <div class="navbar-brand d-flex flex-column text-left"
+	     style="line-height: 1.2;">
+          <span>CSC 454/654</span>
+          <span class="small collapse navbar-collapse"><em>Algorithm Analysis and Design</em></span>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link " href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="syllabus.html">Syllabus</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="schedule.html">Schedule</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="assignments.html">Assignments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://uncg.instructure.com/">Canvas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- Page Content -->
+    <div class="container">
+   
+        <p>The <em>longest</em> path through a dependency graph (or a prerequisite graph) is an important measure: this lower-bounds the amount of time it takes to complete all tasks. Looking at the prerequisite chart for UNCG’s undergraduate computer science classes, there is a prerequisite chain of length 5 (CSC 130, CSC 230, CSC 330, CSC 340, CSC 462) which means that it is impossible to complete our undergraduate program in fewer than 5 semesters. You are to write a program that calculates a longest path in a prerequisite chart.</p>
+<p>Input to the program is provided via standard input, as our other programs have done. The input consists an integer <span class="math inline">\(n\geq 1\)</span> that says how many prerequisite pairs there are, followed by a list of prerequisites one-per-line, with the more advanced course followed by a single prerequisite. Each class is represented by a string with no spaces, but there is no list of classes – you discover them as you read the prerequisites. For example, the prerequisites for our undergraduate program would be given as follows:</p>
+<pre><code>14
+CSC230 CSC130
+CSC250 CSC130
+CSC261 CSC130
+CSC330 CSC230
+CSC330 CSC250
+CSC339 CSC330
+CSC340 CSC330
+CSC350 CSC250
+CSC362 CSC230
+CSC362 CSC261
+CSC452 CSC350
+CSC462 CSC340
+CSC462 CSC362
+CSC471 CSC330</code></pre>
+<p>Your program should calculate a longest path through this prerequisite graph, and print the result with one class per line. If there are multiple longest paths, it doesn’t matter which one you output – any correct solution will be accepted. One possible correct output for the sample input given above could be:</p>
+<pre><code>CSC130
+CSC230
+CSC330
+CSC340
+CSC462</code></pre>
+<p>There’s another correct solution where “CSC230” is replaced with “CSC250”.</p>
+<p>Your program must be able to solve this problem in under 2 seconds with up to 10,000 different tasks, and the longest path has length at most 900.</p>
+<p>Your program must be able to solve this problem in under 2 seconds when there are as many as 100,000 different tasks (“classes”), where the longest path could contain all 100,000 different tasks. (<em>Hint: A key challenge with large problems is dealing with limits on the stack size, which limits the depth of any recursion. The default Python stack can handle around 1000 calls, while the default Java stack can handle a little less than 8000.</em>)</p>
+<p> </p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

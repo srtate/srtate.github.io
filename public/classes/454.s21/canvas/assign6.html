@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 454/654 - Spring 2021 - Assignment 6 - Due April 27, 2021</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://www.uncg.edu/cmp/faculty/srtate/454.s21/assign6.html">View original, outside canvas</a> ]
+   
+        <h2 id="assignment-6---due-april-27-2021">Assignment 6 - Due April 27, 2021</h2>
+<ol type="1">
+<li><p>Recall this language from the last homework (slightly modified):</p>
+<p>HAM-EXTEND <span class="math inline"> = {⟨<em>G</em> = (<em>V</em>, <em>E</em>), <em>k</em>⟩ : <em>k</em></span> is an integer such that <span class="math inline"><em>k</em> ≥ 0</span> and there exists a set <span class="math inline"><em>E</em>′</span> of edges such that <span class="math inline">|<em>E</em>′| ≤ <em>k</em></span> and <span class="math inline"><em>G</em>′ = (<em>V</em>, <em>E</em> ∪ <em>E</em>′)</span> is Hamiltonian <span class="math inline">}</span></p>
+<p>Prove that HAM-EXTEND is NP-complete. You may take as a “known NP-complete problem” any of the problems proved NP-complete in Section 34.5, <em>and</em> any of the ones mentioned as NP-complete in the exercises at the end of that section. This question is incredibly easy if you think about it clearly (if you understand why the next question is harder, you’ll see the easy way to solve this one!)</p></li>
+<li><p>The following language is modified so that <span class="math inline"><em>k</em></span> must be at least 100:</p>
+<p>HAM-EXTEND-100 <span class="math inline"> = {⟨<em>G</em> = (<em>V</em>, <em>E</em>), <em>k</em>⟩ : <em>k</em></span> is an integer such that <span class="math inline"><em>k</em> ≥ 100</span> and there exists a set <span class="math inline"><em>E</em>′</span> of edges such that <span class="math inline">|<em>E</em>′| ≤ <em>k</em></span> and <span class="math inline"><em>G</em>′ = (<em>V</em>, <em>E</em> ∪ <em>E</em>′)</span> is Hamiltonian <span class="math inline">}</span></p>
+<p>Prove that HAM-EXTEND-100 is NP-complete. (<em>Hint: This problem isn’t quite as easy as it seems at first, and despite the fact that HAM-EXTEND-100 refers to Hamiltonian graphs – meaning graphs with Hamiltonian cycles – the best problem to reduce from may not be HAM-CYCLE! There is a deceptively simple approach with HAM-CYCLE that almost works, but has one fatal flaw – don’t get hung up trying to make that work out, but rather try different approaches.</em>)</p></li>
+<li><p>Consider the following language:</p>
+<p>HAM-EXTEND-V <span class="math inline"> = {⟨<em>G</em> = (<em>V</em>, <em>E</em>), <em>k</em>⟩ : <em>k</em></span> is an integer such that <span class="math inline"><em>k</em> ≥ |<em>V</em>|</span> and there exists a set <span class="math inline"><em>E</em>′</span> of edges such that <span class="math inline">|<em>E</em>′| ≤ <em>k</em></span> and <span class="math inline"><em>G</em>′ = (<em>V</em>, <em>E</em> ∪ <em>E</em>′)</span> is Hamiltonian <span class="math inline">}</span></p>
+<p>Do you think this problem is NP-complete? You don’t have to prove anything, but give clear reasoning to support your answer. To paraphrase Einstein, your answer should be as simple as possible, but not simpler.</p></li>
+<li><p>From the example we did in class, it is clear that the order in which edges are considered in Approx-Vertex-Cover can affect the quality of the solution, where the size of the approximate solution is always between the minimum vertex cover size and 2 times the minimum vertex cover size. Explore this concept by creating simple graphs that satisfy each of the stated properties below (each one has a solution that is just a 4-vertex graph). For each part, explain how your graph satisfies the requested property (don’t just give the graph – explain your solution!).</p>
+<ol type="a">
+<li><p>Give a graph such that every possible order in which the edges could be considered results in Approx-Vertex-Cover producing a set of vertices that is 2 times the minimum vertex cover size.</p></li>
+<li><p>Give a graph such that some orderings of edges lead to Approx-Vertex-Cover producing an optimal solution (a minimum vertex cover), and other orderings of the edges (<em>of the same graph</em>) lead to Approx-Vertex-Cover producing a set of vertices that is 2 times the minimum vertex cover size.</p></li>
+<li><p>Give a graph such that every possible order in which the edges could be considered results in Approx-Vertex-Cover producing an optimal solution (a minimum vertex cover).</p></li>
+</ol></li>
+<li><p>The input to the traveling-salesperson problem is a complete weighted graph, which is difficult to draw when there are more than 5 vertices. However, consider the following weighted graph, and then imagine that we create the graph <span class="math inline"><em>G</em></span> by “completing” the edge set by adding every missing edge with a weight of 100. So, for example, there are edges <span class="math inline">(<em>A</em>, <em>C</em>)</span>, <span class="math inline">(<em>A</em>, <em>H</em>)</span>, <span class="math inline">(<em>B</em>, <em>F</em>)</span> and so on, all with weight 100.</p>
+<p><img src="hw6_forTSP.png" /></p>
+<ol type="a">
+<li><p><span class="math inline"><em>G</em></span> satisfies the triangle inequality. Give a simple <em>one sentence</em> explanation of why this is so.</p></li>
+<li><p>There is a unique minimum-spanning tree for <span class="math inline"><em>G</em></span>, and it contains only edges that are in the original picture. Give a simple <em>one or two sentence</em> explanation of why both of these properties hold. (<em>Hint: Think about how Kruskal’s algorithm would run on <span class="math inline"><em>G</em></span>.</em>)</p></li>
+<li><p>Demonstrate the Approx-TSP-Tour algorithm from the book on this graph. You can give the MST in a single step (in other words, you don’t have to show each step of Kruskal’s algorithm), but carefully explain how you use the MST to give the TSP tour. Clearly state the final answer (the TSP tour) and the total cost of this tour.</p></li>
+</ol></li>
+<li><p>Some NP-complete problems that take numbers in their input become easy to solve on restricted ranges of numbers, and some remain NP-complete.</p>
+<ol type="a">
+<li><p>Consider this slightly modified version of the set partition problem: A <em>weighted set of items</em> <span class="math inline"><em>S</em></span> is a set of distinct items <span class="math inline"><em>S</em> = {<em>x</em><sub>1</sub>, <em>x</em><sub>2</sub>, …, <em>x</em><sub><em>n</em></sub>}</span> along with a weight function so that we can refer to the weight of item <span class="math inline"><em>x</em><sub><em>i</em></sub></span> as <span class="math inline"><em>w</em>(<em>x</em><sub><em>i</em></sub>)</span>. Define</p>
+<p>SET-PARTITION <span class="math inline"> = {⟨<em>S</em>⟩ : <em>S</em></span> is a weighted set, and there is a subset <span class="math inline"><em>A</em> ⊆ <em>S</em></span> such that <span class="math inline">∑<sub><em>x</em> ∈ <em>A</em></sub><em>w</em>(<em>x</em>) = ∑<sub><em>x</em> ∈ <em>S</em> − <em>A</em></sub><em>w</em>(<em>x</em>)}</span>.</p>
+<p>If weights are arbitrary, then this is equivalent to the standard set partition problem, so is NP-complete. However, if all of the weights are either 1 or 2, then the problem is easily solvable in polynomial time. Describe an algorithm that solves this problem in this special setting. Your description can be brief, but it does need to be clear and unambiguous. You can use pseudocode or an English description of the algorithm, and you should include a brief explanation of why it works.</p></li>
+<li><p>Consider the TSP problem when all weights are 1 or 2. Even with this restriction on the weights, the problem is NP-complete. Using the NP-completeness proof of TSP as a guide (on pages 1096-1097 of the textbook) describe why this is so. You do <em>not</em> have to give a full NP-completeness proof, but you should explain how this setting modifies the book’s proof and why it is still valid.</p></li>
+<li><p>Do complete graphs in which all weights are 1 or 2 satisfy the triangle inequality? Give a <em>one sentence</em> explanation of why.</p></li>
+<li><p>Is the Approx-TSP-Tour algorithm from the book useful for this kind of TSP problem, where all weights are 1 or 2? Give a brief <em>one or two sentence</em> explanation of your answer.</p></li>
+</ol></li>
+</ol>
+<p> </p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

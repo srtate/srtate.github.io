@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 452/652/752 - Spring 2025 - Assignments</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+
+    <p>Reminder about <a href="../browser.html">browser check</a> – you should see “OK” in script here: <span class="math inline">\({\mathcal O}{\mathcal K}\)</span></p>
+      
+   
+        <ol type="1">
+<li><p>(Textbook, Exercise 2.5) [<em>How to “grade” your work (10 points): 1 point for each of the normal beginning and ending transitions and labels (pushing the <span class="math inline">\(\texttt{\$}\)</span> and popping the <span class="math inline">\(\texttt{\$}\)</span> at the end). One point for the last state being an accepting state. You need a part of this that pushes symbols from the input onto the stack (that’s the self loop on <span class="math inline">\(q_1\)</span> below), and a part that pops symbols (the self loop on <span class="math inline">\(q_2\)</span>) making sure the popped symbols match input symbols – 2 points for each of those. Finally, the “tricky” part is the non-deterministic transition from <span class="math inline">\(q_1\)</span> to <span class="math inline">\(q_2\)</span> – you must have all three transitions here, on three possible input conditions (<span class="math inline">\(\texttt{0}\)</span>, <span class="math inline">\(\texttt{1}\)</span>, and <span class="math inline">\(\varepsilon\)</span>), so 1 point for each of these. </em>]</p>
+<p>The following PDA recognizes the set of binary strings that are palindromes. Note that it is very similar to the PDA for <span class="math inline">\(\{ww^{\mathcal R}\,|\,w\in\{0,1\}^*\}\)</span> that we did in class, except it adds the ability to transition on a middle character from the pushing state (i.e., <span class="math inline">\(q_1\)</span>) the the popping state (i.e., <span class="math inline">\(q_2\)</span>). This is what enables the PDA to recognize odd-length palindromes.</p>
+<p><img src="book2_5e.svg" /></p></li>
+<li><p>(Textbook, Exercise 2.11) [<em>How to “grade” your work (12 points): 1 points for each of the initial transitions (and make sure the second one pushes the start variable, which is <span class="math inline">\(E\)</span> for this grammar). There are six rules in the grammar, so make sure each is in the diagram and the symbols are pushed in the correct order (right-to-left for each rule): 1 point for each rule being in the PDA (6 total). Then have 3 points for all the self-loop transitions on terminal symbols (there are 5 of these, so it’s not one point each – give all 3 points if all 5 are there, 2 points if 1 or 2 were omitted, 1 point if 3 or 4 were omitted, 0 points if none were included). Finally 1 point for the final transition to an accept state. </em>]</p>
+<p>The PDA below is a direct construction from the CFG:</p>
+<p><img src="book2_11.svg" /></p></li>
+<li><p>(Textbook, Exercise 2.14) [<em>How to “grade” your work (10 points): Each step below must be shown, including those that make multiple transformations of the grammar. You get one point for a clear presentation (clearly labeled steps, etc.). There are 6 grammars in the process, so each of the first five are worth 1 point each. “Step 4” actually introduces two new variables for two different reasons, so one point for each of those. The final 2 points are given if the final grammar is in CNF (even if a step was messed up so it’s not the correct final grammar, these 2 points are just for producing a grammar in CNF. </em>]</p>
+<p>Here is the step-by-step conversion to Chomsky Normal Form (CNF).</p>
+<p><strong>Step 1 – Add a new start variable:</strong></p>
+<p><span class="math display">\[
+\begin{array}{l}
+S_0 \rightarrow A\\
+A \rightarrow BAB\ |\ B\ |\ \varepsilon\\
+B \rightarrow \texttt{00}\ |\ \varepsilon\\
+\end{array}
+\]</span></p>
+<p><strong>Step 2 – Remove <span class="math inline">\(\varepsilon\)</span>-rules:</strong> W first remove <span class="math inline">\(\varepsilon\)</span> from the <span class="math inline">\(B\)</span> rules (leaving out the useless “<span class="math inline">\(A\rightarrow A\)</span>” rule that would be generated.</p>
+<p><span class="math display">\[
+\begin{array}{l}
+S_0 \rightarrow A\\
+A \rightarrow BAB\ |\ AB\ |\ BA\ |\ B\ |\ \varepsilon\\
+B \rightarrow \texttt{00}\\
+\end{array}
+\]</span></p>
+<p>Now we remove the <span class="math inline">\(\varepsilon\)</span> from the <span class="math inline">\(A\)</span> rule: <span class="math display">\[
+\begin{array}{l}
+S_0 \rightarrow A\ |\ \varepsilon\\
+A \rightarrow BAB\ |\ BB\ |\ AB\ |\ BA\ |\ B\\
+B \rightarrow \texttt{00}\\
+\end{array}
+\]</span></p>
+<p><strong>Step 3 – Remove unit rules:</strong> First we remove the “<span class="math inline">\(A\rightarrow B\)</span>” rule. <span class="math display">\[
+\begin{array}{l}
+S_0 \rightarrow A\ |\ \varepsilon\\
+A \rightarrow BAB\ |\ BB\ |\ AB\ |\ BA\ |\ \texttt{00}\\
+B \rightarrow \texttt{00}\\
+\end{array}
+\]</span></p>
+<p>Next we remove the “<span class="math inline">\(S_0\rightarrow A\)</span>” rule. <span class="math display">\[
+\begin{array}{l}
+S_0 \rightarrow BAB\ |\ BB\ |\ AB\ |\ BA\ |\ \texttt{00}\ |\ \varepsilon\\
+A \rightarrow BAB\ |\ BB\ |\ AB\ |\ BA\ |\ \texttt{00}\\
+B \rightarrow \texttt{00}\\
+\end{array}
+\]</span></p>
+<p><strong>Step 4 – Convert remaining rules to the proper form:</strong> We introduce a new variable <span class="math inline">\(Z\)</span> to produce terminal <span class="math inline">\(\texttt{0}\)</span>, and variable <span class="math inline">\(V\)</span> to reduce the length of the rules producing <span class="math inline">\(BAB\)</span>.</p>
+<p><span class="math display">\[
+\begin{array}{l}
+S_0 \rightarrow BV\ |\ BB\ |\ AB\ |\ BA\ |\ ZZ\ |\ \varepsilon\\
+A \rightarrow BV\ |\ BB\ |\ AB\ |\ BA\ |\ ZZ\\
+B \rightarrow ZZ\\
+Z \rightarrow \texttt{0}\\
+V \rightarrow AB\\
+\end{array}
+\]</span></p>
+<p>The grammar is now in Chomsky Normal Form, so this is the final answer.</p></li>
+<li><p>(Textbook, Exercise 2.30a) [<em>How to “grade” your work: 14 points. Grading notes: Essential parts of this proof: Assume <span class="math inline">\(L\)</span> is a CFL (1 point) for the sake of contradiction (1 point); invoke the pumping lemma and define <span class="math inline">\(p\)</span> as the pumping length (1 point); pick a string from <span class="math inline">\(L\)</span> that works (4 points); argue why pumping the string will always produce a string not in <span class="math inline">\(L\)</span> – it must specifically use all 3 conditions from the pumping lemma (e.g., what are the relevant consequences of <span class="math inline">\(|vxy|\leq p\)</span> for this string <span class="math inline">\(s\)</span>?) – 1 point for the use of each of the minor conditions, and 4 points for the pumping condition and the reasoning of why the pumped string is not in <span class="math inline">\(L\)</span>; conclude that <span class="math inline">\(L\)</span> is not a  (1 point). There may be other strings that work in the proof, other than the <span class="math inline">\(s\)</span> below, but this is such an obvious choice for <span class="math inline">\(s\)</span> that I imagine all correct proofs will use exactly this <span class="math inline">\(s\)</span>. </em>]</p>
+<p>Claim: <span class="math inline">\(L=\{\texttt{0}^n\texttt{1}^n\texttt{0}^n\texttt{1}^n \,|\, n\geq 0\}\)</span> is not a context-free language.</p>
+<p>Proof: Assume for the sake of contradiction that <span class="math inline">\(L\)</span> is a CFL. Let <span class="math inline">\(p\)</span> be the pumping length given by the pumping lemma, and let <span class="math inline">\(s\)</span> be the string <span class="math inline">\(\texttt{0}^p\texttt{1}^p\texttt{0}^p\texttt{1}^p\)</span>. For ease of reference, let’s refer to four “parts” of <span class="math inline">\(s\)</span> in the obvious way. In other words, we say that “part 1” of the string is the first substring of <span class="math inline">\(\texttt{0}\)</span>’s, “part 2” is the first substring of <span class="math inline">\(\texttt{1}\)</span>’s, and so on. Since <span class="math inline">\(s\in L\)</span> and has length at least <span class="math inline">\(p\)</span>, the pumping lemma says that we can divide <span class="math inline">\(s\)</span> up as <span class="math inline">\(s=uvxyz\)</span>, where <span class="math inline">\(|vxy|\leq p\)</span>, <span class="math inline">\(|vy|&gt;0\)</span>, and <span class="math inline">\(v\)</span> and <span class="math inline">\(y\)</span> can be “pumped.” The first of those conditions, <span class="math inline">\(|vxy|\leq p\)</span>, means that <span class="math inline">\(vxy\)</span> cannot include symbols from both part 1 and part 3, as there are <span class="math inline">\(p\)</span> symbols separating those two parts. The latter condition, <span class="math inline">\(|vy|&gt;0\)</span> means that either <span class="math inline">\(v\)</span> or <span class="math inline">\(y\)</span> (or both) must contain at least one symbol from the input, so when we pump <span class="math inline">\(s\)</span> to get <span class="math inline">\(uv^2xy^2z\)</span> we must be increasing the number of symbols in at least one part of <span class="math inline">\(s\)</span>. However, since <span class="math inline">\(vxy\)</span> must exclude either part 1 or part 3, the number of <span class="math inline">\(\texttt{0}\)</span>’s in the excluded part does not increase. Since the number of symbols in at least one part of the string increases, and another part does not, after pumping the parts cannot all have the same size. Therefore <span class="math inline">\(uv^2xy^2z\not\in L\)</span>, which contradicts the pumping lemma. Therefore, <span class="math inline">\(L\)</span> is not a <span class="math inline">\(\textsf{CFL}\)</span>. <span class="math inline">\(\Box\)</span></p></li>
+</ol>
+<p> </p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

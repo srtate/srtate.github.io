@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 454/654 - Spring 2020 - Assignment 1 - Due Feb 3, 2020</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://www.uncg.edu/cmp/faculty/srtate/454.s20/assign1.html">View original, outside canvas</a> ]
+   
+        <h2 id="csc-454654---spring-2020---assignment-1---due-feb-3-2020">CSC 454/654 - Spring 2020 - Assignment 1 - Due Feb 3, 2020</h2>
+<ol type="1">
+<li><p>Textbook, page 22, Exercise 2.1-3</p></li>
+<li><p>Textbook, page 29, Exercise 2.2-3</p></li>
+<li><p>For the searching problem in the last two questions, if we know that the data is sorted then we can use the binary search algorithm that you learned about in CSC 230 and/or CSC 330. Write out a recursive version of this algorithm in pseudocode (it must be a recursive version – not iterating with a loop!), and then derive a recurrence that describes the worst-case running time of this algorithm. You do not need to solve the recurrence.</p></li>
+<li><p>The recursive binary search in the previous question should have included passing the array of values into the recursive call. What if you are using a language in which arrays are <em>pass-by-value</em>, meaning that a copy of the passed array is made before executing the called function. Derive a recurrence for the worst-case running time of the algorithm in this case. You do not need to solve the recurrence.</p></li>
+<li><p>Consider algorithms with the following time complexities:</p>
+<blockquote>
+<p>Algorithm 1: <span class="math inline">7<em>n</em>lg <em>n</em></span></p>
+</blockquote>
+<blockquote>
+<p>Algorithm 2: <span class="math inline"><em>n</em>!</span></p>
+</blockquote>
+<blockquote>
+<p>Algorithm 3: <span class="math inline">2<sup><em>n</em></sup></span></p>
+</blockquote>
+<blockquote>
+<p>Algorithm 4: <span class="math inline">100<em>n</em></span></p>
+</blockquote>
+<blockquote>
+<p>Algorithm 5: <span class="math inline"><em>n</em><sup>3</sup></span></p>
+</blockquote>
+<blockquote>
+<p>Algorithm 6: <span class="math inline">2<em>n</em><sup>2</sup></span></p>
+</blockquote>
+<ol type="a">
+<li><p>Assuming that the above formulas give the running times of these algorithms in microseconds, make a table showing the running time of each algorithm for input sizes of <span class="math inline"><em>n</em> = 10</span>, <span class="math inline"><em>n</em> = 100</span>, and <span class="math inline"><em>n</em> = 1000</span>. If a running time turns out to be more than <span class="math inline">10<sup>50</sup></span> seconds, you can simply write ``too large’’ in the table.</p></li>
+<li><p>Write the algorithms in order of slowest to fastest when <span class="math inline"><em>n</em> = 10</span>.</p></li>
+<li><p>Write the algorithms in order of asymptotic running time (slowest to fastest).</p></li>
+<li><p>For what values of <span class="math inline"><em>n</em></span> is Algorithm 4 faster than Algorithm 1?</p></li>
+</ol></li>
+<li><p>Prove or disprove each of the following conjectures using just the definitions of asymptotic notation and basic algebra:</p>
+<ol type="a">
+<li><p>For any positive functions <span class="math inline"><em>f</em>(<em>n</em>)</span> and <span class="math inline"><em>g</em>(<em>n</em>)</span>, if <span class="math inline"><em>f</em>(<em>n</em>)</span> is <span class="math inline"><em>O</em>(<em>g</em>(<em>n</em>))</span> then <span class="math inline"><em>g</em>(<em>n</em>)</span> is <em>not</em> <span class="math inline"><em>O</em>(<em>f</em>(<em>n</em>))</span>.</p></li>
+<li><p>For any positive functions <span class="math inline"><em>f</em>(<em>n</em>)</span> and <span class="math inline"><em>g</em>(<em>n</em>)</span>, <span class="math inline"><em>f</em>(<em>n</em>) + <em>g</em>(<em>n</em>) = <em>Θ</em>(max (<em>f</em>(<em>n</em>), <em>g</em>(<em>n</em>)))</span>.</p></li>
+<li><p><span class="math inline">(3<em>n</em>)<sup><em>n</em></sup> = <em>O</em>(<em>n</em><sup><em>n</em> + 1</sup>)</span></p></li>
+<li><p><span class="math inline">(3<em>n</em>)<sup><em>n</em></sup> = <em>O</em>(<em>n</em><sup>2<em>n</em></sup>)</span></p></li>
+</ol></li>
+</ol>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

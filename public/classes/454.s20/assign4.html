@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 454/654 - Spring 2020 - Assignment 4 - Due April 8, 2020</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../css/class_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+        <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark uncg-navbar fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="https://www.uncg.edu/">
+          <img class="collapse navbar-collapse" src="../img/uncg_class.png" alt="UNC Greensboro">
+          <img class="navbar-toggler" src="../img/uncg_mobile.png" alt="UNCG">
+        </a>
+        <div class="navbar-brand d-flex flex-column text-left"
+	     style="line-height: 1.2;">
+          <span>CSC 454/654</span>
+          <span class="small collapse navbar-collapse"><em>Algorithm Analysis and Design</em></span>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link " href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="syllabus.html">Syllabus</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="schedule.html">Schedule</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="assignments.html">Assignments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://uncg.instructure.com/">Canvas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- Page Content -->
+    <div class="container">
+   
+        <p> </p>
+<h2 id="assignment-4---due-april-8-2020">Assignment 4 - Due April 8, 2020</h2>
+<ol type="1">
+<li><p>Consider the problem of assigning tasks to days in a month, where a full day must be dedicated to any task (and just that task) in order to get it done. Each task has a payoff and a deadline, and you get the payoff amount if you get the job done on or before before the the day given as a deadline. You don’t get anything if the job is not done by the deadline.</p>
+<p>For example, Task 1 has payoff $40 if completed by the 3rd, Task 2 has payoff $30 if completed by the 3rd, and Task 3 has payoff $20 if completed by the 1st.</p>
+<p>This sounds like a good situation for a greedy algorithm, so we try the following greedy strategy: We do the most valuable job first, and so on. For the example problem, on the 1st we do Task 1, since it is worth $40. Then we do Task 2 on the 2nd for $30. We have passed the deadline for Task 3, so we can’t get paid for that one at all now, and our total payoff is $70. However, if we had done the tasks in the order 3, 2, 1, then we could have made $90 – clearly this way of being greedy didn’t work.</p>
+<p>Here’s a strategy that does work: Pick the highest profit job, schedule it in the last available slot before its deadline, and repeat. I call this the “procrastination pays” strategy. You can’t always schedule a job <em>at</em> its deadline if other jobs have been scheduled then, so just move earlier in the schedule until you find an open slot (if one exists). So in our example problem, we would take Task 1 (the most valuable) and schedule it on the 3rd, the latest time possible that is within the deadline. Then we select Task 2 (the 2nd most valuable job), and the latest time available that is still before its deadline is on the 2nd, so that’s when we schedule Task 2. Now we can schedule Task 1 on the 1st, so we have scheduled all jobs.</p>
+<p>It turns out that this strategy always maximizes your payoff.</p>
+<ol type="a">
+<li><p>Formalize the problem by defining notation for the input, describing the objective function and the goal in solving the problem.</p></li>
+<li><p>State and prove the greedy choice property for this algorithm. You only need to prove the greedy choice property, not the overall correctness of the algorithm.</p></li>
+</ol></li>
+<li><p>Perform a depth-first search of the following graph, showing the final result with the discovery and finishing times for each vertex, and the classification of each edge. Vertices are always given in alphabetical order, whether in the overall vertex list or in any adjacency list. Your result should be in a form similar to Figure 22.5(a) in the book. Note that you only need to give the final result – you don’t need to show your work or any intermediate steps.</p>
+<p><img src="A4_Graph1.svg" /></p></li>
+<li><p>[<em>Note added after the assignment, for anyone outside the class that stumbles across this page: This was a bad problem, and is the result of what happens when you design a problem by thinking back from an algorithm to create a problem, without giving enough thought to the problem itself. This is an interesting modification to the topological sort algorithm given in CLRS, but approaching the problem without that in mind it is totally trivial. In fact, you can set directions to produce any topological ordering that you want: just number the vertices according to the ordering you want, and then orient edges from lower-number to higher-number. Oh well, when you make up your own problems they can’t all be gems!</em>]</p>
+<p>Given an undirected graph, you want to assign directions to each edge so that the resulting directed graph is acyclic and can provide a topological sort that starts at a designated vertex. For example, given the graph on the left below, we want a directed acyclic graph in which a topological sort can start at vertex A, so we create the directed graph on the right. The numbers beside the vertices indicate their order in the topological sort.</p>
+<p><img src="A4_Graph2.svg" /></p>
+<ol type="a">
+<li><p>Is this possible for every undirected graph? Justify your answer as clearly as possible.</p></li>
+<li><p>Give an algorithm for doing this. For up to 10 points of extra credit, your algorithm should both assign directions and give the topological sort sequence numbering with just one search through the graph.</p></li>
+</ol></li>
+<li><p>Consider the following problem: You have access to a set of <span class="math inline">\(n\)</span> devices, numbered <span class="math inline">\(1\)</span> through <span class="math inline">\(n\)</span>, and connections can be made between any pair of devices. If you make a direct connection between devices <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span>, you get paid <span class="math inline">\(p_{i,j}\)</span> dollars. The <span class="math inline">\(p_{i,j}\)</span> values are arbitrary, but symmetric – meaning that <span class="math inline">\(p_{j,i}=p_{i,j}\)</span> for all <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span>. The only thing stopping you from connecting all the pairs together is the following problem: if there is both a multi-hop path and a direct connection between two devices, then the connections are out of sync and the feedback makes everything explode and destroy the world. Clearly it’s hard to enjoy your money if the world has been destroyed, so you would like to avoid this, while maximizing the amount you get paid.</p>
+<p>Here’s an example: You have three devices, with the following values for connctions: <span class="math inline">\(p_{1,2}=50\)</span>, <span class="math inline">\(p_{1,3}=40\)</span>, and <span class="math inline">\(p_{2,3}=30\)</span>. You can connect device <span class="math inline">\(1\)</span> to device <span class="math inline">\(2\)</span> and device <span class="math inline">\(1\)</span> to device <span class="math inline">\(3\)</span> to earn <span class="math inline">\(90\)</span> dollars. However, you can’t hook device <span class="math inline">\(2\)</span> to device <span class="math inline">\(3\)</span> at this point, because there would be both a direction connection between <span class="math inline">\(2\)</span> and <span class="math inline">\(3\)</span> and a multi-hop path between these two devices that goes through <span class="math inline">\(1\)</span>. <span class="math inline">\(\$90\)</span> is the best you can do for this example problem.</p>
+<ol type="a">
+<li><p>State this problem clearly as a problem on weighted graphs.</p></li>
+<li><p>How is this related to the minimum spanning tree problem? Be very specific!</p></li>
+<li><p>Give an efficient algorithm that solves this problem, and prove that it gives the correct answer. [<em>Hint: Given the relation to the MST problem, there are two approaches to this: For one, you can pre-process your input, solve a MST problem, and then prove how the MST is related to the answer you need. Alternatively, you can modify an MST algorithm to work directly with this data (no pre-processing) to find the result directly, and then modify the proof of correctness for the algorithm to apply to your new algorithm.</em>]</p></li>
+</ol></li>
+<li><p>Programming Challenges — given on a <a href="progchallenge2.html">separate page</a>.</p></li>
+</ol>
+<p> </p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

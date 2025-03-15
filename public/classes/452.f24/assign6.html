@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 452/652/752 - Spring 2024 - Assignment 6 - Due Nov 26, 2024</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../css/class_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+        <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark uncg-navbar fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="https://www.uncg.edu/">
+          <img class="collapse navbar-collapse" src="../img/uncg_class.png" alt="UNC Greensboro">
+          <img class="navbar-toggler" src="../img/uncg_mobile.png" alt="UNCG">
+        </a>
+        <div class="navbar-brand d-flex flex-column text-left"
+	     style="line-height: 1.2;">
+          <span>CSC 452</span>
+          <span class="small collapse navbar-collapse"><em>Theory of Computation</em></span>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link " href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="syllabus.html">Syllabus</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="schedule.html">Schedule</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="assignments.html">Assignments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://uncg.instructure.com/">Canvas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- Page Content -->
+    <div class="container">
+   
+        <h2 id="csc-452652752---assignment-6---due-nov-26-2024">CSC 452/652/752 - Assignment 6 - Due Nov 26, 2024</h2>
+<ol type="1">
+<li><p>(<strong>Note: For Dr. Tate’s section only</strong>) Consider the following instance of the Post Correspondence Problem (PCP): <span class="math display">\[ \left\{
+   \left[ {\texttt{ba}}\over{\texttt{ac}} \right] ,
+   \left[ {\texttt{ba}}\over{\texttt{bba}} \right] ,
+   \left[ {\texttt{abc}}\over{\texttt{ab}} \right] ,
+   \left[ {\texttt{a}}\over{\texttt{cab}} \right] ,
+   \left[ {\texttt{cab}}\over{\texttt{a}} \right] ,
+   \left[ {\texttt{abc}}\over{\texttt{ac}} \right]
+   \right\} \]</span></p>
+<ol type="a">
+<li><p>Find a match.</p></li>
+<li><p>Prove that a match is impossible if the <span class="math inline">\(\left[{\texttt{ba}}\over{\texttt{ac}} \right]\)</span> tile is removed.</p></li>
+<li><p>Given what you did above, the following statement is obviously incorrect: “Since the PCP is undecidable, if you are given a set of PCP tiles you cannot decide whether a match is possible or not.” Explain why this is not correct, and how you can modify the general statement so that it is a true statement of what the undecidability of the PCP implies.</p></li>
+</ol></li>
+<li><p>Theorem 5.2 on pages 217–218 showed that <span class="math inline">\(E_{TM}\)</span> is undecidable. Unlike many of the other reductions in Section 5.1, this one can not be turned into a mapping reduction – the discussion in Example 5.27 explains why not. However, the <em>idea</em> used in the proof of Theorem 5.2 can be used to create a mapping reduction for related languages. For this problem, let <span class="math display">\[ {ALL}_{TM} = \{ \langle M\rangle\,|\, M \text{ is a TM and } L(M)=\Sigma^* \}, \]</span> and prove <span class="math inline">\({ALL}_{TM}\)</span> is undecidable by creating a mapping reduction <span class="math inline">\(A_{TM}\leq_{m}{ALL}_{TM}\)</span> based on the ideas of the Theorem 5.2 proof (other than writing it as a mapping reduction, there are only two minor changes that need to be made!).</p></li>
+<li><p>Here is a simple (and incorrect!) “proof” that <span class="math inline">\(A_{DFA}\)</span> is undecidable (recall that <span class="math inline">\(A_{DFA}\)</span> was defined on page 194 and Theorem 4.1 shows that it is decidable): Given input <span class="math inline">\(\langle B,w\rangle\)</span> for <span class="math inline">\(A_{DFA}\)</span>, we convert <span class="math inline">\(B\)</span> in to a TM <span class="math inline">\(M\)</span> by replacing the DFA transition function with a TM transition function that never changes anything on the tape and always moves right. It’s easy to see that <span class="math inline">\(\langle M,w\rangle\in A_{TM}\)</span> if and only if <span class="math inline">\(\langle B,w\rangle\in A_{DFA}\)</span>. Therefore <span class="math inline">\(A_{TM}\leq_{m} A_{DFA}\)</span> and so <span class="math inline">\(A_{DFA}\)</span> is undecidable.</p>
+<p>What is the flaw in this “proof”?</p></li>
+<li><p>Prove that <span class="math inline">\(P\)</span> is closed under complement.</p></li>
+<li><p>Prove that <span class="math inline">\(NP\)</span> is closed under union.</p></li>
+<li><p>The problem <span class="math inline">\(LPATH\)</span> is defined in Problem 7.21 in the textbook.</p>
+<ol type="a">
+<li><p>Prove that <span class="math inline">\(LPATH\)</span> is NP-complete.</p></li>
+<li><p>If we fix one of the variables, then the problem can be solved in polynomial time. In particular, we fix <span class="math inline">\(k\)</span> to be <span class="math inline">\(4\)</span> and define</p>
+<p><span class="math display">\[ 4PATH = \{\langle G,a,b\rangle\,|\,G
+ \text{ contains a simple path of length at least 4 from } a
+ \text{ to } b\} .\]</span></p>
+<p>Prove that <span class="math inline">\(4PATH\)</span> is in <span class="math inline">\(P\)</span>.</p></li>
+</ol></li>
+<li><p>Investigate online (do not use AI!) what the consequences would be if <span class="math inline">\(P\)</span> vs <span class="math inline">\(NP\)</span> were solved. Write three paragraphs: One focused on what are some possible consequences if <span class="math inline">\(P=NP\)</span>, one focused on what are some consequences of <span class="math inline">\(P\neq NP\)</span>, and a concluding paragraph where you indicate which you think is true, and which you wish were true (these don’t have to be the same!). Cite your sources.</p></li>
+</ol>
+<p> </p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

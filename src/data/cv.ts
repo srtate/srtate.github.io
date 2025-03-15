@@ -45,6 +45,16 @@ export const skills = [
 
 export const publications = [
 	{
+		title: 'On the Efficiency of Building Large Collections of Software: Modeling, Algorithms, and Experimental Results',
+		authors: 'S.R. Tate and B. Yuan',
+		journal: 'Springer Communications in Computer and Information Science',
+		volume: '1859',
+		time: 'July 2023',
+		pages: 'pp. 145-168',
+		link: '',
+		abstract: '',
+	},
+	{
 		title: '',
 		authors: '',
 		journal: '',

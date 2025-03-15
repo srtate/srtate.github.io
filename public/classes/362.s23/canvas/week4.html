@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 362 - Spring 2023 - Week 4 Activities</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://home.uncg.edu/cmp/faculty/srtate/362.s23/week4.html">View original, outside canvas</a> ]
+   
+        <h2 id="csc-362-spring-2023-week-4-activities">CSC 362 – Spring 2023 – Week 4 Activities</h2>
+<h4 id="tuesday">Tuesday</h4>
+<p>Slides: Goal – 30 minutes</p>
+<p>Demo:</p>
+<ul>
+<li>Everything in “Day1-MakeExample”</li>
+<li>Stress: A lot here (with LOTS of comments) - point is to study later</li>
+<li>Bring up in VS Code and note diff files - paired .c/.h and Makefile</li>
+<li>Look at Makefile - very similar to the example on slides
+<ul>
+<li>Compiler flags at top: Use of <code>-Wall</code> and <code>-g</code></li>
+<li>Note that it’s a TAB before recipes - light arrow (note “Render Whitespace” in “View”) - change to spaces to see diff</li>
+<li>Point out that each .o depends on <em>at most</em> one .c file (many .h files)
+<ul>
+<li>Emphasize: Single .c is code to make object - NO CODE IN .h!<br />
+</li>
+</ul></li>
+<li>OBJS are made from .c files and “program” made from .o – all deleted in “clean” because they can be easily created again</li>
+</ul></li>
+<li>In shell: do “make” and talk about what we see (“cc” alias for “gcc”)
+<ul>
+<li>Now “ls” to see files</li>
+<li>./program to run</li>
+<li>Talk briefly about processes - each has a parent (PPID)</li>
+<li>Output is “pid: ppid, program name”</li>
+</ul></li>
+<li>“ls” again as a reminder - then “make clean” and “ls” - just orig files</li>
+<li>“make” to build again</li>
+<li>Talk a little about what prog does: Keeps processes in “sparse array”
+<ul>
+<li>Need a process data type (“object” but not really) and sparse array type</li>
+<li>Note .c/.h for both</li>
+<li>Important note about data structures - NONE built in to C!</li>
+</ul></li>
+<li>Bring up main.c - show main and processes created
+<ul>
+<li>Look at fork_and_exec - makes a new process and puts it in proc_table</li>
+<li>Look at print_array - C-style iterator (not standard) - use of fields</li>
+</ul></li>
+<li>Look at proc.h first
+<ul>
+<li>What a process is</li>
+<li>Functions that operate on it - ptr to proc_info for each (like “this”)</li>
+<li>No body to function - just signature - C term is “prototype” - NO CODE</li>
+<li>Need def available to users - recall use of fields in main</li>
+</ul></li>
+<li>Look at proc.c
+<ul>
+<li>Talk about static global</li>
+<li>Fork creates a new process - same name - malloc, etc.</li>
+</ul></li>
+<li>Pull up sarray.h
+<ul>
+<li>note type is an ARRAY of entries, and we must keep alloc size</li>
+<li>Iterator - not really part of C - position in a particular sarray<br />
+</li>
+<li>All the “usual suspects” - get, set, iterator fns, etc.</li>
+<li>Will go through sarray.c if time (it’s more complex, but good learning!)</li>
+</ul></li>
+<li>Exploring how make rebuilds things
+<ul>
+<li>Add a new “subprog” from “myprogram” in main - don’t bother w/return</li>
+<li>Question: What needs to be recompiled? Then “make” and see</li>
+<li>Run prog</li>
+<li>Next go into proc.c and change name of first prog to “newinit”</li>
+<li>What changes? Then make</li>
+<li>Next change proc.h - change PNAME_MAX to 500</li>
+<li>What recompiles? Do make and see</li>
+<li>Pull Makefile back up - examine dependencies - depends on 3 changed files</li>
+<li>Importance of getting Makefile correct - C doesn’t “know”</li>
+<li>Some tools/tricks to help. We’ll use those in future (learn Make first!)</li>
+</ul></li>
+<li>In any remaining time, explore sarray.h/sarray.c to discuss features</li>
+</ul>
+<h4 id="thursday">Thursday</h4>
+<p>Slides: Goal is 20 min</p>
+<p>Demos - quick run through errors with valgrind and gdb (10 min)</p>
+<ul>
+<li>Start with overflow
+<ul>
+<li>Briefly show code - remember password!</li>
+<li>Run with correct password and then without</li>
+<li>Then type (counting out loud!) 18 x’s - got in!</li>
+<li>Show Makefile and disabling stack protection</li>
+<li>clean and remake – not warning message (don’t use gets!)</li>
+</ul></li>
+<li>t1.c - pull up code and discuss
+<ul>
+<li>Compile manually without -g</li>
+<li>how much space is allocated by malloc?</li>
+<li>how much space is written into by strcpy?</li>
+<li>run it - looks ok! Is it?</li>
+<li>Run with valgrind - lots of errors! Look at first - where did it occur?</li>
+<li>Recompile with “-g” and use valgrind again - note addition of line #s</li>
+</ul></li>
+<li>t2.c - show code
+<ul>
+<li>Only difference is in malloc size - did we fix the problem?</li>
+<li>Run without and with valgrind and discuss</li>
+</ul></li>
+<li>t3.c - show code
+<ul>
+<li>What about malloc? Looks good now!</li>
+<li>Run without and with valgrind</li>
+<li>No “invalid write” or “invalid read” - but valgrind output for “leaks”</li>
+<li>Discuss why</li>
+<li>Point out helpful “rerun” message and do that - shows where mem alloced</li>
+</ul></li>
+<li>t4.c - no malloc at all - now what?
+<ul>
+<li>Note that Java would have given a call stack dump w/exception</li>
+<li>Run with valgrind - pinpoints location, but is that enough?</li>
+<li>Run with gdb
+<ul>
+<li>Location given, but in “strcpy”</li>
+<li>Show “where” - shows line in main</li>
+<li>Do “list main” - can see line</li>
+<li>Try “print test” to see problem - note error message - talk abt frames</li>
+<li>Type “up” then “print test” - prob with null pointer!</li>
+<li>What if we hadn’t initialized ptr? Comment out init and rebuild</li>
+<li>Note build warning….</li>
+<li>Load into gdb anyway, set breakpoint at strcpy line (line 13?) and run</li>
+<li>print “test” to show random garbage</li>
+</ul></li>
+</ul></li>
+<li>challenge.c - bring up and discuss - how to find password
+<ul>
+<li>Idea: “encoded” password build in - figure out what it is</li>
+<li>All pretty hard to follow except… strcmp in main</li>
+<li>Load in gdb, set breakpoint, run, and print secret - ta da!</li>
+</ul></li>
+<li>If time: realworld example (?)
+<ul>
+<li>First show the libgd2 security notice, then show code</li>
+</ul></li>
+<li>t5.c if time (make sure 30 min left for activity)</li>
+</ul>
+<p><strong>Activity:</strong> 30 minutes would be good…</p>
+<p><em>Future: Need example of stack smashing!</em></p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

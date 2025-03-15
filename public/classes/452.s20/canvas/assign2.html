@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 452/652 - Spring 2020 - Assignment 2 - Due Feb 12, 2020</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://www.uncg.edu/cmp/faculty/srtate/452.s20/assign2.html">View original, outside canvas</a> ]
+   
+        <h2 id="csc-452652---spring-2020---assignment-2---due-feb-12-2020">CSC 452/652 - Spring 2020 - Assignment 2 - Due Feb 12, 2020</h2>
+<ol type="1">
+<li><p>Consider the regular language <span class="math inline">\(L=\{w\,|\,w\in\{0,1\}^*\)</span> and the 4th symbol from the beginning of <span class="math inline">\(w\)</span> is <span class="math inline">\(0\}\)</span>.</p>
+<ol type="a">
+<li><p>Design a DFA that recognizes <span class="math inline">\(L\)</span>, and draw the state diagram clearly marking start state and final states. Your DFA should have 6 states, with a single final/accepting state.</p></li>
+<li><p>Redraw your state diagram from part a, turning the start state into a final state, turning the final state into the start state, and reversing the direction of each edge.</p></li>
+<li><p>Is this a valid finite automaton, and if so is it deterministic or nondeterministic? Briefly explain why.</p></li>
+<li><p>Are any states in this new state diagram unreachable (and so unnecessary)? If so, remove them and draw the new diagram.</p></li>
+<li><p>Describe in English the language accepted by this finite automaton.</p></li>
+</ol></li>
+<li><p>A binary string <span class="math inline">\(w\)</span> is “framed” if <span class="math inline">\(|w|\geq 4\)</span> and it begins with “<code>01</code>” and ends with “<code>10</code>”. Create a simple 5-state NFA that recognizes all framed binary strings, and then convert that to an equivalent DFA. Make sure every state in your final DFA has exactly one transition out for every symbol in the alphabet.</p></li>
+<li><p>Use the NFA to DFA conversion procedure described in the book to convert the following NFA into an equivalent DFA:</p>
+<p><img src="assign2_nfa1.png" /></p></li>
+<li><p>For each of the following regular expressions, first give two strings that are members of the language and two that are not (so four strings for each one), and then give a succinct English description of the language.</p>
+<ol type="a">
+<li><p><span class="math inline">\((\texttt{0}\cup \texttt{10})^*\)</span></p></li>
+<li><p><span class="math inline">\((((\texttt{00})^*(\texttt{11}))\cup\texttt{01})^*\)</span></p></li>
+</ol></li>
+<li><p>Use the process described in the proof of Lemma 1.55 (page 67) to create an NFA that accepts the language described by the regular expression <span class="math inline">\((0\cup 11)^*(10^*\cup\varepsilon)\)</span>.</p></li>
+<li><p>Derive a regular expression to describe all binary strings with even parity (those with an even number of 1’s) by performing the following steps: Draw the DFA from class that recognizes binary strings with even parity, and then convert this DFA into a regular expression using the process described in the book (pages 69–73). Show each step (the initial GNFA and each step of state removal).</p></li>
+<li><p>Convert the following DFA into a regular expression, showing each step as in the previous problem:</p>
+<p><img src="assign2_dfa1.png" /></p></li>
+<li><p>For each language below, use the pumping lemma (page 78) to prove that it is not regular:</p>
+<ol type="a">
+<li><p><span class="math inline">\(L_1=\{w\,|\, w\in\{\texttt{a},\texttt{b}\}^*\)</span> and <span class="math inline">\(w\)</span> has more <span class="math inline">\(\texttt{a}\)</span>’s than <span class="math inline">\(\texttt{b}\)</span>’s<span class="math inline">\(\}\)</span></p></li>
+<li><p><span class="math inline">\(L_2=\{w\,|\, w\in\{\texttt{(},\texttt{)}\}^*\)</span> and <span class="math inline">\(w\)</span> is a properly balanced string of parentheses<span class="math inline">\(\}\)</span>. A string of parentheses is properly balanced if every open parenthesis is matched with a close parenthesis, and pairs are nested inside each other properly. We don’t need to be any more formal at this point, but consider some examples: <span class="math inline">\(\texttt{(()())}\)</span> and <span class="math inline">\(\texttt{(()(()()))}\)</span> are properly balanced, while <span class="math inline">\(\texttt{(()))(()}\)</span> and <span class="math inline">\(\texttt{(()))}\)</span> are not.</p></li>
+</ol></li>
+</ol>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

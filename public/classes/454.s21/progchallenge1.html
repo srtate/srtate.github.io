@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 454/654 - Spring 2021 - Programming Challenge 1 (for Assignment 2)</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../css/class_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+        <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark uncg-navbar fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="https://www.uncg.edu/">
+          <img class="collapse navbar-collapse" src="../img/uncg_class.png" alt="UNC Greensboro">
+          <img class="navbar-toggler" src="../img/uncg_mobile.png" alt="UNCG">
+        </a>
+        <div class="navbar-brand d-flex flex-column text-left"
+	     style="line-height: 1.2;">
+          <span>CSC 454/654</span>
+          <span class="small collapse navbar-collapse"><em>Algorithm Analysis and Design</em></span>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link " href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="syllabus.html">Syllabus</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="schedule.html">Schedule</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="assignments.html">Assignments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://uncg.instructure.com/">Canvas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- Page Content -->
+    <div class="container">
+   
+        <style>
+pre {
+ display:block;
+ padding:9.5px;
+ margin:0 0 10px;
+ font-size:13px;
+ line-height:1.42857143;
+ color:#333;
+ word-break:break-all;
+ word-wrap:break-word;
+ background-color:#f5f5f5;
+ border:1px solid #ccc;
+ border-radius:4px
+}
+pre code {
+ padding:0;
+ font-size:inherit;
+ color:inherit;
+ white-space:pre-wrap;
+ background-color:transparent;
+ border-radius:0
+}
+</style>
+<h2 id="csc-454654---spring-2021---programming-challenge-1">CSC 454/654 - Spring 2021 - Programming Challenge 1</h2>
+<p><strong>Introduction:</strong> This is your first “programming challenge” assignment. There will be three of these throughout the semester, putting what you learn about algorithms into practice — solving real problems is the whole point, after all! Your solutions will be submitted to an automated judging system that will test it against a range of test inputs (information on how to access this system is given in Canvas). You will get fast feedback on whether your program passed all the tests; however, if it fails a test you’ll only get an indication that it failed, and you won’t get to see the input or any other details. Your job is to think through the problem and make sure your program works on all possible inputs! In general you will be given two challenges — one will be a thinly disguised version of an algorithm that is given in the book, and for the other you’ll have to be more creative. One final rule: These are challenges for you to solve on your own – don’t discuss with others, and I won’t answer any questions about your algorithm or program. I will help you understand the problem if anything is unclear, but you must write, test, and debug your solution <em>entirely</em> on your own!</p>
+<p><strong>Challenge Specifics:</strong> The theme for this challenge is superheros and villains. The input to the program is a city skyline, with the heights of buildings (in floors or stories) along the skyline given in a sequence of values <span class="math inline">\(\langle h_1, h_2, \ldots, h_n\rangle\)</span>. Here is an example skyline:</p>
+<p><img src="progc1_skyline.png" /></p>
+<p>As program input, this would be given as a sequence of values <span class="math inline">\(\langle 1,7,3,4,1,3,5,7,6,8,5,3,3\rangle\)</span>. To provide this input to your program, it is given in the following format: on the first line is the number <span class="math inline">\(n\)</span>, and then the <span class="math inline">\(n\)</span> lines following that each have the values <span class="math inline">\(h_1\)</span>, <span class="math inline">\(h_2\)</span>, and so on. So for the example above, the input will given like this:</p>
+<pre><code>13
+1
+7
+3
+4
+1
+3
+5
+7
+6
+8
+5
+3
+3</code></pre>
+<p>Input should be read from standard input, although I recommend that you save inputs to files and redirect into your program for testing. Some students prefer to use file I/O in the program while they are developing the program (especially since most IDEs have poor support for providing input through standard input), but if you do this make sure you switch the input source back to standard input before submitting — the judging system will only provide input via standard input!</p>
+<h3 id="using-your-algorithms-powers-for-good">Using Your Algorithms Powers for Good</h3>
+<p>Your first task is to write a program for our superhero… ummm…… ArachnidMan. Yeah, that’s it. (Similarity to any copyrighted superhero purely coincidental.) ArachnidMan charges up his superpowers from gravity, and gets the biggest boost by falling as far as possible (called the “maximum fall distance”). He is traveling from left to right in our skyline, and can start from any position and jump to any position to the right. There’s no limit on how far he can jump horizontally. Your task is to find the best position to jump from and to jump to in order to maximize his power gain (in other words, maximize the distance he falls). In the skyline above, his best solution is to jump from position 2 (height 7) to position 5 (height 1), falling 6 stories.</p>
+<p>To solve this problem, your program should find the best jumping-off position, and the position to jump to. One obvious solution is to try all possible pairs of <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> with <span class="math inline">\(1\leq i&lt;j \leq n\)</span> and calculate the distance fallen for each possibility. Since there are <span class="math inline">\(\Theta(n^2)\)</span> possible <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> values, which gives you a <span class="math inline">\(\Theta(n^2)\)</span> time solution. The challenge here is to do better than <span class="math inline">\(\Theta(n^2)\)</span>, where <span class="math inline">\(O(n\lg n)\)</span> time is possible using the techniques we are discussing in class.</p>
+<p>Your goal is to program this so that it takes less than <span class="math inline">\(5\)</span> seconds to process its input and find the maximum fall distance. A reasonably fast processor (like those on our judging system) can easily run the <span class="math inline">\(\Theta(n^2)\)</span> time algorithm in less than <span class="math inline">\(5\)</span> seconds on inputs of <span class="math inline">\(10,000\)</span> of fewer values. However, much larger than this and the <span class="math inline">\(\Theta(n^2)\)</span> algorithm won’t be good enough.</p>
+<p>Fortunately, there is a divide-and-conquer algorithm that will find the maximum fall distance in time <span class="math inline">\(O(n\lg n)\)</span>, allowing you to solve problems up to around <span class="math inline">\(n=500,000\)</span> in less than 5 seconds. [<em>Hint: this algorithms is basically the same as an algorithm given in Chapter 4 of the textbook. Once you see the connection, it’s just a matter of turning the book’s pseudocode into real code and making some minor adjustments.</em>]</p>
+<p>The first two challenge solutions that you should submit to on the judging system (if you implement the more efficient algorithm, then you can use the same solution for both of these problems):</p>
+<p><strong>Problem 1 (MaxFallSmall):</strong> [5 points] Your program should read the input data, then compute and print the maximum possible fall distance for this input. The output of your program should consist of just this distance, printed on a line by itself. In this, the “small” version of the problem, all inputs will have <span class="math inline">\(n\leq 10,000\)</span> and so the <span class="math inline">\(\Theta(n^2)\)</span> time algorithm should be able to solve the problem.</p>
+<p><strong>Problem 2 (MaxFallLarge):</strong> [10 points] This is the same as Problem 1, but inputs can get as large as <span class="math inline">\(n=500,000\)</span> and so the <span class="math inline">\(\Theta(n^2)\)</span> algorithm will not be able to pass these tests within the required time bound (under 5 seconds).</p>
+<h3 id="working-for-the-other-side">Working for the other side</h3>
+<p>Because of your great success in helping ArachnidMan, some of the city’s supervillains would like to hire you to solve some of their problems too. A villain named Clandestine has asked you to help locate a hidden lair. Clandestine can’t hire an architect, so the lair must be a simple rectangle, and the goal is to hide it entirely behind the skyline so it can’t be seen (obviously, you can only look at the city from one direction). Your goal is to write a program to determine what the largest possible lair is. For the skyline above, this is illustrated below, where the largest lair is shown in light red.</p>
+<p><img src="progc1_skyline2.png" /></p>
+<p>This lair is 5 by 5, for an area of 25, which is the largest possible rectangular lair that can be hidden behind the skyline. You should write a program that finds the area of the largest lair, given data that describes the skyline as described above. For this example, your program should output 25 on a line by itself.</p>
+<p><strong>Problem 3 (MaxLairSmall):</strong> [5 points] A solution for this problem should calculate and print the correct answer within 5 seconds, where inputs are “small,” with <span class="math inline">\(n\leq 10,000\)</span>.</p>
+<p><strong>Problem 4 (MaxLairLarge):</strong> [10 points] This is the same problem, but inputs can get as large as <span class="math inline">\(n=500,000\)</span> and so the <span class="math inline">\(\Theta(n^2)\)</span> algorithm will not be able to pass these tests within the required time bound (under 5 seconds). There is an <span class="math inline">\(O(n\lg n)\)</span> time divide-and-conquer algorithm for this problem, but it’s not in the book so you’ll have to be clever and figure it out!</p>
+<p> </p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 439/639 -- The Little-C Language</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://www.uncg.edu/cmp/faculty/srtate/439.f20/littlec.html">View original, outside canvas</a> ]
+   
+        <h2 id="csc-439639-the-little-c-language">CSC 439/639 – The Little-C Language</h2>
+<p>In this class, you will create a compiler for a subset of the C programming language that we will call “Little-C”. This is a preliminary description, and more details will be introduced throughout the semester.</p>
+<p>The basic structure is the same as C: There are global variables and global function definitions, where functions are block-structured with block-scoped variables (including shadowing, as in C). Functions take zero or more parameters, with variable declarations in the parameter list, and multiple parameters separated by commas. Variables must be declared at the top of a block, and cannot be declared inside another statement (in other words, there are no loop-local variables in for loops). There are only two primitive types, <code>int</code> (a word) and <code>char</code> (a byte), and you can have fixed-size arrays of either of these types. Variable and function names follow the same rules as C: they start with either a letter or an underscore (<code>_</code>), followed by more letters, underscores, and digits. Variables can have either static, auto, or extern storage class, and functions can be static or extern. <code>static</code> and <code>extern</code> are stated storage classes, but auto is assumed for block-declared variables and never stated (so there is no keyword for it).</p>
+<p>At run time, array representation in memory includes the size, so the length can be determined by the running program. Generic arrays can be passed into functions, and there is a length operator (see below) that can determine their size. This feature is not available in C, and is similar to the way arrays are handled in Java. The type of a parameter that is a generic array if <code>int</code> values is <code>int[]</code>.</p>
+<p>There is no boolean type. Like C, boolean expressions are calculated as <code>int</code> values where zero is treated as false, and any non-zero value is true.</p>
+<p>The special type <code>void</code> can be the return type of a function, meaning that it does not return a value</p>
+<p>When a program is run, the function named <code>main</code> is called. Command line arguments are not supported in Little-C, so <code>main</code> takes no arguments and had type <code>void</code>.</p>
+<p>Integer constants can be given as standard decimal numbers, and can also be given as character values – so <code>'A'</code> is a valid integer constant (representing the number 65, since the ASCII/UTF8 encoding of the character ‘A’ is 65). Unlike standard C, Little-C doesn’t allow for integer constants to be given in hexadecimal, octal, or binary.</p>
+<p>At runtime, strings are stored like in C: as arrays of characters (bytes) with a zero byte terminating the string. String literals are delimited by double-quotes (<code>"</code>) and can be used to initialize an array of <code>char</code>’s, with the condition that a literal with <code>n</code> characters needs an array of size at least <code>n+1</code>. When used as a parameter, an array is created with size exactly <code>n+1</code>. Within a string literal or a character constant, characters can be escaped with a backslash character (<code>\</code>), with the only two special quoted characters being <code>\n</code> for a newline and <code>\0</code> for a NUL byte (a byte with value zero). Any other escaped character simply stands for that character, so in particular <code>\"</code> can be used inside a string literal to include a double quote character, and the character constant for a single quote character is <code>'\''</code>.</p>
+<p>There is only one form of comment in Little-C, starting with <code>//</code> and extending to the end of the line.</p>
+<p>The following programming constructs are supported, and work just like in C:</p>
+<ul>
+<li><p>Assignment statements</p></li>
+<li><p><strong>if</strong> with an optional <strong>else</strong></p></li>
+<li><p><strong>while</strong> loops</p></li>
+<li><p><strong>for</strong> loops</p></li>
+<li><p><strong>return</strong> statements to return from a function (with a value for non-void functions)</p></li>
+<li><p><strong>break</strong> to break out of a loop</p></li>
+</ul>
+<p>Expressions include the following operations:</p>
+<ul>
+<li><p>Unary integer operations <code>-</code> and <code>+</code></p></li>
+<li><p>A unary operator <code>#</code> on an array that gives the size (i.e., if <code>arr</code> was declared with <code>int arr[12]</code>, then <code>#arr</code> evaluates to 12). This is the only language component that is not in “real C.”</p></li>
+<li><p>Binary integer operations <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, and <code>%</code></p></li>
+<li><p>“Side-effect” operators on integer values: Pre and Post increment (<code>++</code>) and decrement (<code>--</code>)</p></li>
+<li><p>Binary relational (comparison) binary operations <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code>, <code>==</code>, and <code>!=</code></p></li>
+<li><p>Unary boolean operator <code>!</code></p></li>
+<li><p>Binary boolean operators <code>&amp;&amp;</code> and <code>||</code></p></li>
+</ul>
+<p>Input and output operations are provided by external functions in a standard library. For now, plan on the following functions being available:</p>
+<ul>
+<li><p><code>void printd(int x)</code> where <code>x</code> is an integer value, and it prints the value in decimal to standard output</p></li>
+<li><p><code>void prints(char[] x)</code> where <code>x</code> is a string, which is printed to standard output</p></li>
+<li><p><code>int read()</code> reads an integer value from standard input</p></li>
+<li><p><code>void readline(char[] buffer)</code> reads a line from standard input as a string</p></li>
+</ul>
+<h3 id="sample-little-c-program">Sample Little-C Program</h3>
+<p>The following is a sample Little-C program, demonstrating all the key language features (not all expression operators are included, but they are all standard C operators). (Warning: At this point, I’m still working on language details, and don’t have a working compiler yet – so this is just a guess at what a Little-C program will look like!).</p>
+<link href="codehighlight.css" rel="stylesheet">
+<style>
+pre {
+  padding: 9.5px;
+  margin: 0 0 10px;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+</style>
+<div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="dt">int</span> globalvar = <span class="dv">10</span>;</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="dt">char</span> gstr[<span class="dv">20</span>] = <span class="st">&quot;Test init.&quot;</span>;</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a><span class="co">// Function slen() returns the length of string str. Notice that if there</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a><span class="co">// is no NUL found before the end of the buffer, the buffer size is returned.</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a><span class="dt">int</span> slen(<span class="dt">char</span>[] str) {</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true"></a>    <span class="dt">int</span> i;</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true"></a>    <span class="cf">for</span> (i=<span class="dv">0</span>; i&lt;#str; i++) {</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true"></a>        <span class="cf">if</span> (str[i] == <span class="ch">&#39;\0&#39;</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true"></a>            <span class="cf">break</span>;</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true"></a>    }</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true"></a>    <span class="cf">return</span> i;</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true"></a>}</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true"></a>    </span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true"></a><span class="dt">int</span> is_positive(<span class="dt">int</span> x) {</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true"></a>    <span class="cf">if</span> (x &gt; <span class="dv">0</span>)   <span class="co">// Note that &quot;positive&quot; is different from &quot;non-negative&quot;!</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true"></a>        <span class="cf">return</span> <span class="dv">1</span>;</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true"></a>    <span class="cf">else</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true"></a>        <span class="cf">return</span> <span class="dv">0</span>;</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true"></a>}</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true"></a><span class="dt">void</span> shadow_test() {</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true"></a>    <span class="dt">int</span> x = <span class="dv">1</span>;</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true"></a>    prints(<span class="st">&quot;First print -- x is &quot;</span>);</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true"></a>    printd(x);</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true"></a>    prints(<span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>);</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true"></a>    {</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true"></a>        <span class="dt">int</span> x = <span class="dv">10</span>;</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true"></a>        prints(<span class="st">&quot;Second print -- x is &quot;</span>);</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true"></a>        printd(x);</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true"></a>        prints(<span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>);</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true"></a>    }</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true"></a>    </span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true"></a>    prints(<span class="st">&quot;Third print -- x is &quot;</span>);</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true"></a>    printd(x);</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true"></a>    prints(<span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>);</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true"></a>}</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true"></a></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true"></a><span class="dt">void</span> main() {</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true"></a>    prints(<span class="st">&quot;Welcome to the Little-C example!</span><span class="sc">\n</span><span class="st">&quot;</span>);</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true"></a></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true"></a>    prints(<span class="st">&quot;The global variable is &quot;</span>);</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true"></a>    <span class="cf">if</span> (is_positive(globalvar))</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true"></a>        prints(<span class="st">&quot;positive.</span><span class="sc">\n</span><span class="st">&quot;</span>);</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true"></a>    <span class="cf">else</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true"></a>        prints(<span class="st">&quot;not positive.</span><span class="sc">\n</span><span class="st">&quot;</span>);</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true"></a></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true"></a>    prints(<span class="st">&quot;The length of gstr is &quot;</span>);</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true"></a>    printd(slen(gstr));</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true"></a>    prints(<span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>);</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true"></a></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true"></a>    shadow_test();</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true"></a>}</span></code></pre></div>
+<h3 id="output-of-sample-program">Output of Sample Program</h3>
+<p>The program above should output the following:</p>
+<pre><code>Welcome to the Little-C example!
+The global variable is positive.
+The length of gstr is 10
+First print -- x is 1
+Second print -- x is 10
+Third print -- x is 1</code></pre>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

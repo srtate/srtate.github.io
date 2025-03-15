@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 362 - Spring 2021 - Week 13 Activities</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://home.uncg.edu/cmp/faculty/srtate/362.s23/week13.html">View original, outside canvas</a> ]
+   
+        <h2 id="csc-362-spring-2021-week-13-activities">CSC 362 – Spring 2021 – Week 13 Activities</h2>
+<h3 id="timing-from-spring-2021">Timing from Spring 2021</h3>
+<h4 id="tuesday---april-13">Tuesday - April 13</h4>
+<ul>
+<li>[5 min] Intro</li>
+<li>[70 min] Up through “Certificates” slide -&gt; That was the last slide, but no demos…</li>
+</ul>
+<h4 id="thursday---april-15">Thursday - April 15</h4>
+<h4 id="tuesday-material">Tuesday Material</h4>
+<p>Recall from earlier: CIA triad (lecture 3)</p>
+<p>Book - Cyber Security - TCP level - Encryption for confidentiality - Integrity - esp of DNS [DNSsec and DoH] - SYN/ACK and seq numbers - SYN Flood - DoS attacks</p>
+<p>openness of network - like postcards cryptography in general - SSH, SSL, IPSec - and various other VPNs encryption signatures - software dist - login - note replay attacks - certificates port tricks - firewalls - port forwarding / tunneling - NAT</p>
+<p>slow loris</p>
+<p>Before class:</p>
+<ul>
+<li><p>Install telnet and ssh servers in the VM: “sudo apt install telnetd openssh-server”</p></li>
+<li><p>Note: Can remove these after the demos - no need to have these servers running in the VM after this, so why take up resources?</p></li>
+</ul>
+<p>Demos:</p>
+<ul>
+<li><p>Do “telnet localhost” and log in (user “student”, password “spass”)</p>
+<ul>
+<li>this is the way all remote logins use do to work, before 1995</li>
+<li>“exit” to log out of that connection before continuing</li>
+</ul></li>
+<li><p>Start wireshark as root, and start sniffing the “lo” interface</p></li>
+<li><p>Do “telnet localhost” and log in again</p>
+<ul>
+<li>stop the sniffer and point out the packets that were captured</li>
+<li>packets to port 23 are for telnet</li>
+<li>Find the SYN packet for the telnet connection, right click, and select “Follow -&gt; TCP Stream” – this collects all the packets that are a part of the TCP connection</li>
+<li>Note what you can see – there’s the password! – note that the username looks like doubled up characters, because one copy is the sent character and one is the echo that resulted in the character being printed.</li>
+<li>“exit” to log out of the telnet-logged in session</li>
+</ul></li>
+<li><p>Start a new sniffing session in wireshark, and “slogin localhost”</p>
+<ul>
+<li>stop the sniffer and look at packets - not that it’s to port 22 this time</li>
+<li>Do the “follow stream” thing again, and notice a few things: (a) much more traffic - there’s a lot of overhead in settint up ssh connection, (b) there’s some human-readable stuff at the beginning
+<ul>
+<li>those are cryptographic algorithms and the client and server are “negotiating” an algorithm to use, and (c) after the initial negotiation, everything is gibberish – no password to be found, because everything is encrypted.</li>
+</ul></li>
+</ul></li>
+<li><p>Note about SSH (don’t need to demo): You don’t even have to use passwords at all – can use public key cryptography for authentication. You in fact are already doing this for authenticating with GitHub (remember the ssh-keygen, etc. from the setup instructions at the beginning of the course).</p></li>
+<li><p>Using openssl to do encryption and decryption</p>
+<ul>
+<li>Create some simple textfile, named “plaintext.txt” - view with cat and xxd</li>
+<li>Then “openssl aes-256-cbc -e &lt;plaintest.txt &gt;ciphertext.txt”</li>
+<li>After giving a password and completion, do “xxd ciphertext.txt” - gibberish!</li>
+<li>To recover later: “openssl aes-256-cbc -d &lt;ciphertext.txt &gt;recover.txt”</li>
+<li>cat out recover.txt to see that it brought the plaintext back.</li>
+</ul></li>
+<li><p>Web security: Open www.bankofamerica.com (or any secure site)</p>
+<ul>
+<li>Click on the padlock in the browser, and drill down to viewing the certificate - Can see who issued the cert (this is the “trusted third party” from the slides), expiration, etc.</li>
+<li>You can run the sniffer here too, and contrast with sniffing an unencrypted connection to spantest.uncg.edu</li>
+</ul></li>
+</ul>
+<h4 id="tuesday-in-class-activities">Tuesday In-Class Activities</h4>
+<p>stuff</p>
+<h4 id="for-students-to-do-before-thursday">For students to do before Thursday</h4>
+<p>???</p>
+<h4 id="thursday-material">Thursday Material</h4>
+<p>Special purpose supercomputers vs NOW Symmetric multiprocessing (SMP) - memory contention PVM and MPI [Physical simulations, like weather forcasting as an example?]</p>
+<p>MPI - one standard, many implementations - some optimized for an arch</p>
+<p>Networks - Myrinet and Infiniband</p>
+<p>Benefits - don’t need to name or address - just 0..n-1</p>
+<p>Types of comm: - broadcast, scatter, gather - reduction - [map/reduce]</p>
+<p>Demos - log in to mpiex@ritchie.uncg.edu instead of in VM:</p>
+<ul>
+<li><p>Start with helloworld.c</p>
+<ul>
+<li><p>First look at Makefile and note the “-lmpi” library specification</p></li>
+<li><p>Walk through code: rank 0 sends “Hello” to all other ranks, gathers responses; other ranks receive message, check to make sure it starts with “Hello” and then sends back a message.</p></li>
+<li><p>Important point: The program code does not know or care about how many processors are available – we can run with 4 processors or</p>
+<ol start="4000" type="1">
+<li></li>
+</ol></li>
+<li><p>Run helloworld normally – no parallelism</p></li>
+<li><p>do “mpirun bin/helloworld” (on ritchie shows 8 processors)</p></li>
+<li><p>do “mpirun –use-hwthread-cpus bin/helloworld” (ritchie shows 16 processors)</p>
+<p>Note: ritchie has a CPU with “8 cores and 16 threads”, so supports “hypertheading”. “–use-hwthread-cpus” tells mpi to treat each cpu thread as a separate processor. Sometimes this speeds things up and sometimes is slows it down – it’s a subtle issue, but is determined by whether the program is CPU-bound (where hyperthreading doesn’t help) or memory-bound (where it does). Probably best to just put this off until a more advanced course.</p></li>
+<li><p>do “mpirun –use-hwthread-cpus -hostfile hostfile bin/helloworld” (now 32 proc)</p>
+<p>This spreads out the computation over two systems, each supporting 16 threads. We could just as easily run it over 1000 systems.</p></li>
+</ul></li>
+<li><p>Next look at hashfind. What it does: Repeatedly hashes values (with SHA256) until it finds one with a hash value beginning in ZBITS zeros. This is bitcoin mining (although real mining has ZBITS around 76.</p>
+<ul>
+<li><p>Briefly look at code, but don’t need to dwell on it too much.</p></li>
+<li><p>Run with “time bin/hashfind” – note that this will take a long time (approx 4 min), so start it running and then go on to talk about phashfind while it is running.</p></li>
+<li><p>Optional for when it finishes: Verify result. Run “xxd -r -p &gt;sample.in” and then cut-and-paste the “Input” hex bytes into this and enter/ctrl-d to end. Can verify contents of sample.in with “xxd sample.in”. Then verify hash with “sha256sum sample.in”</p></li>
+</ul></li>
+<li><p>Look at phashfind.c – this is really too complex to go through entirely, but basic structure is this: it has a job manager thread, and each parallel job does a certain number of tests (defined as JOB_SIZE) before it checks to see if any processor succeeded or if it should continue.</p>
+<ul>
+<li><p>note that dosearch() goes through a “batch” of inputs looking for one with a good hash value.</p></li>
+<li><p>Look at main() - basic MPI setup, similar to helloworld, and then a loop that tries batch after batch of inputs until success. Remember that all processors run the same program, so they’ll all do this. The job manager makes sure each batch/processor is a non-overlapping set of trial inputs.</p></li>
+<li><p>Can look at get_job() and signal_success() if the single-processor “hashfind” hasn’t finished, but really just spending time here until it’s done.</p></li>
+<li><p>Once hashfind finishes, do “time mpirun -hostfile hostfile bin/phashfind” This should take around 10 seconds. Note the speedup!</p></li>
+<li><p>Can do this again with –use-hwthread-cpus if there’s time. It will take slightly <em>longer</em>. This is a very CPU-bound task, so hyperthreading does more harm than good (no gains from idle CPU time, and adds extra scheduling/memory contention).</p></li>
+</ul></li>
+</ul>
+<h4 id="thursday-in-class-activities">Thursday In-Class Activities</h4>
+<p>aa</p>
+<h4 id="full-assignment-due-next-tuesday">Full Assignment – due next Tuesday</h4>
+<p>ss</p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

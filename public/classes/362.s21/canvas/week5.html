@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 362 - Spring 2021 - Week 5 Activities</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://www.uncg.edu/cmp/faculty/srtate/362.s21/week5.html">View original, outside canvas</a> ]
+   
+        <h2 id="csc-362-spring-2021-week-5-activities">CSC 362 – Spring 2021 – Week 5 Activities</h2>
+<h4 id="for-students-to-do-before-tuesday">For students to do before Tuesday</h4>
+<p>Reading…</p>
+<h4 id="tuesday-material">Tuesday Material</h4>
+<p>In class:</p>
+<p>Basic OS layout - kernel vs user space, etc. (“userland”) - go back to earlier pic and show hw then kernel then user programs Some about boot process in book, but not so important for us - look at programs - stress kernel doesn’t do anything “on its own” - responds to requests - so how are processes created? Note book problem: “init.d” is not a program - init is though - fork and exec Process: “an instance of a computer program that may be running” - Binary program format on disk says how to load into a…. - process memory model - dynamic linking as well Process isolation - robustness and privacy/secrecy Layout: stack (talk about permissions?), heap, data (init and uninit, sbrk), text/code - show along with C constructs, and talk about where allocated (good place for multiple choice poll!) - use objdump to show segments in an executable? show in gdb? - note page w/address 0 not mapped on purpose - ASLR Kernel level attributes of process: pid, ppid, state, file descriptors, user/group [args and env vars] Intro to fork - fork bombing, danger, and protection “ulimit -u 40” + note about shell-executed? Processes not affecting parent? + exponential growth - poll question about # processes + accidental - mean to create 10, but create 1024. - commands: kill and killall - ret values Warning about fork and I/O buffering Processes and parent processes - pid and ppid - getppid() call. wait and waitpid exec</p>
+<p>Demo:</p>
+<p>First do “ps” - then “ps -e” - then top vi something - then ctrl-z - then ps - then jobs - then fg ctrl-z again - then vi else - ctrl-z - then fg %1…</p>
+<p>Now bring up example code, show main driver - then go through tests 1 by 1. Ask people to predict what they will do.</p>
+<h4 id="tuesday-in-class-activities">Tuesday In-Class Activities</h4>
+<p>Stuff</p>
+<h4 id="for-students-to-do-before-thursday">For students to do before Thursday</h4>
+<p>???</p>
+<h4 id="thursday-material">Thursday Material</h4>
+<p>Topics for Thurs:</p>
+<p>Signals File descriptors Detailed behavior (start reviewing from “Waiting and executing”)</p>
+<p>Thursday demo:</p>
+<ul>
+<li>Run “forkbomb1 ; sleep 2” - sleep is to avoid printing prompt too soon</li>
+<li>run wstatus - look at code, an note fork/exec/wait - use for activity!
+<ul>
+<li>load progtorun.c in edito</li>
+<li>run wstatus - note print, so prog ran, and then status printed</li>
+<li>edit to change “return” at end of main to 2 and re-run</li>
+<li>edit to add an “exit(3)” in progtorun and re-run</li>
+</ul></li>
+<li>Show bufferex1 and discuss</li>
+<li>bufferex2 - line buffered</li>
+<li>bufferex3 - stdout works as expected - then pipe to cat</li>
+<li>now pipe forkbomb1 to wc - why so many lines??</li>
+<li>do same with forkbomb2 - not fflush calls</li>
+<li>run forkbomb3 - then “ps -a” and “ps -al” to show ppid
+<ul>
+<li>“pstree srtate” to show structure (sort of) - maximize window</li>
+<li>kill second process - note “defunct” (zombie) because no waits -&gt; ps -al and see “Z” status -&gt; note other processes that have PPID changed - orphans -&gt; Note, not “init” as book says, but user systemd - “modern linux”</li>
+<li>kill initial process - now both disappear (zombies reaped)</li>
+<li>others still running though - so do “killall forkbomb3”</li>
+</ul></li>
+<li>show usingsystem, run, and discuss</li>
+</ul>
+<h4 id="thursday-in-class-activities">Thursday In-Class Activities</h4>
+<p>??</p>
+<h4 id="full-assignment-due-next-tuesday">Full Assignment – due next Tuesday</h4>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 452/652/752 - Fall 2024 - Assignment 2 - Due Sept 18, 2024</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://home.uncg.edu/cmp/faculty/srtate/452.f24/assign2.html">View original, outside canvas</a> ]
+   
+        <h2 id="csc-452652752---fall-2024---assignment-2---due-sept-18-2024">CSC 452/652/752 - Fall 2024 - Assignment 2 - Due Sept 18, 2024</h2>
+<ol type="1">
+<li><p>Problem 3 from <a href="assign1.html">Assignment 1</a> was really a DFA, although we didn’t use that terminology at the time. Draw out the state diagram for this DFA, where “0” is the start state and “out” is the only accept state.</p></li>
+<li><p>Draw state diagrams for DFA that recognize the following languages:</p>
+<ol type="a">
+<li><p>The set of binary strings with length that is a multiple of 3.</p></li>
+<li><p>The set of binary strings that contain two consecutive 1’s.</p></li>
+<li><p>In the proof of Theorem 1.25 (pages 45-46), the textbook describes how to take two DFA <span class="math inline">\(M_1\)</span> and <span class="math inline">\(M_2\)</span> and create a new DFA that accepts <span class="math inline">\(L(M_1)\cup L(M_2)\)</span>, and the footnote on page 46 describes the trivial modification to this process to construct a DFA that accepts <span class="math inline">\(L(M_1)\cap L(M_2)\)</span>. Use this construction, along with your DFAs from parts a and b, to create a DFA that accepts the language of all binary strings that have length that is a multiple of 3 <strong>and</strong> contain two consecutive 1’s.</p></li>
+</ol></li>
+<li><p>Consider the following NFA:</p>
+<p><img src="assign2_nfa1.png" /></p>
+<ol type="a">
+<li><p>Some NFAs are also DFAs, but this one is not. Give two specific reasons this is not a DFA.</p></li>
+<li><p>Use the NFA to DFA conversion procedure described in the book (pages 57-58) to convert this to an equivalent DFA.</p></li>
+</ol></li>
+<li><p>For each of the following regular expressions, first give two strings that are members of the language and two that are not (so four strings for each one), and then give a succinct English description of the language.</p>
+<ol type="a">
+<li><p><span class="math inline">\((\texttt{0}\cup \texttt{10})^*\)</span></p></li>
+<li><p><span class="math inline">\((((\texttt{00})^*(\texttt{11}))\cup\texttt{01})^*\)</span></p></li>
+</ol></li>
+<li><p>Use the process described in the proof of Lemma 1.55 and the following Exmaple 1.56 (pages 67-68) to create an NFAs that accepts the following languages. Show each step.</p>
+<ol type="a">
+<li><p><span class="math inline">\((00\cup 1)^*(00\cup 11)\)</span>.</p></li>
+<li><p><span class="math inline">\(011(10^*\cup\varepsilon)\)</span></p></li>
+</ol></li>
+<li><p>Convert the following DFAs into regular expressions, using the process described in the book (pages 69–73). Show each step (the initial GNFA and each step of state removal).</p>
+<ol type="a">
+<li><p>DFA for part a:</p>
+<p><img src="assign2_dfa1.png" /></p></li>
+<li><p>DFA for part b:</p>
+<p><img src="assign2_dfa2.png" /></p></li>
+</ol></li>
+<li><p>For each language below, use the pumping lemma (page 78) to prove that it is not regular:</p>
+<ol type="a">
+<li><p><span class="math inline">\(L_1=\{w\,|\, w\in\{\texttt{a},\texttt{b}\}^*\)</span> and <span class="math inline">\(w\)</span> has fewer <span class="math inline">\(\texttt{a}\)</span>’s than <span class="math inline">\(\texttt{b}\)</span>’s<span class="math inline">\(\}\)</span></p></li>
+<li><p><span class="math inline">\(L_2=\{w\,|\, w\in\{1,\#\}^*\)</span> and <span class="math inline">\(w=x_1\#x_2\#\cdots\#x_k\)</span> for <span class="math inline">\(k\geq 0\)</span>, each <span class="math inline">\(x_i\in 1^*\)</span> and <span class="math inline">\(x_i\neq x_j\)</span> for <span class="math inline">\(i\neq j\}\)</span>.</p></li>
+</ol></li>
+<li><p>(Bonus: 5 points) Example 1.76 in the textbook showed the application the pumping lemma to show that <span class="math inline">\(\{1^{n^2}\,|\,n\geq 0\}\)</span> is not regular. What about <span class="math inline">\(\{1^{\lfloor\sqrt{n}\rfloor}\,|\,n\geq 0\}\)</span> (note: that’s a floor operator in the exponent) – is that regular? Give a clear and precise <em>one sentence</em> justification of your answer.</p></li>
+</ol>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

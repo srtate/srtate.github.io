@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>Assignment 5 -- Due Tuesday, November 7</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://home.uncg.edu/cmp/faculty/srtate/485.f23/assign5.html">View original, outside canvas</a> ]
+   
+        <h3 id="assignment-5-due-tuesday-november-7">Assignment 5 – Due Tuesday, November 7</h3>
+<ol type="1">
+<li><p>The first example of CCA insecurity in the book played games with the length of the ciphertext. This problem generalizes that idea.</p>
+<p>Call an encryption scheme “online complete” if it satisfies the following property: Given an <span class="math inline">ℓ</span>-block plaintext, <span class="math inline">(<em>m</em><sub>1</sub>, <em>m</em><sub>2</sub>, …, <em>m</em><sub>ℓ</sub>)</span>, after receiving some number <span class="math inline"><em>k</em> &lt; ℓ</span> of full plaintext blocks (<span class="math inline"><em>m</em><sub>1</sub></span> through <span class="math inline"><em>m</em><sub><em>k</em></sub></span>) the encryption scheme outputs ciphertext blocks <span class="math inline">(<em>c</em><sub>0</sub>, <em>c</em><sub>1</sub>, …, <em>c</em><sub><em>k</em></sub>)</span> such that this sequence of ciphertext blocks form a valid encryption of the blocks that have been processed. In other words, <span class="math inline">(<em>c</em><sub>0</sub>, <em>c</em><sub>1</sub>, …, <em>c</em><sub><em>k</em></sub>)</span> can be decrypted to get <span class="math inline">(<em>m</em><sub>1</sub>, …, <em>m</em><sub><em>k</em></sub>)</span>. This does imply that no special “termination”, such as proper padding, needs to exist in the plaintext.</p>
+<ol type="a">
+<li><p>All of the CPA-secure block cipher modes from Chapter 8 are online complete. Pick any of these modes and explain why this is the case.</p></li>
+<li><p>Prove that if an encryption scheme is online complete, then it is not CCA secure.</p></li>
+</ol></li>
+<li><p>The insecurity of the standard block cipher modes goes further than just attacks that play games with the length however. This problem explores attacks in which all library calls are done when the plaintext and ciphertext lengths are fixed.</p>
+<p>Recall my informal description of a “malleable” encryption scheme: An encryption scheme is malleable if an attacker can tamper with the ciphertext in such a way that the plaintext decrypted from the modified ciphertext is meaningful or predictable in some way. In this problem we’ll formalize this for a specific form of tampering.</p>
+<ol type="a">
+<li><p>Let <span class="math inline"><em>Σ</em></span> be an encryption scheme with <span class="math inline">ℳ = {0, 1}<sup><em>λ</em></sup></span> and <span class="math inline">𝒞 = {0, 1}<sup>2<em>λ</em></sup></span>, so we can write <span class="math inline">(<em>c</em><sub>0</sub>, <em>c</em><sub>1</sub>) = <em>Σ</em>.Enc(<em>k</em>, <em>m</em>)</span>. Note that all of the CPA-secure block cipher modes satisfy this definition with <span class="math inline"><em>b</em><em>l</em><em>e</em><em>n</em> = <em>λ</em></span>.</p>
+<p>Consider a function TAMPER that takes an encryption of a plaintext message <span class="math inline"><em>m</em></span>, say with ciphertext <span class="math inline"><em>c</em> = (<em>c</em><sub>0</sub>, <em>c</em><sub>1</sub>)</span>, and modifies the ciphertext to produce a <em>different</em> ciphertext <span class="math inline"><em>c</em>′</span>. TAMPER succeeds if decrypting the tampered-with ciphertext produces the complement of <span class="math inline"><em>m</em></span> – in other words, if <span class="math inline">$\Sigma.\textsf{Dec}(k,TAMPER(\Sigma.\textsf{Enc}(k,m)))=\overline{m}$</span>.</p>
+<p>Show that any encryption scheme for which there is a successful TAMPER function is not CCA secure.</p></li>
+<li><p>Define a TAMPER function that succeeds with CBC mode (and show that it succeeds).</p></li>
+<li><p>Define a TAMPER function that succeeds with CTR mode (and show that it succeeds).</p></li>
+<li><p>Define a TAMPER function that succeeds with OFB mode (and show that it succeeds).</p></li>
+</ol></li>
+<li><p>Textbook, Exercise 9.12 (<em>Hint: The problem statement is long, but the solution isn’t super-hard — the hint given in the book is very helpful!</em>)</p></li>
+<li><p>Textbook, Exercise 10.2</p></li>
+<li><p>Textbook, Exercise 10.4</p></li>
+<li><p>Textbook, Exercise 10.7</p></li>
+</ol>
+<p> <br />
+</p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

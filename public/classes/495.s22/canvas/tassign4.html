@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 495/693 - Spring 2022 - Assignment 4 - Due Tues, April 12</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://www.uncg.edu/cmp/faculty/srtate/495.s22/tassign4.html">View original, outside canvas</a> ]
+   
+        <link href="codehighlight.css" rel="stylesheet">
+<style>
+pre {
+  padding: 9.5px;
+  margin: 0 0 10px;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+</style>
+<h2 id="csc-495693---assignment-4---due-tues-april-12">CSC 495/693 - Assignment 4 - Due Tues, April 12</h2>
+<p>This homework refers to the “fake bank” web application that we have used in class for examples. Information on how to access the application is not included on this public web page – see the Canvas announcement for access information. The announcement also tells you how you can access the code that’s running on the server.</p>
+<ol type="1">
+<li><p>The login code has a bad SQL injection. Exploit this vulnerability to log in to the server with username “secure”. For your assignment, report exactly what you did for this exploit (including the strings/inputs you used) and then report the balance in the “secure” account.</p></li>
+<li><p>There is a user named “hidden” on the system that is protected using measures beyond the basic bank code that you have been shown. Because of these extra protections, you will not be able to log in to this account using the SQL injection trick described in the previous question. However, you should be able to find and read a message from “hidden” to “manager” that contains a secret message. Figure out how to find and read the message, and in your assignment submission explain how you did this and what the secret message says. Note that you will not be able to see any messages sent <em>to</em> the “hidden” account so you will not see the XSS attempts of other students (see the next question).</p></li>
+<li><p>When the real “hidden” user logs in, they get a special cookie that is not part of a normal login session. Since you can’t log in as the “hidden” user you should have no way to access this cookie. While logged in as any other user on the system, send a message to “hidden” that performs a cross-site scripting attack to discover this cookie.</p></li>
+<li><p>Perform CSRF attack - transfer … to …</p></li>
+</ol>
+<p> </p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

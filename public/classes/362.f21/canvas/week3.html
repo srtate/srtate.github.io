@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 362 - Spring 2021 - Week 3 Activities</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://www.uncg.edu/cmp/faculty/srtate/362.f21/week3.html">View original, outside canvas</a> ]
+   
+        <h2 id="csc-362-spring-2021-week-3-activities">CSC 362 – Spring 2021 – Week 3 Activities</h2>
+<h4 id="for-students-to-do-before-tuesday">For students to do before Tuesday</h4>
+<p>Reading: Book sections 3.1-3.4</p>
+<h4 id="tuesday-material">Tuesday Material</h4>
+<p>In class:</p>
+<p>Slides - Spring 2021 didn’t have global vars or idiomatic C, and took 45 min</p>
+<p><strong>Before starting: Brief demo of /etc/passwd and su/sudo</strong></p>
+<p><strong>Goal for Fall 2021: 50 min with style discussion</strong></p>
+<p>Demo/Examples:</p>
+<p><strong>Goal for Fall 2021: 20 min for demos – go slower and discuss more</strong></p>
+<ul>
+<li>“man printf” vs “man 3 printf” and manual sections</li>
+<li>open folder in VS Code – use “code .” in L04… directory
+<ul>
+<li>file browser on left (saw before)</li>
+<li>emphasize - do things via command line (build and git) for now</li>
+<li>we’ll see “make files” later, which makes building in VS Code better</li>
+<li>See hello.c program (hello world from slides) - in editor and cat</li>
+</ul></li>
+<li>gcc on command line - show output as a.out then run with ./a.out
+<ul>
+<li>Why “./” - current directory – mention PATH</li>
+<li>Talk about output file name, then show “-o” option</li>
+</ul></li>
+<li>Show incexample.c that includes “header.h” - talk about meaning
+<ul>
+<li>Show header.h</li>
+<li>What does C compiler see? Show “-E” flag</li>
+<li>Show contents of header, and notice that comments are missing, const subst</li>
+</ul></li>
+<li>Show gvarex.c and run – just quick to demo what was on the slide</li>
+<li>Show fixstyle.c and ask what problems are there
+<ul>
+<li>Then right-click in VS Code and show format document</li>
+<li>Note that I have defined a style (in VM) with 4-space indentation</li>
+</ul></li>
+<li>Show ptrexample.c - compile and run
+<ul>
+<li>Ask what you expect from 2nd printf, after uncommenting – <strong>poll</strong></li>
+<li>Then show</li>
+<li>Then ask (but no poll) about pass by… what is printed by each?</li>
+<li>Uncomment (and first ptr print too) and run</li>
+<li>Talk about result and ptr print – what do you expect with the next?</li>
+<li>Then uncomment, compile, and run</li>
+</ul></li>
+<li>Show printfex.c and talk about various formats
+<ul>
+<li>Note warning from compiler - diff between warning and error</li>
+<li><strong>Emphasize: never submit an assignment w/compiler warnings</strong></li>
+<li>Talk about character print and character encodings</li>
+</ul></li>
+<li>Show sizes.c and run – talk about each size</li>
+</ul>
+<h4 id="for-students-to-do-before-thursday">For students to do before Thursday</h4>
+<p>Finish reading about C (Chapter 3)</p>
+<h4 id="thursday-material">Thursday Material</h4>
+<p>Times from Spring 2021:</p>
+<p>Note - interleaved slides with ex - prob just slowed everything down</p>
+<ul>
+<li>Total time: 14+4.5+17=35.5 for slides</li>
+<li>Total time for struct+union examples: 12:45</li>
+<li>Didn’t do other examples!</li>
+</ul>
+<p>Demos:</p>
+<ul>
+<li>structex.c - struct (code from slide)
+<ul>
+<li>basically just show and run. Show what happens when -&gt; is changed to .</li>
+</ul></li>
+<li>unionex.c - union (code from slide)
+<ul>
+<li>run it and remind about what it means</li>
+</ul></li>
+<li>copy-syscalls.c and copy-stdio.c
+<ul>
+<li>look at both and discuss the differences</li>
+<li>create an 8 MB random file to use</li>
+<li>“time ./copy-syscalls…” talk about what “time” does while running</li>
+<li>then time stdio - should be &gt;10 sec vs &lt; 0.1 sec</li>
+</ul></li>
+<li>linebuff.c
+<ul>
+<li>show code and discuss - what do you think will happen timing wise?</li>
+</ul></li>
+<li>errhandle.c
+<ul>
+<li>show and run - note it’s a bad file name</li>
+<li>un-comment lines and run</li>
+</ul></li>
+<li>structmalloc.c
+<ul>
+<li>show structmalloc.c and run - maybe compare to structex.c on a diff tab</li>
+</ul></li>
+<li>mallocex.c
+<ul>
+<li>show and talk about - what do you expect</li>
+<li>compile, run, and discuss</li>
+</ul></li>
+</ul>
+<p>** Check questions/exercises at end race car analogy</p>
+<p>[gdb and compiler flags - next week]</p>
+<h4 id="thursday-in-class-activities">Thursday In-Class Activities</h4>
+<h4 id="full-assignment-due-next-tuesday">Full Assignment – due next Tuesday</h4>
+<p>Spring 2021: Linked list implementation - all in one file though. Fall 2021: arraylist implementation</p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 362 - Spring 2023 - Week 7 Activities</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://home.uncg.edu/cmp/faculty/srtate/362.s23/week7.html">View original, outside canvas</a> ]
+   
+        <h2 id="csc-362-spring-2023-week-7-activities">CSC 362 – Spring 2023 – Week 7 Activities</h2>
+<h3 id="tuesday">Tuesday</h3>
+<p><strong>This + bit ops slides should be 72 min. Should be good. Maybe even a file open/read program.</strong></p>
+<p>Demos:</p>
+<ul>
+<li>Basic file ops
+<ul>
+<li>ls -l - talk about fields again (metadata)</li>
+<li>ln to create link and then ls -l again</li>
+<li>ls -i to see inodes - notice that the same</li>
+<li>ln -s to make symbolic link and do ls -i again - different</li>
+<li>stat for info out of inode (note inode number again) - diff names same file</li>
+<li>do “realpath” - use “.” as base and look at diff symlinks</li>
+<li>rm on hard link - not just unlinks name from inode (free when count 0 - important concept - ref counting - we’ll get back to this later)</li>
+<li>create “hello” in f1, “world” in f2 – cat to f3 – diff inodes, append to f1, still same inode/file</li>
+</ul></li>
+<li>Filesystem-level stuff: df and mount for showing filesystems</li>
+<li>code: db examples - start with dbmakefile.c and dbrecord.h
+<ul>
+<li>See the record format in dbrecord.h</li>
+<li>Can you figure out how big each record is (i.e., sizeof(record))?</li>
+<li>Look at and run dbmakefile - notice dbfile.dat created</li>
+<li>Examine the file with xxd - do you recognize the individual records?</li>
+<li>Look at and run dbquery.c - talk about fseek</li>
+<li>Look at dbupdate.c - note “r+” as mode - discuss and run</li>
+<li>Run dbquery again to see change - then xxd dbfile.dat to see record</li>
+<li>Note “slack space” style issue in DB - what if this were sensitive?</li>
+</ul></li>
+<li>stat example (checkbits.c)
+<ul>
+<li>Pull up code - discuss basic idea - examine metadata</li>
+<li>Call to stat - discuss struct - must have space! - and check ret value</li>
+<li>Note prints and what they are doing - note the “%o” for octal - then run</li>
+<li>Do “man inode” in a 2nd window (so results are still shown) and interpret</li>
+<li>What are final two if tests? Use inode manpage to figure out</li>
+<li>Run several times, changing perm bits from cmdline to demo</li>
+</ul></li>
+</ul>
+<h3 id="thursday">Thursday</h3>
+<p>Thurs demos:</p>
+<ul>
+<li>Show man page for readdir - then “man 2 readdir” and note “This is not…”
+<ul>
+<li>Back to lib function - note fields - copy of type (warn, but ok for us)</li>
+<li>Point: Can get type without making a second call to stat</li>
+<li>Also point out: name is just the filename, no path - might not work w/stat</li>
+</ul></li>
+<li>Pull up listdir.c - basically like slide, but print type info too
+<ul>
+<li>Talk about in-class activity (gather more info) and run sol’n</li>
+<li>Then show weekly assignment solution run - first in “bin” dir (note exclusion of “.” and “..”) then in “src” and finally project dir – talk about recursion (do “ls -lR”)</li>
+<li>Remind class: Make sure you test weekly with a symlink or two in dir</li>
+</ul></li>
+</ul>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

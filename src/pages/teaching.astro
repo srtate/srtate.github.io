@@ -2,7 +2,7 @@
 import Layout from "@/layouts/Layout.astro";
 import { profile } from "@/settings";
 import BetterIcon from "@/components/ui/BetterIcon.astro";
-import List from "@/components/ui/List.astro";
+import ClassList from "@/components/ui/ClassList.astro";
 import {RESEARCH_ICONS} from "@/data/researchIcons";
 
 const { research_areas } = profile;
@@ -16,54 +16,58 @@ const { research_areas } = profile;
       <p class="text-lg mb-6">
         Class websites for current and past classes are available here.
       </p>
-      <p class="text-lg mb-6">
-        This interdisciplinary approach has led to significant discoveries, including the isolation of polonium and radium, contributing to the foundation of modern nuclear physics and radiochemistry.
-      </p>
     </div>
 
-    <h2 class="text-2xl font-bold mb-6">Research Areas</h2>
-    <div class="grid gap-8 mb-12">
+    <ClassList listTitle="Class Websites" listItems={[
       {
-        research_areas.map((area) => (
-          <div class="flex gap-6 items-start">
-            <BetterIcon>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke-width="2"
-                class="size-6 stroke-accent"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d={RESEARCH_ICONS[area.field as keyof typeof RESEARCH_ICONS]?.path || RESEARCH_ICONS['computer-science'].path}
-                />
-              </svg>
-            </BetterIcon>
-            <div>
-              <h3 class="text-xl font-semibold mb-2">{area.title}</h3>
-              <p class="text-base">{area.description}</p>
-            </div>
-          </div>
-        ))
-      }
-    </div>
-
-    <List listTitle="Current Projects" listItems={[
-      {
-        title: "Radioactivity Studies",
-        description: "Investigation of radioactive properties in uranium minerals and isolation of new radioactive elements."
+        title: "CSC 452/652/752: Theory of Computation",
+        classnum: "452",
+        semesters: [ "s25", "f24", "s20" ],
+        description: "Finite state automata and regular expressions, context-free grammars, push-down automata and their use in parsing, overview of language translation systems, models for programming language semantics, computability and undecidability."
       },
       {
-        title: "Measurement Techniques",
-        description: "Development of precise methods for measuring radioactive emissions and their properties."
-      }
+        title: "CSC 481/681: Principles of Computer Security",
+        classnum: "481",
+        semesters: [ "s25", "s24", "s23", "f21", "f20", "f19" ],
+        description: "Core concepts in computer security, including the security goals of confidentiality, integrity, and availability; authentication; access control; secure software development; use of cryptography; and basic network security."
+      },
+      {
+        title: "CSC 485/685: Modern Cryptography",
+        classnum: "485",
+        semesters: [ "f23" ],
+        description: "Theory and practice of cryptography, emphasizing formal models and security reasoning. Primitives covered include private and public-key encryption, message authentication codes, hash functions, digital signatures, secret sharing, and zero-knowledge proofs."
+      },
+      {
+        title: "CSC 362: System Programming",
+        classnum: "362",
+        semesters: [ "s23", "f21", "s21" ],
+        description: "System programming with emphasis on processes, memory management, multithreaded programming, synchronization and deadlocks, interprocess communication, parallel and distributed computing, networking, files systems, security, signals, and virtualization containers.",
+      },
+      {
+        title: "CSC 454/654: Algorithms Analysis and Design",
+        classnum: "454",
+        semesters: [ "s22", "s21", "s20" ],
+        description: "Sequential algorithm design and complexity analysis. Dynamic programming. Greedy algorithms. Graph algorithms. Selected advanced topics from NP-completeness; approximation, randomized, parallel, number-theoretic algorithms; Fast Fourier Transform; computational geometry; string matching.",
+      },
+      {
+        title: "CSC 495/693: Software Security",
+        classnum: "495",
+        semesters: [ "s22" ],
+        description: "Common security-relevant bugs in software, including buffer overflows, return-oriented programming, stack smashing, integer overflow, SQL injection, cross-site scripting. Secure development techniques including good programming practice and static analysis.",
+      },
+      {
+        title: "CSC 439/639: Introduction to Compiler Design",
+        classnum: "439",
+        semesters: [ "f20" ],
+        description: "Basic techniques of compiler design and implementation: lexical analysis, parsing, code generation. Sizable programming project implementing a compiler for a block-structured language with strong typing.",
+      },
+      {
+        title: "CSC 656: Foundations of Computer Science",
+        classnum: "656",
+        semesters: [ "f19" ],
+        description: "Introduces the mathematical foundations that support advanced studies in computer science including computer programming and the analysis of algorithms.",
+      },
     ]} />
 
-    <h2 class="text-2xl font-bold mb-6">Research Impact</h2>
-    <p class="text-lg mb-6">
-      My research has opened new frontiers in radioactivity studies, leading to practical applications in both scientific research and medical treatments. The discoveries have revolutionized our understanding of atomic structure and radioactive decay processes.
-    </p>
   </div>
 </Layout>

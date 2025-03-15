@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 362 - Spring 2021 - Week 6 Activities</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://www.uncg.edu/cmp/faculty/srtate/362.s21/week7.html">View original, outside canvas</a> ]
+   
+        <h2 id="csc-362-spring-2021-week-6-activities">CSC 362 – Spring 2021 – Week 6 Activities</h2>
+<h4 id="for-students-to-do-before-tuesday">For students to do before Tuesday</h4>
+<p>Review Chapter 12 (Filesystems)</p>
+<h4 id="tuesday-material">Tuesday Material</h4>
+<p>Structured organization for data - hierarchical, named, … Backed by HDD or SSD. (defined “backed”) - get current speeds! - mention network filesystems? - directory info vs contents - [ various levels at which RAID can exist ] Storage sizes - KiB, MiB, GiB for powers of two (note historical confusion) - “kibibyte” etc. - RAM vs HDD for sizes - “ISO compliant” “Everything is a file” - remember /proc API: open, read, write, close. - behind the scenes - handle reliability, manage space, encryption, etc. - “mount point” - common linux filesystems: ext4, procfs, sysfs, tmpfs, sshfs. - [also mention zfs, btrfs, …] - most advanced API: chmod, ioctl, link, … - seekable vs not. Mentions FUSE. Storing data on disk: blocks, inodes, superblock [analogy for inode vs name?] - book mentions “name” after talking about inodes - misleading - metadata: size, times, permissions, checksum, … - [ file vs directory - but inodes for both - can’t read dir directly ] - inode limits - limiting number of files - note name isn’t really significant - just how you find the inode. [ various kinds of links and what mv really does ] - unused block ptrs in inode, and slack space [define!] in partial block [also mention sparse files] indirect blocks - [ draw tree - find pictures? ] - limits on file sizes due to structure - note issue for FAT and our VM! - “ls -i” to show inode - Dir convenstions - . and .., shell features like ~ - hidden, … Directory API - opendir, closedir, readdir - use open or mkdir to change - remember to close - book entry of leaving dir open - resource leak Links: hard (show w/ls -i), soft/symbolic [ extra layer of redirection ] paths and “realpath” to get canonical path Metadata - stat, fstat, and lstat - look at stat struct - mode interp macros Permission and bits - we did this already - basically just tell students to read/review - umask - we didn’t talk about this… - setuid bit (and syscalls getuid, geteuid, … diff types of uid) - sticky bit and meaning for dirs [ also setgid bit on dirs? ] Virtual filesystems - /dev, /proc, /sys - special files inlcude /dev/zero and /dev/null - /dev/random and /dev/urandom (“allows for repetition” is not correct) - talks about dd and use for copying random data from /dev/urandom - “touch” to update mod time (fake out make) [and create file] - mount and loopback mounting of an iso [mention full disk encryption?] Memory mapped IO - mmap Reliability, etc. - caching, write-back vs write-through, and sync (at filesystem and file level) - MTTF - RAID</p>
+<h4 id="tuesday-in-class-activities">Tuesday In-Class Activities</h4>
+<p>Experiment with malloc calls….</p>
+<h4 id="for-students-to-do-before-thursday">For students to do before Thursday</h4>
+<p>???</p>
+<h4 id="thursday-material">Thursday Material</h4>
+<p>something</p>
+<p>Thurs demos:</p>
+<p>Show man page for readdir 2 and 3 Code - read dir Code - mode bit tests - various combinations (read or execute/ read and ex) Shell commands: mount and df Special files: /dev/zero, /dev/null, /dev/random, … - Show them, and then show use for /dev/null (redir stderr to /dev/null) - xxd others and pipe through more or head - dd to copy out 512 bytes of random data</p>
+<h4 id="thursday-in-class-activities">Thursday In-Class Activities</h4>
+<p>Time relative behavior of malloc vs custom allocator.</p>
+<h4 id="full-assignment-due-next-tuesday">Full Assignment – due next Tuesday</h4>
+<p>??</p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

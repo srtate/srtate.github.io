@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 439/639 - Fall 2020 - Assignment1 -- Lexical Analyzer</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="../css/class_srtate.css" rel="stylesheet">
+
+  </head>
+
+
+  <body>
+
+        <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark uncg-navbar fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="https://www.uncg.edu/">
+          <img class="collapse navbar-collapse" src="../img/uncg_class.png" alt="UNC Greensboro">
+          <img class="navbar-toggler" src="../img/uncg_mobile.png" alt="UNCG">
+        </a>
+        <div class="navbar-brand d-flex flex-column text-left"
+	     style="line-height: 1.2;">
+          <span>CSC 439/639</span>
+          <span class="small collapse navbar-collapse"><em>Introduction to Compiler Design</em></span>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link " href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="syllabus.html">Syllabus</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="schedule.html">Schedule</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="assignments.html">Assignments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://uncg.instructure.com/">Canvas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- Page Content -->
+    <div class="container">
+   
+        <h2 id="assignment-1-lexical-analyzer-due-mon-sept-21">Assignment 1 – Lexical Analyzer – Due Mon, Sept 21</h2>
+<p>For this assignment, you will create rules for a lexical analyzer for the Little-C language. While no specific tool or implementation language is required, you are strongly encouraged to use ANTLR and Java, with the provided project structure that can be tested using <a href="https://maven.apache.org/">Maven</a>. All of the examples and code in the starter repository assume this.</p>
+<p><strong>Submission process:</strong> You must use the following steps to submit your assignment: (1) Go to the Canvas assignment page, and click on the “invitation” link provided there – accepting the invitation creates a GitHub repository for your work, which is pre-loaded with code/structure for the assignment; (2) clone the created repository and solve the homework! (create your lexical analyzer rules); (3) commit and push your repository to GitHub; (4) When everything is final, create a new “Issue” in your repository saying “Assignment 1 is finished” or something similar. If you use anything other than the provided project structure (which is <em>strongly</em> discouraged!), you must include a “NOTES.md” file in the main project directory that explains how to build your project for testing.</p>
+<p><strong>Assignment requirements:</strong> Since most tokens in the language are fixed literal strings (e.g., keywords like “if” and “then” or operations like “&lt;=”), making the grammar is pretty straightforward. You should use this time to get comfortable with the workflow required for using ANTLR. There is a lot of information in Canvas under “The Compiler Project” on how to set up an environment so you can work from the command line or in IntelliJ (if you like using an IDE).</p>
+<p>In later stages there will be language subsets that can be implemented for various point levels, but for this first assignment you are required to create rules for all lexemes in the language. Your first step should be to carefully go through the language description, and enumerate all of the possible lexemes/tokens. For example, string literals should be a single lexeme/token, as should each keyword. Comments should <em>not</em> produce a token – they need to be recognized by your lexical analyzer and then discarded.</p>
+<p>To check your work enumerating lexemes, you should have found 41 different tokens. Only 4 of these are defined by rules rather than fixed strings, and for those you must use the following names for the tokens:</p>
+<ul>
+<li>1 identifier token (use token name ID)</li>
+<li>3 different types of literals (use token names INTLIT, STRINGLIT, and CHARLIT)</li>
+</ul>
+<p>Each of the remaining 37 tokens represents a fixed string, and you can use any name you’d like for the token:</p>
+<ul>
+<li>2 for storage classes</li>
+<li>3 for core types</li>
+<li>6 keywords</li>
+<li>1 assignment operators</li>
+<li>8 for integer/array operators (including post/pre increment/decrement operators)</li>
+<li>6 for comparison operators</li>
+<li>3 for logical/Boolean operators</li>
+<li>8 for “punctuation” (parentheses, braces, brackets, semicolon, comma)</li>
+</ul>
+<p><strong>Tips:</strong> Here are a few tips and suggestions for working through this assignment:</p>
+<ul>
+<li><p>References: <a href="https://github.com/antlr/antlr4/blob/master/doc/index.md">ANTLR documentation</a> – see particularly the “Getting Started,”Grammar Lexicon“,”Grammar Structure“, and”Lexer Rules" sections. Additional information is available at the <a href="https://riptutorial.com/antlr">RIP Tutorial</a> website.</p></li>
+<li><p>Rule ordering is significant, and when the same string of characters matches multiple rules the first-listed match is the token used. Think about this when ordering rules for keywords and identifiers, for example.</p></li>
+<li><p>For “helper rules” (lexemes used to build up other lexemes, and not intended to be token types), use the ANTLR <code>fragment</code> keyword (note that this is different from the “two-page introduction” document, which used the outdated <code>protected</code> keyword).</p></li>
+<li><p>Use the provided ANTLR “LittleC.g4” file as a starting point, and do not remove the dummy parse rule for “program”. This is needed for the ANTLR external testing/debugging tool <code>grun</code>.</p></li>
+<li><p>Make test cases! I have provided two small test cases in the initial repository, but you should make others. There is a class-wide repository named “LexerTests” that is used for collecting test cases, and you are strongly encouraged to create test cases that can be included for other students to use (remember: you cannot share your code or look at any other student’s code, but you can share test cases). To do so, follow <a href="https://codeburst.io/a-step-by-step-guide-to-making-your-first-github-contribution-5302260a2940">the normal process for GitHub code contributions</a>: Fork the repository so you have your own copy, clone to your computer for a local working copy, add your test cases, and then submit a “pull request.” Since this will generally consist of just adding files (not modifying existing files), whether you want to create a separate branch is up to you.</p></li>
+<li><p>Make sure you don’t get any token recognition errors on legitimate Little-C programs. For example, if you forgot to define a token for a semi-colon you’d see error messages like this when you test with either the tester code or <code>grun</code>:</p>
+<blockquote>
+<p><code>line 1:18 token recognition error at: ';'</code></p>
+</blockquote>
+<p>That shouldn’t happen! If you have a test case that has a good coverage (hopefully complete coverage!) of all token types, this is the best way to make sure you haven’t forgotten any rules.</p></li>
+</ul>
+<p> </p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

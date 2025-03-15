@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>Assignment 6 -- Due Tuesday, November 21</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://home.uncg.edu/cmp/faculty/srtate/485.f23/assign6.html">View original, outside canvas</a> ]
+   
+        <h3 id="assignment-6-due-tuesday-november-21">Assignment 6 – Due Tuesday, November 21</h3>
+<ol type="1">
+<li><p>Textbook, Exercise 11.5</p></li>
+<li><p>Textbook, Exercise 11.17</p></li>
+<li><p>Extending the previous problem: Show how, if the encryption scheme from Exercise 11.17 is used and you have captured a ciphertext <span class="math inline"><em>c</em></span> that you know encrypts a message <span class="math inline"><em>m</em></span>, you can replace <span class="math inline"><em>c</em></span> so that it decrypts to <em>any message of your choice of the same length.</em> (Note that this is stronger than breaking CCA security. Breaking CCA security just means you can tamper with the ciphertext to make a predictable change in the plaintext. Here we’re saying you can replace the message with a message of your choosing.)</p></li>
+<li><p>One way to pick a large random <span class="math inline"><em>λ</em></span>-bit prime is to pick a random odd <span class="math inline"><em>λ</em></span>-bit number <span class="math inline"><em>x</em></span>, loop to test numbers <span class="math inline"><em>x</em></span>, <span class="math inline"><em>x</em> + 2</span>, <span class="math inline"><em>x</em> + 4</span>, <span class="math inline"><em>x</em> + 6</span> and so on for primality using a function ISPRIME until a prime number is found. Eventually (and generally before very long) one will be prime.</p>
+<p>Here’s a mistake someone made in implementing RSA one time: This method was followed to find the prime <span class="math inline"><em>p</em></span>, and then they just continued counting to test <span class="math inline"><em>p</em> + 2</span>, <span class="math inline"><em>p</em> + 4</span>, <span class="math inline"><em>p</em> + 6</span> and so on until a second prime was found, which is <span class="math inline"><em>q</em></span>. Now the modulus is <span class="math inline"><em>N</em> = <em>p</em> ⋅ <em>q</em></span>. Show how you can very quickly factor any number <span class="math inline"><em>N</em></span> generated in such a manner.</p></li>
+<li><p>In this class, everyone’s first name is less than 10 letters long. You’ll be doing computations with large numbers in this problem, and I would recommend using Python (there are other ways, including writing using the “BigInteger” class in Java, but Python is much easier). Note that in Python, <code>pow(a,b,n)</code> efficiently computes <span class="math inline"><em>a</em><sup><em>b</em></sup> % <em>n</em></span>. For all the parts below, show your work, describing how you did the computations.</p>
+<ol type="a">
+<li><p>Write out your name using ASCII character codes in hexadecimal, and then convert that to decimal (you can do this by hand, but you can also just type the hexadecimal digits into Python preceded by “0x”).</p></li>
+<li><p>The decimal number 2349310626352960893120133 is an “RSA modulus” that is larger than <span class="math inline">2<sup>80</sup></span>, so should be larger than the value you computed in part a. Using RSA values e=17 and d=1520142169991108573141333, compute the “Textbook RSA” signature of your name. You may give this value either in decimal or hexadecimal.</p></li>
+<li><p>My public key has RSA modulus 2551255183750716043759591 and e=3. You don’t know my secret signing key <span class="math inline"><em>d</em></span>, but since this modulus is so short you can figure it out. Forge a signature on <em>your</em> name (the value from part a) for <em>my</em> key. (<em>Hint: WolframAlpha is pretty good at factoring….</em>)</p></li>
+</ol></li>
+<li><p>In the previous question, the public exponents (<span class="math inline"><em>e</em></span>) in both cases were small values. There’s a reason for this!</p>
+<ol type="a">
+<li><p>Trace through the ModExp algorithm from page 235 and count how many squarings and multiplications are required for <span class="math inline"><em>e</em> = 3</span> (don’t worry about the cost of the mod operation – just count squarings and multiplications).</p></li>
+<li><p>If <span class="math inline"><em>e</em></span> were a random 80-bit value, approximately half of the bits would be zero and half would be one. Approximate how many squarings and multiplications are required, on average, for such a value.</p></li>
+<li><p>The most common public exponent <span class="math inline"><em>e</em></span> used in practice is 65,537. What is this number in hexadecimal, and why does this make an efficient exponent?</p></li>
+</ol></li>
+</ol>
+<p> <br />
+</p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

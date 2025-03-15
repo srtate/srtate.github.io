@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 452/652/752 - Fall 2024 - Assignment 4 - Due Oct 23, 2024</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../css/class_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+        <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark uncg-navbar fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="https://www.uncg.edu/">
+          <img class="collapse navbar-collapse" src="../img/uncg_class.png" alt="UNC Greensboro">
+          <img class="navbar-toggler" src="../img/uncg_mobile.png" alt="UNCG">
+        </a>
+        <div class="navbar-brand d-flex flex-column text-left"
+	     style="line-height: 1.2;">
+          <span>CSC 452</span>
+          <span class="small collapse navbar-collapse"><em>Theory of Computation</em></span>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link " href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="syllabus.html">Syllabus</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="schedule.html">Schedule</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="assignments.html">Assignments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://uncg.instructure.com/">Canvas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- Page Content -->
+    <div class="container">
+   
+        <h2 id="assignment-4---due-oct-23-2024">Assignment 4 - Due Oct 23, 2024</h2>
+<ol type="1">
+<li><p>Consider the language</p>
+<p><span class="math display">\[ L = \{ \texttt{a}^i\texttt{b}^j\texttt{c}^i\texttt{d}^j \ |\  i,j\geq 0
+        \}\ .\]</span></p>
+<p>In other words, <span class="math inline">\(L\)</span> is the language of strings consisting of <span class="math inline">\(\texttt{a}\)</span>’s followed by <span class="math inline">\(\texttt{b}\)</span>’s followed by <span class="math inline">\(\texttt{c}\)</span>’s followed by <span class="math inline">\(\texttt{d}\)</span>’s in which the number of <span class="math inline">\(\texttt{a}\)</span>’s matches the number of <span class="math inline">\(\texttt{c}\)</span>’s and the number of <span class="math inline">\(\texttt{b}\)</span>’s matches the number of <span class="math inline">\(\texttt{d}\)</span>’s. Use the Pumping lemma for context free languages (Theorem 2.34 on page 125) to show that <span class="math inline">\(L\)</span> is not a context-free language:</p></li>
+<li><p><strong>Note: This question is just for Dr. Tate’s section (section 2). Dr. Tong will provide an alternative question for her section.</strong> Consider the following CFG:</p>
+<p><span class="math display">\[ \begin{array}{l}
+S \rightarrow T\dashv \\
+T \rightarrow \texttt{(}T\texttt{)}\ |\ TT\ |\ \varepsilon\\
+\end{array} \]</span></p>
+<p>This CFG generates exactly the same language as the CFG in Example 2.55 of the textbook: the set of all strings of properly nested parentheses. Example 2.55 showed that grammar in that example was a DCFG. For this problem, show that the grammar above is <em>not</em> a DCFG. To do this, draw the full DFA <span class="math inline">\(DK\)</span> and show precisely where it fails the DK-test conditions.</p></li>
+<li><p>Consider Turing machine <span class="math inline">\(M_1\)</span> from Example 3.9 (page 173). Give the sequence of configurations that <span class="math inline">\(M_1\)</span> enters when started with each of the following input strings (note that this is similar to Exercise 3.2 in the book, just with different inputs — see the provided solution to 3.2a for guidance):</p>
+<ol type="a">
+<li><p>01</p></li>
+<li><p>0#0</p></li>
+<li><p>0#1#0</p></li>
+<li><p>01#00</p></li>
+</ol></li>
+<li><p>(<strong>Hint:</strong> <em>For this problem and the next one, start by fully understanding how the Turing machine in Example 3.9 works!</em>) Consider the language</p>
+<p><span class="math display">\[ L = \{ \texttt{a}^n\texttt{b}^n\texttt{c}^n\ |\ n\geq 0\} \]</span></p>
+<p>This was the first language that the textbook proved is not context free using the pumping lemma, in Example 2.36 on page 128. Since <span class="math inline">\(L\)</span> is not context free, it can’t be recognized by any PDA. However, you can create a TM to recognize <span class="math inline">\(L\)</span>, which is what you’ll do for this problem.</p>
+<ol type="a">
+<li><p>Give an implementation-level description of a Turing machine that decides language <span class="math inline">\(L\)</span> (note: “implementation-level” means written-out steps, like at the beginning of Example 3.7, Example 3.11, or in the textbook’s provided solution to Exercise 3.8a).</p></li>
+<li><p>Draw out a full Turing machine description for a machine that decides language <span class="math inline">\(L\)</span>.</p></li>
+</ol></li>
+<li><p>In some situations, we want to run multiple Turing machines, say <span class="math inline">\(M_1\)</span> and <span class="math inline">\(M_2\)</span> on the same input <span class="math inline">\(w\)</span>. However, what if <span class="math inline">\(M_1\)</span> destroys the original input (like machine <span class="math inline">\(M_1\)</span> in Example 3.9). How do you run <span class="math inline">\(M_2\)</span> on the original input <span class="math inline">\(w\)</span> if <span class="math inline">\(w\)</span> has been destroyed by running <span class="math inline">\(M_1\)</span>? This causes a problem for the (incorrect!) solution for Exercise 3.15a given in the textbook.</p>
+<p>Let’s correct this problem by creating a TM that makes a copy of input <span class="math inline">\(w\)</span> first, so <span class="math inline">\(M_1\)</span> can work on the copy and leave the original input intact. In particular, we want to create a TM that starts with string <span class="math inline">\(w\in\{\texttt{0},\texttt{1}\}^*\)</span> on its tape, and when it finishes running has <span class="math inline">\(w\texttt{@}w\)</span> on its tape with the tape head positioned before the first character in the copy of <span class="math inline">\(w\)</span> (<span class="math inline">\(\texttt{@}\)</span> is just a new tape symbol).</p>
+<p>Design a TM that does this. Start by sketching out how it works with an implementation-level description of the steps, and then draw out the full TM. Note that this is a “subroutine” that is used as part of a larger machine, so there are no “accept” or “reject” states – simply a “finished” state.</p></li>
+</ol>
+<p> </p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 495/693 - Spring 2022 - Assignment 5 - Due Tues, April 26</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../css/class_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+        <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark uncg-navbar fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="https://www.uncg.edu/">
+          <img class="collapse navbar-collapse" src="../img/uncg_class.png" alt="UNC Greensboro">
+          <img class="navbar-toggler" src="../img/uncg_mobile.png" alt="UNCG">
+        </a>
+        <div class="navbar-brand d-flex flex-column text-left"
+	     style="line-height: 1.2;">
+          <span>CSC 495/693</span>
+          <span class="small collapse navbar-collapse"><em>Software Security</em></span>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link " href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="syllabus.html">Syllabus</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="schedule.html">Schedule</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="assignments.html">Assignments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://uncg.instructure.com/">Canvas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- Page Content -->
+    <div class="container">
+   
+        <link href="codehighlight.css" rel="stylesheet">
+<style>
+pre {
+  padding: 9.5px;
+  margin: 0 0 10px;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+</style>
+<h2 id="csc-495693---assignment-5---due-tues-april-26">CSC 495/693 - Assignment 5 - Due Tues, April 26</h2>
+<p>The copy of the “fake bank” application code that was provided for your reference in the previous assignment is now “live.” That means there’s a database set up for you, and you can access your copy of the application through a web browser. Each student has their own copy of the code and their own database, so you don’t need to worry about interfering with any other student’s work. If you completely mess up your code, you can get a fresh copy from directory <code>/home/softsec/fakebank</code>. If you want to use a real programmer’s approach, you could put your code under Git version control to allow rollbacks if you mess things up, but that’s optional (only for your benefit) in this assignment.</p>
+<p>One note for those without experience in web development like this: There’s a hidden file named <code>.htaccess</code> in your <code>fakebank</code> app directory. This file can be used to change various PHP settings – for example, the version that is there right now turns on error reporting so that accessing a PHP page with an error (syntax or runtime) will report an error to the client. That is generally a very bad idea on a production system since it gives additional information about how your application works to potential attackers, but is vital for development work. Because of this, PHP turns off error reporting by default, but that default is overridden in the <code>.htaccess</code> file. That should be the only PHP option that you really need to think about, but other changeable options can be found in the <a href="https://www.php.net/manual/en/ini.list.php">PHP documentation</a> if you are interested.</p>
+<p>Here are the tasks you need to perform for this assignment. You should also submit a PDF document in Canvas with a very brief (1-3 sentence) explanation of your solution for each problem. I will access the code itself on our class server for grading, so there’s no need or benefit to quoting code changes in your document. Just describe <em>where</em> you made changes and what you were trying to accomplish — I will use the PDF submission to guide where to look in the code for your solution. The PDF will also provide the timestamp for this being an on-time vs a late submission.</p>
+<ol type="1">
+<li><p>Remove <em>all</em> SQL injection vulnerabilities from the code. That means that all SQL queries should be protected, not just the login vulnerability you exploited for problem 1 in the previous assignment – so, for example, the SQL injection to list all transactions that we performed in class should also not work. For partial credit you can quote input fields directly using the php function <a href="https://www.php.net/manual/en/mysqli.real-escape-string.php"><code>mysqli_real_escape_string</code></a>, but for full credit you must change all queries to parameterized queries. For a small amount of extra credit, you can change all database interactions from the older MySQL-specific functions in provided code to the portable <a href="https://www.php.net/manual/en/intro.pdo.php">PHP data objects (<code>PDO</code>)</a> database interface.</p></li>
+<li><p>Remove the direct object reference vulnerability that you exploited for problem 2 in the last assignment. Your fix should add appropriate access controls to the message access code.</p></li>
+<li><p>Remove the cross-site scripting vulnerability that you exploited in problem 3 in the last assignment. For full credit, you can just take a simplistic approach and just disallow all HTML entities in messages by processing user input with the PHP <a href="https://www.php.net/manual/en/function.htmlspecialchars.php"><code>htmlspecialchars</code></a> function. For extra credit, you can perform more advanced input sanitization and/or add an extra layer of protection by adding CSP (as discussed in Assignment 3) headers using the PHP <a href="https://www.php.net/manual/en/function.header.php"><code>header</code></a> function. You must still sanitize inputs though, even if you enable CSP.</p></li>
+<li><p>Add code to protect against the range check vulnerability that was exploited in problem 4 of the last assignment. An appropriate range check must be performed on the server side for this.</p></li>
+<li><p>Remove the CSRF vulnerability that was exploited in problem 5 of the last assignment. You should add (and check!) a good CSRF token into the money transfer form for this solution.</p></li>
+</ol>
+<p> </p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 454/654 - Spring 2021 - Assignment 1 - Due Feb 4, 2021</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../css/class_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+        <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark uncg-navbar fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="https://www.uncg.edu/">
+          <img class="collapse navbar-collapse" src="../img/uncg_class.png" alt="UNC Greensboro">
+          <img class="navbar-toggler" src="../img/uncg_mobile.png" alt="UNCG">
+        </a>
+        <div class="navbar-brand d-flex flex-column text-left"
+	     style="line-height: 1.2;">
+          <span>CSC 454/654</span>
+          <span class="small collapse navbar-collapse"><em>Algorithm Analysis and Design</em></span>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link " href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="syllabus.html">Syllabus</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="schedule.html">Schedule</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="assignments.html">Assignments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://uncg.instructure.com/">Canvas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- Page Content -->
+    <div class="container">
+   
+        <h2 id="csc-454654---spring-2021---assignment-1---due-feb-4-2021">CSC 454/654 - Spring 2021 - Assignment 1 - Due Feb 4, 2021</h2>
+<p>This is a “warm-up” assignment that is shorter than future assignments will be. You only have one week (rather than the normal 2 weeks) for this assignment, and it will count for half the amount of the other assignments (it will be graded out of 50 points).</p>
+<ol type="1">
+<li><p>The following algorithm tests to see if there are duplicates in an input array with <span class="math inline">\(n\)</span> elements: <span class="math inline">\(A=\langle a_1,a_2,\ldots,a_n\rangle\)</span>.</p>
+<pre><code>         DupSearch(A)
+       1.  for i = 1 to n-1
+       2.      for j = i+1 to n
+       3.          if A[i] == A[j]
+       4.              return true
+       5.  return false</code></pre>
+<p>Do a careful runtime analysis of this algorithm, using explicit constants like we did for the examples in class, with results for both the best case and worst case running times.</p></li>
+<li><p>Consider algorithms with the following time complexities:</p>
+<blockquote>
+<p>Algorithm 1: <span class="math inline">\(5n\lg n\)</span></p>
+</blockquote>
+<blockquote>
+<p>Algorithm 2: <span class="math inline">\(n!\)</span></p>
+</blockquote>
+<blockquote>
+<p>Algorithm 3: <span class="math inline">\(3^n\)</span></p>
+</blockquote>
+<blockquote>
+<p>Algorithm 4: <span class="math inline">\(50n\)</span></p>
+</blockquote>
+<blockquote>
+<p>Algorithm 5: <span class="math inline">\(n^2\)</span></p>
+</blockquote>
+<blockquote>
+<p>Algorithm 6: <span class="math inline">\(2n^3\)</span></p>
+</blockquote>
+<ol type="a">
+<li><p>Assuming that the above formulas give the running times of these algorithms in microseconds, make a table showing the running time of each algorithm for input sizes of <span class="math inline">\(n=10\)</span>, <span class="math inline">\(n=100\)</span>, and <span class="math inline">\(n=1000\)</span>. If a running time turns out to be more than <span class="math inline">\(10^{50}\)</span> seconds, you can simply write ``too large’’ in the table.</p></li>
+<li><p>Write the algorithms in order of slowest to fastest when <span class="math inline">\(n=10\)</span>.</p></li>
+<li><p>Write the algorithms in order of asymptotic running time (slowest to fastest).</p></li>
+<li><p>For what values of <span class="math inline">\(n\)</span> is Algorithm 4 faster than Algorithm 1?</p></li>
+</ol></li>
+<li><p>Prove or disprove each of the following conjectures using just the definitions of asymptotic notation and basic algebra:</p>
+<ol type="a">
+<li><p>Let <span class="math inline">\(f(n)\)</span>, <span class="math inline">\(g(n)\)</span>, and <span class="math inline">\(h(n)\)</span> be positive functions. Prove that if <span class="math inline">\(f(n)\)</span> is <span class="math inline">\(O(g(n))\)</span> and <span class="math inline">\(g(n)\)</span> is <span class="math inline">\(O(h(n))\)</span>, then <span class="math inline">\(f(n)\)</span> is <span class="math inline">\(O(h(n))\)</span>. (<em>In other words, big-Oh notation is transitive</em>)</p></li>
+<li><p>Prove that <span class="math inline">\((cn)^n\)</span> is <span class="math inline">\(O(n^{2n})\)</span> for any constant <span class="math inline">\(c&gt;0\)</span>. (<em>Note: Be careful with names of constants when you write up this proof! You’ll be applying the big-Oh definition, which includes a constant named <span class="math inline">\(c\)</span>, but that’s not the same as the <span class="math inline">\(c\)</span> in this problem statement. Create new names for constants when necessary!</em>)</p></li>
+<li><p>Prove that <span class="math inline">\((3n)^n\)</span> is <em>not</em> <span class="math inline">\(O(n^{n+1})\)</span></p></li>
+</ol></li>
+</ol>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

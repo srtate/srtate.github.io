@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>Assignment 1 -- Due Thursday, August 31</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://home.uncg.edu/cmp/faculty/srtate/485.f23/assign1.html">View original, outside canvas</a> ]
+   
+        <h3 id="assignment-1-due-thursday-august-31">Assignment 1 – Due Thursday, August 31</h3>
+<p>In some of these problems you will need to convert characters to 8-bit bytes, and for that you should use ASCII codes. There are lots of good sources for this, but you can use <a href="https://ss64.com/ascii.html">https://ss64.com/ascii.html</a> to find hexadecimal values and write that out in binary.</p>
+<ol type="1">
+<li><p>Joe is developing a game in which a 3-character long animal name (characters as 8-bit ASCII values) is encrypted with a one-time pad. In testing, he puts in the plaintext string “<code>COW</code>” and the encryption algorithm outputs “<code>ANT</code>”. Joe is very concerned because he knows the output of encryption is supposed to look like random jibberish, not some animal name. Does this indicate that there’s something wrong with his code? Explain, and be very specific, giving exact values (24-bit values when needed!). Assuming he coded up the one-time pad properly, what is the probability of this happening?</p></li>
+<li><p>Textbook Exercise 1.7</p></li>
+<li><p>Textbook Exercise 1.12</p></li>
+<li><p>Extending Exercise 1.12, consider a situation where <span class="math inline"><em>n</em> = 26</span> and letters in a message are represented as numbers with <span class="math inline"><em>A</em> = 0</span>, <span class="math inline"><em>B</em> = 1</span>, …, <span class="math inline"><em>Z</em> = 25</span>. If <span class="math inline"><code>KeyGen</code></span> picks <span class="math inline"><em>k</em> ← {0, ..., 25}</span> then this is exactly what is described in Exercise 1.12, with <span class="math inline"><em>n</em> = 26</span>.</p>
+<p>Consider if <span class="math inline"><code>KeyGen</code></span> instead picks from a smaller range: <span class="math inline"><em>k</em> ← {0, ..., 12}</span>. All operations are the same, so calculations are done mod 26. You eavesdrop on a game in which the encrypted message is a direction – either “EAST” or “WEST” – and see the ciphertext message <span class="math inline">⟨9, 7, 0, 0⟩</span>. What is the plaintext message? Explain your work showing how you figured this out.</p></li>
+<li><p>Textbook Exercise 2.2, parts b and c (note that parts a and d are practice problems)</p></li>
+<li><p>Textbook exercise 2.4</p></li>
+</ol>
+<p> <br />
+</p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

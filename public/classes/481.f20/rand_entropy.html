@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>Readings on Randomness -- Entropy</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../css/class_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+        <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark uncg-navbar fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="https://www.uncg.edu/">
+          <img class="collapse navbar-collapse" src="../img/uncg_class.png" alt="UNC Greensboro">
+          <img class="navbar-toggler" src="../img/uncg_mobile.png" alt="UNCG">
+        </a>
+        <div class="navbar-brand d-flex flex-column text-left"
+	     style="line-height: 1.2;">
+          <span>CSC 481/681</span>
+          <span class="small collapse navbar-collapse"><em>Principles of Computer Security</em></span>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link " href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="syllabus.html">Syllabus</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="schedule.html">Schedule</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="assignments.html">Assignments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://uncg.instructure.com/">Canvas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- Page Content -->
+    <div class="container">
+   
+        <h3 id="entropy">Entropy</h3>
+<p>The word <em>entropy</em> is used in several different ways in English, but it always refers to some notion of randomness, disorder, or uncertainty. For example, in physics the term is a measure of a system’s thermal energy, which is related to the level of random motion of molecules and hence is a measure of disorder. In general English usage, entropy is used as a less precise term but still refers to disorder or randomness. In settings that deal with computer and communication systems, entropy refers to its meaning in the field of <em>information theory</em>, where entropy has a very precise mathematical definition measuring randomness and uncertainty. Information theory grew out of the initial work of Claude Shannon at Bell Labs in the 1940’s, where he also did some significant work on the science of cryptography. The fundamental question of how information is represented is a common and deep thread connecting issues of communication, data compression, and cryptography, and information theory is a key component of all three of these areas. In honor of his work, this use of “entropy” is sometimes called “Shannon entropy.”</p>
+<h4 id="entropy---basic-model-and-some-intuition">Entropy - Basic Model and Some Intuition</h4>
+<p>To talk precisely about the information content in messages, we first need a mathematical model that describes how information is transmitted. We consider an information source as having access to a set of possible messages, from which it selects a message, encodes it somehow, and transmits it across a communication channel.</p>
+<p align="center">
+<img src="infosource.png" />
+</p>
+<p>The question of encoding is very involved, and we can encode for the most compact representation (data compression), for the most reliable transmission (error detection/correction coding), to make the information unintelligible to an eavesdropper (encryption), or perhaps with other goals in mind. For now we focus just on how messages are selected, not how they are encoded.</p>
+<p>How are messages selected? We take the source to be probabilistic. We’re not saying that data is really just randomly chosen, but this is a good model that has proved its usefulness over time.</p>
+<blockquote>
+<p><strong>Definition:</strong> A <em>source</em> is an ordered pair <span class="math inline">\({\cal S}=(M,P)\)</span>, where <span class="math inline">\(M=\{m_1,m_2,\cdots,m_n\}\)</span> is a finite set, called the <em>message space</em> (or sometimes the <em>source alphabet</em>), and <span class="math inline">\(P:M\rightarrow [0,1]\)</span> is a probability distribution on <span class="math inline">\(M\)</span>. We refer to the elements of <span class="math inline">\(M\)</span> as <em>messages</em>. We denote the probability of message <span class="math inline">\(m_i\)</span> by either <span class="math inline">\(P(m_i)\)</span> or by the shorthand notation <span class="math inline">\(p_i\)</span>.</p>
+</blockquote>
+<p>Intuitively, the higher the probability of a message, the lower the information content of that message. As an extreme example, if we knew in advance the message that was going to be sent (so the probability of that message is 1), then there is no information at all in that message – the receiver hasn’t learned anything new, since the message was pre-determined. Extending the idea of information from a single message to a source with multiple possible messages, a source with a large message space of small probability messages will have a higher information content than a source with a small message space or a few high probability messages.</p>
+<p>Notice that when we are discussing information content of a source, we refer to the probabilities and the size of the message space. The actual messages do not matter, so “information” in this sense is different from using “information” to refer to semantic content of the messages. We can consider a function <span class="math inline">\(H\)</span> that maps sources into information measures, and we use the notation <span class="math inline">\(H({\mathcal S})\)</span> to denote information, or entropy, of a source. Since this measure only depends on the probability distribution, and not the message space, we sometimes just write <span class="math inline">\(H(P)\)</span> for the entropy of a probability distribution. Alternatively, we can actually list the probabilities, and write this as <span class="math inline">\(H(p_1,p_2,\cdots,p_n)\)</span>. Next, we will see that the actual entropy function can be one of infinitely many choices, but the difference between the choices really just amounts to selecting different units of measurement (i.e., different scales).</p>
+<h4 id="properties-and-formal-definition">Properties and Formal Definition</h4>
+<p>Using some intuition about the information content of a source, we can define several properties that a sensible information measure must obey.</p>
+<p><strong>Property 1.</strong> <span class="math inline">\(H\)</span> is continuous for all valid probability distributions.</p>
+<p><strong>Property 2.</strong> For uniform probability spaces, the entropy of a source increases as the number of items in the message space increases. In other words, if <span class="math inline">\(U_n\)</span> represents the uniform probability distribution on <span class="math inline">\(n\)</span> items (so each has probability <span class="math inline">\(1/n\)</span>), then <span class="math inline">\(H(U_n)&lt;H(U_{n+1})\)</span>.</p>
+<p><strong>Property 3.</strong> If a message is picked in stages, then the information of the message is the sum of the information of the individual choices, weighted by the probability that that choice has to be made. For example, if we pick a playing card, the information content is the same whether we pick from the full set of 52 cards, or if we first pick the card color (red or black) and then pick the specific card from the chosen smaller set. Mathematically, this means that if our message space is made up of elements <span class="math inline">\(x_1,x_2,\cdots,x_n\)</span> and <span class="math inline">\(y_1,y_2,\cdots,y_m\)</span>, with probabilities <span class="math inline">\(p_1,p_2,\cdots,p_n\)</span> and <span class="math inline">\(q_1,q_2,\cdots,q_m\)</span>, respectively, and <span class="math inline">\(p=p_1+\cdots+p_n\)</span> and <span class="math inline">\(q=q_1+\cdots+q_m\)</span>, then the entropy must satisfy</p>
+<p><span class="math display">\[H(p_1,\cdots,p_n,q_1,\cdots,q_m) = H(p,q) +
+p H(\frac{p_1}{p},\frac{p_2}{p},\cdots,\frac{p_n}{p}) +
+q H(\frac{q_1}{q},\frac{q_2}{q},\cdots,\frac{q_m}{q}) .\]</span></p>
+<p>Going back to our example with playing cards, we could let <span class="math inline">\(x_1,\cdots,x_n\)</span> denote the red cards, and <span class="math inline">\(y_1,\cdots,y_m\)</span> denote the black cards. Then <span class="math inline">\(H(p,q)\)</span> represents the information content of selecting the card color (with probability <span class="math inline">\(p\)</span> of picking red, and <span class="math inline">\(q\)</span> of picking black), and then we select from either the red cards or the black cards.</p>
+<p> </p>
+<p>Properties 1 and 2 are satisfied by many functions, but the following Theorem shows that property 3 is very restrictive. In fact, there is essentially only one function (ignoring constant factors) that satisfies all three properties.</p>
+<blockquote>
+<p><strong>Theorem:</strong> The only functions that satisfy properties 1-3 above are of the following form, where <span class="math inline">\({\mathcal S}=(M,P)\)</span> is a source: <span class="math display">\[H_b({\mathcal S}) = -\sum_{m\in M} P(m)\log_b P(m) =
+           \sum_{m\in M} P(m)\log_b \frac{1}{P(m)} , \]</span> for some constant <span class="math inline">\(b&gt;0\)</span>.</p>
+</blockquote>
+<p>This is actually a pretty amazing result: Given some very basic properties that any measure of information must satisfy, there is essentially just <em>one</em> function (up to constant factors) that we can use for such a measure! This pretty much removes all doubt about whether we have the “right measure” for entropy.</p>
+<p>Given this result, and the natural use of base two logarithms in digital communication, we define entropy as follows.</p>
+<blockquote>
+<p><strong>Definition:</strong> The <em>entropy</em> of a source <span class="math inline">\({\cal S}=(S,P)\)</span>, denoted <span class="math inline">\(H({\cal S})\)</span> or <span class="math inline">\(H(P)\)</span>, is defined by <span class="math display">\[H({\mathcal S}) = -\sum_{m\in M} P(m)\log_2 P(m) =
+                    \sum_{m\in M} P(m)\log_2 \frac{1}{P(m)} , \]</span> where the unit of information is a “bit.”</p>
+</blockquote>
+<hr />
+<p><strong>Example:</strong> Consider flipping a fair coin, where the messages represent heads and tails, each with probability 1/2. The entropy of this source is</p>
+<p><span class="math display">\[ H\left(\frac{1}{2},\frac{1}{2}\right)
+   = \frac{1}{2}\log_2 2 + \frac{1}{2}\log_2 2
+   = \frac{1}{2} + \frac{1}{2} = 1 . \]</span></p>
+<p>In other words, the entropy of a source that flips a single fair coin is exactly 1 bit. This should match your basic notion of what a bit is: two outcomes, whether heads and tails, or true and false, or 0 and 1.</p>
+<hr />
+<p><strong>Example:</strong> We generalize the previous example to the uniform distribution on <span class="math inline">\(n\)</span> outcomes, denoted <span class="math inline">\(U_n\)</span>, so each message has probability <span class="math inline">\(1/n\)</span>. In this case the entropy is</p>
+<p><span class="math display">\[ H(U_n) = \sum_{i=1}^n \frac{1}{n}\log_2 n
+          = n \cdot\frac{1}{n}\log_2 n
+      = \log_2 n . \]</span></p>
+<p>Applying this to rolling a fair 6-sided die, we see that the entropy of one roll is <span class="math inline">\(\log_2 6\approx 2.585\)</span> bits.</p>
+<p>If we pick a symmetric encryption key uniformly out of <span class="math inline">\(2^{128}\)</span> possible keys, then the entropy of the key source is <span class="math inline">\(\log_2 2^{128}=128\)</span> bits. Since this key is most likely just a randomly chosen 128-bit binary string, this makes sense.</p>
+<hr />
+<p><strong>Example:</strong> Consider picking a 128-bit random value, but instead of a uniform random number generator, we have a biased one in which each bit chosen with <span class="math inline">\(P(0)=1/10\)</span> and <span class="math inline">\(P(1)=9/10\)</span>. We could use the binomial distribution to give the probability of any individual 128-bit string, but in this case we can take a much simpler shortcut: Using “Property 3” of the entropy function, we can analyze this as a sequence of 128 selections, and add the results up. In fact, since each selection (i.e., each bit) has the same probability distribution, independent of the others, the entropy of this source is just</p>
+<p><span class="math display">\[ 128\cdot H\left(\frac{1}{10},\frac{9}{10}\right)
+   = 128 \left( \frac{1}{10}\log_2\frac{10}{1} + \frac{9}{10}\log_2\frac{10}{9}\right)
+   \approx 128\cdot 0.469 = 60.032 . \]</span></p>
+<p>In other words, using a biased random number generator reduces the entropy of the source from 128 bits to around 60 bits. This can have serious consequences for security, which we’ll see below.</p>
+<hr />
+<h4 id="entropy-of-english-language">Entropy of English Language</h4>
+<p>One way we can view English language writing is as a sequence of individual letters, selected independently. Obviously this isn’t a great model of English, since letters in English writing aren’t independent, but this is a good starting point to think about the information content of English.</p>
+<p>Many experiments by cryptographers and data compression researchers have shown that the frequency of individual letters is remarkably constant among different pieces of English writing. In one such study [J. Storer, <em>Data Compression: Methods and Theory</em>], the probability of a space is 0.1741, the probability of an ‘e’ is 0.0976, the probability of a ‘t’ is 0.0701, and so on. From these statistics, the entropy of English (from a source generating single letters) was calculated to be 4.47 bits.</p>
+<p>We can make our model of English more accurate by considering pairs of letters rather than individual letters (what cryptographers call “digrams”). For example, the letter “q” is almost always followed by the letter “u” (the only exceptions being words derived from a foreign language, like “Iraqi,” “Iqbal,” and “Chongqing”). Therefore, the probability of the pair “qu” is much higher than would be expected when looking at letters independently, and hence the entropy is lower for modeling pairs of letters rather than individual letters. In the same experiment described in the previous paragraph, English was modeled as a source that produces <em>pairs</em> of letters, and the entropy of this source model was only 7.18 bits per pair of characters, or 3.59 bits per character.</p>
+<p>We can go even farther by considering longer contexts when selecting the “next letter” in English. For example, if you see the letters “algori” then the next letter is almost certainly a “t”. What is the best model for a source generating English? Shannon had a great answer for this: The adult human mind has been trained for years to work with English, so he used an experiment with human subjects to estimate the entropy of English. In particular, he provided the subjects with a fragment of English text, and asked them to predict the next letter, and statistics were gathered on how often the subject guessed correctly. “Correct” versus “incorrect” doesn’t fully capture information content, but can provide bounds, and using this experiment Shannon estimated the “true entropy of English” to be between 0.6 and 1.3 bits per letter. Keep in mind that this was in the 1940’s, before Shannon had computers to help with the analysis. These days we have a huge amount of English text available for analysis by modern computers, and experiments that include the full ASCII character set (rather than just letters) consistently show that entropy of English writing is between 1.2 and 1.7 bits per character.</p>
+<h4 id="passwords-entropy-and-brute-force-searches">Passwords, Entropy, and Brute-Force Searches</h4>
+<p><strong>This part is still being written!</strong></p>
+<p> </p>
+<p><a href="entropyetc.html">Up: Contents</a>      <a href="rand_randomness.html">Prev: Randomness</a>      <a href="rand_pseudorandom.html">Next: Pseudorandomness</a></p>
+<hr />
+<div style="font-size: 80%;">
+<p>© Copyright 2020, <a href="https://www.uncg.edu/cmp/faculty/srtate/index.html">Stephen R. Tate</a><br/> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</p>
+</div>
+<p> </p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

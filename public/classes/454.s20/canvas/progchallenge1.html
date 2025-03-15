@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 454/654 - Spring 2020 - Programming Challenge 1 (for Assignment 2)</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://www.uncg.edu/cmp/faculty/srtate/454.s20/progchallenge1.html">View original, outside canvas</a> ]
+   
+        <style>
+pre {
+ display:block;
+ padding:9.5px;
+ margin:0 0 10px;
+ font-size:13px;
+ line-height:1.42857143;
+ color:#333;
+ word-break:break-all;
+ word-wrap:break-word;
+ background-color:#f5f5f5;
+ border:1px solid #ccc;
+ border-radius:4px
+}
+pre code {
+ padding:0;
+ font-size:inherit;
+ color:inherit;
+ white-space:pre-wrap;
+ background-color:transparent;
+ border-radius:0
+}
+</style>
+<h2 id="csc-454654---spring-2020---programming-challenge-1">CSC 454/654 - Spring 2020 - Programming Challenge 1</h2>
+<p><strong>Introduction:</strong> This is your first “programming challenge” assignment. There will be three of these throughout the semester, putting what you learn about algorithms into practice — solving real problems is the whole point, after all! Your solutions will be submitted to an automated judging system that will test it against a range of test inputs. You will get fast feedback on whether your program passed all the tests; however, if it fails a test you’ll only get an indication that it failed, and you won’t get to see the input or any other details. Your job is to think through the problem and make sure your program works on all possible inputs! In general you will be given two challenges — one will be a thinly disguised version of an algorithm that is given in the book, and for the other you’ll have to be more creative.</p>
+<p><strong>Challenge Specifics:</strong> For this challenge your job is to work with data sequences, where each data point has a “reliability rating” between 0 and 100. There are <span class="math inline"><em>n</em></span> values in the sequence, and the reliability values are given as a sequence <span class="math inline">⟨<em>x</em><sub>1</sub>, <em>x</em><sub>2</sub>, …, <em>x</em><sub><em>n</em></sub>⟩</span>. On this scale, 50 is “neutral,” while 0 is completely unreliable, and 100 is perfectly reliable. Your task is to write programs that determine which part of this sequence maximizes the overall reliability as determined by a given metric.</p>
+<p>For example, the first metric simply adds up how much better each sample’s reliability is than the “neutral” value of 50. In other words, for any subsequence starting at sample <span class="math inline"><em>i</em></span> and going to sample <span class="math inline"><em>j</em></span> the reliability of this subsequence is <br /><span class="math display">$$ R_1( \langle x_i, x_{i+1},\ldots, x_j\rangle ) = \sum_{k=i}^j (x_k - 50) $$</span><br /></p>
+<p>Your program then should find which subsequence has the largest <span class="math inline"><em>R</em><sub>1</sub></span> reliability rating. One obvious solution is to try all possible values of <span class="math inline"><em>i</em></span> and <span class="math inline"><em>j</em></span> with <span class="math inline">1 ≤ <em>i</em> ≤ <em>j</em> ≤ <em>n</em></span> and calculate <span class="math inline"><em>R</em><sub>1</sub></span> for each. Since there are <span class="math inline"><em>Θ</em>(<em>n</em><sup>2</sup>)</span> possible <span class="math inline"><em>i</em></span> and <span class="math inline"><em>j</em></span> values, if you’re careful you can write a program that does this in <span class="math inline"><em>Θ</em>(<em>n</em><sup>2</sup>)</span> time (if you’re <em>not</em> careful, it might take <span class="math inline"><em>Θ</em>(<em>n</em><sup>3</sup>)</span> time, so be careful!). The challenge here is to do better than <span class="math inline"><em>Θ</em>(<em>n</em><sup>2</sup>)</span>, where <span class="math inline"><em>O</em>(<em>n</em>lg <em>n</em>)</span> time is possible using the techniques we are discussing in class.</p>
+<p><strong>Example:</strong> Consider reliability values <span class="math inline">⟨<em>x</em><sub>1</sub>, <em>x</em><sub>2</sub>, <em>x</em><sub>3</sub>, <em>x</em><sub>4</sub>, <em>x</em><sub>5</sub>, <em>x</em><sub>6</sub>, <em>x</em><sub>7</sub>⟩ = ⟨55, 43, 52, 60, 55, 42, 52⟩</span>. For this input, the subsequence that maximizes the <span class="math inline"><em>R</em><sub>1</sub></span> reliability metric is <span class="math inline">⟨<em>x</em><sub>3</sub>, <em>x</em><sub>4</sub>, <em>x</em><sub>5</sub>⟩ = ⟨52, 60, 55⟩</span>, which has <span class="math inline"><em>R</em><sub>1</sub></span> value <span class="math inline">2 + 10 + 5 = 17</span>.</p>
+<p>To provide this input to your program, it is given in the following format: on the first line is the number <span class="math inline"><em>n</em></span>, and then the <span class="math inline"><em>n</em></span> lines following that each have the values <span class="math inline"><em>x</em><sub>1</sub></span>, <span class="math inline"><em>x</em><sub>2</sub></span>, and so on. So for the example above, the input will given like this:</p>
+<pre><code>7
+55
+43
+52
+60
+55
+42
+52</code></pre>
+<p>Input should be read from standard input, although I recommend that you save inputs to files and redirect into your program for testing. Some students prefer to use file I/O in the program while they are developing the program (especially since most IDEs have poor support for providing input through standard input), but if you do this make sure you switch the input source back to standard input before submitting — the judging system will only provide input via standard input!</p>
+<p>Your goal is to program this so that it takes less than <span class="math inline">5</span> seconds to process its input and find the maximum <span class="math inline"><em>R</em><sub>1</sub></span> value. A reasonably fast processor (like those on our judging system) can easily run the <span class="math inline"><em>Θ</em>(<em>n</em><sup>2</sup>)</span> time algorithm in less than <span class="math inline">5</span> seconds on inputs of <span class="math inline">10, 000</span> of fewer values. However, much larger than this and the <span class="math inline"><em>Θ</em>(<em>n</em><sup>2</sup>)</span> algorithm won’t be good enough.</p>
+<p>Fortunately, for <span class="math inline"><em>R</em><sub>1</sub></span> there is a divide-and-conquer algorithm that will find the maximum <span class="math inline"><em>R</em><sub>1</sub></span> value in time <span class="math inline"><em>O</em>(<em>n</em>lg <em>n</em>)</span>, allowing you to solve problems up to around <span class="math inline"><em>n</em> = 500, 000</span> in less than 5 seconds. [<em>Hint: this algorithms is basically the same as an algorithm given in Chapter 4 of the textbook. Once you see the connection, it’s just a matter of turning the book’s pseudocode into real code and making some minor adjustments.</em>]</p>
+<p>There are four problems you can (and should!) submit to on the judging system:</p>
+<p><strong>Problem 1 (MaxR1Small):</strong> [5 points] Your program should read the input data, then compute and print the maximum possible <span class="math inline"><em>R</em><sub>1</sub></span> value for this input. In this, the “small” version of the problem, all inputs will have <span class="math inline"><em>n</em> ≤ 10, 000</span> and so the <span class="math inline"><em>Θ</em>(<em>n</em><sup>2</sup>)</span> time algorithm should be able to solve the problem. However, if you implement the faster <span class="math inline"><em>O</em>(<em>n</em>lg <em>n</em>)</span> time algorithm, it will work for this problem too!</p>
+<p><strong>Problem 2 (MaxR1Large):</strong> [10 points] This is the same as Problem 1, but inputs can get as large as <span class="math inline"><em>n</em> = 500, 000</span> and so the <span class="math inline"><em>Θ</em>(<em>n</em><sup>2</sup>)</span> algorithm will not be able to pass these tests within the required time bound (under 5 seconds).</p>
+<p><strong>Problem 3 (MaxR2Small):</strong> [5 points] For Problems 3 and 4, we use a different metric, based on the idea that “data is only as good as its least-reliable value.” To put that in practice, for any sequence of values the minimum reliability value is found and then it is multiplied by the number of values. In other words,</p>
+<p><br /><span class="math display"><em>R</em><sub>2</sub>(⟨<em>x</em><sub><em>i</em></sub>, <em>x</em><sub><em>i</em> + 1</sub>, …, <em>x</em><sub><em>j</em></sub>⟩) = (<em>j</em> − <em>i</em> + 1) ⋅ min<sub><em>k</em> ∈ {<em>i</em>, …, <em>j</em>}</sub>(<em>x</em><sub><em>k</em></sub> − 50).</span><br /></p>
+<p><strong>Example:</strong> For the sample input above, the subsequence that maximizes the <span class="math inline"><em>R</em><sub>2</sub></span> metric is <span class="math inline">⟨<em>x</em><sub>4</sub>, <em>x</em><sub>5</sub>⟩ = ⟨60, 55⟩</span>, with <span class="math inline"><em>R</em><sub>2</sub></span> value <span class="math inline">10</span>. The values immediately before and after this subsequence have low reliability ratings, so including them would reduce <span class="math inline"><em>R</em><sub>2</sub></span> a lot, even through you are including more values. However, if the “42” were changed to “55”, then that value would be included, bringing the <span class="math inline"><em>R</em><sub>2</sub></span> value up to <span class="math inline">15</span>.</p>
+<p>The input for this program is the same as all the others, but the program should print out the maximum possible <span class="math inline"><em>R</em><sub>2</sub></span> value. For Problem 3, inputs will be “small,” with <span class="math inline"><em>n</em> ≤ 10, 000</span>.</p>
+<p><strong>Problem 4 (MaxR2Large):</strong> [5 points] This is the same as Problem 3, but inputs can get as large as <span class="math inline"><em>n</em> = 500, 000</span> and so the <span class="math inline"><em>Θ</em>(<em>n</em><sup>2</sup>)</span> algorithm will not be able to pass these tests within the required time bound (under 5 seconds). There is an <span class="math inline"><em>O</em>(<em>n</em>lg <em>n</em>)</span> time divide-and-conquer algorithm for maximizing <span class="math inline"><em>R</em><sub>2</sub></span>, but it’s not in the book so you’ll have to be clever and figure it out!</p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

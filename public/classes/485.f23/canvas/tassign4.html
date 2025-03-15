@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>Assignment 4 -- Due Tuesday, October 17</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://home.uncg.edu/cmp/faculty/srtate/485.f23/tassign4.html">View original, outside canvas</a> ]
+   
+        <h3 id="assignment-4-due-tuesday-october-17">Assignment 4 – Due Tuesday, October 17</h3>
+<ol type="1">
+<li><p>Textbook, Exercise 6.8 parts a-c. You don’t need to go into a lot of detail with these – just give a simple distinguisher, and analyze the probabilities/advantage. They should all be (hopefully!) pretty obvious, but it’s good practice.</p></li>
+<li><p>Construction 6.10 gives the formula for a one-round keyed Feistel network.</p>
+<ol type="a">
+<li><p>Write this out using <span class="math inline"><em>k</em><sub>1</sub></span> as the key variable instead of just <span class="math inline"><em>k</em></span>, and then apply <span class="math inline"><em>F</em><sup>*</sup></span> <em>again</em> to this output using key <span class="math inline"><em>k</em><sub>2</sub></span>. The formulas get messy, so it’s perfectly ok to write one formula for the first half of the bits and a different formula for the second half (rather than concatenating two formulas together). This is then the formula for a two-round keyed Feistel network with round keys <span class="math inline"><em>k</em><sub>1</sub></span> and <span class="math inline"><em>k</em><sub>2</sub></span> (assume they are separate and independent).</p></li>
+<li><p>Use your formula(s) to prove that this is not a secure PRP (<em>hint: only half of the output bits, or one of the formulas, is important to the distinguisher, so you can ignore the other half – can you make two different queries that will recognize when this formula is applied?</em>) [A side note on the importance of this – one and two round Feistel networks are not secure PRPs, but a three round Feistel network with a secure PRF <em>is</em> a secure PRP – this is stated as Theorem 6.12 in the textbook.]</p></li>
+</ol></li>
+<li><p>Textbook, Exercise 7.1 (note that this is very similar to Exercise 6.1 from the previous assignment).</p></li>
+<li><p>Textbook, Exercise 7.5 (“nonce-based CPA security” is defined in Exercise 7.4).</p></li>
+<li><p>Textbook, Exercise 7.11</p></li>
+<li><p>Textbook, Exercise 8.1.</p></li>
+<li><p>Constructions 8.1 and 8.2 give algorithms and diagrams for the decryption of ECB and CBC mode; however, Construction 8.3 does not give the same for CTR mode. For this question, write out both the algorithm and draw a diagram for CTR-mode decryption.</p></li>
+<li><p>Consider a simple function inspired by the one-time pad: <span class="math inline"><em>F</em>(<em>k</em>, <em>x</em>) = <em>k</em> ⊕ <em>x</em></span>.</p>
+<ol type="a">
+<li><p>Prove that <span class="math inline"><em>F</em></span> is a permutation, and give <span class="math inline"><em>F</em><sup> − 1</sup></span>.</p></li>
+<li><p>Prove that <span class="math inline"><em>F</em></span> is not a secure PRP by giving a distinguisher and analyzing the advantage.</p></li>
+<li><p>Since <span class="math inline"><em>F</em></span> is a permutation, it can be used in the CBC construction as defined in Construction 8.2. Write out the formula for <span class="math inline"><em>c</em><sub>1</sub></span> using this <span class="math inline"><em>F</em></span> function and a randomly chosen <span class="math inline"><em>c</em><sub>0</sub></span>.</p></li>
+<li><p>Give an algorithm that an adversary could use to compute the secret key with a single call to CHALLENGE (from the <span class="math inline">cpa$-real</span> library on page 148 of Chapter 8).</p></li>
+</ol></li>
+</ol>
+<p> <br />
+</p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

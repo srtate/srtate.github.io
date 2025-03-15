@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>Assignment 1 -- Due Monday, February 3</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../css/class_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+        <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark uncg-navbar fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="https://www.uncg.edu/">
+          <img class="collapse navbar-collapse" src="../img/uncg_class.png" alt="UNC Greensboro">
+          <img class="navbar-toggler" src="../img/uncg_mobile.png" alt="UNCG">
+        </a>
+        <div class="navbar-brand d-flex flex-column text-left"
+	     style="line-height: 1.2;">
+          <span>CSC 481/681</span>
+          <span class="small collapse navbar-collapse"><em>Principles of Computer Security</em></span>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link " href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="syllabus.html">Syllabus</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="schedule.html">Schedule</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="assignments.html">Assignments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://uncg.instructure.com/">Canvas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- Page Content -->
+    <div class="container">
+   
+        <h3 id="assignment-1-due-monday-february-3">Assignment 1 – Due Monday, February 3</h3>
+<p>This assignment has two parts, which are submitted separately in Canvas: Written questions (questions 1-4), which must be submitted as a PDF file, and a Labtainer exercise (question 5), which must be submitted as a “<code>lab</code>” file (created by the Labtainer system). Note that Canvas will only accept a PDF file for the written portion, and will only accept a lab file for the Labtainer portion. Written solutions can be either electronically prepared or neatly handwritten and scanned. If you must use a phone camera rather than a scanner, you should use a “scan to PDF” app to produce a proper and readable PDF document. Check the file that Canvas received as your submission. I will grade only what is there, using the timestamp in Canvas. I will not accept a file after the fact because your upload failed or because the file was corrupt or you submitted the wrong file…</p>
+<p>If you want to use a tool to electronically create your diagrams, you should use an appropriate tool to draw neat diagrams (e.g., LucidChart or Visio). It is almost impossible to make a neat, professional-looking diagram in Word or some other tool that is not designed for this, so do not try.</p>
+<p>On this and all other assignments, remember to fully explain your answers, and <strong>cite all sources of information</strong>!</p>
+<ol type="1">
+<li><p>Find a news story of a security incident from this past year that involved a malicious attacker (that shouldn’t be hard!), and describe in at least some detail what happened. Your description should include a statement about each of the “big three” security goals, indicating whether it was violated (and if it was, <em>how</em> it was violated). Also speculate on what type of attacker was involved and what the attacker’s motive may have been. Make sure that the incident occurred in 2024, and cite your source(s) of information.</p></li>
+<li><p>In this question, you are to get a feel for how vulnerable modern systems are by exploring the “National Vulnerability Database” that NIST maintains, which is at <a href="https://nvd.nist.gov/">https://nvd.nist.gov/</a>. Take a look around that website and familiarize yourself with what the NVD provides, and then look for specific items as described below.</p>
+<ol type="a">
+<li><p>Find the vulnerability search page, and look under “Advanced” search to find how to search by date of publication for vulnerabilities. Pick a random month from last year (e.g., maybe your birthday month) and see how many vulnerabilities were reported that month. Report how many there were for the month, and calculate the average number of vulnerabilities reported per day. If you were a security professional, and spent on average 5 minutes looking at each CVE to see if it applied to systems you manage, how much time per week would you spend reviewing CVEs?</p></li>
+<li><p>Look into some of these vulnerabilities (you can just click randomly on the CVEs in your search result, but avoid those that say “AWAITING ANALYSIS” at the top) to see how they are reported. Can you find any that give vulnerabilities associated with software or systems that you use? Examine the various information reported for a CVE, looking in particular for anything that identifies risks to the “big three” security goals that we talked about in class, and report on what you find.</p></li>
+<li><p>Imagine that you are managing a collection of systems, and want to stay up-to-date on vulnerabilities. In part (a) of this question you should have seen that trying to follow every vulnerability is not practical. How can you improve the efficiency of this? In particular, what is a “CPE” and how can you use that to identify CVEs that are relevant to your systems?</p></li>
+</ol></li>
+<li><p>Consider the following set of subjects and objects in the Bell-LaPadula model, with clearances and classifications as shown (C, S, and TS stand for “Classified”, “Secret” and “Top Secret”, which is in increasing level of classification):</p>
+<p><strong>Subject Clearances:</strong></p>
+<ul>
+<li>Andy: (C, {TOYS})</li>
+<li>Woody: (S, {SNAKES,TOYS})</li>
+<li>Buzz: (TS, {SPACE,TOYS})</li>
+</ul>
+<p><br />
+<strong>Objects and Object Classifications:</strong></p>
+<ul>
+<li>ToyInventory: (C, {TOYS})</li>
+<li>SnakeTypes: (S, {SNAKES})</li>
+<li>SpaceMissions: (TS, {SPACE,SNAKES,TOYS})</li>
+</ul>
+<p><br />
+</p>
+<ol type="a">
+<li><p>Write out the access control matrix that shows both read and write permissions for all three subjects and three objects (use “R” to denote read permission, and “W” to denote write permission).</p></li>
+<li><p>Which objects can Woody read?</p></li>
+<li><p>Is there a file classification and label that would allow Buzz to write to such a file, and Woody to read from it? Why? Is there a way around this?</p></li>
+</ol></li>
+<li><p>These questions relate to the “Secure Design Principles” from Section 1.1.4 in the textbook (and that we discussed in class).</p>
+<ol type="a">
+<li><p>Using compartments and need-to-know labels in the Bell-LaPadula model is similar to one of the secure design principles. State which one, and describe how these two concepts are related.</p></li>
+<li><p>Back in the 1800’s, Auguste Kerckhoffs stated that the security of a cryptographic systems should not require the secrecy of the algorithm (only the key used) – this is now known as “Kerckhoffs’s Principle.” This is similar to one of the secure design principles. State which one, and describe how these two concepts are related.</p></li>
+</ol></li>
+<li><p><strong>Labtainer setup and exercise.</strong> For this question, you are to set up your computer to run “Labtainer” exercises, and then perform a straightforward lab on basic Unix/Linux commands. This is being assigned so that you go ahead and get the Labtainer virtual machine environment set up and working on your computer, which poses a few challenges: First, the image you need to download is large (6.3 GB), which can take a long time if your Internet connection is slow. <em>Second, if you have a recent Apple Mac, using an Apple Silicon (M1 or M2) CPU, you cannot do this without emulation and a fairly serious performance hit. While I have gotten this to work, the instructions as given on the Labtainer website didn’t work as written. You can try this on your own, and I will try to provide better instructions at some point in the future. Alternatively, we have remote desktop solutions that Mac users can use, but if you need this then you must let me know ASAP so I can set it up for you.</em></p>
+<p>If you have a particularly slow or unreliable connection, I would recommend coming to campus or finding some other place with a fast connection in order to do the download. Second, for good VirtualBox performance, you’ll need a decent amount of RAM (at least 8GB, but more is better) and your computer BIOS settings need to have hardware virtualization support enabled. Modern Intel-based systems (meaning anything except the recent Apple Silicon-based Macs), purchased within the last 4 years, should probably support this without any problems. If you have significant problems, you should talk to me to either get things set up properly on your computer or to arrange an alternative.</p>
+<p>Here’s what you need to do: First, if you don’t already have it installed, install VirtualBox – see <a href="https://www.virtualbox.org/">https://www.virtualbox.org/</a> to download and install this free software.</p>
+<p>Next, go to the Labtainer web page ( <a href="https://nps.edu/web/c3o/labtainers">https://nps.edu/web/c3o/labtainers</a> ), click on “Virtual Machine Images” and download the “VirtualBox VM Appliance” from that page. The one-line “Directions” right below the link to the image is all you need to do in order to get this installed and usable with VirtualBox.</p>
+<p>For some reason, the latest version of the Labtainer VM image is set up by default using display scaling, which makes it look horrible on my system. Look at the VM settings, and if it has a “Scale-factor” other than 1 listed, consider changing it to 1 (or 100%). You can adjust this to your preference later. If you have any issues with the virtual system crashing/logging you out, try powering the virtual system off and changing the “Graphics Controller” in the Display settings from VMSVGA to VBoxVGA — I had to do that on one system for some reason, but that corrected the problem.</p>
+<p>Finally, start the virtual machine image from VirtualBox. After it boots up and stabilizes, you will see a Linux desktop with a terminal window and command prompt. You can adjust the size of the desktop and the terminal window to your liking. This is the normal “starting point” for Labtainer exercises. You should open the “<a href="https://github.com/mfthomps/Labtainers/raw/master/docs/student/labtainer-student.pdf">Student Guide</a>” from the Labtainer web page, and read Section 3 (“Performing a Lab”) to understand how the Labtainer system works in general. Note that the more involved parts of Sections 1 and 2 are not necessary and are simply confusing if you’re using the VirtualBox image - just skip those. It’s worth your time to poke around a little on the Labtainer web site to see what is there – for example, the “Labtainer Lab Summary” and “Lab Manuals” are good things to be familiar with.</p>
+<p>Finally, you should complete the <code>nix-commands</code> lab. To do this, you type “<code>labtainer nix-commands</code>” at the command prompt of your Labtainer virtual machine. The first time you run this it will ask for your email address, which is needed to identify your work after you submit it – use your UNCG email address! After the first time, the Labtainer system will remember your email address and present it to you as the default. After getting the lab started, the system will print out some links to the information needed for the lab; alternatively, you can directly access the instructions from the Labtainer web site. Note that the lab starts up a new terminal window with a shell running <em>inside the lab container</em> and this is very different from the shell you just used to start the lab, which is running in the VM system. Keep these separate in your mind because they are two separate and different environments. While the two windows look <em>almost</em> the same, you can tell the difference in the window’s title bar – the labtainer window(s) will have a title that looks like “<code>student@nix-commands</code>” (or whatever other lab you’re running later), while the VM window will have a title that looks like “<code>student@LabtainersVM</code>”. Yes, it can get confusing…. When you are finished, type “<code>stoplab nix-commands</code>” in your original terminal window (the VM window).</p>
+<p>After you have completed everything, including typing the “<code>stoplab</code>” command, there will be a file with a <code>.lab</code> extension created in directory <code>/home/student/labtainer_xfer/nix-commands</code> — you should use the Web browser from insider the Labtainer VM to submit this file in Canvas. From this file, I will be able to see all of the commands you executed, and whether you followed the directions in the lab will be the basis of your grade, so make sure you do everything stated in the lab instructions!</p></li>
+</ol>
+<p> <br />
+</p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

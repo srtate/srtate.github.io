@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 485/685 - Fall 2023 - Practice Problems</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://home.uncg.edu/cmp/faculty/srtate/485.f23/practice.html">View original, outside canvas</a> ]
+   
+        <h2 id="csc-485685-fall-2023-practice-problems">CSC 485/685 – Fall 2023 – Practice Problems</h2>
+<p>Note that <strong>practice</strong> problems are required – they are not <strong>optional</strong> problems!</p>
+<p>For each week’s topic(s), students should work the practice problems below during the week that the topic is discussed as part of their normal reading and studying. On Tuesday of the next week, these will be worked in class with students being called on to provide solutions – so be prepared! These will not be graded unless it becomes clear that students are not doing the practice problems. As additional incentive, the practice problems will be very similar to the problems you will see on exams.</p>
+<h4 id="for-week-1-aug-14-aug-18">For Week 1 (Aug 14 – Aug 18)</h4>
+<p><strong>Complete before Tuesday, Aug 22</strong></p>
+<p>Textbook, Exercises 0.1, 0.7, 0.8 (a-c), 0.9</p>
+<h4 id="for-week-2-aug-21-aug-25">For Week 2 (Aug 21 – Aug 25)</h4>
+<p><strong>Complete before Tuesday, Aug 29</strong></p>
+<p>Textbook, Exercises 1.4, 1.8, 2.1, and 2.2 (a and d)<br />
+</p>
+<p>Challenge (optional): Exercise 2.5 – this involves more abstract thinking, but is a very useful mental exercise if you can work through it. We’ll talk about this briefly in class, but only if time allows.</p>
+<h4 id="for-week-3-aug-28-sept-1">For Week 3 (Aug 28 – Sept 1)</h4>
+<p><strong>Complete before Tuesday, Sept 5</strong></p>
+<p>Textbook, Exercise 2.6</p>
+<p>In the set-up for Exercise 2.12, the problem requires that <span class="math inline"><em>Σ</em>.𝒞 ⊆ <em>Σ</em>.ℳ</span>. Think through what this means: Argue/prove that for any scheme that is correct, <span class="math inline">|<em>Σ</em>.𝒞| ≥ |<em>Σ</em>.ℳ|</span>. What does the <span class="math inline"><em>Σ</em>.𝒞 ⊆ <em>Σ</em>.ℳ</span> imply about the relation between the sizes of <span class="math inline"><em>Σ</em>.𝒞</span> and <span class="math inline"><em>Σ</em>.ℳ</span>? What can you conclude from these facts about the relationship between the sets <span class="math inline"><em>Σ</em>.𝒞</span> and <span class="math inline"><em>Σ</em>.ℳ</span>?</p>
+<p>Working over <span class="math inline">ℤ<sub>11</sub></span>, what is the unique degree 1 polynomial through the points <span class="math inline">(1, 4)</span> and <span class="math inline">(2, 9)</span>? What is the <span class="math inline"><em>y</em></span> value of this polynomial when <span class="math inline"><em>x</em> = 3</span>? <em>If you want a slightly harder problem, pick three points and find the degree 2 polynomial through those points.</em></p>
+<p>Textbook Exercise 3.7: There is a very simple solution to this problem that, once discovered is obviously correct and requires no math at all to justify – just working with the definition of <span class="math inline"><em>t</em></span> of <span class="math inline"><em>n</em></span> secret sharing. You may use a standard secret sharing scheme in solving this problem.</p>
+<h4 id="for-week-4-sept-4-sept-8">For Week 4 (Sept 4 – Sept 8)</h4>
+<p>Practice with the Share() function by creating shares for a 3-out-of-5 using Shamir’s scheme with modulus 11 and secret 3. Note that the algorithm is randomized, so there isn’t a single correct answer to this question!</p>
+<p>Textbook, Exercise 4.2</p>
+<p>Textbook, Exercise 4.3c</p>
+<p>Textbook, Exercise 4.12a-b</p>
+<h4 id="for-week-6-sept-18-sept-22">For Week 6 (Sept 18 – Sept 22)</h4>
+<p>Textbook, Exercise 4.9</p>
+<p>Using Lemma 4.10, what is the lemma-provided upper bound of the “birthday probability” if the number of queries is less than the cube-root of the number of values <span class="math inline"><em>N</em></span> (in other words, <span class="math inline"><em>q</em> ≤ <em>N</em><sup>1/3</sup></span>).</p>
+<p>In the previous question, if <span class="math inline"><em>N</em> = 2<sup><em>λ</em></sup></span>, is the probability negligible?</p>
+<p>Textbook, Exercise 5.8c (the answer is “no”, this is not a secure RNG, and the point of this exercise is to work with the definition of a secure RNG and write a simple distinguisher)</p>
+<h4 id="for-week-7-sept-25-29">For Week 7 (Sept 25 – 29)</h4>
+<p>Textbook, Exercise 6.5</p>
+<p>Textbook, Exercise 6.7</p>
+<p>Textbook, Exercise 6.11</p>
+<p>A little more challenging: Try 6.8d</p>
+<h4 id="for-week-8-oct-2-oct-5">For Week 8 (Oct 2 – Oct 5)</h4>
+<p>Textbook, Exercise 7.7 (a) [this is not CPA secure, so give a distinguisher]</p>
+<p>Textbook, Exercise 8.2</p>
+<p>Consider a bad implementation of CBC mode, where a programmer took the process ID of the running program, which is a 16-bit number, ran it through a secure PRG to stretch that out to <span class="math inline"><em>b</em><em>l</em><em>e</em><em>n</em></span> bits, and used that as block <span class="math inline"><em>c</em><sub>0</sub></span> in CBC mode. This is not CPA secure. Give a distinguisher for the cpa-L vs cpa-R libraries.</p>
+<h4 id="for-week-9-oct-9-oct-12">For Week 9 (Oct 9 – Oct 12)</h4>
+<p>(Note: Short week – Fall Break)</p>
+<p>Textbook, Exercise 8.9</p>
+<p>Explain how to modify the padding attack in the book so that it works with PKCS#7 padding (instead of X.923 padding).</p>
+<p>Give a distinguisher that shows that CTR mode is not CCA secure.</p>
+<h4 id="for-week-11-oct-23-oct-27">For Week 11 (Oct 23 – Oct 27)</h4>
+<p>Consider a four-character message encyrpted using AES in CTR mode, which you know contains your grade of “FAIL”. You intercept the ciphertext and can temper with it. Explain how you would change the ciphertext so that the receiver, when decrypting it, reads “PASS”.</p>
+<p>Textbook Exercise 10.3. “Prove X is secure” normally uses a long hybrid proof. However, in this case, that is not necessary. Think about the logical construction (“If A is secure then B is secure”) and prove this through the logical contrapositive (“If B is not secure then A is not secure.”) It’s a trivial proof once you flip it around like this.</p>
+<h4 id="for-week-12-oct-30-nov-3">For Week 12 (Oct 30 – Nov 3)</h4>
+<p>Textbook, Exercise 11.3 (and 11.4)</p>
+<p>Textbook, Exercise 11.13</p>
+<h4 id="for-week-13-nov-6-nov-10">For Week 13 (Nov 6 – Nov 10)</h4>
+<p>Consider RSA with the following prime values: <span class="math inline"><em>p</em> = 19</span>, <span class="math inline"><em>q</em> = 31</span>.</p>
+<ul>
+<li>What is <span class="math inline"><em>n</em></span>?</li>
+<li>What is <span class="math inline"><em>ϕ</em>(<em>n</em>)</span>?</li>
+<li>If <span class="math inline"><em>e</em> = 7</span>, what is <span class="math inline"><em>d</em></span>?</li>
+<li>Compute <span class="math inline"><em>c</em> = (123)<sup><em>e</em></sup> % <em>n</em></span>.</li>
+<li>Compute <span class="math inline"><em>c</em><sup><em>d</em></sup> % <em>n</em></span>.</li>
+</ul>
+<p>Textbook, Exercise 13.8</p>
+<p>Textbook, Exercise 13.11</p>
+<p> </p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

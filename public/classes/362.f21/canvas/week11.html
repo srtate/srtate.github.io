@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 362 - Spring 2021 - Week 11 Activities</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://www.uncg.edu/cmp/faculty/srtate/362.f21/week11.html">View original, outside canvas</a> ]
+   
+        <h2 id="csc-362-spring-2021-week-11-activities">CSC 362 – Spring 2021 – Week 11 Activities</h2>
+<h3 id="spring-2021-timing">Spring 2021 Timing</h3>
+<p>Tuesday (3/30)</p>
+<ul>
+<li>[5 min] Intro</li>
+<li>[20 min] Slides through “switchboard slide”</li>
+<li>[15 min] Demo with two windows, two machines (VM and ritchie)
+<ul>
+<li>Netcat from VM to ritchie (can ask others to connect)</li>
+<li>ifconfig to see IP addresses/interfaces</li>
+<li>new window, netstat showing connection</li>
+</ul></li>
+<li>[15.5 min] Rest of slides<br />
+</li>
+<li>[14 min]
+<ul>
+<li>[3 min] man socket and man 7 socket - all the protocols, then man 7 ip</li>
+<li>[5 min] bring up tcpclient.c - see .h for config settings - run</li>
+<li>[6 min] look at tcpserver.c and go through</li>
+</ul></li>
+</ul>
+<p>Total slides+examples: 65 min - prob can’t do much faster….</p>
+<ul>
+<li>Could try to move wireshark example here (saves 5 min from Thurs)</li>
+<li>Or maybe move app-layer here and can show http in netcat?</li>
+</ul>
+<p><strong>Update server example to use threads?</strong></p>
+<p>Proj reminder: use valgrind!</p>
+<p>Thursday (4/1)</p>
+<ul>
+<li>[3 min] Intro</li>
+<li>[44 min] Slides</li>
+<li>[16 min]
+<ul>
+<li>[6.5 min] “man -k ntoh” then wireshark w/nc between windows</li>
+<li>[9.5 min] Look at udpclient, udpserver, run</li>
+</ul></li>
+</ul>
+<p>Total slides+examples: 60 min</p>
+<h4 id="for-students-to-do-before-tuesday">For students to do before Tuesday</h4>
+<p>Networking is now as fundamental as computing (or more so) [Socket history refresher - BSD] OSI model - all 7 layers described. Layer 3: The Internet Protocol - [“domain” or “address family” (see socket man page)] - “IPv4” - packets from one machine to another - 32 bit addresses - form (dotted addresses - four octets) + can think of as a network address and host address - IPv4 header - 20 octets - Special IPv4 addresses: 127.0.0.1 [mention private subnets] - IPv6 bigger address range and security - What’s my address? + command line + Programmatically: getifaddrs and getnameinfo + Example code going through list … - Getting address of another system: getaddrinfo [talk about DNS?] Layer 4: TCP and Client - [ see socket type in “man socket” - include some in slides ] - [ SOCK_STREAM is “full-duplex byte stream” ] - Transport layer - gives illusion of a pipe between processes anywhere + [one diff with pipe - full-duplex - each end has diff write/read handles] + ordered, error checked, etc. point out why important - IP best effort + multiple connections - id’ed by src/dest ip/port + privileged ports [don’t rely on for security!] + give some common ports (80, 22, etc.) /etc/services - Things TCP doesn’t provide: security/encryption, reconn, data packets - Network order, and htons/ntohs/etc. + s:short is 16 bits; l:long is 32 bits. + note that network is big endian, x86 is little endian - TCP client + about sockets + socket, getaddrinfo, and connect [more complex than it needs to be…] + gethostbyname is deprecated…. + setcockopt for more advanced options - read/write works like a file (really more like a pipe) + less immediate though, so blocking/non-blocking is important + [example in book use http - need something simpler to start] Layer 4: TCP Server - socket as before, but then bind, listen, and accept - close or shutdown when done - gives example server - notes about interrupted read calls (EINTR return)</p>
+<p>Presentation - start with the end goal - TCP connection on a port - maybe even start with the netcat demo then back to slides? - find old switchboard operator picture….</p>
+<p>Demos: Earlier “breakout demo” - use nc between diff machines - talk about firewalls… use port 8080 Man pages Use ifconfig to show address (and “ip addr show”) Use netcat - talk about ports, etc. Show connection status in netstat TCP client code - look at code and then run (connect to nc) TCP server code - look at code and run (connect to with nc)</p>
+<h4 id="tuesday-material">Tuesday Material</h4>
+<p>stuff</p>
+<h4 id="tuesday-in-class-activities">Tuesday In-Class Activities</h4>
+<p>stuff</p>
+<h4 id="for-students-to-do-before-thursday">For students to do before Thursday</h4>
+<p>???</p>
+<h4 id="thursday-material">Thursday Material</h4>
+<p>OSI model - all 7 layers described. Layer 3: The Internet Protocol - IPv4 header - 20 octets</p>
+<p>[Note prioritization issues, congestion control, and net neutrality]</p>
+<p>[send and recv syscalls?]</p>
+<p>Book, from section 5:</p>
+<p>Layer 4: UDP - [Note UDP is <em>user</em> datagram protocol - not unreliable as book says] - [discrete units - packets - sent - not a stream] - connectionless protocol - send a packet, get a packet…. + may be dropped, duplicated, or arrive out of order + warning - testing often doesn’t account for this (test on loopback) - when speed/updates more important than reliability + also mention streaming media - can’t “fall behind” because of corrections + and multicast - UDP client + Book’s example uses gethostbyname - why?!? + Add a timeout using SO_RCVTIMEO in setsockopt (otherwise what if lost?) - UDP Server + socket and bind like before - ex uses priv port - why??? + but then no conn to establish, so just call “recvfrom” + note recvfrom is a one shot deal - make sure buffer is big enough or lose data Layer 7: HTTP - application-level interfaces - book muddles the http/https and TLS discussion a bit - other app-level protocols - ftp, tftp, dns, smtp, ssh, ntp, … + [show some of these in wireshark] - about DNS - fast but insecure - https adds assurance via certs + understand security issues through insecurity of UDP + talks about DNSSEC a little - [refer to security class] + for this class, mention DNS over HTTPS Non-Blocking IO - Set flag so read doesn’t wait. + use fcntl to set the O_NONBLOCK flag, or use SOCK_NONBLOCK for socket - use select to wait on multiple file descriptors + Uses fd_set/FD_ZERO/FD_SET to create vector of descriptors -epoll - not POSIX, but supported by Linux as more efficient than select + Basically kernel-managed select…. + level triggered vs edge triggered; epoll of epolls?; one-shot; … Remote procedure calls - idea call a function in a diff process (poss on diff machine) + [use file locking in NFS as an example?] - privileges of called function, and notion of privilege separation - idea of a “stub function” + marshalling/unmarshalling data - [no diff from file format issues] - interface description language + Ex: Google’s Protocol Buffer (.proto) files - complexities: slow (both comm and local processing), versioning, security - transferring structured data - JSON, XML, or Protocol Buffers (or YAML)</p>
+<p>Other notes: - send vs write - only diff is flags</p>
+<p>Demo: - wireshark - talk about - monitor an “nc” connection tcp - then monitor “nc” connection udp - then look at code - point out binary packets, specific sizes, and ntohl - discuss activity</p>
+<h4 id="thursday-in-class-activities">Thursday In-Class Activities</h4>
+<h4 id="full-assignment-due-next-tuesday">Full Assignment – due next Tuesday</h4>
+<p>??</p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

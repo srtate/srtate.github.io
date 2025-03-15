@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 454/654 - Spring 2020 - Programming Challenge 2 (for Assignment 4)</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../css/class_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+        <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark uncg-navbar fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="https://www.uncg.edu/">
+          <img class="collapse navbar-collapse" src="../img/uncg_class.png" alt="UNC Greensboro">
+          <img class="navbar-toggler" src="../img/uncg_mobile.png" alt="UNCG">
+        </a>
+        <div class="navbar-brand d-flex flex-column text-left"
+	     style="line-height: 1.2;">
+          <span>CSC 454/654</span>
+          <span class="small collapse navbar-collapse"><em>Algorithm Analysis and Design</em></span>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link " href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="syllabus.html">Syllabus</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="schedule.html">Schedule</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="assignments.html">Assignments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://uncg.instructure.com/">Canvas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- Page Content -->
+    <div class="container">
+   
+        <style>
+pre {
+ display:block;
+ padding:9.5px;
+ margin:0 0 10px;
+ font-size:13px;
+ line-height:1.42857143;
+ color:#333;
+ word-break:break-all;
+ word-wrap:break-word;
+ background-color:#f5f5f5;
+ border:1px solid #ccc;
+ border-radius:4px
+}
+pre code {
+ padding:0;
+ font-size:inherit;
+ color:inherit;
+ white-space:pre-wrap;
+ background-color:transparent;
+ border-radius:0
+}
+</style>
+<h2 id="knopification">Knopification</h2>
+<p>You have been hired by your local parks and recreation department to organize documents. There are two binders that contain similar material, all meticulously color-coded, but at various times extra pages might have been inserted into just one of the binders, or pages might have been mistakenly removed from the other. Your job is write a program to figure out where to put color-coded tabs on pages (matching the color of the page, naturally) in each binder so that both binders have the same color sequence on the tabs. If you do a good job with this careful and structured organization, they say you have “Knopified” the binders, and the process is referred to as “Knopification.” More tabs is always better, so your goal is to maximize the number of tabs in your solution.</p>
+<p>For example, consider the problem illustrated below, where one binder is shown on the left, and the other on the right. The tabs selected in our solution are shown in the picture as well. Even though the binders have slightly different page orderings, they both end up with four tabs that are Green, Blue, Green, and then Red. Furthermore, there is no way to put on 5 matching tabs in both binders.</p>
+<p><img src="knopify.svg" /></p>
+<p>The input to your program will consist of two integers <span class="math inline">\(n_1\)</span> and <span class="math inline">\(n_2\)</span> on the first line, saying how many pages are in each binder. You are guaranteed that each value are at least 1 and no more than 990. The next <span class="math inline">\(n_1\)</span> lines give the color of each page in binder 1, and the <span class="math inline">\(n_2\)</span> lines following that give the colors of the pages in binder 2. Colors are arbitrary strings, but will always be single words with no spaces (don’t assume they make sense for any reason – “ab425aslgkj-bart45” is a perfectly legal color name).</p>
+<p>Your program should print out the sequence of colors in your solution. Note that solutions might not be unique, so any valid solution that maximizes the number of tabs will be accepted. It is also possible that the solution is empty, if the binders contain entirely different colors, and so your output would just be empty in that case (don’t print anything at all).</p>
+<p>For example, the input for the problem illustrated above would be</p>
+<pre><code>7 6
+Red
+Green
+Blue
+Green
+Yellow
+Red
+Green
+Green
+Yellow
+Blue
+Red
+Green
+Red</code></pre>
+<p>For the solution illustrated above, the output would be</p>
+<pre><code>Green
+Blue
+Green
+Red</code></pre>
+<p> </p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

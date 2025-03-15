@@ -1,0 +1,55 @@
+
+body {
+  padding-top: 0px;
+}
+
+blockquote {
+    margin-left: 30px;
+}
+
+.schedule > h2 {
+    border-bottom: 2px solid;
+}
+
+.compactschedule > h5 {
+    margin-bottom: 0px;
+    margin-top: 22px;
+    font-size: 18px;
+    font-style: italic;
+}
+
+.compactschedule > p {
+    line-height: 125%;
+}
+
+.no-para-space {
+    margin: 0px;
+}
+
+.no-para-space-western {
+    margin: 0px;
+}
+
+.header {
+    border-bottom: 2px solid;
+}
+
+.even {
+    background-color: #e0e0e0;
+}
+
+.uncg-navbar {
+    background-color: #0f2044;
+}
+
+.container {
+    max-width: 960px;
+}
+
+.borders table tr td { border: 1px solid black; text-align: center; }
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 0px;
+  }
+}

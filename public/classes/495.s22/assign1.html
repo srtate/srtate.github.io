@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 495/693 - Spring 2022 - Assignment 1 - Due Tues, Feb 8</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../css/class_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+        <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark uncg-navbar fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="https://www.uncg.edu/">
+          <img class="collapse navbar-collapse" src="../img/uncg_class.png" alt="UNC Greensboro">
+          <img class="navbar-toggler" src="../img/uncg_mobile.png" alt="UNCG">
+        </a>
+        <div class="navbar-brand d-flex flex-column text-left"
+	     style="line-height: 1.2;">
+          <span>CSC 495/693</span>
+          <span class="small collapse navbar-collapse"><em>Software Security</em></span>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link " href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="syllabus.html">Syllabus</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="schedule.html">Schedule</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="assignments.html">Assignments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://uncg.instructure.com/">Canvas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- Page Content -->
+    <div class="container">
+   
+        <link href="codehighlight.css" rel="stylesheet">
+<style>
+pre {
+  padding: 9.5px;
+  margin: 0 0 10px;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+</style>
+<h2 id="csc-495693---assignment-1---due-tues-feb-8">CSC 495/693 - Assignment 1 - Due Tues, Feb 8</h2>
+<ol type="1">
+<li><p>We discussed responsible disclosure and vulnerability disclosure policies in class.</p>
+<ol type="a">
+<li><p>Give two reasons a company would want to develop and publish a disclosure policy.</p></li>
+<li><p>Describe two parts of a company’s disclosure policy valuable that a security researcher might find particularly valuable, and explain why they are valuable to the researcher.</p></li>
+</ol></li>
+<li><p>Locate a bug bounty program with the largest potential pay-out that you can find. How much is it, and what type of vulnerability and what conditions must be met to get that award?</p></li>
+<li><p>Both the <a href="https://cwe.mitre.org/top25/archive/2021/2021_cwe_top25.html">CWE Top 25</a> and the <a href="https://owasp.org/Top10/">OWASP Top 10</a> describe the methodology used to create the list. Briefly describe the similarities and differences in approaches taken by these two projects.</p></li>
+<li><p>In the CWE Top 25 list, some weaknesses might be a major concern for some developers and simply not an issue for others. Give an example of a CWE that is very important for people coding in C, but not very important for people coding in Java. Explain why this weakness is viewed differently depending on programming language.</p></li>
+<li><p>In the OWASP Top 10, each of the Top 10 vulnerability categories maps to a set of CWEs. However, the number 1 CWE in the “CWE Top 25” (CWE-787) doesn’t appear at all in any OWASP Top 10 category. Describe why that is in a few sentences.</p></li>
+<li><p>For this question, you are to investigate a specific CVE and find out as much information as you can. To determine what CVE you are investigating, see the list below and use the CVE that corresponds to the first letter of your last (family) name.</p>
+<p>Start with the NVD entry to get the basic information, and then use a combination of that information and what you can find via web searches to describe: What software package contains the vulnerability, what that software does, what language the software is written in, and what type of weakness is involved (i.e., which CWE). Describe as best as you can what the potential impact of this is, using the CVSS and other information as a guide. As much as you can determine, explain where data to trigger the vulnerability comes from (so where an attacker would be): over the network, by sending a malicious file/attachment, or something else. Finally, can you find an exploit or proof-of-concept for this vulnerability, either directly in the NVD references or elsewhere?</p>
+<ul>
+<li><p>Last name starting with A-B: CVE-2019-20788</p></li>
+<li><p>Last name starting with C-H: CVE-2020-0452</p></li>
+<li><p>Last name starting with I-K: CVE-2021-3502</p></li>
+<li><p>Last name starting with L-Z: CVE-2021-44790</p></li>
+</ul></li>
+<li><p>While classifications in the NVD are generally reliable, the information isn’t perfect. For example, CVE-2020-6061 is currently shown as CWE-787 (Out-of-bounds Write). However, that’s not accurate. Explore the references in the NVD entry to find a description of the vulnerability, and study that to understand what the problem is. Then explain it (briefly!) in your answer, and describe a CWE that accurately describes the weakness (there’s a different CWE in the “Top 25” that fits). [<em>Instructor’s note: I have submitted a correction request for this, so it might actually be fixed by the time you answer this question. If so, that gives away the correct CWE, but still answer the rest of the question - explain why this is the correct CWE, but CWE-787 is not.</em>]</p></li>
+<li><p>In the following code, function <code>f</code> is called with some secret value that the user is not supposed to know, and function <code>f</code> calls function <code>g</code> to do something seemingly unrelated in a function that does not have the secret value. If you don’t have much C background, the <code>scanf</code> function, used like this, just reads an integer value from the user – just like the Java <code>Scanner</code> class method <code>nextInt()</code> does. This code does have a serious vulnerability. Describe what it is, and how it could be exploited by an attacker. This type of weakness is in the CWE Top 25 list, and is obvious from the name of the CWE. Which CWE is it?</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb1-1" title="1"><span class="dt">void</span> g(<span class="dt">void</span>) {</a>
+<a class="sourceLine" id="cb1-2" title="2">    <span class="dt">int</span> digits[] = { <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">9</span>, <span class="dv">2</span>, <span class="dv">6</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">5</span> };</a>
+<a class="sourceLine" id="cb1-3" title="3">    <span class="dt">int</span> pos;</a>
+<a class="sourceLine" id="cb1-4" title="4">    printf(<span class="st">&quot;What digit do you want? &quot;</span>);</a>
+<a class="sourceLine" id="cb1-5" title="5">    scanf(<span class="st">&quot;%d&quot;</span>, &amp;pos);</a>
+<a class="sourceLine" id="cb1-6" title="6">    printf(<span class="st">&quot;That digit is: %d</span><span class="sc">\n</span><span class="st">&quot;</span>, digits[pos]);</a>
+<a class="sourceLine" id="cb1-7" title="7">}</a>
+<a class="sourceLine" id="cb1-8" title="8"></a>
+<a class="sourceLine" id="cb1-9" title="9"><span class="dt">void</span> f(<span class="dt">int</span> v) {</a>
+<a class="sourceLine" id="cb1-10" title="10">    <span class="dt">int</span> secret_value = v;</a>
+<a class="sourceLine" id="cb1-11" title="11">    g();</a>
+<a class="sourceLine" id="cb1-12" title="12">    <span class="co">// more code that uses the secret value...</span></a>
+<a class="sourceLine" id="cb1-13" title="13">}</a></code></pre></div></li>
+</ol>
+<p> </p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

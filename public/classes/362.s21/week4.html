@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 362 - Spring 2021 - Week 3 Activities</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../css/class_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+        <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark uncg-navbar fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="https://www.uncg.edu/">
+          <img class="collapse navbar-collapse" src="../img/uncg_class.png" alt="UNC Greensboro">
+          <img class="navbar-toggler" src="../img/uncg_mobile.png" alt="UNCG">
+        </a>
+        <div class="navbar-brand d-flex flex-column text-left"
+	     style="line-height: 1.2;">
+          <span>CSC 362</span>
+          <span class="small collapse navbar-collapse"><em>System Programming</em></span>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link " href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="syllabus.html">Syllabus</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="schedule.html">Schedule</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="http://cs241.cs.illinois.edu/coursebook/index.html">Coursebook</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://uncg.instructure.com/">Canvas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- Page Content -->
+    <div class="container">
+   
+        <h2 id="csc-362-spring-2021-week-3-activities">CSC 362 – Spring 2021 – Week 3 Activities</h2>
+<h4 id="for-students-to-do-before-tuesday">For students to do before Tuesday</h4>
+<p>Reading…</p>
+<h4 id="tuesday-material">Tuesday Material</h4>
+<p>In class:</p>
+<p>Slide and status update first, but then straight to demos to do ones missed last time.</p>
+<p>First talk briefly about testing and incremental development. Show input loop and all that has to work correctly is the input and the push (which was done in class). - you’ve got to have a plan for testing and debugging. should never contact me with just an “it doesn’t work” statement - tell me what you tried, what you expected to see, and what you saw. - sense of accomplishment if nothing else! - and remember - only output what is asked for! It’s a specification, not a suggestion!</p>
+<p>Didn’t do later demos on Thursday: I/O * example3a vs example3b with “time” (use an 8MB file) * example3c for line buffering of printf Example 4: Error handling * Add errno (remember to include errno.h) - good for compare, not understandable * Then print using strerror(errno) (include string.h) * Finally print with perror(“Opening my file”);</p>
+<p>Didn’t cover from last week’s list: - keywords: const, enum, extern, goto, static - void * and auto-casting - preprocessor for define (const and macro) and ifdef - header files and multi-file programs - fn prototypes - role of makefiles</p>
+<p>Common bugs - copying ptrs instead of pted to; quitting before NUL copied. - double frees [ first is actually use-after-free ] - returning ptr to local var - insufficient memory allocation - esp using size of ptr insted of ptd-to - buffer overflow/underflow - not allocating NUL char space (need strlen(s)+1 bytes) - uninitialized variables (or assuming will be zeroed Logic and program flow mistakes - equal vs equality (tip: constants first) [note how not a prob in Java] - undeclared or incorrectly protyped functions - extra semicolons (kills body of loop)</p>
+<p>** Check questions/exercises at end</p>
+<p>[gdb and compiler flags - next week]</p>
+<p>[Text vs binary data and Base64; xxd and strings] [bit manipulation - masks, etc.] [gcc vs clang vs …; Talk a little about Rust]</p>
+<p>Section 14.2: “Security in C Programs”</p>
+<h4 id="tuesday-in-class-activities">Tuesday In-Class Activities</h4>
+<p>Stuff</p>
+<h4 id="for-students-to-do-before-thursday">For students to do before Thursday</h4>
+<p>???</p>
+<h4 id="thursday-material">Thursday Material</h4>
+<p>Reminders: Accept the class invitation! If not, you can’t see example code repos (or shouldn’t be able to…)</p>
+<p>Tuesday: Covered multi-file and preprocessor. Did not go through application. Also skipped the “Common C Errors” slide. Need to cover those on Thurs.</p>
+<p>Topics for Thurs:</p>
+<p>Security in C programs:</p>
+<p>Stack smashing - buffer overflow ex using strcpy - dangers - strncpy tries to fix, but does a bad job (discuss) - strlcpy is better, but only in bsd-compat libraries - stack smashing can wait until later - prob security class A bogus explanation of spectre OS security - permissions (we talked about) - ASLR and stack protectors - DEP (write xor execute) Valgrind - example detecting memory leak (stack) ** Need to install! use “sudo apt install valgrind” - Basic run, but book suggests “–leak-check=full –show-leak-kinds=all” - Note checks heap accesses by hooking malloc/free - no stack errs - Heap out of bounds and stack out of bounds - ASAN? GDB - Use of -g flag - breakpoints - note starting gdb and “start” - avoid programatic breakpoints + and conditional “break .. if …” - examining variables - mention getting down to the register/assembly level but don’t dwell</p>
+<h4 id="thursday-in-class-activities">Thursday In-Class Activities</h4>
+<p>??</p>
+<h4 id="full-assignment-due-next-tuesday">Full Assignment – due next Tuesday</h4>
+<p>Brief instructions for installing valgrind</p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

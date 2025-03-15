@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 485/685 - Fall 2023 - Research Related Activities</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../css/class_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+        <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark uncg-navbar fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="https://www.uncg.edu/">
+          <img class="collapse navbar-collapse" src="../img/uncg_class.png" alt="UNC Greensboro">
+          <img class="navbar-toggler" src="../img/uncg_mobile.png" alt="UNCG">
+        </a>
+        <div class="navbar-brand d-flex flex-column text-left"
+	     style="line-height: 1.2;">
+          <span>CSC 485/685</span>
+          <span class="small collapse navbar-collapse"><em>Modern Cryptography</em></span>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link " href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="syllabus.html">Syllabus</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="schedule.html">Schedule</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="practice.html">Practice</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="assignments.html">Assignments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" target="_blank" href="https://joyofcryptography.com">Textbook</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://uncg.instructure.com/">Canvas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- Page Content -->
+    <div class="container">
+   
+        <h2 id="csc-485685---fall-2023---research-related-activities">CSC 485/685 - Fall 2023 - Research Related Activities</h2>
+<p>Research activities are divided into two parts: single paper reviews with provided papers, and a self-directed research paper on a topic of your choice. For general background into standards and practice of research in computer security, see the <a href="https://www.uncg.edu/cmp/faculty/srtate/580.s18/research.php">Research in Computer Science and Computer Security</a> overview.</p>
+<p>In cryptography, current cutting-edge papers often require significant experience and mathematical knowledge. Because of this, our primary focus will be on some foundational papers and concepts rather than what is cutting-edge in 2023.</p>
+<h3 id="single-paper-reviews-oct-2-oct-17">Single Paper Reviews (Oct 2 – Oct 17)</h3>
+<p>Because of a late start on these assignments, we will only have one paper review before the start of the project.</p>
+<p>For part of this course, you will be given research papers to read and review. In general, you will be given 2 weeks to read these papers and consider the results, and write a 1-2 page summary of each paper.</p>
+<p>In your review, you should (briefly!) address the following issues:</p>
+<ul>
+<li>What is the paper’s main result and contribution?</li>
+<li>Does the paper sufficiently support the conclusions?</li>
+<li>What new did you learn from this paper?</li>
+<li>What problems or questions are left unsolved (“open problems”)?</li>
+<li>Are there additional directions for related future research that you can think of?</li>
+<li>Identify a paper or two that would allow an interested person to explore this topic further (these can either be key references from the paper itself, or can be results of searches through research databases or the web).</li>
+</ul>
+<p>These points should be clearly woven into a narrative report – don’t make a bullet list or answer these as if they were individual questions! In your review, remember that everything you write should be your own words, so don’t copy any text (including conclusions) from the paper.</p>
+<h5 id="assigned-papers">Assigned Papers</h5>
+<ol type="1">
+<li><p><strong>Report due Tuesday, Oct 17:</strong> A. Fiat and A. Shamir. “How to Prove Yourself: Practical Solutions to Identification and Signature Problems,” <em>1986 Conference on Advances in Cryptology (CRYPTO)</em>, pp. 186–194, doi:<a href="https://doi.org/10.1007%2F3-540-47721-7_12">10.1007/3-540-47721-7_12</a>.</p>
+<p><em>Notes: This is a classic paper that has driven, directly and indirectly, a lot of modern cryptographic systems and the general idea is now referred to as the “Fiat-Shamir heuristic.” It’s a great example of how people started thinking about proof systems and zero-knowledge when these concepts were first being developed, with this paper coming just one year after the paper that formalized the notion of a zero-knowledge proof. The math isn’t deep, and the only thing you have to really understand is the notion of a quadratic residue with an RSA-style composite modulus. The basic definition of quadratic residues is at the bottom of page 257 (Chapter 14) in our textbook, and a little bit more detail can be found on slides 3-7 of <a href="https://www.cs.purdue.edu/homes/ninghui/courses/555_Spring12/handouts/555_Spring12_topic20.pdf">these slides from Purdue</a>.</em></p></li>
+</ol>
+<h3 id="project-research-component-oct-17-dec-5">Project Research Component (Oct 17 – Dec 5)</h3>
+<p>For this part, you are to select a cryptography topic that you are interested in that goes beyond the scope of the class, and has some relevance to current cryptography research (some remaining open problems, for example). You should locate research papers to read to learn that topic (basics as well as current research), and then write a paper summarizing your topic and the current state with regard to research. Your sources should be research-level (peer reviewed) papers, but do not need to be the “pure research” papers that initially described breakthroughs/ideas – using survey papers or “Systematization of Knowledge” (SoK) papers is perfectly fine, but they should be papers that have gone through peer review for a respected journal, conference, or book, and not just random things you find on the Internet.</p>
+<p>If at any point you are uncertain about what is expected, or if you would like some guidance, please contact me – don’t just make guesses about what you should do! The major “project milestones” are explained below.</p>
+<ul>
+<li><p><strong>Topic selection (due Tuesday, Oct 24)</strong>: Submit a basic description of your project topic in Canvas for this part. All I <em>need</em> is a very brief (couple of sentences) description of your project research component, but if you want to provide more information then I can give you feedback on that. I will hand out a list of potential projects in class, but you are not restricted to those topics.</p></li>
+<li><p><strong>Progress report (due Tuesday, Nov 14)</strong>: By the time of the progress report your project should be pretty well investigated, meaning you’ve collected and read the main reference papers, and thought through what you’re going to write about in your report. You should turn in a progress report that contains the introduction section to your project report (this should describe the topic you’re studying at a high level and describe what you will be giving details on), as well as an outline of your report and a list of bibliographic references that you plan on using. You need at least two solid references (peer-reviewed conference or journal papers). Make sure you use appropriate citation styles (including full conference/journal names, dates, and page numbers).</p>
+<p>The progress report is graded, and counts for 20% of your overall project grade. However, the most important part of the progress report is that I will provide comments and suggestions in Canvas soon after you submit it. This is where I tell you if you are going in the right direction, and give suggestions for things you should include for a good final report. You can turn in your progress report at any point, and I will provide feedback promptly. You are encouraged to turn in your progress report before the deadline so you can get early feedback on the direction you are taking!</p></li>
+<li><p><strong>Final report (due Thursday, Dec 5, 7:00 PM):</strong> Your final report is due at the scheduled final exam time.</p></li>
+</ul>
+<h5 id="final-notes">Final Notes</h5>
+<p>This is intended to be a computer <em>science</em> oriented project (emphasis on the <em>science</em>), not a technology description. A topic which describes a product or system but without any significant underlying research question is not appropriate. For example, describing a protocol like TLS isn’t appropriate because it’s a technology description, and not a research question. However, there are certainly topics that delve into research questions related to TLS, even some <a href="https://www.usenix.org/conference/usenixsecurity23/presentation/hebrok">very recent papers</a>.</p>
+<p>Technical depth is important. Formulas, theorems, proofs, and analysis are certainly important and should be included as appropriate. As described above, there should be some current research questions related to your topic, so it’s important to think about (and write about) what questions are left unanswered by the current research that should be investigated (“open problems”). As for the length of the paper, something around 10 pages (11 or 12 point font, single spaced) should be enough to cover the important parts. There’s no need to try to write about everything that’s out there related to your topic.</p>
+<p>Remember that the writing should be entirely your own – it is not acceptable to copy text from a paper or the web. My general advice to people is this: Investigate and read as much about the topic as you can until you really understand it, taking some light notes. Then you should know the topic well enough to put aside all your references, and do the writing <em>without looking</em> at the original material. That ensures that the writing is coming from you and not the reference material.</p>
+<p> </p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

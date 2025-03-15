@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 454/654 - Spring 2021 - Assignment 5 - Due April 13, 2021</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../css/class_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+        <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark uncg-navbar fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="https://www.uncg.edu/">
+          <img class="collapse navbar-collapse" src="../img/uncg_class.png" alt="UNC Greensboro">
+          <img class="navbar-toggler" src="../img/uncg_mobile.png" alt="UNCG">
+        </a>
+        <div class="navbar-brand d-flex flex-column text-left"
+	     style="line-height: 1.2;">
+          <span>CSC 454/654</span>
+          <span class="small collapse navbar-collapse"><em>Algorithm Analysis and Design</em></span>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link " href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="syllabus.html">Syllabus</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="schedule.html">Schedule</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="assignments.html">Assignments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://uncg.instructure.com/">Canvas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- Page Content -->
+    <div class="container">
+   
+        <h2 id="assignment-5---due-april-13-2021">Assignment 5 - Due April 13, 2021</h2>
+<p>Notice that there are two opportunities for extra credit with this assignment: Problem 4c and handling the “large” version of the programming challenge (Problem 6). Each of those can add up to 10 points of extra credit, so it’s possible to make a 120 (out of 100) on this assignment.</p>
+<ol type="1">
+<li><p>(15 points) Perform the Floyd-Warshall algorithm on the weighted, directed graph below. Show the matrix <span class="math inline">\(D^{(k)}\)</span> that results for each iteration of the outer loop.</p>
+<p><img src="FW-Graph.png" /></p></li>
+<li><p>(20 points) You are given a graph <span class="math inline">\(G=(V,E)\)</span> with weight function <span class="math inline">\(w:E\rightarrow\mathbb{R}\)</span>. While individual edge weights may be negative, you are guaranteed that there are no negative-weight cycles. You are also given a spanning tree <span class="math inline">\(T=(V,E&#39;)\)</span> (where <span class="math inline">\(E&#39;\subseteq E\)</span>), and you want to verify whether <span class="math inline">\(T\)</span> is a shortest path tree for the weighted graph.</p>
+<ol type="a">
+<li><p>Give a linear time (i.e., time <span class="math inline">\(O(V+E)\)</span>) algorithm for this problem. (<em>Hint: Think carefully about why Bellman-Ford finds shortest path distances and a shortest path tree – one possible solution to this problem gives an algorithm that is structured in the same way as the Bellman-Ford proof of correctness.</em>)</p></li>
+<li><p>Analyze the running time of your algorithm.</p></li>
+<li><p>Prove that your algorithm is correct. To do this, you can use any of the relaxation properties listed at the top of page 650. These are explored in detail in Section 24.5, but you can just use them as true statements (you don’t need to prove them).</p></li>
+</ol></li>
+<li><p>(15 points) The Hamiltonian cycle problem is used as an ongoing example throughout Chapter 34 in the textbook. Any graph can be turned into a Hamiltonian graph by adding edges: if nothing else, you could add <em>all</em> possible edges and turn it into a complete graph. A more interesting question is this: What is the <em>minimum</em> number edges that need to be added to make a graph Hamiltonian? We will call this the HAM-EXTEND-SIZE problem, and since it involves computing a size (a number) it is not a decision problem. Here’s how we define the relevant decision problem/language:</p>
+<p>HAM-EXTEND <span class="math inline">\(=\{\langle G=(V,E),k\rangle :\)</span> There exists a set <span class="math inline">\(E&#39;\)</span> of edges such that <span class="math inline">\(|E&#39;|\leq k\)</span> and <span class="math inline">\(G&#39;=(V,E\cup E&#39;)\)</span> is Hamiltonian <span class="math inline">\(\}\)</span></p>
+<ol type="a">
+<li><p>Show that if HAM-EXTEND <span class="math inline">\(\in P\)</span> then there is a polynomial-time algorithm for HAM-EXTEND-SIZE.</p></li>
+<li><p>Show that if HAM-EXTEND <span class="math inline">\(\in P\)</span> then there is a polynomial-time algorithm to compute an actual minimum-size set of edges <span class="math inline">\(E&#39;\)</span> that will turn an input graph <span class="math inline">\(G\)</span> into a Hamiltonian graph. Your solution can be based on either a polynomial-time algorithm for the decision problem, or you can use the polynomial-time algorithm you made in part (a), or both!</p></li>
+</ol></li>
+<li><p>(15 points for parts a and b) Continuing in our theme of using algorithms in a life of crime, consider the “three thieves” problem: Three thieves have robbed a warehouse, and want to split their goods evenly between the three of them. Your job is to decide if a perfect 3-way split is possible. The input to this problem is a sequence of item values, <span class="math inline">\(\langle v_1, v_2, \ldots, v_n\rangle\)</span>.</p>
+<ol type="a">
+<li><p>Formalize this problem as a language.</p></li>
+<li><p>Show that your language is in <span class="math inline">\(NP\)</span>.</p></li>
+<li><p>(<em>For up to 10 points of extra credit – this is trickier than it seems!</em>) Show that if your language is in <span class="math inline">\(P\)</span>, then there is a polynomial time algorithm that produces an even division of the goods, or says that it’s not possible.</p></li>
+</ol></li>
+<li><p>(25 points) One of the fundamental operations used in cryptography is called a “cryptographic hash function” and many of those are built using a “compression function” which takes <span class="math inline">\(n\)</span> bits as input and produces <span class="math inline">\(m\)</span> bits (for some <span class="math inline">\(m&lt;n\)</span>) as output. So mathematically, a compression function is a function <span class="math inline">\(f:\{0,1\}^n\rightarrow\{0,1\}^m\)</span>. For the hash function to be secure, the compression function must be <em>one-way</em>: While it’s easy to compute the function in the forward direction (i.e., computing <span class="math inline">\(y=h(x)\)</span>), it is impractical to take a <span class="math inline">\(y\)</span> and compute an <span class="math inline">\(x\)</span> such that <span class="math inline">\(h(x)=y\)</span> (<span class="math inline">\(x\)</span> is called a “preimage of <span class="math inline">\(y\)</span>”).</p>
+<p>For something concrete to think about, the security of Bitcoin relies on a hash function named SHA-256, which uses a compression function with <span class="math inline">\(n=768\)</span> and <span class="math inline">\(m=256\)</span>. If you could create a fast algorithm to take a <span class="math inline">\(256\)</span>-bit value <span class="math inline">\(y\)</span> and compute a <span class="math inline">\(768\)</span>-bit preimage <span class="math inline">\(x\)</span> such that <span class="math inline">\(f(x)=y\)</span> then you could be the most successful Bitcoin miner on the planet, and be fabulously wealthy in a short amount of time (you could also compromise other parts and actually steal money, but we’ll assume you have more integrity than that!). Beyond solving this problem directly, we’ll see that a problem closely tied to computing preimages is in <span class="math inline">\(NP\)</span>, so if you could find an efficient algorithm for <em>any</em> NP-complete problem (including the traveling salesman problem, subset sum, the knapsack problem, longest simple path, etc.) then you could solve this problem and become super rich. In this problem, you’ll see why this is so (some parts of this problem are simplified a little bit, but the “real problem” works the same way – just a little messier).</p>
+<ol type="a">
+<li><p>A binary string <span class="math inline">\(p\)</span> is “extendable” to some property if we can find another binary string <span class="math inline">\(e\)</span> such that <span class="math inline">\(p\parallel e\)</span> has the property (note that <span class="math inline">\(\parallel\)</span> is the standard mathematical notation for string concatenation). We call <span class="math inline">\(p\)</span> the “prefix” and <span class="math inline">\(e\)</span> the “extension”, and we define a language for prefixes that are extendable to a compression function preimage:<br />
+</p>
+<p>EXTENDABLE <span class="math inline">\(=\{\langle y,p\rangle : y\in\{0,1\}^m\)</span>, <span class="math inline">\(p\in\{0,1\}^k\)</span>, and there exists a string <span class="math inline">\(e\in\{0,1\}^{n-k}\)</span> such that <span class="math inline">\(f(p\parallel e)=y\}\)</span>.</p>
+<p>Prove that EXTENDABLE <span class="math inline">\(\in NP\)</span> (note that it’s not important how the compression function <span class="math inline">\(f\)</span> works – you just know that it exists and can be computed in polynomial time). <em>Note: While specific values for <span class="math inline">\(n\)</span> and <span class="math inline">\(m\)</span> were given above for SHA-256, do <strong>not</strong> use specific numbers when writing a general proof! <span class="math inline">\(n\)</span> and <span class="math inline">\(m\)</span> must remain generic variables.</em></p></li>
+<li><p>Prove that if EXTENDABLE <span class="math inline">\(\in P\)</span> then there is a polynomial time algorithm for computing a preimage (in other words, given input <span class="math inline">\(y\)</span> the algorithm computes <span class="math inline">\(x\)</span> such that <span class="math inline">\(f(x)=y\)</span>).</p></li>
+<li><p>Clearly write out what the last two parts imply as far as the complexity of computing preimages as it relates to the possibility that <span class="math inline">\(P=NP\)</span>.</p></li>
+<li><p>Let’s see how powerful this is in practice. Successful mining with current Bitcoin parameters is roughly the same as solving the above problem with <span class="math inline">\(n=768\)</span> and <span class="math inline">\(m=76\)</span>. You can buy special-purpose hardware that performs around <span class="math inline">\(2^{47}\)</span> hashes per second, so the average time needed to solve this puzzle on one piece of special-purpose hardware is approximately <span class="math inline">\(2^{76}/2^{47}=2^{29}\)</span> seconds, or around 17 years. To successfully mine Bitcoin you need to solve this problem in 10 minutes or less, so clearly you have to be either really lucky or have a <em>lot</em> of hardware at your disposal if you plan to be successful as a Bitcoin miner. These days, Bitcoin mining is performed by “pools” of people who combine resources – for example, “F2Pool” has enough participants to run at a rate of about 250,000 times the rate of one special-purpose machine, and so can perform about <span class="math inline">\(2^{65}\)</span> hashes per second.</p>
+<p>What if we found an algorithm for EXTENDABLE that solves the decision problem in a tenth of a second with <span class="math inline">\(n=768\)</span> and <span class="math inline">\(m=76\)</span>? Calculate how long it would take to find a preimage using your algorithm from part (b).</p></li>
+</ol></li>
+<li><p>(<em>Programming challenge</em>: up to 20 points) The <em>longest</em> path through a dependency graph (or a prerequisite graph) is an important measure: this lower-bounds the amount of time it takes to complete all tasks. Looking at the prerequisite chart for UNCG’s undergraduate computer science classes, there is a prerequisite chain of length 5 (CSC 130, CSC 230, CSC 330, CSC 340, CSC 462) which means that it is impossible to complete our undergraduate program in fewer than 5 semesters. You are to write a program that calculates a longest path in a prerequisite chart.</p>
+<p>Input to the program is provided via standard input, as our other programs have done. The input consists an integer <span class="math inline">\(n\geq 1\)</span> that says how many prerequisite pairs there are, followed by a list of prerequisites one-per-line, with the more advanced course followed by a single prerequisite. Each class is represented by a string with no spaces, but there is no list of classes – you discover them as you read the prerequisites. For example, the prerequisites for our undergraduate program would be given as follows:</p>
+<pre><code>14
+CSC230 CSC130
+CSC250 CSC130
+CSC261 CSC130
+CSC330 CSC230
+CSC330 CSC250
+CSC339 CSC330
+CSC340 CSC330
+CSC350 CSC250
+CSC362 CSC230
+CSC362 CSC261
+CSC452 CSC350
+CSC462 CSC340
+CSC462 CSC362
+CSC471 CSC330</code></pre>
+<p>Your program should calculate a longest path through this prerequisite graph, and print the result with one class per line. If there are multiple longest paths, it doesn’t matter which one you output – any correct solution will be accepted. One possible correct output for the sample input given above could be:</p>
+<pre><code>CSC130
+CSC230
+CSC330
+CSC340
+CSC462</code></pre>
+<p>There’s another correct solution where “CSC230” is replaced with “CSC250”.</p>
+<p><em>Small version:</em> (10 points) Your program must be able to solve this problem in under 5 seconds with up to 10,000 different tasks, and the longest path has length at most 900.</p>
+<p><em>Large version:</em> (10 more points) Your program must be able to solve this problem in under 5 seconds when there are as many as 100,000 different tasks (“classes”), where the longest path could contain all 100,000 different tasks. (<em>Hint: A key challenge with large problems is dealing with limits on the stack size, which limits the depth of any recursion. The default Python stack can handle around 1000 calls, while the default Java stack can handle a little less than 8000.</em>)</p></li>
+</ol>
+<p> </p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

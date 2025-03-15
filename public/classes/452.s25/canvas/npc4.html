@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>NPC info</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://home.uncg.edu/cmp/faculty/srtate/452.s25/npc4.html">View original, outside canvas</a> ]
+   
+        <h2 id="how-to-check-and-grade-np-completeness-proofs">How to check and grade NP-completeness proofs</h2>
+<p>On this page I’ll go through how I would grade a student-submitted NP-completeness proof. Let’s say it’s a 15 point problem, and so I’ll allocate points based on the basic proof components that we’ve discussed. Here’s a breakdown – go back through the example proof and see if you can identify the specific parts of the proof that correspond to these items:</p>
+<p><strong>1 Point:</strong> Are the parts of the proof easily identified or introduced (typically individual paragraphs), and is the proof properly concluded?</p>
+<p><strong>4 Points:</strong> Proof that the language is in NP. Of these 4 points, let’s break it down like this:</p>
+<ul>
+<li><p><em>2 points:</em> Does the proof clearly state/define what the certificate is? Does it explain (or is it clear) that such a certificate exists if and only if the input is in the language?</p></li>
+<li><p><em>2 points:</em> Does the proof clearly state what the verifier does, and why it’s polynomial time?</p></li>
+</ul>
+<p><strong>4 points:</strong> Definition/description of the reduction function. This part needs to identify a known NP-complete problem, and give a procedure for converting an input designed for that language into an input designed for the language we’re proving is NP-complete.</p>
+<ul>
+<li><p><em>Overarching issue:</em> Is the reduction done in the correct direction? It must covert an input for the known NP-complete problem into an input for the problem we’re interested in. If the proof starts with an input for <em>our</em> problem, then it’s backwards and pretty much nothing in the rest of the proof is useful.</p></li>
+<li><p><em>2 points:</em> Is the reduction function clearly defined? It cannot make any assumptions about the input at all (that it is or is not in the language, for instance).</p></li>
+<li><p><em>2 points:</em> Is it justified (or clear and just stated) that the reduction can be computed in polynomial time?</p></li>
+</ul>
+<p><strong>3 points:</strong> The “if” direction of the NP-completeness proof. In other words, if <span class="math inline">\(KNPC\)</span> is the known NP-complete problem we’re using, and <span class="math inline">\(L\)</span> is the language we’re trying to prove, this is the part of the proof that shows that “if <span class="math inline">\(x\in KNPC\)</span> then <span class="math inline">\(f(x)\in L\)</span>”.</p>
+<p><strong>3 points:</strong> The “only if” direction of the NP-completeness proof. In other words, this is the part of the proof that shows that “if <span class="math inline">\(f(x)\in L\)</span> then <span class="math inline">\(x\in KNPC\)</span>”.</p>
+<p>Try taking one of your proofs and going through these points, and grade your work. Did you get everything? Does this identify areas you need to improve?</p>
+<p>Next we’ll look at some examples of common errors students make in NP-completeness proofs: <a href="npc5.html">next</a></p>
+<p> </p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

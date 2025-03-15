@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 362 - System Programming - Fall 2021</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../css/class_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+        <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark uncg-navbar fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="https://www.uncg.edu/">
+          <img class="collapse navbar-collapse" src="../img/uncg_class.png" alt="UNC Greensboro">
+          <img class="navbar-toggler" src="../img/uncg_mobile.png" alt="UNCG">
+        </a>
+        <div class="navbar-brand d-flex flex-column text-left"
+	     style="line-height: 1.2;">
+          <span>CSC 362</span>
+          <span class="small collapse navbar-collapse"><em>System Programming</em></span>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="syllabus.html">Syllabus</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="schedule.html">Schedule</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="http://cs241.cs.illinois.edu/coursebook/index.html">Coursebook</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://uncg.instructure.com/">Canvas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- Page Content -->
+    <div class="container">
+   
+              <h2 class="mt-5 mb-0">CSC 362-01: System Programming</h2>
+      <h5 class=""><em>Fall 2021</em></h5>
+      <a href="https://compsci.uncg.edu/">Department of Computer Science</a><br/>
+      <a href="https://www.uncg.edu/">UNC Greensboro</a><br/>
+      Class Meetings: Tues/Thurs 11:00-12:15, Online (Zoom link in Canvas)
+
+      <h3 class="mt-4">Instructor</h3>
+
+      <div class="ml-4">
+      <a href="https://www.uncg.edu/cmp/faculty/srtate/index.html">Steve Tate</a><br/>
+      E-mail:
+      <script type="text/javascript">
+        var teststring = "utvcvgBwpei0gfw";
+        for (i=0;i<teststring.length;i++) {
+          document.write(String.fromCharCode(teststring.charCodeAt(i)-2));
+        }
+      </script>
+      <noscript type="text/javascript">
+        <img src="../pics/email.png" />
+      </noscript><br/>
+      Office: Petty 157<br/>
+      Office Hours: Tues/Thurs 1:45-3:15 (or by appointment)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <i>Office hours in person or through Zoom &ndash; see Canvas for
+      Zoom link or email for more information</i><br/>
+      </div>
+      <h3 class="mt-4">Overview</h3>
+
+      
+<p class="ml-4">Catalog description: System programming with emphasis
+on processes, memory management, multithreaded programming,
+synchronization and deadlocks, interprocess communication, parallel
+and distributed computing, networking, files systems, security,
+signals, and virtualization containers.</p>
+<p class="ml-4">
+Longer Description: This class is a programming-focused class,
+exploring how programs interact with the operating system and use
+system and related services. As far as programming level, you can
+consider it as sitting between CSC 261 (hardware and assembly
+language) and CSC 130/230 (higher-level programming without hard
+connection to the underlying system). The class will use C for
+programming in a Linux environment, interacting with the system
+through Linux system calls, the standard C library, and support
+libraries such as pthreads. The class is heavy on specifics and
+concrete details, and light on theory/generality which will be covered
+in a later class (CSC 462 -- Principles of Operating Systems).</p>
+
+      <h3 class="mt-4">Fall 2021 Note</h3>
+
+<p class="ml-4">This semester, CSC 362 has separate on-line and
+face-to-face sections. This web page is for section 1 (CSC 362-01),
+the on-line section. See Genie for information on section 2 if you are
+looking for the face-to-face section.</p>
+
+<p class="ml-4">This online section has certain computing equipment
+requirements as well as policies and procedures for class attendance
+and office hours. See the <a href="syllabus.html">syllabus</a> for
+more information. </p>
+
+
+<p>&nbsp;</p>
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

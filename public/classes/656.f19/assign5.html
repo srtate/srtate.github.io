@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>Solo Assignment 5 -- Due Wednesday, December 4</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="../css/class_srtate.css" rel="stylesheet">
+
+  </head>
+
+
+  <body>
+
+        <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark uncg-navbar fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="https://www.uncg.edu/">
+          <img class="collapse navbar-collapse" src="../img/uncg_class.png" alt="UNC Greensboro">
+          <img class="navbar-toggler" src="../img/uncg_mobile.png" alt="UNCG">
+        </a>
+        <div class="navbar-brand d-flex flex-column text-left"
+	     style="line-height: 1.2;">
+          <span>CSC 656</span>
+          <span class="small collapse navbar-collapse"><em>Foundations of Computer Science</em></span>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link " href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="syllabus.html">Syllabus</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="schedule.html">Schedule</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="assignments.html">Assignments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://uncg.instructure.com/">Canvas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- Page Content -->
+    <div class="container">
+   
+        <h3 id="solo-assignment-5-due-wednesday-december-4-before-class">Solo Assignment 5 – Due Wednesday, December 4 (before class)</h3>
+<p>Remember that these problems are for individual work only (no collaboration).</p>
+<ol type="1">
+<li><p>Textbook, Problem 17.2<br />
+<em>These are meant to be quick probability derivations. Any explanation of your calculation should be at most one or two sentences.</em></p></li>
+<li><p>Textbook, Problem 18.16</p></li>
+<li><p>Textbook, Problem 19.7</p></li>
+<li><p>Textbook, Problem 19.18</p></li>
+</ol>
+<p><strong>Extra Credit</strong> (Up to 20 points – you don’t need to answer all parts to get some extra credit!)</p>
+<ol start="5" type="1">
+<li><p>When user passwords are saved in a database, the typical practice is that a <em>hash</em> of the password is stored rather than the password itself. That is, there is a function <span class="math inline"><em>H</em></span> that maps passwords into some set <span class="math inline"><em>S</em></span> of size <span class="math inline"><em>n</em></span>. For example, if <span class="math inline"><em>H</em></span> outputs a 64-bit value than <span class="math inline"><em>S</em></span> is the set of all 64-bit values, and <span class="math inline"><em>n</em> = |<em>S</em>| = 2<sup>64</sup></span> (this value is too small to be secure, but this is a foundations class and not a security class…). We will assume that if an input <span class="math inline"><em>x</em></span> is chosen randomly, then <span class="math inline"><em>H</em>(<em>x</em>)</span> is uniformly distributed over <span class="math inline"><em>S</em></span>. Our problem is this: Given a value <span class="math inline"><em>h</em> ∈ <em>S</em></span>, find an <span class="math inline"><em>x</em></span> such that <span class="math inline"><em>H</em>(<em>x</em>) = <em>h</em></span> (in other words, <span class="math inline"><em>x</em></span> has hash value <span class="math inline"><em>h</em></span>, so works as the password). In order to find such an <span class="math inline"><em>x</em></span>, we will pick a random value <span class="math inline"><em>x</em></span> and test whether <span class="math inline"><em>H</em>(<em>x</em>) = <em>h</em></span>, and repeat this until we find an <span class="math inline"><em>x</em></span> that works.</p>
+<ol type="a">
+<li><p>Let <span class="math inline"><em>U</em></span> be a random variable which denotes the number of distinct hash values we see in this process. For a really small example, if <span class="math inline"><em>S</em> = {0, 1, 2, 3}</span>, and we are looking for something with hash value 2 and compute the sequence of hash values <span class="math inline">1, 3, 3, 1, 2</span> then <span class="math inline"><em>U</em> = 3</span>. For arbitrary <span class="math inline"><em>S</em></span> of size <span class="math inline"><em>n</em></span>, and some value <span class="math inline"><em>k</em></span>, what is <span class="math inline"><em>P</em><em>r</em>[<em>U</em> = <em>k</em>]</span>?</p></li>
+<li><p>What is <span class="math inline"><em>E</em>[<em>U</em>]</span>?</p></li>
+<li><p>Let <span class="math inline"><em>X</em><sub><em>i</em></sub></span> be a random variable that represents the number of queries that must be made to see a new value (one that hasn’t appeared before) after the <span class="math inline"><em>i</em></span>th distinct value has been seen. What is <span class="math inline"><em>E</em>[<em>X</em><sub><em>i</em></sub>]</span>? (<em>Hint: Make sure you understand the coupon collector problem!</em>)</p></li>
+<li><p>Let <span class="math inline"><em>Q</em></span> be a random variable which denotes the total number of queries made by this algorithm. In the small example given in part (a), Q=5. Given that the value you are looking for is the <span class="math inline"><em>k</em></span>th distinct value seen by the algorithm, what is the expected value of <span class="math inline"><em>Q</em></span>? In other words, what is <span class="math inline"><em>E</em>[<em>Q</em>|<em>U</em> = <em>k</em>]</span>? You can leave this answer as a summation.</p></li>
+<li><p>What is <span class="math inline"><em>E</em>[<em>Q</em>]</span>? This answer should <em>not</em> contain a summation – it should be a simple (<em>very</em> simple!) formula.</p></li>
+<li><p>Let’s say that we ran this algorithm once, and remembered all values that have been seen in a large table. We are now given a new random value <span class="math inline"><em>h</em>′</span>, and asked to find a <span class="math inline"><em>y</em></span> such that <span class="math inline"><em>H</em>(<em>y</em>) = <em>h</em>′</span>. If we saw such a <span class="math inline"><em>y</em></span> already in the first execution of the algorithm, then we find this in our lookup table, and can produce <span class="math inline"><em>y</em></span> without having to make any queries to <span class="math inline"><em>H</em></span>. If we haven’t seen it before, then we have to continue searching like above. If we saw exactly <span class="math inline"><em>n</em>/2</span> distinct values the first time we ran the algorithm, what expected number of queries required to find such a <span class="math inline"><em>y</em></span>?</p></li>
+</ol></li>
+</ol>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

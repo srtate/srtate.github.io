@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>Assignment 3 -- Due Monday, March 3</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../css/class_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+        <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark uncg-navbar fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="https://www.uncg.edu/">
+          <img class="collapse navbar-collapse" src="../img/uncg_class.png" alt="UNC Greensboro">
+          <img class="navbar-toggler" src="../img/uncg_mobile.png" alt="UNCG">
+        </a>
+        <div class="navbar-brand d-flex flex-column text-left"
+	     style="line-height: 1.2;">
+          <span>CSC 481/681</span>
+          <span class="small collapse navbar-collapse"><em>Principles of Computer Security</em></span>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link " href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="syllabus.html">Syllabus</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="schedule.html">Schedule</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="assignments.html">Assignments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://uncg.instructure.com/">Canvas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- Page Content -->
+    <div class="container">
+   
+        <h3 id="assignment-3-due-monday-march-3">Assignment 3 – Due Monday, March 3</h3>
+<ol type="1">
+<li><p>Joe Crypto always loved playing the “guess which hand is holding a prize” game, so proposes the following guessing game: You can give him two files, containing whatever data you want them to contain, but with the restriction that they must be the same length. He will then pick one of them, encrypt it with a secret key, and then give you the resulting ciphertext. You have to guess which file he encrypted! Joe’s crypto knowledge isn’t so great, however, and he uses AES in ECB mode. How can you play this game so that you can always win? Be very specific, including a clear explanation of why your strategy allows you to win. (Hint: What is the main weakness of ECB mode, and how can you create a file that displays this weakness?)</p></li>
+<li><p>Solve “Question 3” from the <a href="formalmodels.html">Formal Models for Cryptography</a> reading. Analyze the probability/advantage properly – don’t just handwave around an informal description! Is this a negligible probability or not? Justify your answer!</p></li>
+<li><p>We discussed CTR mode in class with a diagram on the slides, and additional information (including formulas) is given at the end of Section 8.1 in the textbook. For this problem you are to show how CTR mode is malleable — remember from class that “malleable” means that an attacker can tamper with the ciphertext so that when the receiver decrypts the ciphertext there is some predictable change in the plaintext they recover.</p>
+<p>You <em>can</em> do this entirely on paper, but it’s easy to make mistakes so I’d recommend that you experiment with your ideas in your Labtainer VM to make sure you have the right idea. To edit the ciphertext file, I use the <code>hexedit</code> program – this is not included in the Labtainer VM, but can easily be installed using the command “<code>sudo   apt   install   hexedit</code>” (the password is <code>password123</code>). You should also brush up on basic exclusive-or properties that you learned in CSC 261.</p>
+<p>The following screenshot shows tampering with a ciphertext to get a predictable result (a malleability attack):</p>
+<p><img src="A3-MalleableCTR.png" /></p>
+<p>Here’s what this shows: The message “Send 1000 to Tate” is encrypted using AES with a 256-bit key in CTR mode, with the ciphertext saved to file <code>encr.dat</code>. The next command shows the file being decrypted, giving back the original plaintext. The next command shows a hexdump of the ciphertext file, so you can see what it looks like. Then I ran hexedit to change the ciphertext file, and after that the modified ciphertext decrypts to say “Send 9000 to Tate.” I just gained $8000!</p>
+<ol type="a">
+<li><p>Explain how this attack works – use the CTR-mode formulas to show what happens when a ciphertext byte is modified in a certain way, so that it decrypts with a predictable change. Justify that this works using properties of exclusive-or (XOR). For instance, we know that XOR is associative (so <span class="math inline">\((x\oplus y)\oplus z=x\oplus (y\oplus z)\)</span>), commutative (so <span class="math inline">\(x\oplus y=y\oplus x\)</span>), zero is the identity element (so <span class="math inline">\(x\oplus 0=x\)</span>), and every element is its own inverse (so <span class="math inline">\(x\oplus x=0\)</span>).</p></li>
+<li><p>Given the specific ciphertext shown in the screenshot above, which byte would you change, and to what, in order to get the results shown above.</p></li>
+</ol></li>
+<li><p>Complete the “file-deletion” labtainer exercise, including the lab report (which is submitted as part of the labtainer <code>.lab</code> file – make sure you save your report <strong>before</strong> you run the <code>stoplab</code> command). This labtainer explores some of the concepts regarding file deletion that we discuss in the “Physical Security” lecture. Note that the files in these labtainers are not just plain ASCII files, which they probably should be. They have (non-ASCII) quotation marks, which don’t appear that way when you do a hexdump (which only shows ASCII characters). If I could change the lab, I would, but I don’t control that.</p></li>
+</ol>
+<p> <br />
+</p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

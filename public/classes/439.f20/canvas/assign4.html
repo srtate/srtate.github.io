@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 439/639 - Fall 2020 - Assignment 4 -- Intermediate-Code Generation</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://www.uncg.edu/cmp/faculty/srtate/439.f20/assign4.html">View original, outside canvas</a> ]
+   
+        <h2 id="assignment-4-intermediate-code-generation-due-mon-nov-9">Assignment 4 – Intermediate-Code Generation – Due Mon, Nov 9</h2>
+<p>For this stage of the project, you should write code to process your syntax tree and output 3-address intermediate code. As this stage was developed I have decided to make a few simplifications to the requirements/LittleC language:</p>
+<ul>
+<li><p>You do not need to distinguish between module-level names and truly global names (i.e., <code>static</code> or <code>extern</code> on functions or “global” variable names). These are only useful for programs that are written in multiple source files and then linked together, which we will not be doing.</p></li>
+<li><p>You do not need to support initializing character arrays using string literals. While this isn’t too difficult for global arrays, it is a little tricky for local (stack-allocated) arrays.</p></li>
+</ul>
+<h3 id="intermediate-code-specification">Intermediate Code Specification</h3>
+<p>We will use intermediate code that is based on the three-address code defined in Section 6.2 of the textbook, with extensions to express data types/widths in some instructions and also in data types through name mangling. This way, the intermediate code output is self-contained, without any need to use the symbol table to interpret or further translate the intermediate code. We also add some directives to enable code generation. Your compiler’s internal representation of 3-address code can be anything you like, but there must be an <code>edu.uncg.csc439.icode.ICode</code> class that has a constructor that takes a <code>LCSyntaxTree</code> as its only argument, and contains a <code>toString</code> method that returns the intermediate code for the entire program represented by the syntax tree. A simulator is provided (see information below) that can run the program from this text representation, and that simulator will be used for testing correctness of your intermediate code generation.</p>
+<p>We make the following target architecture assumptions, to simplify our intermediate code: the <code>char</code> data type is 1 byte long, the <code>int</code> data type is 4 bytes long, and addresses (needed for array references) are also 4 bytes long. Data types must be stored aligned at a multiple of the data width (i.e., an <code>int</code> must be stored at an address that is a multiple of 4). Arrays are stored as a record containing first the length (number of elements) in the array, stored as a 4-byte integer, and then the array data itself. Thus, the width of a stored array <code>char c[N]</code> is <code>4+N</code>, and the width of a stored array <code>int x[N]</code> is <code>4+4*N</code>. Array references are just addresses (pointers to the beginning of the array record), so the width of an <code>int[]</code> variable is 4.</p>
+<p>Whenever a function is called, an activation record is created that includes three distinct areas of memory: One area for parameters, one area for local variables, and one area for temporary variables. The areas for parameters and local variables should be laid out linearly in memory: the first local variable is at offset 0 in the local variable area, and the offset of the second local variable is determined by the width of the first variable and alignment restrictions for the second variable. This continues for the third and subsequent variables. Note that storage allocated for a nested block can be reused outside of that block. Parameters are laid out in their area similarly, except the offset of every parameter must be a multiple of 4, regardless of its type (this follows from the fact that parameters will be pushed onto the stack, and you cannot push anything less than a word). Temporary variables are not laid out in memory at this stage, and simply have unique names. In the final stage of the compiler, you will generate code for a real CPU, and some temporaries will be stored in registers while others are in memory, so the location/offset of temporaries is not specified at this stage.</p>
+<h4 id="name-mangling">Name Mangling</h4>
+<p>In order for the intermediate code output to be fully self-contained, all names used in intermediate code include all necessary information about what kind of name it is (local variable, parameter, global variable, etc.), the width of any data it refers to (either 1 or 4), and an indication of its location in memory. For example, name <code>l4@8</code> refers to a local variable of width 4, that is located at offset 8 into the local variables address space. The full list of possible names is below, with examples of each:</p>
+<ul>
+<li><p>First character denotes type/area of memory for this symbol:</p>
+<ul>
+<li><code>g</code> means a global object (non-static function or file-level variable)</li>
+<li><code>m</code> means module-level object (static function or static variable) – note that use of this is optional for our project, and you can make all module-level objects global if you’d like</li>
+<li><code>l</code> means a local (non-static) variable in a function</li>
+<li><code>p</code> means a parameter</li>
+<li><code>t</code> means a temporary variable</li>
+<li><code>L</code> is used for labels on intermediate code lines</li>
+<li><code>S</code> is used for a string literal label</li>
+</ul></li>
+<li><p>The second character of a mangled name denotes the width of the object. This is 1 or 4 in most cases, although stored arrays use a <code>0</code> for the second character, and functions have an <code>f</code> as the second character. For labels on intermediate code lines (names that start with <code>L</code> or <code>S</code>), the second letter is not meaningful.</p></li>
+<li><p>The third character is a separator. This is typically <code>@</code> for variables that have offsets already computed (local variables and parameters), or <code>_</code> as a separator for unique names (temporaries and global/module names).</p></li>
+<li><p>The fourth and subsequent characters provide additional information. For local and parameter names, this gives the byte offset into that area of memory. For global and module-level variables, following the <code>_</code> is the sourcecode-specified name. Finally, for temporary variables, strings, and labels, this part just makes the name unique and is not meaningful otherwise.</p></li>
+</ul>
+<p><strong>Examples:</strong> Here are some examples to demonstrate the name mangling rules. You can also experiment with the supplied compiler to see how names are generated.</p>
+<ul>
+<li><code>p4@8</code> is a 4-byte parameter at offset 8 into the parameters block (i.e., the 3rd parameter)</li>
+<li><code>l1@12</code> is a 1-byte (char) local variable at offset 12 into local variables</li>
+<li><code>t4_12</code> is a 4-byte temporary variable (“12” is meaningless - just makes it unique)</li>
+<li><code>g4_myglobal</code> is a 4-byte global variable named <code>myglobal</code></li>
+<li><code>gf_main</code> is the name of the main function</li>
+</ul>
+<h4 id="extensions-to-support-multiple-widths">Extensions to support multiple widths</h4>
+<p>Most of the 3-address code instructions include a destination variable or some other operand that can be used (via the name mangling rules) to determine the type of the operands and operation – for example, an addition operation will have a destination that will indicate whether this is a 1-byte or 4-byte addition. In a few cases this is not possible, so we extend the 3-address instructions to indicate the width of the data involved.</p>
+<ul>
+<li>Rather than just <code>param</code> for a parameter, there are two different instructions: <code>param1</code> when passing a <code>char</code> value, and <code>param4</code> when passing a width 4 value (an <code>int</code> or an array reference).
+<ul>
+<li><strong>Also note:</strong> Like regular C, parameters should be evaluated from right to left in the parameter list. For example, when calling <code>f(3,7)</code>, you would first have “<code>param4 7</code>” and then “<code>param4 3</code>”.</li>
+</ul></li>
+</ul>
+<p>
+<ul>
+<li><p>Similarly, we have <code>return1</code> and <code>return4</code> instructions for returning values, and the simple <code>return</code> is used when returning from a <code>void</code> function.</p></li>
+<li><p>Casting uses special instructions to widen or narrow a data value. For example, if <code>c</code> is a <code>char</code> value then to cast it to an <code>int</code> variable <code>i</code> we use “<code>i = widen c</code>”. To cast the other way (<code>int</code> to <code>char</code>) we would use “<code>c = narrow i</code>”.</p></li>
+<li><p>Array indexing uses width-specific <code>ldidx</code> and <code>stidx</code> instructions.</p>
+<ul>
+<li><p>If <code>A</code> is an array reference for an array of <code>int</code> values, and you want to read value from index <code>i</code> and store it in variable <code>t4_12</code>, then you’d use “<code>t4_12 = A ldidx4 i</code>” (this is like “<code>t4_12=A[i]</code>” in the high-level language).</p></li>
+<li><p>To store a value <code>x</code> use “<code>A = i stidx4 x</code>” (this like “<code>A[i]=x</code>”).</p></li>
+<li><p>Note that in both cases, <code>A</code> must be an array reference, not the name or offset of a stored array. You should use the <code>&amp;</code> operation to take the address of a stored array before using an index operation. For example, if you declared global variable <code>buffer</code> using <code>char buffer[100]</code>, and you wanted to set the 3rd character (index 2) to the newline character (ASCII value 10), then your compiler should generate the following two lines of code:</p>
+<pre><code>   t4_3 = &amp; g0_buffer
+   t4_3 = 2 stidx1 10</code></pre></li>
+</ul></li>
+</ul>
+<h4 id="directives">Directives</h4>
+<p>Directives are special statements that don’t indicate specific operations to be performed, but are used for a variety of memory management purposes. All directives start with a period, and like any line of 3-address code they may be preceded by a label. The following is a complete list of all directives that can be in 3-address code:</p>
+<ul>
+<li><p><code>.fnStart</code><br />
+This directive is placed at the beginning of a function definition, and must include an integer parameter indicating how much space is needed for local variables. For example, a little C function named <code>calc</code> (name mangled to <code>gf_calc</code>) that has two integer local variables (requiring 8 bytes of memory) would have the following as its first line of intermediate code:</p>
+<pre><code>    gf_calc: .fnStart 8</code></pre></li>
+<li><p><code>.fnEnd</code><br />
+This directive marks the end of a function body.</p></li>
+<li><p><code>.dw</code> and <code>.db</code> define words and bytes of memory. These are followed by a comma separated list of values, where each value can optionally be followed by <code>#</code> and a repetition value. For example, “<code>.dw 1#7</code>” designates a sequence of 7 words that each have value 1. Values must be integer values. These directives may not occur inside a function definition (i.e., between a <code>.fnStart</code> and <code>.fnEnd</code>). This is important when a string literal is used inside a function: that string must be defined in array-format (length followed by contents), but output of the definition must be deferred until after the end of the function. For example, if the string “hello” is used in a function, then at some point after the function your compiler should output something like</p>
+<pre><code>    S0_21:   .dw 6
+             .db 104, 101, 108, 108, 111, 0</code></pre>
+<p>Typically, strings used throughout a program are output after all function definitions, in a special part of the output called the “string table,” but this isn’t required for your project.</p></li>
+</ul>
+<h3 id="simulator-and-testing">Simulator and Testing</h3>
+<p>There is a fully-functional LittleC-to-IntermediateCode compiler available on the UNCG Linux system. If you followed the previous instructions for setting up your account to use CSC439 programs, then all you have to do is type “<code>littlec -pi file.lc</code>” to compile the LittleC program in <code>file.lc</code> to intermediate code. If you have any questions about how source code statements should appear in intermediate code, this is a great reference.</p>
+<p>Testing of intermediate code output will be done by directly interpreting the intermediate code program. The code for the interpreter is distributed with the assignment repository, and is in class <code>edu.uncg.csc439.icinterp.ICInterp</code>. The provided ICGenTest program will run a LittleC program through your compiler, use your <code>ICode</code> class to create intermediate code, and then will run your intermediate code in the interpreter. You can also do this with the class-provided compiler on the UNCG Linux system (use <code>-rc</code> instead of <code>-pi</code> when running <code>littlec</code>).</p>
+<h3 id="example">Example</h3>
+<p>LittleC source code:</p>
+<link href="codehighlight.css" rel="stylesheet">
+<style>
+pre {
+  padding: 9.5px;
+  margin: 0 0 10px;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+</style>
+<div class="sourceCode" id="cb4"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="dt">int</span> iglobal = <span class="dv">12</span>;</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a><span class="dt">char</span> buffer[<span class="dv">23</span>];</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a><span class="dt">int</span> addit(<span class="dt">int</span> x, <span class="dt">int</span> y) {</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true"></a>    <span class="cf">return</span> x + y;</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true"></a>}</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true"></a>    </span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true"></a><span class="dt">void</span> main() {</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true"></a>     <span class="dt">int</span> small[<span class="dv">7</span>];</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true"></a>     <span class="dt">int</span> i;</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true"></a>     <span class="cf">for</span> (i=<span class="dv">0</span>; i&lt;#buffer; i++) {</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true"></a>         buffer[i] = <span class="ch">&#39; &#39;</span>;</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true"></a>     }</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true"></a></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true"></a>     iglobal = <span class="dv">0</span>;</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true"></a>     small[<span class="dv">0</span>] = <span class="dv">0</span>;</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true"></a>     <span class="cf">for</span> (i=<span class="dv">1</span>; i&lt;#small; i++) {</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true"></a>         small[i] = addit(small[i-<span class="dv">1</span>],buffer[i]);</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true"></a>     }</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true"></a></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true"></a>     prints(<span class="st">&quot;The 4th entry is: &quot;</span>);</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true"></a>     printd(small[<span class="dv">3</span>]);</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true"></a>     prints(<span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>);</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true"></a>}</span></code></pre></div>
+<p>Intermediate code output:</p>
+<pre><code>gf_addit: .fnStart 0
+        t4_1 = p4@0 + p4@4
+        return4 t4_1
+        .fnEnd
+gf_main: .fnStart 36
+        l0@0 setsize 7
+        l4@32 = 0
+L1:     
+        if l4@32 &gt;= 23 goto L2
+        t4_2 = &amp; g0_buffer
+        t4_2 = l4@32 stidx1 32
+        t4_3 = l4@32
+        l4@32 = l4@32 + 1
+        goto L1
+L2:     
+        g4_iglobal = 0
+        t4_4 = &amp; l0@0
+        t4_4 = 0 stidx4 0
+        l4@32 = 1
+L3:     
+        if l4@32 &gt;= 7 goto L4
+        t4_6 = &amp; g0_buffer
+        t1_5 = t4_6 ldidx1 l4@32
+        t4_7 = widen t1_5
+        param4 t4_7
+        t4_8 = l4@32 - 1
+        t4_10 = &amp; l0@0
+        t4_9 = t4_10 ldidx4 t4_8
+        param4 t4_9
+        t4_11 = call gf_addit,2
+        t4_12 = &amp; l0@0
+        t4_12 = l4@32 stidx4 t4_11
+        t4_13 = l4@32
+        l4@32 = l4@32 + 1
+        goto L3
+L4:     
+        param4 S0_1
+        call gf_prints,1
+        t4_15 = &amp; l0@0
+        t4_14 = t4_15 ldidx4 3
+        param4 t4_14
+        call gf_printd,1
+        param4 S0_2
+        call gf_prints,1
+        .fnEnd
+g4_iglobal: .dw 12
+g0_buffer: .dw 23
+        .db 0#23
+S0_1:   .dw 19
+        .db 84, 104, 101, 32, 52, 116, 104, 32
+        .db 101, 110, 116, 114, 121, 32, 105, 115
+        .db 58, 32, 0
+S0_2:   .dw 2
+        .db 10, 0</code></pre>
+<p> </p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

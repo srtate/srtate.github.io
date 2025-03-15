@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>Assignment 0 -- Due Monday, August 26</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://www.uncg.edu/cmp/faculty/srtate/656.f19/assign0.html">View original, outside canvas</a> ]
+   
+        <h3 id="assignment-0-due-monday-august-26">Assignment 0 – Due Monday, August 26</h3>
+<p>This is a small assignment, just to get you started using LaTeX. It is only worth 10 points, but you need to do it! On Monday, a few randomly-selected students will be asked to show their solutions and describe the LaTeX source.</p>
+<p>To start, work through at least sections 1-4 and section 17 of the the LaTeX tutorial at <a href="https://www.latex-tutorial.com/">https://www.latex-tutorial.com/</a>, as well as the “Symbols” section. The other sections are good too, but you can work through those later (they aren’t needed for this assignment). Note that under “Tools” there is a sandbox tool that will let you practice with LaTeX. To use LaTeX in this class, you can either install it on your own computer (see the installation section of the tutorial), use it on a UNCG system (a Windows-based system in the labs or the prdile.uncg.edu Linux system), or use an online system like <a href="https://www.overleaf.com">Overleaf</a>.</p>
+<p>Once you have learned the basics from the tutorial, download this file:</p>
+<ul>
+<li><a href="assign0.tex">Assignment 0 Template</a></li>
+</ul>
+<p>All assignments in this class will be given with such a template, which you should use for your solution. When you complete your assignment, compile your solution to a PDF file, and submit that in <a href="https://canvas.uncg.edu">Canvas</a>. <strong>For this assignment only</strong> also submit your LaTeX source file (the .tex file).</p>
+<p>The entire purpose of this assignment is to make sure you can run LaTeX, create a PDF, and enter some simple mathematical formulas. Each of you will type up two formulas, determined by the initial letters of your first and last names. See the first document below for more information and instructions.</p>
+<ul>
+<li><a href="assign0-formulas.pdf">assign0-formulas.pdf</a> – gives the formulas you’ll need</li>
+<li><a href="symbols.pdf">symbols.pdf</a> – additional LaTeX symbols that you can use</li>
+</ul>
+<h4 id="additional-latex-tips-and-information">Additional LaTeX Tips and Information</h4>
+<p>To create great looking documents, make sure you keep “math mode” and “text mode” separate in your mind. Anything that is mathematical, including simple variable names, should <em>always</em> be set in math mode. For example, if you have a single letter variable <span class="math inline"><em>x</em></span> in a sentence, the LaTeX should look like “variable $x$ is defined to be…” Conversely, anything that is not mathematical should <em>not</em> be put in math mode. Some people incorrectly use math mode (dollar signs) to make text italic, but that is not correct. Math mode will process this text differently, and it can look very bad. Try putting $different$ into LaTeX and seeing how it looks, paying special attention to how the “f” letters are spaced. This looks bad and unprofessional, so don’t do it! Some “math words” that should be typeset in text mode rather than math mode are defined as special keywords, including “log” for logarithms and all of the trigonometric functions (listed on the Symbols section of the tutorial). Make sure you use the “backslash version” of these words so they are typeset properly! If you need to put arbitrary text within a math mode chunk of source, you can do that with <code>\text{}</code>.</p>
+<p>For example, the block “<code>\[ x^2\geq 4 \text{\ if\ } x\geq 2\]</code>” will get set as <br /><span class="math display">        <em>x</em><sup>2</sup> ≥ 4 if <em>x</em> ≥ 2.</span><br /> Note the backslash and space at both the beginning and end of the <code>\text</code> parameter — this is for spacing, because otherwise math mode removes all spaces. This is a common way of adding space in LaTeX (similar to <code>&amp;nbsp;</code> in HTML), and inside math mode you can use <code>\,</code> (with a comma after the backslash) to add a slightly smaller amount of space.</p>
+<p>A few final tips:</p>
+<ul>
+<li>Some common symbols have special meanings in LaTeX, so you have to “escape” them with backslashes if you want the actual symbol. For example, if you want to write that a dollar amount, like $12, you need to put a backslash before the dollar sign (like <code>\$12</code>) so it doesn’t switch you to math mode. Similarly, if you want to use curly braces for set notation, you need to use <code>\{</code> and <code>\}</code>.</li>
+<li>The examples in the tutorial show definite integrals, but sum and product notation works the same way. For example, the sum of the first <span class="math inline"><em>n</em></span> integers can be written using <code>\sum_{i=1}^n i</code>.</li>
+<li>Special sets that are written with double lines in mathematics, like <span class="math inline">ℤ</span> for the set of integers, is done by using <code>\mathbb{Z}</code> (or similar for rationals, natural numbers, reals, etc.). Note that you must have included the <code>amssymb</code> package for this to work.</li>
+<li>If you want to put a line through a relation symbol, precede it with <code>\not</code>. For example, <code>1\not\eq 2</code> becomes <span class="math inline">1 ≠ 2</span>, and <code>-1\not\in\mathbb{Z}^+</code> becomes <span class="math inline"> − 1 ∉ ℤ<sup>+</sup></span>.</li>
+</ul>
+<p>That’s it – happy LaTeX’ing!</p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

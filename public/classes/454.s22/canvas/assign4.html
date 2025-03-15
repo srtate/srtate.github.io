@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 454/654 - Spring 2022 - Assignment 4 - Due March 29, 2022</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://www.uncg.edu/cmp/faculty/srtate/454.s22/assign4.html">View original, outside canvas</a> ]
+   
+        <style>
+pre {
+ display:block;
+ padding:9.5px;
+ margin:0 0 10px;
+ font-size:13px;
+ line-height:1.42857143;
+ color:#333;
+ word-break:break-all;
+ word-wrap:break-word;
+ background-color:#f5f5f5;
+ border:1px solid #ccc;
+ border-radius:4px
+}
+pre code {
+ padding:0;
+ font-size:inherit;
+ color:inherit;
+ white-space:pre-wrap;
+ background-color:transparent;
+ border-radius:0
+}
+</style>
+<h2 id="assignment-4---due-march-29-2022">Assignment 4 - Due March 29, 2022</h2>
+<ol type="1">
+<li><p>In class we went through all five problems on the dynamic programming problem practice sheet (provided both on a printout in class and in a Canvas announcement on Feb 23). Pick any one of these, and write out a solution up to and including a recursive formula for the optimal objective function value. <em>Make your answer concise and to the point: You’ll need to define some notation for variables and functions, and the define the recursive formula. None of those should require more than one or two sentences of explanation, so do <strong>not</strong> submit any answer that is more than one page long.</em> In particular, you do <em>not</em> have to write up the actual dynamic programming algorithm - just the recursive formula for the optimal objective function value.</p></li>
+<li><p>Consider the following input to the fractional knapsack problem (as in Section 16.2), for a knapsack that can hold at most <span class="math inline"><em>W</em> = 50</span> pounds:</p>
+<table style="width:67%;">
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline"><em>i</em></span></th>
+<th style="text-align: center;">1</th>
+<th style="text-align: center;">2</th>
+<th style="text-align: center;">3</th>
+<th style="text-align: center;">4</th>
+<th style="text-align: center;">5</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline"><em>v</em><sub><em>i</em></sub></span></td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline"><em>w</em><sub><em>i</em></sub></span></td>
+<td style="text-align: center;">18</td>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">28</td>
+<td style="text-align: center;">50</td>
+<td style="text-align: center;">6</td>
+</tr>
+</tbody>
+</table>
+<p>Give a step-by-step explanation of how the greedy algorithm from Section 16.2 would solve this problem, showing values at each step and the final answer computed by the algorithm.</p></li>
+<li><p>You have decided to pursue a small-job gig work career, and accept jobs that each take exactly one day to complete. Days and jobs are numbered starting at 1, and there are <span class="math inline"><em>n</em></span> potential jobs (numbered <span class="math inline">1</span> to <span class="math inline"><em>n</em></span>). Each job has a deadline <span class="math inline"><em>d</em><sub><em>i</em></sub></span> by which it must be completed in order for you to get paid (so if you schedule job <span class="math inline"><em>i</em></span> on day <span class="math inline"><em>s</em><sub><em>i</em></sub></span>, then you get paid if and only if <span class="math inline"><em>s</em><sub><em>i</em></sub> ≤ <em>d</em><sub><em>i</em></sub></span>).</p>
+<ol type="a">
+<li><p>If all jobs pay the same amount, then your goal is to maximize the number of jobs you complete by the deadline. The following greedy strategy works: On day 1, pick an uncompleted job with the earliest possible deadline and finish that (if there is a tie – multiple jobs with the same earliest possible deadline – pick the lowest numbered job). State and prove the greedy choice property for this algorithm. Do not give a full proof of correctness for the algorithm – only prove the greedy choice property.</p></li>
+<li><p>Consider a variation in which each job also has a payoff, so completing job <span class="math inline"><em>j</em></span> by deadline <span class="math inline"><em>d</em><sub><em>j</em></sub></span> results in you being paid <span class="math inline"><em>p</em><sub><em>j</em></sub></span> dollars. Now you want to maximize how much you are paid, which might not be the same as completing the maximum number of jobs. You could just ignore the payoffs, and use the greedy algorithm from part (a) to maximize the number of jobs completed. Give a counter-example to show that this does <em>not</em> maximize your pay. (<em>Hint: Don’t over-complicate this – there is an example with just two jobs that shows that the algorithm in part (a) doesn’t work.</em>)</p></li>
+<li><p>What if you chose the highest payoff job for day 1, and ignored the deadlines? Give a counter-example to show that this does not always give an optimal solution. (<em>Hint: There is a two-job counter-example for this part too. If you want to be particularly clever, there’s a single three-job case that is a counter-example to both parts b and c!</em>).</p></li>
+<li><p>The following greedy strategy <em>does</em> work: Find a maximum payoff job, and schedule it as <em>late</em> as possible before its deadline (you can break ties however you like, but for concreteness you can assume you always pick the lowest numbered job if there’s a tie). In other words, if job <span class="math inline"><em>j</em></span> is the first maximum payoff job that you select, then schedule it at time <span class="math inline"><em>d</em><sub><em>j</em></sub></span>. State and prove the greedy choice property for this algorithm.</p></li>
+</ol></li>
+<li><p>Give an example showing that the <span class="math inline"><em>π</em></span> values computed in a Breadth-First-Search (see page 595) depend on the specific ordering of vertices in the adjacency lists. In other words, give a single graph <span class="math inline"><em>G</em></span>, two adjacency list representations of <span class="math inline"><em>G</em></span>, and then show that BFS finds different <span class="math inline"><em>π</em></span> values for the two representations.</p></li>
+<li><p>Give a clear explanation of why the <span class="math inline"><em>d</em></span> values computed in a BFS do <em>not</em> depend on the adjacency list ordering of the input graph. This does not need to be a formal proof, but it does need to apply to all graphs (not just a single example graph) and it should be clear and precise reasoning. Your explanation should be no more than three sentences.</p></li>
+<li><p>Perform a depth-first search of the following graph, showing the final result with the discovery and finishing times for each vertex, and the classification of each edge (tree, forward, back, or cross). Vertices are always explored in alphabetical order, whether in the overall vertex list or in any adjacency list. Your result should be in a form similar to Figure 22.5(a) in the book. Note that you only need to give the final result – you don’t need to show your work or any intermediate steps.</p>
+<p><img src="A4_DFSGraph.svg" /></p></li>
+<li><p><strong>Programming challenge:</strong> Installing a new software package on a system might require that other packages be installed first (on Debian-based Linux systems, this is called a “Pre-Depends” relation between packages). You should write a program that reads in information about these Pre-Depends requirements, and then either outputs an order in which the packages can be installed, or outputs “impossible” if there is no order that will work.</p>
+<p><strong>Program Input:</strong> The input to this problem consists of two integers <span class="math inline"><em>n</em></span> and <span class="math inline"><em>m</em></span> on the first line, where <span class="math inline"><em>n</em></span> is the number of packages to install (with <span class="math inline">1 ≤ <em>n</em> ≤ 949</span>) and <span class="math inline"><em>m</em></span> is the number of pre-depends relations (with <span class="math inline">1 ≤ <em>m</em> ≤ 450, 000</span>). This is followed by <span class="math inline"><em>m</em></span> lines, each with two numbers <span class="math inline"><em>x</em></span> and <span class="math inline"><em>y</em></span> (with <span class="math inline">1 ≤ <em>x</em>, <em>y</em> ≤ <em>n</em></span>) such that package number <span class="math inline"><em>x</em></span> must be installed before package <span class="math inline"><em>y</em></span>. Here is a simple example with three packages:</p>
+<pre><code>3 2
+2 1
+3 1</code></pre>
+<p><strong>Program Output:</strong> The output should consist of either a single line with the word “<code>impossible</code>” (exactly like that!), or <span class="math inline"><em>n</em></span> lines that give an order in which packages can be installed that satisfies all pre-depends requirements. Note that there can be multiple correct outputs for any input, and any of them are acceptable. The following is one example of a correct output for the sample input shown above:</p>
+<pre><code>2
+3
+1</code></pre>
+<p>Note that if the input had contained a third requirement of “<code>3 2</code>” then this would <em>not</em> be a correct solution any more, as package 3 would have to be installed before package 2.</p>
+<p><strong>Time Limit:</strong> Your program must run in under 5 seconds on any input that meets the size bounds described above.</p>
+<p><strong>Example 2:</strong> Here is another example input to consider:</p>
+<pre><code>3 3
+2 1
+3 2
+1 3</code></pre>
+<p>For this input, the correct output should be:</p>
+<pre><code>impossible</code></pre></li>
+</ol>
+<p> </p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

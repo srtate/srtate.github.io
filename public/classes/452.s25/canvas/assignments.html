@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 452/652/752 - Spring 2025 - Assignments</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://home.uncg.edu/cmp/faculty/srtate/452.s25/assignments.html">View original, outside canvas</a> ]
+   
+        <h2 id="csc-452652752---spring-2025---assignments">CSC 452/652/752 - Spring 2025 - Assignments</h2>
+<p>Assignments in this class are short, frequent, and low-stakes. They are designed for practice, and will be graded only for completion (a solid effort must have been made!). They will not be accepted late for any reason, and solutions and “self-grading” criteria will be covered in the class following the due date. Each student’s lowest two grades (including zeros) will be dropped. <em>Just because these are the assigned problems that we will discuss, they are <strong>not</strong> the only practice problems you should do! Each chapter in the textbook has many problems you can use for practice and study – some have solutions in the textbook you can check against, and you can always ask me to review solutions you have written for other problems.</em></p>
+<p>Note that in addition to the regular assignments listed below, graduate and honors students will complete a <a href="gradproject.html">class project</a>.</p>
+<p><strong>Browser check:</strong> If you don’t see OK in cursive/calligraphic font at the end of this line, you should click on <a href="browser.html">browser issues</a> to see how to correct the problem: <span class="math inline">\(\mathcal{O}\mathcal{K}\)</span></p>
+<h4 id="assignment-1-due-sunday-jan-26">Assignment 1 – due Sunday, Jan 26</h4>
+<ol type="1">
+<li><p>Describe each of the following sets in high-level plain English (no formulas!). For example, the set <span class="math inline">\(\{x\,|\,x=2k+1\)</span> for <span class="math inline">\(k\geq 1\}\)</span> is “The set of odd integers greater than or equal to 3.” Do <strong>not</strong> simply restate things as written here (in other words, do not say “The set of integers <span class="math inline">\(x\)</span> for which <span class="math inline">\(x=2k+1\)</span> and <span class="math inline">\(k\geq 1\)</span>”).</p>
+<p>The sets below are all sets of binary strings (note that <span class="math inline">\(\{0,1\}^*\)</span> denotes the set of all binary strings), and in addition to the notation in the book (pages 13–14) we define <span class="math inline">\(c_0(x)\)</span> to be the number of <span class="math inline">\(0\)</span>’s in string <span class="math inline">\(x\)</span>, and <span class="math inline">\(c_1(x)\)</span> to be the number of <span class="math inline">\(1\)</span>’s in <span class="math inline">\(x\)</span>. For example, if <span class="math inline">\(x=\texttt{011010001}\)</span> then <span class="math inline">\(c_0(x)=5\)</span> and <span class="math inline">\(c_1(x)=4\)</span>.</p>
+<ol type="a">
+<li><p><span class="math inline">\(\{x\,|\,x\in\{0,1\}^*\)</span> and <span class="math inline">\(|x|=2k\)</span> for some integer <span class="math inline">\(k\}\)</span></p></li>
+<li><p><span class="math inline">\(\{x\,|\,x\in\{0,1\}^*\)</span> and <span class="math inline">\(c_0(x)=c_1(x)\}\)</span></p></li>
+<li><p><span class="math inline">\(\{x\,|\,x\in\{0,1\}^*\)</span> and <span class="math inline">\(c_1(x)=2k+1\)</span> for some integer <span class="math inline">\(k\}\)</span></p></li>
+<li><p><span class="math inline">\(\{x\,|\,x\in\{0,1\}^*\)</span> and <span class="math inline">\(x=x^{\mathcal{R}}\}\)</span></p></li>
+</ol></li>
+<li><p>Textbook, Problem 0.11</p></li>
+<li><p>Let <span class="math inline">\(G\)</span> be a directed graph with <span class="math inline">\(n\)</span> vertices, and let <span class="math inline">\(v\)</span> and <span class="math inline">\(w\)</span> be any two nodes in the graph. Prove that if there is a path from node <span class="math inline">\(v\)</span> to node <span class="math inline">\(w\)</span> of length <span class="math inline">\(n\)</span>, then there is another path from <span class="math inline">\(v\)</span> to <span class="math inline">\(w\)</span> with length greater than <span class="math inline">\(2n\)</span>. (<em>Hint: Think about what is appropriate in the following blank, and how that is important to this property: “Any path with <span class="math inline">\(n\)</span> edges in an <span class="math inline">\(n\)</span>-vertex graph must contain a _________________.” Note that this is just to get you thinking. Any property you fill in that blank with needs to be proved as part of the overall proof – you can’t just state it, even if you think it’s obvious.</em>)</p></li>
+</ol>
+<h4 id="assignment-2-due-sunday-feb-2">Assignment 2 – due Sunday, Feb 2</h4>
+<ol type="1">
+<li><p>Consider the DFA <span class="math inline">\(M_1\)</span> shown below:</p>
+<p><img src="assign2_m1.png" /></p>
+<ol type="a">
+<li><p>What is the start state?</p></li>
+<li><p>What is the set of accept states?</p></li>
+<li><p>What sequence of states does the machine go through on input <code>abbaac</code>?</p></li>
+<li><p>Does the machine accept string <code>abbaac</code>?</p></li>
+<li><p>Does the machine accept <span class="math inline">\(\varepsilon\)</span>?</p></li>
+</ol></li>
+<li><p>Textbook, Exercise 1.4f</p></li>
+<li><p>Textbook, Exercise 1.5d</p></li>
+<li><p>Textbook, Exercise 1.16</p></li>
+</ol>
+<h4 id="assignment-3-due-sunday-feb-9">Assignment 3 – due Sunday, Feb 9</h4>
+<ol type="1">
+<li><p>Textbook, Exercise 1.20 – parts b and e</p></li>
+<li><p>Textbook, Exercise 1.19b</p></li>
+<li><p>Textbook, Exercise 1.21b</p></li>
+<li><p>Textbook, Problem 1.46a</p></li>
+</ol>
+<h4 id="assignment-4-due-sunday-feb-23">Assignment 4 – due Sunday, Feb 23</h4>
+<ol type="1">
+<li><p>Consider the following context-free grammar <span class="math inline">\(G\)</span> which generates some context-free language <span class="math inline">\(L(G)\)</span>:</p>
+<p><span class="math display">\[ \begin{array}{l}
+S \rightarrow EEEF\\
+E \rightarrow 0E\ |\ 1\\
+F \rightarrow 0F\ |\ \varepsilon
+\end{array} \]</span></p>
+<ol type="a">
+<li><p>What are the variables of this grammar?</p></li>
+<li><p>What are the terminals of this grammar?</p></li>
+<li><p>What is the start variable?</p></li>
+<li><p>Give two strings of length 4 or greater that are in <span class="math inline">\(L(G)\)</span>, along with their derivations.</p></li>
+<li><p>Draw parse trees for your two derivations in the preceding part.</p></li>
+<li><p>Give two strings of length 4 or greater that are <em>not</em> in <span class="math inline">\(L(G)\)</span>.</p></li>
+<li><p>Give a succinct description of the language <span class="math inline">\(L(G)\)</span> using set-builder notation, and a description in plain English.</p></li>
+</ol></li>
+<li><p>Textbook, Exercise 2.1</p></li>
+<li><p>Textbook, Exercise 2.4e</p></li>
+</ol>
+<h4 id="assignment-5-due-sunday-march-2">Assignment 5 – due Sunday, March 2</h4>
+<ol type="1">
+<li><p>Textbook, Exercise 2.5 - for the language in 2.4e (directly create a PDA – do not use the “conversion from CFG” technique)</p></li>
+<li><p>Textbook, Exercise 2.11</p></li>
+<li><p>Textbook, Exercise 2.14</p></li>
+<li><p>Textbook, Exercise 2.30a</p></li>
+</ol>
+<h4 id="assignment-6-due-tuesday-march-18">Assignment 6 – due <em>Tuesday</em>, March 18</h4>
+<ol type="1">
+<li><p>Textbook, Exercise 3.2 – parts b and d</p></li>
+<li><p>Textbook, Exercise 3.8b</p></li>
+<li><p>Draw out a full state diagram for the Turing machine in the previous question</p></li>
+<li><p>Textbook, Exercise 3.11</p></li>
+</ol>
+<h4 id="assignment-7-due-sunday-march-30">Assignment 7 – due Sunday, March 30</h4>
+<ol type="1">
+<li><p>Textbook, Exercise 4.2 – a brief description of how this works is fine.</p></li>
+<li><p>Consider the language <span class="math inline">\(SUBSET_{DFA}=\{\langle M_1,M_2\rangle\,|\,L(M_1)\subseteq L(M_2)\}\)</span>. Show that <span class="math inline">\(SUBSET_{DFA}\)</span> is decidable.</p></li>
+<li><p>Textbook, Exercise 5.12</p></li>
+<li><p>Textbook, Exercise 5.15</p></li>
+</ol>
+<h4 id="assignment-8-due-sunday-april-6">Assignment 8 – due Sunday, April 6</h4>
+<ol type="1">
+<li><p>Textbook, Exercise 5.3</p></li>
+<li><p>Textbook, Exercise 5.4</p></li>
+<li><p>Textbook, Exercise 5.22</p></li>
+<li><p>Consider the language <span class="math inline">\(CFL_{TM}=\{\langle M\rangle\,|\,L(M)\)</span> is a context-free language<span class="math inline">\(\}\)</span>. Prove that this language is undecidable. (<em>Hint</em>: Note the similarity to the language <span class="math inline">\(REGULAR_{TM}\)</span> in Section 5.1.)</p></li>
+</ol>
+<h4 id="assignment-9-due-sunday-april-13">Assignment 9 – due Sunday, April 13</h4>
+<ol type="1">
+<li><p>Textbook, Exercise 7.6</p></li>
+<li><p>Textbook, Exercise 7.9</p></li>
+<li><p>Consider the language <span class="math display">\[ \textit{FACTOR} = \{ \langle x,k\rangle\,|\, x \text{ is an integer that is divisible by an integer } y\in[2,k] \} \]</span> Prove that <span class="math inline">\(\textit{FACTOR}\in NP\)</span>.</p></li>
+</ol>
+<h4 id="assignment-10-due-sunday-april-20">Assignment 10 – due Sunday, April 20</h4>
+<ol type="1">
+<li><p>Textbook, Exercise 7.18</p></li>
+<li><p>Textbook, Exercise 7.21</p></li>
+</ol>
+<h4 id="assignment-11-due-sunday-april-27">Assignment 11 – due Sunday, April 27</h4>
+<ol type="1">
+<li><p>Textbook, Exercise 8.1</p></li>
+<li><p>Textbook, Exercise 8.4</p></li>
+</ol>
+<p> </p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

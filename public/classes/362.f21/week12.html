@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 362 - Spring 2021 - Week 12 Activities</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../css/class_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+        <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark uncg-navbar fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="https://www.uncg.edu/">
+          <img class="collapse navbar-collapse" src="../img/uncg_class.png" alt="UNC Greensboro">
+          <img class="navbar-toggler" src="../img/uncg_mobile.png" alt="UNCG">
+        </a>
+        <div class="navbar-brand d-flex flex-column text-left"
+	     style="line-height: 1.2;">
+          <span>CSC 362</span>
+          <span class="small collapse navbar-collapse"><em>System Programming</em></span>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link " href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="syllabus.html">Syllabus</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="schedule.html">Schedule</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="http://cs241.cs.illinois.edu/coursebook/index.html">Coursebook</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://uncg.instructure.com/">Canvas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- Page Content -->
+    <div class="container">
+   
+        <h2 id="csc-362-spring-2021-week-12-activities">CSC 362 – Spring 2021 – Week 12 Activities</h2>
+<h3 id="spring-2021-timing">Spring 2021 timing</h3>
+<p>Tuesday (4/6):</p>
+<ul>
+<li>[ 4 min] Intro</li>
+<li>[37.5 min] Slides</li>
+<li>[ 7 min]
+<ul>
+<li>“man signal” (don’t use this)</li>
+<li>“man 7 signal” for general (all sigs); what happens after interrupt</li>
+<li>“man signal-safety” - note what’s there (write) and what’s not (no printf, pthread_mutex_lock, sprintf, …)</li>
+<li>“man sigaction” - notice flags, (SA_RESETHAND and SA_RESTART)</li>
+<li>“stty -a” - note sig entries, like ‘intr’ - change to ‘^k’ - then back</li>
+</ul></li>
+<li>[ 5 min]
+<ul>
+<li>timeitpoll.c - explain - really timing sha+time check - run it</li>
+<li>timeitsig.c - explain - nothing but sha in loop now - run it</li>
+<li>talk about difference/overhead</li>
+</ul></li>
+</ul>
+<p><strong>Note:</strong> Lots of time wasted with missing -dev packages - shouldn’t be a prob</p>
+<p>Total slides+demos: 50 min - Fall: Move longrun.c example here</p>
+<p>Activity was: explore timer/restarting syscalls and SA_RESETHAND flag - This would be good to do as demo - too much reading for activity</p>
+<p>Thursday (4/8):</p>
+<ul>
+<li>[ 3 min] Intro</li>
+<li>[22 min] Slides</li>
+<li>[10.5 min]
+<ul>
+<li>longrun.c - just wasting time….</li>
+<li>watch in another window - “ps -a” - ctrl-c in running window</li>
+<li>talk about sighup from losing connection - close window of running process</li>
+<li>ps -a – it’s gone</li>
+<li>man nohup - then run longrun under nohup - need to see it with “ps -e”?</li>
+<li>alternative: use “at now”</li>
+</ul></li>
+<li>[ 6.5 min]
+<ul>
+<li>look at prpending.c</li>
+<li>man sigsetops</li>
+<li>run prpending - then ctrl-c - then send other sigs (like SIGSEGV)</li>
+<li>ctrl-z and kill -9 to kill it</li>
+<li>Re-run then “kill -9” from other window (frowned upon)</li>
+</ul></li>
+<li>[ 5 min]
+<ul>
+<li>siginttest.c - ignore threads for now - from last time? - see code then run</li>
+<li>now go through threading and threaded handler</li>
+<li>talk about nanosleep being interrupted/restarted</li>
+</ul></li>
+<li>[ 2 min] - intro to in-class activity</li>
+</ul>
+<p>Activity: Exploring threads and signal handling</p>
+<p>Total slides+demos: 44 min - without longrun should be 33 min?</p>
+<p>Weekly assignment: SIGUSR1 as "status update. Make a signal handling thread so that printf can be safely called.</p>
+<h4 id="tuesday-material">Tuesday Material</h4>
+<p>Signals: A way to deliver info to a process - [asynchronous delivery!] - Should be for exceptional events [dd status is one exception to that] Deep Dive of Signals - “signal disposition” - process says what kind of reaction a signal gets + TERM, IGN, CORE, STOP, CONT, custom handler - “Signal mask” determines what happens - State transitions - and watch for race conditions + sig generated -&gt; sig pending -&gt; (if a thread can take it) delivered -&gt; caught + use fig from book [could draw a better one?] - Common signals: SIGINT, SIGQUIT, SIGTERM, SIGSTOP, SIGCONT, SIGKILL<br />
++ notes that SIGKILL (-9) should not be done (really just a last resort) + Command line “kill”: SIGTERM (-15) is default Sending signals - [Show stty -a and signals…] - Ways to send: term keys, system sends (segv), specific send + [Note - bad for norm comm - in the “pre-threads” days more important] - Book starts with sending sigstop via command line (“kill -SIGSTOP”) + mentions “killall” - kill syscall and “raise” (send to self?) Handling signals - Notes limitations on code in handler + library/syscalls marked “async-signal-unsafe” [see “man 7 signal-safety”] + example with custom function, but really just thread-safety again + BUT! Careful with mutex’s - deadlock is a serious problem + Note that malloc is threadsafe, but not async-signal-safe! - Common pattern: just set a variable/flat in sig handler + But careful about compiler optimizations! A var that doesn’t change in a loop may be optimized out [note about clearing buffers… related] + should be uncached (in reg), and unoptimized + Correct: “volatile sig_atomic_t” [sig_atomic_t not really necessary for just false/true flag] [but does ensure portability]<br />
+- async vs sync handing - for sync, use sigwait or signalfs - sigaction is preferred now over signal - is portable (POSIX) + takes signum, action, and oldaction * “action” fields are sigaction structs - sa_handler is SIG_DFL, SIG_IGN, or a ptr to a custom handler * custom handler: one param, int signum * BUT, if SA_SIGINFO flag is set, sa_action fn is used instead, and it receives 3 args - incl a siginfo_t and void * signinfo_t has a LOT of info! + registers a handler and possibly an “action”, with mask and flags + Important flag: SA_RESTART + sa_mask field lists sigs to be blocked while handling - curr sig always blocked unless SA_NODEFER flag is set</p>
+<p>From other sources: - One pattern for multithreaded code is to block all signals on main threads, and create one just for sig processing that uses sigwait() for sync notification + check pthread_sigmask() - blocked signals are queued for later (either when unblocked or sigwait()) + although std signals only queue ONE instance (repeats ignored) - signal defaults - include a list? - man page says signal disposition is same for all threads in a process + but later says each thread has its own sigmask + mask (blocking) diff from disposition? - dispositions inherited by child, but handled are reset by exec - pthread_kill sends sig to specific thread - real-time vs reliable signals?? - thread-directed (e.g., segv) vs process-directed (e.g., ext kill) signals - some interesting: SIGALRM, SIGCHLD, SIGHUP, SIGILL, SIGINT, SIGKILL, SIGPIPE, SIGQUIT, SIGSEGV, SIGSTOP, SIGCONT, SIGTERM, SIGUSR1/2 + SIGKILL and SIGSTOP cannot be caught, blocked, or ignored + Numeric sig numbers vary by architecture - use names!<br />
+- real-time signals: no pre-determined meanings - SIGRTMIN..SIGRTMAX + default is always terminate process + multiple instances of same sig are queued + delivered in a guaranteed order - note - if <em>really</em> want to use an unsafe function, can block sigs before anyone else calls it, then unblock when done. So can’t be interrupted by a signal…</p>
+<p>Good ref: https://devopedia.org/linux-signals for concepts - code uses “signal” and printf in handler…</p>
+<p>Possible examples or activities: - test something for a specific amount of time. Loop until sigalarm + compare efficiency with checking time each iteration? + or just pause() to wait (not sure why wouldn’t sleep…) - something with sigpipe? - catch segv</p>
+<p>Demo: - Look at “man signal” vs “man 7 signal” - Look at “man signal-safety” and then “man sigaction” (esp flags) - Do stty -a, and try resetting intr to ^k just for fun…. - Look through code then run and explain</p>
+<h4 id="tuesday-in-class-activities">Tuesday In-Class Activities</h4>
+<p>stuff</p>
+<h4 id="for-students-to-do-before-thursday">For students to do before Thursday</h4>
+<p>???</p>
+<h4 id="thursday-material">Thursday Material</h4>
+<p>From Tuesday notes to cover or re-visit: - Common pattern: just set a variable/flat in sig handler + But careful about compiler optimizations! A var that doesn’t change in a loop may be optimized out [note about clearing buffers… related] + should be uncached (in reg), and unoptimized + Correct: “volatile sig_atomic_t” [sig_atomic_t not really necessary for just false/true flag] [but does ensure portability]<br />
+- async vs sync handing - for sync, use sigwait or signalfs - One pattern for multithreaded code is to block all signals on main threads, and create one just for sig processing that uses sigwait() for sync notification + check pthread_sigmask() - pthread_kill sends sig to specific thread - and pthread_block - note - if <em>really</em> want to use an unsafe function, can block sigs before anyone else calls it, then unblock when done. So can’t be interrupted by a signal…</p>
+<p>Blocking signals - sigprocmask blocks/unblocks signals [plus handler masks] + uses sigset_t (like sigaction, but we mostly ignored…) + can block additional sigs/unblock some/set the full sigmask + mentions pthread_sigmask… - Sigwait: synchronously wait on signals + example blocks in main thread, starts a new thread to handle with sigwait Signals in Child Processes and Threads - fork dups - exec reverts handlers to original action, although mask is kept - threads - created pthreads inherit creator’s mask - signals delivered to any thread willing to accept it. Can be arbitrary. - internally can send signal to another thread with pthread_kill (use id) - note that SIGKILL can’t be caught, so SIGKILL to a thread kills process</p>
+<h4 id="thursday-in-class-activities">Thursday In-Class Activities</h4>
+<p>examples and activities - my example - demonstrate mask/set creation functions and discuss - also with thread - mask in just one - need an example of a sync signal listener too.<br />
+- experiment with blocking and unblocking signals - change behavior after a fixed amount of time and see how things change block sigint - have student hit ctrl-c during blocked phase - watch it delivered when unblocked - print message in handler to show only one execution</p>
+<p>Example using sighandler thread - walk through code and explain - talk a little more about set functions and do “man sigsetops” - run - notice that despite no sleep timer restart, this works as expected + why? And isn’t that a nice benefit!</p>
+<h4 id="full-assignment-due-next-tuesday">Full Assignment – due next Tuesday</h4>
+<p>Convert a async sig handler to sync - have prog that has two nested loops, to take a LONG time, then SIGUSR1 is a “print status” signal. Do with a second thread. Need global vars for progress though.</p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

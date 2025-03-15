@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>Assignment 5 -- Due Tuesday, November 7</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../css/class_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+        <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark uncg-navbar fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="https://www.uncg.edu/">
+          <img class="collapse navbar-collapse" src="../img/uncg_class.png" alt="UNC Greensboro">
+          <img class="navbar-toggler" src="../img/uncg_mobile.png" alt="UNCG">
+        </a>
+        <div class="navbar-brand d-flex flex-column text-left"
+	     style="line-height: 1.2;">
+          <span>CSC 485/685</span>
+          <span class="small collapse navbar-collapse"><em>Modern Cryptography</em></span>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link " href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="syllabus.html">Syllabus</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="schedule.html">Schedule</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="practice.html">Practice</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="assignments.html">Assignments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" target="_blank" href="https://joyofcryptography.com">Textbook</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://uncg.instructure.com/">Canvas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- Page Content -->
+    <div class="container">
+   
+        <h3 id="assignment-5-due-tuesday-november-7">Assignment 5 – Due Tuesday, November 7</h3>
+<ol type="1">
+<li><p>The first example of CCA insecurity in the book played games with the length of the ciphertext. This problem generalizes that idea.</p>
+<p>Call an encryption scheme “online complete” if it satisfies the following property: Given an <span class="math inline">\(\ell\)</span>-block plaintext, <span class="math inline">\((m_1,m_2,\ldots,m_{\ell})\)</span>, after receiving some number <span class="math inline">\(k&lt;\ell\)</span> of full plaintext blocks (<span class="math inline">\(m_1\)</span> through <span class="math inline">\(m_k\)</span>) the encryption scheme outputs ciphertext blocks <span class="math inline">\((c_0,c_1,\ldots,c_k)\)</span> such that this sequence of ciphertext blocks form a valid encryption of the blocks that have been processed. In other words, <span class="math inline">\((c_0,c_1,\ldots,c_k)\)</span> can be decrypted to get <span class="math inline">\((m_1,\ldots,m_k)\)</span>. This does imply that no special “termination”, such as proper padding, needs to exist in the plaintext.</p>
+<ol type="a">
+<li><p>All of the CPA-secure block cipher modes from Chapter 8 are online complete. Pick any of these modes and explain why this is the case.</p></li>
+<li><p>Prove that if an encryption scheme is online complete, then it is not CCA secure.</p></li>
+</ol></li>
+<li><p>The insecurity of the standard block cipher modes goes further than just attacks that play games with the length however. This problem explores attacks in which all library calls are done when the plaintext and ciphertext lengths are fixed.</p>
+<p>Recall my informal description of a “malleable” encryption scheme: An encryption scheme is malleable if an attacker can tamper with the ciphertext in such a way that the plaintext decrypted from the modified ciphertext is meaningful or predictable in some way. In this problem we’ll formalize this for a specific form of tampering.</p>
+<ol type="a">
+<li><p>Let <span class="math inline">\(\Sigma\)</span> be an encryption scheme with <span class="math inline">\({\mathcal M}=\{0,1\}^{\lambda}\)</span> and <span class="math inline">\({\mathcal C}=\{0,1\}^{2\lambda}\)</span>, so we can write <span class="math inline">\((c_0,c_1)=\Sigma.\textsf{Enc}(k,m)\)</span>. Note that all of the CPA-secure block cipher modes satisfy this definition with <span class="math inline">\(blen=\lambda\)</span>.</p>
+<p>Consider a function TAMPER that takes an encryption of a plaintext message <span class="math inline">\(m\)</span>, say with ciphertext <span class="math inline">\(c=(c_0,c_1)\)</span>, and modifies the ciphertext to produce a <em>different</em> ciphertext <span class="math inline">\(c&#39;\)</span>. TAMPER succeeds if decrypting the tampered-with ciphertext produces the complement of <span class="math inline">\(m\)</span> – in other words, if <span class="math inline">\(\Sigma.\textsf{Dec}(k,TAMPER(\Sigma.\textsf{Enc}(k,m)))=\overline{m}\)</span>.</p>
+<p>Show that any encryption scheme for which there is a successful TAMPER function is not CCA secure.</p></li>
+<li><p>Define a TAMPER function that succeeds with CBC mode (and show that it succeeds).</p></li>
+<li><p>Define a TAMPER function that succeeds with CTR mode (and show that it succeeds).</p></li>
+<li><p>Define a TAMPER function that succeeds with OFB mode (and show that it succeeds).</p></li>
+</ol></li>
+<li><p>Textbook, Exercise 9.12 (<em>Hint: The problem statement is long, but the solution isn’t super-hard — the hint given in the book is very helpful!</em>)</p></li>
+<li><p>Textbook, Exercise 10.2</p></li>
+<li><p>Textbook, Exercise 10.4</p></li>
+<li><p>Textbook, Exercise 10.7</p></li>
+</ol>
+<p> <br />
+</p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

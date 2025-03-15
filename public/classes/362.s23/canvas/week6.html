@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 362 - Spring 2023 - Week 6 Notes</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://home.uncg.edu/cmp/faculty/srtate/362.s23/week6.html">View original, outside canvas</a> ]
+   
+        <h2 id="csc-362-spring-2023-week-6-notes">CSC 362 – Spring 2023 – Week 6 Notes</h2>
+<h4 id="tuesday">Tuesday</h4>
+<p><strong>Goal: 30 min for slides, then demos</strong></p>
+<p>Demo - show allocs - use limit</p>
+<ul>
+<li>Examine memlayout.c and talk about printing pointer values
+<ul>
+<li>Note the sleep at the end - just so it sticks around and we can examine</li>
+</ul></li>
+<li>Run with bogus params (“./memlayout hi there”)
+<ul>
+<li>Look briefly at pointer values - notice different areas/segments</li>
+</ul></li>
+<li>In a second window - talk about /proc filesystem
+<ul>
+<li>“ps” and then “ps -a” (process groups)</li>
+<li>with PID, go into /proc/PID - look around a little
+<ul>
+<li>fds, cmdline, cwd, exe, environ, …</li>
+<li>On cmdline (and later environ) show “all crammed together) then”xxd"</li>
+</ul></li>
+<li>then examine “maps” and match up addresses to segments (maximize maps win)
+<ul>
+<li>Notice segment permissions</li>
+</ul></li>
+</ul></li>
+<li>Look at stackoverflow.c - useless, and will warn about unused var - OK
+<ul>
+<li>note global counter - see how many calls were made</li>
+<li>run cmdline and notice just a segfault</li>
+<li>ulimit -a — how many 100k arrays can you make?</li>
+<li>now run in gdb - location is function start - that’s a clue</li>
+<li>print counter - close!</li>
+<li>get out and ulimit -S -s 1024 - (soft limit) redo and see smaller counter</li>
+<li>get out and “ulimit -S -s 30000” - redo - no problems raising</li>
+<li>now ulimit -H -a – see unlimited hard limit</li>
+<li>ulimit -s 1024 and see with -a — then try to raise</li>
+<li>so soft limits are for you to protect yourself - hard limits generally for system to protect itself from you…</li>
+</ul></li>
+</ul>
+<h4 id="thursday-material">Thursday Material</h4>
+<p><strong>Demo (malloc test) is at beginning of slides…</strong></p>
+<ul>
+<li>malloctest
+<ul>
+<li>briefly show code and go through “printafew”
+<ul>
+<li>idea of “printing stuff from inside the block”</li>
+</ul></li>
+<li>test1 and test2 - notice how test 1 keeps (potentially sensitive!) info after free and allocating again. Stress: free does not clear contents.</li>
+<li>Then test3/test4 – diff is freeing block before 3rd malloc</li>
+</ul></li>
+</ul>
+<p>After slides… go through in-class activity code and discuss:</p>
+<ul>
+<li>Show markdown preview so can see picture</li>
+<li>Show picture and describe - capacity is boundary tag</li>
+<li>Idea: Allocate “next larger power of two” size - that’s “capacity”
+<ul>
+<li>Then grow only when capacity is exceeded (fewer re-allocs/copies)</li>
+</ul></li>
+<li>Look at mymalloc.c
+<ul>
+<li>First thing to see is “metadata” - that’s the boundary tag. Could include much more than just a capacity - weekly assignment <em>does</em>
+<ul>
+<li>pull up weekly assignment README/code to compare?</li>
+<li>while code is up, show “track_malloc” overriding malloc w/preprocessor</li>
+</ul></li>
+<li>Back to activity code: next_pow2 is next power of two capacity to use</li>
+<li>Talk through what mymalloc, myfree, and myrealloc need to do</li>
+<li>Start coding!</li>
+</ul></li>
+</ul>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

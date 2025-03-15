@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>NPC info</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://home.uncg.edu/cmp/faculty/srtate/452.s25/npc5.html">View original, outside canvas</a> ]
+   
+        <h2 id="creating-a-proof-np-membership">Creating a proof – NP membership</h2>
+<p>In the previous sections, we talked about what components needed to be in an NP-completeness proof, and how to evaluate whether you have established all of the points that need to be made. Now we look at how to create your proof from scratch – not just what needs to be there, but how you come up with the right ideas, and common mistakes students make when writing a proof.</p>
+<h3 id="proving-membership-in-np">Proving membership in NP</h3>
+<p>The first component of the NP-completeness proof is the proof that the language is in NP. Using the certificate/verifier formulation of NP, if we want to show that a language <span class="math inline">\(L\)</span> is in <span class="math inline">\(NP\)</span>, we need to show that an input <span class="math inline">\(x\)</span> has a polynomial-sized <em>certificates</em> if and only if <span class="math inline">\(x\in L\)</span>, where the certificate can be verified in polynomial time.</p>
+<p>Here are some examples of problems/languages that we’ll use in this discussion. Many of these are graph problems, and I assume you know the basic graph terminology – if not, see explanations <a href="npc-defs.html">here</a>.</p>
+<p>SAT <span class="math inline">\(=\{\langle\phi\rangle : \phi\)</span> is a Boolean formula for which some assignment of Boolean values to the variables makes <span class="math inline">\(\phi\)</span> true<span class="math inline">\(\}\)</span></p>
+<p>CLIQUE <span class="math inline">\(=\{\langle G,k\rangle : G\)</span> is an undirected graph that contains a clique of size <span class="math inline">\(k\}\)</span></p>
+<p>VERTEX-COVER <span class="math inline">\(=\{\langle G,k\rangle : G\)</span> is an undirected graph that contains a vertex cover of size <span class="math inline">\(k\}\)</span></p>
+<p>HAMCYCLE <span class="math inline">\(=\{\langle G\rangle : G\)</span> is an undirected graph that contains a Hamiltonian cycle<span class="math inline">\(\}\)</span></p>
+<p>HAMPATH <span class="math inline">\(=\{\langle G,s,t\rangle :\)</span> there is a Hamiltonian path from <span class="math inline">\(s\)</span> to <span class="math inline">\(t\)</span> in graph <span class="math inline">\(G\}\)</span></p>
+<p>ANY-HAMPATH <span class="math inline">\(=\{\langle G\rangle :\)</span> there is a Hamiltonian path in graph <span class="math inline">\(G\}\)</span></p>
+<p>HAM-EXTEND <span class="math inline">\(=\{\langle G,k\rangle : k\geq 1\)</span> is an integer and there exists a set <span class="math inline">\(E&#39;\)</span> of edges such that <span class="math inline">\(|E&#39;|\leq k\)</span> and <span class="math inline">\(G&#39;=(V,E\cup E&#39;)\)</span> is Hamiltonian <span class="math inline">\(\}\)</span></p>
+<p> </p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

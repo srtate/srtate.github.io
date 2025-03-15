@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 452/652 - Spring 2020 - Assignment 5 - Due April 29, 2020</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://www.uncg.edu/cmp/faculty/srtate/452.s20/assign5.html">View original, outside canvas</a> ]
+   
+        <style>
+pre {
+ display:block;
+ padding:9.5px;
+ margin:0 0 10px;
+ font-size:13px;
+ line-height:1.42857143;
+ color:#333;
+ word-break:break-all;
+ word-wrap:break-word;
+ background-color:#f5f5f5;
+ border:1px solid #ccc;
+ border-radius:4px
+}
+pre code {
+ padding:0;
+ font-size:inherit;
+ color:inherit;
+ white-space:pre-wrap;
+ background-color:transparent;
+ border-radius:0
+}
+</style>
+<h2 id="assignment-5---due-april-29-2020">Assignment 5 - Due April 29, 2020</h2>
+<ol type="1">
+<li><p>Consider the language <span class="math inline">\(CFL_{TM}=\{\langle M\rangle\,|\,L(M)\)</span> is a context-free language<span class="math inline">\(\}\)</span>. Prove that this language is undecidable. (<em>Hint</em>: Note the similarity to the language <span class="math inline">\(REGULAR_{TM}\)</span> in Section 5.1.)</p></li>
+<li><p>Let <span class="math inline">\(L_{W1}=\{\langle M,w\rangle\,|\, M\)</span> writes a <span class="math inline">\(1\)</span> on its tape at some point when started with input <span class="math inline">\(w\}\)</span>. Prove that <span class="math inline">\(L_{W1}\)</span> is undecidable.</p></li>
+<li><p>Define <span class="math inline">\(L_{ALL}=\Sigma^*\)</span> for input alphabet <span class="math inline">\(\Sigma\)</span>. If language <span class="math inline">\(A\)</span> is reducible to <span class="math inline">\(L_{ALL}\)</span>, what can you conclude about <span class="math inline">\(A\)</span>, and why? (<em>Note</em>: A very strong conclusion can be drawn – full credit only for the most precise conclusion possible.)</p></li>
+<li><p>The language CLIQUE=<span class="math inline">\(\{\langle G,k\rangle\,|\,G\)</span> is an undirected graph with a <span class="math inline">\(k\)</span>-clique<span class="math inline">\(\}\)</span> was defined on page 296, and then later shown (in Corollary 7.43) to be NP-complete. Consider the following language, which “hard-codes” the value <span class="math inline">\(k\)</span>: 6-CLIQUE=<span class="math inline">\(\{\langle G\rangle\,|\,G\)</span> is an undirected graph with a 6-clique<span class="math inline">\(\}\)</span>. Can 6-CLIQUE be decided in polynomial time? Be clear in your answer (it might not be just “yes” or “no”!), and fully justify your answer.</p></li>
+<li><p>The population of FeudLand consists of people who have sworn “blood feuds” against certain other people from FeudLand — for example, Joe has declared a blood feud against Abe, where if Joe and Abe are ever in the same room they will try to kill each other. The blood feuds are all well-known and publicized, so it’s possible to make a list of all pairs of people who have sworn blood feuds against each other. A mediator would like to gather as large a group of residents as possible from FeudLand for a discussion on how they can make FeudLand a more peaceful place to live, but obviously can’t include two people who are feuding to the meeting. Your job is to see if it’s possible to compute the best (maximum size) invitation list for a peaceful meeting.</p>
+<ol type="a">
+<li><p>Formalize notation so that the statement of this problem is precise. You are free to use any standard computer science or mathematical structure that makes this problem clear.</p></li>
+<li><p>Define a language (i.e., decision problem) that captures the computational complexity of the optimization problem described in this problem.</p></li>
+<li><p>Show that this language is NP-complete. (<em>Hint</em>: This problem is very closely related, at an abstract level, to one of the NP-complete problems in Chapter 7, but you might have to change your point of view to see it. What if you thought about identifying pairs of people that are compatible, so can be in the same room together, rather than pairs of people that have a feud.)</p></li>
+<li><p>What does this say about creating the best possible invitation list? Can you do it in a reasonable amount of time?</p></li>
+</ol></li>
+<li><p><strong>Programming Problem:</strong> Write a program that determines if two DFAs with input alphabet <span class="math inline">\(\Sigma=\{0,1\}\)</span> recognize the same language. For example, imagine that someone creates a DFA that accepts binary strings in which the number of 1’s mod 4 is either 1 or 3, given as “DFA 1” below. Later, they realize that this is really just the same thing as the language of all binary strings with odd parity, which is “DFA 2” below. Are these really equivalent? That might be easy to see for this example, but what if the DFAs had hundreds or even thousands of states? That’s what your program will decide!</p>
+<p><img src="assign5_dfas.png" /></p>
+<p>Skeleton code, including code to read an input file and create a DFA object from it, is provided at <a href="https://github.com/srtate/ToC-Assignment5"><code>https://github.com/srtate/ToC-Assignment5</code></a>. The input format is simple: The first line contains the number of states (<span class="math inline">\(n\)</span>) and the number of accepting states (<span class="math inline">\(f\)</span>). This is followed by <span class="math inline">\(n\)</span> lines that each describe the transition function leaving that state with 3 numbers: First the current state number (states are numbered <span class="math inline">\(0,\cdots,n-1\)</span>), then the state that is transitioned to with input <span class="math inline">\(0\)</span>, and then the state that is transitioned to with input <span class="math inline">\(1\)</span>. Finally, after all transitions are defined, there is a line listing the <span class="math inline">\(f\)</span> accepting states. The start state is always state 0. Using this format, DFA 1 above is described by:</p>
+<pre><code>4 2
+0 0 1
+1 1 2
+2 2 3
+3 3 0
+1 3</code></pre>
+<p>DFA2 is given by:</p>
+<pre><code>2 1
+0 0 1
+1 1 0
+1</code></pre>
+<p>Your code needs to follow decent and rational coding standards, but I’m not requiring any particular coding or documentation style. Just make it the code understandable and easy to read! The most important thing is whether your program correctly solves the problem, and runs efficiently. If one DFA has <span class="math inline">\(n_1\)</span> states and the other has <span class="math inline">\(n_2\)</span> states, then following the basic algorithms from Chapter 4 and Chapter 1 you can easily code this as an algorithm that runs in <span class="math inline">\(O(n_1n_2)\)</span> time. You may modify the core DFA class and definition if you’d like, although it is entirely unnecessary. Adding additional methods that do useful things with DFAs might certanly be a good idea though. If you want to use some language other than Java, you can do that, but you’ll need to start from scratch (using the same DFA input format!).</p>
+<p>These are individual assignments, so you may not share code or even show your code to any other student. You <em>are</em> allowed to create and share additional test data with each other, and you are encouraged to do so! There is a special “Assignment 5 Code Submission” assignment set up in Canvas that will accept files of any type. Use that to submit your code.</p></li>
+</ol>
+<p> </p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

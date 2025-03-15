@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>Readings on Randomness -- Estimation with Powers of Two</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://www.uncg.edu/cmp/faculty/srtate/481.f21/rand_estimation.html">View original, outside canvas</a> ]
+   
+        <h3 id="estimation-with-powers-of-two">1. Estimation with Powers of Two</h3>
+<p>Working with powers of two is fundamental throughout computer science and computer technology, as is working with base two logarithms (the inverse of powers of two). There are lots of examples of this: Data is represented using bits, which is a base two representation in which each bit represents a power of two; data structures often work by splitting data in half, resulting in complexity proportional to a base two logarithm (as in balanced binary search trees, binary space partitions, and more); memory is addressed using binary values, meaning that memory sizes are naturally powers of two; and as we will see a little later, the “bit” is the most natural measure of information, leading to the importance of powers of two and the related issue of base two logarithms.</p>
+<p>Once you learn a few tricks, estimating values that arise in computing problems can be done quickly and easily in your head, giving you a powerful skill at rough approximation. How “rough” is “rough approximation”? In this kind of estimation, we’re really only interested in getting things right to within a factor of two or four, not accurate to a fraction of a percent. The distinctions we’re after are seeing the difference between a process that takes a week and a process that takes a year — not the difference between a week and ten days. For many tasks, this rough approximation illuminates the important issues in a way that can guide more precise work.</p>
+<h4 id="powers-of-two-the-basics">1.1 Powers of Two – The Basics</h4>
+<p>As a first step, there is a nice correspondence between powers of two and numbers we talk about in everyday conversation (thousands, millions, etc.). In particular, as the exponent of a power of two goes through multiples of 10, values go up through our “named” numbers. For example, <span class="math inline">\(2^{10}=1024\)</span>, which is approximately a thousand. In fact, when talking about memory (RAM) sizes, since RAM capacity in a hardware module is always a power of two, these are the actual sizes when you get 1K or 1M or 1G of RAM. In other words, if you were to buy a memory module with 1K bytes of RAM (if you could even buy something that small these days!), it would actually have a capacity of 1024 bytes. More realistically, when you buy a 4GB RAM module, it is actually <span class="math inline">\(2^{32}\)</span> or 4,294,967,296 bytes, rather than the 4 billion that a naive interpretation of the “G” prefix would suggest. (<em>Note that this is not universal to all storage sizes — RAM is represented this way, while hard drives use “G” and “T” for traditional notions in which they are exactly a billion and a trillion, not powers of two. To make this more explicit, some people use “GiB” rather than “GB” to represent <span class="math inline">\(2^{30}\)</span> bytes, where “GiB” is pronounced “gibibyte” – there is similar terminology for other powers of two, using KiB, MiB, TiB, etc. While MiB and GiB do theoretically remove ambiguity from referring to sizes this way, it is far from universally practiced.</em>)</p>
+<p>Here are the important power of two to know:</p>
+<table style="width:44%;">
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 29%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(2^{10}\)</span></td>
+<td>“about a thousand”</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(2^{20}\)</span></td>
+<td>“about a million”</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(2^{30}\)</span></td>
+<td>“about a billion”</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(2^{40}\)</span></td>
+<td>“about a trillion”</td>
+</tr>
+</tbody>
+</table>
+<p>
+<p>Next, you can “fill in the gaps” between these powers of two by knowing the small powers of two – those with an exponent less than 10. If you do much computer science at all, you should know, without even really having to think, that <span class="math inline">\(2^4=16\)</span> and <span class="math inline">\(2^8=256\)</span> (the latter is the number of distinct 8-bit bytes, so is one of the most important values for you to know right off the top of your head). Another value that is good to know, simply because it comes up a lot, is <span class="math inline">\(2^{16}=65,536\)</span>. This is, for example, the number of 16-bit binary values. Knowing this, you know that the maximum value of a 16-bit <code>unsigned short</code> in Java (or C or C++ on most computers) is <span class="math inline">\(2^{16}-1\)</span> or <span class="math inline">\(65,535\)</span>.</p>
+<p>Once you know these values, it’s easy to estimate others. For example, what is <span class="math inline">\(2^{25}\)</span>? Well, the exponent is in the 20’s, so let’s separate that out by writing <span class="math inline">\(2^{25}=2^{20}\cdot 2^5\)</span>. Knowing the small powers of two and the approximations for multiples of 10 shows that this is “about a million” times 32 — in other words, <span class="math inline">\(2^{25}\)</span> is approximately 32 million.</p>
+<h4 id="powers-of-two-values-for-times-sizes-and-more">1.2 Powers of Two – Values for Times, Sizes, and More</h4>
+<p>The numbers we are working with are often measurements of time, so there are a few powers of two to know for relating to units of time. While the approximations above are accurate to within 10% in the worst case, these are a little more variable. There’s also no good pattern to these, but they are useful enough where you should just memorize these values (shown below with relative error of each):</p>
+<table style="width:64%;">
+<colgroup>
+<col style="width: 29%" />
+<col style="width: 34%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>Seconds in an hour</td>
+<td>Approximately <span class="math inline">\(2^{12}\)</span>    (relative error 13.8%)</td>
+</tr>
+<tr class="even">
+<td>Seconds in a day</td>
+<td>Approximately <span class="math inline">\(2^{16}\)</span>    (relative error 24.1%)</td>
+</tr>
+<tr class="odd">
+<td>Seconds in a year</td>
+<td>Approximately <span class="math inline">\(2^{25}\)</span>    (relative error 6.3%)</td>
+</tr>
+</tbody>
+</table>
+<p>
+<p>As another notion of time, consider the speed of a modern processor. Speeds are typically in the “low gigahertz” range, ranging from 2 GHz to 4 GHz, with each machine instruction taking a few clock cycles. For simple calculations, it’s not too far off to say that a modern CPU performs around a billion operations per second – or around <span class="math inline">\(2^{30}\)</span> operations per second.</p>
+<hr />
+<blockquote>
+<p><strong>Example 1.1:</strong> Consider a program that allocates 40 bits to a counter. How long would it take to increment the counter before it “wraps-around” (i.e., exceeds the value that can be stored in 40 bits)? A 40-bit counter that is initialized at zero wraps around when it has been incremented <span class="math inline">\(2^{40}\)</span> times, so if we are considering a billion increments per second then this will happen in roughly <span class="math inline">\(2^{40}/2^{30}=2^{10}\)</span> seconds, or about 1000 seconds. 10 minutes is 600 seconds, and 20 minutes is 1200 seconds, so this is approximately 17 minutes.</p>
+</blockquote>
+<hr />
+<blockquote>
+<p><strong>Example 1.2:</strong> The original Unix implementation kept track of time with a simple integer counter, measuring the number of seconds since the beginning of January 1, 1970 (this starting time is known as the “<em>Unix epoch</em>”). The counter was 32 bits, and unfortunately was a signed integer, so can only count up to <span class="math inline">\(2^{31}-1\)</span>. What is the last time that can be represented with this time representation? We know that a year is approximately <span class="math inline">\(2^{25}\)</span> seconds, so the counter is good for <span class="math inline">\(2^{31}/2^{25}=2^7=64\)</span> years. 64 years after 1970 is 2034, so that’s a reasonable estimate on the length of time before this representation won’t work. (<em>Note that a precise calculation shows that the counter runs out at 3:14:08 on Tuesday, January 19, 2038, and so this is known as the “Year 2038 Problem.” But 2034 is a pretty good estimate!</em>)</p>
+</blockquote>
+<hr />
+<h4 id="base-two-logarithms">1.3 Base Two Logarithms</h4>
+<p>The inverse of the powers of two function is the base two logarithm, which is also of major importance in computer science. The function <span class="math inline">\(\log_2 n\)</span> is proportional to the time to store or lookup a value in a balanced binary tree, the time for a binary search, the time to update a binary heap, and more. If you can estimate powers of two quickly, then you can also estimate base two logarithms quickly! Since <span class="math inline">\(2^{10}\)</span> is approximately 1000, you also know that <span class="math inline">\(\log_2 1000\)</span> is approximately 10. Similarly, you know that <span class="math inline">\(\log_2 1,000,000\)</span> is approximately <span class="math inline">\(20\)</span>. By repeatedly doing quick approximations with powers of two, you can narrow down an estimate for the base two logarithm of any number. What is the base 2 logarithm of 100,000? Well, that’s 100 times 1000 — since 100 is a small value, we know a lot of powers of two in this range, so know that this is approximately <span class="math inline">\(2^7\)</span> (this is exactly 128). So 100,000 is approximately <span class="math inline">\(2^{7}\cdot 2^{10} = 2^{17}\)</span>, and so the base two logarithm of 100,000 is approximately 17. (Note that the precise value is 16.6096…, so this is a pretty good estimate!)</p>
+<hr />
+<blockquote>
+<p><strong>Example 1.3:</strong> Here’s an interesting problem: In 2016 there were a little over 5 million registered voters in North Carolina. Let’s say we wanted to be able to look up voters quickly, so we put all those names in a sorted array that we can use to look people up using binary search. How quickly could we find a voter? Here’s the estimation: We’re talking about something in the millions, so we start off by noting that <span class="math inline">\(2^{20}\)</span> is about a million. Then we’re talking about 5 million — this is close to 4 million, which is <span class="math inline">\(2^2=4\)</span> times a million, or <span class="math inline">\(2^{22}\)</span>. The base 2 logarithm of this is 22 — we can round this up to account for our underestimation of 5 million, and see that we can find any voter, out of 5 million listings, in around 23 comparisons, which a modern processor could do in less than a microsecond.. That’s excellent!</p>
+</blockquote>
+<hr />
+<h3 id="keys">1.4 Keys</h3>
+<p>Let’s see how these approximation techniques can be used in an estimation problem that arises in cryptography. You don’t actually have to understand cryptography for these examples to make sense, so don’t worry if you know absolutely nothing about cryptography.</p>
+<hr />
+<blockquote>
+<p><strong>Example 1.4:</strong> In symmetric cryptography, keys are typically arbitrary <span class="math inline">\(k\)</span>-bit values, where we call <span class="math inline">\(k\)</span> the “key length” (we’ll talk more about this a little later). A “brute force attacker” simply tries keys one after another to find one that works, assuming they have some indication of when a key is correct, and there are <span class="math inline">\(2^k\)</span> different <span class="math inline">\(k\)</span>-bit binary values. Consider a simple encryption scheme that uses a 40-bit key, where you can test a key to see if it is the correct key at a rate of a billion per second. (For historical context: Before the year 2000, when non-US users downloaded the Netscape Navigator browser they got the “International Version,” which most commonly used 40-bit keys for a cipher called RC4.) When you search for a random key out of <span class="math inline">\(2^{40}\)</span> possibilities, you will have to, on average, test half of the possible keys. This means you test <span class="math inline">\(2^{40}/2=2^{39}\)</span> keys. If you can test <span class="math inline">\(2^{30}\)</span> keys per second, this will take <span class="math inline">\(2^{39}/2^{30}=2^9\)</span> seconds. If you know your small powers of two, you know this is 512 seconds — or even if you don’t remember that exactly, it’s half of <span class="math inline">\(2^{10}\)</span> so it’s “about 500.” Since 10 minutes is 600 seconds, such a key can be found, on average, in a little under 10 minutes. Obviously, that’s not very secure!</p>
+</blockquote>
+<hr />
+<blockquote>
+<p><strong>Example 1.5:</strong> What if we increase the key size to 128 bits, while still being able to test keys at around a billion per second — note that 128 bits is the smallest key size supported by the modern cipher AES. This should be more secure than a 40-bit key, but how much more secure? It’s about 3 times as long, so is it three times as secure, or something else? Let’s re-run our calculations: On average, we’ll need to check <span class="math inline">\(2^{128}/2=2^{127}\)</span> keys. At a billion a second, this is <span class="math inline">\(2^{127}/2^{30}=2^{97}\)</span> seconds.</p>
+</blockquote>
+<blockquote>
+<p>That’s a lot of seconds, so let’s try to get a better handle on that. Using the estimate that there are <span class="math inline">\(2^{25}\)</span> seconds in a year, we see that this would take, on average, <span class="math inline">\(2^{97}/2^{25}=2^{72}\)</span> years. Wow. How much is that? Since <span class="math inline">\(72=32+40\)</span> we know that this is about 4 billion trillion years. For context, the best estimate on the age of the universe is just 13.7 billion years.</p>
+</blockquote>
+<blockquote>
+<p>Even if you could build special-purpose hardware that could test keys a billion times faster, it would still take around 4 trillion years to find the key. That’s still almost a thousand times the age of the universe – that seems pretty safe!</p>
+</blockquote>
+<hr />
+<p>This last pair of examples shows how rough approximations are useful. Even if the estimation can be off by a factor of 10, Example 1.4 would show that a 40-bit key could be broken in something between 50 seconds and 5000 seconds (about an hour and a half) – both very practical timings. And if Example 1.5 overestimated by a factor of 10, you’re still looking at hundreds of millions of trillions of years – very impractical, no matter how you look at it!</p>
+<p> </p>
+<p><a href="randomness.html">Up: Contents</a>      <a href="rand_randomness.html">Next: Randomness</a></p>
+<hr />
+<div style="font-size: 80%;">
+<p>© Copyright 2020–2021, <a href="https://www.uncg.edu/cmp/faculty/srtate/index.html">Stephen R. Tate</a><br/> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</p>
+</div>
+<p> </p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

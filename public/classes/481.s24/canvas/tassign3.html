@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>Assignment 3 -- Due Tuesday, February 27</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://home.uncg.edu/cmp/faculty/srtate/481.s24/tassign3.html">View original, outside canvas</a> ]
+   
+        <h3 id="assignment-3-due-tuesday-february-27">Assignment 3 – Due Tuesday, February 27</h3>
+<ol type="1">
+<li><p>Solve “Question 4” from the <a href="formalmodels.html">Formal Models for Cryptography</a> reading. Your presentation is as important as coming up with the solution here. Your solution should be similar to what is in Example 3 of the reading: clearly define the adversary algorithms, with pseudocode, and analyze probabilities.</p></li>
+<li><p>We discussed CBC mode in class with a diagram on the slides, and formulas are given on pages 403–404 in the textbook. For this problem you are to show how CBC mode is malleable — remember from class that “malleable” means that an attacker can tamper with the ciphertext so that when the receiver decrypts the ciphertext there is some predictable change in the plaintext they recover.</p>
+<p>When CBC mode is used in practice, the IV is typically sent in the clear immediately preceding the ciphertext, and in an active attack the adversary can tamper with either the IV or the ciphertext. The “<code>openssl</code>” program can be used to do encryptions and decryptions with a given IV, and the following screenshot illustrates such an attack. Notice that a message (“2000 to Tate”) is first encrypted using AES with a 256-bit key in CBC mode, but an IV of all zeros (unfortunately a common mistake of programmers who forget to pick a random IV!). Then there’s a straight decrypt of that message with the correct IV, showing the original message being recovered. But then the final command shows a second decryption (with a hidden IV) that now says “8000 to Tate”. That’s a malleability attack!</p>
+<p><img src="A3-MalleableCBC.png" /></p>
+<ol type="a">
+<li><p>Explain how this attack works – use the CBC formulas to show how an attacker that knows the first character of the plaintext can modify the IV so that the receiver’s decryption will start with any character of the attacker’s choice. Don’t assume an IV of all zeroes, like in my example – you should describe a general attack, that would work with any plaintext and any IV. Justify that this works using properties of exclusive-or (XOR). For instance, we know that XOR is associative (so <span class="math inline">\((x\oplus y)\oplus z=x\oplus (y\oplus z)\)</span>), commutative (so <span class="math inline">\(x\oplus y=y\oplus x\)</span>), zero is the identity element (so <span class="math inline">\(x\oplus 0=x\)</span>), and every element is its own inverse (so <span class="math inline">\(x\oplus x=0\)</span>).</p></li>
+<li><p>Given this attack, what was the hidden IV used in the example/screenshot above?</p></li>
+</ol></li>
+<li><p>Consider two users on a Unix system, <code>alice</code> and <code>bob</code>. Both are members of the group <code>develop</code>. There is another user on the system, <code>charlie</code>, who is not a member of the <code>develop</code> group. Consider the following files in a directory that all users can access:</p>
+<pre><code> -r--r-----  1 alice develop  3612 Oct 25 14:36 Makefile
+ -rwxrwxr-x  1 alice develop  4823 Oct 27 11:04 execute
+ -rw-rw-r--  1 alice alice    2145 Oct 27 11:31 notes.txt
+ -rw-rw-r--  1 bob   develop  1098 Oct 26 21:56 source.c
+ -rw-------  1 alice develop  2796 Oct 27 11:03 source.o
+ -rwsrwxr-x  1 alice develop  4823 Oct 27 11:12 special</code></pre>
+<p>For each question below, give a very brief explanation of your answer.</p>
+<ol type="a">
+<li><p>Which files can <code>alice</code> modify?</p></li>
+<li><p>Which files can <code>bob</code> modify?</p></li>
+<li><p>Which files can <code>charlie</code> read?</p></li>
+<li><p>Which files can <code>charlie</code> modify?</p></li>
+<li><p>Programs named <code>execute</code> and <code>special</code> are the exact same program, but are two copies with different permissions. This program tries to open and modify the <code>notes.txt</code> file. If <code>bob</code> runs the version named <code>execute</code>, will the program be able to perform these operations?</p></li>
+<li><p>If <code>bob</code> runs the version named <code>special</code>, will the program be able to perform these operations?</p></li>
+<li><p>If <code>execute</code> and <code>special</code> perform differently for <code>bob</code>, why?</p></li>
+</ol></li>
+<li><p>The “capabilities” labtainer exercise is brief and can be completed in under 30 minutes, but it demonstrates a very important security feature of modern Linux systems. Complete the labtainer exercise, with the following change: you do not need to submit the lab report it refers to under “Submission,” nor do you have to answer the questions at the end of Task 2, but you still need to submit the <code>.lab</code> file which documents your work. Hint for Task 1.2: You may need to refer to the man page “cap_from_text” to see how to format the capability-setting command. Remember that any time you are working on a lab, you can always type <code>checkwork</code> in the main system window to see how many of the major requirements have been met (there are other things that are checked in grading, but this gives good high-level feedback).</p>
+<p>You should also answer this question <strong>as part of your written problem submission</strong>: What results did you see from Task 2? In other words, which open calls failed? Answer honestly: Did you correctly predict what was going to happen? Then explain in your own words why some calls failed and others succeeded.</p></li>
+<li><p>Complete the “pass-crack” labtainer exercise, including the lab report and spreadsheet (which are submitted as part of the labtainer lab file – there’s nothing to submit as part of the written problems).</p></li>
+</ol>
+<p> <br />
+</p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

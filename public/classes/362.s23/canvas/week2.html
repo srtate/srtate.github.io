@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 362 - Spring 2023 - Week 2 Notes</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://home.uncg.edu/cmp/faculty/srtate/362.s23/week2.html">View original, outside canvas</a> ]
+   
+        <h2 id="csc-362-spring-2023-week-2-notes">CSC 362 – Spring 2023 – Week 2 Notes</h2>
+<h4 id="tuesday">Tuesday</h4>
+<p>This week: Basics of working with shell and Linux cmds - more each week</p>
+<p>Today: Getting around on the system - next time, more details behind scenes</p>
+<p>Slides – should be about 30 min, leaving 45 min for demos:</p>
+<ul>
+<li>Role of the shell - nothing magical - just a program</li>
+<li>diff between terminal and shell (putty w/ssh for example)</li>
+<li>copy/paste: recall from last time – terminal or shell?</li>
+<li>Two roles for shell: Interaction and scripting</li>
+<li>Different shells - similarities and differences
+<ul>
+<li>Mention command.com and powershell</li>
+</ul></li>
+<li>Format - command and args
+<ul>
+<li>Will see how that works with programs next week</li>
+<li>Remember “String argv[]” as parameter to “main” in Java?</li>
+</ul></li>
+<li>Files and directories: “Folders”, etc.
+<ul>
+<li>Stress that a file is just a sequence of bytes - no “meaning” or type</li>
+<li>Metadata - picture metadata (for example) vs file metadata</li>
+</ul></li>
+<li>Security - relate “r” to confidentiality and “w” to integrity
+<ul>
+<li>Practice a little with octal</li>
+</ul></li>
+</ul>
+<p>Demos:</p>
+<ul>
+<li>First remind about basics of files using file browser
+<ul>
+<li>folders (directories) - current and traversing</li>
+<li>notion of “current directory” or “current working directory”</li>
+<li>file contents vs metadata - right click and “properties” for meta
+<ul>
+<li>note diff dates (modified and accessed)</li>
+</ul></li>
+</ul></li>
+<li>Shell vs terminal - resize font - what program was involved? Emphasize that shell doesn’t know the difference…</li>
+<li>Basic Commands: Saw these briefly last class
+<ul>
+<li>pwd, ls, cd - cd into subdir and do pwd and ls</li>
+<li>mention color coding in terminal, but then “ls -l”
+<ul>
+<li>talk about what is shown - owner/group, size</li>
+<li>permissions</li>
+<li>try other options – “-lt” and “-a” and “-la”</li>
+<li>talk about hidden files (show .surprise.txt)</li>
+<li>special files “.” and “..” – one big filesystem (unlike Windows/DOS)</li>
+<li>Show “man ls” – some are long - page through.</li>
+<li>Then do again and “/” for “sorting”</li>
+</ul></li>
+<li>cat</li>
+<li>less (mention more) - look at book.txt - then search (“/”) for “Lanyon”</li>
+</ul></li>
+<li>slogin to ile and point out all can get accounts
+<ul>
+<li>Where is shell running? Where is terminal running?</li>
+<li>ctrl-l to clear window</li>
+</ul></li>
+<li>back to basics on VM
+<ul>
+<li>cat to concatentate 2 files</li>
+<li>mkdir, rmdir, mv, rm (pushd/popd?)
+<ul>
+<li>“mkdir project” - cd into that - pwd - then “cp ../file1.txt .”</li>
+<li>cp file1.txt copy.txt – then mv to newname.txt - then mv to ..</li>
+<li>mv it back</li>
+<li>rm newname.txt</li>
+<li>cd .. and then rmdir project – then rm -r project</li>
+<li>Talk about git tracking files - then to “mv file1.txt new.txt”
+<ul>
+<li>Do “git status” and discuss</li>
+<li>mv back - then “git mv” (talk about command editing!) and “git status”</li>
+<li>the “git reset -hard”</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>More on man: talk about manual sections (use “printf” as example)</li>
+<li>Argument wildcards - for ls and find - show more on find
+<ul>
+<li>do "ls -l *.txt"</li>
+<li>what does ls really “see?” Do "echo *.txt"
+<ul>
+<li>do a few others like “echo”file?.txt" and echo "*"</li>
+<li>do “ls -a” to show there was a hidden file that was ignored.</li>
+</ul></li>
+<li>quotes and backslashes - more later when C programming</li>
+<li>spaces in names and tokens</li>
+</ul></li>
+<li>Users and groups
+<ul>
+<li>basic idea - a process has one user owner, but can have multiple groups</li>
+<li>“id”</li>
+<li>see /etc/passwd and /etc/group file - note that passwords aren’t in passwd</li>
+<li>su and sudo - open new shell and su for diff user</li>
+</ul></li>
+<li>File permission bits
+<ul>
+<li>Review bits and structure</li>
+<li>how to set with chmod</li>
+<li>meaning of “x” with directory</li>
+<li>note that there are others, but that can wait</li>
+</ul></li>
+<li>grep for searching in file contents (use /etc/passwd?)
+<ul>
+<li>do recursive – search for “directory”</li>
+<li>search for something with a space (use “going to force” in book.txt)</li>
+</ul></li>
+<li>find for searching based on metadata
+<ul>
+<li>back in home, find filehere.txt</li>
+<li>size (25c)</li>
+<li>add “-exec” to find to have it “ls -l” the found file</li>
+<li>man page for find and all the options…</li>
+</ul></li>
+<li>Shell interaction tips: command/file completion, history (&amp;search)
+<ul>
+<li>exit and ctrl-d</li>
+</ul></li>
+<li>Job control: &amp;, fg, bg, etc.
+<ul>
+<li>edit a file with vi - ctrl-z to suspend - “jobs” and “fg”</li>
+<li>do a second vi and “fg %1” or “fg %2”</li>
+<li>run heartbeat.sh
+<ul>
+<li>first do ctrl-c</li>
+<li>re-run with “&amp;” - show prompt and commands work - then fg and ctrl-z</li>
+<li>bg starts it back up</li>
+</ul></li>
+</ul></li>
+</ul>
+<h4 id="thursday">Thursday</h4>
+<p>Slides – shoot for 25 min:</p>
+<ul>
+<li>Basic model - inputs, processing, outputs - where from/to?</li>
+<li>File descriptors - numbers - streams get/put byte by byte</li>
+<li>Redirection
+<ul>
+<li>Common to think of stdin/out as “console” but that’s just the default</li>
+<li>Files (redirection)</li>
+<li>Other programs (piping)</li>
+</ul></li>
+<li>Environment variables
+<ul>
+<li>Note: note environmentAL variables</li>
+<li>Think “session level” or “user level” rather than per run options</li>
+<li>Mention .profile</li>
+</ul></li>
+</ul>
+<p>Demos:</p>
+<ul>
+<li>Anything “left over” from last time (there was a lot to cover!)?</li>
+<li>Examining environment variables
+<ul>
+<li>Use “echo” for a few specifics like $HOME, $USER, etc.</li>
+<li>Use “env” to show all</li>
+<li>First pipe example: env piped to “less”</li>
+<li>Then env piped to grep (look for “PATH”)
+<ul>
+<li>Then beginning with PATH (‘^PATH’)</li>
+</ul></li>
+<li>Exported vs non-exported variables (echo for PS1 and env w/grep)</li>
+<li>Setting environment variables (then export)</li>
+</ul></li>
+<li>Redirection
+<ul>
+<li>env to file then edit file</li>
+<li>echo or “cat -” with redirection for quick and dirty file creation</li>
+</ul></li>
+<li>New commands: head, tail, sort, uniq (incl with -c), cut
+<ul>
+<li>What are first few lines of book.txt? (less, scroll back, editor, then head)</li>
+<li>last few lines? use tail</li>
+<li>See a few more of the last lines: tail -25</li>
+<li>How many lines total (use wc)</li>
+<li>Look at /etc/passwd
+<ul>
+<li>First few lines?</li>
+<li>usernames are in arbitrary order - use “sort” to put in order</li>
+<li>first few? Pipe sort into head – then last few (pipe to tail)</li>
+</ul></li>
+<li>Interested in shells that accounts use
+<ul>
+<li>Talk about fields - count out to shell (7th field)</li>
+<li>cut to look at just 7th field</li>
+<li>then uniq to get rid of adjacent lines that are duplicates</li>
+<li>then sort first to put all duplicates together</li>
+<li>what if we want stats like how many use each shell? uniq -c</li>
+</ul></li>
+</ul></li>
+<li>Archives and compression: tar, gzip, bzip2, xz
+<ul>
+<li>subdir has three files - can we bundle those to transfer as 1 file?</li>
+<li>very common for distributing datasets, programs, etc.</li>
+<li>use tar cf all.tar subdir</li>
+<li>tar tf to see contents</li>
+<li>then create new dir t, cd into t, and tar xf ../all.tar</li>
+<li>look at size of all.tar (about 10k)</li>
+<li>compress with gzip and look again</li>
+<li>untar with tar xzf</li>
+<li>copy book.txt to c1 c2 and c3 and apply gzip, bzip2, and xz to each</li>
+</ul></li>
+</ul>
+<p>Activity</p>
+<p>Remember to stress, for the compound commands, to build it up a little at a time.</p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

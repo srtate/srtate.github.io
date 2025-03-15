@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>Assignment 4 -- Due Tuesday, November 2</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../css/class_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+        <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark uncg-navbar fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="https://www.uncg.edu/">
+          <img class="collapse navbar-collapse" src="../img/uncg_class.png" alt="UNC Greensboro">
+          <img class="navbar-toggler" src="../img/uncg_mobile.png" alt="UNCG">
+        </a>
+        <div class="navbar-brand d-flex flex-column text-left"
+	     style="line-height: 1.2;">
+          <span>CSC 481/681</span>
+          <span class="small collapse navbar-collapse"><em>Principles of Computer Security</em></span>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link " href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="syllabus.html">Syllabus</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="schedule.html">Schedule</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="assignments.html">Assignments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://uncg.instructure.com/">Canvas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- Page Content -->
+    <div class="container">
+   
+        <h3 id="assignment-4-due-tuesday-november-2">Assignment 4 – Due Tuesday, November 2</h3>
+<p>For this assignment, you are to solve the “bufoverflow” labtainer exercise, and submit both a lab report and the labtainer zip file. There is no template provided for the report, but you should carefully and clearly document what you did, what you saw, and what you learned for each of the four tasks. This should be a proper lab report, including an introduction and conclusion – don’t just type up raw observations. As an example of the level of detail that is expected, see the <a href="https://www.uncg.edu/cmp/faculty/srtate/481.f19/Report-Sample.pdf">sample report</a>. The report should be typed, saved as a PDF, and submitted in Canvas.</p>
+<p>While this is just a single labtainer exercise, be aware that it is very detail-oriented, and you must figure out the details and get them exactly right in order for this to work. Here is some additional information and hints/tips:</p>
+<ul>
+<li><p>Make sure you read through the lab all the way before you start. In particular, the final sections provide important information that you’ll need in order to solve the tasks. These sections talk about memory layout of a process and call stack (which we will also discuss in class), and the section on “Storing a long integer in a buffer” has information on how to set a word in your exploit output to a specific 32-bit value.</p></li>
+<li><p>Task 1 (Section 2.4) is the hardest part. While the lab write-up talks about compiling the vulnerable program (stack.c) you should not have to do this for Task 1 as a pre-compiled setuid-root binary is provided in the labtainer. You can of course compile your own custom versions of stack.c in order to examine various aspects of the code, but that is optional.</p></li>
+<li><p>Task 2 requires patience. If you solved task 1 correctly, then this attack will eventually succeed, although it might take thousands of attempts and a long running time. The lab write-up has a vague statement that you “can modify your exploit program to increase the probability of success” but doesn’t give any details. If you want to try this, have the program print out information on the vulnerable buffer address and try to figure out some information on the distribution of the random placements. In particular, you’ll notice that the “non-randomized target address” from Task 1 is on the far end of that distribution of addresses. A better choice might be something closer to the middle of that range!</p></li>
+<li><p>Despite what the lab write-up says, you <em>can</em> use gdb with a setuid program - the system will disable the setuid bit, so the program will run as your regular (unprivileged) user, but you can debug, single step, and examine memory just fine without having to make a copy. Also note that setuid root programs running natively and with the setuid bit disabled in the debugger will have slightly different addresses for the stack. As long as you have enough flexibility in your jump address calculation through a NOP slide, this shouldn’t matter.</p></li>
+<li><p>The buffer sizes are different for each student, so the code will not exactly match the code and sizes in the lab instructions/write-up. <em>Do not modify the sizes in your programs</em> (use your values, not the ones in the write-up)! You’ll need to keep this in mind while reading the lab write-up so that you don’t get confused by the different sizes.</p></li>
+<li><p>For those that have only minimal experience programming in C, here are some tips:</p>
+<ul>
+<li>You need to copy the shellcode into your buffer, at the end. A good option for this is the “memcpy” function – type “man memcpy” at the shell prompt for full information. Note that you’ll have to calculate the location where the shellcode should start in the buffer, and for that you can use standard C/C++ pointer arithmetic.</li>
+<li>In situations where you do need to compile the code in a way that you can examine it in the gdb debugger, you should add the “-g” flag to gcc when compiling. The lab write-up ignores this, but it will make your work <em>much</em> easier!
+<p></li>
+</ul></li>
+<li><p>We will demonstrate and discuss several useful gdb commands in class, and will give some tricks for working with gdb to find the values that you need to perform this exploit. If you miss class, make sure you get notes from someone! If you want a very basic and very quick introduction to the basic gdb concept, there is a (completely optional) “gdblesson” labtainer exercise that you can do.</p></li>
+<li><p>This labtainer exercise is based on an older <a href="https://seedsecuritylabs.org/">SEED Lab</a> exercise, created by Prof. Wenliang Du at Syracuse University. While some things have changed, the underlying concepts are the same. Prof. Du has recorded videos of his lectures about performing buffer overflow exploits. While this is a long set of videos (over 2 hours if you watch it all), and there is no information that we will not have covered, if you get totally stuck and would like a different perspective, you can check out his videos:</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=3tUIcmG66y0">Video 1</a> - basic concepts behind buffer overflows and what happens when they are exploited</li>
+<li><a href="https://www.youtube.com/watch?v=eYlZt3yYBqM">Video 2</a> - some details on performing a buffer overflow attack</li>
+<li><a href="https://www.youtube.com/watch?v=vKE26N4_fIQ">Video 3</a> - talks about countermeasures to thwart buffer overflow exploits</li>
+</ul></li>
+</ul>
+<p> <br />
+</p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 454/654 - Spring 2020 - Perrin Numbers</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://www.uncg.edu/cmp/faculty/srtate/454.s22/perrin.html">View original, outside canvas</a> ]
+   
+        <h2 id="perrin-numbers">Perrin Numbers</h2>
+<p>Back in 1996, a sequence of numbers known as the Perrin numbers received a lot of attention, due to an article in Scientific American:</p>
+<blockquote>
+<p>Ian Stewart. “<a href="https://www.scientificamerican.com/article/tales-of-a-neglected-number/">Mathematical Recreations: Tales of a Neglected Number</a>”, <em>Scientific American</em>, June 1996, pp. 102-103.</p>
+</blockquote>
+<p>At the time, a group of people on the sci.math Usenet discussion forum (including the author of this summary) decided to try to solve the open problem described in that article: If <span class="math inline"><em>n</em></span> divides <span class="math inline"><em>P</em>(<em>n</em>)</span>, must <span class="math inline"><em>n</em></span> always be prime? We did in fact answer that question in the negative, finding two counter-examples, but being able to answer the question required both good computers and clever algorithms. While good algorithms must be used, it requires nothing beyond material that should be understandable to any computer science student that has completed an advanced data structures class. Because of this, I have regularly used this as an introduction to my algorithms classes, showing how algorithm design, analysis with recurrence equations, and induction proofs, all come together to solve this problem.</p>
+<p>A few years after solving this problem, we discovered that we were not the first. The problem had actually been solved in 1982 (unknown to either us or to Ian Stewart, who wrote the <em>Scientific American</em> article):</p>
+<blockquote>
+<p>William Adams and Daniel Shanks. “Strong primality tests that are not sufficient,” <em>Mathematics of Computation</em>, Vol. 39, pp. 255-300, 1982. DOI <a href="https://doi.org/10.2307/2007637">10.2307/2007637</a></p>
+</blockquote>
+<p>However, it’s still a great problem to use to introduce students to algorithms! This web page is an update to my 1996 presentation, with all the computational tasks run on modern hardware (an Intel Core i7-7700 CPU). This hardware is approximately 200 times faster than the hardware of the original tests, but still would not be fast enough to solve this problem without careful algorithm design.</p>
+<h3 id="basic-background-on-perrin-numbers">Basic Background on Perrin Numbers</h3>
+<p>Perrin numbers are interesting, and provide an excellent real-world example of techniques used in the design and analysis of algorithms, as well as an example of the importance of designing good algorithms. In fact, due to clever (but simple to describe) algorithms, an open question that has been around for almost a century has finally been solved. This is possible in part because of faster computers, but this is not enough — without the efficient algorithm for Perrin number computation, even the fastest computers today would not have been able to solve the problem that we will look at.</p>
+<p>Perrin numbers are closely related to Fibonacci numbers, as is clear from the definition of these two sequences:</p>
+<pre>
+  Fibonacci Sequence        Perrin Sequence
+  ==================        ===============
+
+   F(0)=0                    P(0)=3
+   F(1)=1                    P(1)=0
+   F(n)=F(n-1)+F(n-2)        P(2)=2
+                             P(n)=P(n-2)+P(n-3)
+</pre>
+Thus, the first 15 Perrin numbers are
+<center>
+3, 0, 2, 3, 2, 5, 5, 7, 10, 12, 17, 22, 29, 39, 51
+</center>
+<p>Now do something that at first seems odd. Look at the above list, and make a note of the values of <span class="math inline"><em>n</em></span> such that <span class="math inline"><em>P</em>(<em>n</em>)</span> is divisible by <span class="math inline"><em>n</em></span>. For example, <span class="math inline"><em>P</em>(2) = 2</span> is divisible by 2, <span class="math inline"><em>P</em>(3) = 3</span> is divisible by 3, but <span class="math inline"><em>P</em>(4) = 2</span> is not divisible by 4. The values of <span class="math inline"><em>n</em></span> which evenly divide <span class="math inline"><em>P</em>(<em>n</em>)</span> in the above list are exactly 2, 3, 5, 7, 11, and 13. This list is exactly the list of prime numbers in the range <span class="math inline">0…14</span>! If you keep calculating in this way, you’ll see that the values of <span class="math inline"><em>n</em></span> that evenly divide into <span class="math inline"><em>P</em>(<em>n</em>)</span> seem to be exactly the prime numbers. This is fascinating and important because the sequence of prime numbers has no known simple, easily exploitable structure. So the interesting question, which was first asked around 1899, becomes:</p>
+<blockquote>
+<p>Let <span class="math inline"><em>S</em></span> be the set of all numbers <span class="math inline"><em>n</em></span> such that <span class="math inline"><em>P</em>(<em>n</em>)</span> is divisible by <span class="math inline"><em>n</em></span>. Is <span class="math inline"><em>S</em></span> the set of all prime numbers?</p>
+</blockquote>
+<p>Before long, it was shown that for all prime <span class="math inline"><em>n</em></span>, <span class="math inline"><em>P</em>(<em>n</em>)</span> is divisible by <span class="math inline"><em>n</em></span>. We will use the name “Perrin-positive” for any number <span class="math inline"><em>n</em></span> for which <span class="math inline"><em>P</em>(<em>n</em>)</span> is divisible by <span class="math inline"><em>n</em></span>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> By the first sentence of this paragraph, all prime numbers are Perrin-positive, but are all Perrin-positive numbers actually prime numbers? In other words, we are interested in asking “Are there any <em>non</em>-prime (composite) values <span class="math inline"><em>n</em></span> such that <span class="math inline"><em>P</em>(<em>n</em>)</span> is divisible by <span class="math inline"><em>n</em></span>?” Looking at relatively small values of <span class="math inline"><em>n</em></span>, the answer to this question seems to be “no,” meaning that the set <span class="math inline"><em>S</em></span> appears to consist of exactly the prime numbers. If there are indeed any composite values of <span class="math inline"><em>n</em></span> such that <span class="math inline"><em>P</em>(<em>n</em>)</span> is divisible by <span class="math inline"><em>n</em></span>, this seems like a perfect job for a computer: find such an <span class="math inline"><em>n</em></span>, so that this counter-example can prove that the set <span class="math inline"><em>S</em></span> is <em>not</em> the same as the set of prime numbers. To solve this task, we set out to solve the following problem: write a program that outputs all Perrin-positive numbers from 1 to 1 billion.</p>
+<p>The first thing you notice if you start computing Perrin numbers is that they get very big, very fast, and so they exceed the size of an integer variable on the computer (and if you use software that lets you deal with such big numbers, the computations get very slow). How can we correct this?</p>
+<p>We’re really just interested in whether <span class="math inline"><em>P</em>(<em>n</em>)</span> is divisible by <span class="math inline"><em>n</em></span>. In other words: Is (<span class="math inline"><em>P</em>(<em>n</em>) mod <em>n</em></span>) equal to zero? It’s a basic fact of mathematics that if you’re interested in computing (<span class="math inline"><em>f</em>(<em>n</em>) mod <em>m</em></span>), and the computation of <span class="math inline"><em>f</em>(<em>n</em>)</span> involves only simple operations (like additions, subtractions, and multiplications), then you can use the mod operation at any time during the computation in order to keep the values small. For example, if we use <span class="math inline"><em>P</em>(<em>n</em>, <em>m</em>)</span> to denote (<span class="math inline"><em>P</em>(<em>n</em>) mod <em>m</em></span>) we can use the following formulas for computing <span class="math inline"><em>P</em>(<em>n</em>, <em>m</em>)</span>:</p>
+<pre>
+        P(0,m)=3 mod m
+        P(1,m)=0
+        P(2,m)=2 mod m
+        P(n,m)=(P(n-2,m)+P(n-3,m)) mod m
+</pre>
+<p>Now we can compute <span class="math inline"><em>P</em>(<em>n</em>, <em>n</em>)</span>. Notice that <span class="math inline"><em>P</em>(<em>n</em>)</span> is divisible by <span class="math inline"><em>n</em></span> if and only if <span class="math inline"><em>P</em>(<em>n</em>, <em>n</em>) = 0</span>. Furthermore, by directly using these formulas when computing <span class="math inline"><em>P</em>(<em>n</em>, <em>n</em>)</span>, no intermediate value will ever be larger than <span class="math inline">2<em>n</em></span>. This means that if you’re interested in <span class="math inline"><em>P</em>(<em>n</em>)</span> for <span class="math inline"><em>n</em>=</span> 1,000,000,000, then no intermediate value will ever be larger than 2,000,000,000, which fits in a 32-bit signed integer, and so we can actually make this computation.</p>
+<h3 id="first-try-straight-forward-implementation">First try: Straight-forward implementation</h3>
+<p>Now the question of algorithms arises. The first thought is to take the formulas above, and implement them directly using a recursive algorithm. It is a simple matter to make a <a href="perrin/perrin1.cpp">C++ implementation</a> of this method, and use it to check out small values of <span class="math inline"><em>n</em></span>. The values of <span class="math inline"><em>P</em>(<em>n</em>) mod <em>n</em></span> can be summarized in <a href="perrin/perrin-results.txt">a table</a>, which shows that for small values of <span class="math inline"><em>n</em></span>, no composite number <span class="math inline"><em>n</em></span> evenly divides <span class="math inline"><em>P</em>(<em>n</em>)</span>.</p>
+<p>The problem is that when <span class="math inline"><em>n</em></span> starts getting larger, this program takes a very long time to run. Why? This is where the analysis of algorithms comes in handy. Since this algorithm is recursive, we will describe the running time of the algorithm with a recurrence equation:</p>
+<p><br /><span class="math display">$$
+T(n) = \left\{
+\begin{array}{ll}
+T(n-2)+T(n-3)+c_2 ,&amp; \mbox{for }n\geq 3;\\
+c_1 ,&amp; \mbox{for }n&lt;3
+\end{array}\right.
+$$</span><br /></p>
+<p>For people who know that the Fibonacci sequence grows exponentially fast, it should be no surprise that the function <span class="math inline"><em>T</em>(<em>n</em>)</span> also grows exponentially fast. In fact, we will show here that <span class="math inline"><em>T</em>(<em>n</em>)</span> is greater than <span class="math inline"><em>c</em> ⋅ (1.3)<sup><em>n</em></sup></span> for the constant <span class="math inline"><em>c</em> = <em>c</em><sub>1</sub>/(1.3)<sup>3</sup></span> and all non-negative <span class="math inline"><em>n</em></span>. The proof of this fact is by induction:</p>
+<blockquote>
+<dl>
+<dt>
+Base:
+<dd>
+It is easy to verify that <span class="math inline"><em>T</em>(<em>n</em>) &gt; <em>c</em> ⋅ (1.3)<sup><em>n</em></sup></span> for n=0, 1, and 2.
+<dt>
+Induction:
+<dd>
+Assume that <span class="math inline"><em>T</em>(<em>k</em>) &gt; <em>c</em> ⋅ (1.3)<sup><em>k</em></sup></span> for <span class="math inline"><em>k</em> &lt; <em>n</em></span>. Then we can derive: <br /><span class="math display">$$       
+\begin{align}
+T(n) &amp;= T(n-2) + T(n-3) + c_2\\
+     &amp;&gt; c\cdot (1.3)^{n-2} + c\cdot (1.3)^{n-3} + c_2 \mbox{ (by ind. hyp.)}\\
+     &amp;= (1.3\cdot c+c)\cdot (1.3)^{n-3} + c_2\\
+     &amp;= \frac{2.3}{1.3^3} \cdot  c \cdot  (1.3)^n + c_2\\
+     &amp;&gt; 1.04 \cdot  c \cdot  (1.3)^n + c_2\\
+     &amp;&gt; c \cdot  (1.3)^n
+\end{align}     
+$$</span><br /> This completes the proof.
+</dl>
+</blockquote>
+<p>Using asymptotic notation, we can say that the running time of this algorithm is <span class="math inline"><em>Ω</em>((1.3)<sup><em>n</em></sup>)</span>, which shows that the running time of the algorithm grows exponentially with <span class="math inline"><em>n</em></span>. A slightly more involved analysis shows that the running time actually grows at a rate that is closer to <span class="math inline">(1.325)<sup><em>n</em></sup></span>, and so we can plot actual data points of this implementation’s running time with the best curve fit of <span class="math inline"><em>c</em> ⋅ (1.325)<sup><em>n</em></sup></span>. <a href="perrin/perrin1_plot.png">This plot</a> shows that the data points to fit very nicely with this curve, and so this is an accurate estimate of the running time.</p>
+<p>What does this tell us? Let’s say you want to compute <span class="math inline"><em>P</em>(<em>n</em>) mod <em>n</em></span> for <span class="math inline"><em>n</em> = 150</span>. That’s still a very small value of <span class="math inline"><em>n</em></span>, and yet our formula tells us that this would take approximately 207 <em>years</em> just to compute this one Perrin value! Since we can’t even compute the one value of (<span class="math inline"><em>P</em>(150) mod 150</span>) in under a hundred years, the amount of time it takes to compute the Perrin-positive numbers in the range 1..1 billion is simply incomprehensibly large. We clearly need to do better.</p>
+<h3 id="second-try-dynamic-programming">Second try: Dynamic programming</h3>
+<p>Why is the last implementation so slow? If you start writing down the values computed, you will soon realize that this algorithm repeats its work over and over again. In particular, to compute <span class="math inline"><em>P</em>(<em>n</em>)</span> the algorithm recursively computes <span class="math inline"><em>P</em>(<em>n</em> − 2)</span> and <span class="math inline"><em>P</em>(<em>n</em> − 3)</span>, and these two recursive calls make further recursive calls to compute <span class="math inline"><em>P</em>(<em>n</em> − 4)</span>, <span class="math inline"><em>P</em>(<em>n</em> − 5)</span>, <span class="math inline"><em>P</em>(<em>n</em> − 5)</span>, and <span class="math inline"><em>P</em>(<em>n</em> − 6)</span>. Notice that <span class="math inline"><em>P</em>(<em>n</em> − 5)</span> is listed twice. That’s not a typo; the algorithm actually computes <span class="math inline"><em>P</em>(<em>n</em> − 5)</span> twice. Clearly this is inefficient.</p>
+<p>The solution is to remember the values that you have computed, and don’t compute any particular value more than once. When this is done, and values are computed from the bottom up, this is known as dynamic programming, which is a very powerful algorithmic technique. Despite the simplicity of this particular algorithm, dynamic programming is full of small difficulties, and is a topic that students find very difficult to understand. Remember the name “dynamic programming,” and we’ll get back to it in depth later in the course.</p>
+<p>For this particular problem, the only time we need to know a value <span class="math inline"><em>P</em>(<em>k</em>)</span> is when we are computing <span class="math inline"><em>P</em>(<em>k</em> + 2)</span> and <span class="math inline"><em>P</em>(<em>k</em> + 3)</span>. So if we compute the values in increasing order, remembering the last 3 values in the sequence, we can easily compute the Perrin sequence. The <a href="perrin/perrin2.cpp">C++ implementation</a> of this is not difficult, and since it simply iterates up to <span class="math inline"><em>n</em></span>, with a constant amount of work per iteration, it should be clear that the running time of this algorithm is <span class="math inline"><em>T</em><em>h</em><em>e</em><em>t</em><em>a</em>(<em>n</em>)</span>. So we’ve gone from an exponential time algorithm to a linear time algorithm! This is excellent progress.</p>
+<p>We can again time this algorithm and fit a linear function to it, giving a <a href="perrin/perrin2_plot.png">plot</a> that shows the running time behavior of this algorithm. Computing (<span class="math inline"><em>P</em>(<em>n</em>) mod <em>n</em></span>) for <span class="math inline"><em>n</em> = 150</span> went from taking 207 years for the last algorithm, to only about 0.54 microseconds for this algorithm. That’s a pretty good improvement, and shows why exponential time algorithms are really, really bad. However, avoid the false conclusion that recursion is bad — there are situations where recursion is a very fast, efficient, and clean way of solving a problem. We’ll see several examples of this later in the course.</p>
+<p>In fact, computing (<span class="math inline"><em>P</em>(<em>n</em>) mod <em>n</em></span>) for <span class="math inline"><em>n</em>=</span> 1,000,000,000 takes around 3.6 seconds, so can we solve our problem of listing all Perrin-positive numbers in the range 1 to 1 billion now? Since the running time of this latest, relatively efficient algorithm is a linear function, we can add up the running time over all input sizes using the standard arithmetic sum formula. We see that the time required would be… about 57 years. Oops. We still have a big problem.</p>
+<h3 id="third-try-getting-nasty">Third try: Getting nasty</h3>
+<p>Are we stuck? It seems like we might be, since computing <span class="math inline"><em>P</em>(<em>n</em>)</span> seems to require computing <span class="math inline"><em>P</em>(<em>n</em> − 2)</span> which seems to require computing <span class="math inline"><em>P</em>(<em>n</em> − 4)</span> and so on. So how could you possibly do better than linear time? Well, the fact of the matter is that for any linear recurrence such as Perrin numbers or Fibonacci numbers, you can compute the <span class="math inline"><em>n</em></span>th value in only <span class="math inline"><em>O</em>(log <em>n</em>)</span> time. This seems impossible at first, but illustrates the value of <em>reducing a problem</em> to a different problem, and then applying an efficient algorithm for that problem. Let’s see what that means.</p>
+<p>Remembering how to multiply a matrix times a vector, we see that for any value <span class="math inline"><em>n</em> &gt; 1</span> we can write the following linear algebra equation that represents one iteration of the last algorithm:</p>
+<p><br /><span class="math display">$$
+\left[\begin{array}{ccc} 0 &amp; 1 &amp; 1 \\ 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \end{array}\right]
+\left[\begin{array}{c} P(n-1) \\ P(n-2) \\ P(n-3) \end{array}\right]
+=
+\left[\begin{array}{c} P(n-2)+P(n-3) \\ P(n-1) \\ P(n-2) \end{array}\right]
+=
+\left[\begin{array}{c} P(n) \\ P(n-1) \\ P(n-2) \end{array}\right]
+$$</span><br /></p>
+<p>Now, of course, this whole expression can be multiplied by the same matrix to get a vector containing <span class="math inline"><em>P</em>(<em>n</em> − 1)</span>, <span class="math inline"><em>P</em>(<em>n</em>)</span>, and <span class="math inline"><em>P</em>(<em>n</em> + 1)</span>. Extending this argument, if M represents the matrix in the above expression, and V represents the vector of initial values: <span class="math inline">[2, 0, 3]<sup><em>T</em></sup></span>, then we by computing the <span class="math inline">(<em>n</em> − 2)</span>nd power of the matrix M we can compute:</p>
+<p><br /><span class="math display">$$
+M^{n-2}\cdot V =
+\left[\begin{array}{c} P(n) \\ P(n-1) \\ P(n-2) \end{array}\right]
+$$</span><br /></p>
+<p>So now, in order to compute the <span class="math inline"><em>n</em></span>th Perrin number, we simply need to raise a 3x3 matrix to a power. This process is called a “reduction,” and we can say that we have “reduced the problem of computing the <span class="math inline"><em>n</em></span>th Perrin number to the problem of computing the <span class="math inline"><em>n</em></span>th power of a 3x3 matrix.”</p>
+<p>Why is this a good thing? While not many people have spent a great deal of time trying to come up with efficient algorithms for the rather esoteric problem of computing Perrin numbers, there has been a great deal of work on algorithms for very fundamental problems, such as raising a matrix to a power. Now we can use those algorithm in order to solve our problem for Perrin numbers.</p>
+<p>If you’re interested in computing <span class="math inline"><em>M</em><sup>16</sup></span>, one way to do this would be to multiply <span class="math inline"><em>M</em></span> by itself 16 times. This is essentially what our last algorithm did when computing Perrin numbers. Alternatively, we could square <span class="math inline"><em>M</em></span>, square the result, square that result, and finally square <em>that</em> result. This computes <span class="math inline">(((<em>M</em><sup>2</sup>)<sup>2</sup>)<sup>2</sup>)<sup>2</sup> = <em>M</em><sup>16</sup></span> using only four matrix multiplies rather than the 16 that the naive method uses. For any value of <span class="math inline"><em>n</em></span> that is a power of two, we can use this exact method to compute <span class="math inline"><em>M</em><sup><em>n</em></sup></span> by using only <span class="math inline">log<sub>2</sub><em>n</em></span> matrix multiplications. This can, in fact, be generalized to powers <span class="math inline"><em>n</em></span> that are <em>not</em> powers of two, and this is fairly easily <a href="perrin/Matrix33.h">implemented in C++</a> as an operation on a class of 3x3 matrices.</p>
+<p>Next, we use this 3x3 matrix class in order to compute Perrin numbers in this new <a href="perrin/perrin3.cpp">C++ implementation</a>. By the above discussion, we have now reduced the time to <span class="math inline"><em>O</em>(log <em>n</em>)</span>. However, the program got much more complicated, and it’s expected that the constant factor that the big-oh notation ignores must be fairly large compared to the last algorithms. So is this really an improvement?</p>
+<p>This implementation was timed when computing (<span class="math inline"><em>P</em>(<em>n</em>) mod <em>n</em></span>) for <span class="math inline"><em>n</em>=</span> 1 billion, and it took only about 2.2 microseconds to compute. Compare this to the 3.6 seconds of the last implementation, which seemed so good at the time! While the running time of this algorithm is slightly more chaotic than that of the previous implementations, we can still fit a function of the form <span class="math inline"><em>c</em> ⋅ log <em>n</em></span> to it and <a href="perrin/perrin3_plot.png">plot the results</a>.</p>
+<p>The final question to ask is, how long will this algorithm take to compute all Perrin-positive numbers from 1 to 1 billion? Using our formula for the running time, we can estimate that it will take around 35 minutes. This is clearly an amount of time that we can deal with! (<em>Note: On the original computer we used, in 1996, this calculation took 7 days – a lot longer, but still manageable!</em>)</p>
+<h3 id="the-final-results">The final results</h3>
+<p>Now we’ve got an algorithm that solves our problem in a reasonable amount of time. What does it tell us about our open question? It turns out that there <em>are</em> Perrin-positive numbers that are in fact composite numbers. However, the only two such numbers less than a million are 271,441 and 904,631. So apparently these counter-examples to the primality of Perrin-positive numbers are exceedingly rare. While this gives a very clear answer to the question posed at the beginning, it’s still an astounding property that there are so few composite Perrin pseudo-primes.</p>
+<p> </p>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>Note that in my original presentation/write-up, I used the term “Perrin pseudoprime” for what I am now calling “Perrin-positive.” While “pseudoprime” is sometimes used in this context, it more commonly refers to values which pass a test but are in fact composite (in other words, just the counter-examples we are looking for). I have changed the terminology here to match this more common usage.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

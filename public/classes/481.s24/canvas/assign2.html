@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>Assignment 2 -- Due Tuesday, February 13</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://home.uncg.edu/cmp/faculty/srtate/481.s24/assign2.html">View original, outside canvas</a> ]
+   
+        <h3 id="assignment-2-due-tuesday-february-13">Assignment 2 – Due Tuesday, February 13</h3>
+<p><strong>Note</strong>: All analysis problems can (and should!) be solved using the “estimation with powers of two” techniques from the <a href="rand_estimation.html">class reading</a>. <strong>Do not use a calculator!!</strong> You should always show all steps of your work, with explanations as necessary (don’t just write formulas!).</p>
+<ol type="1">
+<li><p>In class we did some calculations of how large a key would need to be to protect against brute force attacks under reasonable assumptions. For this problem, you should do a similar analysis but using extreme, over-the-top assumptions about the attacker’s computational capabilities (obviously far, <em>far</em> beyond what any conventional computer, now or ever, could do).</p>
+<p>Consider if you could convert <em>the entire planet</em> into one big computer (suggestion: read <em>The Hitchhiker’s Guide to the Galaxy</em> if you haven’t) — do some research and find a good estimate for how many atoms are in the Earth, making sure you use a reliable source and include a citation in your answer. Assume that you can make a logic gate using just 8 atoms. Next, assume that you can clock those gates at the fastest imaginable speed, the frequency of ultraviolet light, which would be a 1,000 THz computer, and testing a key takes 1000 Boolean operations. Finally, a “super-secure” cipher is one that cannot be brute-forced (on average) in under 128 years. What key size would need to be used so that a cipher is “super-secure” against attacks using this ultra-fast full-planet computer?</p></li>
+<li><p>Even if you could build huge key-cracking machines, you still have to power them, and power is proportional to processors (doubling the processors doubles the power usage). People have designed and built very efficient cryptographic hardware for Bitcoin mining, and extrapolating from one of the most efficient such machines (the Dragonmint T1) we estimate that it would cost about $1 (using average electricity cost in the U.S.) to test around 256 quadrillion (i.e., 256,000 trillion) keys.</p>
+<ol type="a">
+<li><p>How much would the power cost (on average) to brute force a 56-bit DES key?</p></li>
+<li><p>How much would the power cost (on average) to brute force a 80-bit Skipjack key?</p></li>
+<li><p>How much would the power cost (on average) to brute force a 128-bit AES key?</p></li>
+</ol></li>
+<li><p>Bitcoin blocks are identified by their hash, and it would break the system if two blocks had the same hash. Unfortunately, since a large number of bits are constrained to be zero, this reduces the overall number of possible hashes and increases the probability of a collision. Let’s see if this is a problem. Solving this question involves using the techniques and estimations from the section on the “Birthday Problem” in the <a href="rand_randomness.html">assigned reading</a>.</p>
+<ol type="a">
+<li><p>Hash values are 256 long, but assume that the only allowed hashes begin with 77 zero bits. The current bitcoin blockchain <a href="https://explorer.btc.com/en/btc">has around 829,000 blocks</a>, so let’s round that up to a million blocks. Estimate the probability that two blocks have the same hash value (assume all but the 77 fixed bits are random and uniformly distributed).</p></li>
+<li><p>Let’s turn the problem around: How many blocks would need to be hashed before there’s roughly probability 1/2 of a repeated hash?</p></li>
+<li><p>One of the most popular hash functions in the 1990’s was MD5, which produces 128-bit hash values. Repeat the two calculations above for 128-bit hash values (still with 77 zero bits). (<em>Note: MD5 has been shown to be very insecure with respect to collision resistance, so should not be used. While collision resistance isn’t really the right measure for applications like this one, MD5 should still be avoided!</em>)</p></li>
+</ol></li>
+<li><p>This problem will help you understand why public key encryption schemes require larger keys than symmetric ciphers.</p>
+<ol type="a">
+<li><p>Assume that a public key scheme that uses Elliptic Curve Cryptography (ECC) with an <span class="math inline">\(n\)</span> bit key can be broken in <span class="math inline">\(2^{n/2}\)</span> steps. What would the keylength <span class="math inline">\(n\)</span> need to be for this to be the same time (number of steps) as the worst-case time to brute force a 128-bit key? Show and explain your work! How does this compare to the table we discussed on the class slides (taken from NIST 800-57 key size recommendations).</p></li>
+<li><p>A rough approximation of the time it takes to factor an <span class="math inline">\(n\)</span>-bit number of the type used by RSA (which would break an <span class="math inline">\(n\)</span>-bit RSA key) is <span class="math inline">\(2^{8\cdot n^{1/3}}\)</span> — in case it’s not clear, the exponent is 8 times the cube root of <span class="math inline">\(n\)</span>. Note that I have simplified this somewhat for the homework so that the calculations work out easily, but it’s not a bad approximation for values of <span class="math inline">\(n\)</span> between 1000 and 20,000. Given this complexity, what key size <span class="math inline">\(n\)</span> is needed for RSA to be as hard to break as the worst-case time to brute force a 128-bit key? How does this compare to the table we discussed on the class slides (taken from NIST 800-57 key size recommendations).</p></li>
+</ol></li>
+<li><p>Complete the “macs-hash” labtainer exercise. Here are a few tips:</p>
+<ul>
+<li><p>This lab requires putting some values into a spreadsheet and completion of both a lab report, using templates that are provided. When you start the lab, it will give you paths to both documents (as well as the lab writeup). Just right-click on those links to open them.</p></li>
+<li><p>Make sure you complete the spreadsheet and lab report, and save them, before typing “stoplab”. Since “stoplab” bundles these into the <code>.lab</code> file that you will submit, they must be completed and saved before the “stoplab”!</p></li>
+<li><p>From the original student window (not the labtainer window), you can type “checkwork” to see what the labtainer window thinks you have done or not done. You are encouraged to do this to make sure your actions are being recorded properly! In particular, it is looking for some specific actions that are described in the lab, and is not very smart about seeing alternatives. If you know shortcuts or simplified commands, do not use them - stick with what is described in the lab instructions.</p></li>
+</ul></li>
+</ol>
+<p> <br />
+</p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

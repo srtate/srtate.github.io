@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 495/693 - Spring 2022 - Assignment 4 - Due Tues, April 12</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://www.uncg.edu/cmp/faculty/srtate/495.s22/assign4.html">View original, outside canvas</a> ]
+   
+        <link href="codehighlight.css" rel="stylesheet">
+<style>
+pre {
+  padding: 9.5px;
+  margin: 0 0 10px;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+</style>
+<h2 id="csc-495693---assignment-4---due-tues-april-12">CSC 495/693 - Assignment 4 - Due Tues, April 12</h2>
+<p>This homework refers to the “fake bank” web application that we have used in class for examples. Information on how to access the application is not included on this public web page – see the Canvas announcement for access information. The announcement also tells you how you can see the code that’s running on the server. Each student has an account set up at the bank with an initial balance of $100. Info on these accounts is in the Canvas announcement.</p>
+<p>Each of the following questions asks you to figure out how to exploit a different type of vulnerability in the “fake bank” code. For each one, report on how you performed the attack, including any specific strings or inputs you used (all the information needed to recreate the exploit). In the first three questions, if you have a successful attack you will discover a “secret” value – report that value in your assignment write-up as well. It is perfectly fine to use external resources in solving these problems, but make sure you cite any sources or web sites that you referred to in your write-up.</p>
+<ol type="1">
+<li><p>The login code has a bad SQL injection vulnerability that allows an attacker to log in as any user on the system, without knowing the password. Exploit this vulnerability to log in to the server with username “secure”. The secret value to report for this question is the balance in the “secure” account.</p></li>
+<li><p>There is a user named “hidden” on the system that is protected using measures beyond the basic bank code that you can see. Because of these extra protections, you will not be able to log in to this account using the SQL injection trick described in the previous question. However, you should be able to find and read a message from “hidden” to “manager” that contains a secret message. Figure out how to find and read the message and discover the secret. Note that you will not be able to see any messages sent <em>to</em> the “hidden” account, so you can’t see the XSS attempts of other students (see the next question).</p></li>
+<li><p>When the real “hidden” user logs in, they get a special cookie that is not part of a normal login session. Since you can’t log in as the “hidden” user you should have no way to access this cookie. While logged in to your own bank account, send a message to “hidden” that performs a cross-site scripting attack to discover this cookie. I will log in to the hidden account every day around 6:00 PM and read through all new messages received since the previous day, which will trigger a successful XSS attack. <strong>Important: I will use the Firefox browser for this, since Chrome has some extra protections that “upgrade” a non-SSL connection to SSL automatically. If you are testing your attacks, use Firefox!</strong> <em>Note that while this assignment isn’t due until midnight on the due date, I will not read these messages after 6:00 – that means you cannot put this off until the last minute!</em></p>
+<p><em>More info on XSS exploit:</em> A successful cross site scripting attack will send sensitive information to a listening server. Here’s how that works for our class: On the class Linux login machine (that you all have accounts on), I have a server running on port 8000 that accepts connections and logs the first line received on any connection to a “monitoring” file. All of this – code and data – is in directory <code>/home/srtate/xss</code> on the class machine, and from your login account you can access this directory and view the source code for the programs that are running (you don’t need to do this – it’s just there in case you’re curious). However, you do not have permissions to read the monitor log (so you can’t see other student strings). To see the results of your XSS attack, you can use the program <code>/home/srtate/xss/code/bin/showmonitor</code> which will display every log line that includes your user name. So putting together all this information:</p>
+<ul>
+<li><p>Your XSS attack must include your user name in the triggered request, or you will not be able to see your results. The “file” part of the URL is arbitrary (it’s not used in any way), so just make sure your user name is embedded in there.</p></li>
+<li><p>Your XSS attack must include information from cookies in its request, since you’ll need to get the secret cookie value.</p></li>
+<li><p>If you are testing your attack, and see a blank line in the monitor log when you don’t think it should be blank, it might be the case that your XSS request is being “upgraded” by the browser as mentioned above. Use Firefox to trigger the XSS attack instead.</p></li>
+</ul>
+<p>Feel free to practice your XSS attack by sending messages to yourself and then opening them to see if that triggers a request to the monitoring server. That way you can develop the attack into one that you have high confidence will work, since you only get one actual attempt per day.</p>
+<p>You <em>must</em> use this server to get the results of your XSS attack (do not use your own server). I will check this log for your username when grading.</p></li>
+<li><p>Your account should have a balance of $100. Log in to your account and use one of the penetration testing tools from the last assignment (ZAP or Burp Suite) to bypass the client-side sufficient-funds check to transfer $200 to alice. Yes, this will leave you with a negative balance, but you’re conspiring with alice in this situation so you’ll make off with all the extra money.</p></li>
+<li><p>Set up a cross-site request forgery (CSRF) attack that will transfer $50 from a logged-in account to “alice”. We actually did this in class, although you’ll need to recreate the web pages that perform the attack. My in-class example made the attack very stealthy by putting it in a hidden iframe - you do not need to do this in your attack. Redirecting the victim’s browser to the bank “send money” page is fine, as long as the transfer is made.</p>
+<p>To create this attack, put your attack files in directory <code>csrf</code> of your <code>public_html</code> directory. The initial page should be named <code>index.html</code>. When grading your assignment, I will visit this page in a new tab of a browser, while a different tab is logged in to the bank, and that should trigger the transfer.</p>
+<p><em>Note: When I did this example in class, we discovered that the basic CSRF attack worked in Firefox but not in Chrome. I have since discovered what was protecting the Chrome session and disabled that protection so that the attack succeeds in either browser. We will discuss the details of this in class.</em></p></li>
+</ol>
+<p> </p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

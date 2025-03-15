@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>Assignment 3 -- Due Tuesday, February 28</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../css/class_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+        <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark uncg-navbar fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="https://www.uncg.edu/">
+          <img class="collapse navbar-collapse" src="../img/uncg_class.png" alt="UNC Greensboro">
+          <img class="navbar-toggler" src="../img/uncg_mobile.png" alt="UNCG">
+        </a>
+        <div class="navbar-brand d-flex flex-column text-left"
+	     style="line-height: 1.2;">
+          <span>CSC 481/681</span>
+          <span class="small collapse navbar-collapse"><em>Principles of Computer Security</em></span>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link " href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="syllabus.html">Syllabus</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="schedule.html">Schedule</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="assignments.html">Assignments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://uncg.instructure.com/">Canvas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- Page Content -->
+    <div class="container">
+   
+        <h3 id="assignment-3-due-tuesday-february-28">Assignment 3 – Due Tuesday, February 28</h3>
+<ol type="1">
+<li><p>Solve “Question 4” from the <a href="file:///home/srtate/public_html/481.s23/formalmodels.html">Formal Models for Cryptography</a> reading.</p></li>
+<li><p>Joe Crypto is a little too confident in his ability to design secure cryptographic systems, and decides he will “fix” the two main problems with ECB mode: patterns across repeated plaintext blocks, and deterministic encryption. He has some super-awesome code that performs AES encryption in ECB mode, and he wants to re-use that software, so he comes up with this algorithm: He is going to XOR blocks of plaintext with a randomly-initialized counter (i.e., a “nonce”), and then feed that output through his ECB mode encryption software. He has even decided to provide additional protection by encrypting the initial counter value, resulting in what he has named “Pre-CTR mode,” with encryption shown in the following diagram (<em>this was adapted from the diagram for CTR mode encryption on the Wikipedia page for “<a href="https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation">Block cipher modes of operation</a>”):</em></p>
+<p><img src="PreCTRMode-Enc.png" /></p>
+<ol type="a">
+<li><p>Draw the corresponding decryption diagram, showing the part of the diagram that corresponds to a regular ECB-mode decryption (similar to how that’s shaded in the encryption diagram).</p></li>
+<li><p>Joe tests his new Pre-CTR Mode encryption with the classic “Tux image” to see if it hides patterns (unlike ECB mode). Here’s the comparison:</p>
+<p><img src="PreCTRMode.png" /></p>
+<p>Excellent! Problem, solved, right? Unfortunately, his newly-invented Pre-CTR mode is not even IND-CPA secure. Prove this. (Hint: Carefully think through the solution to the previous question. You can define a similar adversary in this case, which will <em>never make any direct calls to the encryption oracle</em>. It requires using plaintexts with two blocks as challenge ciphers, where one of them is very carefully chosen to “undo” the change that the plaintext counter XOR does.)</p></li>
+</ol></li>
+<li><p>Consider two users on a Unix system, <code>alice</code> and <code>bob</code>. Both are members of the group <code>develop</code>. There is another user on the system, <code>charlie</code>, who is not a member of the <code>developer</code> group. Consider the following files in a directory that all users can access:</p>
+<pre><code> -r--r-----  1 alice develop  3612 Oct 25 14:36 Makefile
+ -rwxrwxr-x  1 alice develop  4823 Oct 27 11:04 execute
+ -rw-rw-r--  1 alice alice    2145 Oct 27 11:31 notes.txt
+ -rw-rw-r--  1 bob   develop  1098 Oct 26 21:56 source.c
+ -rw-------  1 alice develop  2796 Oct 27 11:03 source.o
+ -rwsrwxr-x  1 alice develop  4823 Oct 27 11:12 special</code></pre>
+<p>For each question below, give a very brief explanation of your answer.</p>
+<ol type="a">
+<li><p>Which files can <code>alice</code> modify?</p></li>
+<li><p>Which files can <code>bob</code> modify?</p></li>
+<li><p>Which files can <code>charlie</code> read?</p></li>
+<li><p>Which files can <code>charlie</code> modify?</p></li>
+<li><p>Programs named <code>execute</code> and <code>special</code> are the exact same program, but are two copies with different permissions. This program tries to open and modify the <code>notes.txt</code> file. If <code>bob</code> runs the version named <code>execute</code>, will the program be able to perform these operations?</p></li>
+<li><p>If <code>bob</code> runs the version named <code>special</code>, will the program be able to perform these operations?</p></li>
+<li><p>If <code>execute</code> and <code>special</code> perform differently for <code>bob</code>, why?</p></li>
+</ol></li>
+<li><p>The “capabilities” labtainer exercise is brief and can be completed in under 30 minutes, but it demonstrates a very important security feature of modern Linux systems. Complete the labtainer exercise, with the following change: you do not need to submit the lab report it refers to under “Submission,” nor do you have to answer the questions at the end of Task 2, but you still need to submit the <code>.lab</code> file which documents your work. Hint for Task 1.2: You may need to refer to the man page “cap_from_text” to see how to format the capability-setting command.</p>
+<p>You should also answer this question as part of your written problem submission: What results did you see from Task 2? In other words, which open calls failed? Answer honestly: Did you correctly predict what was going to happen? Then explain in your own words why some calls failed and others succeeded.</p></li>
+<li><p>Complete the “file-deletion” labtainer exercise, including the lab report (which is submitted as part of the labtainer <code>.lab</code> file – make sure you save your report <strong>before</strong> you run the <code>stoplab</code> command). This labtainer explores some of the concepts regarding file deletion that we discuss in the “Physical Security” lecture.</p></li>
+</ol>
+<p> <br />
+</p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

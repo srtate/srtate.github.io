@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 454/654 - Spring 2021 - Assignment 4 - Due March 30, 2021</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../css/class_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+        <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark uncg-navbar fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="https://www.uncg.edu/">
+          <img class="collapse navbar-collapse" src="../img/uncg_class.png" alt="UNC Greensboro">
+          <img class="navbar-toggler" src="../img/uncg_mobile.png" alt="UNCG">
+        </a>
+        <div class="navbar-brand d-flex flex-column text-left"
+	     style="line-height: 1.2;">
+          <span>CSC 454/654</span>
+          <span class="small collapse navbar-collapse"><em>Algorithm Analysis and Design</em></span>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link " href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="syllabus.html">Syllabus</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="schedule.html">Schedule</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="assignments.html">Assignments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://uncg.instructure.com/">Canvas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- Page Content -->
+    <div class="container">
+   
+        <h2 id="assignment-4---due-march-30-2021">Assignment 4 - Due March 30, 2021</h2>
+<ol type="1">
+<li><p>Consider the following input to the fractional knapsack problem (as in Section 16.2), for a knapsack that can hold at most <span class="math inline">\(W=50\)</span> pounds:</p>
+<table style="width:67%;">
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(i\)</span></th>
+<th style="text-align: center;">1</th>
+<th style="text-align: center;">2</th>
+<th style="text-align: center;">3</th>
+<th style="text-align: center;">4</th>
+<th style="text-align: center;">5</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(v_i\)</span></td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(w_i\)</span></td>
+<td style="text-align: center;">18</td>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">28</td>
+<td style="text-align: center;">50</td>
+<td style="text-align: center;">6</td>
+</tr>
+</tbody>
+</table>
+<p>Give a step-by-step explanation of how the greedy algorithm from Section 16.2 would solve this problem, showing values at each step and the final answer computed by the algorithm.</p></li>
+<li><p>Consider a company that has <span class="math inline">\(n\)</span> customers, who they want to keep happy by distributing gifts to each customer. There are exactly <span class="math inline">\(n\)</span> gifts available, with values <span class="math inline">\(V=\langle v_1, v_2,\ldots,v_n\rangle\)</span>. Of course, different customers have different “happiness thresholds”, given as a vector <span class="math inline">\(H=\langle h_1,h_2,\ldots,h_n\rangle\)</span>, meaning customer <span class="math inline">\(i\)</span> is happy only if they receive a gift of value <span class="math inline">\(\geq h_i\)</span>. Your task is to find an assignment of gifts to customers that makes the largest possible number of customers happy.</p>
+Let’s break down the problem:
+<ul>
+<li><p>The input to the problem is <span class="math inline">\((V,H)\)</span>.</p></li>
+<li><p>A feasible solution to the problem is a permutation <span class="math inline">\(\pi:\{1,n\}\rightarrow\{1,n\}\)</span>, which means that customer <span class="math inline">\(i\)</span> gets gift <span class="math inline">\(\pi(i)\)</span>.</p></li>
+<li><p>The objective function is the number of happy customers for a solution <span class="math inline">\(\pi\)</span>, or the function <span class="math inline">\(f\)</span> defined by <span class="math display">\[ f(V,H,\pi) = \left| \{ i | v_{\pi(i)} \geq h_i \} \right| \]</span></p></li>
+<li><p>Our goal is to find a <span class="math inline">\(\pi\)</span> that maximizes the objective function</p></li>
+</ul>
+<p>Now solve the following problems:</p>
+<ol type="a">
+<li><p>Consider the following greedy strategy: We assign the most valuable gift to the greediest customer (the one with maximum happiness threshold <span class="math inline">\(h_i\)</span>), and continue assigning gifts in that order. Show that this does <em>not</em> work by giving a counterexample.</p></li>
+<li><p>Consider the following modification of the previous strategy: If the most valuable gift makes the greediest customer happy, assign it to them. If the most valuable gift does not make the greediest customer happy, then assign them the least valuable gift. It turns out that this <em>does</em> work. State and prove the greedy choice property for this algorithm.</p></li>
+<li><p>Give pseudocode for this algorithm, and analyze the running time.</p></li>
+</ol></li>
+<li><p>Give an example showing that the <span class="math inline">\(\pi\)</span> values computed in a Breadth-First-Search (see page 595) depend on the specific ordering of vertices in the adjacency lists. In other words, give a single graph <span class="math inline">\(G\)</span>, two adjacency list representations of <span class="math inline">\(G\)</span>, and then show that BFS finds different <span class="math inline">\(\pi\)</span> values for the two representations.</p></li>
+<li><p>Give a clear explanation of why the <span class="math inline">\(d\)</span> values computed in a BFS do <em>not</em> depend on the adjacency list ordering of the input graph. This does not need to be a formal proof, but it does need to apply to all graphs (not just a single example graph) and it should be clear and precise reasoning.</p></li>
+<li><p>Perform a depth-first search of the following graph, showing the final result with the discovery and finishing times for each vertex, and the classification of each edge. Vertices are always given in alphabetical order, whether in the overall vertex list or in any adjacency list. Your result should be in a form similar to Figure 22.5(a) in the book. Note that you only need to give the final result – you don’t need to show your work or any intermediate steps.</p>
+<p><img src="A4_Graph1.svg" /></p></li>
+<li><p>Consider the following problem: You have access to a set of <span class="math inline">\(n\)</span> devices, numbered <span class="math inline">\(1\)</span> through <span class="math inline">\(n\)</span>, and connections can be made between any pair of devices. If you make a direct connection between devices <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span>, you get paid <span class="math inline">\(p_{i,j}\)</span> dollars. The <span class="math inline">\(p_{i,j}\)</span> values are arbitrary, but symmetric – meaning that <span class="math inline">\(p_{j,i}=p_{i,j}\)</span> for all <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span>. The only thing stopping you from connecting all the pairs together is the following problem: if there is both a multi-hop path and a direct connection between two devices, then the connections are out of sync and the feedback makes everything explode and destroy the world. Clearly it’s hard to enjoy your money if the world has been destroyed, so you would like to avoid this, while maximizing the amount you get paid.</p>
+<p>Here’s an example: You have three devices, with the following values for connections: <span class="math inline">\(p_{1,2}=50\)</span>, <span class="math inline">\(p_{1,3}=40\)</span>, and <span class="math inline">\(p_{2,3}=30\)</span>. You can connect device <span class="math inline">\(1\)</span> to device <span class="math inline">\(2\)</span> and device <span class="math inline">\(1\)</span> to device <span class="math inline">\(3\)</span> to earn <span class="math inline">\(90\)</span> dollars. However, you can’t hook device <span class="math inline">\(2\)</span> to device <span class="math inline">\(3\)</span> at this point, because there would be both a direction connection between <span class="math inline">\(2\)</span> and <span class="math inline">\(3\)</span> and a multi-hop path between these two devices that goes through <span class="math inline">\(1\)</span>. <span class="math inline">\(\$90\)</span> is the best you can do for this example problem.</p>
+<ol type="a">
+<li><p>State this problem clearly as a problem on weighted graphs.</p></li>
+<li><p>How is this related to the minimum spanning tree problem? Be very specific!</p></li>
+<li><p>Give an efficient algorithm that solves this problem, and prove that it gives the correct answer. [<em>Hint: Given the relation to the MST problem, there are two approaches to this: For one, you can pre-process your input, solve a MST problem, and then prove how the MST is related to the answer you need. Alternatively, you can modify an MST algorithm to work directly with this data (no pre-processing) to find the result directly, and then modify the proof of correctness for the algorithm to apply to your new algorithm.</em>]</p></li>
+</ol></li>
+</ol>
+<p> </p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

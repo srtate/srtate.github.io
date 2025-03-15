@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 362 - Spring 2021 - Week 5</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://www.uncg.edu/cmp/faculty/srtate/362.f21/week5.html">View original, outside canvas</a> ]
+   
+        <h2 id="csc-362-spring-2021-week-5">CSC 362 – Spring 2021 – Week 5</h2>
+<p>Do this first, then slides:</p>
+<ul>
+<li>Mention Joshua’s help sessions - Mondays at 4:00</li>
+<li>Biggest tip for assignment - trace through code by hand - run in gdb - … ACTIVELY look for the problem!</li>
+<li>gdb last time - running in gdb to get crash point and print data (used t4)
+<ul>
+<li>Didn’t cover in examples last time: challenge, overflow, or t5</li>
+<li>can skip t5, but show challenge and overflow (alone and in gdb)</li>
+</ul></li>
+</ul>
+<h3 id="tuesday-demo">Tuesday demo:</h3>
+<p><strong>Note:</strong> Shoot for finishing slides in 40 min to leave 35 min for demos</p>
+<ul>
+<li>First do “ps” - then “ps -e” - then top
+<ul>
+<li>Note this inefficiency of VMs - unnecessary “machine management”</li>
+<li>We’ll see a more efficient way - containers - near the end of the semester</li>
+<li>“ps -l” to see parent processes</li>
+<li>pstree?</li>
+</ul></li>
+<li>Show job control
+<ul>
+<li>top - then pause with ctrl-z - talk about that - do “jobs” and “ps” to see</li>
+<li>vi something - then ctrl-z - then ps/jobs - then fg</li>
+<li>can do while loop with echo/sleep to show running vs paused (do in subshell)</li>
+</ul></li>
+<li>New Makefile structure - hit highpoints</li>
+<li>Bring up folder in VS Code</li>
+<li>argprint example - describe, run once with basic words, then use wildcards</li>
+<li>execdemo example
+<ul>
+<li>show driver and talk about - describe atoi? Talk about “usage” function</li>
+<li>show path and “which” command</li>
+<li>compile and run test 1</li>
+<li>can look at subsequent tests and ask first what they are going to do</li>
+</ul></li>
+<li>run wstatus - look at code, an note fork/exec/wait - use for activity!
+<ul>
+<li>load progtorun.c in editor</li>
+<li>run wstatus - note print, so prog ran, and then status printed</li>
+<li>edit to change “return” at end of main to 2 and re-run</li>
+<li>edit to add an “exit(3)” in progtorun and re-run</li>
+</ul></li>
+</ul>
+<h3 id="thursday-demo">Thursday demo:</h3>
+<p><em>Beginning of class comments:</em> On-time vs late, and use of “finished” (please don’t use the word “finished” until actually finished).</p>
+<p><strong>Note:</strong> Shoot for 15 min for slides and 20 min for demos; rest for activity and discussion.</p>
+<ul>
+<li><p>Quick demos didn’t get to on Tuesday: execdemo test 4+ (don’t need to run) and wstatus</p></li>
+<li>All code - open folder in VS Code and show forkbomb1.c</li>
+<li>Run “forkbomb1”</li>
+<li>Show bufferex1 and discuss</li>
+<li>bufferex2 - line buffered</li>
+<li>bufferex3 - stdout works as expected - then redirect and pipe to cat</li>
+<li>now pipe forkbomb1 to wc - why so many lines??</li>
+<li>do same with forkbomb2 - note fflush calls</li>
+<li>run forkbomb3 - then “ps -a” and “ps -al” to show ppid
+<ul>
+<li>“pstree student” to show structure (sort of) - maximize window</li>
+<li>kill second process - note “defunct” (zombie) because no waits
+<ul>
+<li>ps -al and see “Z” status</li>
+<li>note other processes that have PPID changed - orphans</li>
+<li>Note, not “init” as book says, but user systemd - “modern linux”</li>
+</ul></li>
+<li>kill initial process - now both disappear (zombies reaped)</li>
+<li>others still running though - so do “killall forkbomb3”</li>
+</ul></li>
+</ul>
+<h3 id="spring-2021-timing">Spring 2021 timing</h3>
+<p>Tuesday - 02/16:</p>
+<ul>
+<li>7 min: updates/questions</li>
+<li>24 min: slides</li>
+<li>27 min: demos</li>
+<li>total: 58 min to here - could add 10 more min safely…</li>
+<li>rest for activity</li>
+</ul>
+<p>Thursday - 02/18:</p>
+<ul>
+<li>Note that class was cancelled, so material covered in recorded videos</li>
+<li>24 min for slides</li>
+<li>30 min demo
+<ul>
+<li>forkbomb1: 4:00</li>
+<li>wstatus: 5:00 &lt;- move to Tuesday</li>
+<li>Buffering examples: 8:30</li>
+<li>Back to buffering with forkbomb (and forkbomb2): 3:20</li>
+<li>forkbomb3 and exploring processes with ps/pstree: 6:00</li>
+<li>talking about weekly assignment: 3:00</li>
+</ul></li>
+</ul>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

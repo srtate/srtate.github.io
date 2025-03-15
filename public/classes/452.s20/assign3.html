@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 452/652 - Spring 2020 - Assignment 3 - Due March 11, 2020</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../css/class_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+        <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark uncg-navbar fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="https://www.uncg.edu/">
+          <img class="collapse navbar-collapse" src="../img/uncg_class.png" alt="UNC Greensboro">
+          <img class="navbar-toggler" src="../img/uncg_mobile.png" alt="UNCG">
+        </a>
+        <div class="navbar-brand d-flex flex-column text-left"
+	     style="line-height: 1.2;">
+          <span>CSC 452</span>
+          <span class="small collapse navbar-collapse"><em>Theory of Computation</em></span>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link " href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="syllabus.html">Syllabus</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="schedule.html">Schedule</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="assignments.html">Assignments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://uncg.instructure.com/">Canvas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- Page Content -->
+    <div class="container">
+   
+        <h2 id="csc-452652---spring-2020---assignment-3---due-march-11-2020">CSC 452/652 - Spring 2020 - Assignment 3 - Due March 11, 2020</h2>
+<ol type="1">
+<li><p>Consider the following context-free grammar <span class="math inline">\(G\)</span> which generates some context-free language <span class="math inline">\(L(G)\)</span>:</p>
+<p><span class="math display">\[ \begin{array}{l}
+S \rightarrow 0S1\ |\ A\\
+A \rightarrow 1A\ |\ 1
+\end{array} \]</span></p>
+<ol type="a">
+<li><p>What are the variables of this grammar?</p></li>
+<li><p>What are the terminals of this grammar?</p></li>
+<li><p>What is the start variable?</p></li>
+<li><p>Give two strings of length 4 or greater that are in <span class="math inline">\(L(G)\)</span>, along with their derivations.</p></li>
+<li><p>Draw parse trees for your two derivations in the preceding part.</p></li>
+<li><p>Give two strings of length 4 or greater that are <em>not</em> in <span class="math inline">\(L(G)\)</span>.</p></li>
+<li><p>Give a succinct description of the language <span class="math inline">\(L(G)\)</span> using set-builder notation.</p></li>
+</ol></li>
+<li><p>For each of the following languages, give a context-free grammar (in all cases, the alphabet <span class="math inline">\(\Sigma=\{0,1\}\)</span>).</p>
+<ol type="a">
+<li><p><span class="math inline">\(\{w\,|\,w\in\Sigma^*\mbox{ with } |w|\bmod 3 = 0\}\)</span> (in other words, the length of <span class="math inline">\(w\)</span> is a multiple of 3)</p></li>
+<li><p><span class="math inline">\(\{w\,|\,w=0^n1^n\)</span> for even <span class="math inline">\(n\geq 0 \}\)</span></p></li>
+<li><p><span class="math inline">\(\{w\,|\,w\in\Sigma^*\)</span> where <span class="math inline">\(w\)</span> contains exactly three <span class="math inline">\(\texttt{1}\)</span>s<span class="math inline">\(\}\)</span></p></li>
+<li><p><span class="math inline">\(\{x\texttt{0}y\,|\,x,y\in\Sigma^n\)</span> for <span class="math inline">\(n\geq 0 \}\)</span> (in other words, strings of odd length for which the middle symbol is <span class="math inline">\(\texttt{0}\)</span>).</p></li>
+</ol></li>
+<li><p>Which of the languages above are regular? (You don’t need to justify your answer in any way – just list which ones are regular.)</p></li>
+<li><p>Design a pushdown automata for each of the languages in question 2. Note that I am <em>not</em> asking you to perform the CFG-to-PDA conversion — design a PDA directly from the description of the language.</p></li>
+<li><p>Convert the following grammar into Chomsky Normal Form (show and  describe each step): <span class="math display">\[ \begin{array}{l}
+S \rightarrow 0A0\ |\ 1B1\ |\ BB\\
+A \rightarrow C\\
+B \rightarrow S\ |\ A\\
+C \rightarrow S\ |\ \varepsilon\\
+\end{array} \]</span></p></li>
+<li><p>Perform the CFG-to-PDA conversion procedure from the book (pages 117–120) to convert the following grammar into a PDA that recognizes the same language</p>
+<p><span class="math display">\[ \begin{array}{l}
+A \rightarrow BAA\ |\ B\\
+B\rightarrow 01\ |\ \varepsilon
+\end{array} \]</span></p></li>
+<li><p>A sequence of transitions on a PDA can be written out by making a sequence of pairs <span class="math inline">\((q,s)\)</span>, where <span class="math inline">\(q\in Q\)</span> is the current state and <span class="math inline">\(s\in\Gamma^*\)</span> is the current stack, with the top of the stack on the left, and transitions written as arrows with the input symbol (or <span class="math inline">\(\varepsilon\)</span>) on top of the arrow indicating the input used to make the transition. For example, processing input <span class="math inline">\(\texttt{0011}\)</span> in PDA <span class="math inline">\(M_1\)</span> give in Figure 2.15 (page 115) of the textbook could be written as: <span class="math display">\[(q_1,\varepsilon) \xrightarrow{\varepsilon} (q_2,\texttt{\$})
+\xrightarrow{\texttt{0}} (q_2,\texttt{0\$})
+\xrightarrow{\texttt{0}} (q_2,\texttt{00\$})
+\xrightarrow{\texttt{1}} (q_3,\texttt{0\$})
+\xrightarrow{\texttt{1}} (q_3,\texttt{\$})
+\xrightarrow{\varepsilon} (q_4,\varepsilon)\]</span></p>
+<ol type="a">
+<li><p>Write out an accepting sequence of transitions for input <span class="math inline">\(\texttt{011110}\)</span> on PDA <span class="math inline">\(M_3\)</span> given in Figure 2.19 (page 116).</p></li>
+<li><p>Consider what the CFG would look like if <span class="math inline">\(M_3\)</span> were converted to a CFG according to the PDA-to-CFG conversion algorithm described on pages 121–124 of the textbook. Note that <span class="math inline">\(M_3\)</span> is <em>almost</em> in the form required for this conversion (properties 1–3 on page 121), so only a small initial translation is necessary: You need to add one new state to handle the transition from <span class="math inline">\(q_2\)</span> to <span class="math inline">\(q_3\)</span> that neither pushes nor pops, so call that new state <span class="math inline">\(q_9\)</span>. You do <em>not</em> need to write out the CFG, because it would require far too many variables, but you are encouraged to write out the most significant production rules created for the CFG (there are about a half dozen “important” ones that are created using “Rule 1” from the top of page 122).</p>
+<p>Whether you write out the production rules or not, use the standard CFG variable names to write out the derivation that would occur for the transition sequence you found in part (a). To simplify your notation, you can write <span class="math inline">\(A_{13}\)</span> instead of <span class="math inline">\(A_{q_1q_3}\)</span> (for example), which is what you’d get by literal application of the rules.</p></li>
+</ol></li>
+</ol>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

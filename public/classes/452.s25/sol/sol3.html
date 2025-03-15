@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 452/652/752 - Spring 2025 - Assignments</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+
+    <p>Reminder about <a href="../browser.html">browser check</a> – you should see “OK” in script here: <span class="math inline">\({\mathcal O}{\mathcal K}\)</span></p>
+      
+   
+        <ol type="1">
+<li><p>(Textbook, Exercise 1.20 b and e) [<em>How to “grade” your work: There are lots of correct answers to these questions, and some of the simpler examples are below. I would grade this out of 8 points, with 1 point for each answer. The answer is either right or wrong – no way for partial credit here. </em>]</p>
+<ul>
+<li><p>(Part b)<br />
+Members: <span class="math inline">\(\texttt{ab}\)</span> and <span class="math inline">\(\texttt{abab}\)</span><br />
+Not members: <span class="math inline">\(\texttt{a}\)</span> and <span class="math inline">\(\texttt{aabb}\)</span></p></li>
+<li><p>(Part e)<br />
+Members: <span class="math inline">\(\texttt{aba}\)</span> and <span class="math inline">\(\texttt{aaba}\)</span><br />
+Not members: <span class="math inline">\(\texttt{a}\)</span> and <span class="math inline">\(\texttt{bab}\)</span></p></li>
+</ul></li>
+<li><p>(Textbook, Exercise 1.19b) [<em>How to “grade” your work: These solutions should give each step of the construction, as shown below (and was done in Examples 1.56 and 1.57 in the book). There are 9 steps/components shown below, so give one point for each, and one additional point for general form/legibility of the presentation. For each step, for full credit it must be exactly as shown below. Can take off 1/2 point for minor mistakes that don’t affect what the NFA accepts, like a missing epsilon transition in the “00” NFA. Otherwise, check all transitions and final states to make sure they are correct. </em>]</p>
+<p><img src="book1_19b.svg" /></p></li>
+<li><p>(Textbook, Exercise 1.21b) [<em>How to “grade” your work: Each step needs to be shown. To grade this out of 12 points, do the following: writing as an initial GNFA is worth 3 points (diagram (b)), checking epsilon transitions and changes in accept states; each of the three transformations after that is worth 3 points, with 1.5 points per path-to-regular expression replacement (each has two paths). You should make sure appropriate parentheses are added to respect precedence of operators in the regular expressions. Note that this is not the only order in which you could remove states, so different orders could result in different final answers. </em>]</p>
+<p>The sequence of transformations below starts with the DFA from the problem in diagram (a), and conversion to an initial GNFA (with new start and accept states) is in diagram (b). In diagram (c) we have removed state 2, noting that there are two paths through state 2 that we need to replace: 1-&gt;2-&gt;3, and 3-&gt;2-&gt;3. Diagram (d) shows the elimination of state 3 and the two paths through state 3 – note that the path 1-&gt;3-&gt;a gets joined (with a union) with the existing path/epsilon transition from 1 to a. And finally, diagram (e) eliminates state 1, leaving just the start and accept states. The final answer (the regular expression for this DFA) is given in diagram (e).</p>
+<p><img src="book1_21b.svg" /></p></li>
+<li><p>(Textbook, Exercise 1.46a) [<em>How to “grade” your work: Grade out of 10 points. Proofs using the pumping lemma are highly-structured and always have the following pieces/structure: the initial “assumption for the sake of contradiction” statement (1 point), the definition of <span class="math inline">\(p\)</span> from the pumping lemma (1 point), selection/definition of <span class="math inline">\(s\)</span> (2 points: must be in terms of <span class="math inline">\(p\)</span> and must be in <span class="math inline">\(L\)</span>). Then each of the three conditions in the pumping lemma must be mentioned and used (1 point for <span class="math inline">\(|xy|\leq p\)</span>, 1 point for <span class="math inline">\(|y|&gt;0\)</span>, and most importantly, 3 points for the pumping condition (<span class="math inline">\(xy^iz\)</span>) and reasoning about the contradiction with this condition. Finally, 1 more point for the wrap-up and conclusion. Note that errors can build up: if an incorrect string <span class="math inline">\(s\)</span> is chosen, there’s really no way the reasoning about the contradiction can be correct. </em>]</p>
+<p>Claim: <span class="math inline">\(L=\{\texttt{0}^n\texttt{1}^m \texttt{0}^n\,|\, m,n\geq 0\}\)</span> is not regular.</p>
+<p>Proof: Assume for the sake of contradiction that <span class="math inline">\(L\)</span> is regular. Let <span class="math inline">\(p\)</span> be the pumping length given by the pumping lemma, and let <span class="math inline">\(s\)</span> be the string <span class="math inline">\(\texttt{0}^p\texttt{1}\texttt{0}^p\)</span>. Since <span class="math inline">\(s\)</span> is a member of <span class="math inline">\(L\)</span> with length more than <span class="math inline">\(p\)</span>, the pumping lemma guarantees that <span class="math inline">\(s\)</span> can be split into three pieces, <span class="math inline">\(s=xyz\)</span>, where for any <span class="math inline">\(i\geq 0\)</span> the string <span class="math inline">\(xy^iz\)</span> is in <span class="math inline">\(L\)</span> and the pieces satisfy the other two conditions of the pumping lemma. In particular, we know that <span class="math inline">\(|xy|\leq p\)</span>, and since the first <span class="math inline">\(p\)</span> symbols in <span class="math inline">\(s\)</span> are <span class="math inline">\(\texttt{0}\)</span>s we know that <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> can only contain <span class="math inline">\(\texttt{0}\)</span>s. <span class="math inline">\(z\)</span> must then contain the lone <span class="math inline">\(\texttt{1}\)</span> and the following <span class="math inline">\(p\)</span> <span class="math inline">\(\texttt{0}\)</span>s (it may contain some zeroes before the <span class="math inline">\(\texttt{1}\)</span> as well). Furthermore, since <span class="math inline">\(|y|&gt;0\)</span> we know that <span class="math inline">\(y\)</span> contains at least one <span class="math inline">\(\texttt{0}\)</span>.</p>
+<p>When we pump <span class="math inline">\(xyz\)</span> to get <span class="math inline">\(xy^2z\)</span>, since <span class="math inline">\(y\)</span> contains at least one <span class="math inline">\(\texttt{0}\)</span> we have increased the number of <span class="math inline">\(\texttt{0}\)</span>s before the <span class="math inline">\(\texttt{1}\)</span> in the string, while the number of <span class="math inline">\(\texttt{0}\)</span>s after the <span class="math inline">\(\texttt{1}\)</span> is unchanged. Therefore, the number of <span class="math inline">\(\texttt{0}\)</span>s before the <span class="math inline">\(\texttt{1}\)</span> is larger than the number of <span class="math inline">\(\texttt{0}\)</span>s after the <span class="math inline">\(\texttt{1}\)</span> in the pumped string, so <span class="math inline">\(xy^2z\)</span> is not in <span class="math inline">\(L\)</span>. This contradicts the pumping lemma, so our original assumption – that <span class="math inline">\(L\)</span> is regular – must be false. Therefore, <span class="math inline">\(L\)</span> is not regular. QED</p></li>
+</ol>
+<p> </p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

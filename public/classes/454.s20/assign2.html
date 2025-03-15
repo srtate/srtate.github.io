@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 454/654 - Spring 2020 - Assignment 2 - Due Feb 17, 2020</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../css/class_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+        <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark uncg-navbar fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="https://www.uncg.edu/">
+          <img class="collapse navbar-collapse" src="../img/uncg_class.png" alt="UNC Greensboro">
+          <img class="navbar-toggler" src="../img/uncg_mobile.png" alt="UNCG">
+        </a>
+        <div class="navbar-brand d-flex flex-column text-left"
+	     style="line-height: 1.2;">
+          <span>CSC 454/654</span>
+          <span class="small collapse navbar-collapse"><em>Algorithm Analysis and Design</em></span>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link " href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="syllabus.html">Syllabus</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="schedule.html">Schedule</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="assignments.html">Assignments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://uncg.instructure.com/">Canvas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- Page Content -->
+    <div class="container">
+   
+        <h2 id="csc-454654---spring-2020---assignment-2---due-feb-17-2020">CSC 454/654 - Spring 2020 - Assignment 2 - Due Feb 17, 2020</h2>
+<ol type="1">
+<li><p>In the last homework, for problem 3 you wrote pseudocode for recursive binary search (with the array passed by reference) and derived a recurrence describing the worst-case running time. The correct recurrence for this is <span class="math inline">\(T(n)=T(n/2)+c\)</span>; solve this using the master theorem, showing your work including the verification of conditions for using a particular case of the master theorem.</p></li>
+<li><p>In the last homework, problem 4 asked about what would happen if the array were passed by value instead of by reference. The recurrence you should have gotten for that one was <span class="math inline">\(T(n)=T(n/2)+c\cdot n\)</span>. Solve this, showing your work as in the last problem.</p></li>
+<li><p>Solve the recurrences below using the master theorem if possible, showing your work. One of these is not solvable by the basic master theorem (as stated on page 94 of the textbook) – for that one, explain why we can’t use the master theorem.</p>
+<ol type="a">
+<li><p><span class="math inline">\(T(n)=4T(n/2)+n^3\)</span></p></li>
+<li><p><span class="math inline">\(T(n)=9T(n/3)+n^2\lg n\)</span></p></li>
+<li><p><span class="math inline">\(T(n)=8T(n/2)+n^2\lg n\)</span></p></li>
+<li><p><span class="math inline">\(T(n)=16T(n/2)+n^4\)</span></p></li>
+</ol></li>
+<li><p>Do a manual execution of algorithm <span class="math inline">\(\texttt{Find-Maximum-Subarray}\)</span> from the book (page 72), using as input the 8-element array <code>[-1, 5, -2, 6, 3, -7, -6, 5]</code>. Show every step, tracing down into recursive calls as well as the calls to <span class="math inline">\(\texttt{Find-Max-Crossing-Subarray}\)</span>. At the end, clearly mark your result (in other words: what is the maximum subarray?).</p></li>
+<li><p>In the closest pair algorithm from Section 33.4 (and that we discussed in class), the divide-and-conquer continues until <span class="math inline">\(n\leq 3\)</span>. Why is the base case <span class="math inline">\(n\leq 3\)</span>? Or more specifically, would there be a problem if you kept doing recursion when <span class="math inline">\(n=3\)</span> and only stopped when <span class="math inline">\(n\leq 2\)</span>?</p></li>
+<li><p>Hacker Harry is trying to implement <span class="math inline">\(\texttt{Quicksort}\)</span> from the pseudocode in the textbook (page 171). However, he makes a mistake when entering Line 3 and instead calls <span class="math inline">\(\texttt{Quicksort}(A, p, q)\)</span> (note the change in the final parameter).</p>
+<ol type="a">
+<li><p>What is the consequence of this mistake (on correctness or running time) when <span class="math inline">\(\texttt{Quicksort}\)</span> is called with an array that is already in sorted order?</p></li>
+<li><p>What is the consequence of this mistake (on correctness or running time) when <span class="math inline">\(\texttt{Quicksort}\)</span> is called with an array that is filled with <span class="math inline">\(n\)</span> copies of the same value?</p></li>
+</ol></li>
+<li><p>Programming Challenges – given on a <a href="progchallenge1.html">separate page</a>.</p></li>
+</ol>
+<p> </p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 439/639 - Fall 2020 - Assignment 3 -- Complete Parser</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="../css/class_srtate.css" rel="stylesheet">
+
+  </head>
+
+
+  <body>
+
+        <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark uncg-navbar fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="https://www.uncg.edu/">
+          <img class="collapse navbar-collapse" src="../img/uncg_class.png" alt="UNC Greensboro">
+          <img class="navbar-toggler" src="../img/uncg_mobile.png" alt="UNCG">
+        </a>
+        <div class="navbar-brand d-flex flex-column text-left"
+	     style="line-height: 1.2;">
+          <span>CSC 439/639</span>
+          <span class="small collapse navbar-collapse"><em>Introduction to Compiler Design</em></span>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link " href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="syllabus.html">Syllabus</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="schedule.html">Schedule</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="assignments.html">Assignments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://uncg.instructure.com/">Canvas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- Page Content -->
+    <div class="container">
+   
+        <h2 id="assignment-3-complete-parser-due-mon-oct-26">Assignment 3 – Complete Parser – Due Mon, Oct 26</h2>
+<p>For this assignment, you are to complete your parser to support semantic checking and syntax tree generation for the full LittleC language, including char and array types. All of the information needed regarding the language is in the Assignment 2 write-up.</p>
+<p>If you did not get Assignment 2 finished, or would just like to get some ideas from looking at a solution, I will post my Assignment 2 solution on Tuesday, Oct 19, after the late deadline for Assignment 2 has passed.</p>
+<p>The starter repository that is cloned when you accept the assignment invitation will include new tests for the additional language features, named “<code>good2</code>…” and “<code>bad2</code>…”. As in the two previous assignments, you are encouraged to create your own tests to share with the class, and for sharing we’ll use the <code>FullParserTests</code> repository</p>
+<p>I am also providing an additional resource with this assignment: A working solution that you can run your test cases through to see what is expected. This is available on <code>prdile.uncg.edu</code> if you have set up your account to include the csc439 tools (see the “Option 1” document in the “Compiler Project” section of Canvas, under “Using UNCG’s PRDILE System”). Once that is set up, the program is run by typing <code>littlec</code> with exactly two command-line arguments: a run “style” and an input file name. If you just type <code>littlec</code> you’ll get the following “help” statement that tells you what the arguments are:</p>
+<blockquote>
+<pre><code>Run as follows (input is from stdin unless a filename is given):
+
+   littlec mode [optinfile]
+
+where &quot;mode&quot; is one of the following:
+   -lt runs LexerTest
+   -pt runs ParserTest
+   -st outputs the syntax tree (like pt without symbol tables)
+   -pi produces intermediate code output
+   -pe produces an executable</code></pre>
+</blockquote>
+<p>Currently, only the “-lt”, “-pt”, and “-st” options are supported, but more will be added over time.</p>
+<p> </p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

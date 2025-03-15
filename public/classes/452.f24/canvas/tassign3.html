@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 452/652/752 - Fall 2024 - Assignment 3 - Due Oct 9, 2024</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://home.uncg.edu/cmp/faculty/srtate/452.f24/tassign3.html">View original, outside canvas</a> ]
+   
+        <h2 id="csc-452652752---fall-2024---assignment-3---due-oct-9-2024">CSC 452/652/752 - Fall 2024 - Assignment 3 - Due Oct 9, 2024</h2>
+<ol type="1">
+<li><p>Consider the following context-free grammar <span class="math inline">\(G\)</span> which generates some context-free language <span class="math inline">\(L(G)\)</span>:</p>
+<p><span class="math display">\[ \begin{array}{l}
+S \rightarrow EEEF\\
+E \rightarrow 0E\ |\ 1\\
+F \rightarrow 0F\ |\ 0
+\end{array} \]</span></p>
+<ol type="a">
+<li><p>What are the variables of this grammar?</p></li>
+<li><p>What are the terminals of this grammar?</p></li>
+<li><p>What is the start variable?</p></li>
+<li><p>Give two strings of length 4 or greater that are in <span class="math inline">\(L(G)\)</span>, along with their derivations.</p></li>
+<li><p>Draw parse trees for your two derivations in the preceding part.</p></li>
+<li><p>Give two strings of length 4 or greater that are <em>not</em> in <span class="math inline">\(L(G)\)</span>.</p></li>
+<li><p>Give a succinct description of the language <span class="math inline">\(L(G)\)</span> using set-builder notation, and a description in plain English.</p></li>
+</ol></li>
+<li><p>For each of the following languages, give a context-free grammar (in all cases, the alphabet <span class="math inline">\(\Sigma=\{0,1\}\)</span>).</p>
+<ol type="a">
+<li><p><span class="math inline">\(\{ww^{\mathcal R}\,|\,w\in\{0,1\}^*\}\)</span> (in other words, strings in which the 2nd half of the string is the reverse of the first half).</p></li>
+<li><p><span class="math inline">\(\{w\,|\,w\in\{0,1\}^*\)</span> and <span class="math inline">\(c_1(w)=2k\)</span> for some integer <span class="math inline">\(k\}\)</span> (this uses <span class="math inline">\(c_1\)</span> from Assignment 1, so is the language of all binary strings with an even number of 1’s)</p></li>
+<li><p><span class="math inline">\(\{w\,|\,w\in\{0,1\}^*\)</span> and <span class="math inline">\(w\)</span> contains the string 101<span class="math inline">\(\}\)</span></p></li>
+<li><p><span class="math inline">\(\{0^p1^q\,|\,\)</span> where <span class="math inline">\(q\geq p\geq 0 \}\)</span></p></li>
+</ol></li>
+<li><p>Which of the languages above are regular? (You don’t need to justify your answer in any way – just list which ones are regular.)</p></li>
+<li><p>Design a pushdown automata for each of the languages in question 2. Note that I am <em>not</em> asking you to perform the CFG-to-PDA conversion — design a PDA directly from the description of the language.</p></li>
+<li><p>Convert the following grammar into Chomsky Normal Form (show and  describe each step): <span class="math display">\[ \begin{array}{l}
+S \rightarrow AA\\
+A \rightarrow 0A1\ |\ B\\
+B \rightarrow 1B0\ |\ S\ |\ \varepsilon\\
+\end{array} \]</span></p></li>
+<li><p>Perform the CFG-to-PDA conversion procedure from the book (pages 117–120) to convert the grammar from the previous question into a PDA that recognizes the same language.</p></li>
+<li><p>The book proves that every regular language is a context free language by relying (Corollary 2.32) by first viewing the DFA for a regular language as a PDA that ignores its stack, and then using the fact that the PDA can be converted to a context free grammar. This is mathematically valid, but it produces a CFG that is far more complex than necessary. Here is a more direct DFA-to-CFG conversion method:</p>
+<p>Given a DFA <span class="math inline">\(M=(Q,\Sigma,\delta,q_0,F)\)</span>, we create a CFG <span class="math inline">\(G=(V,\Sigma,R,S)\)</span> as follows. Both <span class="math inline">\(M\)</span> and <span class="math inline">\(G\)</span> use the same input alphabet <span class="math inline">\(\Sigma\)</span>. To create <span class="math inline">\(G\)</span>, we have a variable representing each state in the DFA, so <span class="math inline">\(V=Q\)</span>. Second, we set the start variable in <span class="math inline">\(G\)</span> to the start state in <span class="math inline">\(M\)</span> (so <span class="math inline">\(S=q_0\)</span>). Finally for each transition <span class="math inline">\(\delta(Q,a)=R\)</span> we add a rule to <span class="math inline">\(G\)</span> that is <span class="math inline">\(Q\rightarrow aR\)</span>, and or each final state <span class="math inline">\(Q\in F\)</span> we add a rule <span class="math inline">\(Q\rightarrow\varepsilon\)</span>.</p>
+<p>As an example of this conversion, consider the following DFA <span class="math inline">\(M\)</span> (recognizing strings with an even number of 1’s):</p>
+<p><img src="assign3_dfa1.png" /></p>
+<p>The grammar <span class="math inline">\(G\)</span> created from this DFA is shown below:</p>
+<span class="math display">\[\begin{array}{l}
+Q_1 \rightarrow 0Q_1\ | \ 1Q_2\ |\ \varepsilon\\
+Q_2 \rightarrow 0Q_2\ | \ 1Q_1\\
+\end{array}\]</span>
+<ol type="a">
+<li><p>Show a derivation of the string <span class="math inline">\(\texttt{0101110}\)</span> in <span class="math inline">\(G\)</span>.</p></li>
+<li><p>The string <span class="math inline">\(\texttt{010}\)</span> is not in <span class="math inline">\(L(M)\)</span>, so should not be derivable in <span class="math inline">\(G\)</span>. Give a systematic argument why this is in fact the case.</p></li>
+<li><p>Use this technique to derive the equivalent grammar for machine <span class="math inline">\(M_1\)</span>, shown below:</p>
+<p><img src="assign3_dfa2.png" /></p></li>
+</ol></li>
+</ol>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

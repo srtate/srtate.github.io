@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 452/652/752 - Spring 2025 - Assignments</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+
+    <p>Reminder about <a href="../browser.html">browser check</a> – you should see “OK” in script here: <span class="math inline">\({\mathcal O}{\mathcal K}\)</span></p>
+      
+   
+        <ol type="1">
+<li><p>[<em>How to “grade” your work: Consider this a 12 point problem, with 3 points for each part. If the answer is actually incorrect (doesn’t describe the right set), then take off all 3 points. If the answer is not plain English and uses formulas, take off 2 points. If the answer avoids formulas but is more complex than necessary, take off 1/2 to 1 point depending on how complex it is – for example, adding unnecessary cases/clauses to the description might be 1 point off, while moderately confusing wording would be 1/2 point off.</em>]</p>
+<ol type="a">
+<li>The set of all even length binary strings</li>
+<li>The set of all binary strings with the same number of 0’s as 1’s</li>
+<li>The set of all binary strings with an odd number of 1’s</li>
+<li>The set of all binary strings that are the same forwards and backwards [or the set of all binary strings that are palindromes]</li>
+</ol></li>
+</ol>
+</p>
+<ol type="1">
+<li><p>[<em>How to “grade” your work: Here’s how to grade an induction proof that is worth 10 points: A clearly-stated and labeled base case is worth 3 points (1 point for the label, 1 point for the correct value of <span class="math inline">\(n\)</span>, and 1 point for the reasoning establishing the base case. The induction part is worth 7 points (1 point for a clear label, 2 points for a clearly stated and labeled induction hypothesis, 1 point for clearly indicating the goal/object of the induction step, and 3 points for the math/reasoning.</em>]</p>
+<ol type="a">
+<li><p>To prove: <span class="math inline">\(S(n)=\frac{1}{2} n(n+1)\)</span></p>
+<p>We prove this by induction on <span class="math inline">\(n\)</span>.</p>
+<p><em>Base case <span class="math inline">\((n=1)\)</span></em>: When <span class="math inline">\(n=1\)</span>, the sum <span class="math inline">\(S(1)=\sum_{i=1}^{1} i = 1\)</span> and the formula on the right hand side above is <span class="math inline">\(\frac{1}{2} 1(1+1)=1\)</span>. These are equal, so the base case holds.</p>
+<p><em>Induction</em>: For each <span class="math inline">\(k\geq 1\)</span>, assume that the formula is true for <span class="math inline">\(n=k\)</span> and show that it is true for <span class="math inline">\(n=k+1\)</span>. The induction hypothesis states that <span class="math display">\[ S(k)=\sum_{i=1}^k i = \frac{1}{2} k(k+1) . \]</span></p>
+<p>Our objective is to prove that <span class="math display">\[ S(k+1) = \sum_{i=1}^{k+1} i = \frac{1}{2} (k+1)(k+2) . \]</span></p>
+<p>We separate out the final term in the summation, giving <span class="math display">\[ S(k+1) = \sum_{i=1}^{k+1} i = \sum_{i=1}^k i + (k+1) . \]</span></p>
+<p>We then use the induction hypothesis to replace the summation and simplify: <span class="math display">\[ S(k+1) = \frac{1}{2} k(k+1) + (k+1)
+    = \frac{1}{2} k(k+1) + \frac{1}{2} 2(k+1)
+    = \frac{1}{2} (k+1)(k+2) . \]</span> This is exactly our goal, so we have shown that the formula holds at <span class="math inline">\(n=k+1\)</span>. This completes the induction step, and the proof of the initial claim.</p></li>
+<li><p><span class="math inline">\(C(n)=\frac{1}{4} n^2 (n+1)^2\)</span> (sum of cubes)</p>
+<p>We prove this by induction on <span class="math inline">\(n\)</span>.</p>
+<p><em>Base case <span class="math inline">\((n=1)\)</span></em>: When <span class="math inline">\(n=1\)</span>, the sum <span class="math inline">\(C(1)=\sum_{i=1}^{1} i^3 = 1^3 = 1\)</span> and the formula on the right hand side above is <span class="math inline">\(\frac{1}{4} 1^2 (1+1)^2=\frac{1}{4} 4=1\)</span>. These are equal, so the base case holds.</p>
+<p><em>Induction</em>: For each <span class="math inline">\(k\geq 1\)</span>, assume that the formula is true for <span class="math inline">\(n=k\)</span> and show that it is true for <span class="math inline">\(n=k+1\)</span>. The induction hypothesis states that <span class="math display">\[ C(k)=\sum_{i=1}^k i^3 = \frac{1}{4} k^2(k+1)^2 . \]</span></p>
+<p>Our objective is to prove that <span class="math display">\[ C(k+1) = \sum_{i=1}^{k+1} i^3 = \frac{1}{4} (k+1)^2(k+2)^2 . \]</span></p>
+<p>We separate out the final term in the summation, giving <span class="math display">\[ C(k+1) = \sum_{i=1}^{k+1} i^3 = \sum_{i=1}^k i^3 + (k+1)^3 . \]</span></p>
+<p>We then use the induction hypothesis to replace the summation and simplify: <span class="math display">\[ C(k+1) = \frac{1}{4} k^2(k+1)^2 + (k+1)^3
+    = \frac{1}{4} k^2(k+1)^2 + \frac{1}{4} 4(k+1)(k+1)^2
+    = \frac{1}{4} (k+1)^2(k^2+4k+4)
+    = \frac{1}{4} (k+1)^2(k+2)^2. \]</span> This is exactly our goal, so we have shown that the formula holds at <span class="math inline">\(n=k+1\)</span>. This completes the induction step, and the proof of the initial claim.</p></li>
+</ol></li>
+<li><p>[<em>How to “grade” your work: The type of proof isn’t specified in the question, so grading should pay attention to whether the proof is logically correct (most important!), complete, and precisely stated. The proof below is pretty straightforward though, so most correct proofs will probably be similar, mathematically. The biggest “quality of proof” issue is going to be precision of statements. Notice below that clear notation is given for the path and finding a cycle in the path, and then repeating the cycle. All of this is important – a “handwavy” kind of proof, with no precise notation, should lose almost half the points (say 4 out of 10). The final part, giving a precise number of times the cycle needs to be repeated, is nice but not really necessary. It is enough to say that repeating the cycle makes the path longer, and with enough iterations (leaving “enough” unspecified) you can make the path have length greater than <span class="math inline">\(2n\)</span>.</em>]</p>
+<p>(Note: This is a proof by construction.) Let <span class="math inline">\(G\)</span> be a directed graph with <span class="math inline">\(n\)</span> vertices with a length <span class="math inline">\(n\)</span> path <span class="math inline">\(p\)</span> from <span class="math inline">\(v\)</span> to <span class="math inline">\(w\)</span>. We denote the vertices in the path as a sequence <span class="math inline">\(v_0, v_1,\ldots, v_n\)</span>, where there is an edge <span class="math inline">\((v_i,v_{i+1})\)</span> in <span class="math inline">\(G\)</span> for all <span class="math inline">\(i=0,\cdots,n-1\)</span>. Since the path contains <span class="math inline">\(n+1\)</span> vertices and there are only <span class="math inline">\(n\)</span> vertices in the graph there must be at least one vertex that appears twice in the path (by the Pigeonhole Principle), so let <span class="math inline">\(v_e=v_s\)</span> for some <span class="math inline">\(e&gt;s\)</span>. You can see this in the path as <span class="math inline">\(v_0,\ldots,v_s,\ldots,v_e,\ldots,v_n\)</span>, where it might be the case that <span class="math inline">\(s=0\)</span> or <span class="math inline">\(e=n\)</span>. Given this notation, the portion of the path from <span class="math inline">\(v_s\)</span> to <span class="math inline">\(v_e\)</span> is a cycle of length <span class="math inline">\(\ell&gt;1\)</span>, and we can repeat that cycle as many times as we want to make longer and longer paths. If add <span class="math inline">\(r=\lfloor n/\ell\rfloor+1\)</span> repetitions of the cycle, then the new path (with the extra cycles) has length <span class="math inline">\(n+r\cdot\ell\)</span> and since <span class="math inline">\(r&gt;n/\ell\)</span> we have length <span class="math inline">\(n+r\cdot \ell &gt; n+n/\ell\cdot \ell = 2n\)</span>. This is a path of length greater than <span class="math inline">\(2n\)</span>, completing the proof.</p></li>
+</ol>
+<p> </p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

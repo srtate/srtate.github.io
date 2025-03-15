@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>Assignment 3 -- Due Wednesday, October 7</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://www.uncg.edu/cmp/faculty/srtate/481.f20/assign3.html">View original, outside canvas</a> ]
+   
+        <h3 id="assignment-3-due-wednesday-october-7">Assignment 3 – Due Wednesday, October 7</h3>
+<p><strong>Note:</strong> There are two labtainer exercises below (questions 4 and 5). One is very brief, but you still need to submit the ZIP file, so that means you’ll be doing <em>three</em> submissions for this assignment (written solutions and two labtainer ZIP files).</p>
+<ol type="1">
+<li><p>Joe Crypto always loved playing the “guess which hand is holding a prize” game, so proposes the following guessing game: You can give him two files, containing whatever data you want them to contain, but with the restriction that they must be the same length. He will then pick one of them, encrypt it with a secret key, and then give you the resulting ciphertext. You have to guess which file he encrypted! Joe’s crypto knowledge isn’t so great, however, and he uses AES in ECB mode. How can you play this game so that you can always win? Be very specific, including a clear explanation of why your strategy allows you to win. (Hint: What is the main weakness of ECB mode, and how can you create a file that displays this weakness?)</p></li>
+<li><p>The previous question was really about the IND-CPA (in)security of ECB mode. In this question we’ll be a little more direct about IND-CPA security. Refer back to our class slides on how the IND-CPA “game” works, and put yourself in the shoes of the adversary, and your goal is to design a strategy where you win this game. Remember that you get to make as many encryption queries as you want, so in both cases below describe any queries you might want to make, how you will pick the challenge plaintexts <span class="math inline">\(p_0\)</span> and <span class="math inline">\(p_1\)</span>, and then how you’ll decide on your guess <span class="math inline">\(g\)</span> at the end. I’m looking for careful thinking and reasoning here, not a formal mathematical proof (if you want a more rigorous treatment of this, take the crypto class!).</p>
+<p>Consider a cipher that has the following property: When you view the plaintext bits and ciphertext bits as binary numbers, the cipher preserves the evenness of the number. In other words, if the plaintext is an even number then the ciphertext will also be an even number, and if the plaintext is odd then the ciphertext will also be odd. However, the encryption algorithm is <em>not</em> deterministic, nor does it reveal any information other than evenness/oddness.</p>
+<ol type="a">
+<li><p>Prove that such a cipher cannot be IND-CPA secure (in other words, describe how you as the adversary can play the game so that you can always win).</p></li>
+<li><p>Joe decides to “fix” the cipher by doing the following: he extends the key by adding one more bit. Now this bit, representing 0 or 1, is added to any plaintext by the sender before encryption and subtracted after decryption by the receiver. If this key bit is chosen randomly, then half the time even numbers map to even numbers before encryption, and the other half of the time even numbers map to odd numbers. “HA HA,” Joe thinks (accompanied by him rubbing his hands together in a mildly disturbing way) – now the information about whether the plaintext is even or odd no longer follows from the evenness or oddness of the ciphertext, so he thinks he has foiled your evil scheming! Your task here is to show that you’re smarter than poor Joe: devise and describe a winning strategy for the adversary in this case, showing that this new scheme is still not IND-CPA secure.</p></li>
+</ol></li>
+<li><p>Consider adding a special-purpose chip to a computer (or phone) that internally stores a random 256-bit secret <span class="math inline">\(k\)</span> in such a way that the secret can only be used as the key for executing HMAC (using SHA-256) in the chip. Specifically, all the user can do is send a bitstring <span class="math inline">\(x\)</span> to the hardware so that it computes and returns HMAC(<span class="math inline">\(k,x\)</span>). Consider a system that uses this hardware to create a 256-bit key for AES for data storage (a separate device): The user supplies a (possibly low-entropy) password or PIN as <span class="math inline">\(x\)</span>, and then the output of the hardware HMAC is used as an AES key to encrypt and decrypt all data stored on the storage device. We can quickly test whether the hardware gives the correct key by attempting a decryption using it. For this problem, assume that HMAC with SHA-256 satisfies the following property: Without knowing the key <span class="math inline">\(k\)</span>, no information about the value HMAC(<span class="math inline">\(k,x\)</span>) can be predicted. The only way to get this value is to ask the chip to compute it for you, or to get lucky and guess the output.</p>
+<ol type="a">
+<li><p>What if the storage device is removed from the system and then stolen or sold? In addition to having the encrypted data, the attacker knows the algorithm that the chip uses and knows that <span class="math inline">\(x\)</span> is some unknown 4-digit PIN, but doesn’t have access to the security chip. How secure is this? Reason about the “best possible attack,” and give some indication of how much time this would take. Informal reasoning is OK, but make sure the logic of your reasoning is clear!</p></li>
+<li><p>If the entire device (the security chip and the storage device) is captured, so that the attacker can access the HMAC-computing hardware device, what is the best attack in this case? How much time would this take (state any assumptions you need to make about the speed of the hardware device, etc.).</p></li>
+<li><p>If the hardware deletes the secret <span class="math inline">\(k\)</span>, then the attacker is basically back at the situation in part (a), even if they have the entire device. How could you improve the system so that it can detect and delete the secret <span class="math inline">\(k\)</span> after a certain number of failed attempts (your goal is to stop brute-force attacks on the PIN). Note that the security chip needs some way of knowing when a use has been successful or not, and an attacker should not be able to trick this detection.</p></li>
+</ol></li>
+<li><p>The “capabilities” labtainer exercise is brief and can be completed in under 30 minutes, but it demonstrates a very important security feature of modern Linux systems. Complete the labtainer exercise, with the following change: you do not need to submit the lab report it refers to under “Submission,” nor do you have to answer the questions at the end of Task 2, but you still need to submit the ZIP file which documents your work. Hint for Task 1.2: You may need to refer to the man page “cap_from_text” to see how to format the capability-setting command.</p>
+<p>You should also answer this question as part of your written problem submission: What results did you see from Task 2? In other words, which open calls failed? Answer honestly: Did you correctly predict what was going to happen? Then explain in your own words why some calls failed and others succeeded.</p></li>
+<li><p>Complete the “pass-crack” labtainer exercise, including the lab report and spreadsheet (which are submitted as part of the labtainer ZIP file – there’s nothing to submit as part of the written problems).</p></li>
+</ol>
+<p> <br />
+</p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

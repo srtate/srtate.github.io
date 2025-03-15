@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 454/654 - Spring 2022 - Mathematical Writing</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://www.uncg.edu/cmp/faculty/srtate/454.s22/mathwriting.html">View original, outside canvas</a> ]
+   
+        <h2 id="csc-454654---spring-2022---mathematical-writing">CSC 454/654 - Spring 2022 - Mathematical Writing</h2>
+<p>Your work in this class should be neat and properly formatted. As an upper-level computer science student your work should not only be technical correct, but should be presented professionally. Mathematical writing has rules that should be followed regarding formatting, and you should not just type things up as text. Here is an example of actual student work as typed up by a student in a previous semester:</p>
+<blockquote>
+<p>Define final payoff P, where task i has payoff ti, task i has deadline di, the start day is S, ti is scheduled at si, also define a Boolean for whether the task i is scheduled bi.</p>
+<p>We want to maximize P = sum of(ti*bi).</p>
+</blockquote>
+<p>Here is what it <em>should</em> have looked like:</p>
+<blockquote>
+<p>Define final payoff <span class="math inline"><em>P</em></span>, where task <span class="math inline"><em>i</em></span> has payoff <span class="math inline"><em>t</em><sub><em>i</em></sub></span>, task <span class="math inline"><em>i</em></span> has deadline <span class="math inline"><em>d</em><sub><em>i</em></sub></span>, the start day is <span class="math inline"><em>S</em></span>, <span class="math inline"><em>t</em><sub><em>i</em></sub></span> is scheduled at <span class="math inline"><em>s</em><sub><em>i</em></sub></span>, and also define a Boolean for whether the task <span class="math inline"><em>i</em></span> is scheduled <span class="math inline"><em>b</em><sub><em>i</em></sub></span>.</p>
+<p>We want to maximize <span class="math inline"><em>P</em> = ∑<em>t</em><sub><em>i</em></sub> ⋅ <em>b</em><sub><em>i</em></sub></span>.</p>
+</blockquote>
+<p>Notice that all variables are in a special “math italics” font, subscripts are properly used, and notation for a summation is used. These are all very important! Remember: Mathematics, including variables and formulas, is not English text, and should not just be typed as if it were. Every time a variable or formula appears, it should be set using mathematics formatting.</p>
+<p>The “gold standard” for writing mathematics is <a href="https://www.latex-project.org/">LaTeX</a>, which I’ll describe below. There are other options as well, but taking a little bit of time to learn LaTeX will allow you to create the absolute best looking mathematical writing. Both the LaTeX software and easy-to-use websites with LaTeX support are free. The language used to write out mathematics has almost entirely standardized on LaTeX syntax now, so even if you don’t use LaTeX directly you can use that same format in Microsoft Word, LibreOffice, or even in Markdown/MathJAX (which I’m using for this web page), so it’s worth your while to learn the syntax! More on individual systems is below.</p>
+<h3 id="handwriting-and-scanning">Handwriting and Scanning</h3>
+<p>The quickest, and for some people the most natural, way to write neat mathematics is by hand. You can do that in this class if you choose, but you must write neatly! You can write using a tablet and stylus, or you can write on paper and scan your solutions. It’s possible to use a cellphone camera to produce a “scanned” version, but you must use “scan to PDF” app to produce a proper and readable PDF document. No matter how you produce this, you need to submit it as a PDF document.</p>
+<h3 id="writing-mathematics-with-latex">Writing Mathematics with LaTeX</h3>
+<p>Writing documents with LaTeX is fundamentally different from using a word processor. Word processors like Word or LibreOffice are referred to as WYSIWYG editors, which stands for “What You See Is What You Get” – as you type, you see the text formatted on the screen just like it will appear in printed form. LaTeX works more like writing code, where you write “sourcecode” and then “compile” that into the final typeset document. This has some advantages as far as how LaTeX can do formatting (which is why LaTeX documents often look much nicer than, for example, Microsoft Word documents), but also can be challenging when it comes to getting the formatting just right.</p>
+<p>The traditional way to use LaTeX is with a locally-installed version of the software. However, this requires installing the software and appropriate fonts on your computer, figuring out how to coordinate use of a text editor with the LaTeX processing software, etc. A much easier solution that many students use these days is to create a free account at <a href="https://www.overleaf.com/">Overleaf</a>, which gives a web-based interface for creating LaTeX documents. With Overleaf there is no software to install, and everything is together in one web browser window. You still need to do the “compile” step each time you want to see how your document looks, but that’s previewed right in your browser as well. Once you have completed your document, you can download a PDF for submission.</p>
+<p>The core idea with LaTeX is that text and math are different, and have different modes for typesetting. When mathematics appears in the middle of a regular text paragraph, you surround the math with dollar signs to indicate that it is math. You should do this even when the math is otherwise regular letters, such as variable names. For instance, the following LaTeX sourcecode is what you’d type for defining variables and a bound on them:</p>
+<pre><code>   Let $x$ and $y$ be integers such that $x+y\leq 12$.</code></pre>
+<p>After typesetting, your document will look like this, with appropriate mathematics fonts and symbols:</p>
+<blockquote>
+<p>Let <span class="math inline"><em>x</em></span> and <span class="math inline"><em>y</em></span> be integers such that <span class="math inline"><em>x</em> + <em>y</em> ≤ 12</span>.</p>
+</blockquote>
+<p>The dollar signs above are for in-line equations, in a paragraph of text for example. LaTeX also supports “display mode” which is used for putting a formula on a line by itself, in which case it uses slightly larger formatting, but it can look nicer than trying to cram it all on a normal line height. To use display mode, you put the equation by itself (not in a paragraph) and surround it by either double-dollar signs or <code>\[</code> and <code>\]</code>. You can also automatically number formulas by using the <code>\begin{equation}</code> and <code>\end{equation}</code> markup – for more details see the tutorial linked below. For a quick comparison of in-line typesetting versus display mode, consider <span class="math inline">$\sum_{i=1}^n i$</span> versus <br /><span class="math display">$$\sum_{i=1}^n i$$</span><br /> (that’s the exact same LaTeX formula, just typeset two ways).</p>
+<p>Getting started with LaTeX is pretty simple, but it is so powerful that it can take a long time to master. Just be patient, and if you can’t figure out how to do something you can always ask me. Here are two final resources to get you started:</p>
+<ul>
+<li><p>A <a href="https://www.latex-tutorial.com/">LaTeX tutorial</a> - this is pretty extensive, but you can be pretty competent once you go through lesson 4 (I’d suggest adding lesson 17 too).</p></li>
+<li><p>The <code>\leq</code> above is a special named symbol, and there are a lot of these in LaTeX. I use this <a href="symbols.pdf">cheatsheet</a> although that only has the most common symbols.</p></li>
+</ul>
+<h3 id="writing-mathematics-with-ms-word">Writing Mathematics with MS-Word</h3>
+<p>Originally, Microsoft Word was really focused on writing non-mathematical documents, and math support was weak. Microsoft did include an “equation editor” which was difficult to use, and the result didn’t look nearly as good as LaTeX-typeset mathematics. Fortunately, that has changed, and you can make attractive mathematical documents with Word now. In fact, in recent versions Microsoft now supports the basic LaTeX equation language inside Word! Most serious math writers still use LaTeX, but if you only need to include math occasionally this is a decent option. I’ll give the basics below, and more documentation is <a href="https://support.microsoft.com/en-us/office/linear-format-equations-using-unicodemath-and-latex-in-word-2e00618d-b1fd-49d8-8cb4-8d17f25754f8">available from Microsoft</a>.</p>
+<p>The key to writing math in Word is entering the “equation editor” which you bring up by typing Alt-=. When you do this, the equation tool will appear in the UI ribbon at the top, and should look something like this:</p>
+<p><img src="Math-Word1.png" /></p>
+<p>When you type now, it will go in the box shown as “Type equation here,” and the syntax you use depends on the selection at the top – notice that it says “Unicode” now, which is the “old style” equation editor. You also click on GUI buttons to create formulas, but that really is a horrifically inefficient way to write formulas. The better option in recent systems is to select “<code>{}Latex</code>” mode, after which you can simply enter an equation in LaTeX, typeset it by pressing Ctrl-= (or Enter), and it will be inserted into your Word document. This takes a little practice, but once you get the hang of it it’s much faster than clicking on formula pieces in the GUI. For example, when typing the final inequality it would look like the screenshot on the left below, and after finishing it will be formatted into what is shown in the screenshot on the right.</p>
+<p><img src="Math-Word2.png" /></p>
+<p>Like LaTeX, Word supports in-line (“linear”) and display-mode formatting, and it is generally smart enough to tell what you want (e.g., if you bring up the equation editor on a new line, it will assume display mode). If you want to change the formatting mode, you can use the “Convert” menu in the ribbon or in the dropdown from the equation box.</p>
+<p>That’s all you need to know to get started writing math in Word. You’ll learn more by experimenting and going through <a href="https://support.microsoft.com/en-us/office/linear-format-equations-using-unicodemath-and-latex-in-word-2e00618d-b1fd-49d8-8cb4-8d17f25754f8">Microsoft’s documentation</a>.</p>
+<h3 id="writing-mathematics-with-libreoffce">Writing Mathematics with LibreOffce</h3>
+<p><a href="https://www.libreoffice.org/">LibreOffice</a> is a free and open source office suite that is cross platform (so in particular, it works in Linux while Microsoft Office does not). If you work on multiple operating systems, or just don’t want to deal with software licensing and cost hassles, LibreOffice is an excellent option. Unfortunately, writing math in LibreOffice is a little more of a hassle than even Microsoft Word’s equation editor. It can be done though, and I recommend adding the <a href="https://extensions.libreoffice.org/en/extensions/show/texmaths-1">TexMaths extension</a> to make it a little more powerful. Once you do that, you can set it up to include these GUI buttons:</p>
+<p><img src="Math-LibreOffice1.png" /></p>
+<p>The button labeled with the “pi” opens the basic TexMaths equation editor, which opens in a new window. You can also define a keyboard shortcut for this – LibreOffice is very customizable, even if not the most user-friendly at times. Here’s what it looks like when typing the example that we used above:</p>
+<p><img src="Math-LibreOffice2.png" /></p>
+<p>As with Microsoft Word, you can create formulas by clicking on the various GUI buttons, but it’s must faster to use LaTeX syntax so you can just type. Once you have finished entering the formula, click the “LaTeX” button in the editor (or type Alt-L) to get this result:</p>
+<p><img src="Math-LibreOffice3.png" /></p>
+<h3 id="summary">Summary</h3>
+<p>In this document, you learned about different ways to prepare mathematics documents that are properly formatted and professional. This is a basic expectation in the Algorithms class, so pick a method and produce professional-looking documents! Overall, I’d recommend LaTeX, probably using Overleaf, but the final choice is up to you.</p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

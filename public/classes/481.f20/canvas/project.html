@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 481/681 - Fall 2020 - Semester Project</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://www.uncg.edu/cmp/faculty/srtate/481.f20/project.html">View original, outside canvas</a> ]
+   
+        <h2 id="csc-481681---fall-2020---semester-project">CSC 481/681 - Fall 2020 - Semester Project</h2>
+<p>All students in CSC 481 and CSC 681 will complete a project that involves independent exploration of practical aspects and tools related to concepts we discuss in class. This document describes the timeline, deliverables, and expectations for the project.</p>
+<p>The basic idea is that all students (undergraduates and graduate students) will do a practice-driven exploration of some tool or technique that we touch on in this class. Some basic examples (which are expanded on below) include static analysis tools for vulnerability detection in software, security testing tools including fuzz testers, reverse engineering tools for malware analysis, network probing and assessment tools, tools and libraries for cryptography use in applications, and more. There is also an option for creating your own password-modeling tool (details below). You should explore the use of your selected tool on at least one real-world size problem, and write a report describing what you learned about the tool and how it worked when applied to your problem. The final report is due at the university-scheduled final exam time, and will not be accepted late.</p>
+<p><em>Graduate students</em> taking CSC 681, and undergraduate students taking this course for contract honors credit, will also select a topic from the research literature according to their interests, locate appropriate references, and write a thorough research summary and critique. Students are allowed and encouraged to do this in conjunction with the basic semester project. For example, rather than exploring a standard tool (e.g., a fuzz tester) for the project, you can experiment with a research-level tool and survey current research literature related to that tool or technique. More information on guidelines for this research component are available on the <a href="gradreadings.html">Research Related Activities</a> page.</p>
+<p>Note that there are various resources that are available in the department that could be useful for some projects. For example, there are some large-ish servers that can be used for computationally-intensive analysis or testing. If you could benefit from something like this, just ask!</p>
+<h4 id="timeline">Timeline</h4>
+<p><strong>Topic Selection:</strong> <em>Due Monday, October 26</em><br />
+Submit, in Canvas, a brief statement on your project topic selection. All that’s needed for the basic project is a few sentences describing the tool or technique you will explore, a reference to where the tool can be found online, and an indication of what problem you will apply the tool to. If you don’t have a specific application problem selected, you can describe (in a few sentences) how you will select a specific problem.</p>
+<p><strong>Progress Reports:</strong> <em>Due Monday, November 16</em><br />
+By this date, you should have thoroughly explored and experimented with the tool you are using, have decided on a specific problem to apply it to, and have performed some initial experiments with the tool and your problem. Your progress report should be roughly 2-3 pages, and include what will become the “Introduction” section of your final report: describe the tool (its purpose, how it’s used, and what you can expect to discover from the tool), your applied problem (specific application, why you chose it and believe it is a good demonstration of the tool, and what you hope to discover), and your experimental design (your general approach to exploring your problem). You should also include information about challenges to your project (if any) – both things you have run across already, and issues you foresee coming up in the future.</p>
+<p>The main purpose of the progress report is for me to get a very clear picture of what you are doing and where problems may arise. I will give feedback to you on whether you are headed in the right direction, and can give suggestions for overcoming challenges that you experience. You may submit the progress report as early as you’d like, and I’ll give you feedback promptly to help direct your work.</p>
+<p><strong>Final Project Reports:</strong> <em>Due Friday, December 4, 3:30 (this is the university-scheduled final exam time for this class, and projects may not be submitted after this time)</em><br />
+Your final report should thoroughly report on the tool and results from applying it to your problem. While there is no required structure for the report, a good structure could be an Introduction section (described in progress report above), a section describing the problem you are applying this to, a section describing your experimental setup (what tool options you’re using and why), a section on raw findings, and a discussion section wrapping up what you learned about the tool, how effective it was, and interesting take-aways from applying it to your problem.</p>
+<p>An appropriate final report length would be 8-12 pages, single spaced with reasonable margins and a 12 point font (this is the length of the writing – if you include screenshots or large diagrams, don’t count them in the 8-12 pages). If you have raw data or code to include, place them in an appendix following the main report. Make sure you include citations of any references (web sites, documentation, etc.) that you used.</p>
+<h4 id="topic-selection-guidelines">Topic Selection Guidelines</h4>
+<p>Your project should be designed around a significant tool or technique for security work and/or development. The sample project topics below give a feel for the level of tool that is appropriate. While it’s impossible to give specific guidelines, you should be looking for high-quality, established tools that provide a variety of non-trivial options and configurations to explore. For example, a tool that simply looks for format string vulnerabilities is basically a glorified “grep”, and is not sufficient for this project. There is a huge selection and variety of open-source security tools that are freely available, but you aren’t restricted to just free tools. Some commercial tools have free evaluation periods that could enable a project – just make sure your evaluation period lasts long enough for you to complete your project! If you are really interested in commercial tools and are particularly ambitious, you can contact the vendor to see if you can arrange use of the tool for your project.</p>
+<p>You also need an <em>application problem</em> to apply the tool to. For example, if you select a software analysis or security testing tool, you can apply this to some substantial piece of open-source software. Do not go overboard though – applying a tool to a web browser or the full Linux kernel would most likely be too complex a task to complete in any meaningful way for this project. There are many open-source projects that contain between 30,000 and 500,000 lines of code, and these could be good targets. For basic projects (although not necessarily graduate student research tools), it’s best to avoid the most popular open-source software packages – these have been analyzed and fuzzed extensively, so there’s not much chance that you’ll get interesting results from applying a well-established tool to such an application. If you can find a fringe or emerging project, then you might discover previously-unknown vulnerabilities that you can fix and provide a real-world impact for your class project!</p>
+<h4 id="sample-project-topics">Sample Project Topics</h4>
+<p>Note that there are many interesting projects dealing with finding vulnerabilities in programs, through either program analysis tools or testing tools. We have not covered most of these topics at this point in the class, but hopefully the descriptions below should be self-explanatory. If you have any questions, just ask! The list of sample tools/topics below is not exhaustive – if you know of some other tool or technique that you think would be appropriate for a project, talk to me (the earlier the better) and we’ll discuss the possibility.</p>
+<ul>
+<li><p><strong>Password modeling:</strong> This project is a little different because rather than exploring a tool, you will be writing your own tool. In particular, you are to write a program that models how people select passwords, and outputs password guesses from most likely to least likely according to your model. Note that there are lots of studies about how to model password selection (e.g., on the graduate student <a href="gradreadings.html">readings</a> page, reading number 2 is on this topic), and there are tools available such as <a href="https://www.openwall.com/john/">John the Ripper</a> that are designed for this. Can you do better than the existing tools?</p>
+<p>If multiple people choose this topic, there will be a contest after the final submissions to see who finds passwords fastest when they are drawn from the captured password databases such as the lists at the <a href="https://github.com/FlameOfIgnis/Pwdb-Public">Pwdb-Public</a> lists. If people choose this project, I will provide more information about password datasets that will be used for the challenge. In order to qualify for the contest, your program sourcecode must be less than 30,000 bytes – in other words, you can’t just hard code a 200GB table of passwords! You will also need to submit your program sourcecode, and not just a written report.</p></li>
+<li><p><strong>Static analysis tools:</strong> These tools analyze sourcecode to find either known dangerous patterns, or analyze the code in such a way that unsafe code can be detected even if that pattern hasn’t been seen before. If you choose one of these tools, you should pick at least one medium-sized open source program (with at least 30,000 lines of code) in order to explore using the tool. Here are some possible tools:</p>
+<ul>
+<li><p>The <a href="https://clang-analyzer.llvm.org/">clang static analyzer</a> – clang is an open-source C/C++/Objective-C compiler, and is the standard compiler used for Apple OSX development. It includes a static analyzer with dozens of built-in tests that it can perform. Some tests are enabled by default, some can be easily enabled when the tool is run, and some are experimental but can be enabled if you know the test names. You should experiment with a variety of tests! There’s even a well-designed “plugin” system where programmers can tie into the clang compiler infrastructure to write their own tests – that’s beyond the scope of this class project, but if you’re interested in something more advanced later then it is fun to work with!</p></li>
+<li><p>Facebook’s <a href="https://fbinfer.com/">Infer</a> is a static analyzer that was started as a university research project, and then was taken over by Facebook and is used internally in the company’s software development. It is based on a very powerful model of software analysis, and some information about the ideas behind the analysis are on the project web page.</p></li>
+<li><p>Just like clang (Apple’s standard C-family compiler) provides good static analysis tools, so does Microsoft Visual C/C++. In fact, Microsoft’s compiler provides an excellent code annotation language that can more precisely focus static analysis. It could be interesting to run open source software through Microsoft’s compiler/static analyzer to see what it finds. Note that reconciling the different build systems and operating system targets when compiling open source (typically Linux) software in Visual C/C++ can be challenging!</p></li>
+<li><p>David Wheeler produced a tool named <a href="https://dwheeler.com/flawfinder/">flawfinder</a> that is based on looking for dangerous patterns in the sourcecode. It has an extensive list of dangerous programming patterns, although the tool is limited to looking for patterns rather than doing true code analysis. Still, it’s a good tool that can uncover many vulnerabilities.</p></li>
+<li><p>There are many, many other tools that do static security analysis of programs. For a list of around 40 different free tools, see the <a href="https://dwheeler.com/essays/static-analysis-tools.html">list compiled by David Wheeler</a>.</p></li>
+</ul></li>
+<li><p><strong>Symbolic execution:</strong> This is related to static analysis, since the program isn’t run as a native program, but the code is “run” to work symbolic/algebraic values through the program. This is a powerful technique, but can be slow and computationally-intensive. While a lot of symbolic execution tools are finicky and difficult-to-use research prototypes, <a href="https://klee.github.io/">KLEE</a> is one tool that is solid and usable.</p></li>
+<li><p><strong>Fuzz testers:</strong> This is a very common dynamic testing technique, where programs are run repeatedly with random (but smartly-generated) inputs in the hope of triggering a buffer overflow or other vulnerability that will crash the program. We will discuss this more in class, but greybox fuzzers (that mutate inputs to try to explore different program execution paths) have been very successful in locating real vulnerabilities. Two of the most widely used tools are <a href="https://lcamtuf.coredump.cx/afl/">AFL (american fuzzy lop)</a> and <a href="https://llvm.org/docs/LibFuzzer.html">libFuzzer</a>, and there are many, many research prototypes that try to develop new techniques to explore more of the code faster.</p></li>
+<li><p><strong>Reverse engineering:</strong> If you are analyzing malware, you need to be able to reverse engineer a binary to understand how it works. The “old standard” tool for this is <a href="https://www.hex-rays.com/products/ida/">IDA</a>, and there are both freeware and paid (pro) versions. A newcomer in this environment is <a href="https://ghidra-sre.org/">Ghidra</a>, a project from the NSA that was open-sourced. Finally, <a href="https://rada.re/n/">Radare2</a> is another reverse engineering tool/framework that is popular in some circles. Testing these tools with basic malware samples could be interesting!</p></li>
+<li><p><strong>Network probing and analysis:</strong> These tools do things like scan networks at various levels, from simplistic port scanners to in-depth vulnerability scanners that have large databases of known vulnerabilities. On the more basic side is <a href="https://nmap.org/">nmap</a>, which is a basic portscanner although it has a zillion options and variations that can be explored. A more advanced tool is <a href="https://www.openvas.org/">OpenVAS</a>, which has its roots in an old open-source project named Nessus which turned commercial/closed source. Finally, <a href="https://www.metasploit.com/">Metasploit</a> is like the Swiss army knife of penetration testing tools, and incorporates some good network scanning tools among other features. To be able to experiment with these tools you’ll need to set up experimental networks so you can use the tools to scan your machines – these can be virtual machines, of course, and you might try using some images of vulnerable machines that are publicly available (if you need pointers, just ask).</p></li>
+<li><p><strong>Secure development:</strong> If you’re interested in developing secure applications, particularly those that use cryptography, you could explore some of the common tools people use for this. You could either focus on a single tool/library, such as <a href="https://nacl.cr.yp.to/">NaCl</a> or the <a href="https://docs.oracle.com/javase/8/docs/technotes/guides/security/crypto/CryptoSpec.html">Java Cryptography Architecture</a>, and develop a small prototype application using that library, or you could compare several different libraries/frameworks in a head-to-head setting that compares efficiency and usability.</p></li>
+</ul>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

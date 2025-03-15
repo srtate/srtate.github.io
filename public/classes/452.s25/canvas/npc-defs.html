@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>NPC info</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://home.uncg.edu/cmp/faculty/srtate/452.s25/npc-defs.html">View original, outside canvas</a> ]
+   
+        <h2 id="basic-graph-theory-definitions">Basic Graph Theory Definitions</h2>
+<h3 id="hamiltonian-path-and-hamiltonian-cycle">Hamiltonian Path and Hamiltonian Cycle</h3>
+<p>A <strong>Hamiltonian path</strong> in a simple path that goes through every vertex of the graph (a “simple path” is one in which no vertex appears more than once). In other words, it goes through every vertex once and only once. When asking for a Hamiltonian path in a graph, we may specify the endpoints or leave them free to be anything. A <strong>Hamiltonian cycle</strong> is a cycle in which each vertex appears exactly once. A graph is <strong>Hamiltonian</strong> if it contains a Hamiltonian cycle. These definitions can apply to either directed or undirected graphs. The example below shows a directed graph with a Hamiltonian path (shaded) from <span class="math inline">\(A\)</span> to <span class="math inline">\(D\)</span>.</p>
+<p><img src="hampath.png" /></p>
+<p>This graph also has a Hamiltonian path from <span class="math inline">\(A\)</span> to <span class="math inline">\(B\)</span>, but these are the only two Hamiltonian paths. The graph has no Hamiltonian cycles, which is easy to see since there are no edges directed into vertex <span class="math inline">\(A\)</span>. If an edge were added from <span class="math inline">\(B\)</span> to <span class="math inline">\(A\)</span>, then there would be a Hamiltonian cycle (and the graph would be Hamiltonian).</p>
+<p>If we removed the direction from each edge, making it an undirected graph, then the undirected graph would be Hamiltonian.</p>
+<h3 id="clique">Clique</h3>
+<p>A <strong>clique</strong> in a graph <span class="math inline">\(G=(V,E)\)</span> is a subset of vertices <span class="math inline">\(V&#39;\subseteq V\)</span> that is completely connected: given any pair of vertices <span class="math inline">\(u,v\in V&#39;\)</span>, there is an edge between <span class="math inline">\(u\)</span> and <span class="math inline">\(v\)</span>. Two endpoints of an edge form a clique of size 2, and a “triangle” of three vertices in the graph is a clique of size 3. When we look for cliques in a graph, we are generally interested in finding the largest possible clique. The following picture illustrates a clique of size 4 in a graph:</p>
+<p><img src="clique.png" /></p>
+<p><strong>Fun fact:</strong> Almost all simple examples that are drawn for teaching are <em>planar graphs</em> – graphs that can be drawn on a flat surface without any two edges crossing. A planar graph cannot have a clique of size 5, so to draw you a picture of a graph with a clique of size 5 would require some edges crossing in the picture!</p>
+<h3 id="vertex-cover">Vertex Cover</h3>
+<p>A <strong>vertex cover</strong> in a graph <span class="math inline">\(G=(V,E)\)</span> is a subset of vertices <span class="math inline">\(V&#39;\subseteq V\)</span> such that for every edge <span class="math inline">\(e=(u,v)\)</span> in the graph at least one of its endpoints is in <span class="math inline">\(V&#39;\)</span> (this “covers” the edge). The full set of vertices <span class="math inline">\(V\)</span> is always a valid vertex cover, since both endpoints of every edge will be covered. When we look for vertex covers in a graph, we are generally interested in finding the smallest possible vertex cover. The example below shows a graph with a vertex cover of size 5. While other vertex covers of size 5 exist, there are no smaller vertex covers.</p>
+<p><img src="vertex-cover.png" /></p>
+<p> </p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

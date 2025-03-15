@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 495/693 - Spring 2022 - Assignment 2 - Due Tues, March 1</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://www.uncg.edu/cmp/faculty/srtate/495.s22/assign2.html">View original, outside canvas</a> ]
+   
+        <link href="codehighlight.css" rel="stylesheet">
+<style>
+pre {
+  padding: 9.5px;
+  margin: 0 0 10px;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+</style>
+<h2 id="csc-495693---assignment-2---due-tues-march-1">CSC 495/693 - Assignment 2 - Due Tues, March 1</h2>
+<p><em>Note: This homework uses several programs that are available on the class system (login information provided in class). All of the code is in directory <code>/home/softsec/assign2</code>, which you can copy to your current directory using “<code>cp -r /home/softsec/assign2 .</code>” (don’t forget the final period!). Inside this directory are subdirectories for individual questions, named by the question number. For example, subdirectory <code>q3</code> contains the code needed for question 3. All file names and paths in the questions below are relative to that question’s directory.</em></p>
+<ol type="1">
+<li><p>The two most prominent weaknesses we have studied so far are out-of-bounds access vulnerabilities (both write and read) and use-after-free vulnerabilities. Both types of vulnerabilities are particularly dangerous in C and C++, but what about in Java? Answer the following two questions about these weaknesses as they relate to Java programs.</p>
+<ol type="a">
+<li><p>Is it possible for a running Java program to attempt an out-of-bounds memory access? If it’s possible, explain what the behavior of the program would be in such a situation. If it’s not possible, explain how the Java language makes this impossible.</p></li>
+<li><p>Is it possible for a running Java program to attempt to use an object after it is freed? If it’s possible, explain what the behavior of the program would be in such a situation. If it’s not possible, explain how the Java language makes this impossible.</p></li>
+</ol></li>
+<li><p>The code in the <code>q2</code> directory is designed to manage a set of competing “strategies”, each of which has value, and allows them to compete (removing the weaker, or lower-valued, strategy). A sample run of the program is shown below, where user input is underlined and the other lines are responses from the system. The program accepts four commands – “add”, “compete”, “show”, and “quit” – all of which are shown in the example below. The example shows 3 strategies being added, 2 competing, and finally a list of the results.</p>
+<p><img src="a2sampleio.png" /></p>
+<p>Your first steps should be to use “make” to compile the code to an executable, test it out to make sure you can run it, and then examine the code to see how it works. You don’t need to understand every little detail, but you should be able to get the “big picture.”</p>
+<p>There are two vulnerabilities in this code: an out-of-bounds write in the <code>alist.c</code> code, and a use-after-free in the <code>strategy.c</code> code. Your task is to find both vulnerabilities, and figure out sequences of commands that trigger them. You can (and should!) change the Makefile so that address sanitizer is turned on when making the executable, and then for each vulnerability report the following:</p>
+<ul>
+<li><p>A sequence of commands that can be entered to trigger the vulnerability (a “proof-of-concept” or PoC input).</p></li>
+<li><p>The output (cut-and-paste or screenshot) given by the ASAN-instrumented program when the vulnerability is triggered by the PoC input.</p></li>
+<li><p>A description of what happens when the PoC input is used in a run of a non-ASAN-instrumented executable.</p></li>
+<li><p>A succinct explanation of what the vulnerability is, and why the PoC triggers it.</p></li>
+</ul></li>
+<li><p>Go into the <code>q3</code> directory and examine the code in <code>overflow.c</code>, and then compile it by typing “<code>make</code>” in that directory to produce an executable named <code>./overflow</code> that you can run. This code attempts to test if an unsigned size calculation overflows the unsigned <code>num_bytes</code> variable, but it does it incorrectly (as we discussed in class), resulting in an integer overflow vulnerability (<a href="https://cwe.mitre.org/data/definitions/190.html">CWE-190</a>). Note that on this system, an unsigned integer is 32 bits.</p>
+<p>Find the smallest user input value that “fools” the test – it overflows the <code>num_bytes</code> variable, but the test does not detect that. You should figure out this value mathematically, and write that up in your homework submission (showing your work and explaining your reasoning). You can test whether you have the right value by running the program – if you calculated some value <span class="math inline"><em>n</em></span>, then entering <span class="math inline"><em>n</em></span> should pass the test, but entering <span class="math inline"><em>n</em> − 1</span> should result in the overflow being detected.</p></li>
+<li><p>Rust is an interesting system programming language, which provides some protections that are not available in C and C++. In this question, you’ll explore the Rust code in <code>q4</code> to learn about some features of the Rust compiler. You don’t need to understand the Rust language to answer this question – the provided code is simply a Rust version of the C code that was used in the previous question.</p>
+<ol type="a">
+<li><p>To build the development/debug version of this program go into the <code>q4</code> directory and type “<code>cargo build</code>”. This will create an executable that you can run as <code>target/debug/q4</code>. Run the program three times: once with a small value for the input array size (a value that will definitely not overflow), once with the <span class="math inline"><em>n</em></span> value you determined in the previous question, and once with <span class="math inline"><em>n</em> − 1</span>. Report what happens.</p></li>
+<li><p>To make a release/production version of this program, run “<code>cargo build --release</code>” and then run the resulting executable that is in <code>target/release/q4</code> three times with the same values you used in part (a). Report what happens.</p></li>
+<li><p>Where did you notice any different behavior between the “debug” and “release” executables? What is the advantage of having different behavior like this?</p></li>
+</ol></li>
+<li><p>In the <code>q5</code> directory, the <code>countos.c</code> program uses a common pattern for reading from a binary file metadata directory, to count the number of ‘O’ characters in data fields. To see how it works, first compile to an executable named “<code>countos</code>” and run it with the sample data file using</p>
+<pre><code>./countos &lt;good.dat</code></pre>
+<p>This program has an attempt at making sure data fields do not go past the end of the file, but it doesn’t work right. Use AFL fuzz to find a crashing input, while documenting your work and findings as an answer to this question.</p></li>
+</ol>
+<p> </p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

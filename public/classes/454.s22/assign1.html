@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 454/654 - Spring 2022 - Assignment 1 - Due Feb 1, 2022</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../css/class_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+        <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark uncg-navbar fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="https://www.uncg.edu/">
+          <img class="collapse navbar-collapse" src="../img/uncg_class.png" alt="UNC Greensboro">
+          <img class="navbar-toggler" src="../img/uncg_mobile.png" alt="UNCG">
+        </a>
+        <div class="navbar-brand d-flex flex-column text-left"
+	     style="line-height: 1.2;">
+          <span>CSC 454/654</span>
+          <span class="small collapse navbar-collapse"><em>Algorithm Analysis and Design</em></span>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link " href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="syllabus.html">Syllabus</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="schedule.html">Schedule</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="assignments.html">Assignments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://uncg.instructure.com/">Canvas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- Page Content -->
+    <div class="container">
+   
+        <p><strong>Note: Due to the missed class day, the deadline for this assignment has been extended until Feb 1.</strong></p>
+<h2 id="csc-454654---assignment-1---due-feb-1-2022">CSC 454/654 - Assignment 1 - Due Feb 1, 2022</h2>
+<ol type="1">
+<li><p>Consider <span class="math inline">\(T(n)=6n^2+4n+3\)</span>.</p>
+<ol type="a">
+<li><p>Is it correct to say that <span class="math inline">\(T(n)\)</span> is <span class="math inline">\(O(n^4)\)</span>? Give an informal one-sentence justification.</p></li>
+<li><p>Is <span class="math inline">\(O(n^4)\)</span> a tight upper bound for <span class="math inline">\(T(n)\)</span>? If so, explain why. If not, give a tight upper bound (again with an informal one-sentence justification).</p></li>
+<li><p>Is it correct to say that <span class="math inline">\(T(n)\)</span> is <span class="math inline">\(\Omega(n)\)</span>? Give an informal one-sentence justification.</p></li>
+<li><p>Is <span class="math inline">\(\Omega(n)\)</span> a tight lower bound for <span class="math inline">\(T(n)\)</span>? If so, explain why. If not, give a tight lower bound (again with an informal one-sentence justification).</p></li>
+</ol></li>
+<li><p>Give a formal proof that <span class="math inline">\((2n^2+n)(4n)\)</span> is <span class="math inline">\(O(n^3)\)</span> – “formal proof” means you must use the mathematical definition of big-oh, and not “rules of thumb” or other properties of big-oh.</p></li>
+<li><p>Simplify the following summation, giving a closed-form solution (with no summation). Use the summation properties and formulas from Section A.1 in the textbook, referencing each property that you use. <span class="math display">\[ \sum_{i=0}^n (2i+2^i) \]</span></p></li>
+<li><p>Bill Doors is having an argument with Steve Careers over whose algorithm is faster. For an input of size <span class="math inline">\(n\)</span>, Bill’s algorithm runs in <span class="math inline">\(n^3\)</span> microseconds, while Steve’s runs in <span class="math inline">\(100 n^2\)</span> microseconds. For each answer below that is an amount of time, select the unit of time that gives the cleanest answer. In other words, if something takes 7,200,000,000 microseconds, that’s a terrible way to say it – you should instead say it takes 2 hours.</p>
+<ol type="a">
+<li><p>Bill claims that the big constant on Steve’s algorithm makes it slow, and to prove his point he runs both algorithms on an input of size 10. How much time does each algorithm take?</p></li>
+<li><p>Bill’s conclusion is “See, your algorithm takes <span class="math inline">\(X\)</span> times as long to run.” What is <span class="math inline">\(X\)</span>?</p></li>
+<li><p>Steve isn’t going to just give up the argument though! He says, “I can make <em>your</em> algorithm take <span class="math inline">\(X\)</span> times longer by using an input of size <span class="math inline">\(n\)</span>.” What is <span class="math inline">\(n\)</span>? In addition to giving <span class="math inline">\(n\)</span>, calculate the running time of each algorithm for that value of <span class="math inline">\(n\)</span>.</p></li>
+<li><p>Elon Odor comes up and says “You guys aren’t thinking big enough! I want to change the world! I’m going to run your algorithms with inputs of size <span class="math inline">\(n=30,000\)</span>.” How much time does each algorithm take now?</p></li>
+</ol></li>
+<li><p>The following pseudocode gives the selection sort algorithm for an input array with <span class="math inline">\(n\)</span> elements: <span class="math inline">\(A=\langle a_1,a_2,\ldots,a_n\rangle\)</span>.</p>
+<pre><code>         Selection-Sort(A)
+       1.  for i = 1 to n-1
+       2.      mp = i
+       3.      for j = i+1 to n
+       4.          if A[j] &lt; A[mp]
+       5.              mp = j
+       6.      t = A[i]
+       7.      A[i] = A[mp]
+       8.      A[mp] = t</code></pre>
+<p>Do a careful runtime analysis of this algorithm, using explicit constants, patterned after the analysis of Insertion-Sort in Section 2.2 of the textbook. As in the book’s analysis, introduce variables where you need them and drive a formula for running time – this is like the general formula for <span class="math inline">\(T(n)\)</span> on page 26. Next, use this formula to find the best case and worst case running times of Selection-Sort. After deriving the precise formulas for best case and worst case running times, state each using <span class="math inline">\(\Theta\)</span> notation.</p></li>
+<li><p>Each of the following functions give the running time for an algorithm, measured in milliseconds. For each one, compute the largest problem size (the largest <span class="math inline">\(n\)</span>) that can be run in one day. If the answer is over a billion, you can just say “over a billion.” Show your work!</p>
+<ol type="a">
+<li><p><span class="math inline">\(T(n)=\lg n\)</span></p></li>
+<li><p><span class="math inline">\(T(n)=100 n\)</span></p></li>
+<li><p><span class="math inline">\(T(n)=n^2\)</span></p></li>
+<li><p><span class="math inline">\(T(n)=2^n\)</span></p></li>
+</ol></li>
+<li><p>Consider a function <span class="math inline">\(T(n)=g(n)+h(n)\)</span>, where <span class="math inline">\(f(n)\)</span>, <span class="math inline">\(g(n)\)</span>, and <span class="math inline">\(h(n)\)</span> are positive functions such that <span class="math inline">\(g(n)\)</span> is <span class="math inline">\(\Theta(f(n))\)</span> and <span class="math inline">\(h(n)\)</span> is <span class="math inline">\(O(f(n))\)</span>. Prove that <span class="math inline">\(T(n)\)</span> is <span class="math inline">\(\Theta(f(n))\)</span> (in other words, the added function <span class="math inline">\(h(n)\)</span> is not important to the asymptotic analysis).</p></li>
+<li><p>Prove that <span class="math inline">\((3n)^n\)</span> is <em>not</em> <span class="math inline">\(O(n^{n})\)</span></p></li>
+</ol>
+<p> </p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

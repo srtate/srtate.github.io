@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 495/693 - Spring 2022 - Assignment 3 - Due Tues, March 29</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../css/class_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+        <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark uncg-navbar fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="https://www.uncg.edu/">
+          <img class="collapse navbar-collapse" src="../img/uncg_class.png" alt="UNC Greensboro">
+          <img class="navbar-toggler" src="../img/uncg_mobile.png" alt="UNCG">
+        </a>
+        <div class="navbar-brand d-flex flex-column text-left"
+	     style="line-height: 1.2;">
+          <span>CSC 495/693</span>
+          <span class="small collapse navbar-collapse"><em>Software Security</em></span>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link " href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="syllabus.html">Syllabus</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="schedule.html">Schedule</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="assignments.html">Assignments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://uncg.instructure.com/">Canvas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- Page Content -->
+    <div class="container">
+   
+        <link href="codehighlight.css" rel="stylesheet">
+<style>
+pre {
+  padding: 9.5px;
+  margin: 0 0 10px;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+</style>
+<h2 id="csc-495693---assignment-3---due-tues-march-29">CSC 495/693 - Assignment 3 - Due Tues, March 29</h2>
+<p>This assignment is focused on exploring the basic underlying HTTP protocol and the web security model, with some general questions and then three hands-on exercises working with three important tools: the Chrome developer tools, the OWASP Zed Attack Proxy (ZAP), and the (free version of) Burp Suite. Don’t be put off by the length of the questions – this is mostly just explanation, and what you need to do is pretty short (and your answers will be short too).</p>
+<ol type="1">
+<li><p>An HTML “iframe” is a way to embed a document from one site inside a page from another. For example, when you look at assignments for this class in Canvas, what you’re really seeing is an iframe that loads the assignment from the public class web site (this page!) inside a page from Canvas. The iframe statement looks like this in HTML:</p>
+<pre><code>&lt;iframe id=&quot;myiframe&quot; src=&quot;http://example.com/innercontent.html&quot;&gt;&lt;/iframe&gt;</code></pre>
+<p>If the iframe content (which we call the “inner frame”) is loaded from the same site with the same protocol as the page with the “iframe” tag (which we call the “outer frame”), then the full document that is loaded is accessible in JavaScript using</p>
+<pre><code>document.getElementById(&quot;myiframe&quot;).contentDocument</code></pre>
+<p>This is just like the outer “<code>document</code>” object, but for the frame content, and includes access to cookies for that frame. Keep in mind that cookies are associated with a domain, so if you are logged in to your bank in one tab, when you access content from the bank in a different tab – even inside a frame in a different tab – then the bank’s cookies, including your logged-in session id, will be loaded in that tab/frame automatically (note that in recent years cookies have a “SameSite” property that can restrict this behavior, but how this is treated varies by browser – ignore SameSite restrictions for this question). The browser same-origin policy (SOP) controls whether the inner frame is actually accessible in this way. In particular, the SOP says that the <code>contentDocument</code> is only accessible if it is loaded with the same protocol, host, and port as the frame providing the JavaScript.</p>
+<ol type="a">
+<li><p>Consider why the SOP requirement that the “host” match is vital: An attacker creates some innocent-looking web site that attracts visitors. If JavaScript was able to access cookies from an embedded iframe from another source, how could they set up their site so that they could steal cookies from any logged-in site you are on (including, for example, your bank)?</p></li>
+<li><p>Consider why the SOP requirement for the “protocol” match is vital: Consider a <em>network</em> attacker, who can modify network traffic that is sent between a server and a browser. Due to cryptographic protections, SSL-protected web sites (“https”) can’t be tampered with in-transit, but unprotected ones can be modified arbitrarily (even replaced completely). Your bank protects against cookies “leaking” through unprotected web pages by marking cookies “secure,” so the cookies are only sent in SSL-protected communications. However, if the protocol isn’t required to match inside an iframe, and your bank allows some accesses (even to non-sensitive pages) to be via http, then a network attacker could steal your secure cookies for the bank. Explain how they could do this. (<em>As a side note, the Apple Safari browser, before version 3.0, did not check the protocol in their SOP enforcement, so was vulnerable to exactly this attack!</em>).</p></li>
+</ol></li>
+<li><p>While SOP controls access between frames, Content Security Policy (CSP) is a way to have fine-grained control over the origin of content in a single frame. Here are two sources to learn the basics of CSP from the Mozilla Developer Network (MDN):</p>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP">Basic introduction to CSP</a></li>
+<li>More <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy">details on CSP format and header fields</a></li>
+</ul>
+<p>The following CSP header line is the simplest one possible:</p>
+<pre><code>Content-Security-Policy: script-src &#39;self&#39;;</code></pre>
+<p>Answer the following questions in the context of a page loaded with this CSP header line (for each of the following, answer yes or no with a one-sentence explanation):</p>
+<ol type="a">
+<li><p>Can JavaScript provided in the main page (“in-line JavaScript”) be executed?</p></li>
+<li><p>Can JavaScript in an attribute of a main page element (e.g., in the attribute of a button) be executed?</p></li>
+<li><p>Can JavaScript in a separate file loaded from the same web server be executed?</p></li>
+<li><p>Widely-used JavaScript libraries, like jQuery, can be loaded from a content delivery network (CDN). For example, jQuery can be loaded from <code>https://ajax.googleapis.com/...</code>. With the CSP above, could code loaded from such a CDN be executed?</p></li>
+<li><p>For any of the above where the answer was “no,” give a new CSP specification that would allow that code to be executed.</p></li>
+</ol></li>
+<li><p>A general rule of web development is to never trust any data that is sent from a client’s browser. Anything and everything can be tampered with by the client, so in particular there’s no guarantee that cookies you send from the server will be honestly relayed back in subsequent requests from that browser. You’ll see this in practice in the following questions, but for this question come up with a way to have “tamper-evident cookies” using cryptography. “Tamper-evident” means that while the client might change the cookie value (there’s no way to stop that!), your application will be able to detect that the cookie was tampered with. You don’t need to know much cryptography to answer this question – just the basics that we discuss in the class lecture. Pick the basic cryptographic technique that will make your solution as efficient as possible!</p></li>
+<li><p>In this question, you will work with the developer tools built in to the Chrome browser to explore some HTTP basics. The basic functionality of the developer tools has been stable for a while, but the exact details (what icons look like, where to find things in different tabs, etc.) has changed over time. The instructions below are based on a recent version of Chrome (from 2022). There are multiple ways to solve each of the parts below, and hints are given for one particular solution.</p>
+<p>To start this question, use Google Chrome to access <a href="http://cmpunix.uncg.edu/hw3">http://cmpunix.uncg.edu/hw3</a> – note that if you start this problem and come back to it later, always start here, and don’t jump to an intermediate page directly. Each question below will reveal some “secret” that could be classified as “Steve’s ultimate pronouncements on nerd culture” (or maybe “old guy nerd culture”….) – that might not make sense now, but it should as you get through these questions. For each part below, in your written homework solution give a clear description of actions you took to answer the question, and give the secret that you discover (feel free to disagree with the secret, but you must justify your disagreement!).</p>
+<ol type="a">
+<li><p>Open up the developer tools (under “More Tools” in the main Chrome menu, or use <code>ctrl-shift-i</code>), make sure it’s on the “Network” tab, and then click on the “Question 4” link. You’ll see individual requests and pages loaded in a pane on the left, so explore those individual requests to find the one that was opened when you clicked on “Question 4.” Use the developer tools to explore the response headers to find a custom HTTP header field – look for a header field that contains “CSC495” in the header field name. That’s your first secret! But even if it’s not immediately visible in the web page rendering, it’s not really very secret, is it?</p></li>
+<li><p>Cookies are another place where some naive developers try to hide secrets. There are multiple ways to examine cookies, but since you have the request open in developer tools from the previous part, notice that you can select “Headers”, “Payload”, etc. The last one says “Cookies” – it (surprise!) shows the cookies for this page/site. Again, look for a cookie with “CSC495” in the name. That’s your second secret!</p></li>
+<li><p>After completing parts a and b, you should be at a web page with a button at the bottom labeled “Click Here to Go On.” For this part, you are going to see how this works and how to tamper with its behavior. In the Chrome developer’s tools, click on the element selection icon, which looks like this: <img src="selecticon.png" /> This is a tool that lets you select an element in the main web page to examine. After selecting this tool, as you move the mouse over the web page, different parts will be highlighted, so hover over the button so that only the text in the button is highlighted and click there. That should show you the HTML form that this button belongs to in the developer window (it will open the “Elements” view rather than the “Network” view when you do this). Here’s an interesting trick: You can change the HTML directly in the developer tools window. To do this, double click on an HTML field or attribute, and type in new values. To succeed at this part, you will need to change a field in the form, and the name of the field gives you a big hint as to what you should change it to. If you make the correct modification and then click the button, you’ll get to a page that reveals the next secret.</p></li>
+<li><p>After completing the last challenge, you’ll be teased that there is another secret waiting to be revealed. To do this, you’ll tamper with another part of the HTTP request: the cookies. Cookies seem hard to change directly in the browser: You can’t just go into the cookies resource pane and change them, so how do you do it? One way is to directly execute JavaScript statements to change the cookies. Read the <a href="https://www.w3schools.com/js/js_cookies.asp">W3 Schools JavaScript Cookies</a> page to learn how to access (read or change) cookies in JavaScript. Then back on our web page, use the “Console” tab of the developer tools to examine and change cookies. You’ll have to figure out which cookie to change and what to change it to, but it should be easy to figure out from the name! After changing the cookie value, reload the page and the final secret should be revealed.</p></li>
+</ol></li>
+<li><p>For this question, you will get familiar with how the OWASP “Zed Attack Proxy” (ZAP) works. Your first step is to get ZAP and install it so you can use it. It’s free software and runs under any OS. ZAP and instructions (including a “Quick Start Guide”) are available on the <a href="https://www.zaproxy.org/">ZAP web site</a>. We will also do some quick demos in class, but you should spend some time exploring how to intercept and modify HTTP requests on your on system before going on.</p>
+<p>Start up a browser under ZAP, and then go to <a href="https://cmpunix.uncg.edu/hw3">https://cmpunix.uncg.edu/hw3</a> and click on “Question 5”. There are 3 secrets to uncover for this question. For each part below, report on what you did and what information you got from the web server when you were successful.</p>
+<ol type="a">
+<li><p>First, click on the “Click me” link to load a second page. You’ll see a message that indicates that it knows who you are, except it is wrong – you’re not Joe! You should use ZAP to examine the request, paying special attention to the request headers and the cookies. Do you see anything that looks like the username being sent? Once you figure out how it works, change that to your UNCG login id (the same username used on the class Linux system for the last assignment). Reload with this username, and you should be given a message including the name of an animal – each student has a different, and they’re all funny names, but they’re real animals! (<em>Note: Because of the way I set this up, it is difficult – not impossible but difficult – to do this in the Chrome developer tools like you did in the previous question. Use ZAP!</em>)</p></li>
+<li><p>For the next step, the web site designer is restricting access to information based on the “Referer” string, indicating the last page the user was on. The designer decided if they came from the administrator’s page, they must be an administrator, so they get access to special information. You should use ZAP to bypass this security check and get the secret information, even though you can not access the administrator page.</p></li>
+<li><p>The final challenge asks you to enter a number - your “coolness” rating. There’s JavaScript embedded on that page which will not let you submit anything that’s not in the range 1 to 10. But you want to be super-cool! You should figure out how to use ZAP to submit a coolness rating of 20 or higher.</p></li>
+</ol></li>
+<li><p><a href="https://portswigger.net/burp">Burp Suite</a> is a popular web security testing tool, which has both commercial and free (community) editions. The community edition is similar in capability to OWASP ZAP, with manual tests and proxy interception. For this question, download and install the <a href="https://portswigger.net/burp/releases/community/latest">Burp Suite Community Edition</a>, and re-do the exercises from the previous question (that you did with OWASP ZAP there). The results won’t change, so you don’t need to report that, but give a brief description here of the process you used with Burp Suite and give a brief comparison of the two tools from your experience.</p></li>
+</ol>
+<p> </p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

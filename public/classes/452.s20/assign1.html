@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 452/652 - Spring 2020 - Assignment 1 - Due Feb 3, 2020</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../css/class_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+        <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark uncg-navbar fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="https://www.uncg.edu/">
+          <img class="collapse navbar-collapse" src="../img/uncg_class.png" alt="UNC Greensboro">
+          <img class="navbar-toggler" src="../img/uncg_mobile.png" alt="UNCG">
+        </a>
+        <div class="navbar-brand d-flex flex-column text-left"
+	     style="line-height: 1.2;">
+          <span>CSC 452</span>
+          <span class="small collapse navbar-collapse"><em>Theory of Computation</em></span>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link " href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="syllabus.html">Syllabus</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="schedule.html">Schedule</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="assignments.html">Assignments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://uncg.instructure.com/">Canvas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- Page Content -->
+    <div class="container">
+   
+        <h2 id="csc-452652---spring-2020---assignment-1---due-feb-3-2020">CSC 452/652 - Spring 2020 - Assignment 1 - Due Feb 3, 2020</h2>
+<ol type="1">
+<li><p>Consider sets <span class="math inline">\(A=\{a,b\}\)</span> and <span class="math inline">\(B=\{a,b,c\}\)</span>.</p>
+<ol type="a">
+<li><p>Write out all elements of <span class="math inline">\(A\times B\)</span>.</p></li>
+<li><p>Prove that for any finite sets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, <span class="math inline">\(|A\times B|=|A|\cdot |B|\)</span>.</p></li>
+</ol></li>
+<li><p>Let <span class="math inline">\(S\)</span> be a set of students, and <span class="math inline">\(C\)</span> be the set of computer science classes. We want to find “experts” so we want to map students to classes in which they have made an A. What is the appropriate mathematical structure to model this? A function? A relation? Justify your answer by describing key properties of both the original problem and the mathematical structure that you chose.</p></li>
+<li><p>Recall that a <em>directed acyclic graph</em> (or “<em>dag</em>”), is a directed graph that does not contain any cycles.</p>
+<ol type="a">
+<li><p>Prove that every finite dag has at least one vertex that has indegree zero (hint: you can use either proof by contradiction or proof by construction here).</p></li>
+<li><p>Show that the “finite” part of the previous question is necessary by describing how to construct an infinite dag in which all vertices have non-zero indegree.</p></li>
+<li><p>Since the property that the dag is finite is a necessary condition for the statement in part a to be true, there must be some part of your proof that specifically uses the fact that the graph is finite. Clearly identify where that is in your proof.</p></li>
+</ol></li>
+<li><p>Each of the following English language statements describes a language over the binary alphabet. Write each one as a set using set-builder notation (in other words, set notation using a rule). You may define new functions if they are helpful in simplifying your answer.</p>
+<ol type="a">
+<li><p>The set of all binary strings that contain at least one 0 and at least one 1.</p></li>
+<li><p>The set of all binary strings with even length.</p></li>
+<li><p>The set of all binary strings that contain an even number of 1’s.</p></li>
+<li><p>The set of all binary strings that read the same forward and backwards (in other words, the set of all binary palindromes). Note that the “reverse” notation at the top of page 14 in the book is very useful here!</p></li>
+</ol></li>
+<li><p>Consider the DFA <span class="math inline">\(M_1\)</span> shown below:</p>
+<p><img src="assign1_m1.png" /></p>
+<ol type="a">
+<li><p>What is the start state?</p></li>
+<li><p>What is the set of accept states?</p></li>
+<li><p>What sequence of states does the machine go through on input <code>abbaac</code>?</p></li>
+<li><p>Does the machine accept string <code>abbaac</code>?</p></li>
+<li><p>Does the machine accept <span class="math inline">\(\varepsilon\)</span>?</p></li>
+</ol></li>
+<li><p>Consider the DFA <span class="math inline">\(M_2\)</span> shown below:</p>
+<p><img src="assign1_m2.png" /></p>
+<p>Give the formal description of <span class="math inline">\(M_2\)</span>, similar to the textbook’s description below Figure 1.6 on page 36.</p></li>
+<li><p>Consider the DFA <span class="math inline">\(M_3\)</span> defined by <span class="math inline">\((\{q_1,q_2,q_3,q_4\},\{0,1\},\delta, q_1, \{q_2\})\)</span>, where <span class="math inline">\(\delta\)</span> is defined by the following table:</p>
+<div class="m-4">
+<table style="width:33%;">
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>0</th>
+<th>1</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(q_1\)</span></td>
+<td><span class="math inline">\(q_4\)</span></td>
+<td><span class="math inline">\(q_3\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(q_2\)</span></td>
+<td><span class="math inline">\(q_2\)</span></td>
+<td><span class="math inline">\(q_2\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(q_3\)</span></td>
+<td><span class="math inline">\(q_2\)</span></td>
+<td><span class="math inline">\(q_3\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(q_4\)</span></td>
+<td><span class="math inline">\(q_4\)</span></td>
+<td><span class="math inline">\(q_2\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<ol type="a">
+<li><p>Draw the state diagram for this DFA.</p></li>
+<li><p>List all strings of length 3 accepted by this DFA.</p></li>
+<li><p>This DFA accepts exactly the set of strings in one of the languages given in problem 4 above. Which language? (Justify your answer with clear reasoning – you don’t need a formal proof here, just a good argument.)</p></li>
+</ol></li>
+</ol>
+<p> </p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

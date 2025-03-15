@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 362 - Spring 2021 - Week 2 Activities</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://www.uncg.edu/cmp/faculty/srtate/362.s21/week2.html">View original, outside canvas</a> ]
+   
+        <h2 id="csc-362-spring-2021-week-2-activities">CSC 362 – Spring 2021 – Week 2 Activities</h2>
+<p>This week: Working with the Bash Shell, Common Tools, and Linux Security Basics</p>
+<h4 id="for-students-to-do-before-tuesday">For students to do before Tuesday</h4>
+<p>Reading…</p>
+<h4 id="tuesday-material">Tuesday Material</h4>
+<p>** For next offering: Talk about searching in man page, or don’t have the needed ls command buried so deep.</p>
+<p>Today: Getting around on the system - next time, more details behind scenes Review from reading: Just as a memory refresher/jog Review from assignment (due at midnight!) - see distinction between shell on local system and shell remotely - same terminal regardless though This week: Basics of working with shell and Linux cmds - more each week Role of the shell - nothing magical - just a program - diff between terminal and shell (putty w/ssh for example) - copy/paste in terminal - click to focus and alternatives - fast cut/paste (middle button) Two roles: Interaction and scripting Format - command and args - will see how that works with programs next week First remind about basics of files using file browser - folders (directories) - current and traversing - notion of “current directory” or “current working directory” - file contents vs metadata - right click and “properties” for meta + note diff dates (modified and accessed) Commands: Some done by the shell but most external programs - common ones: ls, cd, pwd, cat, more/less, mkdir, rmdir, mv, rm, pushd/popd cd . - some options for ls (show man page? at least show “ls -l” and “ls -lt”) - other fields in “-l”: size and date modified (note other dates, incl -u for access time) - hidden files and “ls -a” - special files “.” and “..” - note - one single filesystem, unlike windows - more in week on filesystems Files - users and groups - more Thursday, but do “id” briefly now “permissions” - permissions on Thursday too Saw man last time, but most give brief help themselves- do “ls –help” and git - data vs metadata in files - short vs long opts - also talk about manual sections (use “sleep” as example) Argument wildcards - for ls and find - show more on find - quotes and backslashes - more later when C programming - spaces in names and tokens grep for searching in file contents (use /etc/passwd?) - do recursive! - search for “project” find for searching based on metadata - back in home, find description.txt - size (102c) Shell interaction tips: command/file completion, history (&amp;search) - exit and ctrl-d job control: &amp;, fg, bg, etc. - edit a file with vi - ctrl-z to suspend - “jobs” and “fg” - do a second vi and “fg %1” or “fg %2” - run heartbeat with “&amp;” - show prompt and commands work - then fg and ctrl-z - bg starts it back up ??? .bashrc and .bash_profile</p>
+<h4 id="tuesday-in-class-activities">Tuesday In-Class Activities</h4>
+<p>Reminder about getting started: leader, git clone, add names</p>
+<p>Getting around directories Use commands: ls (w/options), cat, mkdir, rmdir, mv, rm Find a hidden file Find and use new option for ls filename with space mv vs “git mv” mkdir, create file in dir, see how git shows</p>
+<h4 id="for-students-to-do-before-thursday">For students to do before Thursday</h4>
+<p>Read security defs section (14.1)</p>
+<h4 id="thursday-material">Thursday Material</h4>
+<p>From in-class - talk about changes in files vs tracked changes in git (mv) - varied levels of success, but submissions from every group - good!</p>
+<p>Start by asking about questions from last time.</p>
+<p>Slides…</p>
+<p>Argument wildcards - for ls and find - show more on find - quotes and backslashes - more later when C programming - spaces in names and tokens grep for searching in file contents (use /etc/passwd?) - do recursive! - search for “project” - could grep for student in /etc/group - or nologin in /etc/passwd find for searching based on metadata - back in home, find description.txt - size (102c) Shell interaction tips: command/file completion, history (&amp;search) - exit and ctrl-d job control: &amp;, fg, bg, etc. - edit a file with vi - ctrl-z to suspend - “jobs” and “fg” - do a second vi and “fg %1” or “fg %2” - run heartbeat with “&amp;” - show prompt and commands work - then fg and ctrl-z - bg starts it back up</p>
+<p>Model of where data is: I/O streams (everything’s a file) - [didn’t talk about special files or stty] - seekable vs not ; block vs char - standard streams and control from cmdline (redirect and pipe) - redirect grep nologin /etc/passwd to file then show file - pipe to cut (cut not important…) - distinguish between using by name and redirecting from shell - echo as way to create a one-line file - “cat -” as an alternative - special I/O as tty (and “stty” command) - other special kinds of files (fifos, etc.) - will cover later Environment variables - setting/reading from cmdline (indiv and using “env”) - some standard vars (HOME, PATH, etc.) - “which” and run w/explicit dir - use in mini-scripting [didn’t do] - start a shell within a shell and show SHLVL [didn’t do] Users and groups - basic idea - a process has one user owner, but can have multiple groups - “id” - see /etc/passwd and /etc/group file - history and then /etc/shadow - su and sudo - open new shell and su for diff user - tilde [didn’t do] File permission bits - Explain bits - how to set with chmod - meaning of “x” with directory - note that there are others, but that can wait Working with files: - head and tail [didn’t do - in activity] - diff, sort, and uniq [didn’t do - in activity] - tr and cut [didn’t really do] - file, tar, gzip/bzip2, … Creative combining of commands with pipes - “grep -v” [didn’t do] - “sort | uniq -c” and pipe that to grep - wc and “grep | wc” [didn’t do] Links? Symbolic and hard…</p>
+<h4 id="thursday-in-class-activities">Thursday In-Class Activities</h4>
+<p>ls -l redirected to a file (need to add in git repo….) ls -l /home/*/.bashrc to see err stream Get env variable: HOSTNAME or SHELL (maybe PS1 or PATH?) export vs not for custom env variable Change PATH and see fake ls (start new shell first - maybe see SHLVL?)</p>
+<p>Is a line duplicates somewhere in a file? Do sort | uniq -c | tail. Give command, but have them explain how it works…</p>
+<p>How many lines have the word “secret” in them?</p>
+<p>“tar xzf …” to unpack an archive (give archive)</p>
+<p>*** For discussion: How best to organize this to allow you to review. Everyone can clone the repo, but is that OK? Should I post a solution?</p>
+<h4 id="full-assignment-due-next-tuesday">Full Assignment – due next Tuesday</h4>
+<p>Setup: create users w/homedir perms: alice (700), bob (755), carol (775), doug (770) Create user erin w/home /special/erin (770) Create group devel and add student and bob - create a directory with a test file under bob so that bob and student can read it, but alice can’t.</p>
+<p>Files under directory “hunt”</p>
+<p>Write-up: What command-line did you use and what’s the answer? Cut and paste command into editor!</p>
+<p>Basic file access - cmd line tricks cat/tail: Label: basic exercises with file specification and content examination (cat, head, tail, less, more) - “The secret animal is Ferret” in specific file (in firstfile.txt) - Last line in long file (Peacock) (in longfile1.txt) - “The secret animal is Coyote” in file with spaces in name (this file.txt) - “The secret animal is Hawk” in file in hidden dir (.files/lookhere.txt) Finding based on contents - using grep - Get big book from guttenberg and insert line about secret (Tiger) (longfile2.txt) - In file with lots of “secret” so have to use phrase (Dragon) (toomanykeys.txt) - in one file of many in dir (Newt) (directory dir1) - in one file in hierarchy (use -r) (Mouse) (directory dir2) Finding based on metadata - using find - all files in hier have secrets - In hierarchy with given size (Gopher) size 3815 - Given size that is executable (two files on exec one not - Baboon) 2337 - In hierarchy with file modification time newer than timestamp (Fox) Combinations - In big file, many duplicated secrets lines - one unique (Python - presorted dups1.txt ; Octopus - not dups2.txt) - unpack packed.tar.gz files and find secret (Falcon) - secret on the only line that DOESN’T have “not secret” (Panther in notsecret.txt)</p>
+<p>Other activities Setup: alice, bob (readable home dir), carol (readable), doug - Value stored in env variable SECRET362 (Jackal) - List users based on home directories (alice, bob, carol, doug, student) - Any user that has an unusual home directory other than root? (erin) - Which home directories can you read - explain why - based on perm bits - can’t read - log into a new shell/terminal as bob - change perm on file so student can’t read and verify - what command did you use? - named bobfile.txt - verify that student can read at first - then change and retry - what is message? - secret in protected root-owned file in /root (Jellyfish) - don’t name, but is rootsecret.txt - run program cvowels from carol’s dir on hunt/longfile1.txt in student dir (46396 vowels)</p>
+<p>To copy: all /home dirs and /root/rootsecret.txt Create users separately in VM</p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

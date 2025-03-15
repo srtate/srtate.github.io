@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 362-01 - Spring 2023 - Style Guide</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://home.uncg.edu/cmp/faculty/srtate/362.s23/style.html">View original, outside canvas</a> ]
+   
+        <link href="codehighlight.css" rel="stylesheet">
+<style>
+pre {
+  padding: 9.5px;
+  margin: 0 0 10px;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+</style>
+<h2 id="csc-362-01-spring-2023-style-guide">CSC 362-01 – Spring 2023 – Style Guide</h2>
+<p>Writing code that works is great, but your code must also be understandable to others. That means you should follow standard coding practices for the language you are using. In this class you are programming in C, and so your code should look like C. That seems like an obvious thing to say, but “looks like C” includes issues such as the names you use for variables and types — if you use the same style of names that you learned for Java programming, your code will <em>not</em> look like C! You’ll often hear programmers refer to this as “idiomatic C programming” (and in Java you’d use “idiomatic Java programming”, in Rust you’d use “idiomatic Rust programming”, etc.).</p>
+<p>Most of the time when you are writing code, you’ll have specific style guidelines you are expected to follow. Classes (like this one) have their own style guidelines, and so do companies – if you’re working for a company you better follow their style guidelines, or you might not be working for them long! And in this class, if you don’t follow the style guidelines in your code, you’ll have points deducted from your grade. Below is a list of the rules you must follow in this class, organized into broad categories.</p>
+<h2 id="high-level-issues">High-Level Issues</h2>
+<ul>
+<li><p><strong>Program/File Structure:</strong> For programs beyond 10 or so functions, use a modular multi-file design with multiple source files that group “similar” functions. Each module should have a <code>file.c</code> source file and a matching <code>file.h</code> header file that includes all definitions necessary for use from other source files. Some guidelines:</p>
+<ul>
+<li><p>The <code>file.h</code> header file should include only type definitions, function prototypes, and preprocessor macros and constants. It should not include <em>any</em> code.</p></li>
+<li><p>If you need global variables accessible from multiple source files, then the actual definition should be in a <code>.c</code> file, and the <code>.h</code> file should have an <code>extern</code> declaration.</p></li>
+<li><p>Only things useful to users of the module’s functions should be in the <code>file.h</code> file. If some definition or declaration is only needed in the matching <code>file.c</code> code, then it should be defined locally in <code>file.c</code> so it is “invisible” to the rest of the program.</p></li>
+<li><p>Similarly, if a function is only for internal use by a module (what you’d use a private method for in Java), then you should put <code>static</code> in front of its name - that way it is not visible outside the module.</p></li>
+<li><p>If you are implementing a data structure, put all functions that operate on that function in a single <code>.c</code> file, and prefix every public (non-static) name with the name of the data structure. For example, if you’re implementing a queue, then you might have functions named <code>queue_add</code>, <code>queue_remove</code>, <code>queue_is_empty</code>, etc. Remember that all function names are global, so the point here is to keep names of similar functions for different data structures from “colliding” and having the same name.</p></li>
+<li><p>Header files should always use a “<code>#define</code> guard” to protect against double-inclusion. More specifically, if you have a header file named <code>myheader.h</code> then the first few lines of the <code>.h</code> file should be</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>   <span class="pp">#ifndef _MYHEADER_H</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>   <span class="pp">#define _MYHEADER_H</span></span></code></pre></div>
+<p>and the last line should be</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>   <span class="pp">#endif  </span><span class="co">// _MYHEADER_H</span></span></code></pre></div></li>
+</ul></li>
+<li><p><strong>Code Quality:</strong> You should always turn on all possible warnings when you compile (i.e., use <code>-Wall</code>) and you should generally never turn in code for which the compiler issues any warnings. You should also remove all extra print statements that you might have put in for debugging or monitoring your code before submitting. It is OK to use a “<code>DEBUG</code>” preprocessor macro to control inclusion/exclusion of debugging code. In other words, you can have parts of your code that look like this, where the <code>DEBUG</code> macro is defined elsewhere (just submit with debugging disabled):</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>    <span class="pp">#ifdef DEBUG</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a>        printf(<span class="st">&quot;This is a debugging printout...</span><span class="sc">\n</span><span class="st">&quot;</span>);</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a>    <span class="pp">#endif   </span><span class="co">// DEBUG</span></span></code></pre></div></li>
+<li><p><strong>Documentation:</strong> Every function should have a comment that describes what it does, and what parameters it expects to receive. It should include all information necessary for someone to use the function properly. I like to use a commenting style that puts a long line of some asterisks at the beginning of a function comment, so the boundaries between functions jump out at you as you scroll through the code. You should also comment any block of code that is unclear and might not be obvious to a reader. You should <em>not</em> overdo comments! Too many comments is just as bad as too few, and I’ve seen students write code like this:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>    <span class="co">// THIS IS HORRIBLE --- NEVER DO THIS!</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a>    x = <span class="dv">2</span>*a;   <span class="co">// Set x to two times a</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a>    <span class="cf">if</span> (x == <span class="dv">12</span>) {   <span class="co">// If x is 12</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a>       x = x+<span class="dv">1</span>;      <span class="co">// Increment x</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true"></a>    }</span></code></pre></div>
+<p>Don’t do that! The code speaks for itself, and there’s no need for any comments at all in those three lines of code above, except possibly to document <em>why</em> 12 is an interesting value.</p></li>
+</ul>
+<h2 id="variables-naming-scope-and-more">Variables – naming, scope, and more</h2>
+<ul>
+<li><p><strong>Variable and Type Names:</strong> Variables and types in C should be given names that are all lower case, and written in <a href="https://en.wikipedia.org/wiki/Snake_case">snake case</a> where “words” in a name are separated by underscore characters. So while <code>isEmpty</code> and <code>ArrayList</code> are fine names in Java, they are not appropriate for C, where you should use names <code>is_empty</code> and <code>array_list</code>. Variable names should reflect what the variable represents, although single letter variable names are appropriate when you have a simple loop index (like <code>i</code> or <code>j</code>) or when this is the first parameter to a data structure function (what would be “<code>this</code>” in Java). You’ll see some type names from libraries that end in <code>_t</code>, but you should not do that for your own type definitions — POSIX reserves that type name ending for types in standard libraries.</p></li>
+<li><p><strong>Constant Names:</strong> There are two different types of constants in C, but we will just use preprocessor defined constants. These should always be given all uppercase names, optionally with underscores separating words if necessary. For example, <code>BUFSIZE</code> or <code>BUF_SIZE</code> are both fine. If you define a constant in a <code>.h</code> file, since that name is “seen” in lots of different places then you should prefix the name with something specific to that <code>.h</code> file (e.g., <code>QUEUE_BUFSIZE</code>). See the next bullet point for an example that uses a defined constant.</p></li>
+<li><p><strong>Using Named Constants:</strong> Having arbitrary numbers appear in your program – particularly when they appear in more than one place and the multiple occurrences must match – is very bad (sometimes referred to as the style error of using “magic numbers”). For example, if you define a buffer of size 100 and then read into it using <code>fgets</code>, do <em>not</em> use the number 100 in your declaration and fgets call! Instead, do it like this:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a>    <span class="pp">#define BUFSIZE 100</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a>    <span class="dt">char</span> buffer[BUFSIZE];</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a>    <span class="co">//... more code</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true"></a>    fgets(buffer, BUFSIZE, stdin);</span></code></pre></div></li>
+<li><p><strong>Variable Scope:</strong> Global variables should be avoided if at all possible. Global variables can be useful for program-wide configuration or state variables, but in such a case it is good to encapsulate them inside a struct, so that you have only a single global variable name, like this:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a>    <span class="kw">struct</span> global_state {</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a>        <span class="dt">int</span> player_score;</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a>        <span class="dt">int</span> player_health;</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true"></a>        <span class="dt">char</span> *player_name;</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true"></a>    } global_state;</span></code></pre></div>
+<p>By doing this, you only have a single global variable (named <code>global_state</code>) and if you want to do something like add to the player’s score you would to it like this:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a>    global_state.player_score += <span class="dv">12</span>;</span></code></pre></div>
+<p>Variables should be local if at all possible, and module level (with <code>static</code>) if they need to be global within a particular <code>.c</code> file. Never ever use global or module level variables to send values into a function – that’s what parameters are for.</p></li>
+</ul>
+<h2 id="formatting-issues">Formatting Issues</h2>
+<p>Formatting can be a matter of personal taste, but is often dictated by the project you are working on. In this class, certain aspects are dictated by your instructor, so you should follow them! In CSC 362, VS Code in your virtual machine has been pre-configured with the correct formatting rules (for things that can be done automatically), so you can use the automatic reformatting feature of VS Code to ensure everything is formatted correctly.</p>
+<ul>
+<li><p><strong>Indentation:</strong> Always use spaces (not tab characters) for indentation, and indent 4 spaces at a time.</p></li>
+<li><p><strong>Brace Placement:</strong> Use “K&amp;R style” brace placement, where the opening brace goes at the end of the line that controls it. For example, the open brace for an if statement block should be on the same line as the “if”, and the else should be on the same line as the closing brace for the if and the open brace for the else clause, like this:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a>    <span class="cf">if</span> (x == <span class="dv">12</span>) {</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a>       <span class="co">// ...  more code</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true"></a>    } <span class="cf">else</span> {</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true"></a>       <span class="co">// ... else part here</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true"></a>    }</span></code></pre></div>
+<p>The opening brace for a function definition should be at the end of the function declaration line:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a>    <span class="dt">void</span> my_function(<span class="dt">int</span> x) {</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a>        <span class="co">// Function body...</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true"></a>    }</span></code></pre></div></li>
+<li><p><strong>Use of Blank Lines:</strong> Lines of code that “belong together” should be single spaced, and conceptually different blocks of code should be separated out by blank lines. Here’s a good guideline: Think about how you’d explain your code to another person, and the lines that “belong together” are things you’d explain as one operation. For example, “first we initialize the array to all 0’s” is a good explanation of a for loop, and so the for and its body “belong together” and should be single spaced, but separated from other code by blank lines.</p></li>
+<li><p><strong>Line Length:</strong> If at all possible, keep lines of code under 80 characters long, and break into multiple lines if something is longer than that. As a side note, this is common practice but is somewhat outdated – it dates back to a time when terminals and printers were a fixed 80 characters wide. Today this is a “do it if you can” guideline for most people.</p></li>
+</ul>
+<h2 id="robustness-of-code">Robustness of Code</h2>
+<ul>
+<li><p><strong>Checking Return Values:</strong> Always check return values from functions (especially system calls!), and handle errors appropriately. For example, if you open a file, you <em>must</em> check to see if the open succeeded before going on and using the file handle in your code. Unlike Java, C can’t throw exceptions to stop your program from doing something bad – you need to check for errors and handle them yourself!</p></li>
+<li><p><strong>Dynamic Memory Allocation:</strong> When you dynamically allocate memory with <code>malloc</code> you should immediately think about “what part of the code is responsible for this memory, and when will it be freed.” It’s best to have a single pointer that is responsible for the lifetime of the allocated memory and will be used to free it at some point. This is similar to the notion of “ownership” of dynamically-allocated objects in some newer programming languages, but in C you are responsible for managing this yourself!</p></li>
+</ul>
+<h2 id="a-few-final-comments">A Few Final Comments</h2>
+<p>There are some things I see students doing regularly that are bad style, but don’t really fit into any of the style categories above.</p>
+<ul>
+<li><p><strong>Comparing Boolean Values:</strong> Most C programmers use variables of type <code>int</code> to represent Boolean values (rather than than the “modern C” type <code>_Bool</code>), but then people are tempted to compare that int value to other integers. If your <code>int</code> is representing a Boolean, you should use it like a Boolean, not an int! In other words, while a zero value represents “false”, you should <em>not</em> check for false like this:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a>    <span class="co">// DON&#39;T DO THIS!!!!!</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a>    <span class="cf">if</span> (flag == <span class="dv">0</span>) {</span></code></pre></div>
+<p>Instead, this is the right way to use a Boolean:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a>    <span class="co">// THIS IS THE RIGHT WAY!!!</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true"></a>    <span class="cf">if</span> (!flag) {</span></code></pre></div></li>
+<li><p><strong>Using <code>sizeof(char)</code>:</strong> Students correctly learn the pattern for dynamically allocating arrays, using the number of elements in the array times the size of each element. So for example, to allocate an array of 100 <code>int</code> values, you should use something like this (although - be careful of “magic numbers”!):</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a>    <span class="dt">int</span> *array = malloc(<span class="dv">100</span>*<span class="kw">sizeof</span>(<span class="dt">int</span>));</span></code></pre></div>
+<p>Extending that pattern to arrays of <code>char</code>s just isn’t done though. In C, <code>sizeof(char)</code> is always one, so multiplying by <code>sizeof(char)</code> (i.e., multiplying by one) is silly. If you want an array of 100 <code>char</code> values, leave the multiplication out entirely, and do it like this:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a>    <span class="dt">char</span> *buffer = malloc(<span class="dv">100</span>);</span></code></pre></div></li>
+</ul>
+<h2 id="other-sample-guides">Other sample guides</h2>
+<p>There are a <em>lot</em> of programming style guidelines out there, and if you’re curious as to what they are, here are two good examples:</p>
+<ul>
+<li><p><a href="http://www.cs.cmu.edu/~213/codeStyle.html">Carnegie-Mellon Intro to Computer Systems Style Guidelines</a><br />
+A good guide that focuses on general good programming practices rather than getting down into the nitty-gritty details. All of the style rules we defined above fit in with the CMU style guidelines.</p></li>
+<li><p><a href="https://google.github.io/styleguide/cppguide.html">Google C++ Style Guide</a><br />
+A very long and detailed industry-level style guide. While it’s for C++ rather than C, so things like naming conventions don’t apply to C, much of our style guide follows the Google coding style. In particular, the automatic formatting that we use in VS Code is essentially just “Google style but with 4 space indentation.”</p></li>
+</ul>
+<p> </p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

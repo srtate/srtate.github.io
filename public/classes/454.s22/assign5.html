@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 454/654 - Spring 2022 - Assignment 5 - Due April 19, 2022</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../css/class_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+        <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark uncg-navbar fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="https://www.uncg.edu/">
+          <img class="collapse navbar-collapse" src="../img/uncg_class.png" alt="UNC Greensboro">
+          <img class="navbar-toggler" src="../img/uncg_mobile.png" alt="UNCG">
+        </a>
+        <div class="navbar-brand d-flex flex-column text-left"
+	     style="line-height: 1.2;">
+          <span>CSC 454/654</span>
+          <span class="small collapse navbar-collapse"><em>Algorithm Analysis and Design</em></span>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link " href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="syllabus.html">Syllabus</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="schedule.html">Schedule</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="assignments.html">Assignments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://uncg.instructure.com/">Canvas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- Page Content -->
+    <div class="container">
+   
+        <h2 id="assignment-5---due-april-19-2022">Assignment 5 - Due April 19, 2022</h2>
+<ol type="1">
+<li><p>Perform the Floyd-Warshall algorithm on the weighted, directed graph below. Show the matrix <span class="math inline">\(D^{(k)}\)</span> that results for each iteration of the outer loop.</p>
+<p><img src="FW-Graph.png" /></p></li>
+<li><p>A <em>bipartite graph</em> is an undirected graph with vertex set <span class="math inline">\(V\)</span> for which the vertices can be partitioned into two sets, <span class="math inline">\(L\)</span> and <span class="math inline">\(V-L\)</span>, such that every edge connects a vertex from <span class="math inline">\(L\)</span> to a vertex in <span class="math inline">\(V-L\)</span>. No edges are allowed between two vertices in <span class="math inline">\(L\)</span> or two vertices in <span class="math inline">\(V-L\)</span>. Consider the problem of finding a maximum bipartite subgraph: Given a general undirected graph <span class="math inline">\(G=(V,E)\)</span>, what is the largest subset of edges <span class="math inline">\(E&#39;\subseteq E\)</span> such that <span class="math inline">\(G&#39;=(V,E&#39;)\)</span> is bipartite?</p>
+<ol type="a">
+<li><p>Restate this problem twice as an appropriate decision problem, once using “decision problem terminology” and once using “language terminology.”</p></li>
+<li><p>For the maximum bipartite subgraph problem, show that finding the size of the maximum bipartite subgraph can be solved in polynomial time if and only if the decision problem can be solved in polynomial time.</p></li>
+</ol></li>
+<li><p>A <em>graph coloring</em> of a graph <span class="math inline">\(G=(V,E)\)</span> is a mapping <span class="math inline">\(c:V\rightarrow\mathbb{Z}\)</span> (<span class="math inline">\(\mathbb{Z}\)</span> is the set of integers) such that <span class="math inline">\(c(u)\neq c(v)\)</span> for all <span class="math inline">\((u,v)\in E\)</span> (in other words, the endpoints of each edge must be different colors). We call this a <em><span class="math inline">\(k\)</span>-coloring</em> if the mapping only uses <span class="math inline">\(k\)</span> integers (so the coloring could be given as a mapping <span class="math inline">\(c:V\rightarrow\{1,\ldots,k\}\)</span>).</p>
+<ol type="a">
+<li><p>Let CHROMATIC-NUMBER denote the optimization problem (optimal value version) takes an undirected graph <span class="math inline">\(G\)</span> as input, and outputs the minimum value <span class="math inline">\(k\)</span> such that a <span class="math inline">\(k\)</span>-coloring exists for graph <span class="math inline">\(G\)</span>. We define the decision problem K-COLORABLE <span class="math inline">\(=\{\langle G,k\rangle : G=(V,E)\)</span> is an undirected graph, <span class="math inline">\(k\geq 0\)</span> is an integer, and <span class="math inline">\(G\)</span> is <span class="math inline">\(k\)</span>-colorable<span class="math inline">\(\}\)</span>. Show that the optimal value problem CHROMATIC-NUMBER can be solved in polynomial time if and only if K-COLORABLE <span class="math inline">\(\in P\)</span>.</p></li>
+<li><p>Show that if K-COLORABLE <span class="math inline">\(\in P\)</span> then a <span class="math inline">\(k\)</span>-coloring (the assignment of colors to vertices) can be found for any <span class="math inline">\(k\)</span>-colorable graph in polynomial time. (<em>Hint:</em> In class we showed how to find a Hamiltonian cycle in a graph by removing edges and repeatedly testing the graph. For this problem, try <em>adding</em> edges and repeatedly testing for <span class="math inline">\(k\)</span>-colorability — what properties can you deduce from this process that will help you find a <span class="math inline">\(k\)</span>-coloring?)</p></li>
+<li><p>Prove that K-COLORABLE <span class="math inline">\(\in NP\)</span>.</p></li>
+</ol></li>
+<li><p>The security of several widely-used algorithms in cryptography depends on the difficulty of <em>factoring</em>, or finding the prime divisors of a large composite number. Specifically, if you had an algorithm that efficiently computed the prime factorization of integers, then you could break the RSA public-key encryption algorithm. We will try to turn this into a decision problem as follows (all numbers in this problem are given in binary):</p>
+<p><span class="math display">\[
+\textsf{SMALL-FACTOR}=\{\langle n,k\rangle : \text{there exists a
+non-trivial factor $a\leq k$ of $n$}\}
+\]</span></p>
+<p>(a <em>non-trivial</em> factor is a factor that is <span class="math inline">\(\geq 2\)</span>).</p>
+<ol type="a">
+<li><p>Show that if SMALL-FACTOR <span class="math inline">\(\in P\)</span>, then we can find all the prime factors of an integer <span class="math inline">\(n\)</span> in polynomial time. What is the significance of this as far as the security of these encryption algorithms and the <span class="math inline">\(P\)</span> vs. <span class="math inline">\(NP\)</span> question?</p>
+<p>Important Tip: remember that your algorithm must be polynomial in the <em>length</em> of the input, meaning the length of the binary representation of <span class="math inline">\(n\)</span>. It can’t be polynomial in the <em>value</em> <span class="math inline">\(n\)</span>.</p></li>
+<li><p>Show that SMALL-FACTOR <span class="math inline">\(\in NP\)</span>.</p></li>
+<li><p>There’s a more direct decision problem that doesn’t bound the size of the factor:</p>
+<p><span class="math display">\[
+\textsf{COMPOSITE}=\{\langle n\rangle : \text{$n$ is a composite number}\}
+\]</span></p>
+<p>Prove that COMPOSITE <span class="math inline">\(\in NP\)</span> (this is almost identical to part b above – don’t over think it!).</p></li>
+<li><p>Unlike SMALL-FACTOR, using a polynomial time algorithm for COMPOSITE to find a prime factorization in polynomial time is difficult and maybe impossible (if you could figure out a way to do this, it would be a major discovery in computer science!). Describe in one or two sentences why SMALL-FACTOR makes it easier (possible?) to find the actual factorization.</p></li>
+</ol></li>
+</ol>
+<p> </p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

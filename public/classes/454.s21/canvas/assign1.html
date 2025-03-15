@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 454/654 - Spring 2021 - Assignment 1 - Due Feb 4, 2021</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://www.uncg.edu/cmp/faculty/srtate/454.s21/assign1.html">View original, outside canvas</a> ]
+   
+        <h2 id="csc-454654---spring-2021---assignment-1---due-feb-4-2021">CSC 454/654 - Spring 2021 - Assignment 1 - Due Feb 4, 2021</h2>
+<p>This is a “warm-up” assignment that is shorter than future assignments will be. You only have one week (rather than the normal 2 weeks) for this assignment, and it will count for half the amount of the other assignments (it will be graded out of 50 points).</p>
+<ol type="1">
+<li><p>The following algorithm tests to see if there are duplicates in an input array with <span class="math inline"><em>n</em></span> elements: <span class="math inline"><em>A</em> = ⟨<em>a</em><sub>1</sub>, <em>a</em><sub>2</sub>, …, <em>a</em><sub><em>n</em></sub>⟩</span>.</p>
+<pre><code>         DupSearch(A)
+       1.  for i = 1 to n-1
+       2.      for j = i+1 to n
+       3.          if A[i] == A[j]
+       4.              return true
+       5.  return false</code></pre>
+<p>Do a careful runtime analysis of this algorithm, using explicit constants like we did for the examples in class, with results for both the best case and worst case running times.</p></li>
+<li><p>Consider algorithms with the following time complexities:</p>
+<blockquote>
+<p>Algorithm 1: <span class="math inline">5<em>n</em>lg <em>n</em></span></p>
+</blockquote>
+<blockquote>
+<p>Algorithm 2: <span class="math inline"><em>n</em>!</span></p>
+</blockquote>
+<blockquote>
+<p>Algorithm 3: <span class="math inline">3<sup><em>n</em></sup></span></p>
+</blockquote>
+<blockquote>
+<p>Algorithm 4: <span class="math inline">50<em>n</em></span></p>
+</blockquote>
+<blockquote>
+<p>Algorithm 5: <span class="math inline"><em>n</em><sup>2</sup></span></p>
+</blockquote>
+<blockquote>
+<p>Algorithm 6: <span class="math inline">2<em>n</em><sup>3</sup></span></p>
+</blockquote>
+<ol type="a">
+<li><p>Assuming that the above formulas give the running times of these algorithms in microseconds, make a table showing the running time of each algorithm for input sizes of <span class="math inline"><em>n</em> = 10</span>, <span class="math inline"><em>n</em> = 100</span>, and <span class="math inline"><em>n</em> = 1000</span>. If a running time turns out to be more than <span class="math inline">10<sup>50</sup></span> seconds, you can simply write ``too large’’ in the table.</p></li>
+<li><p>Write the algorithms in order of slowest to fastest when <span class="math inline"><em>n</em> = 10</span>.</p></li>
+<li><p>Write the algorithms in order of asymptotic running time (slowest to fastest).</p></li>
+<li><p>For what values of <span class="math inline"><em>n</em></span> is Algorithm 4 faster than Algorithm 1?</p></li>
+</ol></li>
+<li><p>Prove or disprove each of the following conjectures using just the definitions of asymptotic notation and basic algebra:</p>
+<ol type="a">
+<li><p>Let <span class="math inline"><em>f</em>(<em>n</em>)</span>, <span class="math inline"><em>g</em>(<em>n</em>)</span>, and <span class="math inline"><em>h</em>(<em>n</em>)</span> be positive functions. Prove that if <span class="math inline"><em>f</em>(<em>n</em>)</span> is <span class="math inline"><em>O</em>(<em>g</em>(<em>n</em>))</span> and <span class="math inline"><em>g</em>(<em>n</em>)</span> is <span class="math inline"><em>O</em>(<em>h</em>(<em>n</em>))</span>, then <span class="math inline"><em>f</em>(<em>n</em>)</span> is <span class="math inline"><em>O</em>(<em>h</em>(<em>n</em>))</span>. (<em>In other words, big-Oh notation is transitive</em>)</p></li>
+<li><p>Prove that <span class="math inline">(<em>c</em><em>n</em>)<sup><em>n</em></sup></span> is <span class="math inline"><em>O</em>(<em>n</em><sup>2<em>n</em></sup>)</span> for any constant <span class="math inline"><em>c</em> &gt; 0</span>. (<em>Note: Be careful with names of constants when you write up this proof! You’ll be applying the big-Oh definition, which includes a constant named <span class="math inline"><em>c</em></span>, but that’s not the same as the <span class="math inline"><em>c</em></span> in this problem statement. Create new names for constants when necessary!</em>)</p></li>
+<li><p>Prove that <span class="math inline">(3<em>n</em>)<sup><em>n</em></sup></span> is <em>not</em> <span class="math inline"><em>O</em>(<em>n</em><sup><em>n</em> + 1</sup>)</span></p></li>
+</ol></li>
+</ol>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

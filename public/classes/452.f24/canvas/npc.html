@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>NPC info</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://home.uncg.edu/cmp/faculty/srtate/452.f24/npc.html">View original, outside canvas</a> ]
+   
+        <h2 id="npc-proofs">NPC proofs</h2>
+<p>This write-up is an attempt to help guide you in creating NP completeness proofs <em>after you learn the basics</em>. You should read Chapter 7 in the textbook <em>first</em>, which introduces the ideas from the ground up, and then you can go through this. The organization here is different: I start with what you want to do (write a proof that some language is NP complete) and work backwards to uncover the pieces that have to be in the proof. Since I’m working from the end backwards, it’s a terrible way to try to initialy learn the concepts. However, once you understand the basics, this is a good way of thinking about how to <em>apply</em> those concepts.</p>
+<p>I’ll first guide you through the structure of an NP-completeness proof alongside a complete NP-completeness proof, so you can see the general idea and motivation for the structure, and then a concrete realization of that in a proof. The concrete proof is a proof that a language called <span class="math inline">\(\textit{PARTITION}\)</span> is NP-complete.</p>
+<p>On the next page, you will find the definition of the <span class="math inline">\(\textit{PARTITION}\)</span> problem and the full NP-completeness proof. Read the definition carefully so you understand the problem, and then read through the proof. You don’t have to understand everything in the proof at this point – we’ll walk through it piece by piece after that.</p>
+<p>Here’s a brief “table of contents” of these pages:</p>
+<ol type="1">
+<li><p><a href="npc2.html">Full NP-completeness proof</a> for <span class="math inline">\(\textit{PARTITION}\)</span></p></li>
+<li><p><a href="npc3.html">Part-by-part examination</a> of the required parts of an NP-completeness proof, indentifying specifically where they are in the example proof.</p></li>
+<li><p><a href="npc4.html">Grading criteria</a> for an NP-completeness proof. Basically, now to “grade” your own proof and make sure all the requirements are met.</p></li>
+</ol>
+<p><a href="npc2.html">Next page</a></p>
+<p> </p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

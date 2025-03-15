@@ -1,0 +1,162 @@
+\documentclass[11pt]{article}
+\usepackage{fullpage} % 1 inch margins on standard letter size paper
+\usepackage{amsmath}  % AMS math macros
+\usepackage{amssymb}  % Additional math symbols from AMS
+\usepackage{amsthm}   % Defines the proof environment
+\usepackage{algpseudocode} % For giving pseudocode algorithms
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{lemma}[theorem]{Lemma}
+
+\title{Assignment 1}
+\author{Your name here}
+\date{}
+
+\begin{document}
+\maketitle
+
+\noindent
+\textsl{Remember to provide full solutions. Proofs should be complete,
+  and computation/analysis problems should always show work or
+  justification (never just state the final answer!).}
+
+\begin{enumerate}
+\item Write a direct proof of the following theorem.
+  \begin{theorem}
+    If $x$ and $y$ are rational, then $x+y$ is also rational.
+  \end{theorem}
+  
+  \begin{proof}
+    Replace with your proof.
+  \end{proof}
+
+\item Prove the following theorem using the contrapositive of the
+  statement.
+  \begin{theorem}
+    If $n$ is an integer such that $7n+6$ is odd, then $n$ is odd.
+  \end{theorem}
+  
+  \begin{proof}
+    Replace with your proof.
+  \end{proof}
+
+  
+\item Prove the following theorem using cases (this theorem is called
+  the ``Triangle Inequality'').
+  \begin{theorem}
+    For all real numbers $x$ and $y$, $|x+y|\leq |x|+|y|$.
+  \end{theorem}
+  
+  \begin{proof}
+    Replace with your proof.
+  \end{proof}
+
+\item Prove the following theorem using contradiction.
+  \begin{theorem}
+    If $a,b\in\mathbb{R}$ such that $a$ is rational and $ab$ is
+    irrational, then $b$ is irrational.
+  \end{theorem}
+  
+  \begin{proof}
+    Replace with your proof.
+  \end{proof}
+
+\item Convert ``$((P\textsc{ or not}(S))\textsc{ implies }
+                  (Q\textsc{ and }R))\textsc{ or } S$''
+  into an equivalent proposition in DNF (using just $\textsc{and}$,
+  \textsc{or}, and \textsc{not}).
+  
+  Your solution here.
+
+\item Prove that
+  ``$\textsc{not}(P \textsc{ or } (\textsc{not}(P) \textsc{ and } Q))$''
+  and
+  ``$\textsc{not}(P) \textsc{ and not}(Q)$'' are equivalent two ways:
+  \begin{enumerate}
+  \item Prove the equivalence using truth tables.
+
+    Your solution here...
+    
+  \item Prove the equivalence \emph{without} truth tables, using
+      just Boolean formula manipulation rules (distributive laws, De
+      Morgan's laws, etc.)
+
+      Your solution here...
+      
+  \end{enumerate}
+  
+\item Let $V(u,w)$ denote the predicate ``User $u$ has visited website
+  $w$.'' Write the following English statements as quantified
+  propositions.
+  \begin{enumerate}
+  \item Every user has visited some web site.
+    \[ Solution \]
+  \item Every website has been visited by some user.
+    \[ Solution \]
+  \item All users have visited \texttt{www.google.com}.
+    \[ Solution \]
+  \end{enumerate}
+
+\item Let $F(0), F(1), F(2), ...$ denote the Fibonacci sequence, as in
+  the textbook (see page 36). Prove the following theorem using induction.
+  \begin{theorem}
+    For all $n\geq 0$, $F(0)+F(1)+\cdots + F(n) = F(n+2)-1$.
+  \end{theorem}
+  
+  \begin{proof}
+    Replace with your proof.
+  \end{proof}
+
+\item Prove the following theorem about ``making change'' using induction.
+  \begin{theorem}
+    If $n\geq 12$ is an integer,
+    then $n$ cents can be made using just 3 and 7 cent coins.
+  \end{theorem}
+  
+  \begin{proof}
+    Replace with your proof.
+  \end{proof}
+
+\item Consider the following recursively-defined function.
+  \begin{algorithmic}
+    \Function{MyFunction}{$x,n$}
+    \If {$n=0$}
+      \State \Return $1$
+    \Else
+    \State \Return $x * \Call{MyFunction}{x,n-1}$
+    \EndIf
+    \EndFunction
+  \end{algorithmic}
+  Prove the following theorem using induction.
+  \begin{theorem}
+    For all $n\geq 0$, \textsc{MyFunction}$(x,n)$ returns $x^n$.
+  \end{theorem}
+  
+  \begin{proof}
+    Replace with your proof.
+  \end{proof}
+  
+\item This question deals with ``finite calculus,'' giving formulas
+  for certain sums that should look similar to integral formulas from
+  regular (infinite) calculus.
+  \newcommand{\falling}[1]{{\underbar{\scriptsize #1}}}
+  \begin{definition}
+    For $k\geq 1$, define the $k$th ``falling factorial power'' of $x$ by
+    \[ x^{\falling{k}} = \overbrace{x(x-1)\cdots (x-k+1)}^{k\text{ factors}} . \]
+  \end{definition}
+
+  Prove the following theorem using induction.
+  \begin{theorem}
+    For all integers $n\geq 1$ and $k\geq 1$,
+    \[ \sum_{x=0}^{n-1} x^{\falling{k}} =
+    \frac{n^{\falling{k+1}}}{k+1} .\]
+  \end{theorem}
+  
+  \begin{proof}
+    Replace with your proof.
+  \end{proof}
+  
+\end{enumerate}
+
+\end{document}

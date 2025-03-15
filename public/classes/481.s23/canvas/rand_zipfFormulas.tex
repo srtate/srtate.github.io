@@ -1,0 +1,31 @@
+\documentclass[12pt]{article}
+\usepackage{fullpage}
+\usepackage{times}
+
+\newcommand {\doublespace} {\addtolength{\baselineskip}{.5\baselineskip}}
+\newcommand {\singlespace} {\addtolength{\baselineskip}{-.333\baselineskip}}
+
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+
+\def\Proof{\par\noindent{\sl Proof\/}:\enspace}
+\def\blackslug{\hbox{\hskip 1pt \vrule width 4pt height 8pt depth 1.5pt
+  \hskip 1pt}}
+\def\QED{\quad\blackslug\lower 8.5pt\null}
+
+\begin{document}
+
+\thispagestyle{empty}
+
+\noindent
+Mean \# guesses $\approx 69,479$\\
+Median \# guesses $\approx 750$\\
+\ \\
+Entropy $\approx 13.41$ bits\\
+$2^{H(P)}\approx 10,855$
+
+ 
+\end{document}

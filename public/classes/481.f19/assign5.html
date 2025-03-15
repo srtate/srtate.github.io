@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>Assignment 5 -- Due Wednesday, November 20</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="../css/class_srtate.css" rel="stylesheet">
+
+  </head>
+
+
+  <body>
+
+        <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark uncg-navbar fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="https://www.uncg.edu/">
+          <img class="collapse navbar-collapse" src="../img/uncg_class.png" alt="UNC Greensboro">
+          <img class="navbar-toggler" src="../img/uncg_mobile.png" alt="UNCG">
+        </a>
+        <div class="navbar-brand d-flex flex-column text-left"
+	     style="line-height: 1.2;">
+          <span>CSC 481/681</span>
+          <span class="small collapse navbar-collapse"><em>Principles of Computer Security</em></span>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link " href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="syllabus.html">Syllabus</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="schedule.html">Schedule</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="assignments.html">Assignments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://uncg.instructure.com/">Canvas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- Page Content -->
+    <div class="container">
+   
+        <h3 id="assignment-5-due-wednesday-november-20">Assignment 5 – Due: Wednesday, November 20</h3>
+<p>Complete the "<a href="http://www.cis.syr.edu/~wedu/seed/Labs_16.04/Networking/TCP_Attacks/">TCP/IP Attack Lab</a> from the Syracuse SEED Labs. You do not need to do Task 3 (TCP RST attacks on Video Stream Applications).</p>
+<p>Note that this lab requires multiple virtual machines running simultaneously. Each virtual machine can run with just 1GB of RAM, but with three VMs running simultaneously you will have problems on a machine with less than 8GB RAM. It is perfectly acceptable to do this lab with just two VMs, with the “attacker” tasks being executed on the client or server VMs. That’s a little less realistic, but you use and see all the same concepts.</p>
+<p><strong>Note:</strong> You really need to do this on your own system so that you can use GUI tools like Wireshark. If you don’t have a system that can support the necessary VMs, come talk to me and we’ll figure something out.</p>
+<p><em>Tip:</em> Make sure you follow the instructions in the SEED Lab VirtualBox setup manual for setting up multiple virtual machines (Appendix B). To make your work a little easier, you should look into the “Customization” directory on the SEED Lab VMs to make each VM look a little different (visual cues are very helpful!). Note that one step is missing: To install the custom icons in the Launch bar, the <code>.desktop</code> files must be executable. Just go into the <code>Customization</code> directory and execute the command “<code>chmod a+x *.desktop</code>” to fix this problem.</p>
+<p>And finally: Everything in this lab can be done with the <code>netwox</code> tool automating the attacks. For up to 25 points extra credit, do the exercises by programming your own attacks using <a href="https://scapy.net/">Scapy</a>. Some of the information you need is in the SEED Lab, but you’ll need to do some tutorials to see how to make Scapy work (and you’ll need to be able to write simple Python programs). Note that a lot of modern security and penetration testing tools require using Python to script advanced attacks, so this is a very beneficial exercise if you have the time to take it on!</p>
+<p> <br />
+</p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

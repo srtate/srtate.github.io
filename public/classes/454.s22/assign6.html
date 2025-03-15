@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 454/654 - Spring 2022 - Assignment 6 - Due April 27, 2022</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../css/class_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+        <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark uncg-navbar fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="https://www.uncg.edu/">
+          <img class="collapse navbar-collapse" src="../img/uncg_class.png" alt="UNC Greensboro">
+          <img class="navbar-toggler" src="../img/uncg_mobile.png" alt="UNCG">
+        </a>
+        <div class="navbar-brand d-flex flex-column text-left"
+	     style="line-height: 1.2;">
+          <span>CSC 454/654</span>
+          <span class="small collapse navbar-collapse"><em>Algorithm Analysis and Design</em></span>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link " href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="syllabus.html">Syllabus</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="schedule.html">Schedule</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="assignments.html">Assignments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://uncg.instructure.com/">Canvas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- Page Content -->
+    <div class="container">
+   
+        <h2 id="assignment-6---due-april-27-2022">Assignment 6 - Due April 27, 2022</h2>
+<p><em>Due to the shorter-than-normal time to the deadline for this assignment, it is short (with extra credit) and will be worth 50 points. Each of the three problems below has two options, and you can just pick one of each for the full 50 points. If you do <strong>both</strong> options you can get up to 100 points (still graded out of 50, so that’s up to 50 points of extra credit added in to your assignment total).</em></p>
+<ol type="1">
+<li><p>(15 points) Below are two problems that lead you through the process of proving NP-completeness step-by-step. Solve either one (your choice) for full credit, or both for extra credit.</p>
+<ol type="a">
+<li><p>This problem deals with graph coloring, which was defined in your previous assignment. In this problem, however, we don’t care how many colors are used, but want to maximize the number of vertices that use the same color.</p>
+<p><span class="math display">\[ \textsf{MAX-MONOCHROME} = \{ \langle G,k\rangle :
+   \textsf{there is a coloring of graph $G$ in which
+       at least $k$ vertices have the same color}\} \]</span></p>
+<ol type="i">
+<li><p>To understand the problem, consider the following graph, in which one vertex (the “hub”) is connected to <span class="math inline">\(n-1\)</span> other vertices (the “spoke” vertices), and two (and only two) of the spoke vertices are connected, like this:</p>
+<p><img src="AlmostStarGraph.png" /></p>
+<p>This graph has chromatic number 3. Of all of the different ways of coloring this graph with 3 colors, what is the largest number of vertices that could be assigned the same color? What is the smallest number of vertices that could be assigned the same color? What if we are able to use more than 3 colors – what is the smallest number of vertices that could be assigned the same color in that situation?</p></li>
+<li><p>Prove that <span class="math inline">\(\textsf{MAX-MONOCHROME}\in NP\)</span></p></li>
+<li><p>The <em>complement</em> of a graph <span class="math inline">\(G=(V,E)\)</span>, denoted <span class="math inline">\(\overline{G}\)</span>, is defined as the graph with the same vertex set and in which vertices are connected if and only if they were <em>not</em> connected in <span class="math inline">\(G\)</span>. In other words, if <span class="math inline">\(\overline{G}=(V,E&#39;)\)</span> where</p>
+<p><span class="math display">\[ E&#39; = \{ (v,w) : v,w\in V \textsf{ and } (v,w)\not\in E \} \]</span></p>
+<p>Prove that if <span class="math inline">\(G\)</span> has a clique of size <span class="math inline">\(k\)</span> then <span class="math inline">\(\overline{G}\)</span> can be colored such that <span class="math inline">\(\geq k\)</span> vertices have the same color.</p></li>
+<li><p>Prove that if <span class="math inline">\(\overline{G}\)</span> can be colored such that <span class="math inline">\(k\)</span> vertices have the same color, then <span class="math inline">\(G\)</span> has a clique of size <span class="math inline">\(\geq k\)</span>.</p></li>
+<li><p>Use the results of the preceding parts to prove that MAX-MONOCHROME is NP-complete, using a reduction from CLIQUE.</p></li>
+</ol></li>
+<li><p>Consider the problem of picking locations for fire stations in a city, where you want every location to be close to a fire station. We will generalize this to a problem on graphs, where we want to select vertices of a graph such that every vertex is either selected or is next to a vertex that is selected – we’ll call a set of vertices that meets this property a “within-one set of vertices” since every vertex is within distance one of a selected vertex (a fire station). Obviously the set of <em>all</em> vertices is a within-one set, so our challenge is to find the smallest possible within-one set. This decision problem captures the problem:</p>
+<p><span class="math display">\[ \textsf{WITHIN-ONE} = \{ \langle G,k\rangle :
+   \textsf{there is a within-one subset $V&#39;\subseteq V$ with
+   $|V&#39;|\leq k$ } \} \]</span></p>
+<ol type="i">
+<li><p>To understand the problem, and how it is related to (and different from!) the vertex cover problem, consider the following graph, in which one vertex (the “hub”) is connected to <span class="math inline">\(n-1\)</span> other vertices (the “spoke” vertices), and the spoke vertices are connected in a ring, like this:</p>
+<p><img src="ConnStar.png" /></p>
+<p>What is the size of the smallest “within-one” set of vertices in this graph? What is the size of the smallest vertex cover in this graph?</p></li>
+<li><p>Prove that <span class="math inline">\(\textsf{WITHIN-ONE}\in NP\)</span></p></li>
+<li><p>Given any graph <span class="math inline">\(G=(V,E)\)</span>, we create a new graph called the triangulated-edge graph, denoted <span class="math inline">\(te(G)\)</span>, by taking each edge <span class="math inline">\(e=(u,v)\in E\)</span>, creating a new vertex <span class="math inline">\(v_e\)</span>, and adding edges <span class="math inline">\((u,v_e)\)</span> and <span class="math inline">\((v_e,v)\)</span> to connect <span class="math inline">\(v_e\)</span> to both <span class="math inline">\(u\)</span> and <span class="math inline">\(v\)</span>. <span class="math inline">\(te(G)\)</span> also contains all of the vertices and edges from <span class="math inline">\(G\)</span>, so <span class="math inline">\(te(G)\)</span> has <span class="math inline">\(|V|+|E|\)</span> vertices and <span class="math inline">\(3|E|\)</span> edges.</p>
+<p>Prove that if <span class="math inline">\(G\)</span> has a vertex cover with <span class="math inline">\(k\)</span> vertices, then <span class="math inline">\(te(G)\)</span> has a within-one set of <span class="math inline">\(k\)</span> vertices.</p></li>
+<li><p>Prove that if <span class="math inline">\(te(G)\)</span> has within-one set of <span class="math inline">\(k\)</span> vertices, then <span class="math inline">\(G\)</span> has a vertex cover with <span class="math inline">\(\leq k\)</span> vertices.</p></li>
+<li><p>Use the results of the preceding parts to prove that WITHIN-ONE is NP-complete, using a reduction from VERTEX-COVER.</p></li>
+</ol></li>
+</ol></li>
+<li><p>(20 points) Below are two problems in which you must write a full NP-completeness proof, without the step-by-step leading of the previous question. Solve either one (your choice) for full credit, or both for extra credit. In your proof, you must decide on what “known NP-complete” problem to use for a reduction, and you may use any NP-complete problem mentioned in the book (either in the text or in an exercise). These are the problems you can use: HAM-CYCLE, HAM-PATH, CIRCUIT-SAT, SAT, 3-CNF-SAT, CLIQUE, VERTEX-COVER, TSP, SUBSET-SUM, SET-PARTITION, LONGEST-CYCLE, or LONGEST-PATH. Don’t use anything other than these problems, even if it’s known to be NP-complete.</p>
+<ol type="a">
+<li><p>There is a warehouse with <span class="math inline">\(n\)</span> items, which have weights <span class="math inline">\(W=(w_1,w_2,\cdots,w_n)\)</span>. You can hire thieves to help rob the warehouse, but they belong to a guild that says no thief is allowed to carry more than <span class="math inline">\(b\)</span> pounds. We say a set of <span class="math inline">\(k\)</span> thieves can “clear out the warehouse” if every item can be assigned to some thief, and the total weight carried by each thief is <span class="math inline">\(\leq b\)</span> pounds. You want to be able to clear out the warehouse by hiring the minimum possible number of thieves. Here is the relevant language (decision problem):</p>
+<p><span class="math display">\[ \textsf{K-THIEVES} = \{ \langle W,b,k\rangle\,|\, k \textsf{ thieves can clean out the warehouse } \} \]</span></p>
+<p><em>Example:</em> Consider items with weights (6,9,12,6,3,6,15,6), where thieves can carry up to 21 pounds. Three thieves can clear out this warehouse where the three thieves carry items with weights (6,9,6), (12,6,3), and (15,6). However, if that last item had weight 7, then you would need four thieves to clear out the warehouse.</p>
+<p>Prove that K-THIEVES is NP-complete.</p></li>
+<li><p>At your workplace there are a lot of committees that consist of different subsets of employees. There’s a lot of committee work, so people can be assigned to multiple committees. There is a mandate from your CEO to make sure at least one member of each committee has been sent to “awesomeness training.” Awesomeness training is expensive though, so you want to minimize the number of people you send to training.</p>
+<p>Here’s how we formalize this problem: Given a set <span class="math inline">\(A\)</span> of employees, and a collection <span class="math inline">\(C=(C_1,C_2,\cdots,C_n)\)</span> of committees where each <span class="math inline">\(C_i\subseteq A\)</span>, a set of trained employees <span class="math inline">\(T\subseteq A\)</span> meets the mandate if <span class="math inline">\(C_i\cap T\)</span> is non-empty for every committee <span class="math inline">\(C_i\)</span> (in other words, every committee has at least one trained member).</p>
+<p><span class="math display">\[ \textsf{K-TRAINEES} = \{ \langle C,k\rangle\,|\,
+   \textsf{ there is a set $T$ of employees with $|T|\leq k$ that meets the mandate } \} \]</span></p>
+<p>Prove that K-TRAINEES is NP-complete.</p></li>
+</ol></li>
+<li><p>(15 points) Below are two problems on approximation algorithms. Solve either one for for full credit, or both for extra credit.</p>
+<ol type="a">
+<li><p>Consider the following greedy algorithm for the K-THIEVES problem (defined above): we assign items in order, first item 1 then item 2 then item 3 and so on, giving the largest number of items you can to thief 1 before you send him on his way and start loading up thief 2. This problem will prove how well this works. The points below lead you through the solution, but it is vital that you pay careful attention to when you have integer values (and use floors and ceilings when needed) and which inequalities are strict or not (i.e., “<span class="math inline">\(&lt;\)</span>” vs. “<span class="math inline">\(\leq\)</span>” is important!).</p>
+<ol type="i">
+<li><p>Argue that if thief 1 is given a total weight of <span class="math inline">\(t_1\)</span> pounds and thief 2 is given a total weight of <span class="math inline">\(t_2\)</span> pounds, then <span class="math inline">\(t_1+t_2&gt;b\)</span>.</p></li>
+<li><p>Generalize the result from (i) to prove that if <span class="math inline">\(w=\sum_{i=1}^N w_i\)</span> is the sum of all the weights and <span class="math inline">\(k\)</span> is the number of thieves allocated by this algorithm, then <span class="math inline">\(\lfloor k/2\rfloor &lt; \frac{w}{b}\)</span>.</p></li>
+<li><p>Prove that if OPT is the optimal number of thieves needed, then OPT <span class="math inline">\(\geq\frac{w}{b}\)</span>.</p></li>
+<li><p>Combine the above results to prove that this greedy algorithm is a 2-approximation algorithm. More specifically, you should prove that <span class="math inline">\(k\leq 2\cdot OPT-1\)</span> (again, integer values and correctly handling strict vs. non-strict inequalities is vital!)</p></li>
+</ol></li>
+<li><p>Consider the following greedy algorithm for the K-TRAINEES problem (defined above): Pick an arbitrary committee <span class="math inline">\(C_i\)</span> and send all member of that committee to awesomeness training. Then remove every committee from your set of committees that contain any member from <span class="math inline">\(C_i\)</span> (including <span class="math inline">\(C_i\)</span>). Repeat this until all committees have been removed.</p>
+<p>If every committee has at most 5 members, then this is a 5-approximation algorithm. Prove this.</p>
+<p><em>Hint: This is a very straightforward generalization of the greedy algorithm for vertex cover that is in the book and discussed in class. The approximation bound proof is a generalization of the proof given in the book for vertex cover.</em></p></li>
+</ol></li>
+</ol>
+<p> </p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

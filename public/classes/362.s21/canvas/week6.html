@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 362 - Spring 2021 - Week 6 Activities</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://www.uncg.edu/cmp/faculty/srtate/362.s21/week6.html">View original, outside canvas</a> ]
+   
+        <h2 id="csc-362-spring-2021-week-6-activities">CSC 362 – Spring 2021 – Week 6 Activities</h2>
+<h4 id="for-students-to-do-before-tuesday">For students to do before Tuesday</h4>
+<p>Review Section 4.3 (Process Contents) and Read Chapter 5 (Memory Allocators)</p>
+<h4 id="tuesday-material">Tuesday Material</h4>
+<p>Process memory structure …</p>
+<p>Malloc topics - sbrk - handled by malloc though, so you don’t need to - malloc() - note size_t - discuss - NULL for error return (check!) - note initial values of mem - not cleared - be careful! - init and wipe - realloc() - warning not to just replace a ptr (may fail) - book’s example checks to see if ret value is same - no need…. - calloc - inits (mentions memset) - free</p>
+<hr />
+<p>Didn’t cover on Tuesday: - note how malloc family handles sbrk (warn simplified view) - reserve large memory and dole it out</p>
+<hr />
+<p>Demo - show allocs - use limit</p>
+<ul>
+<li>Examine memlayout.c and talk about printing pointer values
+<ul>
+<li>Note the sleep at the end - just so it sticks around and we can examine</li>
+</ul></li>
+<li>Run it with bogus params (“./memlayout hi there”) and look at pointer values</li>
+<li>In a second window - talk about /proc filesystem
+<ul>
+<li>“ps” and then “ps -a” (process groups)</li>
+<li>with PID, go into /proc/PID - look around a little (fds, cmdline, cwd, exe, environ, …) On cmdline (and later environ) show “all crammed together) then”xxd"</li>
+<li>then examine “maps” and match up addresses to segments Talk about segment permissions</li>
+</ul></li>
+</ul>
+<p>– Got to here on Tuesday</p>
+<ul>
+<li>How does the process memory get set up?
+<ul>
+<li>“objdump -h memlayout” and show all the segments.</li>
+<li>“objdump -d memlayout”</li>
+<li>“objdump -j .data -s memlayout” and again with .rodata</li>
+<li>objdump not used a whole lot - some in reverse engineering</li>
+</ul></li>
+<li>Now “nm memlayout”</li>
+<li>Look at stackoverflow.c - useless, and will warn about unused var - OK
+<ul>
+<li>note global counter - see how many calls were made</li>
+<li>run cmdline and notice just a segfault</li>
+<li>ulimit -a — how many 100k arrays can you make?</li>
+<li>now run in gdb - location is function start - that’s a clue</li>
+<li>print counter - close!</li>
+<li>get out and ulimit -S -s 1024 - (soft limit) redo and see smaller counter</li>
+<li>get out and “ulimit -S -s 30000” - redo - no problems raising</li>
+<li>now ulimit -H -a – see unlimited hard limit</li>
+<li>ulimit -s 1024 and see with -a — then try to raise</li>
+<li>so soft limits are for you to protect yourself - hard limits generally for system to protect itself from you…</li>
+</ul></li>
+</ul>
+<h4 id="tuesday-in-class-activities">Tuesday In-Class Activities</h4>
+<p>Experiment with malloc calls….</p>
+<h4 id="for-students-to-do-before-thursday">For students to do before Thursday</h4>
+<p>???</p>
+<h4 id="thursday-material">Thursday Material</h4>
+<p>something</p>
+<h4 id="thursday-in-class-activities">Thursday In-Class Activities</h4>
+<p>Time relative behavior of malloc vs custom allocator.</p>
+<h4 id="full-assignment-due-next-tuesday">Full Assignment – due next Tuesday</h4>
+<p>??</p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

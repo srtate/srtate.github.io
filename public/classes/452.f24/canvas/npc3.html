@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>NPC info</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://home.uncg.edu/cmp/faculty/srtate/452.f24/npc3.html">View original, outside canvas</a> ]
+   
+        <p>This uses a <a href="npc2.html">full example NP-completness proof</a>, which you should review before we break it down below.</p>
+<h3 id="what-you-need-to-establish-in-an-np-completeness-proof">What you need to establish in an NP-completeness proof</h3>
+<p>A natural way to start writing a proof of some property X is to go to the definition of X to see what is required. However, very few NP-completeness proofs directly use the definition of NP-completeness. Instead, they use a theorem that gives sufficient conditions for proving NP-completeness. In our Theory of Computation class, this is Theorem 7.36 in the textbook:</p>
+<p><img src="NPC-thm.png" /></p>
+<p>Some students incorrectly refer to this as the “definition” of NP-completeness — it does give some conditions that are similar to the definition (Definition 7.34 in the textbook). However, notice that the theorem uses a problem that is NP-complete (problem <span class="math inline">\(B\)</span>) to establish that another problem (problem <span class="math inline">\(C\)</span>) is NP-complete. As a definition this would be nonsense – it would be a circular definition that used NP-completeness to define NP-completeness. The definition of NP-completeness had to be used initially to prove that the first problem(s) were NP-complete, and this is why the Cook-Levin Theorem (Theorem 7.37 in the textbook) is so important. Once we have established some problems as NP-complete using the definition, we have now bootstrapped our ability to use Theorem 7.36 to prove additional problems are NP-complete. The bottom line of this paragraph: In precise writing, like a mathematical proof, wording is important, and so make sure you don’t refer to the conditions in the theorem above as the “definition” of NP-completeness.</p>
+<p>Let’s break down the theorem to see how we can apply it. Our goal is to prove that problem <span class="math inline">\(C\)</span> is NP-complete (the conclusion of the statement in the theorem). To make the predicate of the theorem true, we need to establish two things:</p>
+<ol type="1">
+<li><p><span class="math inline">\(C\)</span> is in <span class="math inline">\(NP\)</span>, and</p></li>
+<li><p>For some known NP-complete problem <span class="math inline">\(B\)</span>, <span class="math inline">\(B\leq_P C\)</span>.</p></li>
+</ol>
+<p>These two things will be two distinct and independent parts of the NP-completeness proof for <span class="math inline">\(C\)</span>. Let’s look at the one at a time, along with our example proof. In our example, the <span class="math inline">\(C\)</span> from the theorem (the problem we want to prove is NP-complete) is the <span class="math inline">\(\textit{PARTITION}\)</span> problem, and the <span class="math inline">\(B\)</span> from the theorem (the problem we already know is NP-complete) is <span class="math inline">\(\textit{SUBSET-SUM}\)</span>.</p>
+<h4 id="step-1-prove-that-your-problem-is-in-np">Step 1: Prove that your problem is in NP</h4>
+<p>To prove that <span class="math inline">\(C\)</span> is in <span class="math inline">\(NP\)</span> we use the definition of <span class="math inline">\(NP\)</span>, which in turn depends on the definition of a verifier. Here are the relevant definitions from our textbook:</p>
+<p><img src="Verifier-and-NP-Def.png" /></p>
+<p>Definition 7.19 tells us that for <span class="math inline">\(C\)</span> to be in <span class="math inline">\(NP\)</span>, it must have a polynomial time verifier. Definition 7.18 tells us what a polynomial time verifier is: Every string <span class="math inline">\(w\)</span> in our language has a certificate (or a “proof” or a “witness”) that can be verified by a polynomial time algorithm. For our example proof, we showed <span class="math inline">\(\textit{PARTITION}\in NP\)</span> in the first paragraph:</p>
+<blockquote>
+<p>We first show that <span class="math inline">\(\textit{PARTITION}\in NP\)</span> by defining the certificate and a verifier for the language. In particular, the certificate for input <span class="math inline">\(\mathbf{a}\)</span> is just the set of indices <span class="math inline">\(L\)</span> for the left side of an equal-weight partition. The verifier <span class="math inline">\(V\)</span> is given input <span class="math inline">\(\langle\mathbf{a},L\rangle\)</span>, and first checks that <span class="math inline">\(L\)</span> this is a subset of <span class="math inline">\(\{1,2,...,n\}\)</span>, where <span class="math inline">\(n\)</span> is the number of items in <span class="math inline">\(\textbf{a}\)</span>. <span class="math inline">\(V\)</span> then goes through the items in <span class="math inline">\(\mathbf{a}\)</span> and adds each item to a running sum for either the left or right side, depending on whether that index is in <span class="math inline">\(L\)</span>. The verifier accepts if these sums are equal after going through all of <span class="math inline">\(\mathbf{a}\)</span>. The verifier clearly runs in polynomial time, and a certificate exists which will be verified if and only if <span class="math inline">\(\langle\mathbf{a}\rangle\in \textit{PARTITION}.\)</span> Therefore <span class="math inline">\(\textit{PARTITION}\in NP\)</span>.</p>
+</blockquote>
+<p>The important parts from the example: The proof introduces what the paragraph is about (“We first show…”). By Definition 7.18, strings are in the language if and only if they have the certificate string <span class="math inline">\(c\)</span> where <span class="math inline">\(V\)</span> accepts input <span class="math inline">\(\langle w,c\rangle\)</span>, so we need to define the certificate and what the verifier does to verify it. We need to justify that the algorithm runs in polynomial time and that the certificate is verified if and only if the input is in the language. In most cases, the verifier only does simple things, so you don’t have to do anything to justify that it runs in polynomial time – you do need to state it, however, since it’s required by the definition that this be a polynomial time verifier.</p>
+<h4 id="part-2-prove-that-an-np-complete-problem-is-polynomial-time-reducible-to-your-problem">Part 2: Prove that an NP-complete problem is polynomial time reducible to your problem</h4>
+<p>Recall the second required part in our NP-completeness proof:</p>
+<ol start="2" type="1">
+<li>For some known NP-complete problem <span class="math inline">\(B\)</span>, <span class="math inline">\(B\leq_P C\)</span>.</li>
+</ol>
+<p>So we need a known NP-complete problem that’s related to the problem we are looking at, and in our example proof that is the <span class="math inline">\(\textit{SUBSET-SUM}\)</span> problem. We’ll talk more about how to identify an appropriate problem to use later, but we’ve picked a problem in our example proof and so we need to prove that <span class="math inline">\(\textit{SUBSET-SUM}\leq_{P} \textit{PARTITION}\)</span>. What does this mean? Let’s go back to the definition:</p>
+<p><img src="PolyReduction-def.png" /></p>
+<p>To apply this definition, we need to define the function <span class="math inline">\(f\)</span>, justify that it is computable in polynomial time, and justify that the main correctness condition <span class="math display">\[ w\in A\ \ \Longleftrightarrow\ \ f(w)\in B\]</span> holds. We’ll do this in three distinct pieces: first we’ll define the function <span class="math inline">\(f\)</span> and justify that it is computable in polynomial time; second, we’ll prove that <span class="math inline">\(w\in A\ \Longrightarrow\ f(w)\in B\)</span>; and third, we’ll prove that <span class="math inline">\(f(w)\in B\ \Longrightarrow\ w\in A\)</span>.</p>
+<h5 id="part-2a-defining-the-reduction-function-f">Part 2a: Defining the reduction function <span class="math inline">\(f\)</span></h5>
+<p>Since we need to show <span class="math inline">\(\textit{SUBSET-SUM}\leq_{P} \textit{PARTITION}\)</span> (from the requirement for proving NP-completeness), mapping this into the definition we have <span class="math inline">\(A\)</span> (in the definition) being <span class="math inline">\(\textit{SUBSET-SUM}\)</span> and <span class="math inline">\(B\)</span> being <span class="math inline">\(\textit{PARTITION}\)</span>. For this reduction, we need a function <span class="math inline">\(f\)</span> where the domain (where the input <span class="math inline">\(w\)</span> in the definition comes from) can be considered instances of problem <span class="math inline">\(A\)</span>, and the range (i.e., <span class="math inline">\(f(w)\)</span>) are instances of problem <span class="math inline">\(B\)</span>. Back to our specific problem, <span class="math inline">\(f\)</span> must take an input to the <span class="math inline">\(\textit{SUBSET-SUM}\)</span> problem and compute from that an input to the <span class="math inline">\(\textit{PARTITION}\)</span> problem. So <span class="math inline">\(f\)</span>’s input is of the form <span class="math inline">\(\langle S,t\rangle\)</span> and produces an output of the form <span class="math inline">\(\textbf{a}\)</span>.</p>
+<p>The second paragraph of our example proof does exactly this:</p>
+<blockquote>
+<p>Next, we show that <span class="math inline">\(\textit{SUBSET-SUM}\leq_{P} \textit{PARTITION}\)</span>, where <span class="math inline">\(\textit{SUBSET-SUM}\)</span> is defined on page 296 of the textbook. We first define the reduction function: Given an input <span class="math inline">\(\langle S,t\rangle\)</span> for <span class="math inline">\(\textit{SUBSET-SUM}\)</span>, the reduction function calculates <span class="math inline">\(w=\sum_{x\in S} x\)</span>, the total weight of all elements in the set <span class="math inline">\(S\)</span>. Next, we define <span class="math inline">\(t&#39;=\max(t,w-t)\)</span>, which ensures that <span class="math inline">\(t&#39;\geq w/2\)</span>. Note that <span class="math inline">\(w-t\)</span> is the weight of items excluded from any subset of weight <span class="math inline">\(t\)</span>, so <span class="math inline">\(\langle s,t&#39;\rangle\in\textit{SUBSET-SUM}\)</span> if and only if <span class="math inline">\(\langle s,t\rangle\in\textit{SUBSET-SUM}\)</span>. Finally, create sequence <span class="math inline">\(\mathbf{a}\)</span> by listing out the items in <span class="math inline">\(S\)</span> along with a final new item with value <span class="math inline">\(b=2t&#39;-w\)</span>. This sequence <span class="math inline">\(\mathbf{a}\)</span> is the output of the reduction, designed to be an input to the <span class="math inline">\(\textit{PARTITION}\)</span> problem. Note that the weight of all elements in <span class="math inline">\(\mathbf{a}\)</span> is <span class="math inline">\(w+b=w+(2t&#39;-w)=2t&#39;\)</span>. These are all simple computations, so the reduction can be computed in polynomial time. We next show that this is a valid reduction.</p>
+</blockquote>
+<p>Notice that all the pieces are here: input is <span class="math inline">\(\langle S,t\rangle\)</span>, we have a well-defined function we can compute to give us an <span class="math inline">\(\mathbf{a}\)</span>, and we wrap it up by noting that the function is polynomial time. Other than the correctness condition, that’s all we need for this part!</p>
+<h5 id="part-2b-proving-that-win-a-longrightarrow-fwin-b">Part 2b: Proving that <span class="math inline">\(w\in A\ \Longrightarrow\ f(w)\in B\)</span></h5>
+<p>Again, with our example problem, this means proving that <span class="math inline">\(\langle S,t\rangle\in\textit{SUBSET-SUM}\Longrightarrow\mathbf{a}\in\textit{PARTITION}\)</span>. Since the only case that matters for this logical statement is when <span class="math inline">\(\langle S,t\rangle\in\textit{SUBSET-SUM}\)</span>, we start the third paragraph with a clear statement that this is the case we’re considering. Here’s the third paragraph of the proof:</p>
+<blockquote>
+<p>Consider an input <span class="math inline">\(\langle S,t\rangle\in\textit{SUBSET-SUM}\)</span>, so <span class="math inline">\(S\)</span> contains a subset of weight <span class="math inline">\(t\)</span> and also of <span class="math inline">\(t&#39;\)</span> (it might be the same subset). Let <span class="math inline">\(T\)</span> be a subset of weight <span class="math inline">\(t&#39;\)</span>, and put the indices (in <span class="math inline">\(\mathbf{a}\)</span>) of these values from <span class="math inline">\(T\)</span> into set <span class="math inline">\(L\)</span> so that <span class="math inline">\(\sum_{i\in L} a_i=t&#39;\)</span>. Since the total weight of all items in <span class="math inline">\(\mathbf{a}\)</span> is <span class="math inline">\(2t&#39;\)</span>, the elements on the left are exactly half of the total weight, and so <span class="math inline">\(\langle\mathbf{a}\rangle\in \textit{PARTITION}\)</span>.</p>
+</blockquote>
+<p>So starting with an input <span class="math inline">\(\langle S,t\rangle\in\textit{SUBSET-SUM}\)</span> we derive the conclusion that <span class="math inline">\(\mathbf{a}\in\textit{PARTITION}\)</span>. In other words, in the terms of the definition, we have shown that <span class="math inline">\(w\in A\ \Longrightarrow\ f(w)\in B\)</span>.</p>
+<h5 id="part-2c-proving-that-fwin-b-longrightarrow-win-a">Part 2c: Proving that <span class="math inline">\(f(w)\in B\ \Longrightarrow\ w\in A\)</span></h5>
+<p>This is like the previous part, but in the other direction. We start by considering just the case that results in <span class="math inline">\(f(w)\in B\)</span>. Here’s that part:</p>
+<blockquote>
+<p>Next consider an input that results in <span class="math inline">\(\langle\mathbf{a}\rangle\in \textit{PARTITION}\)</span>. Since the sum of all elements in <span class="math inline">\(\mathbf{a}\)</span> is <span class="math inline">\(2t&#39;\)</span>, this means we can divide the elements into a “left side” and “right side” so that the sum of each side is <span class="math inline">\(t&#39;\)</span>. We arrange the sides so that the new weight <span class="math inline">\(b\)</span> element from the reduction is on the right side. Therefore, the left side consists of items from <span class="math inline">\(S\)</span> that add up to <span class="math inline">\(t&#39;\)</span>. As noted above, such a set exists if and only if there is a subset of <span class="math inline">\(S\)</span> that adds up to <span class="math inline">\(t\)</span>, so <span class="math inline">\(\langle S,t\rangle\in\textit{SUBSET-SUM}\)</span>.</p>
+</blockquote>
+<p>So starting with the assumption that our function <span class="math inline">\(f\)</span> produced an <span class="math inline">\(\mathbf{a}\in\textit{PARTITION}\)</span>, we reach the conclusion that <span class="math inline">\(\langle S,t\rangle\in\textit{SUBSET-SUM}\)</span>. In other words, in the terms of the definition, we have shown that <span class="math inline">\(f(w)\in B\
+\Longrightarrow\ w\in A\)</span>.</p>
+<h4 id="part-3-wrap-it-all-up">Part 3: Wrap it all up!</h4>
+<p>At this point we’ve written a lot in our proof — four paragraphs, each with a specific purpose. It’s easy for a reader to lose track of the original point, so it’s good to recap everything. The final paragraph in our proof does this, summarizing what we’ve shown and referencing key theorems that we relied on:</p>
+<blockquote>
+<p>The three paragraphs above, taken together, show that the reduction we defined above is a valid polynomial time reduction from <span class="math inline">\(\textit{SUBSET-SUM}\)</span> to <span class="math inline">\(\textit{PARTITION}\)</span>, so <span class="math inline">\(\textit{SUBSET-SUM}\leq_{P} \textit{PARTITION}\)</span>. Since we also showed that <span class="math inline">\(\textit{PARTITION}\in NP\)</span>, and we know that <span class="math inline">\(\textit{SUBSET-SUM}\)</span> is NP-complete by Theorem 7.56, it follows from Theorem 7.36 that <span class="math inline">\(\textit{PARTITION}\)</span> is NP-complete. QED</p>
+</blockquote>
+<p>The description above walks through the example proof in the context of definitions, theorem, and specific things that we need to prove. There’s a reason why every single statement in the proof is there, and you should be able to identify the logical purpose of each statement.</p>
+<p>Next I’ll walk through how an NP-completeness proof can be “graded” – this is roughly what I look for when grading a student-written proof on an assignment or an exam. If you check these things before you submit your work, then as long as these pieces are there (and you correctly justified/proved them) then you’ll get a decent grade!</p>
+<p><a href="npc4.html">next</a></p>
+<p> </p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

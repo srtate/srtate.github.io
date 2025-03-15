@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 454/654 - Notes on possible NP-completeness problems</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://www.uncg.edu/cmp/faculty/srtate/454.s22/npc-possibilities.html">View original, outside canvas</a> ]
+   
+        <h2 id="notes">Notes…</h2>
+<ol type="1">
+<li><p>Dominating set [G&amp;J GT2] – Red from vertex cover. Basically add a new vertex for each edge and make a triangle with the original edge. DS in this graph doesn’t need to use any of the new verts, so then a DS is a VC in orig. More interesting: Still NPC on bipartite graphs, if duplicate the original G on both sides (with edges changes to be L-R and self edges added).</p></li>
+<li><p>Monochromatic Triangle [G&amp;J GT6] – Partition edge set into two sets such that neither subgraph has a triangle. Reduce from 3SAT.</p></li>
+<li><p>Feedback Vertex Set [G&amp;J GT7] - Is there a subset of <span class="math inline"><em>k</em></span> vertices such that every directed cycle has a vertex in the subset. Reduce from vertex cover. Just turn each undir edge in VC to a pair of dir edges. Remains NPC for undirected graphs. For simple cycle make each edge a triangle.</p></li>
+<li><p>Same as prev, but subset of edges (Feedback Arc Set) [G&amp;J GT8] Notes that is trivially solvable in poly time for undirected graphs.</p></li>
+<li><p>Partition into Hamiltonian subgraphs [G&amp;J GT13] (partition vertices into <span class="math inline"><em>k</em></span> sets so that each induced subgraph is Hamiltonian).</p></li>
+<li><p>Partition into forests [G&amp;J GT14]. Undirected graph. Partition vertices into at most <span class="math inline"><em>k</em></span> disjoint sets, each of which is acyclic. Red from 3-colorability.</p></li>
+<li><p>Partition into cliques [G&amp;J GT15]. At most <span class="math inline"><em>k</em></span> sets, each being a complete subgraph. Red from <span class="math inline"><em>k</em></span>-colorability.</p></li>
+<li><p>Induced path [G&amp;J GT23]. At least <span class="math inline"><em>k</em></span> vertices induce a subgraph that is a simple path. Note not just longest simple path, since extraneous edges are not allowed. Red from 3SAT. (Longest path without shortcuts in given vertices. Chordless. Not nec shortest path since could be a shorter path that uses non-included vertices.)</p></li>
+<li><p>Maximum <span class="math inline"><em>k</em></span>-connected subgraph [G&amp;J GT31] (upper-bound both subgraph vertex size and edge size). A simple version is with <span class="math inline"><em>k</em></span> fixed to 2 is still NPC, and is a pretty simple reduction from HAM-CYCLE. Note easy to solve for <span class="math inline"><em>k</em> = 1</span>.</p></li>
+<li><p>Hamiltonian completion [G&amp;J GT33] - min number of edges to add. Was assigned previously when I called it HAM-EXTEND.</p></li>
+<li><p>HAM-PATH without specifying endpoints.</p></li>
+<li><p>Largest common subgraph [G&amp;J GT49] - reduce from CLIQUE (or HAM-CYCLE?). Note need to talk about isomorphic graphs for this problem to make sense.</p></li>
+<li><p>Path with forbidden pairs [G&amp;J GT54] - endpoints s and t given, and set of pairs of vertices - path can include at most one vertex from each forbidden pair. Red from 3SAT.</p></li>
+<li><p>K-closure [G&amp;J GT58] - Directed graph. Is there a subset of at most <span class="math inline"><em>k</em></span> vertices such that no edge goes from outside the subset to inside? Red from clique.</p></li>
+<li><p>Isomorphic spanning tree - given graph and tree, does G have a spanning tree isomorphic to T? Red from HAM-PATH.</p></li>
+<li><p>Max cut [G&amp;J ND16] - weighted graph and lower bound k in input. Red from MAX 2-SAT. NPC even if all w=1 (so unweighted). (My note: maximizing edges across a cut is minimizing edges fully on one side of cut, so maybe red from max bipartite subgraph?)</p></li>
+<li><p>Rural postman [G&amp;J ND27] - weighted graph, bound B, and a subset of edges. Find a circuit (not nec simple) that includes all edges in the subset, and has total weight at most B. Red from HAM-CYCLE.</p></li>
+<li><p>Exact cover by 3-sets [G&amp;J SP2] - given 3-elem subsets, find a collection that includes each element exactly once. Red from 3DM (3D matching, which is red from 3SAT). (Could make it a “pick teams of size 3” problem.)</p></li>
+<li><p>Set packing [G&amp;J SP3] Given collection of sets and lower bound k – does there exist at least k mutually disjoint sets?</p></li>
+<li><p>Set splitting [G&amp;J SP4] - collection of subsets. Is there a partition of elements such that every subset has at least one element from each part.</p></li>
+<li><p>Min set cover [G&amp;J SP5] - Collection of subsets and bound k. Can we pick k subsets that cover universe? Red from X3C in G&amp;J. NPC even if all sets have size &lt;= 3.</p></li>
+<li><p>Hitting set [G&amp;J SP8] - Collection of subsets and bound k. Is there a subset of elements such that every subset in collection contains at least one of those elements. (Phrase as “representatives”?) Red from Vertex cover.</p></li>
+<li><p>Bin packing [G&amp;J SR1] - Values, bin capacity, and bound k - divide into at most k bins? Red from PARTITION or 3-PARTITION. (Rephrase as multi-thief knapsack?)</p></li>
+<li><p>Shortest common supersequence [G&amp;J SR8] - finite set of strings and bound k. Is there a string of length k such that each string in input is a subsequence? Red from vertex cover. NPC with alphabet size 5. Polytime solvable if just 2 strings (compute LC subsequence).</p></li>
+<li><p>Shortest common superstring [G&amp;J SR9] - Red from Vertex cover (for cubic graphs?). NPC even with binary alphabet.</p></li>
+<li><p>Longest common subsequence [G&amp;J SR10] - set R and bound K. Solvable for fixed K or |R|. Red from Vertex cover.</p></li>
+<li><p>Knapsack - red from PARTITION.</p></li>
+<li><p>Not-all-equal 3SAT [G&amp;J LO3] - each clause must have at least one true and at least one false. Red from 3SAT.</p></li>
+<li><p>One-in-three 3SAT [G&amp;J LO4] - each clause must have exactly one true. Red from 3SAT. Remains NPC even if no clause has a negated literal.</p></li>
+<li><p>Max 2-SAT [G&amp;J LO5] - 2-CNF and bound k. Can satisfy at least k clauses? Red from 3SAT. P if k=|C|.</p></li>
+<li><p>Betweenness [G&amp;J MS1] - triples (a,b,c) taken from set A, does there exist an ordering of A so that each b is between a and c? Red from set splitting.</p></li>
+<li><p>Clustering [G&amp;J MS9] - distance matrix for set X, and ints k and</p>
+<ol start="2" type="a">
+<li>Is there a partition of X into k sets such that max distance within each set is b? Red from 3-colorability. Still NPC for fixed K=3 and all distances in 0/1. P if k=2.</li>
+</ol></li>
+<li><p>k-COLOR to CLIQUE (from online forum) - Given G,k, create k*n vertex graph, edges between (u,c) and (v,d) if either uv not in G or c!=d. n CLIQUE in this graph iff k-coloring in original graph.</p></li>
+</ol>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

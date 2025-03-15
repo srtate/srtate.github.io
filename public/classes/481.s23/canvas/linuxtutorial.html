@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>Linux Tutorial</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://home.uncg.edu/cmp/faculty/srtate/481.s23/linuxtutorial.html">View original, outside canvas</a> ]
+   
+        <h2 id="linux-tutorial">Linux Tutorial</h2>
+<p>Knowing how to use Linux is a vital skill for anyone that works in technology, and is particularly important for people who work in security. Whether you are managing cloud resources and web servers or you are doing security testing, you will almost certainly be working with Linux systems. The command-line interface to Linux is an incredibly powerful tool once you learn how to use it, so taking the time to learn this will pay off many times over in the future. Linux is one of many operating systems that are derived from <a href="https://en.wikipedia.org/wiki/Unix">Unix</a>, an operating system that dates back to 1971, and we generally refer to Linux, FreeBSD, and others as “Unix-like” operating systems.</p>
+<p>Beyond the basic skills you gain from becoming fluent with Linux, working with the command line in Linux puts you closer to the level of the operating system and processes, and by working at this level you will develop a better understanding of what really goes on in a computer when programs are run. All popular operating systems (including Windows, Mac OS X, and even mobile operating systems like Android and iOS) have functionality and design rooted in Unix and Unix-like operating systems, and the basic concepts of processes, program arguments, and environment variables are the same in all these systems. Even if you never use an actual Linux system again, keep in mind that all these systems work the same underneath different surface appearances.</p>
+<p>Let’s go ahead and get one thing out of the way: I am using “Linux” in a way that has become common, but is technically incorrect. “Linux” is technically just the operating system kernel, the program that manages system resources such as memory, disk, network interfaces, etc., and when you are actually interacting with a Linux system you are using a suite of programs and tools that are provided by others and are not part of the Linux kernel. The most common set of tools, which includes that <code>bash</code> shell that is a big part of this tutorial, is provided by the <a href="https://www.gnu.org/home.en.html">GNU project</a> from the <a href="https://www.fsf.org/">Free Software Foundation</a>. The GNU folks would like for everyone to use the name “<a href="https://www.gnu.org/gnu/linux-and-gnu.html">GNU/Linux</a>” when talking about the Linux kernel combined with GNU tools, but this terminology is awkward and so it is not widely used. While I understand their desire for credit, if we insisted on putting every major contributor to a modern Linux-based system in its name, we’d end up calling it something like “GNU/X/Apache/LibreOffice/Mozilla/Linux” (or more!).</p>
+<p>To add confusion to that terminology, a lot of the material in this tutorial really isn’t tied to Linux. For example, you can use the <code>bash</code> shell in OS X or in Cygwin under Windows or in the Windows Subsystem for Linux in Windows 10. While what we cover in this tutorial can be used directly in those environments, you are not actually using Linux in any of them. This tutorial was developed for the UNCG Principles of Computer Security class, and we will be using Linux systems, but don’t think that the information in this “Linux Tutorial” is only usable on Linux systems!</p>
+<p>You are strongly encouraged to work along with this tutorial on a Linux system. And don’t just mindlessly go along typing commands you see here, but experiment and explore – be curious and follow your curiosity. UNCG students have access to several Linux systems that are managed either at the university level or specifically for the security class, but students these days often experiment on their own systems by running Linux within a virtual machine. I encourage you to do this! However, while setting up a virtual machine is not difficult, it is outside the scope of this tutorial. Students in the security class will be given instructions on how to do this separately, and will be given pre-configured virtual machines images to use for the class.</p>
+<h3 id="overview-the-big-picture">Overview – The Big Picture</h3>
+<p>This tutorial is all about using Linux from the “command line interface,” or “CLI,” which is quite a different experience if you’re only used to interacting with computers with a graphical point-and-click style interface (a “graphical user interface,” or GUI). This means that you perform tasks by typing commands at a prompt, inside a terminal window that might look something like this:</p>
+<p><img src="linux-cli.png" /></p>
+<p>The first part of that, which says “<code>user@host:~</code>” is the <em>prompt</em>, and the cursor is after that waiting for you to type a command. For example, you could type “<code>ls</code>” at the command prompt (followed by Enter) to get a listing of files. We’ll look at specific commands, including <code>ls</code>, later in this tutorial. The program that controls this interaction is called the “shell,” and there are many different shells you can use in Linux. This tutorial assume you’re using the <code>bash</code> shell (which stands for the “Bourne Again SHell” – a slightly geeky pun – you can look up the meaning if you’re curious, and you really should be curious!), but all the common shells work similarly. Note that shells are all highly configurable and customizable, and the prompt can be configured to say almost anything. The one shown above is a standard style for a Linux system, but don’t freak out if yours looks different!</p>
+<p>The shell (providing the command prompt) can either come from a local Linux system that you are sitting at, or it can come from a Linux system anywhere in the world that you are connected to over the Internet. Now matter where the system is that you are working on, you will run a <em>terminal program</em> locally displays the results on your screen and sends your keyboard typing to the Linux system. If you are actually sitting at the Linux system you are working on, you just run a terminal program from the “Programs” or “Applications” menu, and you’ll get a prompt. If you are working on a system somewhere else (a “remote system”), the standard way to get a command prompt is to run a local terminal program that communicates over the network using the “secure shell” (SSH) protocol.</p>
+<p>A common way for Windows users to access a remote Linux system is with the program <a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/">PuTTY</a>. PuTTY provides the terminal window, and a secure (encrypted) communication channel to the remote Linux system, which can be visualized like this:</p>
+<p><img src="linux-PuttyToServer.png" /></p>
+<p>Note that PuTTY is just a communication program, and doesn’t do <em>anything</em> else. It just takes characters it receives from the network and displays them in the terminal window, and sends characters that you type out to the network. In the old days, we would have called something that does this a “dumb terminal,” emphasizing the fact that it doesn’t really <em>do</em> anything. A common mistake students make when seeing PuTTY for the first time is to talk about “learning to use PuTTY” when they really are talking about learning Linux shell commands. When you type <code>ls</code> at the Linux command prompt to list files, that is a Linux command, executed by the remote system. PuTTY has absolutely nothing to do with that other than allowing you to type the characters ‘<code>l</code>’ and ‘<code>s</code>’ and displaying the results that come back. “Learning to use PuTTY” is a pretty meaningless statement in this context — what you <em>should</em> say is that you are “learning to use Linux” (or bash).</p>
+<h4 id="a-few-commands-to-get-started">A few commands to get started…</h4>
+<p>You can think of the command line as a bunch of words separated by spaces, where the first word is the “command” you want the system to perform and subsequence words are additional information to the command (this is a bit of an oversimplification, but it will be fine for our purposes). We will look at some of the most useful commands later, after we have dug into some details on how everything works, but for now let’s start with a few simple commands so we have something to use for examples.</p>
+<p>Everyone who has used a computer is familiar with the notion of folders, which can hold files or other folders. The “folder” terminology comes from the graphical representation in a file browser, and the traditional term for this that predates the graphical user interface is a “directory.” Whenever you or a program interacts with the system, it has a “current directory” (or “current working directory”).</p>
+<ul>
+<li><p><code>ls</code>: lists the files in the current directory. If you type “<code>ls    -l</code>” instead of just <code>ls</code>, you’ll get the long-form listing that shows file modification dates/times, file sizes, and other information. It will look something like this:</p>
+<p><img src="linux-cli-ls.png" /></p></li>
+<li><p><code>pwd</code>: tells you…</p></li>
+<li><p><code>cd</code>: tells you…</p></li>
+</ul>
+<p>Ways to get help. <code>man</code> and <code>--help</code> (not universal)</p>
+<ul>
+<li><code>man</code>: tells you…</li>
+</ul>
+<p>Notes</p>
+<ul>
+<li><p>Commands are generally just the names of programs (<code>cd</code> is different!)</p></li>
+<li><p>Say more on filesystems and structure?</p></li>
+</ul>
+<h3 id="processes">Processes</h3>
+<p>Processes</p>
+<ul>
+<li>Remember how computers started - to process information
+<ul>
+<li>Basic model: program takes inputs, does computation, and produces outputs.</li>
+<li><strong>Draw picture</strong></li>
+<li>This is a “process” (separate memory space, isolated from other things on the computer other than via inputs and outputs)</li>
+</ul></li>
+<li>Interactive programs were rare (non-existent at the beginning)
+<ul>
+<li>May seem odd to people today who mostly use interactive tools (web browsers, word processors, …)</li>
+<li>A lot of insight from viewing programs like this, even if most “computer use” these days (at least consumer) is interactive.</li>
+</ul></li>
+</ul>
+<h3 id="types-of-inputs-and-outputs">Types of Inputs and Outputs</h3>
+<p>Lets start refining the program/process picture above</p>
+<p>Kinds of inputs:</p>
+<ul>
+<li>The data being processed
+<ul>
+<li>streamed into the process</li>
+<li>can come from file, terminal, or from another program, …</li>
+</ul></li>
+<li>Inputs to control how the data is processed - specific to a run
+<ul>
+<li>Can think of as commands</li>
+<li>Expect this to change regularly, possibly with every run</li>
+<li>These are “command line arguments” (think <code>-l</code> with <code>ls</code> above)</li>
+</ul></li>
+<li>Inputs that describe system-level or long term configuration issues
+<ul>
+<li>Example: Where to find system libraries</li>
+<li>Used the same way by many processes</li>
+<li>Environment variables – inherited</li>
+</ul></li>
+</ul>
+<p>Kinds of outputs:</p>
+<ul>
+<li>Results of process, streamed out</li>
+<li>Messages to user about processing (error/warning/info messages)</li>
+</ul>
+<p><strong>Draw refined picture</strong></p>
+<ul>
+<li>3 inputs: stdin stream, args, env</li>
+<li>2 outputs stdout stream and stderr stream</li>
+</ul>
+<h3 id="sources-for-inputs-and-shell-functionality">Sources for Inputs and Shell Functionality</h3>
+<p>Where do the inputs come from, and what does a shell do (these are related!)</p>
+<ul>
+<li>first word to name of a program (more later!)</li>
+<li>rest are arguments - show main (C or Java)</li>
+<li>shell expansion/processing (core vs bash) [put off advanced until later]</li>
+<li>I/O streams [incl idea of a pipe, but get back to later w/examples]</li>
+<li>Environment variables (use, inheritance, …) [PATH and CLASSPATH and PS1]
+<ul>
+<li>exporting…</li>
+</ul></li>
+</ul>
+<h3 id="more-process-details">More Process Details</h3>
+<p>A few more details on processes</p>
+<ul>
+<li>process properties (incl users/groups)</li>
+<li>memory layout</li>
+<li>shared libraries</li>
+</ul>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

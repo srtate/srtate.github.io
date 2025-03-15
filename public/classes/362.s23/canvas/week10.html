@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 362 - Spring 2021 - Week 10 Activities</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://home.uncg.edu/cmp/faculty/srtate/362.s23/week10.html">View original, outside canvas</a> ]
+   
+        <h2 id="csc-362-spring-2021-week-10-activities">CSC 362 – Spring 2021 – Week 10 Activities</h2>
+<h3 id="spring-2021-timing">Spring 2021 timing</h3>
+<p>Tuesday 3/23:</p>
+<ul>
+<li>[14 min] Intro with some project discussion (8 min)</li>
+<li>[39 min] Slides (last was skipped)</li>
+<li>[5 min]
+<ul>
+<li>Student ? + getconf for config variables (note diff from env variables)
+<ul>
+<li>grep PAGE from getconf</li>
+<li>man page for “sysconf” for prog interface / get page size for mmap offset</li>
+</ul></li>
+</ul></li>
+<li>[6.5 min]
+<ul>
+<li>Look at hello world with a big delay (see pages)
+<ul>
+<li>strace - run helloworld with strace - see use for shared library<br />
+</li>
+<li>show mmap and address - then look in /proc/../maps</li>
+<li>student ? about keyloggers</li>
+</ul></li>
+</ul></li>
+<li>[7.5 min]
+<ul>
+<li>prog1.c - walk through code
+<ul>
+<li>remember to check ret val - mmap is different - show man page</li>
+</ul></li>
+<li>prog2.c - note it’s a busywait - no cond var possible…</li>
+<li>run prog1, see file, run prog2 - send message
+<ul>
+<li>xxd to see the file</li>
+</ul></li>
+</ul></li>
+<li>Didn’t do in-class activity - would work with permissions</li>
+</ul>
+<p>So total slides+examples: 58 min - Goal for Fall: Intro/project (10 min); slides (38 min) ; 5 more min for ex</p>
+<p><strong>Use the file example (star wars) for file-backed mmap?</strong></p>
+<p><strong>Talk in slides about naming/namespace issues mmap/pipe</strong></p>
+<p>Thursday 3/25:</p>
+<ul>
+<li>[4.5 min] Intro material</li>
+<li>[30.5 min] Slides</li>
+<li>[5 min] Command-line examples
+<ul>
+<li>Example of cut command using /etc/passwd - then pipe to sort</li>
+<li>mkfifo example from class
+<ul>
+<li>Comm between two windows using fifo (echo and cat)</li>
+<li>Use tee to send multiple places</li>
+</ul></li>
+</ul></li>
+<li>[5 min] Code example
+<ul>
+<li>pipedemo.c - pipe code from slide</li>
+<li>Show use of “curl” to get www.uncg.edu</li>
+<li>Then go through code - uses fdopen - describe</li>
+</ul></li>
+<li>[2 min] Intro to activity</li>
+</ul>
+<p>Total slides+examples: 40 min</p>
+<p>Activity: Pipe output of command to sort - starting point is example code</p>
+<h4 id="for-students-to-do-before-tuesday">For students to do before Tuesday</h4>
+<p>So first understand how process isolation works, and opportunities for sharing Virtual memory - basic idea - 4 step process in book: request, check TLB, MMU translation, actual access - basic idea and need for pages (could also mention segments) - memory sizes/page sizes/number pages for 32 and 64 bit machines - “page” (4kb in book) [show “getconf -a” in VM - search for “PAGE” - can also show things like PATH_MAX - configurable on some archs, incl ia64] + will see how to do this programmatically with “sysconf” later + also look in smaps for a process and show in top + use /proc/<br /><span class="math display">/<em>s</em><em>m</em><em>a</em><em>p</em><em>s</em> − −</span><br /> is current PID - “page table” maps from page offset to frame number (vm to phys) + “frame” typically means phys, “page” virtual, although not a real def - address bits - page and offset parts + pic in book for single page table + calc size of single page table for 32-bit and 64-bit archs + note about sparse page tables - esp a little at bottom and a little at top - maybe work through this with a specific example? - multi-level page tables + pic.. - 10 bits for each level + find picture of actual PT entry from intel docs? + prob: now 3 accesses per mem read! - role of TLB + [note effect on efficiency and ineff in context switching] - note how <em>virtual</em> memory and paging can be supported - sharing pages between processes - protections/segfault<br />
++ ro pages, esp for shared libs + mmap + other page bits: dirty bit, + [ get back to COW idea with fork? ] + page faults - minor (just not mapped yet), major (swap in), invalid mmap - note that IPC <em>could</em> be done by writing to a file that others read, but… - note POSIX again, so portable… - idea map vm page to file block - same file = sharing (“sync” to file) + lazy allocation/loading - don’t read the whole file! + reserves address space, but that’s it up-front - flags: protections, sharing/private - private for I/O ops, not sharing? - example - opens file, gets size (fstat - rel to stat), + note that offset must be a multiple of page size - explain bit manip! - overall security benefit comment: share some carefully-chosen mem, but not all! pipes - POSIX again - saw from a command-line standpoint - pipe system call (ex is use right before fork) + both ends always created in one process, so only useful before a fork - note common gotcha with reading until EOF - EOF In a pipe requires close + close by all writers - incl the reader process that inherits? - example with SIGPIPE, but haven’t talked about signal handlers yet! - buffering and “filling up” a pipe + writes to a pipe are atomic (up to size of pipe) + note pipe size traditionally very limited (page size) + [way to change pipe buffer size - use fcntl] - example with pipe2 (pipe with flags) and dup2 to attach to stdin/stdout - using fdopen to wrap for buffered I/O</p>
+<p>[??: can put mutex’s or cond vars in mmap shared space? prob not….]</p>
+<p>[??: anonymous shared space w/o munmap? sticks around?]</p>
+<p>POSIX page: https://pubs.opengroup.org/onlinepubs/9699919799/functions/mmap.html Linux page: https://man7.org/linux/man-pages/man2/mmap.2.html</p>
+<p>For demos: - “getconf -a” (then pipe to “grep PAGE”) and “getconf PAGE_SIZE” (also look at PATH_MAX, for example) + do “man sysconf” to show how a program can get this info - Do more /proc/<br /><span class="math display">/<em>s</em><em>m</em><em>a</em><em>p</em><em>s</em>(<em>m</em><em>e</em><em>n</em><em>t</em><em>i</em><em>o</em><em>n</em></span><br /> is PID Of shell, smaps is detailed) - strace with hello world and show uses of mmap - Example code to open, gets file size (fstat!), and mmap + Example 2: open new file - maybe even in /tmp? - Example: two shell windows, one will read a string from user and put in mmap, other will read that, then look at backing file after exit.</p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

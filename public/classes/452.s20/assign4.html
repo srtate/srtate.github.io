@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 452/652 - Spring 2020 - Assignment 4 - Due April, 2020</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../css/class_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+        <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark uncg-navbar fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="https://www.uncg.edu/">
+          <img class="collapse navbar-collapse" src="../img/uncg_class.png" alt="UNC Greensboro">
+          <img class="navbar-toggler" src="../img/uncg_mobile.png" alt="UNCG">
+        </a>
+        <div class="navbar-brand d-flex flex-column text-left"
+	     style="line-height: 1.2;">
+          <span>CSC 452</span>
+          <span class="small collapse navbar-collapse"><em>Theory of Computation</em></span>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link " href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="syllabus.html">Syllabus</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="schedule.html">Schedule</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="assignments.html">Assignments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://uncg.instructure.com/">Canvas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- Page Content -->
+    <div class="container">
+   
+        <h2 id="assignment-4---due-april-1-2020">Assignment 4 - Due April 1, 2020</h2>
+<ol type="1">
+<li><p>For bit <span class="math inline">\(b\in\{0,1\}\)</span> and string <span class="math inline">\(w\in\{0,1\}^*\)</span> define <span class="math inline">\(\texttt{Count}(b,w)\)</span> to be the number of times bit <span class="math inline">\(b\)</span> appears in string <span class="math inline">\(w\)</span>. For example, <span class="math inline">\(\texttt{Count}(0,00101110)=4\)</span> since there are four <span class="math inline">\(0\)</span>’s in <span class="math inline">\(00101110\)</span>. Use the Pumping lemma for context free languages (Theorem 2.34 on page 125) to show that the following language over <span class="math inline">\(\Sigma=\{0,1,\#\}\)</span> is not a context-free language:</p>
+<p><span class="math display">\[ L = \{ x\#y \ |\  \texttt{Count}(0,x)=\texttt{Count}(0,y)
+            \mbox{ and } \texttt{Count}(1,x)=\texttt{Count}(1,y) \}\]</span></p>
+<p><em>Note on the language: This is saying that <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> have the same bits, but possibly in a different order — in other words, <span class="math inline">\(y\)</span> is a permutation of <span class="math inline">\(x\)</span>.</em></p></li>
+<li><p>Consider the following CFG:</p>
+<p><span class="math display">\[ \begin{array}{l}
+S \rightarrow T\dashv \\
+T \rightarrow T + \texttt{a}\ |\ \texttt{a}\\
+\end{array} \]</span></p>
+<ol type="a">
+<li><p>Draw out the DFA <span class="math inline">\(DK\)</span> that is constructed for performing the DK-test.</p></li>
+<li><p>Use <span class="math inline">\(DK\)</span> to parse the input <span class="math inline">\(\texttt{a}+\texttt{a}+\texttt{a}\dashv\)</span>, showing each step like we did in class.</p></li>
+<li><p><em>Extra credit:</em> Draw a DPDA from <span class="math inline">\(DK\)</span>, using the procedure sketched in the textbook’s proof for Lemma 2.58 (page 147).</p></li>
+</ol></li>
+<li><p>Consider the following CFG:</p>
+<p><span class="math display">\[ \begin{array}{l}
+S \rightarrow C1A\dashv \\
+A \rightarrow AB\ |\ \varepsilon\\
+B \rightarrow 0 | 1\\
+C \rightarrow BCB | 0A\# \\
+\end{array} \]</span></p>
+<ol type="a">
+<li><p>Draw out the DFA <span class="math inline">\(DK\)</span> that is constructed for performing the DK-test. (<em>Self-check hint: <span class="math inline">\(DK\)</span> will have 14 states, 8 of which are accepting states.</em>)</p></li>
+<li><p>For each accepting case, mark whether the two DK-test conditions (on page 143, directly above Theorem 2.52) are met. If they are <em>not</em> met, explain why not.</p></li>
+<li><p>Is this grammar a DCFG?</p></li>
+</ol></li>
+<li><p>Consider Turing machine <span class="math inline">\(M_1\)</span> from Example 3.9 (page 173). Give the sequence of configurations that <span class="math inline">\(M_1\)</span> enters when started with each of the following input strings (note that this is similar to Exercise 3.2 in the book, just with different inputs — see the provided solution to 3.2a for guidance):</p>
+<ol type="a">
+<li><p>0#</p></li>
+<li><p>01#01</p></li>
+<li><p>01#010</p></li>
+</ol></li>
+<li><p>The class of Turing-recognizable languages is closed under union. However, the following proof is not correct:</p>
+<blockquote>
+<p>Consider language <span class="math inline">\(A\)</span> that is recognized by a Turing machine <span class="math inline">\(M_A\)</span>, and language <span class="math inline">\(B\)</span> that is recognized by Turing machine <span class="math inline">\(M_B\)</span>. We can create a TM <span class="math inline">\(M_C\)</span> that recognizes <span class="math inline">\(C=A\cup B\)</span> as follows: For a string <span class="math inline">\(x\)</span>, <span class="math inline">\(M_C\)</span> first runs <span class="math inline">\(M_A\)</span> on <span class="math inline">\(x\)</span> — if <span class="math inline">\(M_A\)</span> accepts, then <span class="math inline">\(M_C\)</span> accepts <span class="math inline">\(x\)</span> as a string in <span class="math inline">\(C\)</span>. Otherwise, <span class="math inline">\(M_C\)</span> runs <span class="math inline">\(M_B\)</span> on <span class="math inline">\(x\)</span>, and accepts or rejects depending on <span class="math inline">\(M_B\)</span>’s result. Since <span class="math inline">\(M_C\)</span> accepts <span class="math inline">\(x\)</span> if and only if either <span class="math inline">\(M_A\)</span> or <span class="math inline">\(M_B\)</span> accept <span class="math inline">\(x\)</span>, <span class="math inline">\(M_C\)</span> correctly recognizes the language <span class="math inline">\(C=A\cup B\)</span>.</p>
+</blockquote>
+<p>What is wrong with this proof? (Be specific!)</p></li>
+<li><p>Give a careful and complete description of how to modify a Turing machine <span class="math inline">\(M=(Q,\Sigma,\Gamma,\delta,q_0,q_{\mbox{accept}},q_{\mbox{reject}})\)</span> to create a new TM <span class="math inline">\(M&#39;\)</span> that inserts a new symbol @ at the beginning of the tape, shifts the entire contents of input tape to the right one position, and then resets the head position to the position immediately after @ before starting TM <span class="math inline">\(M\)</span>.</p>
+<p>Your description must be very specific about what states are created and what the transition function for <span class="math inline">\(M&#39;\)</span> is, using formal mathematical definitions. You should also illustrate your construction using a state diagram similar to those given in Figures 3.8 and 3.10, although you must indicate some parts as a “pattern” rather than showing every state and transition since the number of new states depends on the size of <span class="math inline">\(M\)</span>’s tape alphabet <span class="math inline">\(\Gamma\)</span>.</p></li>
+</ol>
+<p> </p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

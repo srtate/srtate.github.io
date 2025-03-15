@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 362 - Spring 2021 - Week 6 Notes</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../css/class_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+        <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark uncg-navbar fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="https://www.uncg.edu/">
+          <img class="collapse navbar-collapse" src="../img/uncg_class.png" alt="UNC Greensboro">
+          <img class="navbar-toggler" src="../img/uncg_mobile.png" alt="UNCG">
+        </a>
+        <div class="navbar-brand d-flex flex-column text-left"
+	     style="line-height: 1.2;">
+          <span>CSC 362</span>
+          <span class="small collapse navbar-collapse"><em>System Programming</em></span>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link " href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="syllabus.html">Syllabus</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="schedule.html">Schedule</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="http://cs241.cs.illinois.edu/coursebook/index.html">Coursebook</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://uncg.instructure.com/">Canvas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- Page Content -->
+    <div class="container">
+   
+        <h2 id="csc-362-spring-2021-week-6-notes">CSC 362 – Spring 2021 – Week 6 Notes</h2>
+<h4 id="for-students-to-do-before-tuesday">For students to do before Tuesday</h4>
+<p>Review Section 4.3 (Process Contents) and Read Chapter 5 (Memory Allocators)</p>
+<h4 id="tuesday-material">Tuesday Material</h4>
+<p><strong>Goal: 30 min for slides, then demos</strong></p>
+<p>Demo - show allocs - use limit</p>
+<ul>
+<li>Examine memlayout.c and talk about printing pointer values
+<ul>
+<li>Note the sleep at the end - just so it sticks around and we can examine</li>
+</ul></li>
+<li>Run with bogus params (“./memlayout hi there”)
+<ul>
+<li>Look briefly at pointer values - notice different areas/segments</li>
+</ul></li>
+<li>In a second window - talk about /proc filesystem
+<ul>
+<li>“ps” and then “ps -a” (process groups)</li>
+<li>with PID, go into /proc/PID - look around a little
+<ul>
+<li>fds, cmdline, cwd, exe, environ, …</li>
+<li>On cmdline (and later environ) show “all crammed together) then”xxd"</li>
+</ul></li>
+<li>then examine “maps” and match up addresses to segments (maximize maps win)
+<ul>
+<li>Notice segment permissions</li>
+</ul></li>
+</ul></li>
+<li>Look at stackoverflow.c - useless, and will warn about unused var - OK
+<ul>
+<li>note global counter - see how many calls were made</li>
+<li>run cmdline and notice just a segfault</li>
+<li>ulimit -a — how many 100k arrays can you make?</li>
+<li>now run in gdb - location is function start - that’s a clue</li>
+<li>print counter - close!</li>
+<li>get out and ulimit -S -s 1024 - (soft limit) redo and see smaller counter</li>
+<li>get out and “ulimit -S -s 30000” - redo - no problems raising</li>
+<li>now ulimit -H -a – see unlimited hard limit</li>
+<li>ulimit -s 1024 and see with -a — then try to raise</li>
+<li>so soft limits are for you to protect yourself - hard limits generally for system to protect itself from you…</li>
+</ul></li>
+</ul>
+<h4 id="thursday-material">Thursday Material</h4>
+<p><strong>Goal: 25 min for slides and getting to looking at today’s inclass code</strong></p>
+<p>Reminders/initial things:</p>
+<ul>
+<li>Week 6 was pushed out after midnight as promised - hopefully have seen</li>
+<li>Strong suggestion: Go back and review code style now that you know more C
+<ul>
+<li>First look at process submissions showed some pretty sloppy work</li>
+</ul></li>
+</ul>
+<p>Start with malloctest from last time</p>
+<ul>
+<li>briefly show code and idea of “printing stuff from inside the block”</li>
+<li>test1 and test2 - notice how test 1 keeps (potentially sensitive!) info after free and allocating again. Stress: free does not clear contents.</li>
+<li>Then test3/test4 – diff is freeing block before 3rd malloc</li>
+</ul>
+<p>Then slides</p>
+<ul>
+<li>first explains these last two tests</li>
+<li>stress that placement strategies are a fundamental and important CS concept</li>
+<li>can rush through the algorithms discussion though</li>
+</ul>
+<p>Demo - really just walking through code for today’s activity</p>
+<ul>
+<li>Pull to update inclass-srtate2 - don’t show solution…</li>
+<li>Show Markdown preview in VS Code with looking at README</li>
+<li>Show picture and describe - a simplied version of real-world allocators
+<ul>
+<li>Stress: linked list for keeping track of blocks, tag for block status</li>
+</ul></li>
+<li>Code
+<ul>
+<li>First show Makefile and custom rule override - what does preprocessor do</li>
+<li>mymalloc.c: Show tags - random values not likely to occur by chance</li>
+<li>Walk through mymalloc function</li>
+<li>Special emphasis on weird return and review pointer arithmetic</li>
+<li>Walk through myfree - emphasize the “backup” part</li>
+</ul></li>
+<li>Your job: Add the tagging and see how it works with buggy llist.c code
+<ul>
+<li>Demo with “a/r/q” ops - stress not tracking pointers yet</li>
+<li>Show solution execution here and note diff - still a mem leak!</li>
+</ul></li>
+</ul>
+<h2 id="spring-2021-timings">Spring 2021 timings</h2>
+<p>Tuesday 02-23:</p>
+<ul>
+<li>14 min announcements/questions (9 min), and “interesting news” (5 min)</li>
+<li>21 min slides</li>
+<li>7 min questions about assignment due today</li>
+<li>14 min - memlayout example and exploring /proc</li>
+<li><strong>56 min to here</strong> - rest for activity and wrap-up
+<ul>
+<li>omitting “news” and questions about assignment: 44 min</li>
+<li>adding stackoverflow/limits from next time: +7 min = 51 min</li>
+<li>still have 24 min more…</li>
+<li>To add: new example, using inclass0223 activity from Spring (10 min)</li>
+<li>More time available - any way to move Thursday topics up?</li>
+</ul></li>
+</ul>
+<p>Thursday 02-25:</p>
+<ul>
+<li>4 min status update</li>
+<li>29.5 min slides</li>
+<li>10.5 min objdump, nm, … – this can be skipped</li>
+<li>7 min stackoverflow, limits, etc.</li>
+<li><strong>51 min to here</strong> Then activity (no day-specific examples?)
+<ul>
+<li>For Fall 2021: Maybe just slides and no demo?</li>
+</ul></li>
+</ul>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

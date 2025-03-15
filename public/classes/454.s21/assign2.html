@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 454/654 - Spring 2021 - Assignment 2 - Due Feb 18, 2021</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../css/class_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+        <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark uncg-navbar fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="https://www.uncg.edu/">
+          <img class="collapse navbar-collapse" src="../img/uncg_class.png" alt="UNC Greensboro">
+          <img class="navbar-toggler" src="../img/uncg_mobile.png" alt="UNCG">
+        </a>
+        <div class="navbar-brand d-flex flex-column text-left"
+	     style="line-height: 1.2;">
+          <span>CSC 454/654</span>
+          <span class="small collapse navbar-collapse"><em>Algorithm Analysis and Design</em></span>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link " href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="syllabus.html">Syllabus</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="schedule.html">Schedule</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="assignments.html">Assignments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://uncg.instructure.com/">Canvas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- Page Content -->
+    <div class="container">
+   
+        <h2 id="assignment-2---due-feb-18-2021">Assignment 2 - Due Feb 18, 2021</h2>
+<ol type="1">
+<li><p>Consider the following algorithm (don’t worry about what it does – we’re only interested in the running time).</p>
+<pre><code>     Something(A) // A is a problem of size n
+        if n == 1
+           return A[1]
+        else
+           (A1,A2,A3) = split(A) // linear time - each Ai result has size n/2
+           v1 = Something(A1)
+           v2 = Something(A2)
+           v3 = Something(A3)
+           return max(v1, v2, v3)</code></pre>
+<ol type="a">
+<li><p>Derive a recurrence describing the running time of this algorithm. It doesn’t have to be a detailed analysis, but it does need some explanation (don’t just write formulas – explain where they come from).</p></li>
+<li><p>Solve this recurrence using the master theorem, showing your work (this includes verifying any conditions that must be met to apply the relevant case of the theorem).</p></li>
+</ol></li>
+<li><p>Do a manual execution of algorithm <span class="math inline">\(\texttt{Find-Maximum-Subarray}\)</span> from the book (page 72), using as input the 8-element array <code>[6, -7, 5, -1, -2, 6, 1, -2]</code>. Show every step, tracing down into recursive calls as well as the calls to <span class="math inline">\(\texttt{Find-Max-Crossing-Subarray}\)</span>. At the end, clearly mark your result (in other words: what is the maximum subarray?).</p></li>
+<li><p>Solve the recurrences below using the master theorem if possible, showing your work. One of these is not solvable by the basic master theorem (as stated on page 94 of the textbook) – for that one, explain why we can’t use the master theorem.</p>
+<ol type="a">
+<li><p><span class="math inline">\(T(n)=4T(n/2)+n\)</span></p></li>
+<li><p><span class="math inline">\(T(n)=3T(n/3)+n\lg n\)</span></p></li>
+<li><p><span class="math inline">\(T(n)=4T(n/2)+n^2\)</span></p></li>
+<li><p><span class="math inline">\(T(n)=9T(n/3)+n^3\lg n\)</span></p></li>
+</ol></li>
+<li><p>When the pivot element in chosen as the last element in your subarray (as in the code on page 171), the worst-case input is simple: already-sorted input gives worst case performance, since the pivot is always the maximum value in the subarray. What if we always picked the middle element as the pivot? We can do this by replacing line 1 in <span class="math inline">\(\texttt{Randomized-Partition}\)</span> on page 179 with this line: <span class="math display">\[  1\ \ \ \ \ \ i = \left\lfloor (p+r)/2 \right\rfloor \]</span> Note that this removes the randomization, so <span class="math inline">\(\texttt{Randomized-Partition}\)</span> isn’t an accurate name any more, but it is still a valid algorithm. This algorithm has a worst-case running time of <span class="math inline">\(\Theta(n^2)\)</span>, just like the earlier algorithm, but finding the worst-case input is more difficult.</p>
+<p>Give an ordering of the integers 1 through 15 that results worst-case performance of this algorithm. Explain why your input is a worst-case input.</p></li>
+<li><p>Hacker Harry is trying to implement <span class="math inline">\(\texttt{Quicksort}\)</span> from the pseudocode in the textbook (page 171). However, he makes a mistake when entering Line 3 and instead calls <span class="math inline">\(\texttt{Quicksort}(A, p, q)\)</span> (note the change in the final parameter).</p>
+<ol type="a">
+<li><p>What is the consequence of this mistake (on correctness or running time) when <span class="math inline">\(\texttt{Quicksort}\)</span> is called with an array that is already in sorted order?</p></li>
+<li><p>What is the consequence of this mistake (on correctness or running time) when <span class="math inline">\(\texttt{Quicksort}\)</span> is called with an array that is filled with <span class="math inline">\(n\)</span> copies of the same value?</p></li>
+</ol></li>
+<li><p>Programming Challenges – given on a <a href="progchallenge1.html">separate page</a>.</p></li>
+</ol>
+<p> </p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

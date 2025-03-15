@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>Setting up labtainers on newer Apple Macs</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://home.uncg.edu/cmp/faculty/srtate/481.s25/macinfo.html">View original, outside canvas</a> ]
+   
+        <h3 id="setting-up-labtainers-on-newer-apple-macs">Setting up labtainers on newer Apple Macs</h3>
+<p>These instructions describe how I was able to get the Labtainer VM running on a Mac with an Apple Silicon CPU. This uses software called <a href="https://mac.getutm.app/">UTM</a> to run the VM, so if you don’t have that already then download it and install it on your Mac. The instructions below are based on version 4.6.4, which was the latest version available when I wrote this (Jan 21, 2025).</p>
+<p>After installing UTM, download the “QCOW2” file from the Labtainers <a href="https://nps.edu/web/c3o/virtual-machine-images">VM images page</a>. Open the downloads folder in Finder, and you’ll see the zip file you just downloaded. Double-click on this to extract the qcow file from the zip archive.</p>
+<p>Now you need to set up UTM.</p>
+<ol type="1">
+<li><p>Open UTM and you’ll see four big buttons. Click the “Create New Virtual Machine” button, and on the following screens select “Emulate”, “Other”, and then change the boot device to “None” and continue. On the next page, accept defaults except bump up the CPU cores to at least 2. Other defaults can be kept.</p></li>
+<li><p>Storage: Go ahead and accept the default, but you’re going to kill this drive in the next step so it’s not very important.</p></li>
+<li><p>On the final page, I’d recommend that you change the name of the VM to something meaningful (with “Labtainer” in the name, for example), check the “Open VM Settings” option, and continue.</p></li>
+<li><p>When the settings screen comes up, click on the IDE drive and then click on “Delete” at the bottom. Then click “New” under drives, select “IDE”, click “Import”, and then select the qcow file that you extracted from the zip file earlier. After setting that up, go into the “QEMU” part of settings and uncheck the “UEFI Boot” option. Finally, click “Save”.</p></li>
+</ol>
+<p>You should be ready to go now! Start up the VM (the button that looks like a “play” button. You should (within 30 seconds) see the Ubuntu boot screen, but then it will go black.</p>
+<p><strong>You must be patient here.</strong> This is slow. I mean very slow. It took around 10 minutes for the VM to boot up on my Mac (admittedly an older M1-based Mac). It will stay on a black screen with just a basic “X” cursor for a long time. You will question whether it is stuck. You may question other life choices. I would recommend just walking away and coming back later. Yes, it’s that frustrating.</p>
+<p>Eventually the Ubuntu desktop will come up. For some reason, when I did this on the Mac, the initial student terminal window did not open like it does on Intel-based VMs. You’ll need to start the terminal manually: Click on the terminal launch icon on the left, and then do “<code>cd labtainer/labtainer-student</code>”. Now you’re ready to go.</p>
+<p>Do keep in mind that this will be slow. While working it’s not the 10-minute-boot frustration, but it will be a little sluggish. Be prepared (and be patient).</p>
+<p> </p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

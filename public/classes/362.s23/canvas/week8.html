@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 362 - Spring 2023 - Week 8 Activities</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://home.uncg.edu/cmp/faculty/srtate/362.s23/week8.html">View original, outside canvas</a> ]
+   
+        <h2 id="csc-362-spring-2023-week-8-activities">CSC 362 – Spring 2023 – Week 8 Activities</h2>
+<p><strong>Midterm</strong>: Show grade distribution and describe scaling. Then look at questions – ptr arith and next two - esp “array - can’t do this” question. Then down to the strcpy “what’s wrong” question - free() would be really bad!</p>
+<h4 id="thursday-one-day-week">Thursday (one-day week)</h4>
+<p>Demos:</p>
+<ul>
+<li>First: share full desktop and show CPU settings in VM (# CPUs)</li>
+<li>Pull up <code>Makefile</code> and note the “-pthread” addition to CFLAGS
+<ul>
+<li>Do the make and show where that is added to the compile line</li>
+</ul></li>
+<li>Look at <code>threads1.c</code>
+<ul>
+<li>Point out basics: pthread_create and pthread_join - walk through high-level</li>
+<li>Run code</li>
+<li>Details: Parameter passing in and casting – return value, why “static”</li>
+<li>Point similarity between "void *" for generic parameter and “Object” in Java</li>
+</ul></li>
+<li>Look at <code>threads2.c</code>
+<ul>
+<li>Quick overview - note that just sequential calls - no pthreads initially</li>
+<li>run it (bare and discuss, then with “time”)</li>
+<li>convert to multithreaded - add pthread_create and pthread_join</li>
+<li>run multithreaded with time and note the change</li>
+<li>Change THREAD_DELAY to 1000</li>
+<li>Compile and run</li>
+<li>New window: use ps - just one process - look at maps and locate stacks</li>
+</ul></li>
+</ul>
+<p>[Idea: For generic refs - void * - show Java code using/casting “Object”]</p>
+<p>Tues - 03-16</p>
+<p>[Note: up through 7.3 only - not much of chapter 8 either]</p>
+<ul>
+<li>6 min - introductory stuff</li>
+<li>27 min - slides</li>
+<li>10 min - find threadsafe or not - getpwname as unsafe/_r version</li>
+<li>4.5 min - trythreads.c - w/printing stack pointers, etc. - run with paused (sleeping) threads, show one process in “ps -a” - look at memory map in /proc and locate stacks</li>
+<li>3.5 min - multicount.c - run as sequential then threaded - twice - nondet</li>
+<li>1 min - closest.c - really just gave the idea</li>
+<li>3 min - introduce activity and show code</li>
+</ul>
+<p>Total w/o intro stuff is 49 min</p>
+<p>Thurs - 03-18</p>
+<ul>
+<li>5 min - intro stuff</li>
+<li>6 min - deadlock overview</li>
+<li>17 min - rest of slides</li>
+<li>15 min - parallelized closest pair code [maybe do sort and relate to 230?]</li>
+<li>2 min - deadlock.c</li>
+<li>4 min - introduce activity</li>
+</ul>
+<p>Total w/o intro: 44 min</p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

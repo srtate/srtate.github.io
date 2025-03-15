@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 452/652/752 - Spring 2025 - Assignments</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+
+    <p>Reminder about <a href="../browser.html">browser check</a> – you should see “OK” in script here: <span class="math inline">\({\mathcal O}{\mathcal K}\)</span></p>
+      
+   
+        <ol type="1">
+<li><p>[<em>How to “grade” your work: To grade out of 10 points, assign 2 points to each part. On part (b), make sure set notation is used (if the answer is <span class="math inline">\(q_1\)</span> without set notation, take off 1 point). On part (c) there’s a sequence of states: 1 point off for 1 or 2 incorrect transitions, 2 points off if more than that.</em>]</p>
+<ol type="a">
+<li>The start state is <span class="math inline">\(q_1\)</span></li>
+<li>The set of accept states is <span class="math inline">\(\{q_1\}\)</span></li>
+<li>On input , the machine goes through states <span class="math inline">\(q_1\rightarrow q_1\rightarrow q_2\rightarrow q_3\rightarrow  q_3\rightarrow q_3\rightarrow q_2\)</span></li>
+<li>The machine does not accept string  since it ends up in state <span class="math inline">\(q_2\)</span>, which is not a final state</li>
+<li>The start state is also a final state, so the machine does accept <span class="math inline">\(\varepsilon\)</span></li>
+</ol>
+</p></li>
+<li><p>(Textbook 1.4f) [<em>How to “grade” your work: The first two DFAs are pretty simple, so are 2 points each. The main point of the problem is the intersection construction, making the final DFA, so that’s worth 6 points: 1 point for state labels that clearly indicate which states in the original DFAs they correspond to (there are several “styles” for this), 1 point for the right set of states, 3 points for the transitions, and 1 point for the correct accept state.</em>]</p>
+<p>We first construct a DFA that recognizes “strings with an odd number of <span class="math inline">\(\texttt{a}\)</span>’s.” Since we are creating two DFAs to combine using the intersection construction, I will use capital letters to label states for this DFA, and will use lowercase letters for the second base DFA. In this DFA, state “A” corresponds to “we’ve seen an even number of <span class="math inline">\(\texttt{a}\)</span>’s,” and state “B” corresponds to “we’ve seen an odd number of <span class="math inline">\(\texttt{a}\)</span>’s”:</p>
+<p><img src="book1_4fa.svg" /></p>
+<p>In the second DFA, below, state “a” represents “the last symbol we’ve seen is an <span class="math inline">\(\texttt{a}\)</span>,” and state “b” represents “the last symbol we’ve seen is a <span class="math inline">\(\texttt{b}\)</span>”:</p>
+<p><img src="book1_4fb.svg" /></p>
+<p>To combine these with the intersection construction, states in the new DFA correspond to pairs of states from the DFAs above, and transitions reflect both DFAs. The result is the following DFA:</p>
+<p><img src="book1_4fc.svg" /></p></li>
+<li><p>(Textbook 1.5d) [<em>How to “grade” your work: While it’s possible to construct the DFA for this language directly, the question specifically asks for you to construct the DFA for the complement first. That means the first DFA below (or an equivalent one) is required – make that worth 5 points. Even though taking the complement is trivial, give another 5 points for that. There’s not much room for partial credit in the second part.</em>]</p>
+<p>We will create a DFA for language <span class="math inline">\(L=\{w\,|\,w\)</span> is any string not in <span class="math inline">\(\texttt{a}^*\texttt{b}^*\}\)</span> by first constructing a DFA for the complement of this language, <span class="math inline">\(\overline{L}=\{w\,|\,w\)</span> is in <span class="math inline">\(\texttt{a}^*\texttt{b}^*\}\)</span>. The DFA for <span class="math inline">\(\overline{L}\)</span> is like this:</p>
+<p><img src="book1_5da.svg" /></p>
+<p>Note that state <span class="math inline">\(q_0\)</span> corresponds to <span class="math inline">\(\texttt{a}^*\)</span> and the state <span class="math inline">\(q_1\)</span> corresponds to <span class="math inline">\(\texttt{b}^*\)</span> added after that. Given this DFA for <span class="math inline">\(\overline{L}\)</span>, we simply change all non-accepting states to accepting states and vice-versa to create the DFA for <span class="math inline">\(L\)</span>:</p>
+<p><img src="book1_5db.svg" /></p></li>
+<li><p>(Textbook 1.16) [<em>How to “grade” your work: The NFA to DFA construction is pretty straightforward, and there’s no room for “interpretation,” so the answers must be exactly as given below (the picture may be organized differently, but there’s only one correct DFA). To grade each part out of 6 points: 2 points for states properly labeled with subsets, 2 points for transitions, 1 point for the start state, and 1 point for correct accept states.</em>]</p>
+<ol type="a">
+<li><p>Part a solution:</p>
+<p><img src="book1_16a.svg" /></p></li>
+<li><p>Part b solution:</p>
+<p><img src="book1_16b.svg" /></p></li>
+</ol></li>
+</ol>
+<p> </p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

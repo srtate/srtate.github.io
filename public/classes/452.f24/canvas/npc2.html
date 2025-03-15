@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>NP-completness proof example -- PARTITION</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://home.uncg.edu/cmp/faculty/srtate/452.f24/npc2.html">View original, outside canvas</a> ]
+   
+        <h3 id="np-completeness-proof-example-partition">NP-completeness proof example – <em>PARTITION</em></h3>
+<p>Let <span class="math inline">\(\mathbf{a}=[a_1,a_2,\ldots,a_n]\)</span> be a sequence of <span class="math inline">\(n\)</span> integers, each <span class="math inline">\(O(n)\)</span> bits long. An <strong>equal-weight partition</strong> of the sequence <span class="math inline">\(\mathbf{a}\)</span> is a way of assigning elements of the sequence to a “left” or a “right” side, where the sums of the left and right sides are equal. More precisely, we let <span class="math inline">\({\mathcal I}=\{1,2,\ldots,n\}\)</span> be the set of all indices into <span class="math inline">\(\mathbf{a}\)</span>, and then we can define <span class="math inline">\(L\subseteq \{1,2,\ldots,n\}\)</span> as the set of indices “on the left” and <span class="math inline">\({\mathcal I}-L\)</span> becomes the set of indices “on the right.” An equal-weight partition consists of a selection of indices for <span class="math inline">\(L\)</span> such that</p>
+<p><span class="math display">\[ \sum_{i\in L} a_i = \sum_{i\in{\mathcal I}-L} a_i \ . \]</span></p>
+<p><strong>Example 1:</strong> Consider <span class="math inline">\(\mathbf{a}=[1,9,11,22,23]\)</span>. We place 1, 9, and 23 on the left, so 11 and 22 are on the right. The sum of both left and right sides is 33, so this is an equal-weight partition.</p>
+<p><strong>Example 2:</strong> Consider <span class="math inline">\(\mathbf{a}=[1,9,13,22,23]\)</span>. Since the sum of all elements is 68, an equal-weight partition would require both the left and right sides to add up to 34. Since one side must contain the 23, the rest of the items on that side must add up to 11. It’s not hard to see that this is impossible, so this <span class="math inline">\(\mathbf{a}\)</span> has no equal-weight partition.</p>
+<p>We define a language based on the concept of an equal-weight partition:</p>
+<p><span class="math display">\[
+  \textit{PARTITION} = \{ \langle\mathbf{a}\rangle\,|\,\mathbf{a} \text{ is a sequence of integers that has an equal-weight partition} \}
+\]</span></p>
+<p>Given the examples above, we have <span class="math inline">\(\langle [1,9,11,22,23]\rangle\in \textit{PARTITION}\)</span> and <span class="math inline">\(\langle [1,9,13,22,23]\rangle \not\in \textit{PARTITION}\)</span>.</p>
+<p>Note that this is a simplification of the <span class="math inline">\(\textit{SUBSET-SUM}\)</span> problem from the textbook, where <span class="math inline">\(\textit{PARTITION}\)</span> is only concerned with an equal-weight partition rather than a subset (or subsequence) that adds up to an arbitrary target value. As a simplification, it’s reasonable to ask if this might be computationally easier than <span class="math inline">\(\textit{SUBSET-SUM}\)</span>, but it turns out that <span class="math inline">\(\textit{PARTITION}\)</span> is NP-complete, which we’ll prove below.</p>
+<h4 id="proof-that-is-np-complete">Proof that  is NP-complete</h4>
+<p>The following proof is perhaps a little “wordier” than you really need, but it illustrates all of the pieces that should be present in an NP-completeness proof. When you are just starting out writing these proofs, it’s better to put in all the details – this helps you understand the full logic of the proof, and it’s better to be too wordy than to leave something out that should have been there.</p>
+<p><strong>Theorem:</strong> <span class="math inline">\(\textit{PARTITION}\)</span> is NP-complete.</p>
+<p><strong>Proof:</strong> We first show that <span class="math inline">\(\textit{PARTITION}\in NP\)</span> by defining the certificate and a verifier for the language. In particular, the certificate for input <span class="math inline">\(\mathbf{a}\)</span> is just the set of indices <span class="math inline">\(L\)</span> for the left side of an equal-weight partition. The verifier <span class="math inline">\(V\)</span> is given input <span class="math inline">\(\langle\mathbf{a},L\rangle\)</span>, and first checks that <span class="math inline">\(L\)</span> this is a subset of <span class="math inline">\(\{1,2,...,n\}\)</span>, where <span class="math inline">\(n\)</span> is the number of items in <span class="math inline">\(\textbf{a}\)</span>. <span class="math inline">\(V\)</span> then goes through the items in <span class="math inline">\(\mathbf{a}\)</span> and adds each item to a running sum for either the left or right side, depending on whether that index is in <span class="math inline">\(L\)</span>. The verifier accepts if these sums are equal after going through all of <span class="math inline">\(\mathbf{a}\)</span>. The verifier clearly runs in polynomial time, and a certificate exists which will be verified if and only if <span class="math inline">\(\langle\mathbf{a}\rangle\in \textit{PARTITION}.\)</span> Therefore <span class="math inline">\(\textit{PARTITION}\in NP\)</span>.</p>
+<p>Next, we show that <span class="math inline">\(\textit{SUBSET-SUM}\leq_{P} \textit{PARTITION}\)</span>, where <span class="math inline">\(\textit{SUBSET-SUM}\)</span> is defined on page 296 of the textbook. We first define the reduction function: Given an input <span class="math inline">\(\langle S,t\rangle\)</span> for <span class="math inline">\(\textit{SUBSET-SUM}\)</span>, the reduction function calculates <span class="math inline">\(w=\sum_{x\in S} x\)</span>, the total weight of all elements in the set <span class="math inline">\(S\)</span>. Next, we define <span class="math inline">\(t&#39;=\max(t,w-t)\)</span>, which ensures that <span class="math inline">\(t&#39;\geq w/2\)</span>. Note that <span class="math inline">\(w-t\)</span> is the weight of items excluded from any subset of weight <span class="math inline">\(t\)</span>, so <span class="math inline">\(\langle s,t&#39;\rangle\in\textit{SUBSET-SUM}\)</span> if and only if <span class="math inline">\(\langle s,t\rangle\in\textit{SUBSET-SUM}\)</span>. Finally, create sequence <span class="math inline">\(\mathbf{a}\)</span> by listing out the items in <span class="math inline">\(S\)</span> along with a final new item with value <span class="math inline">\(b=2t&#39;-w\)</span>. This sequence <span class="math inline">\(\mathbf{a}\)</span> is the output of the reduction, designed to be an input to the <span class="math inline">\(\textit{PARTITION}\)</span> problem. Note that the weight of all elements in <span class="math inline">\(\mathbf{a}\)</span> is <span class="math inline">\(w+b=w+(2t&#39;-w)=2t&#39;\)</span>. These are all simple computations, so the reduction can be computed in polynomial time. We next show that this is a valid reduction.</p>
+<p>Consider an input <span class="math inline">\(\langle S,t\rangle\in\textit{SUBSET-SUM}\)</span>, so <span class="math inline">\(S\)</span> contains a subset of weight <span class="math inline">\(t\)</span> and also of <span class="math inline">\(t&#39;\)</span> (it might be the same subset). Let <span class="math inline">\(T\)</span> be a subset of weight <span class="math inline">\(t&#39;\)</span>, and put the indices (in <span class="math inline">\(\mathbf{a}\)</span>) of these values from <span class="math inline">\(T\)</span> into set <span class="math inline">\(L\)</span> so that <span class="math inline">\(\sum_{i\in L} a_i=t&#39;\)</span>. Since the total weight of all items in <span class="math inline">\(\mathbf{a}\)</span> is <span class="math inline">\(2t&#39;\)</span>, the elements on the left are exactly half of the total weight, and so <span class="math inline">\(\langle\mathbf{a}\rangle\in \textit{PARTITION}\)</span>.</p>
+<p>Next consider an input that results in <span class="math inline">\(\langle\mathbf{a}\rangle\in \textit{PARTITION}\)</span>. Since the sum of all elements in <span class="math inline">\(\mathbf{a}\)</span> is <span class="math inline">\(2t&#39;\)</span>, this means we can divide the elements into a “left side” and “right side” so that the sum of each side is <span class="math inline">\(t&#39;\)</span>. We arrange the sides so that the new weight <span class="math inline">\(b\)</span> element from the reduction is on the right side. Therefore, the left side consists of items from <span class="math inline">\(S\)</span> that add up to <span class="math inline">\(t&#39;\)</span>. As noted above, such a set exists if and only if there is a subset of <span class="math inline">\(S\)</span> that adds up to <span class="math inline">\(t\)</span>, so <span class="math inline">\(\langle S,t\rangle\in\textit{SUBSET-SUM}\)</span>.</p>
+<p>The three paragraphs above, taken together, show that the reduction we defined above is a valid polynomial time reduction from <span class="math inline">\(\textit{SUBSET-SUM}\)</span> to <span class="math inline">\(\textit{PARTITION}\)</span>, so <span class="math inline">\(\textit{SUBSET-SUM}\leq_{P} \textit{PARTITION}\)</span>. Since we also showed that <span class="math inline">\(\textit{PARTITION}\in NP\)</span>, and we know that <span class="math inline">\(\textit{SUBSET-SUM}\)</span> is NP-complete by Theorem 7.56, it follows from Theorem 7.36 that <span class="math inline">\(\textit{PARTITION}\)</span> is NP-complete. QED</p>
+<p><a href="npc3.html">next</a></p>
+<p> </p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

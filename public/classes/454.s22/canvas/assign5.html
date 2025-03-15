@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 454/654 - Spring 2022 - Assignment 5 - Due April 19, 2022</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://www.uncg.edu/cmp/faculty/srtate/454.s22/assign5.html">View original, outside canvas</a> ]
+   
+        <h2 id="assignment-5---due-april-19-2022">Assignment 5 - Due April 19, 2022</h2>
+<ol type="1">
+<li><p>Perform the Floyd-Warshall algorithm on the weighted, directed graph below. Show the matrix <span class="math inline"><em>D</em><sup>(<em>k</em>)</sup></span> that results for each iteration of the outer loop.</p>
+<p><img src="FW-Graph.png" /></p></li>
+<li><p>A <em>bipartite graph</em> is an undirected graph with vertex set <span class="math inline"><em>V</em></span> for which the vertices can be partitioned into two sets, <span class="math inline"><em>L</em></span> and <span class="math inline"><em>V</em> − <em>L</em></span>, such that every edge connects a vertex from <span class="math inline"><em>L</em></span> to a vertex in <span class="math inline"><em>V</em> − <em>L</em></span>. No edges are allowed between two vertices in <span class="math inline"><em>L</em></span> or two vertices in <span class="math inline"><em>V</em> − <em>L</em></span>. Consider the problem of finding a maximum bipartite subgraph: Given a general undirected graph <span class="math inline"><em>G</em> = (<em>V</em>, <em>E</em>)</span>, what is the largest subset of edges <span class="math inline"><em>E</em>′ ⊆ <em>E</em></span> such that <span class="math inline"><em>G</em>′ = (<em>V</em>, <em>E</em>′)</span> is bipartite?</p>
+<ol type="a">
+<li><p>Restate this problem twice as an appropriate decision problem, once using “decision problem terminology” and once using “language terminology.”</p></li>
+<li><p>For the maximum bipartite subgraph problem, show that finding the size of the maximum bipartite subgraph can be solved in polynomial time if and only if the decision problem can be solved in polynomial time.</p></li>
+</ol></li>
+<li><p>A <em>graph coloring</em> of a graph <span class="math inline"><em>G</em> = (<em>V</em>, <em>E</em>)</span> is a mapping <span class="math inline"><em>c</em> : <em>V</em> → ℤ</span> (<span class="math inline">ℤ</span> is the set of integers) such that <span class="math inline"><em>c</em>(<em>u</em>) ≠ <em>c</em>(<em>v</em>)</span> for all <span class="math inline">(<em>u</em>, <em>v</em>) ∈ <em>E</em></span> (in other words, the endpoints of each edge must be different colors). We call this a <em><span class="math inline"><em>k</em></span>-coloring</em> if the mapping only uses <span class="math inline"><em>k</em></span> integers (so the coloring could be given as a mapping <span class="math inline"><em>c</em> : <em>V</em> → {1, …, <em>k</em>}</span>).</p>
+<ol type="a">
+<li><p>Let CHROMATIC-NUMBER denote the optimization problem (optimal value version) takes an undirected graph <span class="math inline"><em>G</em></span> as input, and outputs the minimum value <span class="math inline"><em>k</em></span> such that a <span class="math inline"><em>k</em></span>-coloring exists for graph <span class="math inline"><em>G</em></span>. We define the decision problem K-COLORABLE <span class="math inline"> = {⟨<em>G</em>, <em>k</em>⟩ : <em>G</em> = (<em>V</em>, <em>E</em>)</span> is an undirected graph, <span class="math inline"><em>k</em> ≥ 0</span> is an integer, and <span class="math inline"><em>G</em></span> is <span class="math inline"><em>k</em></span>-colorable<span class="math inline">}</span>. Show that the optimal value problem CHROMATIC-NUMBER can be solved in polynomial time if and only if K-COLORABLE <span class="math inline"> ∈ <em>P</em></span>.</p></li>
+<li><p>Show that if K-COLORABLE <span class="math inline"> ∈ <em>P</em></span> then a <span class="math inline"><em>k</em></span>-coloring (the assignment of colors to vertices) can be found for any <span class="math inline"><em>k</em></span>-colorable graph in polynomial time. (<em>Hint:</em> In class we showed how to find a Hamiltonian cycle in a graph by removing edges and repeatedly testing the graph. For this problem, try <em>adding</em> edges and repeatedly testing for <span class="math inline"><em>k</em></span>-colorability — what properties can you deduce from this process that will help you find a <span class="math inline"><em>k</em></span>-coloring?)</p></li>
+<li><p>Prove that K-COLORABLE <span class="math inline"> ∈ <em>N</em><em>P</em></span>.</p></li>
+</ol></li>
+<li><p>The security of several widely-used algorithms in cryptography depends on the difficulty of <em>factoring</em>, or finding the prime divisors of a large composite number. Specifically, if you had an algorithm that efficiently computed the prime factorization of integers, then you could break the RSA public-key encryption algorithm. We will try to turn this into a decision problem as follows (all numbers in this problem are given in binary):</p>
+<p><br /><span class="math display">SMALL-FACTOR = {⟨<em>n</em>, <em>k</em>⟩ : there exists a
+non-trivial factor <em>a</em> ≤ <em>k</em> of <em>n</em>}</span><br /></p>
+<p>(a <em>non-trivial</em> factor is a factor that is <span class="math inline"> ≥ 2</span>).</p>
+<ol type="a">
+<li><p>Show that if SMALL-FACTOR <span class="math inline"> ∈ <em>P</em></span>, then we can find all the prime factors of an integer <span class="math inline"><em>n</em></span> in polynomial time. What is the significance of this as far as the security of these encryption algorithms and the <span class="math inline"><em>P</em></span> vs. <span class="math inline"><em>N</em><em>P</em></span> question?</p>
+<p>Important Tip: remember that your algorithm must be polynomial in the <em>length</em> of the input, meaning the length of the binary representation of <span class="math inline"><em>n</em></span>. It can’t be polynomial in the <em>value</em> <span class="math inline"><em>n</em></span>.</p></li>
+<li><p>Show that SMALL-FACTOR <span class="math inline"> ∈ <em>N</em><em>P</em></span>.</p></li>
+<li><p>There’s a more direct decision problem that doesn’t bound the size of the factor:</p>
+<p><br /><span class="math display">COMPOSITE = {⟨<em>n</em>⟩ : <em>n</em> is a composite number}</span><br /></p>
+<p>Prove that COMPOSITE <span class="math inline"> ∈ <em>N</em><em>P</em></span> (this is almost identical to part b above – don’t over think it!).</p></li>
+<li><p>Unlike SMALL-FACTOR, using a polynomial time algorithm for COMPOSITE to find a prime factorization in polynomial time is difficult and maybe impossible (if you could figure out a way to do this, it would be a major discovery in computer science!). Describe in one or two sentences why SMALL-FACTOR makes it easier (possible?) to find the actual factorization.</p></li>
+</ol></li>
+</ol>
+<p> </p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

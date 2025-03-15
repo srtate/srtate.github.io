@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 362 - Spring 2023 - Week 1 Notes</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../css/class_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+        <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark uncg-navbar fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="https://www.uncg.edu/">
+          <img class="collapse navbar-collapse" src="../img/uncg_class.png" alt="UNC Greensboro">
+          <img class="navbar-toggler" src="../img/uncg_mobile.png" alt="UNCG">
+        </a>
+        <div class="navbar-brand d-flex flex-column text-left"
+	     style="line-height: 1.2;">
+          <span>CSC 362</span>
+          <span class="small collapse navbar-collapse"><em>System Programming</em></span>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link " href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="syllabus.html">Syllabus</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="schedule.html">Schedule</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://cs341.cs.illinois.edu/coursebook/index.html">Coursebook</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://uncg.instructure.com/">Canvas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- Page Content -->
+    <div class="container">
+   
+        <h2 id="csc-362-spring-2023-week-1-notes">CSC 362 – Spring 2023 – Week 1 Notes</h2>
+<h4 id="tuesday">Tuesday</h4>
+<p>In class:</p>
+<ul>
+<li>Have up and ready to go in tabs: Slides (as srtopen), Class web page, GitHub (in srtopen), and Canvas (student view), Leetcode (use <a href="https://leetcode.com/problemset/all/">https://leetcode.com/problemset/all/</a></li>
+<li>Slides with brief course info/introduction</li>
+<li>Syllabus review - bring up syllabus and share
+<ul>
+<li>Initial items: Info on meetings (in-person) and office hours (other times possible <em>if can’t make it</em>, but will need to email to set up a time - I don’t keep Zoom running….)</li>
+<li>Class description and position between 261 and 462 - heavy programming</li>
+<li>MUST be competent at programming coming in to this class.
+<ul>
+<li>Last time: people blaming C when it was really basic programming 300-level is beyond “programming instruction”</li>
+<li>Deliberate practice! Can you imagine a musician or BB player not praciticing? If you only write the programs you’re told to write, you’ll have problems.</li>
+<li>To help practice - many online sites, recommend Leetcode (show, and also show “Explore” tab with lessons, etc.</li>
+</ul></li>
+<li>Linux focused, which is important skill to have - but portable</li>
+<li>Web page vs Canvas - show web page and explain separation - still mostly in Canvas and GitHub, but keeping public page for external info - click on a few - syllabus and schedule - then bring up Canvas and show important nav links - class, office hours, modules, assignments, and discussions.</li>
+<li>Book/references: Click on link and show - Book comes from a instructor/student-written Wiki, and quality and comprehensiveness varies by topic. Will give pointers to other references when available. Read and get familiar with topic <em>before</em> class. Learning works best by getting a good basic understanding, then reinforced by discussion and questions, then practice.</li>
+<li>Note on rules: Set in advance, with flexibility, not “exceptions” made during the class. No deadline extensions, grade “bumps”, etc.</li>
+<li>Teaching methods: General structure of a class, then general structure of a week. Weekly assignments released Mondays (usually), and will have enough info to get started (or maybe even finished) by the of class Tuesday. Due <strong>at the beginning of class</strong>, and will go over solutions in class after the late deadline – no late work accepted for any reason after that. Can work with each other for help, but solution must be yours (not copy/paste from web or from another student). class - want you working on them together, not doing them before class. Weekly assignment due each week – individual solutions, but can work with each other for help. Major assignments are individual work. Exams will be in-person.</li>
+<li>Grade percentages - keep an eye on this in Canvas. Note the dropped weekly assignments. It’s a lot of weekly assignments, and some weeks will just be busier than others.</li>
+<li>Late policy: Up to a week late, but one fixed late penalty. GitHub submissions – commit messages mark the version to grade. If you forget, won’t be graded until the late assignment deadline, and some points will be taken off.</li>
+<li>In-class behavior: Boils down to being an adult and acting professional.</li>
+<li>[Goal for time to here: 35 min]</li>
+</ul></li>
+<li>Role of operating system and use of virtual machines
+<ul>
+<li>General concepts - picture of HW/OS/Applications - then VM</li>
+<li>Note that OS is virtualized, not hardware. So Apple Silicon users need a different virtual machine that works on the Apple processors. Also, Virtualbox doesn’t work (talk about emulating a CPU) so those students will use UTM.</li>
+<li>Importance of VM for consistency between students, even if other approaches work. Use the VM unless there is some reason you just can’t. If what you submit in GitHub doesn’t work in the class VM, then it will be marked accordingly - “it worked on my system” isn’t an excuse.</li>
+<li>What can you do in VM? Some basic commands for interaction (will show)</li>
+<li>Need to work with files - editor is primary tool - options…</li>
+<li>[Goal for time to here: 55 min]</li>
+</ul></li>
+<li>Demos
+<ul>
+<li>Show “Set-up Information” module - talk abt GitHub acct and VM</li>
+<li>Show VirtualBox - provided file creates a VM, talk about download (size/time) and show where “Import” is. Need to do this before Thursday!</li>
+<li>Show loaded VM and go through some virtual hardware requirements
+<ul>
+<li>“General/Advanced/Shared Clipboard”: Talk about isolation and value of that, but also difficult of working with. Jump down to “Shared Folders” and talk about similar things there. While not required, I encourage you to keep both of these sharing options disabled and keep the VM as an isolated environment. All classwork will be transfers in and out of VM via GitHub.</li>
+<li>System/RAM: 1GB is probably OK for programming tasks, but more gives better in-VM caching, esp important when running a web browser in VM; mentally subtract RAM amount from host, and think that is what your host is working with, so on a 4GB system, a 2GB VM is a big hit. Default is 3GB - can adjust (up or down) if needed. Only change when system has been shut down.</li>
+<li>System/CPUs: Set for 2 – needed for some multithreading, but can dial back or up; unlike mem, CPUs are shared so not “taken away” from host</li>
+<li>Storage: Virtual disks - entire disk (vdi) in one or more files; can insert and remove disks (show on optical drive)</li>
+<li>Network: This is complicated, because it controls how the VM communicates with the outside world - is it part of your local network? Is it isolated? Is there a virtual network of multiple VMs? Default setting - NAT - acts roughly the same way a computer/device on a home network would act, behind your WiFi/router where in this case the router is in the host&lt;-&gt;VM interface.</li>
+</ul></li>
+<li>Show snapshots and talk about value…</li>
+<li>Boot VM. Talk about using Lubuntu. Desktop; quick launch links at bottom for web browser and shell. Note that much in this class will be done from the shell. Open “Visual Studio Code” from “Programming” and talk about it.</li>
+<li>Show basic ls, ls -l, cd, and cat commands</li>
+<li>Open a file in editors - vi and VS Code and try to convey GUI vs text</li>
+<li>Warning about closing VM cleanly - save state or shutdown VM</li>
+</ul></li>
+<li>Student reminders – For Thursday: Boot it up, can bring up applications/shell and experiment, but don’t change any settings yet. We’ll set some initial things up in class on Thursday.</li>
+</ul>
+<h4 id="thursday">Thursday</h4>
+<ul>
+<li>Linux and history of Unix/Linux/POSIX - incl android
+<ul>
+<li>Linux vs GNU/Linux vs distribution [Time for this was 40 min in Spring 2021 - should be MUCH shorter (15?)] [ Prob need to simplify slides for this… ]</li>
+</ul></li>
+<li>Git and GitHub (and the differences)</li>
+<li>GitHub classroom - workflow (<em>very</em> brief)</li>
+<li>[Goal for time to here: 25 min]</li>
+</ul>
+<p>Demos/Activity - Bring up VM:</p>
+<ul>
+<li>Should have set everything up and accepted inclass invitation
+<ul>
+<li>Basic desktop components - start menu, launch buttons, open windows</li>
+</ul></li>
+<li>GitHub: Show weekly-srtate2 in web - note Weekly01-… dir
+<ul>
+<li>Local copy vs copy in github
+<ul>
+<li>Make a local copy with “clone” - show “Code” links and must use ssh</li>
+<li>Talk briefly about ssh setup</li>
+<li>Then do it to clone examples repo</li>
+</ul></li>
+<li>Briefly mention teamwork features - issues, etc.
+<ul>
+<li>Use weekly repo for this (pre-cloned, and then changed afterwards)</li>
+<li>What happens if a different person (me!) changes repo after your copy?</li>
+<li>Do this by adding a file as instructor to srtate2 and trying to push changes</li>
+<li>Talk about this class (new dirs or files only) and conflicts</li>
+<li>Good practice: When you start working just do a “git pull” to make sure you have everything up-to-date with the GitHub copy</li>
+</ul></li>
+</ul></li>
+<li>Talk about terminal window and command line - bash (mention Putty)
+<ul>
+<li>Pull up Weekly01-… with commands to set vars, talk about “why”, and set variables
+<ul>
+<li>talk about cut/copy/paste in terminal then cut/paste commands</li>
+<li>middle click for “fast paste”</li>
+</ul></li>
+<li>git basics - use command line (not VS Code) in this class!</li>
+<li>will dig into shell (bash) deeply next week</li>
+<li>git basics - edits tagged by who is responsible, so set that up!</li>
+</ul></li>
+<li>Show VS Code and talk about what it is - alternative editors
+<ul>
+<li>Ways to start - start menu or command line, with file or with dir</li>
+<li>Open dir from Examples and open README.md from project pane</li>
+<li>With README.md
+<ul>
+<li>Talk about what Markdown is</li>
+<li>Make some changes and show preview - change markup and point out changes</li>
+<li>Look at saved/unsaved icon - save</li>
+</ul></li>
+<li>Back in shell, do “git status” - talk about tracked files</li>
+<li>Use “git add”, “git commit”, and “git push” - show result in github</li>
+<li>Add new file and re-do - show git status and talk about adding file</li>
+<li>Important tip: ALWAYS check github web site to see results</li>
+<li>More advanced Git usage: branches for tentative work, and “<code>git reset --hard</code>” if you really mess up</li>
+</ul></li>
+<li>[<strong>Goal for time to here: 40 min - 25 for slides, 15 for demo</strong>]</li>
+<li>If there is additional time in demos:
+<ul>
+<li>use ssh to log in to ritchie.uncg.edu</li>
+<li>Ways to get help: git –help, man, man -k, etc.</li>
+<li>Show/walk around GitHub for active project (e.g., nextcloud server; notice branches, commits, etc.)</li>
+</ul></li>
+</ul>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

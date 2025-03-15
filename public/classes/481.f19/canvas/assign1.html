@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>Assignment 1 -- Due Wednesday, September 18</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://www.uncg.edu/cmp/faculty/srtate/481.f19/assign1.html">View original, outside canvas</a> ]
+   
+        <h3 id="assignment-1-due-wednesday-september-18">Assignment 1 – Due Wednesday, September 18</h3>
+<p>You may submit your solutions either electronically, as a document in <a href="https://canvas.uncg.edu">Canvas</a>, or in class on paper (one or the other though – don’t submit some problems online and some on paper!). Note that some questions require drawing diagrams – if you submit an electronic document, either use an appropriate tool to draw neat diagrams (e.g., LucidChart or Visio) or scan a neat hand-drawn picture. It is almost impossible to make a neat diagram in Word or some other tool that is not designed for this, so do not try.</p>
+<p>Remember to fully explain your answers!</p>
+<ol type="1">
+<li><p>Find a news story of a recent security incident that involved a malicious attacker (that shouldn’t be hard!), and describe what happened. Your description should include a statement about each of the “big three” security goals, indicating whether it was violated (and if it was, <em>how</em> it was violated). Also speculate on what type of attacker was involved and what the attacker’s motive may have been.</p></li>
+<li><p>In this question, you are to get a feel for how vulnerable modern systems are by exploring the “National Vulnerability Database” that NIST maintains, which is at <a href="https://nvd.nist.gov/">https://nvd.nist.gov/</a>.</p>
+<ol type="a">
+<li><p>Locate the full list of vulnerabilities, and pick a random month from last year (e.g., maybe your birthday month) and see how many vulnerabilities were reported that month. Report how many there were for the month, and calculate the average number of vulnerabilities reported per day. If you were a security professional, and spent on average 5 minutes looking at each CVE to see if it applied to systems you manage, how much time per week would you spend reviewing CVEs?</p></li>
+<li><p>Look into some of these vulnerabilities (you can just click randomly on the CVEs in your chosen month) to see how they are reported. Can you find any that give vulnerabilities associated with software or systems that you use? Report on your findings, and describe how you can determine the risk to the “big three” security goals based on the information reported in the CVE entry. Looking into the information reported in a CVE, how could you filter reports (e.g., with an automated tool) to reduce the amount of time you would need to spend reviewing CVEs that are relevant to your systems?</p></li>
+</ol></li>
+<li><p>Consider a chat system, where users connect to a chat server and can send private messages back and forth with other users. Draw out a model of such a system, identify locations for data at rest, data in motion, and data in use, and define confidentiality, integrity, and availability concerns for data and systems in your model (like we did for the payment system in class). Ideally, only the two participants in a chat should be able to understand the messages – in particular, the chat server should not be able know what the users are saying to each other.</p></li>
+<li><p>As mentioned on page 27, AES can use keys that are 128, 196, or 256 bits long. For each part below, show your work — don’t just give final answers!</p>
+<ol type="a">
+<li><p>How many different 128-bit keys are possible? If you performed a brute-force decryption attack that could test 1 trillion (<span class="math inline">10<sup>12</sup></span> or approximately <span class="math inline">2<sup>40</sup></span>) keys per second, how long would it take you to test all 128-bit keys? Give your answer in both seconds, and in a more understandable unit (weeks? months? years? centuries?).</p></li>
+<li><p>As described on page 34, if you are looking at English text, then the number of <span class="math inline"><em>n</em></span>-bit strings that are valid English text is approximately <span class="math inline">2<sup>0.16<em>n</em></sup></span>. Consider what would happen if someone used an English phrase for the AES key. How many 128-bit sequences are valid English phrases (approximately)? If you could test 1 trillion English phrases per second, how long would it take you to test all 128-bit English phrases?</p></li>
+<li><p>What do these two results tell you about the use of English phrases for encryption keys? Is it a good idea?</p></li>
+</ol></li>
+<li><p>Consider the following scenario, commonly called a “Man-in-the-Middle Attack”: I am using a restaurant’s guest WiFi for internet access, and want to set up an encrypted connection to <code>workplace.com</code> to do some confidential work. I don’t have an encryption key I can use with <code>workplace.com</code> so my computer first contacts <code>workplace.com</code> using an unprotected connection to ask for their public key. After I get the public key, I use that to encrypt further communication with the server. Unfortunately, the restaurant intercepts the public key that <code>workplace.com</code> sends to me, and replaces it with its own (for which it knows the private or decryption key).</p>
+<ol type="a">
+<li><p>Draw a diagram that shows the three parties involved (me, the restaurant network router, and the <code>workplace.com</code> server), and show the communications described above on your diagram.</p></li>
+<li><p>Describe how digital certificates can be used to secure this protocol.</p></li>
+</ol></li>
+<li><p>Consider the following set of subjects and objects in the Bell-LaPadula model, with clearances and classifications as shown (C, S, and TS stand for “Classified”, “Secret” and “Top Secret”, which is in increasing level of classification):</p>
+<p><strong>Subject clearances:</strong></p>
+<ul>
+<li>C3PO: (C, {DEATHSTAR})</li>
+<li>Luke: (S, {DEATHSTAR,SHIPS,FORCE})</li>
+<li>Han: (S, {SHIPS})</li>
+<li>Leia: (TS, {SHIPS})</li>
+</ul>
+<p><br />
+<strong>Object classifications:</strong></p>
+<ul>
+<li>Locations: (C, {DEATHSTAR})</li>
+<li>ShipSpecs: (S, {SHIPS})</li>
+<li>AttackPlans: (TS, {SHIPS,DEATHSTAR})</li>
+</ul>
+<p><br />
+Write out the access control matrix that shows both read and write permissions for all four subjects and three objects (use “R” to denote read permission, and “W” to denote write permission).</p></li>
+<li><p>In the Bell-LaPadula model, there is typically a classification label of <code>("Unclassified", {})</code>. What users will be able to read a file with this label? Justify your answer by working through the definition of the “simple security property” and the definition of the BLP partial ordering (given on page 453 of the textbook).</p></li>
+<li><p>The “Bandit” wargame on <a href="http://overthewire.org">overthewire.org</a> consists of a sequence of challenges to test your skill with basic Linux command-line usage. For this question, solve up through Level 5 of the Bandit wargame (getting to Level 6), which will require you to demonstrate skills that are vital for future hands-on exercises in this class (logging in with SSH, examining files, working with directories, working with unusual file names and hidden files, etc.). Document how you solved the challenges by providing a one or two sentence description saying what you did for each level. [<em>Reminder: Figure these challenges out yourself. Do <strong>not</strong> search for solutions online, or ask others for solutions.</em>] Note: If you solve the first <em>20 levels</em>, you will receive 5 points extra credit.</p></li>
+</ol>
+<p> <br />
+</p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

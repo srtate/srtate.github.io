@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 454/654 - Spring 2021 - Programming Challenge 2</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../css/class_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+        <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark uncg-navbar fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="https://www.uncg.edu/">
+          <img class="collapse navbar-collapse" src="../img/uncg_class.png" alt="UNC Greensboro">
+          <img class="navbar-toggler" src="../img/uncg_mobile.png" alt="UNCG">
+        </a>
+        <div class="navbar-brand d-flex flex-column text-left"
+	     style="line-height: 1.2;">
+          <span>CSC 454/654</span>
+          <span class="small collapse navbar-collapse"><em>Algorithm Analysis and Design</em></span>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link " href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="syllabus.html">Syllabus</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="schedule.html">Schedule</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="assignments.html">Assignments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://uncg.instructure.com/">Canvas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- Page Content -->
+    <div class="container">
+   
+        <style>
+pre {
+ display:block;
+ padding:9.5px;
+ margin:0 0 10px;
+ font-size:13px;
+ line-height:1.42857143;
+ color:#333;
+ word-break:break-all;
+ word-wrap:break-word;
+ background-color:#f5f5f5;
+ border:1px solid #ccc;
+ border-radius:4px
+}
+pre code {
+ padding:0;
+ font-size:inherit;
+ color:inherit;
+ white-space:pre-wrap;
+ background-color:transparent;
+ border-radius:0
+}
+</style>
+<h2 id="csc-454654---spring-2021---programming-challenge-2">CSC 454/654 - Spring 2021 - Programming Challenge 2</h2>
+<p>These programming challenge problems are part of Assignment 3 (see Canvas for written problems). Note that while a Java solution to both problems can run in a fraction of a second, it was hard to get a Python solution to run in a reasonable amount of time on some test cases. Therefore, the time limit on these challenges has been increased from 5 seconds to 15 seconds.</p>
+<h4 id="problem-1---rockbags-10-points">Problem 1 - RockBags (10 points)</h4>
+<p>A shopkeeper in ArachnidMan’s city has learned of your awesome algorithm design and programming skills, and has hired you to help decide how to package his shiny rocks for sale. While all the shiny rocks are identical, how they are grouped and packaged makes a huge difference. A bag with 8 rocks may be worth less than two bags of 4 rocks, since one bag with 8 rocks has the disadvantage of being very heavy. On the other hand, it might be worth <em>more</em> than two bags of 4 rocks, if people want 8 rocks but don’t want to mess with two different bags. This is all very unpredictable, so the “Shiny Rock Consortium” standardizes prices and publishes a list of the value of different size bags. This is provided in a text file, where the first line gives a value <span class="math inline">\(n\)</span> with the maximum number of rocks that can be put in a bag, followed by <span class="math inline">\(n\)</span> lines that give the value of a size 1 bag, size 2 bag, etc.</p>
+<p>For example, if bags can hold up to 5 rocks, and a 1 rock bag is worth 5 dollars, a 2 rock bag is worth 10 dollars, a 3 rock bag is worth 15 dollars, a 4 rock bag is worth 16 dollars, and a 5 rock bag is worth 22 dollars, the input would look like this:</p>
+<pre><code>   5
+   4
+   10
+   15
+   16
+   22</code></pre>
+<p>Your shopkeeper has exactly <span class="math inline">\(n\)</span> shiny rocks, and wants to know how to divide them into bags to maximize his value. With the data above, he could put all 5 rocks in one bag (value 22 dollars), or could make two bags with two rocks and one bag with one rock (value 10+10+4=24 dollars). His best option, however, is one bag with two rocks and one bag with three rocks (value 10+15=25 dollars).</p>
+<p>Your task is to write a program that reads this data (from standard input, as always), and prints out the maximum possible total value. So with he input given above, your program would print out “25”. Your program must be able to process inputs with up to 10,000 values, and run in less than 15 seconds.</p>
+<h4 id="problem-2---numfalls-10-points">Problem 2 - NumFalls (10 points)</h4>
+<p>ArachnidMan has a new sidekick, BlackFeline, who also has superpowers that charge up by falling, but in a slightly different way. BlackFeline makes a sequence of falling jumps, and gets one unit of “superpower charge” for each jump. It doesn’t matter how far the fall is, there’s one unit of charge for any fall. Every jump does have to go from left to right and it has to be a fall – BlackFeline can never jump to the left or to a position at the same level or higher.</p>
+<p>Consider the same skyline as last time:</p>
+<p><img src="progc1_skyline.png" /></p>
+<p>If BlackFeline starts at position 2 (height 7), jumps to position 3 (height 3), and then to position 5 (height 1), she gets 2 units of superpower charge. However, that’s not the best choice! She can start at position 2, jump to position 9, then to position 11, and finally to position 12. She doesn’t fall as far as the first scenario, but since there are 3 falls instead of 2, she gets 3 units of superpower charge from this possibility.</p>
+<p>Your challenge is to write a program that reads a skyline input as described in the <a href="progchallenge1.html">previous programming challenge</a>, and calculate the largest possible superpower charge that BlackFeline can gain. The skyline can have up to 10,000 entries, and your solution must run in under 15 seconds. Output should consist of just the maximum charge, an integer on a single line, so with the sample scenario above your program should just print “3”.</p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

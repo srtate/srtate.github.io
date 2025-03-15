@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>Assignment 2 -- Due Tuesday, February 14</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../css/class_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+        <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark uncg-navbar fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="https://www.uncg.edu/">
+          <img class="collapse navbar-collapse" src="../img/uncg_class.png" alt="UNC Greensboro">
+          <img class="navbar-toggler" src="../img/uncg_mobile.png" alt="UNCG">
+        </a>
+        <div class="navbar-brand d-flex flex-column text-left"
+	     style="line-height: 1.2;">
+          <span>CSC 481/681</span>
+          <span class="small collapse navbar-collapse"><em>Principles of Computer Security</em></span>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link " href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="syllabus.html">Syllabus</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="schedule.html">Schedule</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="assignments.html">Assignments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://uncg.instructure.com/">Canvas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- Page Content -->
+    <div class="container">
+   
+        <h3 id="assignment-2-due-tuesday-february-14">Assignment 2 – Due Tuesday, February 14</h3>
+<p><strong>Note</strong>: All analysis problems can (and should!) be solved using the “estimation with powers of two” techniques from the <a href="rand_estimation.html">class reading</a>. <strong>Do not use a calculator!!</strong> You should always show all steps of your work, with explanations as necessary (don’t just write formulas!).</p>
+<ol type="1">
+<li><p>In class we did some calculations of how large a key would need to be to protect against brute force attacks under reasonable assumptions. For this problem, you should do a similar analysis but using extreme, over-the-top assumptions about the attacker’s computational capabilities (obviously trillions of times more generous to the attacker than reality).</p>
+<p>We are going to consider the following situation: Every single silicon wafer (for integrated circuits) produced worldwide for an entire year is going to be used for creating a single large key-cracking machine. That means for an entire year, there would be nothing else produced that uses integrated circuits – no cell phones, no TVs, no cars, no computers, … We’re going to assume that we can turn all of that silicon into AES decryption chips, using the absolute highest density experimental chip manufacturing technology that has ever been achieved, and that we can do that with 100% efficiency (no bad chips or wasted silicon). All of these assumptions are, of course, totally preposterous, but let’s see how long it would take to brute force a 128-bit AES key in this pretend world. Remember that all these calculations should be done using powers of two estimation, <strong>without a calculator</strong>, and showing your work.</p>
+<ol type="a">
+<li><p>According to the Silicon Manufacturers Group (SEMI), we are producing more and more silicon wafers for electronics every year, and by 2025 the worldwide production of silicon wafers will be roughly <a href="https://www.universitywafer.com/how-many-silicon-wafers-manufactured-annually.html">17 billion square inches</a> for the year – we’ll estimate that as 16 billion for our powers of two estimation. In an amazing cutting-edge result, IBM has demonstrated a 2nm chip manufacturing process, which able to achieve a density of <a href="https://www.serverwatch.com/servers/ibm-2nm-implications/">333 million transistors per mm<sup>2</sup></a> of wafer space – we’ll estimate that as <span class="math inline">\(256\)</span> million transistors per square millimeter, and note that there are roughly <span class="math inline">\(2^9\)</span> square millimeters per square inch (that’s not a great estimate – it’s about 25% off – but it’s the closest power of 2). For this part, compute the total number of transistors that are in our key cracking machine.</p></li>
+<li><p>One of the smallest AES chips ever designed was from Moradi <em>et al.</em>, who designed an <a href="https://dx.doi.org/10.1007/978-3-642-20465-4_6">AES-128 chip using only 2400 gates</a>. Logic gates take multiple transistors to implement, but we’ll just low-ball it and say that this takes around 4 thousand transistors. How many AES circuits can be made for our key cracking machine?</p></li>
+<li><p>Let’s say that each of these AES chips can do a billion decryptions per second. How many keys can our massive machine check <strong>in a year</strong>?</p></li>
+<li><p>How long would it take this crazy key cracking machine, on average, to break a 128-bit AES key? Give your answer in easy-to-understand everyday terms (not as a power of two!).</p></li>
+</ol></li>
+<li><p>In the Bitcoin system, transactions are stored in <em>blocks</em> that have an 80 byte header, and “Bitcoin mining” involves repeatedly hashing modifications of the header until a hash is found that begins in a certain number of zero bits (this is not entirely accurate, but close enough for this homework question!). When you do the labtainer lab (last question, below), you’ll experiment with a small version of this problem in “Task 4.” The necessary number of zero bits is set so that the expected time for some miner to find the right input is around 10 minutes, and this length has increased over time as more and faster miners have come online. Currently, in January 2023, the hash must begin with 77 zeroes. Bitcoin miners all use specially-built hardware these days – let’s see how long it would take to successfully find such a hash input on a regular system with standard software.</p>
+<p>On my system, the OpenSSL implementation of SHA256 can hash roughly 8 million 80-byte blocks per second. There are 16 cores, so the overall number of hashes that can be computed per second is 16 times that. The probability of some randomly chosen input having a hash that begins in 77 zeros is basically <span class="math inline">\(2^{-77}\)</span>, so a single test has a <a href="https://en.wikipedia.org/wiki/Bernoulli_distribution">Bernoulli distribution</a> with <span class="math inline">\(p=2^{-77}\)</span>. The number of trials needed before the first success has a <a href="https://en.wikipedia.org/wiki/Geometric_distribution">Geometric distribution</a>. With those hints, first find the expected number of trials before mining succeeds. Then calculate the expected <em>time</em> to success, using the rate of 8 million trials per second per core, and using 16 cores. Note that all values here are nicely approximated by powers of two, so use the “estimation by powers of two” techniques for your calculations, and show your work! Your final answer should be as a meaningful number, such as “16 seconds,” or “21 days,” or “2,000 years” (and <em>not</em> something like “<span class="math inline">\(2^{31}\)</span> seconds”).</p>
+<blockquote>
+<p><em>While not part of the homework, you might find it interesting to see how the speed of your own personal system compares. If you can run openssl (either natively or in the labtainer virtual machine), then run this command:</em></p>
+<pre><code>  openssl speed -bytes 80 -seconds 10 sha256</code></pre>
+<p><em>The output on my system includes the line:</em></p>
+<pre><code>  Doing sha256 for 10s on 80 size blocks: 82366637 sha256&#39;s in 10.00s</code></pre>
+<p><em>This says it could do 82,366,637 SHA256 hashes in 10 seconds, so about 8,236,663.7 per second. I rounded down a little (but very little!) when I said 8 million per second.</em></p>
+</blockquote></li>
+<li><p>Bitcoin blocks are identified by their hash, and it would break the system if two blocks had the same hash. Unfortunately, since a large number of bits are constrained to be zero, this reduces the overall number of possible hashes and increases the probability of a collision. Let’s see if this is a problem. Solving this question involves using the techniques and estimations from the section on the “Birthday Problem” in the <a href="rand_randomness.html">assigned reading</a>.</p>
+<ol type="a">
+<li><p>Hash values are 256 long, and assume that every hash begins with 77 zero bits. The current bitcoin blockchain <a href="https://explorer.btc.com/en/btc">has around 774,000 blocks</a>, so let’s round that up to a million blocks. Estimate the probability that two blocks have the same hash value (assume all but the 77 fixed bits are random and uniformly distributed).</p></li>
+<li><p>Let’s turn the problem around: How many blocks would need to be hashed before there’s roughly probability 1/2 of a repeated hash?</p></li>
+<li><p>One of the most popular hash functions in the 1990’s was MD5, which produces 128-bit hash values. Repeat the two calculations above for 128-bit hash values (still with 77 zero bits). (<em>Note: MD5 has been shown to be very insecure with respect to collision resistance, so should not be used. While collision resistance isn’t really the right measure for applications like this one, MD5 should still be avoided!</em>)</p></li>
+</ol></li>
+<li><p>This problem will help you understand why public key encryption schemes require larger keys than symmetric ciphers.</p>
+<ol type="a">
+<li><p>Assume that a public key scheme that uses Elliptic Curve Cryptography (ECC) with an <span class="math inline">\(n\)</span> bit key can be broken in <span class="math inline">\(2^{n/2}\)</span> steps. What would the keylength <span class="math inline">\(n\)</span> need to be for this to be the same time (number of steps) as the worst-case time to brute force a 128-bit key? Show and explain your work! How does this compare to the table we discussed on the class slides (taken from NIST 800-57 key size recommendations).</p></li>
+<li><p>A rough approximation of the time it takes to factor an <span class="math inline">\(n\)</span>-bit number of the type used by RSA (which would break an <span class="math inline">\(n\)</span>-bit RSA key) is <span class="math inline">\(2^{8\cdot n^{1/3}}\)</span> — in case it’s not clear, the exponent is 8 times the cube root of <span class="math inline">\(n\)</span>. Note that I have simplified this somewhat for the homework so that the calculations work out easily, but it’s not a bad approximation for values of <span class="math inline">\(n\)</span> between 1000 and 20,000. Given this complexity, what key size <span class="math inline">\(n\)</span> is needed for RSA to be as hard to break as the worst-case time to brute force a 128-bit key? How does this compare to the table we discussed on the class slides (taken from NIST 800-57 key size recommendations).</p></li>
+</ol></li>
+<li><p>Complete the “macs-hash” labtainer exercise. Here are a few tips:</p>
+<ul>
+<li><p>This lab requires putting some values into a spreadsheet and completion of both a lab report, using templates that are provided. When you start the lab, it will give you paths to both documents (as well as the lab writeup). Just right-click on those links to open them.</p></li>
+<li><p>Make sure you complete the spreadsheet and lab report, and save them, before typing “stoplab”. Since “stoplab” bundles these into the <code>.lab</code> file that you will submit, they must be completed and saved before the “stoplab”!</p></li>
+<li><p>From the original student window (not the labtainer window), you can type “checkwork” to see what the labtainer window thinks you have done or not done. You are encouraged to do this to make sure your actions are being recorded properly! In particular, it is looking for some specific actions that are described in the lab, and is not very smart about seeing alternatives. If you know shortcuts or simplified commands, do not use them - stick with what is described in the lab instructions.</p></li>
+</ul></li>
+</ol>
+<p> <br />
+</p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

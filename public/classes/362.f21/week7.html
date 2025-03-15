@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 362 - Spring 2021 - Week 6 Activities</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../css/class_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+        <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark uncg-navbar fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="https://www.uncg.edu/">
+          <img class="collapse navbar-collapse" src="../img/uncg_class.png" alt="UNC Greensboro">
+          <img class="navbar-toggler" src="../img/uncg_mobile.png" alt="UNCG">
+        </a>
+        <div class="navbar-brand d-flex flex-column text-left"
+	     style="line-height: 1.2;">
+          <span>CSC 362</span>
+          <span class="small collapse navbar-collapse"><em>System Programming</em></span>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link " href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="syllabus.html">Syllabus</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="schedule.html">Schedule</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="http://cs241.cs.illinois.edu/coursebook/index.html">Coursebook</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://uncg.instructure.com/">Canvas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- Page Content -->
+    <div class="container">
+   
+        <h2 id="csc-362-spring-2021-week-6-activities">CSC 362 – Spring 2021 – Week 6 Activities</h2>
+<h3 id="tuesday">Tuesday</h3>
+<p>[Next time: code to open and read, and open and append to a file - check inode numbers, and then do the same thing in an editor like emacs that makes backups.]</p>
+<p><strong>This + bit ops slides should be 72 min. Should be good. Maybe even a file open/read program.</strong></p>
+<p>Demos:</p>
+<ul>
+<li>Basic file ops
+<ul>
+<li>ls -l - talk about fields again (metadata)</li>
+<li>ln to create link and then ls -l again</li>
+<li>ls -i to see inodes - notice that the same</li>
+<li>ln -s to make symbolic link and do ls -i again - different</li>
+<li>stat for info out of inode (note inode number again) - diff names same file</li>
+<li>do “realpath” - use “.” as base and look at diff symlinks</li>
+<li>rm on hard link - not just unlinks name from inode (free when count 0 - important concept - ref counting - we’ll get back to this later)</li>
+</ul></li>
+<li>Filesystem-level stuff: df and mount for showing filesystems</li>
+<li>code: db examples - start with dbcreate and dbrecord.h
+<ul>
+<li>See the record format in dbrecord.h</li>
+<li>Can you figure out how big each record is (i.e., sizeof(record))?</li>
+<li>Look at and run dbcreate - notice dbfile.dat created</li>
+<li>Examine the file with xxd - do you recognize the individual records?</li>
+<li>Look at and run dbquery.c - talk about fseek</li>
+<li>Look at dbupdate.c - note “r+” as mode - discuss and run</li>
+<li>Run dbquery again to see change - then xxd dbfile.dat to see record</li>
+<li>Note “slack space” style issue in DB - what if this were sensitive?</li>
+</ul></li>
+<li>stat example (checkbits.c)
+<ul>
+<li>Pull up code - discuss basic idea - examine metadata</li>
+<li>Call to stat - discuss struct - must have space! - and check ret value</li>
+<li>Note prints and what they are doing - note the “%o” for octal - then run</li>
+<li>Do “man inode” in a 2nd window (so results are still shown) and interpret</li>
+<li>What are final two if tests? Use inode manpage to figure out</li>
+<li>Run several times, changing perm bits from cmdline to demo</li>
+</ul></li>
+</ul>
+<h3 id="thursday">Thursday</h3>
+<p>Beg class:</p>
+<ul>
+<li>Exam reminder - Joshua review session on Monday</li>
+<li>“Thinking through” cases - always think “what values can this var have?” If NULL, handle that case - don’t just assume it will never happen.</li>
+</ul>
+<p>Thurs demos:</p>
+<ul>
+<li>Start with stat example that we didn’t get to last time
+<ul>
+<li>Talk about allocating a struct, not just a ptr</li>
+</ul></li>
+<li>Show man page for readdir - then “man 2 readdir” and note “This is not…”
+<ul>
+<li>Back to lib function - note fields - copy of type (warn, but ok for us)</li>
+<li>Point: Can get type without making a second call to stat</li>
+<li>Also point out: name is just the filename, no path - might not work w/stat</li>
+</ul></li>
+<li>Pull up listdir.c - basically like slide, but print type info too
+<ul>
+<li>Talk about in-class activity (gather more info) and run sol’n</li>
+<li>Then show weekly assignment solution run - first in “bin” dir (note exclusion of “.” and “..”) then in “src” and finally project dir – talk about recursion (do “ls -lR”)</li>
+<li>Make sure you test weekly with a symlink or two in dir</li>
+</ul></li>
+</ul>
+<h2 id="notes-from-spring-2021">Notes from Spring 2021</h2>
+<p>Tuesday - 03/02:</p>
+<ul>
+<li>12 min - intro - lots of talk about upcoming exam</li>
+<li>37 min - slides</li>
+<li>10 min - basic cmdline op demo and intro to activity</li>
+</ul>
+<p>Demo timestamps</p>
+<ul>
+<li>49:00 - start - create file in empty dir, ls -l and talk about fields</li>
+<li>50:00 - ln command to give second name to file, show same in ls -l echo to append with redirect to one, show in both ln -s for symbolic link and show in ls -l - show realpath</li>
+<li>53:00 - stat from cmdline show number of links (names) for ..</li>
+<li>55:30 - questions</li>
+<li>58:00 - intro to in-class activity</li>
+<li>59:00 - start activity</li>
+</ul>
+<p>Activity was: fileinfo.c - use stat to get info on files. Class split into halves, and half dig into user id/owner, ask how to translate to username. Other half prints file mode in octal</p>
+<p>Thursday - 03/04:</p>
+<ul>
+<li>11 min - intro - a little unfocussed…</li>
+<li>44 min - slides - 14 min on bit ops</li>
+<li>7 min - demos</li>
+</ul>
+<p>Demo timestamps</p>
+<ul>
+<li>55:00 some discussion of solution from Tues in-class</li>
+<li>57:00 listdir.c - code from slide, and show running point out hidden files shown - “hidden” just something for ls some discussion of recursion and tree walks for assignment (question?)</li>
+<li>59:20 checkbits.c - and look at inode man page use chmod to change permission bits and rerun C program</li>
+<li>62:00 start in-class activity</li>
+</ul>
+<p>Activity: Count how many files and dirs are in the current directory.</p>
+<p>Assignment was: redo the “search for specific size/exec bit …”</p>
+<p>This time: Recursively count files, exec files, dirs, and average size.</p>
+<p>[what were common problems/misunderstandings from last time? rel vs abs names?]</p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

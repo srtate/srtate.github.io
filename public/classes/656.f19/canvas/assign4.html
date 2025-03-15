@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>Solo Assignment 4 -- Due Wednesday, November 6 (before class)</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://www.uncg.edu/cmp/faculty/srtate/656.f19/assign4.html">View original, outside canvas</a> ]
+   
+        <h3 id="solo-assignment-4-due-wednesday-november-6-before-class">Solo Assignment 4 – Due Wednesday, November 6 (before class)</h3>
+<p>Remember that these problems are for individual work only (no collaboration).</p>
+<ol type="1">
+<li><p>Textbook, Problem 12.3</p></li>
+<li><p>Textbook, Problem 12.7</p></li>
+<li><p>Textbook, Problem 12.16</p></li>
+<li><p>This question deals with the problem of <em>extending graph colorings</em> of a subgraph to a coloring of an entire graph. Given a graph <span class="math inline"><em>G</em></span>, an “induced subgraph” <span class="math inline"><em>H</em></span> of <span class="math inline"><em>G</em></span> is defined by taking a subset of <span class="math inline"><em>G</em></span>’s vertices (so <span class="math inline"><em>V</em>(<em>H</em>) ⊆ <em>V</em>(<em>G</em>)</span>), and then <span class="math inline"><em>H</em></span>’s edges are the set of all edges that are incident to two vertices in <span class="math inline"><em>V</em>(<em>H</em>)</span>: <br /><span class="math display">       <em>E</em>(<em>H</em>) = {⟨<em>u</em> − <em>v</em>⟩ | <em>u</em>, <em>v</em> ∈ <em>V</em>(<em>H</em>)}.</span><br /> You can think of this as “pulling out” a subset of vertices from <span class="math inline"><em>G</em></span> and all of the edges that come with those vertices.</p>
+<p>We say that a coloring of <span class="math inline"><em>H</em></span> is <em>extended</em> to a coloring of <span class="math inline"><em>G</em></span> if every vertex in <span class="math inline"><em>H</em></span> retains the color of its original coloring, and all the vertices in <span class="math inline"><em>V</em>(<em>G</em>) − <em>V</em>(<em>H</em>)</span> are assigned colors such that the result is a valid coloring of <span class="math inline"><em>G</em></span>.</p>
+<ol type="a">
+<li><p>Prove that for any <span class="math inline"><em>H</em></span> and <span class="math inline"><em>G</em></span>, any valid coloring of <span class="math inline"><em>H</em></span> can be extended to a valid coloring of <span class="math inline"><em>G</em></span> (the number of colors used for <span class="math inline"><em>G</em></span> is not important).</p></li>
+<li><p>Let <span class="math inline"><em>G</em></span> and <span class="math inline"><em>H</em></span> be such that <span class="math inline">|<em>V</em>(<em>G</em>) − <em>V</em>(<em>H</em>)| = 1</span> (i.e., <span class="math inline"><em>G</em></span> is one vertex larger than <span class="math inline"><em>H</em></span>) and <span class="math inline"><em>χ</em>(<em>G</em>) = <em>χ</em>(<em>H</em>)</span>. Prove that there exists a <span class="math inline"><em>χ</em>(<em>H</em>)</span>-coloring of <span class="math inline"><em>H</em></span> that can be extended to a <span class="math inline"><em>χ</em>(<em>G</em>)</span>-coloring of <span class="math inline"><em>G</em></span>.</p></li>
+<li><p>Let <span class="math inline"><em>G</em></span> and <span class="math inline"><em>H</em></span> be such that <span class="math inline">|<em>V</em>(<em>G</em>) − <em>V</em>(<em>H</em>)| = 1</span> (i.e., <span class="math inline"><em>G</em></span> is one vertex larger than <span class="math inline"><em>H</em></span>) and <span class="math inline"><em>χ</em>(<em>G</em>) = <em>χ</em>(<em>H</em>) + 1</span>, so that any coloring of <span class="math inline"><em>G</em></span> requires one more color than is necessary to color <span class="math inline"><em>H</em></span>. Prove that any <span class="math inline"><em>χ</em>(<em>H</em>)</span>-coloring of <span class="math inline"><em>H</em></span> can be extended to a <span class="math inline"><em>χ</em>(<em>G</em>)</span>-coloring of <span class="math inline"><em>G</em></span>.</p></li>
+<li><p>Let <span class="math inline"><em>G</em></span> and <span class="math inline"><em>H</em></span> be such that <span class="math inline">|<em>V</em>(<em>G</em>) − <em>V</em>(<em>H</em>)| = 2</span> (i.e., <span class="math inline"><em>G</em></span> is two vertices larger than <span class="math inline"><em>H</em></span>) and <span class="math inline"><em>χ</em>(<em>G</em>) = <em>χ</em>(<em>H</em>) + 1</span>, so that any coloring of <span class="math inline"><em>G</em></span> requires one more color than is necessary to color <span class="math inline"><em>H</em></span>. Show that there exist graphs <span class="math inline"><em>G</em></span> and <span class="math inline"><em>H</em></span> that satisfy these conditions, but for which <em>no <span class="math inline"><em>χ</em>(<em>H</em>)</span>-coloring of <span class="math inline"><em>H</em></span> can be extended to a <span class="math inline"><em>χ</em>(<em>G</em>)</span>-coloring of <span class="math inline"><em>G</em></span></em>.</p></li>
+<li><p>If we can always extend a coloring when adding a single new vertex (as established in parts b and c), why can’t we just extend a coloring with two new vertices by adding the vertices one at a time? Since the chromatic number goes up by only one over the two vertex additions, one addition must keep the chromatic number the same and one must increase the chromatic number by one. Why can’t we apply part b for the first addition and part c for the second addition, extending the coloring each time, so that we end up extending the original coloring over the two vertex additions? (<em>Hint: if you gave a good counter-example in part d, try working this through the “add one vertex at a time” argument and see where it fails.</em>)</p></li>
+</ol></li>
+</ol>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 454/654 - Spring 2020 - Assignment 3 - Due March 16, 2020</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../css/class_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+        <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark uncg-navbar fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="https://www.uncg.edu/">
+          <img class="collapse navbar-collapse" src="../img/uncg_class.png" alt="UNC Greensboro">
+          <img class="navbar-toggler" src="../img/uncg_mobile.png" alt="UNCG">
+        </a>
+        <div class="navbar-brand d-flex flex-column text-left"
+	     style="line-height: 1.2;">
+          <span>CSC 454/654</span>
+          <span class="small collapse navbar-collapse"><em>Algorithm Analysis and Design</em></span>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link " href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="syllabus.html">Syllabus</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="schedule.html">Schedule</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="assignments.html">Assignments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://uncg.instructure.com/">Canvas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- Page Content -->
+    <div class="container">
+   
+        <p> </p>
+<h2 id="assignment-3---due-march-16-2020">Assignment 3 - Due March 16, 2020</h2>
+<ol type="1">
+<li><p>Perform the Matrix-Chain-Order algorithm from Section 15.2 on an input giving the following sequence of dimensions: <span class="math inline">\(\langle 32, 12, 8, 76, 72, 28\rangle\)</span>. Fill in the tables, and then write out the optimal parenthesization.</p></li>
+<li><p>Based on your superb algorithms and optimization skills, you have been hired by a medical research company to help optimize their operations. The first problem they ask you to solve is to devise an algorithm to minimize the cost of cutting a strand of DNA into pieces. For a length <span class="math inline">\(L\)</span> strand, you are given <span class="math inline">\(n\)</span> positions <span class="math inline">\(p_1, p_2, \ldots, p_n\)</span> at which it needs be cut, where each <span class="math inline">\(p_i\)</span> denotes the distance from the beginning of the original strand. Position 0 is the far left of the strand. You are given the positions in sorted order, so <span class="math display">\[ 0 &lt; p_1 &lt; p_2 &lt; \cdots &lt; p_n &lt; L
+. \]</span> Only one cut can be made at a time, and the cost of cutting a strand is proportional to the length of the strand, so the order in which cuts are made affects the overall cost. For example, if you are given a strand with <span class="math inline">\(L=100\)</span> that must be cut at positions <span class="math inline">\(p_1=25\)</span> and <span class="math inline">\(p_2=50\)</span>, then your first cut always costs $100, but if you cut at <span class="math inline">\(p_1\)</span> you are left with a strand of length 75 which will cost $75 to cut. On the other hand, if you cut at <span class="math inline">\(p_2\)</span> first, then you cut a length <span class="math inline">\(50\)</span> strand for the second cut, which costs only $50, saving you $25 over the other solution.</p>
+<ol type="a">
+<li><p>Consider a problem with <span class="math inline">\(L=100\)</span>, and three cuts to be made at <span class="math inline">\(26\)</span>, <span class="math inline">\(50\)</span>, and <span class="math inline">\(78\)</span>. Calculate the cost of each of the <span class="math inline">\(3!=6\)</span> possible orders for making cuts, and find the lowest-cost order.</p></li>
+<li><p>At first glance it seems reasonable that the following rule will give the optimal ordering: For any piece that requires cutting, make the cut that is as close to the middle as possible. Repeat this process until no more cuts need to be made. Come up with an example that shows that this does not always give the lowest cost sequence of cuts. <em>Note: It is possible to do this with a problem with only 3 cuts.</em></p></li>
+<li><p>Clearly state the recursive characterization of the optimal cost, and use this to design a dynamic programming solution for this problem. Give your dynamic programming solution using pseudocode. The running time must be polynomial in <span class="math inline">\(n\)</span>.</p></li>
+<li><p>Prove that your algorithm always finds the optimal solution (remember to focus on the “optimal substructure” property).</p></li>
+<li><p>Analyze the running time of your algorithm.</p></li>
+<li><p>Illustrate how your algorithm works (filling in the dynamic programming table and giving the optimal ordering of cuts), using the example problem you gave in part (b).</p></li>
+<li><p>Illustrate how your algorithms works on the following problem: <span class="math inline">\(L=200\)</span> and cut positions at <span class="math inline">\(\langle 10, 16, 20, 98, 100, 105, 130\rangle\)</span>.</p></li>
+</ol></li>
+</ol>
+<p> </p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

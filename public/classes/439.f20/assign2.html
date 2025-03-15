@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 439/639 - Fall 2020 - Assignment 2 -- Basic Parser</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="../css/class_srtate.css" rel="stylesheet">
+
+  </head>
+
+
+  <body>
+
+        <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark uncg-navbar fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="https://www.uncg.edu/">
+          <img class="collapse navbar-collapse" src="../img/uncg_class.png" alt="UNC Greensboro">
+          <img class="navbar-toggler" src="../img/uncg_mobile.png" alt="UNCG">
+        </a>
+        <div class="navbar-brand d-flex flex-column text-left"
+	     style="line-height: 1.2;">
+          <span>CSC 439/639</span>
+          <span class="small collapse navbar-collapse"><em>Introduction to Compiler Design</em></span>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link " href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="syllabus.html">Syllabus</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="schedule.html">Schedule</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="assignments.html">Assignments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://uncg.instructure.com/">Canvas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- Page Content -->
+    <div class="container">
+   
+        <h2 id="assignment-2-basic-parser-due-mon-oct-12">Assignment 2 – Basic Parser – Due Mon, Oct 12</h2>
+<p>For this assignment, you will create a basic parser for LittleC. You must develop a complete grammar for the language, create and use a symbol table that supports block-structured variable declarations and hiding (including implementing classes to manage identifiers and types), and construct a syntax tree from a limited set of valid programs. Invalid programs should be detected and error messages should be printed, although these messages don’t have to be very precise at this time and you don’t have to worry about error recovery.</p>
+<p>The “limited set of valid programs” means that, with one small exception, in assignment 2 every value is an <code>int</code>, and so you don’t need to support <code>char</code> types or arrays. The one small exception is that you should support the <code>prints</code> function with a string literal. The string literal is a <code>char[]</code> type, but that’s the only place you need a type that is not <code>int</code> or <code>void</code>. How you handle this special case is up to you (you don’t have to include support for <code>char[]</code> types anywhere else). The test cases in the initial code repository give a pretty complete set of test cases, including all but one kind of syntax tree node (which one is missing? find it and make sure <em>you</em> have a test case for that!). Note that in Assignment 3 you’ll have to expand your parser to support the complete language, including all types, so make sure you design your code with this future growth in mind. You can even get a jump-start on this and write some of this code now, as a full language parser will pass all of the limited tests used for Assignment 2.</p>
+<p>There’s a lot in this assignment description, but read carefully through everything here before you start coding. In particular, the “Tips and Hints” section at the end might save you a lot of time and frustration! You also should come back and re-read everything after you’ve been working for a while, when things will make even more sense.</p>
+<p>The initial repository provides you with a <code>ParserTest</code> class and main program that is set up similar to the <code>LexerTest</code> program in the previous assignment. You can run this tester with input from either a file or from standard input (console or redirected). The basic requirements are this:</p>
+<ul>
+<li><p>Complete the grammar for the LittleC language in <code>LittleC.g4</code> (if you didn’t get Assignment 1 completed, a solution will be released on Tuesday, Sept 29, after the late deadline has passed).</p></li>
+<li><p>Write rule entry/exit listeners in class <code>LCListener</code> as needed to create a syntax tree for a LittleC program. <code>LCListener</code> should also have methods <code>getSyntaxTree()</code> and <code>getSymbolTable()</code> that can be called after parsing is complete (stubs are provided in the starter code). The <code>getSyntaxTree()</code> method should return <code>null</code> if there were any errors discovered anywhere in parsing.</p></li>
+<li><p>Your symbol table class should support <code>printGlobalVars()</code> and <code>printGlobalFns()</code> methods that can be used to print out all global variables and global functions in alphabetical order. This is used for testing, and the output must follow the format described in the comments in the SymbolTable starter code.</p></li>
+<li><p>Your syntax tree must support nodes for all of the basic statement types and all of the expression operators, and must provide a <code>printSyntaxTree()</code> method that prints out a readable version of the syntax tree. This is used for testing, so the format should carefully follow the description given both in the Canvas section on the compiler project and in the README in the syntax tree package source directory.</p></li>
+</ul>
+<p>As with Assignment 1, some basic tests are provided for you. These are useful even before your code is complete, since the output files give you some specific examples of how output should be structured. You should of course create more extensive tests of your own, and you’re once again encouraged to share test cases with the class through the ParserTests repository.</p>
+<h4 id="suggested-timeline-for-work">Suggested Timeline For Work</h4>
+<p>This is a big assignment, and is probably more complex with more coding (requiring careful code design) than anything you’ve done in any other class. Because of this, it is vital that you pace yourself and get a little done each week. Here is my suggestion for milestones to set for your work. These are just suggestions, but if you fall behind this pace then there’s a very good chance you will not get this done on time (or at all!).</p>
+<p><em>Week 1 (finish by Mon, Sept 28)</em>: Create a complete grammar for language, and carefully test it with the parse tree viewer. Focus particularly on expressions, and make sure they are parsed correctly. Also start sketching out ideas (and maybe some code) for your symbol table, identifier, and type classes.</p>
+<p><em>Week 2 (finish by Mon, Oct 5)</em>: Implement and test your classes for the symbol table, identifiers, and types. Tie these into your grammar using parser listener methods, so that all identifiers for variables and functions are recorded on declaration and looked up on use. You should print an error message when an undeclared variable or function is used. Start defining a few simple syntax tree node types, and create them in listeners for a few of your expression rules. As you create different types of syntax tree nodes, make sure you have a <code>toString</code> method that can be used for printing out information on an individual node – creating these as you go will make both debugging and the final syntax tree printing code <em>much</em> simpler. The basic recursive printing method (using recursion to print children) should be finished by the end of Week 2.</p>
+<p><em>Week 3 (finish by Mon, Oct 12, the assignment due date)</em>: Finish the expression and statement listeners, and make sure you support all the required syntax tree node types (you don’t need CAST or AIDX nodes, but you need all of the others!). Test everything thoroughly! You should definitely pass all of the instructor-provided tests, and you should create more extensive tests on your own.</p>
+<h3 id="additional-language-information">Additional Language Information</h3>
+<p>The previous language overview was sufficient to identify the lexemes/tokens that you needed to recognize in the lexical analyzer, but the following information will give some additional information needed in this stage. If you have any uncertainties about this, you should ask for clarification – if you guess, and guess wrong, it’s still wrong! Some of the issues below will only come up after you start handling non-<code>int</code> types, but the information is included here for completeness.</p>
+<h4 id="information-on-types-and-declarations">Information on Types and Declarations</h4>
+<p>All identifiers must be defined before they are used, including functions. To help, a function can be declared first without a body as a “forward reference,” and then it can be used before the actual function definition. For example, this is valid LittleC (but it would not be valid without the first line defining the function <code>f</code>).</p>
+<blockquote>
+<pre><code>void f(int x);
+
+int g() {
+  f(12);
+}
+
+void f(int x) {
+   prints(&quot;Something\n&quot;);
+}</code></pre>
+</blockquote>
+<p>If a function signature is given multiple times like this, everything must be the same in the definitions: The same return type and the same number and types of arguments, although the names of the formal parameters really aren’t important and can change. If the return type or parameters don’t match, your parser should flag this as an error.</p>
+<p>Note that there are four pre-defined standard functions in the LittleC language (see the language overview document). Your parser should pre-define these function signatures as “extern functions” before parsing any program so that they are recognized.</p>
+<p>For simplicity, function return types can only be simple types (no arrays): <code>int</code>, <code>char</code>, or <code>void</code>.</p>
+<p>In the LittleC language, only one variable can be declared at a time. In other words, if you want two <code>int</code> variables named <code>x</code> and <code>y</code>, then you must have two separate declarations. Another simplification is that any initial value given when a variable is declared must be a literal – the language does not accept expressions for initializers. Similarly, when arrays are declared with a size, the size must be an integer literal (not an expression). The only arrays that can have initializers are character arrays initialized with a string, as described in the previous language overview.</p>
+<h4 id="expressions-and-operators">Expressions and Operators</h4>
+<p>When parsing expressions, rules for legal expressions must be checked and enforced. This includes checking types in some operations (e.g., if <code>a[3]</code> is used in an expression, <code>a</code> must be an array type) and checking that some values are lvalues (e.g., you can’t say <code>3++</code> because <code>3</code> is not an lvalue). Note that these are all semantic analysis rules, and aren’t part of the grammar definition. Types can be mixed in expressions though in the same way that they can in the full C language (see below for more information).</p>
+<p>Parentheses can overrule any precedence and associativity rules, and array index brackets work similarly, so these operators are the most important in expression operation ordering:</p>
+<ol type="1">
+<li>Grouping with parentheses: <code>(</code>, <code>)</code></li>
+<li>Array indexing: <code>[</code> and <code>]</code></li>
+</ol>
+<p>The unary operators bind the tightest, before any binary operators:</p>
+<ol type="1">
+<li>Unary pre/post increment/decrement: <code>++</code>, <code>--</code></li>
+<li>Unary operations: <code>+</code>, <code>-</code>, <code>!</code>, <code>#</code></li>
+</ol>
+<p>The following list gives all binary operations, from highest precedence (most tightly binding) to lowest precedence. Order of operations from the same level are generally grouped left-to-right (left associativity), although the assignment operation is right-associative (so you can write <code>a=b=3</code> and it groups like you had written <code>a=(b=3)</code>).</p>
+<ol type="1">
+<li>Binary operations (left-associative): <code>*</code>, <code>/</code>, <code>%</code></li>
+<li>Binary operations (left-associative): <code>+</code>, <code>-</code></li>
+<li>Binary operations (left-associative): <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code></li>
+<li>Binary operations (left-associative): <code>==</code>, <code>!=</code></li>
+<li>Binary operation (left-associative): <code>&amp;&amp;</code></li>
+<li>Binary operation (left-associative): <code>||</code></li>
+<li>Binary assignment operation (right-associative): <code>=</code></li>
+</ol>
+<p>All binary operators other than assignment work with only integer types. Arithmetic operations produce a value of type <code>char</code> if both operands are of type <code>char</code>, but otherwise the result is of type <code>int</code>. If only one operand is of type <code>char</code> then it is “promoted” to an <code>int</code> so that the operation is actually performed on two <code>int</code> values – there is a syntax tree node for a “promote to <code>int</code>” to represent this. Comparison and Boolean operators always produce an <code>int</code>, regardless of the types of the operands.</p>
+<h3 id="tips-and-hints">Tips and Hints</h3>
+<ul>
+<li><p>In ANTLR you can use regular expression operators like <code>+</code>, <code>*</code>, <code>?</code>, and parenthetical expressions, as well as options in parentheticals using <code>|</code> (none of these are part of normal CFG notation). Make use of these! They can really simplify your grammars, particularly for things like argument lists, sequences of statements, etc.</p></li>
+<li><p>In grammar rules, use symbolic names for all fixed strings. In other words, while “<code>'(' expr ')'</code>” could be part of an expression definition, it’s better to use token names like “<code>LEFTP expr RIGHTP</code>” since this allows your code to refer to the parts of the rule by names.</p></li>
+<li><p>Since the ANTLR listener methods are triggered when entering and exiting a rule, if you would like something triggered in the middle of a rule you can adjust your grammar to handle this. For example, consider the following rule definition:</p>
+<blockquote>
+<pre><code>rule: terms NONTERMS OPENP stuff CLOSEP;</code></pre>
+</blockquote>
+<p>If you would like a Java function called in between parsing NONTERMS and OPENP, you could change the grammar like this:</p>
+<blockquote>
+<pre><code>rulestart: terms NONTERMS;
+ruleend: OPENP stuff CLOSEP;
+rule: rulestart ruleend;</code></pre>
+</blockquote>
+<p>Now the methods <code>exitRulestart()</code> and <code>enterRuleend()</code> are both called at the appropriate parts. An example of a useful time for this: it is useful to have Java code called between the header of a function declaration (with parameters) and the body (which starts with an open curly brace).</p></li>
+<li><p>Make sure you understand ANTLR rule labels, because this makes parsing expressions and creating a syntax tree much easier!</p></li>
+<li><p>Think about how types are represented, and how you will need to query types. For example, methods such as <code>isArray()</code> or <code>isIntType()</code> could be convenient.</p></li>
+<li><p>For your symbol table, think about creating a stack of “environments” that have individual symbol tables, where a new environment is pushed on the stack whenever you enter a block, and is popped off the stack when the block ends (enter and exit listeners!). The variable lookup method in the symbol table then just walks down the stack checking environments from top to bottom until the name is found or you run out of environments.</p></li>
+</ul>
+<p> </p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

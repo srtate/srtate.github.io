@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 362 - Spring 2021 - Week 9 Activities</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://www.uncg.edu/cmp/faculty/srtate/362.f21/week9.html">View original, outside canvas</a> ]
+   
+        <h2 id="csc-362-spring-2021-week-9-activities">CSC 362 – Spring 2021 – Week 9 Activities</h2>
+<p><em>On assignment: sttest1 doesn’t print anything if tests are passed…</em></p>
+<p><em>Get rid of llist_print function</em></p>
+<p><em>Project out soon</em></p>
+<p>Demos:</p>
+<ul>
+<li>multicount.c
+<ul>
+<li>Run initial version with “time”</li>
+<li>Then swith to multi_threaded and run again (time cut in half but bad counter)</li>
+<li>Then switch to start safe rather than unsafe threads and run again</li>
+</ul></li>
+<li><code>qdriver1.c</code>
+<ul>
+<li>Pull up and look at code and browse through queue code - note locks in dequeue</li>
+<li>Run and note crash</li>
+<li>Uncomment lock calls in enqueue and run again - no segfaults - time it</li>
+<li>Placement of lock in enqueue - can we move it later? - try and time again</li>
+</ul></li>
+<li><code>qdriver2.c</code>
+<ul>
+<li>Look at code and note use of queue_front - not stressed before</li>
+<li>Run and then look at changing queue_front - need to rearrange code!</li>
+</ul></li>
+<li><code>qdriver3.c</code>
+<ul>
+<li>Condition variable example - look at code</li>
+<li>When running examples, in inf loop, so quit after 10 iterations</li>
+<li>Using wait1 - first run with one consumer and then bump NCONSUMERS to 2</li>
+<li>Run wait2 - run with time - busywait wastes CPU time (user time)</li>
+<li>Finally wait3 - note improvement</li>
+</ul></li>
+</ul>
+<h4 id="for-students-to-do-before-tuesday">For students to do before Tuesday</h4>
+<p>Race conditions - outcome determined by how threads are scheduled (non-deterministic) [slightly more specific meaning in security - toctou] - example with variable getting updated - interleaved rwrw or rrww? [atomic operations, assembly code, etc.] - example with conflicting use of a static local [ increment ops in example - illustrate how this causes a problem ] Other threading topics - forking within a thread only has one thread in child - embarrassingly parallel problems - uses mergesort as example + even more: brute-force search in crypto (mention bitcoin mining) + [ briefly mention diff models -MIMD vs SIMD, graphics cards, etc.]</p>
+<p>Ch 7 Synchronization - “Critical section” should only be executed by one thread at a time [mention Java “synchronized”] + Caused by accessing vars - auto vars no danger Mutex (“Mutual Exclusion”) - [Term: busy wait] - [Term: atomic - not w/databases too] - Duck example - one duck, whoever has it can access the resource + (“the mutex duck” - thus the picture of the duck on the book) - pthread_mutex_t w/ pthread_mutex_lock and pthread_mutex_unlock + init val PTHREAD_MUTEX_INITIALIZER or pthread_mutex_init + pthread_destroy - mutex usages + how often or small a section to lock? efficiency trade-offs + Gotchas: just blocks code - coordination with locking variables is up to you; only locker (thread) can unlock; beware of overhead; make sure all execution paths unlock a mutex (beware early returns!); remember to init and to destroy. + Mutex implementation… problem with busy-wait and non-atomic ops -&gt; [Understand problem, mention stdatomic, but otherwise skip] - semaphores - idea - adv wait/post from diff threads (not restricted like lock/unlock) - powerful but also dangerous and usually not needed Condition variables - sleep until a condition is met and thread woken up - alt to busy wait - writeup in book is pretty poor…. [make good example?] Thread-safe data structures - give unsafe example with our queue code? - identifying critical sections - clue is accessing same mem, but not all - stack example with errors [make queue impl with timer threadsafe diff ways and time?]</p>
+<p>** Note - skip “software solutions”, “working solutions”, and “implementing counting semaphores”** … really skip rest, and we’ll spend more time on examples…</p>
+<p>Demo: * Do “man malloc” and “man printf” and see “Attributes” * Do “man getpwuid” * Look at trythreads… really just keeping threads around. Look at maps. * Do multicount - look at code - sequential then multi_treaded * Do closest - walk through - sequential - then threaded - time it -&gt; Will explore more on Thursday</p>
+<h4 id="tuesday-material">Tuesday Material</h4>
+<p>stuff</p>
+<h4 id="tuesday-in-class-activities">Tuesday In-Class Activities</h4>
+<p>stuff</p>
+<h4 id="for-students-to-do-before-thursday">For students to do before Thursday</h4>
+<p>???</p>
+<h4 id="thursday-material">Thursday Material</h4>
+<p>TS data structures notes:</p>
+<h4 id="thursday-in-class-activities">Thursday In-Class Activities</h4>
+<p>??</p>
+<h4 id="full-assignment-due-next-tuesday">Full Assignment – due next Tuesday</h4>
+<p>??</p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

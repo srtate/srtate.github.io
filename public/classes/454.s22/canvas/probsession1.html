@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 454/654 - Spring 2020 - Problem Session 1 - March 16, 2020</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://www.uncg.edu/cmp/faculty/srtate/454.s22/probsession1.html">View original, outside canvas</a> ]
+   
+        <h2 id="problem-session-1---march-16-2020">Problem Session 1 - March 16, 2020</h2>
+<h4 id="todays-problem">Today’s Problem:</h4>
+<p>A “palindrome partition” of a string is a subdivision of the string into substrings that are all palindromes. For example, consider the string <span class="math inline"><code>CACACDCABDB</code></span>. Since the first and last letters of the string are different, it’s obviously not a palindrome, but it does contain palindromes as substrings. Here is a palindrome partition for this string:</p>
+<p><br /><span class="math display"><code>CAC</code> | <code>ACDCA</code> | <code>BDB</code></span><br /></p>
+<p>Does every string have a palindrome partition? For example, <span class="math inline"><code>ABCDAB</code></span> doesn’t contain any non-trivial palindromes, so can we partition it into palindrome substrings?</p>
+<p>Yes! Since every one-character string is a palindrome, the following is a legitimate palindrome partition (and the only palindrome partition for this string):</p>
+<p><br /><span class="math display"><code>A</code> | <code>B</code> | <code>C</code> | <code>D</code> | <code>A</code> | <code>B</code></span><br /></p>
+<p>A single string can have many different palindrome partitions. In the extreme case, think about how many palindrome partitions the string <span class="math inline"><code>AAAAA</code>⋯<code>AA</code></span> has – <em>every</em> substring is a palindrome!</p>
+<p>Our goal is to come up with an algorithm that partitions an input string into as few palindromes as possible. It will take an input string <span class="math inline"><em>X</em> = ⟨<em>x</em><sub>1</sub>, <em>x</em><sub>2</sub>, ⋯, <em>x</em><sub><em>n</em></sub>⟩</span> and output the substrings in the partition.</p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

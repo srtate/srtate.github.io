@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>Assignment 3 -- Due Tuesday, October 5</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://www.uncg.edu/cmp/faculty/srtate/481.f21/assign3.html">View original, outside canvas</a> ]
+   
+        <h3 id="assignment-3-due-tuesday-october-5">Assignment 3 – Due Tuesday, October 5</h3>
+<ol type="1">
+<li><p>We discussed CBC mode in class with a diagram on the slides, and formulas are given on pages 403–404 in the textbook. For this problem you are to show how CBC mode is malleable — remember from class that “malleable” means that an attacker can tamper with the ciphertext so that when the receiver decrypts the ciphertext there is some predictable change in the plaintext they recover.</p>
+<p>When CBC mode is used in practice, the IV is typically sent in the clear immediately preceding the ciphertext, and in an active attack the adversary can tamper with either the IV or the ciphertext. The “<code>openssl</code>” program can be used to do encryptions and decryptions with a given IV, and the following screenshot illustrates such an attack. Notice that a message (“4000 to Steve”) is first encrypted using AES with a 256-bit key in CBC mode, but an IV of all zeros (unfortunately a common mistake of programmers who forget to pick a random IV!). Then there’s a straight decrypt of that message with the correct IV, showing the original message being recovered. But then the final command shows a second decryption (with a hidden IV) that now says “8000 to Steve”. That’s a malleability attack!</p>
+<p><img src="A3-MalleableCBC.png" /></p>
+<ol type="a">
+<li><p>Explain how this attack works – use the CBC formulas to show how an attacker that knows the first character of the plaintext can modify the IV so that the receiver’s decryption will start with any character of the attacker’s choice. Don’t assume an IV of all zeroes, like in my example – you should describe a general attack, that would work with any plaintext and any IV. Justify that this works using properties of exclusive-or (XOR). For instance, we know that XOR is associative (so <span class="math inline">\((x\oplus y)\oplus z=x\oplus (y\oplus z)\)</span>), commutative (so <span class="math inline">\(x\oplus y=y\oplus x\)</span>), zero is the identity element (so <span class="math inline">\(x\oplus 0=x\)</span>), and every element is its own inverse (so <span class="math inline">\(x\oplus x=0\)</span>).</p></li>
+<li><p>Given this attack, what was the hidden IV used in the example/screenshot above?</p></li>
+</ol></li>
+<li><p>Joe Crypto always loved playing the “guess which hand is holding a prize” game, so proposes the following guessing game: You can give him two files, containing whatever data you want them to contain, but with the restriction that they must be the same length. He will then pick one of them, encrypt it with a secret key, and then give you the resulting ciphertext. You have to guess which file he encrypted! Joe’s crypto knowledge isn’t so great, however, and he uses AES in ECB mode. How can you play this game so that you can always win? Be very specific, including a clear explanation of why your strategy allows you to win. (Hint: What is the main weakness of ECB mode, and how can you create a file that displays this weakness?)</p></li>
+<li><p>The previous question was really about the IND-CPA (in)security of ECB mode, and if you did this correctly it is an informal answer to “Question 4” in the “Formal Models for Cryptography” class reading. Restate your game-playing strategy from the previous question as an IND-CPA game adversary (i.e., state this by giving algorithms <span class="math inline">\(A_1^{\mathcal{E}}(1^\lambda)\)</span> and <span class="math inline">\(A_2^{\mathcal{E}}(c)\)</span>). Note that a correct solution to the previous problem, when formalized like this, will make <em>no calls</em> to the encryption oracle.</p></li>
+<li><p>Consider adding a special-purpose chip to a computer (or phone) that internally stores a random 256-bit secret <span class="math inline">\(k\)</span> in such a way that the secret can only be used as the key for executing HMAC (using SHA-256) in the chip. Specifically, all the user can do is send a bitstring <span class="math inline">\(x\)</span> to the hardware so that it computes and returns HMAC(<span class="math inline">\(k,x\)</span>), and there is no way to extract the key <span class="math inline">\(k\)</span>. Consider a system that uses this hardware to create a 256-bit key for AES for data storage (storage is a separate device, like an SSD card, that can be removed from the system): The user supplies a (possibly low-entropy) password or PIN as <span class="math inline">\(x\)</span>, and then the hardware-computed HMAC(<span class="math inline">\(k,x\)</span>) is used as an AES key to encrypt and decrypt all data stored on the storage device. We can quickly test whether the hardware gives the correct key by attempting a decryption using it, and assume that the chip has some way of detecting whether the <span class="math inline">\(x\)</span> value produced the correct decryption key. For this problem, assume that HMAC with SHA-256 satisfies the following property: Without knowing the key <span class="math inline">\(k\)</span>, no information about the value HMAC(<span class="math inline">\(k,x\)</span>) can be predicted. The only way to get this value is to ask the chip to compute it for you, or to get lucky and guess the output.</p>
+<ol type="a">
+<li><p>What if the storage device is removed from the system and then stolen or sold? In addition to having the encrypted data, the attacker knows the algorithm that the chip uses and knows that <span class="math inline">\(x\)</span> is some unknown 4-digit PIN, but doesn’t have access to the security chip. How secure is this? Reason about the “best possible attack,” and give some indication of how much time this would take. Informal reasoning is OK, but make sure the logic of your reasoning is clear!</p></li>
+<li><p>If the entire device (the security chip and the storage device) is captured, so that the attacker can access the HMAC-computing hardware device, what is the best attack in this case? How much time would this take (state any assumptions you need to make about the speed of the hardware device, etc.).</p></li>
+<li><p>What if the HMAC hardware permanently deletes <span class="math inline">\(k\)</span> when there have been 8 “bad guesses” for <span class="math inline">\(x\)</span> in a row? You are again in the scenario of part (b), where the attacker has access to both the chip and the storage device. How does this bad-guess-limiting feature affect the possible attacks?</p></li>
+</ol></li>
+<li><p>Consider two users on a Unix system, <code>alice</code> and <code>bob</code>. Both are members of the group <code>develop</code>. There is another user on the system, <code>charlie</code>, who is not a member of the <code>developer</code> group. Consider the following files in a directory that all users can access:</p>
+<pre><code> -r--r-----  1 alice develop  3612 Oct 25 14:36 Makefile
+ -rwxrwxr-x  1 alice develop  4823 Oct 27 11:04 execute
+ -rw-rw-r--  1 alice alice    2145 Oct 27 11:31 notes.txt
+ -rw-rw-r--  1 bob   develop  1098 Oct 26 21:56 source.c
+ -rw-------  1 alice develop  2796 Oct 27 11:03 source.o
+ -rwsrwxr-x  1 alice develop  4823 Oct 27 11:12 special</code></pre>
+<p>For each question below, give a very brief explanation of your answer.</p>
+<ol type="a">
+<li><p>Which files can <code>alice</code> modify?</p></li>
+<li><p>Which files can <code>bob</code> modify?</p></li>
+<li><p>Which files can <code>charlie</code> read?</p></li>
+<li><p>Which files can <code>charlie</code> modify?</p></li>
+<li><p>Programs named <code>execute</code> and <code>special</code> are the exact same program, but are two copies with different permissions. This program tries to open and modify the <code>notes.txt</code> file. If <code>bob</code> runs the version named <code>execute</code>, will the program be able to perform these operations?</p></li>
+<li><p>If <code>bob</code> runs the version named <code>special</code>, will the program be able to perform these operations?</p></li>
+<li><p>If <code>execute</code> and <code>special</code> perform differently for <code>bob</code>, why?</p></li>
+</ol></li>
+<li><p>Complete the “pass-crack” labtainer exercise, including the lab report and spreadsheet (which are submitted as part of the labtainer ZIP file – there’s nothing to submit as part of the written problems).</p></li>
+</ol>
+<p> <br />
+</p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 452/652/752 - Fall 2024 - Assignment 5 - Due Nov 13, 2024</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../css/class_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+        <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark uncg-navbar fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="https://www.uncg.edu/">
+          <img class="collapse navbar-collapse" src="../img/uncg_class.png" alt="UNC Greensboro">
+          <img class="navbar-toggler" src="../img/uncg_mobile.png" alt="UNCG">
+        </a>
+        <div class="navbar-brand d-flex flex-column text-left"
+	     style="line-height: 1.2;">
+          <span>CSC 452</span>
+          <span class="small collapse navbar-collapse"><em>Theory of Computation</em></span>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link " href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="syllabus.html">Syllabus</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="schedule.html">Schedule</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="assignments.html">Assignments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://uncg.instructure.com/">Canvas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- Page Content -->
+    <div class="container">
+   
+        <style>
+pre {
+ display:block;
+ padding:9.5px;
+ margin:0 0 10px;
+ font-size:13px;
+ line-height:1.42857143;
+ color:#333;
+ word-break:break-all;
+ word-wrap:break-word;
+ background-color:#f5f5f5;
+ border:1px solid #ccc;
+ border-radius:4px
+}
+pre code {
+ padding:0;
+ font-size:inherit;
+ color:inherit;
+ white-space:pre-wrap;
+ background-color:transparent;
+ border-radius:0
+}
+</style>
+<h2 id="assignment-5---due-november-13-2024">Assignment 5 - Due November 13, 2024</h2>
+<ol type="1">
+<li><p>These questions look into what you can determine about a transition function for a Turing machine, even if you aren’t given the definition.</p>
+<ol type="a">
+<li><p>There are two components in the domain of the Turing Machine transition function, which determine the next configuration. What are they in general (meaning what are the sets that make up the domain)?</p></li>
+<li><p>What are the two values that the transition function uses if it is in configuration <span class="math inline">\(\texttt{011}q_7\texttt{00101}\)</span>?</p></li>
+<li><p>If I tell you that a TM goes from configuration <span class="math inline">\(\texttt{011}q_7\texttt{00101}\)</span> to <span class="math inline">\(\texttt{0110}q_7\texttt{0101}\)</span> in one step, what is the transition function’s value (from the range) that is used for this configuration?</p></li>
+<li><p>Knowing nothing else about the transition function, what is the <em>next</em> configuration is, after <span class="math inline">\(\texttt{0110}q_7\texttt{0101}\)</span>? Explain your answer!</p></li>
+</ol></li>
+<li><p>We consider a alternative TM that we call a “left-detecting TM”. This TM can detect when it is at the leftmost position on its tape, and do different actions when in that position, while a standard TM has no way of detecting the left end (i.e., the beginning) of the tape. A left-detecting TM has two transition functions. One is a special transition function <span class="math inline">\(\delta_L:Q\times\Gamma\rightarrow Q\times\Gamma\)</span> that is <em>only</em> used when the TM is at the leftmost position on the tape – the TM must move right, so no direction is given. The second transition function is the standard TM transition function <span class="math inline">\(\delta:Q\times\Gamma\rightarrow Q\times\Gamma\times\{L,R\}\)</span>, and is used whenever the TM is <em>not</em> at the leftmost position. Prove that every left-detecting TM has an equivalent standard single-tape Turing machine. (In other words, give a proof in the style of Theorem 3.13 or Theorem 3.16.)</p></li>
+<li><p>Consider the language <span class="math inline">\(SUBSET_{DFA}=\{\langle M_1,M_2\rangle\,|\,L(M_1)\subseteq L(M_2)\}\)</span>. Show that <span class="math inline">\(SUBSET_{DFA}\)</span> is decidable.</p></li>
+<li><p>Let <span class="math inline">\(\Sigma=\{\texttt{a},\texttt{b},\texttt{c}\}\)</span>, so <span class="math inline">\(\Sigma^*\)</span> is the set of all strings over this alphabet. Prove that <span class="math inline">\(\Sigma^*\)</span> is countable.</p></li>
+<li><p>Consider the language <span class="math inline">\(CFL_{TM}=\{\langle M\rangle\,|\,L(M)\)</span> is a context-free language<span class="math inline">\(\}\)</span>. Prove that this language is undecidable. (<em>Hint</em>: Note the similarity to the language <span class="math inline">\(REGULAR_{TM}\)</span> in Section 5.1.)</p></li>
+<li><p>Given a Turing machine <span class="math inline">\(M\)</span>, an input <span class="math inline">\(w\)</span>, and a tape symbol <span class="math inline">\(x\in\Gamma\)</span>, we would like to know if <span class="math inline">\(M\)</span> writes symbol <span class="math inline">\(x\)</span> on its tape at some point while running on input <span class="math inline">\(w\)</span>.</p>
+<ol type="a">
+<li><p>Write this decision problem out as a language, using set notation.</p></li>
+<li><p>Prove that this language is undecidable.</p></li>
+<li><p>Prove that the language is recognizable.</p></li>
+<li><p>Now consider the complement language: <span class="math inline">\(M\)</span> <em>never</em> writes an <span class="math inline">\(x\)</span> on its tape. Is this decidable? Recognizable?</p></li>
+</ol></li>
+</ol>
+<p> </p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

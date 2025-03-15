@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 452/652/752 - Fall 2024 - Assignment 1 - Due Sept 4, 2024</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://home.uncg.edu/cmp/faculty/srtate/452.f24/assign1.html">View original, outside canvas</a> ]
+
+
+<p>A <a href="../assign1.pdf">printable PDF</a> is also available.</p>
+   
+        <h2 id="csc-452652752---fall-2024---assignment-1---due-sept-4-2024">CSC 452/652/752 - Fall 2024 - Assignment 1 - Due Sept 4, 2024</h2>
+<p><strong>Note 1:</strong> This page (and other assignments and materials) use MathML for formatting mathematics. This uses special fonts for mathematics, which usually works but seems to be missing on some computers. The best “check” for this is to look at question 2d below – the final “x” inside the set notation should have a superscript that is a calligraphic R. If you see that, great! If you don’t see it (e.g., just see a box) then you should investigate how to install MathML fonts!</p>
+<p><strong>Note 2:</strong> Since standard word processors are pretty horrible at writing mathematics, don’t expect a cut-and-paste from this page into a word processor to be correct. If you use LaTeX (recommended!) you can download the <a href="assign1.tex">LaTeX source</a> for this assignment.</p>
+<ol type="1">
+<li><p>One of the constructions in this class will take a set of states <span class="math inline">\(Q\)</span> for one machine and create a new machine which uses a set of states <span class="math inline">\(R\)</span> which is the set of all subsets of <span class="math inline">\(Q\)</span> (you don’t need to know what a “machine” or “state” really is in this – it’s all about the sets).</p>
+<ol type="a">
+<li><p>What is the mathematical terminology? In other words, <span class="math inline">\(R\)</span> is the ___________________ of <span class="math inline">\(Q\)</span>.</p></li>
+<li><p>If <span class="math inline">\(Q=\{a,b,c\}\)</span>, what is <span class="math inline">\(R\)</span>?</p></li>
+<li><p>Prove that for any set <span class="math inline">\(Q\)</span>, the size of <span class="math inline">\(R\)</span> satisfies <span class="math inline">\(|R|=2^{|Q|}\)</span>.</p></li>
+</ol></li>
+<li><p>Describe each of the following sets in high-level plain English (no formulas!). For example, the set <span class="math inline">\(\{x\,|\,x=2k+1\)</span> for <span class="math inline">\(k\geq 1\}\)</span> is “The set of odd integers greater than or equal to 3.” Do <strong>not</strong> simply restate things as written here (in other words, do not say “The set of integers <span class="math inline">\(x\)</span> for which <span class="math inline">\(x=2k+1\)</span> and <span class="math inline">\(k\geq 1\)</span>”).</p>
+<p>The sets below are all sets of binary strings (note that <span class="math inline">\(\{0,1\}^*\)</span> denotes the set of all binary strings), and in addition to the notation in the book (pages 13–14) we define <span class="math inline">\(c_0(x)\)</span> to be the number of <span class="math inline">\(0\)</span>’s in string <span class="math inline">\(x\)</span>, and <span class="math inline">\(c_1(x)\)</span> to be the number of <span class="math inline">\(1\)</span>’s in <span class="math inline">\(x\)</span>. For example, if <span class="math inline">\(x=\texttt{011010001}\)</span> then <span class="math inline">\(c_0(x)=5\)</span> and <span class="math inline">\(c_1(x)=4\)</span>.</p>
+<ol type="a">
+<li><p><span class="math inline">\(\{x\,|\,x\in\{0,1\}^*\)</span> and <span class="math inline">\(|x|=2k\)</span> for some integer <span class="math inline">\(k\}\)</span></p></li>
+<li><p><span class="math inline">\(\{x\,|\,x\in\{0,1\}^*\)</span> and <span class="math inline">\(c_0(x)=c_1(x)\}\)</span></p></li>
+<li><p><span class="math inline">\(\{x\,|\,x\in\{0,1\}^*\)</span> and <span class="math inline">\(c_1(x)=2k+1\)</span> for some integer <span class="math inline">\(k\}\)</span></p></li>
+<li><p><span class="math inline">\(\{x\,|\,x\in\{0,1\}^*\)</span> and <span class="math inline">\(x=x^{\mathcal{R}}\}\)</span></p></li>
+</ol></li>
+<li><p>We define a function <span class="math inline">\(f\)</span> to update the position of a robot on a 3-position number-line, with valid positions <span class="math inline">\(-1\)</span>, <span class="math inline">\(0\)</span>, and <span class="math inline">\(+1\)</span>, and an “out of bounds” position “out”. The set of positions is denoted <span class="math inline">\(P=\{\text{out}, -1, 0, +1\}\)</span>. The valid set of moves is <span class="math inline">\(M=\{\text{Left}, \text{Right}\}\)</span>. Once out of bounds, the robot cannot come back to a valid position. The position update function <span class="math inline">\(f: P\times M\rightarrow P\)</span> is given in the following table:</p>
+<div class="borders">
+<table>
+<th>
+<td>
+<b>Left</b>
+</td>
+<td>
+<b>Right</b>
+</td>
+</th>
+<tr>
+<td>
+<b>out</b>
+</td>
+<td>
+out
+</td>
+<td>
+out
+</td>
+</tr>
+<tr>
+<td>
+<b>-1</b>
+</td>
+<td>
+out
+</td>
+<td>
+0
+</td>
+</tr>
+<tr>
+<td>
+<b>0</b>
+</td>
+<td>
+-1
+</td>
+<td>
++1
+</td>
+</tr>
+<tr>
+<td>
+<b>+1</b>
+</td>
+<td>
+0
+</td>
+<td>
+out
+</td>
+</tr>
+</table>
+</div>
+<p>For example, <span class="math inline">\(f(0,\text{Right})=+1\)</span> and <span class="math inline">\(f(-1,\text{Left})=\text{out}\)</span>.</p>
+<ol type="a">
+<li><p>Explain in your own words what the notation “<span class="math inline">\(f:P\times M\rightarrow P\)</span>” means.</p></li>
+<li><p>What is <span class="math inline">\(f(f(f(f(f(0,\text{Left}),\text{Right}),\text{Right}),\text{Left}),\text{Right})\)</span>? <strong>Show your work!</strong></p></li>
+<li><p>What is <span class="math inline">\(f(f(f(f(f(0,\text{Left}),\text{Right}),\text{Right}),\text{Right}),\text{Left})\)</span>? <strong>Show your work!</strong></p></li>
+</ol></li>
+<li><p>Prove by contradiction: Any undirected graph with <span class="math inline">\(n\geq 2\)</span> vertices must have two vertices with the same degree.</p></li>
+<li><p>Use induction to prove that for all <span class="math inline">\(n\geq 1\)</span>, <span class="math display">\[ \sum_{x=0}^{n-1} x(x-1) = \frac{n(n-1)(n-2)}{3}.\]</span></p></li>
+<li><p>Let <span class="math inline">\(G\)</span> be a directed graph with <span class="math inline">\(n\)</span> vertices, and let <span class="math inline">\(v\)</span> and <span class="math inline">\(w\)</span> be any two nodes in the graph. Prove that if there is a path from node <span class="math inline">\(v\)</span> to node <span class="math inline">\(w\)</span> of length <span class="math inline">\(n\)</span>, then there is another path from <span class="math inline">\(v\)</span> to <span class="math inline">\(w\)</span> with length greater than <span class="math inline">\(2n\)</span>. (<em>Hint: Think about what is appropriate in the following blank, and how that is important to this property: “Any path with <span class="math inline">\(n\)</span> edges in an <span class="math inline">\(n\)</span>-vertex graph must contain a _________________.” Note that this is just to get you thinking. Any property you fill in that blank with needs to be proved as part of the overall proof – you can’t just state it, even if you think it’s obvious.</em>)</p></li>
+</ol>
+<p> </p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

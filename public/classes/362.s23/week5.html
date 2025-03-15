@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 362 - Spring 2023 - Week 5</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../css/class_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+        <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark uncg-navbar fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="https://www.uncg.edu/">
+          <img class="collapse navbar-collapse" src="../img/uncg_class.png" alt="UNC Greensboro">
+          <img class="navbar-toggler" src="../img/uncg_mobile.png" alt="UNCG">
+        </a>
+        <div class="navbar-brand d-flex flex-column text-left"
+	     style="line-height: 1.2;">
+          <span>CSC 362</span>
+          <span class="small collapse navbar-collapse"><em>System Programming</em></span>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link " href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="syllabus.html">Syllabus</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="schedule.html">Schedule</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://cs341.cs.illinois.edu/coursebook/index.html">Coursebook</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://uncg.instructure.com/">Canvas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- Page Content -->
+    <div class="container">
+   
+        <h2 id="csc-362-spring-2023-week-5">CSC 362 – Spring 2023 – Week 5</h2>
+<h3 id="tuesday">Tuesday</h3>
+<p><strong>Note:</strong> Shoot for finishing slides in 40 min to leave 35 min for demos</p>
+<ul>
+<li>First do “ps” - then “ps -e” - then top
+<ul>
+<li>Note this inefficiency of VMs - unnecessary “machine management”</li>
+<li>We’ll see a more efficient way - containers - near the end of the semester</li>
+<li>“ps -l” to see parent processes</li>
+<li>pstree?</li>
+</ul></li>
+<li>Show job control
+<ul>
+<li>top - then pause with ctrl-z - talk about that - do “jobs” and “ps” to see</li>
+<li>vi something - then ctrl-z - then ps/jobs - then fg</li>
+<li>can do while loop with echo/sleep to show running vs paused (do in subshell)</li>
+</ul></li>
+<li>New Makefile structure - hit highpoints</li>
+<li>Bring up folder in VS Code</li>
+<li>argprint example - describe, run once with basic words, then use wildcards</li>
+<li>execdemo example
+<ul>
+<li>show driver and talk about - describe atoi? Talk about “usage” function</li>
+<li>show path and “which” command</li>
+<li>compile and run test 1</li>
+<li>can look at subsequent tests and ask first what they are going to do</li>
+</ul></li>
+<li>run wstatus - look at code, and note fork/exec/wait - use for activity!
+<ul>
+<li>load progtorun.c in editor</li>
+<li>run wstatus - note print, so prog ran, and then status printed</li>
+<li>edit to change “return” at end of main to 2 and re-run</li>
+<li>edit to add an “exit(3)” in progtorun and re-run</li>
+</ul></li>
+</ul>
+<h3 id="thursday">Thursday</h3>
+<p><strong>Note:</strong> Shoot for 25 min for slides and 20 min for demos; leaves 30 min for activity and discussion.</p>
+<ul>
+<li>All code - open folder in VS Code and show forkbomb1.c
+<ul>
+<li>Talk about forkbomb1 - same code as slide - how many processes?</li>
+<li>Run it - does that look like 32?</li>
+<li>Why don’t we have system count? Pipe into wc – oops, now what? Buffering</li>
+</ul></li>
+<li>Output buffereing examples
+<ul>
+<li>Show bufferex1.c and discuss only parent prints first msg, both print 2nd</li>
+<li>Show bufferex2.c - same as before, but printf instead of write</li>
+<li>Show bufferex3.c - each message on a line - term as expected, pipe to cat</li>
+</ul></li>
+<li>Look at forkbomb2.c - only diff is fflush calls - do this piped to wc</li>
+<li>Look at forkbomb3.c - big sleep at end
+<ul>
+<li>Do “ps -a” and “ps -al” to show ppid</li>
+<li>“pstree student” to show structure (sort of) - maximize window</li>
+<li>kill second process - note “defunct” (zombie) because no waits
+<ul>
+<li>ps -al and see “Z” status</li>
+<li>note other processes that have PPID changed - orphans</li>
+<li>Note, not “init” as book says, but user systemd - “modern linux”</li>
+</ul></li>
+<li>kill initial process - now both disappear (zombies reaped)</li>
+<li>others still running though - so do “killall forkbomb3”</li>
+</ul></li>
+<li>Can look at usingsystem.c if time</li>
+</ul>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 362 - Spring 2021 - Week 1 Activities</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://www.uncg.edu/cmp/faculty/srtate/362.s21/week1.html">View original, outside canvas</a> ]
+   
+        <h2 id="csc-362-spring-2021-week-1-activities">CSC 362 – Spring 2021 – Week 1 Activities</h2>
+<h4 id="tuesday">Tuesday</h4>
+<p>In class:</p>
+<ul>
+<li>Record - and ask for reminders!</li>
+<li>Slides with brief course info/introduction</li>
+<li>Syllabus review - bring up syllabus and share
+<ul>
+<li>Initial items: Info on meetings (required/synchronous) and office hours (other times possible, but will need to email to set up a time - I don’t keep Zoom running….)</li>
+<li>First time offering course, so being developed as it is being taught; always open to constructive criticism</li>
+<li>Class description and position between 261 and 462 - heavy programming</li>
+<li>Linux focused, which is important skill to have - but portable</li>
+<li>Web page vs Canvas - show web page and explain separation - this class, this semester, will be mostly in Canvas, but keeping public page for external info - click on a few - syllabus and schedule - then bring up Canvas and show important nav links - class, office hours, Panopto; then modules, assignments, and discussions.</li>
+<li>Book/references: Click on link and show - Book comes from a student-written Wiki, and quality and comprehensiveness varies by topic. Will try to give pointers to other references when available. Read and get familiar with topic before class. Learning works best by getting a good basic understanding, then reinforced by discussion and questions, then practice.</li>
+<li>Teaching methods: General structure of a class, then general structure of a week. In-class activities released just before class - want you working on them together, not doing them before class. Collaborative assignment due each week – individual submissions, but can work with each other for help. Solo assignments are just that - solo. Exams will be at a fixed, given time. More on that later.</li>
+<li>Grade percentages - keep an eye on this in Canvas.</li>
+<li>Late policy: Up to a week late, but one fixed late penalty. GitHub submissions – will grade the latest submission at the one week deadline, and if that submission is after the due date then it is counted late. If there’s an issue with this (spurious push) then email me.</li>
+<li>In-class behavior: Professionalism in Zoom. Camera view, screen contents, etc.</li>
+</ul></li>
+<li>Role of operating system and use of virtual machines
+<ul>
+<li>General concepts - picture of HW/OS/Applications - then VM</li>
+<li>Importance of VM for consistency between students, even if other approaches work. Use the VM unless there is some reason you just can’t.</li>
+<li>Show VirtualBox - provided file creates a VM, talk about download (size/time) and show where “Import” is. Need to do this before Thursday!</li>
+<li>Show loaded VM and go through some virtual hardware settings.
+<ul>
+<li>“General/Advanced/Shared Clipboard”: Talk about isolation and value of that, but also difficult of working with. Jump down to “Shared Folders” and talk about similar things there. While not required, I encourage you to keep both of these sharing options disabled and keep the VM as an isolated environment. All classwork will be transfers in and out of VM via GitHub.</li>
+<li>System/RAM: 1GB is probably OK, but more gives better in-VM caching, esp important when running a web browser in VM; mentally subtract RAM amount from host, and think that is what your host is working with, so on a 4GB system, a 2GB VM is a big hit</li>
+<li>System/CPUs: Set for 2 – needed for some multithreading, but can dial back or up; unlike mem, CPUs are shared so not “taken away” from host</li>
+<li>Storage: Virtual disks - entire disk (vdi) in one or more files; can insert and remove disks (show on optical drive)</li>
+<li>Network: This is complicated, because it controls how the VM communicates with the outside world - is it part of your local network? Is it isolated? Is there a virtual network of multiple VMs? Default setting - NAT - acts roughly the same way a computer/device on a home network would act, behind your WiFi/router where in this case the router is in the host&lt;-&gt;VM interface.</li>
+</ul></li>
+<li>Show snapshots and talk about value…</li>
+<li>Boot VM. Talk about using Lubuntu. Desktop; quick launch links at bottom for web browser and shell. Note that much in this class will be done from the shell. Open “Visual Studio Code” from “Programming” and talk about it.</li>
+<li>For Thursday: Boot it up, can bring up applications/shell and experiment, but don’t change any settings yet. We’ll set some initial things up in class on Thursday.</li>
+</ul></li>
+<li>One other thing you’ll need: A GitHub account</li>
+<li>Practice with breakout rooms - just introductions (5/room)
+<ul>
+<li>Try chat - how to get my attention outside the room?</li>
+</ul></li>
+<li>Recap and learn about experiences with breakout rooms
+<ul>
+<li>Note: Will experiment with random room assignments vs pre-assigned (poss coordinating with GitHub permissions)</li>
+</ul></li>
+</ul>
+<h4 id="for-students-to-do-before-thursday">For students to do before Thursday</h4>
+<ul>
+<li>Install VirtualBox if they don’t already have it</li>
+<li>Download and import VM image</li>
+<li>Register for GitHub acct if you don’t have one (use .edu for edu benefits)</li>
+</ul>
+<h4 id="thursday-material">Thursday Material</h4>
+<p>** About VM: Warning about leaving firefox open</p>
+<ul>
+<li>Linux and history of Unix/Linux/POSIX - incl android
+<ul>
+<li>Linux vs GNU/Linux vs distribution</li>
+</ul></li>
+<li>Git and GitHub (and the differences)</li>
+<li>GitHub classroom - workflow</li>
+</ul>
+<p>Demos:</p>
+<ul>
+<li>About accepting assignment - reminder for those who haven’t done this!</li>
+<li>GitHub: Show setup-srtate2 - talk abt branches and click “Commits”
+<ul>
+<li>Click on last commit and talk about diff briefly (more later in sem!)</li>
+<li>Note comments - that’s GitHub, not Git</li>
+<li>Back at Code, click Green “Code” button - https vs ssh (https for now)</li>
+<li>Note “Contributors” and Issues - good track work and way to ask questions!</li>
+</ul></li>
+<li>Talk about terminal window and command line - bash (mention Putty)
+<ul>
+<li>use ssh to log in to ritchie.uncg.edu</li>
+<li>will dig into shell (bash) deeply next week</li>
+<li>problems with cut/copy/paste in terminal</li>
+<li>git basics - edits tagged by who is responsible, so set that up!</li>
+<li>git clone</li>
+</ul></li>
+<li>Show VS Code and talk about what it is - alternative editors
+<ul>
+<li>Bring up README - edit and show preview (ctrl-shift-p for command palette)</li>
+<li>ctrl-shift-v for md preview - can also show split screen</li>
+</ul></li>
+<li>Edit README, save, go back to shell and do “git status”
+<ul>
+<li>Then “git add”, “git commit”, and “git push” - show result in github</li>
+<li>Add new file and re-do<br />
+</li>
+</ul></li>
+<li>Ways to get help: git –help, man, man -k, etc.</li>
+</ul>
+<h4 id="thursday-in-class-activities">Thursday In-Class Activities</h4>
+<ul>
+<li>For in-class activity - random bo rooms again - “Ask for Help” to call me</li>
+<li>Set <code>git</code> variables for identification</li>
+<li>Accept github classroom assignment and clone repo</li>
+<li>Edit README to list everyone’s name and hometown</li>
+<li>git status, git add, git commit, git push
+<ul>
+<li>Encourage to always do git status when you think things are in a certain state (like submitted), so you can see if things are as you believe!</li>
+</ul></li>
+<li>Check github web site to see results</li>
+</ul>
+<p>Note: I should post a video walkthrough of this after class</p>
+<h4 id="full-assignment-due-tuesday">Full Assignment – due Tuesday</h4>
+<p>Short, just demonstrating use of VM, git, and ability to edit</p>
+<ul>
+<li>Set <code>git</code> variables for identification
+<ul>
+<li>If you did this for your team in-class, you don’t need to do it again, but do need to do it if you ever restore your VM for some reason.</li>
+</ul></li>
+<li>Accept github classroom assignment and clone repo</li>
+<li>Read basic markdown tutorial</li>
+<li>Create new file (bio) using VS Code</li>
+<li>SSH into guest account on ritchie.uncg.edu and retrieve secret and note</li>
+<li>Do man … and answer question for README</li>
+<li>Edit README to add answer to question</li>
+<li>Add, commit, push</li>
+</ul>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

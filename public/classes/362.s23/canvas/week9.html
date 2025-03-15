@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 362 - Spring 2023 - Week 9 Activities</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://home.uncg.edu/cmp/faculty/srtate/362.s23/week9.html">View original, outside canvas</a> ]
+   
+        <h2 id="csc-362-spring-2023-week-9-activities">CSC 362 – Spring 2023 – Week 9 Activities</h2>
+<h4 id="tuesday">Tuesday</h4>
+<p><em>Note: Might not get through all of the Tuesday examples on Tuesday, especially depending on how the two weekly solution discussions go. Some of this can easily be pushed to the beginning of Thursday’s class. Note that there is no in-class activity this week, although the demos are fairly interactive and involve changing things…</em></p>
+<ul>
+<li>Look at <code>multicount1.c</code>
+<ul>
+<li>race condition example from slides (but repeated a billion times)</li>
+<li>run sequential - counter goes up as expected</li>
+<li>switch to multithreaded and run again - notice inaccurate counter</li>
+<li>run again - notice unpredictability</li>
+</ul></li>
+<li>Look at <code>multicount2.c</code>
+<ul>
+<li>Run initial version with “time”</li>
+<li>Then swith to multi_threaded and run again (time cut in half but bad counter)</li>
+<li>Then switch to start safe rather than unsafe threads and run again</li>
+<li>Adjust <code>OTHERWORK</code> constant to show effect on locking overhead</li>
+</ul></li>
+<li>What about thread-safety of provided functions (from std C library)?
+<ul>
+<li>Do “man malloc” and “man printf” and see “Attributes”</li>
+<li>Do “man 7 attributed” for meaning of “MT-Safe”</li>
+<li>Do “man getpwuid” - check attributes - then <code>getpwuid_r</code> as threadsafe version (<code>_r</code> for “re-entrant”)</li>
+</ul></li>
+<li><code>qdriver1.c</code>
+<ul>
+<li>Pull up and look at code and browse through queue code - note locks in dequeue</li>
+<li>Run and note crash</li>
+<li>Uncomment lock calls in enqueue and run again - no segfaults - time it</li>
+<li>Placement of lock in enqueue - can we move it later? - try and time again</li>
+</ul></li>
+<li><code>qdriver2.c</code>
+<ul>
+<li>Look at code and note use of queue_front - not stressed before</li>
+<li>Run and then look at changing queue_front - need to rearrange code!</li>
+</ul></li>
+</ul>
+<h4 id="thursday">Thursday</h4>
+<ul>
+<li><code>qdriver3.c</code>
+<ul>
+<li>Condition variable example - look at code</li>
+<li>When running examples, in inf loop, so quit after 10 iterations</li>
+<li>Using wait1 - first run with one consumer and then bump NCONSUMERS to 2</li>
+<li>Run wait2 - run with time - busywait wastes CPU time (user time)</li>
+<li>Finally wait3 - note improvement</li>
+</ul></li>
+<li><code>deadlock.c</code>: Simple deadlock example, using two threads and two locks. This is the example from the class slide, and if it is run then after a little while the process will lock up and not be able to continue. You’ll need to kill or ctrl-c it to make stop.</li>
+</ul>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

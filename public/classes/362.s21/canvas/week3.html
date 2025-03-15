@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 362 - Spring 2021 - Week 3 Activities</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://www.uncg.edu/cmp/faculty/srtate/362.s21/week3.html">View original, outside canvas</a> ]
+   
+        <h2 id="csc-362-spring-2021-week-3-activities">CSC 362 – Spring 2021 – Week 3 Activities</h2>
+<h4 id="for-students-to-do-before-tuesday">For students to do before Tuesday</h4>
+<p>Reading…</p>
+<h4 id="tuesday-material">Tuesday Material</h4>
+<p>In class:</p>
+<p>From book:</p>
+<p>Background/history: de-facto standard for sys programing [mention Rust] - most kernels written in C and have C API (most basic) - dangers - doesn’t “take care of things” for you… - K&amp;R history. For targeting lower-level machines. HW closeness for OS. - K&amp;R book - defacto standard. [on “best CS books”??] - later (“real”) standards - ANSI and then ISO ; role of POSIX for API - standards names: C99, C11, etc. - reatures: Speed, simplicity, manual memory management, ubiquity. Crash course - hello world walkthrough - #include explanation - main - no overloading - param list as void - printf - part of stdio.h - with explicit newline - return and exit codes. - preprocessor - define for const and macro Language facilities - Keywords same as Java: break, const, do-while, for (decl only in later standards), if-else, return, signed/unsigned, switch/case/default, while - New/diff: const, enum, extern, goto (“do not use” in book, but gives exception for stack cleanup, inline (not recommended), restrict [?], sizeof, static, struct, typedef [naming conventions], union, void in ptr type, volatile, . and -&gt;, &amp;/*, [] as ptr arith, comma op. - data types: char, short, int long, long long, float, double. [Note: no boolean.] specified width types: uint32_t, etc. C and Linux - philosophy - everything is a file, int for file descriptors - system calls - notes they are expensive - C system calls</p>
+<p>From Cornell slides:</p>
+<p>Why? Low level ops and explicit memory management; high performance. Warning about danger and need for care in programming Process - compile, execute, printf for debugging Hello world Primitive types, arrays, and strings [note arrays/strings are pointers?] - [ diff with Java: remember to initialize! ] printf and formatting eums [ can be low priority ] pointers - dangers that don’t exist in Java structs - . and -&gt; notation, self ref for linked lists and other DS [ typedef and name conventions ] void * and type conversion statements in common with Java memory - allocation and deallocation - warn about ref local var after return functions - pass by value/ref (ptr); return; [efficiency of passing methods] [ need for function prototypes ] ptr to function [low priority] preprocessor include/define/ifdef [ do this first with workflow ] header files and programs in multiple files - role of makefiles</p>
+<p>Struct * Go through basics on slide * ask about size of the struct (poll) * flip to code and run. Union * Go through union basics on slide * talk about typedef * ask about size (poll) * flip to code and run * then add a typedef for the union and recompile I/O * Discuss on slide for write * Discuss on slide for read * example3a vs example3b with “time” (use an 8MB file) * example3c for line buffering of printf String functions - on slide - no example Error handling * slide - man page snippet * example4 * Add errno (remember to include errno.h) - good for compare, not understandable * Then print using strerror(errno) (include string.h) * Finally print with perror(“Opening my file”); Malloc/free * see example</p>
+<h4 id="tuesday-in-class-activities">Tuesday In-Class Activities</h4>
+<p>Stuff</p>
+<h4 id="for-students-to-do-before-thursday">For students to do before Thursday</h4>
+<p>???</p>
+<h4 id="thursday-material">Thursday Material</h4>
+<p>For Thurs: - Need for function prototypes (esp for #include) - proprocessor for const and macros - static/extern - multiple unit compilation and makefiles [next week] - structs (and union?) - intro to syscalls - expensive - memory allocation and void *</p>
+<p>Book: 3.5-end</p>
+<p>Common C Functions - man pages/sections - handling errors - return oriented (no exceptions) - errno (per thread) fprintf to stderr, using strerror(errno) and perror - I/O - printf (and fprintf, s[n]printf, etc.) - line buffering and fflush - write system call - puts and putchar - Input: gets(!), fgets, getline, scanf - errors w/functions that expect ptrs (sending ptr to ptr) - string.h - strlen, strcmp, strcpy, strcat, strdup, strchr, strstre, strtok - better: strncpy and strncat - memcpy and memmove C memory model - structs and typedef [book doesn’t use normal naming convention!] - trick of using a [0] len array at end of a struct - strings: places - literals are immutable - [] to place in mutable area Pointers - pointer basics - declaration (star on each!), ptrs to structs (. vs -&gt;) - pointer arithmetic - casting (uses but never really defines?) - void * - auto casting Comon bugs - copying ptrs instead of pted to; quitting before NUL copied. - double frees [ first is actually use-after-free ] - returning ptr to local var - insufficient memory allocation - esp using size of ptr insted of ptd-to - buffer overflow/underflow - not allocating NUL char space (need strlen(s)+1 bytes) - uninitialized variables (or assuming will be zeroed Logic and program flow mistakes - equal vs equality (tip: constants first) [note how not a prob in Java] - undeclared or incorrectly protyped functions - extra semicolons (kills body of loop)</p>
+<p>** Check questions/exercises at end race car analogy</p>
+<p>[gdb and compiler flags - next week]</p>
+<h4 id="thursday-in-class-activities">Thursday In-Class Activities</h4>
+<p>??</p>
+<h4 id="full-assignment-due-next-tuesday">Full Assignment – due next Tuesday</h4>
+<p>Linked list implementation - all in one file though.</p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 454/654 - Spring 2022 - Assignment 3 - Due March 3, 2022</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/canvas_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+[ 
+      <a target="_blank" href="https://www.uncg.edu/cmp/faculty/srtate/454.s22/assign3.html">View original, outside canvas</a> ]
+   
+        <p> </p>
+<style>
+pre {
+ display:block;
+ padding:9.5px;
+ margin:0 0 10px;
+ font-size:13px;
+ line-height:1.42857143;
+ color:#333;
+ word-break:break-all;
+ word-wrap:break-word;
+ background-color:#f5f5f5;
+ border:1px solid #ccc;
+ border-radius:4px
+}
+pre code {
+ padding:0;
+ font-size:inherit;
+ color:inherit;
+ white-space:pre-wrap;
+ background-color:transparent;
+ border-radius:0
+}
+</style>
+<p><em>Note that this is a “half-assignment” in order to fit it in before Spring Break, and it will only count for 50 points. Note that problems 2 and 3 are programming challenges – there is information in Canvas about how to submit solutions for these problems. Also note that the first two problems together are worth 88% of your grade. That means you can get a high B without solving the final programming challenge, but to get an A you’ll need to solve both challenges!</em></p>
+<h2 id="assignment-3---due-thurs-march-3-2022">Assignment 3 - Due Thurs, March 3, 2022</h2>
+<ol type="1">
+<li><p>(35 points) Consider multiplying six matrices together, with the following sizes:</p>
+<p><span class="math inline"><em>A</em><sub>1</sub></span>: <span class="math inline">8 × 14</span><br />
+<span class="math inline"><em>A</em><sub>2</sub></span>: <span class="math inline">14 × 4</span><br />
+<span class="math inline"><em>A</em><sub>3</sub></span>: <span class="math inline">4 × 12</span><br />
+<span class="math inline"><em>A</em><sub>4</sub></span>: <span class="math inline">12 × 4</span><br />
+<span class="math inline"><em>A</em><sub>5</sub></span>: <span class="math inline">4 × 10</span><br />
+<span class="math inline"><em>A</em><sub>6</sub></span>: <span class="math inline">10 × 16</span><br />
+</p>
+<ol type="a">
+<li><p>If you just did the multiplications from left-to-right, as <span class="math inline">(((((<em>A</em><sub>1</sub><em>A</em><sub>2</sub>)<em>A</em><sub>3</sub>)<em>A</em><sub>4</sub>)<em>A</em><sub>5</sub>)<em>A</em><sub>6</sub>)</span>, how many scalar multiplications are performed?</p></li>
+<li><p>Work through the Matrix-Chain-Order algorithm for these matrix sizes, producing the <span class="math inline"><em>m</em></span> and <span class="math inline"><em>s</em></span> arrays, and then showing the optimal parenthesization for the product.</p></li>
+<li><p>How many scalar multiplications are required in this ordering?</p></li>
+</ol></li>
+<li><p>(Programming Challenge – 9 points) You have decided to put your computer science skills to good use while working in the lumber section of Home Depot. Decorative molding comes from the distributor in <span class="math inline"><em>n</em></span> foot long pieces, but you can sell it in pieces of any integer length. Different pieces have different values, and you are given a handy-dandy table that gives the value for each possible length. Your task is to figure out how to cut up an <span class="math inline"><em>n</em></span>-foot long piece to sell it for the maximum possible amount.</p>
+<p>Consider this example: A trending BricBrak video shows how to make a <em>totally</em> adorable craft project that uses 5-foot lengths of molding, so your store has been inundated with BricBrakers willing to pay a premium for pieces cut to 5 feet long. Unfortunately, boards come in 8-foot lengths, so cutting a 5-foot piece would leave you with a 3-foot left-over that isn’t worth much. Given the following table of prices, is it better to cut the molding to produce 5-foot pieces (and do you cut the 3-foot piece up further), or is there a better strategy?</p>
+<pre><code>   Length (feet):    1  2  3  4  5  6  7  8
+   Value (dollars):  2  5  6  7 14 15 16 18</code></pre>
+<p>It turns out that the best strategy in this situation is to cut the 8-foot board into three pieces with lengths 1, 2, and 5, for a total value of 2+5+14 = 21 dollars.</p>
+<p><strong>Program Input:</strong> The input to this problem will have the integer <span class="math inline"><em>n</em></span> on the first line, followed by <span class="math inline"><em>n</em></span> lines giving the value of lengths 1 through <span class="math inline"><em>n</em></span>. The input for our example problem would look like this:</p>
+<pre><code>8
+2
+5
+6
+7
+14
+15
+16
+18</code></pre>
+<p><strong>Program Output:</strong> The output should consist of the lengths of pieces, from smallest to largest, with each length on its own line. Note that if you have multiple pieces of the same length, that appears in the output as multiple lines with the same length printed. There may be multiple solutions with the same optimal cost, and in that case any such solution will be accepted in the output. Here is what the output for the example should look like:</p>
+<pre><code>1
+2
+5</code></pre>
+<p><strong>Program Constraints:</strong> Your program must be able to process inputs with values of <span class="math inline"><em>n</em></span> between 1 and 6000 in under 10 seconds.</p></li>
+<li><p>(Programming challenge – 6 points) Given your great work in the last problem, maximizing profit for your employer, they give you a promotion to working with plywood sheets. The sheets come in <span class="math inline"><em>n</em></span>-foot by <span class="math inline"><em>n</em></span>-foot square sheets, and when you cut a piece you must cut all the way across it. However, you can cut in either dimension. Now each <span class="math inline"><em>x</em></span>-by-<span class="math inline"><em>y</em></span> size has a value, and these are given in the input. For the prices given in the sample input below, here is a picture of an optimal cutting (numbers are the value of each piece), giving pieces with a total value of 374.</p>
+<p><img src="sc2-example.png" /></p>
+<p>The first cut takes the 5-by-5 sheet and cuts it into two pieces, one being 2-by-5 and the other being 3-by-5. There is no sequence of cuts that gives higher total value than this.</p>
+<p><strong>Program Input:</strong> The input to this problem consists of a number <span class="math inline"><em>n</em></span> on a line, followed by <span class="math inline"><em>n</em></span> lines with <span class="math inline"><em>n</em></span> values on each line. This is a matrix of costs, with the [1,1] position given first. The following is a sample input, which results in the optimal cuts shown in the picture above:</p>
+<pre><code>5
+10 22 36 44 50
+22 50 70 90 110
+36 70 180 190 200
+44 90 190 200 230
+50 110 200 220 250
+</code></pre>
+<p><strong>Program Output:</strong> The output should consist of just one number on a line by itself, giving the maximum possible value for any sequence of cuts. The output for this example would look like this:</p>
+<pre><code>374</code></pre>
+<p><strong>Program Constraints:</strong> Your program must be able to process inputs with values of <span class="math inline"><em>n</em></span> between 1 and 250 in under 10 seconds.</p></li>
+</ol>
+<p> </p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

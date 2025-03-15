@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 439/639 - Fall 2020 - Assignments</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="../css/class_srtate.css" rel="stylesheet">
+
+  </head>
+
+
+  <body>
+
+        <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark uncg-navbar fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="https://www.uncg.edu/">
+          <img class="collapse navbar-collapse" src="../img/uncg_class.png" alt="UNC Greensboro">
+          <img class="navbar-toggler" src="../img/uncg_mobile.png" alt="UNCG">
+        </a>
+        <div class="navbar-brand d-flex flex-column text-left"
+	     style="line-height: 1.2;">
+          <span>CSC 439/639</span>
+          <span class="small collapse navbar-collapse"><em>Introduction to Compiler Design</em></span>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link " href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="syllabus.html">Syllabus</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="schedule.html">Schedule</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="assignments.html">Assignments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://uncg.instructure.com/">Canvas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- Page Content -->
+    <div class="container">
+   
+        <h2 id="syntax-trees">Syntax Trees</h2>
+<p>After parsing, the input LittleC program is represented by a syntax tree, which can have a variety of kinds of nodes that represent the structure of a program. Your program should be able to create and print syntax trees, and in order for testing to work your output must follow a fairly strict format, which is defined here.</p>
+<p>The basic ideas can be understood from a simple example. Consider the following snippet of LittleC code:</p>
+<pre><code>    xsq = x*x;
+    y = xsq + 2*x +1;</code></pre>
+<p>This is a sequence of two assignment statements, each of which is evaluated using various expression operators. This code would produce the following syntax tree – each line represents a node in the syntax tree, and each node has a mandatory type (even if it is <code>void</code>), a label, possible additional information (see the ID nodes), and children listed between parentheses. This output also indents to represent the tree structure “pretty-printing” style, but this isn’t actually required (it sure makes it easy to read though!). Read through this carefully and make sure you understand how this represents the code above.</p>
+<pre><code>    void SEQ (
+      int ASN (
+        int ID xsq,
+        int BINOP(&#39;*&#39;) (
+          int ID x,
+          int ID x)),
+      int ASN (
+        int ID y,
+        int BINOP(&#39;+&#39;) (
+          int BINOP(&#39;+&#39;) (
+            int ID xsq,
+            int BINOP(&#39;*&#39;) (
+              int LIT = 2,
+              int ID x)),
+          int LIT = 1)))</code></pre>
+<p>The full list of syntax tree labels, types, and other information is given below. You must use <em>exactly</em> the following format when printing a node in your syntax tree:</p>
+<ul>
+<li>First the node type followed by a space</li>
+<li>Then the node label followed by a space</li>
+<li>Then any “Other node info” specified for that type of node</li>
+<li>Then children surrounded by parentheses and separated by commas. If there is the <em>possibility</em> of a kind of node having children, you must print the parentheses, even if there are no children. In other words, a function call with no arguments would still include the child list as <code>()</code>.</li>
+</ul>
+<p>There is no requirement on spacing or line breaks, other than to separate pieces of the output. The formatting is entirely for your benefit when examining the output.</p>
+<h3 id="types">Types</h3>
+<p>You will need to print out types associated with nodes in your syntax tree (and for variable declarations, function signatures, etc.).</p>
+<ul>
+<li><p>Integer types: <code>int</code> and <code>char</code> – the only difference between these two types is their size (32 bits vs 8 bits), but otherwise can be used in the same ways.</p></li>
+<li><p>Special type: <code>void</code> – represents the type of a function that doesn’t return a value, or a syntax tree node that doesn’t represent a value-producing expression</p></li>
+<li><p>Array reference types: <code>char[]</code> and <code>int[]</code> – represent variables that refer to arrays, but which do not actually allocate the storage for the arrays themselves. This is particularly useful as a parameter type in order to pass in a reference to an array.</p></li>
+<li><p>Array storage types: Represent an array which has allocated storage, and the type includes the length of the array. Examples of array storage types include <code>char[10]</code> and <code>int[45]</code>.</p></li>
+</ul>
+<h3 id="full-list-of-syntax-tree-nodes">Full List of Syntax Tree Nodes</h3>
+<p>This section gives a complete list of syntax tree nodes, and the information that should be printed with a node when it is output. Remember that if there is a <em>possibility</em> of a node having children, you should print the open and closed parentheses for the children, even if there aren’t any children (e.g., in a function call’s possibly-empty argument list).</p>
+<h4 id="nodes-associated-with-expressions">Nodes associated with expressions</h4>
+<p>All of these nodes can appear in an expression, and correspond to values that will be computed by the program. Because of this, the type of each of these nodes reflects the type of the value being computed. Not all node types need to be implemented and supported for CSC 439 Assignment 2, but will need to be supported in Assignment 3 – see the assignment statements for more information.</p>
+<ul>
+<li>Variable/Identifier node
+<ul>
+<li>Label: ID</li>
+<li>Type: The type of the variable</li>
+<li>Other node info: The name of the variable</li>
+<li>Children: None</li>
+</ul></li>
+<li>Constant/literal value node
+<ul>
+<li>Label: LIT = "+value;</li>
+<li>Type: Type of the literal (will be int, char, or char[])</li>
+<li>Other node info: The literal value</li>
+<li>Children: None</li>
+</ul></li>
+<li>Array indexing node
+<ul>
+<li>Label: AIDX</li>
+<li>Type: The type of one of the array elements</li>
+<li>Other node info: None</li>
+<li>Children: Two children
+<ul>
+<li>Child 1: The array identifier (as a syntax tree)</li>
+<li>Child 2: The expression for the index</li>
+</ul></li>
+</ul></li>
+<li>Assignment node
+<ul>
+<li>Label: ASN</li>
+<li>Type: The type of the value that was assigned</li>
+<li>Other node info: None</li>
+<li>Children: Always 2 children
+<ul>
+<li>Child 1: the left-hand-side (an lvalue - it may not be be just an ID)</li>
+<li>Child 2: the right-hand-side expression for the value to store</li>
+</ul></li>
+</ul></li>
+<li>Binary operator node - <em>actualop</em> below is replaced with operator string (e.g., BINOP(+))
+<ul>
+<li>Label: BINOP(<em>actualop</em>)</li>
+<li>Type: The type of the value produced when this operation is performed</li>
+<li>Other node info: None</li>
+<li>Children: Always 2 children
+<ul>
+<li>Child 1: The left operand</li>
+<li>Child 2: The right operand</li>
+</ul></li>
+</ul></li>
+<li>Unary operator node - <em>actualop</em> below is replaced with operator string (e.g., UNARYOP(-))
+<ul>
+<li>Label: UNARYOP(<em>actualop</em>)</li>
+<li>Type: The type of the value produced when this operation is performed</li>
+<li>Other node info: None</li>
+<li>Children: Always 1 child, for the one operand of the unary operator</li>
+</ul></li>
+<li>Pre/Post Increment/Decrement nodes
+<ul>
+<li>Label: One of four different possibilities, PRE-INC, PRE-DEC, POST-INC, or POST-DEC</li>
+<li>Type: Type of the lvalue being incremented/decremented</li>
+<li>Other node info: None</li>
+<li>Children: One child
+<ul>
+<li>Child 1: The lvalue being incremented/decremented</li>
+</ul></li>
+</ul></li>
+<li>Function call node
+<ul>
+<li>Label: FNCALL</li>
+<li>Type: The return type of the function being called</li>
+<li>Other node info: Name of the function being called</li>
+<li>Children: 0 or more for the arguments passed to the function call – always include children “()” in output, even if no arguments/children</li>
+</ul></li>
+<li>Type casting node
+<ul>
+<li>Label: CAST</li>
+<li>Type: Target type (type being cast to)</li>
+<li>Other node info: None</li>
+<li>Children: One child for the value being cast</li>
+</ul></li>
+</ul>
+<h4 id="non-expression-nodes-all-have-type-void">Non-expression nodes (all have type void)</h4>
+<p>These represent statements, including variable declarations. They don’t produce values, so can’t be used in expressions, and so each of these syntax tree nodes has type void.</p>
+<ul>
+<li>Sequence of syntax trees
+<ul>
+<li>Label: SEQ</li>
+<li>Type: void</li>
+<li>Other node info: None</li>
+<li>Children: 0 or more - each child is an item in a sequence of items (declarations, statements, etc.)</li>
+</ul></li>
+<li>Function definition node
+<ul>
+<li>Label: FNDEF</li>
+<li>Type: void</li>
+<li>Other node info: Function name followed by its signature</li>
+<li>Children: One child for the body of the function</li>
+</ul></li>
+<li>Parameter declaration node (note: different from variable declaration)
+<ul>
+<li>Label: PDECL</li>
+<li>Type: void</li>
+<li>Other node info: The name of the identifier being declared followed by its type in parentheses</li>
+<li>Children: None</li>
+</ul></li>
+<li>Variable declaration node
+<ul>
+<li>Label: DECL</li>
+<li>Type: void</li>
+<li>Other node info: The name of the identifier being declared, its type in parentheses, and an optional initializer written as " = <em>literal</em>"</li>
+<li>Children: None</li>
+</ul></li>
+<li>Break statement node
+<ul>
+<li>Label: BREAK</li>
+<li>Type: void</li>
+<li>Other node info: None</li>
+<li>Children: None</li>
+</ul></li>
+<li>Return statement node
+<ul>
+<li>Label: RETURN</li>
+<li>Type: void</li>
+<li>Other node info: None</li>
+<li>Children: 0 or 1, giving the optional return value</li>
+</ul></li>
+<li>If statement node
+<ul>
+<li>Label: IF</li>
+<li>Type: void</li>
+<li>Other node info: None</li>
+<li>Children: 2 or 3
+<ul>
+<li>Child 1: condition</li>
+<li>Child 2: then part</li>
+<li>Child 3: (optional) else part</li>
+</ul></li>
+</ul></li>
+<li>While statement node
+<ul>
+<li>Label: WHILE</li>
+<li>Type: void</li>
+<li>Other node info: None</li>
+<li>Children: Always two children
+<ul>
+<li>Child 1: The loop condition</li>
+<li>Child 2: The body of the loop</li>
+</ul></li>
+</ul></li>
+</ul>
+<h3 id="for-loops">For Loops</h3>
+<p>You’ll notice that there is no syntax tree node for a for loop. This is not a mistake! A for loop is just a “fancy while loop”, so a for loop will just use the SEQ and WHILE node types to create the for loop. In particular, a for loop has three parts listed at the top: a loop initialization expression, a loop test expression, and a loop update expression. The syntax tree should put the initializer and a while loop in a sequence (which includes the loop test), and then puts the loop body in a sequence with the loop update at the end. Here’s a simple example that prints numbers from 1 to 10:</p>
+<pre><code>   for (i = 1; i &lt;= 10; i++)
+      printd(i);</code></pre>
+<p>Results in this syntax tree:</p>
+<pre><code>      void SEQ (
+        int ASN (
+          int ID i,
+          int LIT = 1),
+        void WHILE (
+          int BINOP(&#39;&lt;=&#39;) (
+            int ID i,
+            int LIT = 10),
+          void SEQ (
+            void FNCALL printd (
+              int ID i),
+            int POST-INC (
+              int ID i))))</code></pre>
+<p>Make sure you match the sequence nesting structure given here, so your code will pass the required tests.</p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

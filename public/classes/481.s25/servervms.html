@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 481/681 - Spring 2025 - Server-Hosted VM Instructions</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../css/class_srtate.css" rel="stylesheet">
+
+
+    <script type="text/x-mathjax-config"> 
+       MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 94, linebreaks: { automatic: true } }
+		});
+    </script>
+
+  </head>
+
+
+  <body>
+
+        <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark uncg-navbar fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="https://www.uncg.edu/">
+          <img class="collapse navbar-collapse" src="../img/uncg_class.png" alt="UNC Greensboro">
+          <img class="navbar-toggler" src="../img/uncg_mobile.png" alt="UNCG">
+        </a>
+        <div class="navbar-brand d-flex flex-column text-left"
+	     style="line-height: 1.2;">
+          <span>CSC 481/681</span>
+          <span class="small collapse navbar-collapse"><em>Principles of Computer Security</em></span>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link " href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="syllabus.html">Syllabus</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="schedule.html">Schedule</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="assignments.html">Assignments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://uncg.instructure.com/">Canvas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- Page Content -->
+    <div class="container">
+   
+        <h1 id="csc-481681---spring-2025---server-hosted-vm-instructions">CSC 481/681 - Spring 2025 - Server-Hosted VM Instructions</h1>
+<p>There is a Linux server that is usable by all students in the CSC 481 and CSC 681 classes, and login information will be distributed individually. This server hosts copies of the <a href="http://www.cis.syr.edu/~wedu/seed/">SEED Labs</a> Ubuntu 16.04 virtual machine. Each student has their own virtual machine, and anything you save in your virtual machine should remain there as long as that virtual machine exists. Since you have root access in your VM, it is possible for you to completely mess up the VM, and if it has to be reset then you’ll lose your files. <a href="https://quoteinvestigator.com/2015/07/23/great-power/">With great power comes great responsibility</a>.</p>
+<h2 id="how-to-use-your-vm">How to use your VM</h2>
+<p>In order to “play nice” and not dominate the server resources, you should suspend your virtual machine when you are not actively working in it. Two programs have been added to the server to make this easy:</p>
+<ul>
+<li><p><code>seed-startvm</code> – running this command will start up your virtual machine if it has been suspended. If the VM is already running it will give an error message (you can’t start more than one VM instance).</p></li>
+<li><p><code>seed-savevm</code> – this command will save the full state of your currently-running VM, and suspend it so that it no longer takes up server CPU and RAM resources.</p></li>
+</ul>
+<p>You are strongly encouraged to run <code>seed-savevm</code> before you log out, to free up resources for other students that are working. The system is set up to occasionally scan the active VMs, and if you haven’t been logged in for a while (about 10 minutes) it will save and suspend your VM anyway. However, it’s best that you do it yourself rather than just leaving it for the system to discover.</p>
+<p>Once your VM is running, you log in to it using SSH, just like any Linux system. Each VM has its own hostname, which is your username followed by “<code>-vm</code>”, so if my username is <code>freddy</code> then I would log in to my VM by running <code>slogin seed@freddy-vm</code> — note that <code>seed</code> is the regular SEED Lab VM account, as described in the SEED Lab write-ups. These network connections are local to the class server, and since they are not accessible from the Internet you must use SSH from the server itself. Note that there is nothing stopping you from logging in to someone <em>else</em>’s running VM, since all machines use the same default account and password. Don’t do this — logins are tracked, so if you cause problems in someone else’s VM, there will be consequences!</p>
+<p>That’s all there is too it!</p>
+<h2 id="what-if-something-goes-horribly-wrong">What if something goes horribly wrong…</h2>
+<p>You have full superuser rights in your VM, so you have the capabilities to completely mess it up so that it will no longer run or boot. If this happens, contact the instructor — I can very quickly set up a clean copy of the SEED Lab VM so you can get back to work, even though you will lose all your files. Try to rescue your VM yourself first though, if that’s possible!</p>
+<h2 id="a-note-about-resources">A note about resources</h2>
+<p>Each student has their own virtual machine which is allocated 1 GB of RAM, and the host machine is large enough to have all 32 VMs resident in memory at once without any problems. <em>However</em>, these are full hardware-virtualized VMs, so every one of these will be running a full operating system with background processes to manage various OS tasks. Furthermore, this is the standard SEED Labs image, which is also running various servers (like the MySQL database server). So while there’s enough memory to hold all VMs, contention for the CPUs would make everything very slow if all 32 of you are logged in at once (the server has two CPUs, with a total of 16 cores). Because of this, you should “play nice” and only run your virtual machine when you are logged in and actively using it. It’s also best that you don’t wait until the final 24 hours before the assignment due date, like everyone else! I hope that between people using VirtualBox on their own computers and people working at different times, the system will remain usable and responsive. If this ends up being overly-optimistic, we’ll find another solution.</p>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>
