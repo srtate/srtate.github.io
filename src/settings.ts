@@ -1,13 +1,13 @@
 export const profile = {
 	fullName: 'Steve Tate',
-	title: 'Professor',
+	title: 'Professor of Computer Science',
 	institute: 'UNC Greensboro',
 	author_name: '', // Author name to be highlighted in the papers section
 	research_areas: [
 		// { title: 'Physics', description: 'Brief description of the research interest', field: 'physics' },
-	    { title: 'Security', description: 'Brief description of the research interest', field: 'cs' },
-	    { title: 'Cryptography', description: 'Brief description of the research interest', field: 'cs' },
-	    { title: 'Algorithms', description: 'Brief description of the research interest', field: 'cs' },
+	    { title: 'Security', description: 'I am interested in how to design and build secure systems, with a particular interest in software security.', field: 'cs' },
+	    { title: 'Cryptography', description: 'Cryptography protects information, but it goes beyond that. We can do a lot of things with cryptography that seem almost like magic -- I have invented novel cryptographic techniques, and new ways of reasoning about their security.', field: 'cs' },
+	    { title: 'Algorithms', description: 'Anything we can compute, we do using an algorithm. How do we design and analyze algorithms? How can we prove they work correctly? How can we improve efficiency? These are all questions I have explored.', field: 'cs' },
 ],
 }
 
