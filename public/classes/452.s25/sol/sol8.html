@@ -39,7 +39,59 @@
     <p>Reminder about <a href="../browser.html">browser check</a> – you should see “OK” in script here: <span class="math inline">\({\mathcal O}{\mathcal K}\)</span></p>
       
    
-        <p>Placeholder…. Assignment 8 solution will go here</p>
+        <ol type="1">
+<li><p>(Textbook, Exercise 5.3) [<em>How to “grade” your work (10 points): For this problem, either the solution works or it doesn’t - there’s really no partial credit possible. Just make sure the string across the top reads the same as the string across the bottom. </em>]</p>
+<p>The following is one of the simplest solutions:</p>
+<p><span class="math display">\[
+   \left[ {\texttt{ab}}\over{\texttt{abab}} \right]
+   \left[ {\texttt{ab}}\over{\texttt{abab}} \right]
+   \left[ {\texttt{aba}}\over{\texttt{b}} \right]
+   \left[ {\texttt{b}}\over{\texttt{a}} \right]
+   \left[ {\texttt{b}}\over{\texttt{a}} \right]
+   \left[ {\texttt{aa}}\over{\texttt{a}} \right] 
+   \left[ {\texttt{aa}}\over{\texttt{a}} \right] 
+\]</span></p></li>
+<li><p>(Textbook, Exercise 5.4) [<em>How to “grade” your work (10 points): If you want to clearly demonstrate that this is not true (that <span class="math inline">\(A\)</span> doesn’t need to be regular), then you really should give an example like the one below. There are infinite variations that work, but you should make sure <span class="math inline">\(B\)</span> is regular, <span class="math inline">\(A\)</span> is not, and that a reduction is defined to show <span class="math inline">\(A\leq_{m} B\)</span>. If you said “yes” it was true, then no credit is possible. If you said “no” but didn’t give a specific counter-example to show this, then that’s worth 5 points. If you gave specific example, but didn’t describe a reduction from <span class="math inline">\(A\)</span> to <span class="math inline">\(B\)</span>, that’s 8 points. If all of those pieces are there, then it’s the full 10 points. </em>]</p>
+<p>No, <span class="math inline">\(A\)</span> is not necessarily regular. Consider the following counter-example.</p>
+<p><span class="math display">\[ A = \{ \texttt{0}^n\texttt{1}^n\,|\, n\geq 0 \} \]</span> <span class="math display">\[ B = \{ \texttt{0}^*\texttt{1}^*\,|\, n\geq 0 \} \]</span></p>
+<p>Notice that <span class="math inline">\(B\)</span> is regular, but <span class="math inline">\(A\)</span> is not. We give a reduction to show that <span class="math inline">\(A\leq_{m} B\)</span>. The only thing that is important here is that <span class="math inline">\(A\)</span> is decidable on its own, so the reduction <span class="math inline">\(f\)</span> takes an input <span class="math inline">\(w\)</span>, decides if it’s in <span class="math inline">\(A\)</span>, and then outputs a string that’s in <span class="math inline">\(B\)</span> if it is, and one that’s not if it isn’t. Here’s such a reduction function:</p>
+<p><span class="math display">\[
+   f(w) = \left\{ \begin{array}{ll}
+   \texttt{01} &amp; \text{if } w\in A;\\
+   \texttt{10} &amp; \text{otherwise.}
+   \end{array} \right.
+\]</span></p>
+<p><span class="math inline">\(f\)</span> is obviously computable, and <span class="math inline">\(w\in A\)</span> if and only if <span class="math inline">\(f(w)\in B\)</span>. Therefore, <span class="math inline">\(f\)</span> is a valid many-to-one reduction, showing that <span class="math inline">\(A\leq_{m} B\)</span>.</p>
+<p>The bottom line here is that there are decidable regular languages and non-regular languages, and any two non-trivial decidable languages can be reduced to each other. To summarize, we have languages <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> with <span class="math inline">\(A\leq_{m} B\)</span>, where <span class="math inline">\(B\)</span> is regular and <span class="math inline">\(A\)</span> is not. This counter-examples shows that the answer to the question is “no.”</p></li>
+<li><p>(Textbook, Exercise 5.22) [<em>How to “grade” your work (10 points) The most common mistake students make on a problem like this is forgetting to prove one of the directions of the “if and only if.” Each direction is worth 5 points. Once both directions are provided, the proofs are pretty simple. Take off 1 point for minor errors, and 3 points for more significant gaps in the logic. </em>]</p>
+<p>We first show that if <span class="math inline">\(A\leq_{m} A_{TM}\)</span> then <span class="math inline">\(A\)</span> is Turing-recognizable. Theorem 5.28 in the textbook says that if <span class="math inline">\(A\leq_{m} B\)</span> and <span class="math inline">\(B\)</span> is Turing-recognizable, then <span class="math inline">\(A\)</span> is Turing-recognizable. In this problem, language <span class="math inline">\(B\)</span> is <span class="math inline">\(A_{TM}\)</span>, which is Turing-recognizable (shown at the top of page 202 in the textbook), so it follows that <span class="math inline">\(A\)</span> is Turing-recognizable.</p>
+<p>Next show that if <span class="math inline">\(A\)</span> is Turing-recognizable, then <span class="math inline">\(A\leq_{m} A_{TM}\)</span>. Given an input string <span class="math inline">\(w\)</span> for <span class="math inline">\(A\)</span>, we compute the pair <span class="math inline">\(\langle A,w\rangle\)</span> as input to <span class="math inline">\(A_{TM}\)</span>. Since <span class="math inline">\(A\)</span> is a finite TM and we can write down a definition/description of it, this is easily computable. Furthermore, <span class="math inline">\(w\in A\)</span> if and only if <span class="math inline">\(\langle A,w\rangle\in A_{TM}\)</span>, so this is a reduction and we have <span class="math inline">\(A\leq_{m} A_{TM}\)</span>.</p>
+<p>Combining the two results above, we have shown that <span class="math inline">\(A\)</span> is Turing-recognizable if and only if <span class="math inline">\(A\leq_{m} A_{TM}\)</span>.</p></li>
+<li><p>[<em>How to “grade” your work (10 points): This really should look almost identical to what’s below, at least through the definition of <span class="math inline">\(S\)</span>, since that’s how the proof for <span class="math inline">\(\textit{REGULAR}_{TM}\)</span> is presented in the book. You need some sort of justification that this works, even if it doesn’t break it down into cases like I did. Just make it clear that <span class="math inline">\(S\)</span> solves <span class="math inline">\(A_{TM}\)</span> if <span class="math inline">\(R\)</span> solves <span class="math inline">\(CFL_{TM}\)</span>. Missing this justification entirely should take off 4 points. An incomplete justification should take off 2 points. </em>]</p>
+<p>We will show the following language is undecidable:</p>
+<p><span class="math display">\[
+  CFL_{TM}=\{\langle M\rangle\,|\,L(M)
+  \text{ is a context-free language}\}
+\]</span></p>
+<p>Assume for the sake of contradiction that <span class="math inline">\(CFL_{TM}\)</span> is decidable, and let <span class="math inline">\(R\)</span> be a TM that decides this language. We construct TM <span class="math inline">\(S\)</span> that uses <span class="math inline">\(R\)</span> to decide <span class="math inline">\(A_{TM}\)</span>.</p>
+<p><span class="math inline">\(S=\)</span> "On input <span class="math inline">\(\langle M,w\rangle\)</span>, where <span class="math inline">\(M\)</span> is a TM and <span class="math inline">\(w\)</span> is a string:</p>
+<ol type="1">
+<li><p>Construct the following TM <span class="math inline">\(M_2\)</span>.</p>
+<p><span class="math inline">\(M_2=\)</span> "On input <span class="math inline">\(x\)</span>:</p>
+<ol type="1">
+<li><p>If <span class="math inline">\(x\)</span> has the form <span class="math inline">\(\texttt{0}^n\texttt{1}^n\texttt{0}^n\)</span>, <em>accept</em>.</p></li>
+<li><p>If <span class="math inline">\(x\)</span> does not have this form, run <span class="math inline">\(M\)</span> on input <span class="math inline">\(w\)</span> and <em>accept</em> if <span class="math inline">\(M\)</span> accepts <span class="math inline">\(w\)</span>."</p></li>
+</ol></li>
+<li><p>Run <span class="math inline">\(R\)</span> on input <span class="math inline">\(\langle M_2\rangle\)</span>.</p></li>
+<li><p>If <span class="math inline">\(R\)</span> accepts, <em>accept</em>; if <span class="math inline">\(R\)</span> rejects, <em>reject</em>."</p></li>
+</ol>
+<p>Consider the behavior of <span class="math inline">\(S\)</span>:</p>
+<ul>
+<li><p>If <span class="math inline">\(\langle M,w\rangle\in A_{TM}\)</span> then <span class="math inline">\(M\)</span> accepts <span class="math inline">\(w\)</span>, and so on any input <span class="math inline">\(M_2\)</span> accepts (if not in step 1, then it will in step 2). So when <span class="math inline">\(M\)</span> accepts <span class="math inline">\(w\)</span>, we have <span class="math inline">\(L(M_2)=\Sigma^*\)</span> (all strings), and so <span class="math inline">\(L(M_2)\)</span> is a context-free language. This means that <span class="math inline">\(R\)</span> will accept <span class="math inline">\(M_2\)</span>, and <span class="math inline">\(S\)</span> will accept <span class="math inline">\(\langle M,w\rangle\)</span>.</p></li>
+<li><p>If <span class="math inline">\(\langle M,w\rangle\not\in A_{TM}\)</span>, then <span class="math inline">\(M\)</span> does not accept <span class="math inline">\(w\)</span>, and so <span class="math inline">\(M_2\)</span> only accepts inputs <span class="math inline">\(x\)</span> in step 1. Therefore, <span class="math inline">\(L(M_2)=\{\texttt{0}^n\texttt{1}^n\texttt{0}\,|\,n\geq 0\}\)</span>. This is not a context-free language, so <span class="math inline">\(R\)</span> rejects <span class="math inline">\(M_2\)</span> and then <span class="math inline">\(S\)</span> rejects <span class="math inline">\(\langle M,w\rangle\)</span>.</p></li>
+</ul>
+<p>This means that <span class="math inline">\(S\)</span> decides <span class="math inline">\(A_{TM}\)</span>, which is impossible and gives a contradiction. Therefore, <span class="math inline">\(CFL_{TM}\)</span> is undecidable.</p></li>
+</ol>
 <p> </p>
 
     </div>

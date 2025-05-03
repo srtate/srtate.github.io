@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="Stephen R. Tate">
 
-    <title>Assignment Placeholder</title>
+    <title>Assignment 5 -- Due Monday, April 14</title>
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
@@ -74,8 +74,17 @@
     <!-- Page Content -->
     <div class="container">
    
-        <h3 id="assignment-placeholder">Assignment Placeholder</h3>
-<p>Assignment not available yet</p>
+        <h3 id="assignment-5-due-monday-april-14">Assignment 5 – Due Monday, April 14</h3>
+<p>For this assignment, you are to complete two labtainers. Neither Labtainer requires a report, and there are no written questions for this assignment, so <em>it is worth half the normal amount of assignment credit</em> (50 points). Make sure you use <code>checklab</code> when working these, and get all of the goals checked off! There are separate submission assignments in Canvas for each labtainer, so make sure you turn in the right lab to the right place!</p>
+<ol type="1">
+<li><p>(15 points) Do the <code>strace</code> labtainer. This is actually a pretty trivial labtainer, and there’s not much to “figure out.” The main point for doing this is to have you run a standard built-in tool (<code>strace</code>) that monitors all system calls made by a program, and is useful for dynamic analysis, debugging, and reverse engineering. Give some thought to how this tool can expose the internal operations of a program (there’s nothing to turn in for this thinking, but think about it - really!)</p></li>
+<li><p>(35 points) Do the <code>formatstring</code> labtainer. You do have to figure some things out for this labtainer, working with addresses of data in memory. It’s nowhere near as tricky as the buffer overflow labtainer, however. If you need a more gentle introduction to format strings, you can do the basic <code>printf</code> labtainer for practice and learning (don’t turn this in if you do it).</p>
+<ul>
+<li><p>The vulnerable program reads the format string using <code>scanf</code> to get a string (<code>"%s"</code>). This reads a whitespace-delimited string, so despite the fact that the lab write-up shows some example format strings with spaces in them, your string for the vulnerable program may not include spaces!</p></li>
+<li><p>The labtainer says “we hardcode the secrets using constants 0x44 and 0x55.” That’s incorrect. The secrets are randomly set when you set up the labtainer, and can be different for each student. They are not 0x44 and 0x55, so don’t look for those values!</p></li>
+<li><p>While the secret values are specified as random numbers, it’s important to note that they will always be printable ASCII characters.</p></li>
+</ul></li>
+</ol>
 <p> <br />
 </p>
 

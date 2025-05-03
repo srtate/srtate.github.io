@@ -1,54 +1,12 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-import { profile } from "@/settings";
-import BetterIcon from "@/components/ui/BetterIcon.astro";
-import List from "@/components/ui/List.astro";
-import {RESEARCH_ICONS} from "@/data/researchIcons";
-
-const { research_areas } = profile;
+import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Research | Dr. Stephen Tate">
-  <div class="prose max-w-none">
-    <h1 class="text-3xl font-bold mb-8">Steve's Research</h1>
-
-    <div class="mb-12">
-      <p class="text-lg mb-6">
-        I've been doing research in computer science for over 30 years, and I have done work in a wide range of areas, including complexity theory, algorithms, data compression, computer security, and cryptography. Currently I work on ways to make security and cryptographic software more reliable, robust, and secure. I am particularly interested in how to find vulnerabilities in large codebases, and have recently done work to enable large-scale static analysis of complex, inter-dependent software packages. This work, as well as my earlier work in other areas, can be found in my publications.
-      </p>
-      <p class="text-lg mb-6">
-        As I am phasing in to retirement now, I am no longer taking new students or actively creating new projects. I still find this work fascinating and fun, and enjoy working toward solutions to algorithmic and security problems. Feel free to contact me if you have questions about my work, or are interested in finding a research collaborator in these areas.
-      </p>
-    </div>
-
-    <h2 class="text-2xl font-bold mb-6">Research Areas</h2>
-    <div class="grid gap-8 mb-12">
-      {
-        research_areas.map((area) => (
-          <div class="flex gap-6 items-start">
-            <BetterIcon>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke-width="2"
-                class="size-6 stroke-accent"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d={RESEARCH_ICONS[area.field as keyof typeof RESEARCH_ICONS]?.path || RESEARCH_ICONS['computer-science'].path}
-                />
-              </svg>
-            </BetterIcon>
-            <div>
-              <h3 class="text-xl font-semibold mb-2">{area.title}</h3>
-              <p class="text-base">{area.description}</p>
-            </div>
-          </div>
-        ))
-      }
-    </div>
-
-  </div>
+  <h3 class="mt-5">Research</h3>
+  <p>
+  I've been doing research in computer science for over 30 years, and I have done work in a wide range of areas, including complexity theory, algorithms, data compression, computer security, and cryptography. Currently I work on ways to make security and cryptographic software more reliable, robust, and secure. I am particularly interested in how to find vulnerabilities in large codebases, and have recently done work to enable large-scale static analysis of complex, inter-dependent software packages. This work, as well as my earlier work in other areas, can be found in my publications.
+  </p><p>
+  As I am phasing in to retirement now, I am no longer taking new students or actively creating new projects. I still find this work fascinating and fun, and enjoy working toward solutions to algorithmic and security problems. Feel free to contact me if you have questions about my work, or are interested in finding a research collaborator in these areas.  
+  </p>
 </Layout>
