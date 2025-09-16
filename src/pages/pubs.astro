@@ -1,0 +1,20 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+
+import Publication from "../components/Publication.astro";
+
+const pageTitle = "Test Paper";
+const allPosts = await getCollection('papers');
+allPosts.sort((a, b) => b.data.sort - a.data.sort);
+---
+<Layout pageTitle={pageTitle}>
+  <p>Publications</p>
+  <ul>
+    {
+      allPosts.map((pub: { id: any; data: any; }) => (
+        <Publication data={pub.data} url={`/pubs/${pub.id}/`}  />
+      ))
+    }
+  </ul>
+</Layout>
