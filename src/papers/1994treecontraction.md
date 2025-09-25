@@ -4,6 +4,6 @@ title: 'Dynamic Parallel Tree Contraction'
 pubin: 'Proceedings of the Symposium on Parallel Algorithms and Architecture (SPAA)'
 extra: '1994, pp. 114--121'
 sort: 199401
-tags: ["Online","Conference"]
+tags: ["S:Online Algorithms","T:Conference"]
 ---
 Abstract

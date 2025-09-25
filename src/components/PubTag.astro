@@ -1,0 +1,22 @@
+---
+interface Props {
+    tag: string;
+}
+
+const { tag } = Astro.props;
+
+var cc = "DarkRed";
+if (tag[0]=='T') { cc="DarkBlue"; }
+
+const mystyles = {
+    color: "White",
+    padding: "4px",
+    borderRadius: "6px",
+    margin: "4px",
+    backgroundColor: cc,
+  };
+
+const realTag = tag.substring(2);
+---
+<span class="pubtag" style={mystyles}>{realTag}</span>
+

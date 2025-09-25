@@ -4,6 +4,6 @@ title: 'Searching in an Unknown Environment: An Optimal Randomized Algorithm for
 pubin: 'Information and Computation'
 extra: 'Vol. 133, No. 1, 1996, pp. 62-80'
 sort: 199601
-tags: ["Online","Journal"]
+tags: ["S:Online Algorithms","T:Journal"]
 ---
 Abstract

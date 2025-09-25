@@ -4,6 +4,6 @@ title: 'Arithmetic Circuit Complexity and Motion Planning'
 pubin: 'Ph.D. Dissertation'
 extra: 'Duke University, 1991'
 sort: 199105
-tags: ["Miscellaneous", "Report"]
+tags: ["S:Miscellaneous", "T:Report"]
 ---
 Abstract

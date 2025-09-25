@@ -4,7 +4,7 @@ title: 'Improving Cut-and-Choose in Verifiable Encryption and Fair Exchange Prot
 pubin: 'Proceedings of the 23rd Annual IFIP WG 11.3 Working Conference on Data and Application Security'
 extra: '2009, pp. 252-267'
 sort: 200901
-tags: ["Security&Cryptography","Conference"]
+tags: ["S:Security&Cryptography","T:Conference"]
 ---
 At the heart of many fair exchange problems is verifiable escrow: a
 sender encrypts some value using the public key of a trusted party

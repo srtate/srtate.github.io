@@ -4,6 +4,6 @@ title: 'The Power of Combining the Techniques of Algebraic and Numerical Computi
 pubin: 'Proceedings of the 33rd Annual Symposium on Foundations of Computer Science (FOCS)'
 extra: '1992, pp. 703--713'
 sort: 199209
-tags: ["Geometry", "Conference"]
+tags: ["S:Geometry", "T:Conference"]
 ---
 Abstract

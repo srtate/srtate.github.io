@@ -4,6 +4,6 @@ title: "N-Body Simulation I: Fast Algorithms for Potential Field Evaluation and 
 pubin: 'UNT Computer Science Technical Report N-96-002'
 extra: '1996'
 sort: 199601
-tags: ["Geometry", "Conference"]
+tags: ["S:Geometry", "T:Conference"]
 ---
 Abstract

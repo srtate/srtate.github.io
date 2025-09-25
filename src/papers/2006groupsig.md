@@ -4,6 +4,6 @@ title: 'A Group Signature Scheme with Signature Claiming and Variable Linkabilit
 pubin: 'Proceedings of the 25th IEEE International Performance, Computing, and Communications Conference (IPCCC)'
 extra: '2006, pp. 497-504'
 sort: 200603
-tags: ["Security&Cryptography","Conference"]
+tags: ["S:Security&Cryptography","T:Conference"]
 ---
 Abstract

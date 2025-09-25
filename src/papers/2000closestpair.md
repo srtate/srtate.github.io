@@ -4,6 +4,6 @@ title: 'Fast Spatial Decomposition and Closest Pair Computation for Limited Prec
 pubin: 'Algorithmica'
 extra: 'Vol. 28, 2000, pp. 271-287'
 sort: 200001
-tags: ["Geometry", "Journal"]
+tags: ["S:Geometry", "T:Journal"]
 ---
 Abstract

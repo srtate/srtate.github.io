@@ -4,6 +4,6 @@ title: 'Report on the Workshop on Data and Image Compression Needs and Uses in t
 pubin: 'CESDIS Technical Report'
 extra: 'TR-93-99'
 sort: 199307
-tags: ["Miscellaneous", "Report"]
+tags: ["S:Miscellaneous", "T:Report"]
 ---
 Abstract

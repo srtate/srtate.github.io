@@ -4,7 +4,7 @@ title: 'On-Line Difference Maximization'
 pubin: 'Proceedings of the Eighth Annual ACM-SIAM Symposium on Discrete Algorithms'
 extra: '1997, pp. 175-182'
 sort: 199701
-tags: ["Online","Conference"]
+tags: ["S:Online Algorithms","T:Conference"]
 ---
 Abstract
 
