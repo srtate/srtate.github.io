@@ -14,6 +14,10 @@ const { pub } = Astro.props;
 const { Content } = await render(pub);
 ---
 <PublicationMDLayout>
-<!-- <Publication url="" data={pub.props}/> -->
+  <h2 style="margin-top:34px; margin-bottom:16px;">Publication Information</h2>
+  <p><Publication url="something" data={pub.data}/></p>
+  <p><b>Abstract</b></p>
+  <p>
   <Content />
+  </p>
 </PublicationMDLayout>

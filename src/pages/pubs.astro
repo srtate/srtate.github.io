@@ -9,11 +9,11 @@ const allPosts = await getCollection('papers');
 allPosts.sort((a, b) => b.data.sort - a.data.sort);
 ---
 <Layout pageTitle={pageTitle}>
-  <p>Publications</p>
+  <h2 style="padding-top:34px;">Publications</h2>
   <ol>
     {
       allPosts.map((pub: { id: any; data: any; }) => (
-        <Publication data={pub.data} url={`/pubs/${pub.id}/`}  />
+        <li style="margin:10px;"> <Publication data={pub.data} url={`/pubs/${pub.id}/`} /></li>
       ))
     }
   </ol>

@@ -14,5 +14,5 @@ interface Props {
 
 const { data, url } = Astro.props
 ---
-<li>{data.authors}. <a href={url}>{data.title}</a>, in <i>{data.pubin}</i>, {data.extra}. 
+{data.authors}. <a href={url}>{data.title}</a>, in <i>{data.pubin}</i>, {data.extra}. 
   { data.tags.map((t: string) => (<PubTag tag={t} /> ))}

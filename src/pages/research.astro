@@ -1,14 +1,27 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Publication from "../components/Publication.astro";
+import { getCollection } from "astro:content";
+
+const allPosts = await getCollection('papers');
+allPosts.sort((a, b) => b.data.sort - a.data.sort);
 ---
 
 <Layout title="Research | Dr. Stephen Tate">
   <h3 class="mt-5">Research</h3>
   <p>
-  I've been doing research in computer science for almost 40 years, and I have done work in a wide range of areas, including complexity theory, algorithms, data compression, computer security, and cryptography. My current interests focus on ways to make security and cryptographic software more reliable, robust, and secure. I am particularly interested in how to find vulnerabilities in large codebases, and have recently done work to enable large-scale static analysis of complex, inter-dependent software packages. This work, as well as my earlier work in other areas, can be found in my publications.
+  I've been doing research in computer science for almost 40 years, and I have done work in a wide range of areas, including complexity theory, algorithms, data compression, computer security, and cryptography. My most recent work focuses on ways to make security and cryptographic software more reliable, robust, and secure. I am particularly interested in how to find vulnerabilities in large codebases, and have recently done work to enable large-scale static analysis of complex, inter-dependent software packages. This work, as well as my earlier work in other areas, can be found below in my publications.
   </p><p>
   As I am phasing in to retirement now, I am no longer taking new students or actively creating new projects. I still find this work fascinating and fun, and enjoy working toward solutions to algorithmic and security problems. Feel free to contact me if you have questions about my work, or are interested in finding a research collaborator in these areas.  
   </p>
-  <h3 class="mt-5">Publications</h3>
-  <p>Publications will go here</p>
+   <h2 style="padding-top:34px;">Publications</h2>
+   <p>This list is a work-in-progress as I redesign my website. PDFs for papers will be available here soon.</p>
+  <ol>
+    {
+      allPosts.map((pub: { id: any; data: any; }) => (
+        <li style="margin:10px;"> <Publication data={pub.data} url={`/pubs/${pub.id}/`} /></li>
+      ))
+    }
+  </ol>
+\
 </Layout>
