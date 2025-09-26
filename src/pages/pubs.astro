@@ -10,11 +10,11 @@ allPosts.sort((a, b) => b.data.sort - a.data.sort);
 ---
 <Layout pageTitle={pageTitle}>
   <p>Publications</p>
-  <ul>
+  <ol>
     {
       allPosts.map((pub: { id: any; data: any; }) => (
         <Publication data={pub.data} url={`/pubs/${pub.id}/`}  />
       ))
     }
-  </ul>
+  </ol>
 </Layout>

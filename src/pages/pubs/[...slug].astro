@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import PublicationMDLayout from '../../layouts/PublicationMDLayout.astro';
+import Publication from '../../components/Publication.astro';
 
 export async function getStaticPaths() {
   const pubs = await getCollection('papers');
@@ -13,5 +14,6 @@ const { pub } = Astro.props;
 const { Content } = await render(pub);
 ---
 <PublicationMDLayout>
+<!-- <Publication url="" data={pub.props}/> -->
   <Content />
 </PublicationMDLayout>
