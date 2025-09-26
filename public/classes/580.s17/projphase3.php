@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+<title>CSC 580:  Cryptography and Security in Computing</title>
+<link href="../css/classstyle.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td width="800"><img src="580banner.jpg" alt="CSC 580: Cryptography and Security in Computing" /></td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+<col width="150" />
+<col width="700" />
+<tr><td valign="top">
+<div class="navigate">
+<div class="navhead">Navigation</div>
+<div class="navother">
+<a href="index.php">Class Home</a>
+</div>
+<div class="navother">
+<a href="syllabus.php">Syllabus</a>
+</div>
+<div class="navother">
+<a href="sched.php">Schedule</a>
+</div>
+<div class="navother">
+<a href="readings.php">Readings</a>
+</div>
+<div class="navother">
+<a href="handouts.php">Handouts</a>
+</div>
+<div class="navother">
+Assignments
+</div>
+<div class="navother">
+&nbsp;&nbsp;&bullet; <a href="homework.php">HW Problems</a>
+</div>
+<div class="navother">
+&nbsp;&nbsp;&bullet; <a href="project.php">Project</a>
+</div>
+<div class="navother">
+<a href="http://docs.oracle.com/javase/8/docs/technotes/guides/security/crypto/CryptoSpec.html">JCA Ref Guide</a>
+</div>
+<div class="navother">
+<a href="http://docs.oracle.com/javase/8/docs/api/">Java API Docs</a>
+</div>
+<div class="navother">
+<a href="http://canvas.uncg.edu/">Canvas</a>
+</div>
+<div class="navother">
+<a href="moreinfo.php">More Information</a>
+</div>
+<img src="../img/navtail.png" alt="" />
+</div>
+</td><td valign="top"><div class="main">
+
+<p>A <a href="projphase3.pdf">printable PDF</a> is available.</p>
+
+<center><h1>Project Phase 3 -- Due Tuesday, March 28</h1></center>
+
+<P><P><P><P>In the previous phase of the project, you implemented basic
+encryption/decryption capabilities using a symmetric cipher, and
+integrated that into the communication/chat system. However, we did
+not have any way to establish those secret keys, and in this phase you
+will explore various public key encryption and key agreement
+algorithms to get a feel for their strengths, weaknesses, and
+efficiency. Then you will implement an extension to the chat protocol
+that includes one of these techniques, the elliptic curve version of
+Diffie-Hellman key exchange. Looking ahead, in phase 4 you will be
+investigating integrity protections, both for keys and for messages.
+Code that supports all parts of this assignment is in a Bitbucket
+repository named "CSC580-Phase3" in which the code for benchmarking
+(the first two problems) is in <CODE>PKBenchmark.java</CODE> and the rest of
+the code is a working solution to Phase 2 of the project.
+<OL><LI>If Alice wants to set up a secret key with Bob that they can use
+  with a symmetric cipher, she can use RSA as follows: She gets a copy
+  of Bob's RSA public key (his encryption key), generates a random AES
+  "session key," encrypts the session key using RSA and Bob's public
+  key, and sends this ciphertext to Bob. For this part of phase 3, you
+  should benchmark RSA to see how fast RSA encryption and decryption
+  are with a 2048 bit key. The supplied code (in Bitbucket) gets you
+  started by providing a method that generates an RSA key. You should
+  write two other methods -- on that uses the public key to encrypt
+  (repeating so that the total time is approximately 10 seconds), and
+  one that decrypts. Note that for decryption, you'll need a valid
+  ciphertext, so do one encryption to generate a ciphertext, and then
+  repeatedly decrypt that ciphertext for benchmarking. You should
+  report the outcome of this experiment giving number of encryptions
+  per second, number of bits encrypted per second, number of
+  decryptions per second, and number of bits decrypted per second.
+<p><LI>Key agreement protocols are designed for the
+  purpose of creating a shared secret between the two (or more)
+  interacting parties, and these algorithms fall under the
+  <CODE>KeyAgreement</CODE> class in the JCA. You are to benchmark two
+  different algorithms: traditional Diffie-Hellman key agreement, with
+  a 2048-bit modulus, and Elliptic Curve Diffie-Hellman with a 224 bit
+  modulus. These algorithms require certain parameters to be defined,
+  and these parameters and some initialization code is included in the
+  Bitbucket repository. To benchmark Alice's operations for
+  Diffie-Hellman, you will need Bob's public key,
+  which you get through the <CODE>getBobPublicDH()</CODE> and
+  <CODE>getBobPublicECDH()</CODE> methods. Your code
+  should include calls to the <CODE>KeyAgreement</CODE> methods
+  <CODE>init</CODE>, <CODE>doPhase</CODE>, and <CODE>generateSecret</CODE>.
+  Report the outcome of these experiments giving the number of key
+  agreements performed in one second by each algorithm.
+<p><LI>In the previous exercises, you should have seen that Elliptic
+  Curve Diffie-Hellman key agreement is the most efficient solution to
+  setting up a key. In this part, you should integrate ECDH into the
+  chat system, which you can develop and test by connecting to the
+  <CODE>echatbot3</CODE> user (remember the "3"!). To do this, we add a notion of "commands" to the chat
+  client interactions, where a command is a message that begins with a
+  colon character ('<CODE>:</CODE>'). Since a colon is not a valid character
+  in base64 encoding, commands can be distinguished from encrypted
+  messages. The commands that must be supported for this phase are in
+  the following table.
+<BLOCKQUOTE><CENTER>
+  <TABLE><TR><TD COLSPAN="1" ALIGN="LEFT">
+<I><B>Command</B></I> </TD><TD COLSPAN="1" ALIGN="LEFT"> <I><B>Description</B></I> </TD></TR>
+<TR><TD COLSPAN="1" ALIGN="LEFT">
+<CODE>:ka</CODE> </TD><TD COLSPAN="1" ALIGN="LEFT"> start key agreement with a list supported cipher suites </TD></TR>
+<TR><TD COLSPAN="1" ALIGN="LEFT">
+<CODE>:kaok</CODE> </TD><TD COLSPAN="1" ALIGN="LEFT"> acknowledge key agreement and select cipher suite </TD></TR>
+<TR><TD COLSPAN="1" ALIGN="LEFT">
+<CODE>:ka1</CODE> </TD><TD COLSPAN="1" ALIGN="LEFT"> "phase 1" of key agreement (public key) </TD></TR>
+<TR><TD COLSPAN="1" ALIGN="LEFT">
+<CODE>:err</CODE> </TD><TD COLSPAN="1" ALIGN="LEFT"> send message for recoverable error (e.g., decryption
+    failed) </TD></TR>
+<TR><TD COLSPAN="1" ALIGN="LEFT">
+<CODE>:fail</CODE> </TD><TD COLSPAN="1" ALIGN="LEFT"> send message for non-recoverable error (reset
+    conversation) </TD></TR>
+<TR><TD COLSPAN="1" ALIGN="LEFT">
+</TD></TR></TABLE>
+
+</CENTER></BLOCKQUOTE>
+Commands are followed by an argument that provides additional
+information for that command (e.g., the public key of your partner
+with the <CODE>:ka1</CODE> command).
+<P>A chat session can be in one of four states, and the valid actions
+that can be taken in any state (and commands that are expected) are
+described below.
+  <DL><DT><B>Initial state:</B><DD> All conversations start in this state. The
+    receiver of a connection request immediately sends a
+    "<CODE>:ka</CODE>" command with the single argument being a
+    comma-separated list of
+    acceptable cipher suites. Each cipher suite has 3 parts separated
+    by the plus character ('<CODE>+</CODE>'): a key
+    establishment algorithm, a means for ensuring integrity of public
+    keys, and a symmetric cipher. The
+    only cipher suite that should be supported now is named
+    "<CODE>ecdh-secp224r1+nocert+aes128/cbc</CODE>" -- don't worry about
+    what the "<CODE>nocert</CODE>" part means for now, but make sure you
+    include it! Once this "<CODE>:ka</CODE>" command is sent, the client
+    enters a "waiting for cipher suite confirmation" state.
+<P>    The party that initiated the conversation will receive this
+    "<CODE>:ka</CODE>" command with cipher suites while it is in the
+    initial state, and should respond with a "<CODE>:kaok</CODE>" command
+    and an argument that is a single cipher suite that it
+    selects. Again, for this phase only the cipher suite named
+    above should be supported. After sending the "<CODE>:kaok</CODE>"
+    command, the client can immediately generate a public key pair for
+    the key agreement algorithm and send the base64 encoded public key as the
+    argument to a "<CODE>:ka1</CODE>" command (the first phase of key
+    agreement). This client then enters a "waiting for key
+    agreement" state.
+  <DT><B>Waiting for cipher suite confirmation:</B><DD> In this state, the client
+    should only receive a "<CODE>:kaok</CODE>" command with the name of a
+    single cipher suite to use. This should be the name given above
+    -- anything else in this phase of the assignment is an
+    error. Once this command is received, with the proper cipher
+    suite, the client should generate a public key pair for
+    the key agreement algorithm and send the base64 encoded public key as the
+    argument to a "<CODE>:ka1</CODE>" command (the first phase of key
+    agreement). This client then enters a "waiting for key
+    agreement" state.
+    <DT><B>Waiting for key agreement:</B><DD> In this state, the client is
+      waiting for the "<CODE>:ka1</CODE>" message from the other side, so
+      this is the only command that should be received. Once this is
+      received, the client combines the received public key with its
+      private key to generate the shared secret. There are various
+      ways that this secret can be turned into a key, but for this
+      assignment we do something simple: take the <EM>last 16 bytes</EM>
+      of the shared secret byte array (do not use the first 16 bytes
+      -- those are not as uniformly distributed as the last 16
+      bytes!). After the symmetric cipher key is created, you should
+      save the key for future use, and enter the "established"
+      state.
+      <DT><B>Established:</B><DD> This is the normal operating state for the
+        conversation, where the two sides have already agreed on a
+        cipher suite and have established a shared secret key. In this
+        state, encrypted messages are sent and received much like in
+        the previous phase of the project, with the main difference
+        being that now each conversation uses its own secret key that
+        is unknown to any passive eavesdroppers. Note that there is
+        still the possibility of a man-in-the-middle attack, which we
+        will address in the final phase of the project!
+  </DL>
+<P>The following diagram shows messages sent in an actual chat
+session. The first two messages set the cipher suite. The next two
+perform the ECDH key agreement protocol. After this, both clients are
+in the "established" state, and the final two messages show an
+encrypted message being sent in each direction.
+  <BLOCKQUOTE><CENTER>
+<img src="phase3-example.png" />
+</CENTER></BLOCKQUOTE>
+</OL>
+
+
+
+</div></td></tr>
+</table>
+
+</body> </html>
+

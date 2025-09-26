@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+<title>CSC 580:  Cryptography and Security in Computing</title>
+<link href="../css/classstyle.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td width="800"><img src="580banner.jpg" alt="CSC 580: Cryptography and Security in Computing" /></td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+<col width="150" />
+<col width="700" />
+<tr><td valign="top">
+<div class="navigate">
+<div class="navhead">Navigation</div>
+<div class="navother">
+<a href="index.php">Class Home</a>
+</div>
+<div class="navother">
+<a href="syllabus.php">Syllabus</a>
+</div>
+<div class="navother">
+<a href="sched.php">Schedule</a>
+</div>
+<div class="navother">
+<a href="readings.php">Readings</a>
+</div>
+<div class="navother">
+<a href="handouts.php">Handouts</a>
+</div>
+<div class="navother">
+Assignments
+</div>
+<div class="navother">
+&nbsp;&nbsp;&bullet; <a href="homework.php">HW Problems</a>
+</div>
+<div class="navcurrent">
+&nbsp;&nbsp;&bullet; <a href="project.php">Project</a>
+</div>
+<div class="navother">
+<a href="http://docs.oracle.com/javase/8/docs/technotes/guides/security/crypto/CryptoSpec.html">JCA Ref Guide</a>
+</div>
+<div class="navother">
+<a href="http://docs.oracle.com/javase/8/docs/api/">Java API Docs</a>
+</div>
+<div class="navother">
+<a href="http://canvas.uncg.edu/">Canvas</a>
+</div>
+<div class="navother">
+<a href="moreinfo.php">More Information</a>
+</div>
+<img src="../img/navtail.png" alt="" />
+</div>
+</td><td valign="top"><div class="main">
+
+<h2>Project Information</h2>
+
+<p>During the course of the semester, you will develop the core
+communication/management library for a secure online chat system. This
+library will be implemented in Java, using the Java Cryptography
+Architecture (JCA), which is standard and common across desktop,
+server, and mobile Java platforms (including Android). This web page
+contains information about the project and individual assignments with
+due dates.</p>
+
+<ul>
+<li> <a href="projinfo.php">Basic Information</a> [<a href="projinfo.pdf">PDF</a>]</li>
+<li> <a href="projphase1.php">Project Phase 1</a> -- Due Tuesday, February 7 [<a href="projphase1.pdf">PDF</a>]</li>
+<li> <a href="projphase2.php">Project Phase 2</a> -- Due Tuesday, February 28 [<a href="projphase2.pdf">PDF</a>]</li>
+<li> <a href="projphase3.php">Project Phase 3</a> -- Due Tuesday, March 28 [<a href="projphase3.pdf">PDF</a>]</li>
+<li> <a href="projphase4.php">Project Phase 4</a> -- Due Tuesday, April 25 [<a href="projphase4.pdf">PDF</a>]</li>
+</ul>
+
+
+</div></td></tr>
+</table>
+
+</body> </html>
+
+

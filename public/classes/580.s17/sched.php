@@ -1,0 +1,513 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+<title>CSC 580:  Cryptography and Security in Computing</title>
+<link href="../css/classstyle.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td width="800"><img src="580banner.jpg" alt="CSC 580: Cryptography and Security in Computing" /></td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+<col width="150" />
+<col width="700" />
+<tr><td valign="top">
+<div class="navigate">
+<div class="navhead">Navigation</div>
+<div class="navother">
+<a href="index.php">Class Home</a>
+</div>
+<div class="navother">
+<a href="syllabus.php">Syllabus</a>
+</div>
+<div class="navcurrent">
+<a href="sched.php">Schedule</a>
+</div>
+<div class="navother">
+<a href="readings.php">Readings</a>
+</div>
+<div class="navother">
+<a href="handouts.php">Handouts</a>
+</div>
+<div class="navother">
+Assignments
+</div>
+<div class="navother">
+&nbsp;&nbsp;&bullet; <a href="homework.php">HW Problems</a>
+</div>
+<div class="navother">
+&nbsp;&nbsp;&bullet; <a href="project.php">Project</a>
+</div>
+<div class="navother">
+<a href="http://docs.oracle.com/javase/8/docs/technotes/guides/security/crypto/CryptoSpec.html">JCA Ref Guide</a>
+</div>
+<div class="navother">
+<a href="http://docs.oracle.com/javase/8/docs/api/">Java API Docs</a>
+</div>
+<div class="navother">
+<a href="http://canvas.uncg.edu/">Canvas</a>
+</div>
+<div class="navother">
+<a href="moreinfo.php">More Information</a>
+</div>
+<img src="../img/navtail.png" alt="" />
+</div>
+</td><td valign="top"><div class="main">
+
+<h2>Detailed Schedule</h2>
+
+<p>The following calendar shows topics covered, handouts given, and
+assignments that have been given and when they are due.  Items with yellow background are <i>tentative</i> (either because the date is in the future or because I haven't gotten around to updating it).  All items with a white background are final.</p>
+
+<p>In all cases, "Reading" assignments are to be done before the next class meeting.</p>
+
+<center>
+
+<table cellspacing="0" cellpadding="0" class="calendar">
+<col width="300">
+<col width="300">
+
+<tr><td colspan="2" class="calendarweek">Week 1</td></tr>
+<tr><td class="calendarday">Tues, January 17</td>
+<td class="calendarday">Thurs, January 19</td></tr>
+<tr><td class="calendarentry">
+<b>Topics:</b>
+<ul>
+<li>Introductions</li>
+<li>Class/syllabus review</li>
+<li>High-level security overview</li>
+</ul>
+<b>Handouts:</b>
+<ul>
+  <li><a href="syllabus.php">Syllabus</a></li>
+  <li><a href="projinfo.php">Project Information</a></li>
+</ul>
+<b>Reading:</b> Textbook, Chapter 1
+</td><td class="calendarentry">
+<b>Topics:</b> [<a href="CSC580-L1.pdf">Slides</a>]
+<ul>
+<li>Security mindset and terminlogy</li>
+<li>Secure Design Principles</li>
+<li>System / Security Modeling</li>
+<li>Attack Trees</li>
+</ul>
+<b>Handout:</b>
+<a href="homework1.php">Homework 1</a><br/>
+&nbsp;<br/>
+<b>Reading:</b> Textbook, Sections 2.1-2.3<br/>
+</td>
+</tr>
+
+<tr height="15" class="calendarsep"><td></td></tr>
+<tr><td colspan="2" class="calendarweek">Week 2</td></tr>
+<tr><td class="calendarday">Tues, January 24</td>
+<td class="calendarday">Thurs, January 26</td></tr>
+<tr><td class="calendarentry">
+<b>Topics:</b>  [<a href="CSC580-L2.pdf">Slides</a>]
+<ul>
+<li>HW Solution Discussion</li>
+<li>Basic Math for Crypto:</li>
+  <ul>
+    <li>Divisibility</li>
+    <li>Greatest Common Divisor</li>
+    <li>Modular Arithmetic</li>
+  </ul>
+</ul>
+<b>Handout:</b>
+<a href="projphase1.php">Project Phase 1</a> (due Feb 7)<br/>
+&nbsp;<br/>
+<b>Reading:</b><br/>
+&nbsp;&nbsp;Sections 3.1, 3.2 (skip Hill cipher), 3.5
+</td><td class="calendarentry">
+<b>Topics:</b>  [<a href="CSC580-L3.pdf">Slides</a>]
+<ul>
+<li>Quiz (based on HW 1)</li>
+<li>Number sizes and estimates</li>
+<li>Encryption basics / models</li>
+<li>Types of attacks</li>
+</ul>
+<b>Handouts:</b>
+<ul>
+<li><a href="homework2.php">Homework 2</a></li>
+<li><a href="SchneierLargeNumbers.pdf">Large Numbers</a></li>
+</ul>
+<b>Reading:</b> Sections 4.1, 4.2, 4.4
+</td>
+</tr>
+
+<tr height="15" class="calendarsep"><td></td></tr>
+<tr><td colspan="2" class="calendarweek">Week 3</td></tr>
+<tr><td class="calendarday">Tues, January 31</td>
+<td class="calendarday">Thurs, February 2</td></tr>
+<tr><td class="calendarentry">
+<b>Topics:</b> [slides from previous meeting]
+<ul>
+<li>HW Solution Discussion</li>
+<li>Classical encryption techniques</li>
+<li>One-time pad</li>
+<li>Working with binary data</li>
+<li>Steganography</li>
+</ul>
+<b>Reading:</b><br/>
+&nbsp;&nbsp;Introduction from "<a href="http://docs.oracle.com/javase/8/docs/technotes/guides/security/crypto/CryptoSpec.html">JCA Reference Guide</a>"
+</td><td class="calendarentry">
+<b>Topics:</b> [<a href="CSC580-L4.pdf">Slides</a>]
+<ul>
+<li>Quiz (based on HW 2)</li>
+<li>Feistel Networks</li>
+<li>DES</li>
+<li>Block cipher security</li>
+<li>Strength of DES</li>
+</ul>
+<b>Handouts:</b>
+<ul>
+<li><a href="homework3.php">Homework 3</a></li>
+<li><a href="aeshandout.php">AES Handout</a></li>
+</ul>
+<b>Reading:</b> AES Handout
+</td>
+</tr>
+
+<tr height="15" class="calendarsep"><td></td></tr>
+<tr><td colspan="2" class="calendarweek">Week 4</td></tr>
+<tr><td class="calendarday">Tues, February 7</td>
+<td class="calendarday">Thurs, February 9</td></tr>
+<tr><td class="calendarentry">
+<b>Due:</b> Project phase 1<br/>
+&nbsp;<br/>
+<b>Topics:</b>
+<ul>
+<li>HW 3 Solution Discussion</li>
+<li>Brief project design discussion</li>
+<li>Java Cryptography Architecture</li>
+</ul>
+<b>Handout:</b> <a href="projphase2.php">Project phase 2</a> (due Feb 28)<br/>
+</td><td class="calendarentry">
+<b>Topics:</b> [<a href="CSC580-L5.pdf">Slides</a>]
+<ul>
+<li>Quiz (based on HW 3)</li>
+<li>Project design discussion</li>
+</ul>
+<b>Handout:</b>
+<a href="homework4.php">Homework 4</a><br/>
+&nbsp;<br/>
+<b>Reading:</b> Sections 7.1-7.6
+</td>
+</tr>
+
+<tr height="15" class="calendarsep"><td></td></tr>
+<tr><td colspan="2" class="calendarweek">Week 5</td></tr>
+<tr><td class="calendarday">Tues, February 14</td>
+<td class="calendarday">Thurs, February 16</td></tr>
+<tr><td class="calendarentry">
+<b>Topics:</b>
+<ul>
+<li>Quiz 3 solution discussion</li>
+<li>HW Solution Discussion</li>
+<li>Chat Hub demo</li>
+<li>AES</li>
+</ul>
+</td><td class="calendarentry">
+<b>Topics:</b>   [<a href="CSC580-L6.pdf">Slides</a>]
+<ul>
+<li>Quiz (based on HW 4)</li>
+<li>Multiple encryption and 3DES</li>
+<li>Block cipher modes &ndash; idea</li>
+<li>Modes: ECB, CBC, CFB, and CTR</li>
+</ul>
+<b>Handouts:</b>
+<ul>
+<li><a href="homework5.php">Homework 5</a></li>
+<li><a href="paperreview.php">Paper Review Reports</a></li>
+</ul>
+&nbsp;<br/>
+<b>Reading:</b> Section 7.7
+</td>
+</tr>
+
+<tr height="15" class="calendarsep"><td></td></tr>
+<tr><td colspan="2" class="calendarweek">Week 6</td></tr>
+<tr><td class="calendarday">Tues, February 21</td>
+<td class="calendarday">Thurs, February 23</td></tr>
+<tr><td class="calendarentry">
+<b>Topics:</b>  
+<ul>
+<li>HW Solution Discussion</li>
+<li>Complete basic modes discussion</li>
+<li>Practical implementation issues</li>
+</ul>
+<b>Reading:</b> Sections 8.1-8.3
+</td>
+&nbsp;<br/>
+</td><td class="calendarentry">
+<b>Topics:</b>  [<a href="CSC580-L7.pdf">Slides</a>]
+<ul>
+<li>Quiz (based on HW 5)</li>
+<li>Storage encryption: XTS-AES mode</li>
+</ul>
+<b>Handouts:</b>
+<ul>
+<li><a href="homework6.php">Homework 6</a></li>
+<li><a href="formalmodels.pdf">Formal security models</a></li>
+</ul>
+<b>Reading:</b> Security models handout
+</td>
+
+</tr>
+
+<tr height="15" class="calendarsep"><td></td></tr>
+<tr><td colspan="2" class="calendarweek">Week 7</td></tr>
+<tr><td class="calendarday">Tues, February 28</td>
+<td class="calendarday">Thurs, March 2</td></tr>
+<tr><td class="calendarentry">
+<b>Due:</b> Project phase 2<br/>
+&nbsp;<br/>
+<b>Topics:</b>   [<a href="CSC580-L8.pdf">Slides</a>]
+<ul>
+<li>HW Solution Discussion</li>
+<li>(Pseudo)random numbers &ndash; issues</li>
+<li>Entropy</li>
+<li>Pseudorandom generators</li>
+</ul>
+</td><td class="calendarentry">
+<b>Topics:</b>
+<ul>
+<li>Quiz (based on HW 6)</li>
+<li>Security models &ndash; concepts</li>
+<li>Security games</li>
+<li>IND-CPA security</li>
+</ul>
+<b>Handout:</b>
+<a href="homework7.php">Homework 7</a><br/>
+&nbsp;<br/>
+<b>Reading:</b> Sections 9.1, 2.4-2.6
+</td>
+</tr>
+
+<tr height="15" class="calendarsep"><td></td></tr>
+<tr><td colspan="2" class="calendarweek">Week 8</td></tr>
+<tr><td class="calendarday">Tues, March 7</td>
+<td class="calendarday">Thurs, March 9</td></tr>
+<tr><td class="calendarentry">
+<b>Topics:</b>
+<ul>
+<li>HW Solution Discussion</li>
+<li>Practice with security proofs</li>
+</ul>
+<b>Handout:</b> <a href="projphase3.php">Project phase 3</a> (due March 28)<br/>
+&nbsp;<br/>
+<b>Reading:</b> Section 9.2, 2.8, 10.1-10.2
+</td><td class="calendarentry">
+<b>Topics:</b>  [<a href="CSC580-L9.pdf">Slides</a>]
+<ul>
+<li>Quiz (based on HW 7)</li>
+<li>IND-CCA security</li>
+<li>Public-Key Crypto &ndash; ideas</li>
+<li>Using RSA and Diffie-Hellman</li>
+<li>Comparable key sizes across ciphers</li>
+</ul>
+</td>
+
+</tr>
+
+<tr height="15" class="calendarsep"><td></td></tr>
+<tr><td colspan="2" class="calendarweek">Week 9</td></tr>
+<tr><td class="calendarday">Tues, March 14</td>
+<td class="calendarday">Thurs, March 16</td></tr>
+<tr><td class="calendarentry">
+&nbsp;<br />
+<center><b>No class - Spring Break!</b></center>
+&nbsp;<br />
+</td><td class="calendarentry">
+&nbsp;<br />
+<center><b>No class - Spring Break!</b></center>
+&nbsp;<br />
+</td>
+</tr>
+
+<tr height="15" class="calendarsep"><td></td></tr>
+<tr><td colspan="2" class="calendarweek">Week 10</td></tr>
+<tr><td class="calendarday">Tues, March 21</td>
+<td class="calendarday">Thurs, March 23</td></tr>
+<tr><td class="calendarentry">
+<b>Topics:</b>  [<a href="CSC580-L10.pdf">Slides</a>]
+<ul>
+<li>Math for RSA</li>
+<ul>
+<li>Fermat's Little Theorem</li>
+<li>Primality testing (Miller-Rabin)</li>
+<li>Euler's Totient Function</li>
+<li>Euler's Theorem</li>
+</ul>
+<li>RSA - the algorithm</li>
+</ul>
+</td><td class="calendarentry">
+<b>Topics:</b>
+<ul>
+<li>Discrete logarithms</li>
+<li>Diffie-Hellman Key Establishment</li>
+<li>Elliptic curve ideas</li>
+<li>Security and key sizes</li>
+</ul>
+<b>Handout:</b>
+<a href="homework8.php">Homework 8</a><br/>
+&nbsp;<br/>
+<b>Reading:</b> Chapter 11 (skip SHA-512 logic and SHA3 iteration function)
+</td>
+</tr>
+
+<tr height="15" class="calendarsep"><td></td></tr>
+<tr><td colspan="2" class="calendarweek">Week 11</td></tr>
+<tr><td class="calendarday">Tues, March 28</td>
+<td class="calendarday">Thurs, March 30</td></tr>
+<tr><td class="calendarentry">
+<b>Due:</b> Project phase 3<br/>
+&nbsp;<br/>
+<b>Topics:</b>  [<a href="CSC580-L11.pdf">Slides</a>]
+<ul>
+<li>HW Solution Discussion</li>
+<li>Hash functions &ndash; ideas</li>
+<li>Hash function requirements</li>
+<li>Status of current hash function security</li>
+<li>Hash function applications</li>
+</ul>
+<b>Handout:</b> <a href="gradproject.php">Grad Student Project Info</a><br/>
+</td><td class="calendarentry">
+<b>Topics:</b>
+<ul>
+<li>Quiz (based on HW 8)</li>
+<li>Discussion of project phase 4</li>
+</ul>
+<b>Handouts:</b>
+<ul>
+<li> <a href="projphase4.php">Project phase 4</a> (due April 25)</li>
+<li> <a href="homework9.php">Homework 9</a></li>
+</ul>
+</td>
+
+</tr>
+
+<tr height="15" class="calendarsep"><td></td></tr>
+<tr><td colspan="2" class="calendarweek">Week 12</td></tr>
+<tr><td class="calendarday">Tues, April 4</td>
+<td class="calendarday">Thurs, April 6</td></tr>
+<tr><td class="calendarentry">
+<b>Topics:</b>
+<ul>
+<li>HW Solution Discussion</li>
+<li>More hash function applications</li>
+</ul>
+</td><td class="calendarentry">
+<b>Topics:</b>
+<ul>
+<li>Quiz (based on HW 9)</li>
+<li>Widely-used hash functions</li>
+</ul>
+<b>Handout:</b>
+<a href="homework10.php">Homework 10</a><br/>
+&nbsp;<br/>
+<b>Reading:</b> Sections 12.1-12.5
+</td>
+
+</tr>
+
+<tr height="15" class="calendarsep"><td></td></tr>
+<tr><td colspan="2" class="calendarweek">Week 13</td></tr>
+<tr><td class="calendarday">Tues, April 11</td>
+<td class="calendarday">Thurs, April 13</td></tr>
+<tr><td class="calendarentry">
+<b>Topics:</b>  [<a href="CSC580-L12.pdf">Slides</a>]
+<ul>
+<li>HW Solution Discussion</li>
+<li>Message Authentication Codes (MACs)</li>
+<li>MAC requirements / security model</li>
+<li>Digital signature and certificate ideas</li>
+<li>Initial attempts at a MAC</li>
+</ul>
+&nbsp;<br/>
+<b>Reading:</b> Sections 12.7-12.9, 13.1, 13.2, 13.4
+</td><td class="calendarentry">
+<b>Topics:</b>  [<a href="CSC580-L13.pdf">Slides</a>]
+<ul>
+<li>Quiz (based on HW 10)</li>
+<li>HMAC</li>
+<li>Authenticated encryption</li>
+</ul>
+<b>Handout:</b>
+<a href="homework11.php">Homework 11</a><br/>
+&nbsp;<br/>
+<b>Reading:</b>  Sections 13.6
+</td>
+
+</tr>
+
+<tr height="15" class="calendarsep"><td></td></tr>
+<tr><td colspan="2" class="calendarweek">Week 14</td></tr>
+<tr><td class="calendarday">Tues, April 18</td>
+<td class="calendarday">Thurs, April 20</td></tr>
+<tr><td class="calendarentry">
+<b>Topics:</b>  [<a href="CSC580-L14.pdf">Slides</a>]
+<ul>
+<li>HW Solution Discussion</li>
+<li>More authenticated encryption</li>
+<li>Key wrapping</li>
+<li>PRNGs from hash functions and MACs</li>
+<li>Digital Signatures &ndash; ideas</li>
+</ul>
+<b>Reading:</b>  Sections 14.2-14.5
+</td>
+<td class="calendarentry">
+<b>Topics:</b>  [<a href="CSC580-L15.pdf">Slides</a>]
+<ul>
+<li>Quiz (based on HW 11)</li>
+<li>El Gamal signatures</li>
+<li>DSA (and EC-DSA idea)</li>
+<li>RSA-PSS signatures</li>
+<li>Key management</li>
+<li>Certificates</li>
+<li>Public-Key Infrastructure (PKI)</li>
+</ul>
+<b>Handout:</b>
+<a href="homework12.php">Homework 12</a><br/>
+</td>
+</tr>
+
+<tr height="15" class="calendarsep"><td></td></tr>
+<tr><td colspan="2" class="calendarweek">Week 15</td></tr>
+<tr><td class="calendarday">Tues, April 25</td>
+<td class="calendarday">Thurs, April 27</td></tr>
+<tr><td class="calendarentry">
+<b>Due:</b> Project phase 4<br/>
+&nbsp;<br/>
+<b>Topics:</b>
+<ul>
+<li>HW Solution Discussion</li>
+<li>Wrap up a few certificate topics</li>
+<li>Student-choice topic: Bitcoin</li>
+</ul>
+</td><td class="calendarentry">
+<b>Topics:</b>
+<ul>
+<li>Quiz (based on HW 12)</li>
+<li>Class Review</li>
+</ul>
+</td>
+</tr>
+
+<tr height="25" class="calendarsep"><td></td></tr>
+<tr class="calendarsep"><td class="big" colspan="2"><b>Final Exam:</b> Tuesday, May 9, 12:00-3:00</td></tr>
+</table>
+</center>
+
+<p></p>
+
+
+</div></td></tr>
+</table>
+
+</body> </html>
+
+
