@@ -13,6 +13,10 @@ interface Props {
 }
 
 const { data, url } = Astro.props
+const renderit = false;
 ---
-{data.authors}. <a href={url}>{data.title}</a>, in <i>{data.pubin}</i>, {data.extra}. 
-  { data.tags.map((t: string) => (<PubTag tag={t} /> ))}
+{ url!='null' ? 
+  <span> {data.authors}. <a href={url}>{data.title}</a>, in <i>{data.pubin}</i>, {data.extra}. 
+    { data.tags.map((t: string) => (<PubTag tag={t} /> ))} </span>
+  : <span> {data.authors}. {data.title}, in <i>{data.pubin}</i>, {data.extra}. 
+    { data.tags.map((t: string) => (<PubTag tag={t} /> ))} </span> }
