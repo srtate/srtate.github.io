@@ -18,28 +18,28 @@
 <div class="navigate">
 <div class="navhead">Navigation</div>
 <div class="navother">
-<a href="index.php">Class Home</a>
+<a href="index.html">Class Home</a>
 </div>
 <div class="navother">
-<a href="syllabus.php">Syllabus</a>
+<a href="syllabus.html">Syllabus</a>
 </div>
 <div class="navother">
-<a href="sched.php">Schedule</a>
+<a href="sched.html">Schedule</a>
 </div>
 <div class="navother">
-<a href="readings.php">Readings</a>
+<a href="readings.html">Readings</a>
 </div>
 <div class="navother">
-<a href="handouts.php">Handouts</a>
+<a href="handouts.html">Handouts</a>
 </div>
 <div class="navother">
 Assignments
 </div>
 <div class="navother">
-&nbsp;&nbsp;&bullet; <a href="homework.php">HW Problems</a>
+&nbsp;&nbsp;&bullet; <a href="homework.html">HW Problems</a>
 </div>
 <div class="navother">
-&nbsp;&nbsp;&bullet; <a href="project.php">Project</a>
+&nbsp;&nbsp;&bullet; <a href="project.html">Project</a>
 </div>
 <div class="navother">
 <a href="http://docs.oracle.com/javase/8/docs/technotes/guides/security/crypto/CryptoSpec.html">JCA Ref Guide</a>
@@ -51,44 +51,36 @@ Assignments
 <a href="http://canvas.uncg.edu/">Canvas</a>
 </div>
 <div class="navother">
-<a href="moreinfo.php">More Information</a>
+<a href="moreinfo.html">More Information</a>
 </div>
 <img src="../img/navtail.png" alt="" />
 </div>
 </td><td valign="top"><div class="main">
 
-<p>A <a href="homework4.pdf">printable PDF</a> is available.</p>
+<p>A <a href="homework3.pdf">printable PDF</a> is available.</p>
 
-<center><h1>Homework 4 &ndash; Due Tuesday, February 14</h1></center>
+<center><h1>Homework 3 &ndash; Due Tuesday, February 7</h1></center>
 
-<OL><LI>The Java Cryptography Architecture (JCA) is described as a
-  "provider-based architecture." In your own words, what does this mean?
-<p><LI>The AES handout mentions that there is an attack on a block
-  cipher that requires building a table whose size is a function of
-  the block size (see the "Block Size" discussion in the
-  "Background" section). How much memory/storage would this require
-  for a block cipher with 80-bit blocks?
-<p><LI>Fill in the following table giving the basic parameters of AES:
+<OL><LI>What would happen if you didn't swap the halves in
+  each round of a Feistel network (Figure 4.3 in the textbook)?
+<p><LI>Textbook page 120, Problem 4.2
+<p><LI>Fill in the following table giving the basic parameters of DES:
 <BLOCKQUOTE><CENTER>
 <TABLE cellspacing="0" cellpadding="0" class="calendar"><TR><TD class="calendarentry" COLSPAN="1" ALIGN="CENTER">
 Algorithm </TD><TD class="calendarentry" ALIGN="CENTER"> Block Size(s) </TD><TD class="calendarentry" COLSPAN="1" ALIGN="CENTER"> Key Size(s) </TD></TR>
-<TR><TD class="calendarentry" COLSPAN="1" ALIGN="CENTER">AES
+<TR><TD class="calendarentry" COLSPAN="1" ALIGN="CENTER">DES
 </TD><TD class="calendarentry" COLSPAN="1" ALIGN="CENTER"> </TD><TD class="calendarentry" COLSPAN="1" ALIGN="CENTER"> </TD></TR>
 </TABLE>
 
 </CENTER></BLOCKQUOTE>
 Imagine that we could make a special-purpose machine that could do a
-brute-force attack on an 80-bit key that would take, on average, 1
-second to find
+brute-force attack on DES that would take, on average, 2 minutes to find
 a key in a known plaintext attack.  Assuming that it could test keys
 for any algorithm at the same speed, approximate how long would it take, on
-average, to break AES with its smallest supported key?  (For your answer,
+average, to break a cipher that uses an 80-bit key?  (For your answer,
 give a precise amount, but then give an "understandable" amount --
 is it a few seconds?  an hour?  a day?  week?  etc.)
-<P>What if someone made a mistake in implementing AES, so that two bits
-out of every key byte were fixed and known to the attacker (for
-example, the first two bits of every ASCII letter are <CODE>01</CODE>) --
-how fast could this machine break the key in this case?
+<P>What if we added another byte to the key so that is was 88 bits long?
 </OL>
 
 
