@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+<title>CSC 580:  Cryptography and Security in Computing</title>
+<link href="https://home.uncg.edu/cmp/faculty/srtate/classstyle.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td width="800"><img src="580banner.jpg" alt="CSC 580: Cryptography and Security in Computing" /></td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+<col width="150" />
+<col width="700" />
+<tr><td valign="top">
+<div class="navigate">
+<div class="navhead">Navigation</div>
+<div class="navother">
+<a href="index.php.html">Class Home</a>
+</div>
+<div class="navother">
+<a href="syllabus.php.html">Syllabus</a>
+</div>
+<div class="navother">
+<a href="sched.php.html">Schedule</a>
+</div>
+<div class="navother">
+<a href="lectures.php.html">Lectures</a>
+</div>
+<div class="navother">
+<a href="handouts.php.html">Handouts</a>
+</div>
+<div class="navother">
+<a href="assign.php.html">Assignments</a>
+</div>
+<div class="navother">
+<a href="http://canvas.uncg.edu/">Canvas</a>
+</div>
+<div class="navother">
+<a href="moreinfo.php.html">More Information</a>
+</div>
+<img src="https://home.uncg.edu/cmp/faculty/srtate/pics/navtail.png" alt="" />
+</div>
+</td><td valign="top"><div class="main">
+
+<p>A <a href="homework6.pdf">printable PDF</a> is available.</p>
+
+<center><h1>
+Homework 6 &ndash; Due Tuesday, March 20
+</h1></center>
+
+
+<OL><LI>Consider a cipher that has the following property: When you view the
+plaintext bits and ciphertext bits as binary numbers, the cipher
+preserves the evenness of the number. In other words, if the plaintext
+is an even number then the ciphertext will also be an even number,
+and if the plaintext is odd then the ciphertext will also be odd.
+<p>
+<UL><LI type="a">Prove that such a cipher cannot be IND-CPA secure.
+<p>
+  <LI  type="a">Joe decides to "fix" the cipher by doing the following: he
+    adds one additional bit to the key, and then adds this (as a
+    number) to the
+    ciphertext after encryption. If this key bit is chosen randomly,
+    then half the time even numbers map to even numbers, and the other
+    half of the time even numbers map to odd numbers. Since this is
+    random and unpredictable if the bit isn't known, he thinks this
+    fixes the problem. However, it is still not IND-CPA secure --
+    prove this.
+</UL>
+<p>
+<LI>Give the RSA algorithm, including descriptions of how keys are generated and
+how encryption and decryption work.  Use formulas, and describe the
+size of values (i.e., number of bits) used in a typical real system.
+Explain why decryption is the inverse if encryption (i.e., what is the
+mathematics that explains why <I>M=D(PR<sub>a</sub>,E(PU<sub>a</sub>,M))</I> for all messages
+<I>M</I> -- you can give a simplified explanation, in which you assume
+that <I>M</I> is relative prime to the modulus <I>n</I>).
+<p>
+<LI>Joe makes a system using RSA for public key cryptography, but in the
+key generation routine uses the standard C library <TT>rand()</TT>
+function for random values, which uses a 15-bit value for a seed. Why
+is this insecure? Be very specific in your answer, describing a real,
+practical attack with an explanation of the time complexity of the
+attack.
+</OL>
+
+
+</div></td></tr>
+</table>
+
+</body> </html>
+

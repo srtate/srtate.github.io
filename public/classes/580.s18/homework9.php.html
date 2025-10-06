@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+<title>CSC 580:  Cryptography and Security in Computing</title>
+<link href="https://home.uncg.edu/cmp/faculty/srtate/classstyle.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td width="800"><img src="580banner.jpg" alt="CSC 580: Cryptography and Security in Computing" /></td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+<col width="150" />
+<col width="700" />
+<tr><td valign="top">
+<div class="navigate">
+<div class="navhead">Navigation</div>
+<div class="navother">
+<a href="index.php.html">Class Home</a>
+</div>
+<div class="navother">
+<a href="syllabus.php.html">Syllabus</a>
+</div>
+<div class="navother">
+<a href="sched.php.html">Schedule</a>
+</div>
+<div class="navother">
+<a href="lectures.php.html">Lectures</a>
+</div>
+<div class="navother">
+<a href="handouts.php.html">Handouts</a>
+</div>
+<div class="navother">
+<a href="assign.php.html">Assignments</a>
+</div>
+<div class="navother">
+<a href="http://canvas.uncg.edu/">Canvas</a>
+</div>
+<div class="navother">
+<a href="moreinfo.php.html">More Information</a>
+</div>
+<img src="https://home.uncg.edu/cmp/faculty/srtate/pics/navtail.png" alt="" />
+</div>
+</td><td valign="top"><div class="main">
+
+<p>A <a href="homework9.pdf">printable PDF</a> is available.</p>
+
+<center><h1>Homework 9 &ndash; Due Tuesday, April 10</h1></center>
+
+<OL><LI>There are two main authenticated encryption techniques described in
+  the book, CCM and GCM. Describe at least two advantages of GCM over
+  CCM.
+<p>
+<LI>Both MACs and digital signature schemes are designed with the goal of
+being resistant to "existential forgery."  Describe what this means
+and why this is an important property.
+<p>
+<LI>The Digital Signature Algorithm (see Figure 13.3 on page 410) starts
+by selecting what the book calls the user's "per message secret
+number" <I>k</I>, after which <I>r=(g<sup>k</sup> mod p) mod q</I>
+becomes part of the signature. Since <I>k</I> is just a random value, not
+related to the signer's private key, is it important to protect <I>k</I>?
+In particular, what would be the consequences if an attacker could
+learn <I>k</I> in addition to the signature <I>(r,s)</I>?
+<P>[<I>Hint: See what you can calculate based
+on the formulas for <I>r</I> and <I>s</I>, as well as the information that is
+known by the attacker. Try taking the
+formulas and multiplying through by values, or subtracting formulas
+to see what cancels out, or doing other basic algebraic
+manipulations to see what you can have "pop out" of the formulas.</I>]
+
+</OL>
+
+
+</div></td></tr>
+</table>
+
+</body> </html>
+

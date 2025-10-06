@@ -1,0 +1,224 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+<title>CSC 580:  Cryptography and Security in Computing</title>
+<link href="https://home.uncg.edu/cmp/faculty/srtate/classstyle.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td width="800"><img src="580banner.jpg" alt="CSC 580: Cryptography and Security in Computing" /></td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+<col width="150" />
+<col width="700" />
+<tr><td valign="top">
+<div class="navigate">
+<div class="navhead">Navigation</div>
+<div class="navother">
+<a href="index.php.html">Class Home</a>
+</div>
+<div class="navother">
+<a href="syllabus.php.html">Syllabus</a>
+</div>
+<div class="navother">
+<a href="sched.php.html">Schedule</a>
+</div>
+<div class="navother">
+<a href="lectures.php.html">Lectures</a>
+</div>
+<div class="navother">
+<a href="handouts.php.html">Handouts</a>
+</div>
+<div class="navother">
+<a href="assign.php.html">Assignments</a>
+</div>
+<div class="navother">
+<a href="http://canvas.uncg.edu/">Canvas</a>
+</div>
+<div class="navother">
+<a href="moreinfo.php.html">More Information</a>
+</div>
+<img src="https://home.uncg.edu/cmp/faculty/srtate/pics/navtail.png" alt="" />
+</div>
+</td><td valign="top"><div class="main">
+
+<p>A <a href="ghw2.pdf">printable PDF</a> is available.</p>
+
+<center><h1>
+Graded Homework 2 &ndash; Due Thursday, March 22
+</h1></center>
+
+
+<OL><LI>In the handout on security models, it was shown that no stateless,
+deterministic encryption can be IND-CPA secure. For this problem,
+consider CBC mode in which the IV is picked in a way that can be
+predicted by the adversary (but may be stateful and/or non-deterministic).
+<p>
+<OL type="a"><LI> Describe CBC mode using algorithm specifications (both
+  encryption and decryption), where the IV is selected during
+  encryption using a function named <I>getIV(lambda)</I>. You
+  should use formulas similar to those on page 199, but give algorithm
+  pseudocode with clear inputs (parameters) and outputs (return
+  values), as well as any necessary looping and control flow instructions.
+<p>
+<LI>Assume the adversary has a <I>predictIV(lambda)</I> function
+  that always predicts the next IV that will be returned by <I>getIV(lambda)</I> (and hence the next IV that will be used in an
+  encryption). Define adversary algorithms <I>A<sub>1</sub><sup>E</sup></I> and
+  <I>A<sub>2</sub><sup>E</sup></I> that can win the CPA game. (Hint: Think about
+  what is fed into the block cipher as plaintext. Can you arrange
+  it so that you can do multiple encryptions in which the same values
+  are fed into the block cipher?) Analyze your
+  algorithms to find the advantage of your adversary.
+<p>
+<LI>What if the <I>predictIV</I> algorithm isn't perfect?
+  In other words, what if <I>predictIV</I> only predicts the
+  correct IV with probability <I>p</I>? What is the advantage now?
+<p>
+<LI>CBC-Chain mode is a variant of CBC mode in which the
+  encryption function keeps a record of the last ciphertext block
+  produced, and uses that as the IV for the next encryption (so a
+  series of CBC-Chain encryptions is the same as a single long CBC
+  encryption). Show that CBC-Chain mode is not IND-CPA
+  secure. (Note: This attack appears in the real world as 
+  the BEAST attack on SSL, discovered in 2011.)
+</OL>
+<p>
+<LI>It's clear that repeating a deterministic block cipher, as in ECB
+mode, is not secure. But what about repeating a secure
+(non-deterministic) cipher? In other words, let <I>E<sub>K</sub>(P) -&gt; C</I>
+be an IND-CCA encryption scheme, and then define a two-block version
+of this by <I>E2<sub>K</sub>(P<sub>1</sub>,P<sub>2</sub>) -&gt; (C<sub>1</sub>,C<sub>2</sub>)=(E<sub>K</sub>(P<sub>1</sub>),E<sub>K</sub>(P<sub>2</sub>))</I>. It turns out that this construction is
+IND-CPA secure, but <EM>not</EM> IND-CCA secure. Prove the second part
+of that statement (in other words, give an adversary that wins the CCA
+game against the <I>E2</I> two-block encryption scheme -- like almost all
+CCA attacks, the trick is to disguise your decryption oracle requests
+so they don't exactly repeat the challenge ciphertext). Make sure you
+analyze the advantage of your adversary!
+<p>
+<LI>For this question, you are to do some experimentation with the
+Nextcloud end-to-end encryption feature. The directions below explain
+how to set up an environment where you can work with Nextcloud. Note
+that there are a lot of steps to get right, from setting up the server
+to working with Android Studio and the Android emulator. I have made
+the steps as simple as possible, but there are still a zillion ways
+this can go wrong -- start <EM>soon</EM> so you can seek help if/when
+things don't work as expected. There is nothing to turn in for the
+setup steps (i1 to i5) -- the questions you need to answer follow the
+instructions.
+<p>
+<UL><LI>(i1) Follow the instructions in the "Working with Nextcloud"
+    handout (given in class) to set up your own copy of the Nextcloud
+    server, enable the end-to-end encryption app, and then create a
+    regular user account for you to use.
+<p>
+  <LI>(i2) Visit <a href="https://developer.android.com/studio/index.html"><CODE>https://developer.android.com/studio/index.html</CODE></a>
+    to download and install Android Studio.
+<p>
+  <LI>(i3) Follow the directions in the "Working with Nextcloud"
+    handout to clone the Nextcloud android client into your Android
+    Studio workspace. The first thing you should do is go into the
+    <TT>src/main/java/com/owncloud/android/MainApp.java</TT>
+    file, find the line that says
+<PRE>
+     OwnCloudClientManagerFactory.setUserAgent(getUserAgent());
+</PRE>
+and change it to
+<PRE>
+     OwnCloudClientManagerFactory.setUserAgent(getNextcloudUserAgent());
+</PRE>
+While you are cloning a dynamic, possibly changing version of the
+source code, currently this code is at line 133.
+<p>
+<LI>(i4) Create a phone emulator that you can use to run the Nextcloud client:
+In Android Studio, go under "Tools" and then "Android" to select
+"AVD Manager" ("AVD" is "Android Virtual Device"). Click the
+button that says "Create Virtual Device," select "Nexus 5X" and
+click "Next". The next screen asks what version of Android should be
+installed on your virtual device, and the best one I have found for
+this is Oreo -- use the version that lists "x86" as the ABI, and
+"Android 8.0 (Google Play)" as the target, and you'll get a full
+install, including the Google Play store, for a more realistic
+environment. Click "Next" from this screen, and it will take you to
+the final screen, where you can change the "AVD Name" for this
+device -- I like to have a dedicated device for Nextcloud testing, so
+I name it "NextcloudTest" to keep it separate from other
+projects. Click "Finish" and you're done. Note that this may have to
+download system images, so this may take a little while.
+<p>
+<LI>(i5) Now you are (finally!) ready to run the Nextcloud client, so go back
+  and click the green "Run" triangle in Android Studio, and select the
+  AVD you just created. The system will then build the client, boot the
+  virtual phone, and run the program for you. You can log in and
+  should see your files.
+</UL>
+<P>Once everything is set up and running properly, answer the following
+questions, which will give you insight
+into how Nextcloud stores data (both encrypted and unencrypted), and
+you'll also see where some key operations are located in the client
+code. The following questions assume you are running as a new user,
+and have not uploaded any files or used encryption yet. If you
+<EM>have</EM> already tried this, then log in to the Nextcloud web
+interface as administrator and create a new "clean" user account to
+use.
+<OL type="a"><LI>In the Android client, create a new folder and select "Set as
+  encrypted" in the actions menu. After that, click on the folder to
+  navigate into the folder. Describe what you see (any changes in
+  icons, messages that pop up, etc.) when you do this.
+<p>
+<LI>Open the web browser on the emulated phone, and find an image on
+  the web to
+  use for the following tests.
+  Upload the image twice: Once to your encrypted folder, and once to
+  an unencrypted folder. To upload, simply do a "long click" on the
+  image and select "Share image," followed by choosing to share
+  via Nextcloud. After uploading, log in to the server and explore the
+  "<CODE>data</CODE>" directory in your Nextcloud server
+  installation. Locate the files you just uploaded, and report the
+  locations, filenames, and sizes of each file. The encrypted version
+  should be slightly larger than the unencrypted version -- how much
+  larger is it (report in bits as well as bytes)?
+<p>
+<LI>Upload a second file to the encrypted folder, and report the file
+  names you see on the server. Other than the file sizes, are there any
+  clues as to the name or types of the files?
+<p>
+<LI>All encrypted files have some associated "meta-data" that must be
+  used in order to decrypt the files. Explore the <CODE>data</CODE>
+  directory on the web server to locate this data (hint: it's not with
+  the user's files). Report where you found the metadata, and
+  cut-and-paste the contents into your homework submission (or print
+  out on a separate page) - this is a JSON file, so you can use the
+  "JSON pretty-printer," a program named <CODE>json_pp</CODE> on
+  <CODE>csc580</CODE>, to make a more readable version.
+<p>
+<LI>What fields are defined for each file? What do you think each one
+  represents?
+<p>
+<LI>Locate the part of the Android client source code that
+  performs the encryption (hint: look in the <CODE>utils</CODE> directory
+  for a file with an obvious-sounding name). Figure out and report the
+  symmetric cipher, mode, and keylength used to encrypt files -- when
+  you report this information, identify specific lines in the code and
+  copy the statements into your answer as a justification.
+<p>
+<LI>Locate the place in the client code where it makes the decision on
+  whether to upload the file encrypted or not. The easiest way to do
+  this is to use Android Studio features to trace the calls back to
+  the point where the decision is made -- just go to the top of the
+  method from the previous question, click on the method name to
+  select it, right click and select "Find Usages." When you trace
+  back to where the code decides whether to upload encrypted or not,
+  it will be obvious. Describe what you found.
+</OL>
+</OL>
+
+
+
+</div></td></tr>
+</table>
+
+</body> </html>
+

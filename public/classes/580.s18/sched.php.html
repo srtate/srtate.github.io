@@ -1,0 +1,558 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+<title>CSC 580:  Cryptography and Security in Computing</title>
+<link href="https://home.uncg.edu/cmp/faculty/srtate/classstyle.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td width="800"><img src="580banner.jpg" alt="CSC 580: Cryptography and Security in Computing" /></td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+<col width="150" />
+<col width="700" />
+<tr><td valign="top">
+<div class="navigate">
+<div class="navhead">Navigation</div>
+<div class="navother">
+<a href="index.php.html">Class Home</a>
+</div>
+<div class="navother">
+<a href="syllabus.php.html">Syllabus</a>
+</div>
+<div class="navcurrent">
+<a href="sched.php.html">Schedule</a>
+</div>
+<div class="navother">
+<a href="lectures.php.html">Lectures</a>
+</div>
+<div class="navother">
+<a href="handouts.php.html">Handouts</a>
+</div>
+<div class="navother">
+<a href="assign.php.html">Assignments</a>
+</div>
+<div class="navother">
+<a href="http://canvas.uncg.edu/">Canvas</a>
+</div>
+<div class="navother">
+<a href="moreinfo.php.html">More Information</a>
+</div>
+<img src="https://home.uncg.edu/cmp/faculty/srtate/pics/navtail.png" alt="" />
+</div>
+</td><td valign="top"><div class="main">
+
+<h2>Detailed Schedule</h2>
+
+<p>The following calendar shows topics covered, handouts given, and
+assignments that have been given and when they are due.  Items with yellow background are <i>tentative</i> (either because the date is in the future or because I haven't gotten around to updating it).  All items with a white background are final.</p>
+
+<p>In all cases, "Reading" assignments are to be done before the next class meeting.</p>
+
+<center>
+
+<table cellspacing="0" cellpadding="0" class="calendar">
+<col width="300">
+<col width="300">
+
+<tr><td colspan="2" class="calendarweek">Week 1</td></tr>
+<tr><td class="calendarday">Tues, January 9</td>
+<td class="calendarday">Thurs, January 11</td></tr>
+<tr><td class="calendarentry">
+<b>Topics:</b>
+<ul>
+<li>Introductions</li>
+<li>Class/syllabus review</li>
+<li>High-level security overview</li>
+</ul>
+&nbsp;<br/>
+<b>Handouts:</b>
+<ul>
+  <li><a href="syllabus.php.html">Syllabus</a></li>
+  <li><a href="research.php.html">Research in Computer Science</a></li>
+</ul>
+&nbsp;<br/>
+<b>Reading:</b> Research handout
+</td><td class="calendarentry">
+<b>Topics:</b>  [ <a href="lectures/UNCG-CSC580-L00-Research&#32;in&#32;CS&#32;and&#32;Security-3up.pdf">Slides</a> ]
+<ul>
+<li>Research in Computer Science</li>
+<li>Styles of research</li>
+<li>Conferences and journals</li>
+<li>Structure of a research paper</li>
+<li>Getting started in research</li>
+</ul>
+&nbsp;<br/>
+<b>Handouts:</b>
+Project Information
+<ul>
+<li> <a href="collabproj.php.html">Collaborative Projects</a></li>
+<li> <a href="cscproj.php.html">CS-Specific Projects</a></li>
+</ul>
+&nbsp;<br/>
+<b>Reading:</b> Textbook, Chapter 1<br/>
+</td>
+</tr>
+
+<tr height="15" class="calendarsep"><td></td></tr>
+<tr><td colspan="2" class="calendarweek">Week 2</td></tr>
+<tr><td class="calendarday">Tues, January 16</td>
+<td class="calendarday">Thurs, January 18</td></tr>
+<tr><td class="calendarentry">
+&nbsp;<br/>
+<center>Special Class</center>
+<center>Joint meeting with ISM 324</center>
+<center>Location: SULV 201</center>
+&nbsp;<br/>
+<center>[ <a href="lectures/UNCG-ISM324-CSC580-CloudComputingOverview-3up.pdf">Slides</a> ]</center>
+</td><td class="calendarentry">
+&nbsp;<br/>
+<center>Class canceled (snow)</center>
+</td>
+</tr>
+
+<tr height="15" class="calendarsep"><td></td></tr>
+<tr><td colspan="2" class="calendarweek">Week 3</td></tr>
+<tr><td class="calendarday">Tues, January 23</td>
+<td class="calendarday">Thurs, January 25</td></tr>
+<tr><td class="calendarentry">
+<b>Topics:</b> [ <a href="lectures/UNCG-CSC580-L01-Basic&#32;Terminology&#32;and&#32;Threat&#32;Modeling-3up.pdf">Slides</a> ]
+<ul>
+<li>Security mindset and terminlogy</li>
+<li>Secure Design Principles</li>
+<li>System / Security Modeling</li>
+<li>Attack Trees</li>
+</ul>
+&nbsp;<br/>
+<b>Reading:</b> Textbook, Sections 2.1-2.3<br/>
+</td><td class="calendarentry">
+<b>Topics:</b> [<a href="lectures/UNCG-CSC580-L02-MathBasics-3up.pdf">Slides</a>]
+<ul>
+<li>Basic Math for Crypto:</li>
+  <ul>
+    <li>Divisibility</li>
+    <li>Greatest Common Divisor</li>
+    <li>Modular Arithmetic</li>
+  </ul>
+</ul>
+&nbsp;<br/>
+<b>Handouts:</b>
+<ul>
+<li><a href="homework1.php.html">Ungraded Homework 1</a></li>
+<li><a href="SchneierLargeNumbers.pdf">Large Numbers</a></li>
+</ul>
+</td>
+</tr>
+
+<tr height="15" class="calendarsep"><td></td></tr>
+<tr><td colspan="2" class="calendarweek">Week 4</td></tr>
+<tr><td class="calendarday">Tues, January 30</td>
+<td class="calendarday">Thurs, February 1</td></tr>
+<tr><td class="calendarentry">
+<b>Topics:</b>
+<ul>
+<li>HW Solution Discussion</li>
+<li>Project Team Discussion</li>
+<li>Number sizes and estimates</li>
+<li>Time for project teams to meet</li>
+</ul>
+&nbsp;<br/>
+<b>Reading:</b><br/>
+&nbsp;&nbsp;Sections 3.1, 3.2 (skip Hill cipher), 3.5
+</td><td class="calendarentry">
+<b>Topics:</b>  [<a href="lectures/UNCG-CSC580-L03-ClassicalCrypto-3up.pdf">Slides</a>] 
+<ul>
+<li>Quiz (based on HW 1)</li>
+<li>Encryption basics / models</li>
+<li>Types of attacks</li>
+<li>Classical encryption techniques</li>
+<li>One-time pad</li>
+<li>XOR and working with binary data</li>
+<li>Steganography</li>
+</ul>
+&nbsp;<br/>
+<b>Handouts:</b>
+<ul>
+<li><a href="homework2.php.html">Ungraded Homework 2</a></li>
+<li><a href="ghw1.php.html">Graded Homework 1</a></li>
+<li><a href="aeshandout.php.html">AES Handout</a></li>
+</ul>
+&nbsp;<br/>
+<b>Reading:</b>
+<ul>
+<li>Sections 4.1, 4.2, 4.4</li>
+<li>AES Handout</li>
+</ul>
+</td>
+</tr>
+
+<tr height="15" class="calendarsep"><td></td></tr>
+<tr><td colspan="2" class="calendarweek">Week 5</td></tr>
+<tr><td class="calendarday">Tues, February 6</td>
+<td class="calendarday">Thurs, February 8</td></tr>
+<tr><td class="calendarentry">
+<b>Due:</b> Project Proposal<br/>
+&nbsp;<br/>
+<b>Topics:</b> [<a href="lectures/UNCG-CSC580-L04-BlockCiphers-3up.pdf">Slides</a>]
+<ul>
+<li>HW Solution Discussion</li>
+<li>Feistel Networks</li>
+<li>DES</li>
+</ul>
+&nbsp;<br/>
+<b>Reading:</b> Sections 7.1-7.6
+</td><td class="calendarentry">
+<b>Topics:</b>
+<ul>
+<li>Quiz (based on HW 2)</li>
+<li>Block cipher security</li>
+<li>Strength of DES</li>
+<li>AES</li>
+</ul>
+&nbsp;<br/>
+<b>Handout:</b>
+<a href="homework3.php.html">Ungraded Homework 3</a><br/>
+&nbsp;<br/>
+<b>Reading:</b> Section 7.7
+</td>
+</tr>
+
+<tr height="15" class="calendarsep"><td></td></tr>
+<tr><td colspan="2" class="calendarweek">Week 6</td></tr>
+<tr><td class="calendarday">Tues, February 13</td>
+<td class="calendarday">Thurs, February 15</td></tr>
+<tr><td class="calendarentry">
+<b>Topics:</b> [<a href="lectures/UNCG-CSC580-L06-BlockCipherModes-3up.pdf">Slides</a>]  
+<ul>
+<li>HW Solution Discussion</li>
+<li>Multiple encryption and 3DES</li>
+<li>Block cipher modes &ndash; idea</li>
+<li>Modes: ECB, CBC, CFB, and CTR</li>
+</ul>
+&nbsp;<br/>
+</td>
+&nbsp;<br/>
+</td><td class="calendarentry">
+<b>Due:</b> Graded Homework 1<br/>
+&nbsp;<br/>
+<b>Topics:</b>   [<a href="lectures/UNCG-CSC580-L07-DiskEncryption-3up.pdf">Slides</a>]
+<ul>
+<li>Quiz (based on HW 3)</li>
+<li>Storage encryption: XTS-AES mode</li>
+<li>Programming with Crypto</li>
+<ul>
+<li>Basic concepts</li>
+<li>A look at Nextcloud source</li>
+</ul>
+</ul>
+&nbsp;<br/>
+<b>Handout:</b>
+<a href="homework4.php.html">Ungraded Homework 4</a><br/>
+&nbsp;<br/>
+<b>Reading:</b> Sections 8.1-8.3
+</td>
+</tr>
+
+<tr height="15" class="calendarsep"><td></td></tr>
+<tr><td colspan="2" class="calendarweek">Week 7</td></tr>
+<tr><td class="calendarday">Tues, February 20</td>
+<td class="calendarday">Thurs, February 22</td></tr>
+<tr><td class="calendarentry">
+<b>Due:</b> Project Plan<br/>
+&nbsp;<br/>
+<b>Topics:</b>    [<a href="lectures/UNCG-CSC580-L08-RandomGenerators-3up.pdf">Slides</a>]
+<ul>
+<li>HW Solution Discussion</li>
+<li>(Pseudo)random numbers &ndash; issues</li>
+<li>Entropy</li>
+<li>Pseudorandom generators</li>
+</ul>
+&nbsp;<br/>
+<b>Handouts:</b>
+<ul>
+<li><a href="formalmodels.pdf">Formal security models</a></li>
+<li><a href="homework5.php.html">Ungraded Homework 5</a></li>
+</ul>
+&nbsp;<br/>
+<b>Reading:</b> Security models handout
+</td><td class="calendarentry">
+&nbsp;<br/>
+<center>No class</center>
+<center>Project work time</center>
+</td>
+</tr>
+
+<tr height="15" class="calendarsep"><td></td></tr>
+<tr><td colspan="2" class="calendarweek">Week 8</td></tr>
+<tr><td class="calendarday">Tues, February 27</td>
+<td class="calendarday">Thurs, March 1</td></tr>
+<tr><td class="calendarentry">
+<b>Topics:</b>
+<ul>
+<li>HW Solution Discussion</li>
+<li>Security models &ndash; concepts</li>
+<li>Security games</li>
+<li>IND-CPA security</li>
+</ul>
+&nbsp;<br/>
+<b>Reading:</b> Sections 9.1, 2.4-2.6
+</td><td class="calendarentry">
+<b>Topics:</b>  
+<ul>
+<li>Quiz (based on HWs 4 and 5)</li>
+<li>IND-CCA security</li>
+<li>Practice with security proofs</li>
+</ul>
+&nbsp;<br/>
+<b>Handout:</b>
+<a href="ghw2.php.html">Graded Homework 2</a><br/>
+</td>
+
+</tr>
+
+<tr height="15" class="calendarsep"><td></td></tr>
+<tr><td colspan="2" class="calendarweek">Week 9</td></tr>
+<tr><td class="calendarday">Tues, March 6</td>
+<td class="calendarday">Thurs, March 8</td></tr>
+<tr><td class="calendarentry">
+&nbsp;<br />
+<center><b>No class - Spring Break!</b></center>
+&nbsp;<br />
+</td><td class="calendarentry">
+&nbsp;<br />
+<center><b>No class - Spring Break!</b></center>
+&nbsp;<br />
+</td>
+</tr>
+
+<tr height="15" class="calendarsep"><td></td></tr>
+<tr><td colspan="2" class="calendarweek">Week 10</td></tr>
+<tr><td class="calendarday">Tues, March 13</td>
+<td class="calendarday">Thurs, March 15</td></tr>
+<tr><td class="calendarentry">
+<b>Topics:</b>  [<a href="lectures/UNCG-CSC580-L10-PKCryptoAndMath-3up.pdf">Slides</a>]
+<ul>
+<li>Public-key crypto idea</li>
+<li>Math for RSA
+<ul>
+<li>Fermat's Little Theorem</li>
+<li>Primality testing (Miller-Rabin)</li>
+<li>Euler's Totient Function</li>
+<li>Euler's Theorem</li>
+</ul></li>
+</ul>
+&nbsp;<br/>
+<b>Handout:</b> <a href="gradproject.php.html">Grad Student Project Info</a><br/>
+&nbsp;<br/>
+<b>Reading:</b> Section 9.2
+</td><td class="calendarentry">
+<b>Topics:</b> [<a href="lectures/UNCG-CSC580-L10a-RSAandKeySizes-3up.pdf">Slides</a>]
+<ul>
+<li>Demo of some research tools</li>
+<li>RSA Encryption</li>
+<li>Breaking RSA and factoring</li>
+<li>Factoring algorithms</li>
+<li>Comparable key sizes across ciphers</li>
+</ul>
+&nbsp;<br/>
+<b>Handout:</b>
+<a href="homework6.php.html">Ungraded Homework 6</a><br/>
+&nbsp;<br/>
+<b>Reading:</b> Section 2.8, 10.1-10.2
+</td>
+</tr>
+
+<tr height="15" class="calendarsep"><td></td></tr>
+<tr><td colspan="2" class="calendarweek">Week 11</td></tr>
+<tr><td class="calendarday">Tues, March 20</td>
+<td class="calendarday">Thurs, March 22</td></tr>
+<tr><td class="calendarentry">
+<b>Topics:</b> [<a href="lectures/UNCG-CSC580-L10b-DiscreteLogTechniques-3up.pdf">Slides</a>]
+<ul>
+<li>HW Solution Discussion</li>
+<li>Discrete logarithms</li>
+<li>Diffie-Hellman Key Establishment</li>
+<li>Elliptic curve ideas</li>
+<li>Security and key sizes</li>
+</ul>
+&nbsp;<br/>
+<b>Reading:</b> Chapter 11 (skip SHA-512 logic and SHA3 iteration function)
+</td><td class="calendarentry">
+<b>Due:</b>
+<ul>
+<li>Graded Homework 2</li>
+<li>(Grad students) Project topic selection</li>
+</ul>
+&nbsp;<br/>
+<b>Topics:</b> [<a href="lectures/UNCG-CSC580-L11-HashFunctions-3up.pdf">Slides</a>]
+<ul>
+<li>Quiz (based on HW 6)</li>
+<li>Hash functions &ndash; ideas</li>
+<li>Hash function requirements</li>
+<li>Hash function applications</li>
+</ul>
+&nbsp;<br/>
+<b>Handout:</b>
+<a href="homework7.php.html">Ungraded Homework 7</a>
+</td>
+
+</tr>
+
+<tr height="15" class="calendarsep"><td></td></tr>
+<tr><td colspan="2" class="calendarweek">Week 12</td></tr>
+<tr><td class="calendarday">Tues, March 27</td>
+<td class="calendarday">Thurs, March 29</td></tr>
+<tr><td class="calendarentry">
+<b>Topics:</b> (continued from last time)
+<ul>
+<li>HW Solution Discussion</li>
+<li>More hash function applications</li>
+<li>Widely-used hash functions</li>
+<li>Current status of various hash algorithms</li>
+<li>Merkle-Damgard Construction</li>
+<li>SHA3</li>
+</ul>
+&nbsp;<br/>
+<b>Reading:</b> Sections 12.1-12.6
+</td><td class="calendarentry">
+<b>Topics:</b> [<a href="lectures/UNCG-CSC580-L12-MACs-Part1-3up.pdf">Slides</a>]
+<ul>
+<li>Quiz (based on HW 7)</li>
+<li>Message Authentication Codes (MACs)</li>
+<li>MAC requirements / security model</li>
+<li>Initial attempts at a MAC</li>
+<li>HMAC</li>
+<li>MACs from block ciphers</li>
+</ul>
+&nbsp;<br/>
+<b>Handout:</b>
+<a href="homework8.php.html">Ungraded Homework 8</a><br/>
+&nbsp;<br/>
+<b>Reading:</b> Sections 12.7-12.9
+</td>
+
+</tr>
+
+<tr height="15" class="calendarsep"><td></td></tr>
+<tr><td colspan="2" class="calendarweek">Week 13</td></tr>
+<tr><td class="calendarday">Tues, April 3</td>
+<td class="calendarday">Thurs, April 5</td></tr>
+<tr><td class="calendarentry">
+<b>Due:</b> Project Progress Report<br/>
+&nbsp;<br/>
+<b>Topics:</b>   [<a href="lectures/UNCG-CSC580-L13-MACs-Part2-3up.pdf">Slides</a>]
+<ul>
+<li>HW Solution Discussion</li>
+<li>Authenticated encryption</li>
+<li>Key wrapping</li>
+<li>PRNGs from hash functions and MACs</li>
+</ul>
+&nbsp;<br/>
+<b>Reading:</b> Sections 13.1, 13.2, 13.4, 13.6
+</td><td class="calendarentry">
+<b>Topics:</b>   [<a href="lectures/UNCG-CSC580-L14-DigitalSignatures-3up.pdf">Slides</a>]
+<ul>
+<li>Quiz (based on HW 8)</li>
+<li>Digital Signatures &ndash; ideas</li>
+<li>El Gamal signatures</li>
+<li>DSA (and EC-DSA idea)</li>
+<li>RSA-PSS signatures</li>
+</ul>
+&nbsp;<br/>
+<b>Handouts:</b>
+<ul>
+<li><a href="homework9.php.html">Ungraded Homework 9</a><br/></li>
+<li><a href="ghw3.php.html">Graded Homework 3</a><br/></li>
+</ul>
+&nbsp;<br/>
+<b>Reading:</b>  Sections 14.2-14.5
+</td>
+
+</tr>
+
+<tr height="15" class="calendarsep"><td></td></tr>
+<tr><td colspan="2" class="calendarweek">Week 14</td></tr>
+<tr><td class="calendarday">Tues, April 10</td>
+<td class="calendarday">Thurs, April 12</td></tr>
+<tr><td class="calendarentry">
+<b>Topics:</b>   [<a href="lectures/UNCG-CSC580-L15-Certificates-3up.pdf">Slides</a>]
+<ul>
+<li>HW Solution Discussion</li>
+<li>Key management</li>
+<li>Certificates</li>
+</ul>
+</td>
+<td class="calendarentry">
+<b>Topics:</b>   [<a href="lectures/UNCG-CSC580-L16-KeyManagement-3up.pdf">Slides</a>]
+<ul>
+<li>Quiz (based on HW 9)</li>
+<li>Public-Key Infrastructure (PKI)</li>
+<li>Needham-Schroeder[-Lowe]</li>
+<li>Kerberos</li>
+</ul>
+&nbsp;<br/>
+<b>Handout:</b>
+<a href="homework10.php.html">Ungraded Homework 10</a><br/>
+&nbsp;<br/>
+<b>Reading:</b>  Chapter 17
+</td>
+</tr>
+
+<tr height="15" class="calendarsep"><td></td></tr>
+<tr><td colspan="2" class="calendarweek">Week 15</td></tr>
+<tr><td class="calendarday">Tues, April 17</td>
+<td class="calendarday">Thurs, April 19</td></tr>
+<tr><td class="calendarentry">
+<b>Due:</b> Project Final Report<br/>
+&nbsp;<br/>
+<b>Topics:</b> [<a href="lectures/UNCG-CSC580-L17-Protocols-3up.pdf">Slides</a>]
+<ul>
+<li>HW Solution Discussion</li>
+<li>Protocols - Goals</li>
+<li>Ciphersuites and handshakes</li>
+<li>SSL and TLS</li>
+<li>SSH</li>
+</ul>
+</td><td class="calendarentrytentative">
+<b>Due:</b> (Grad students) Progress Report<br/>
+&nbsp;<br/>
+<b>Topics:</b>
+<ul>
+<li>Quiz (based on HW 10)</li>
+<li>Student choice topic!</li>
+</ul>
+</td>
+</tr>
+
+<tr height="15" class="calendarsep"><td></td></tr>
+<tr><td colspan="2" class="calendarweek">Week 16</td></tr>
+<tr><td class="calendarday">Tues, April 24</td>
+<td></td></tr>
+<tr><td class="calendarentry">
+<b>Due:</b> Graded Homework 3<br/>
+&nbsp;<br/>
+<b>Topics:</b>
+<ul>
+<li>Class Review</li>
+</ul>
+</td><td class="calendarentry">
+</td>
+</tr>
+
+<tr height="25" class="calendarsep"><td></td></tr>
+<tr class="calendarsep"><td class="big" colspan="2"><b>Final Exam:</b> Thursday, May 3, 3:30-6:30</td></tr>
+</table>
+</center>
+
+<p></p>
+
+
+</div></td></tr>
+</table>
+
+</body> </html>
+
+
