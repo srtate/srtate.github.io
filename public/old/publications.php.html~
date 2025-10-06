@@ -1,0 +1,430 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html> <head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+<title>Steve Tate's Home</title>
+<link href="/cmp/faculty/srtate/mainstyle.css" type="text/css" rel="stylesheet" >
+</head>
+
+<body>
+
+<table width="900" cellpadding="0" cellspacing="0" bgcolor="#003366">
+<tr><td align="center"><div class="mainhead">
+<table width="850">
+<col width="50%">
+<col width="50%">
+  <tr>
+<td>
+  <table><tr><td>
+  <div class="biggest"><b><i>Stephen R. Tate, Ph.D.</i></b></div>
+  </td></tr><tr><td>
+  <i>Professor of Computer Science</i>
+  </td></tr></table>
+</td>
+  <td align="right"><table><tr><td><div class="big">
+    <a href="/cmp">
+    <i>Department of
+    Computer Science</i></a></div></td></tr>
+    <tr><td><div class="big"><a href="https://www.uncg.edu/">
+      <i>The University of North
+      Carolina at Greensboro</i></a></div></td></tr>
+      </table></td></tr>
+</table>
+</div></td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+<col width="150">
+<col width="730">
+<tr><td valign="top">
+<div class="navigate">
+<div class="navhead">Navigation</div>
+<div class="navother">
+<a href="index.html">Steve's Home</a>
+</div>
+<div class="navother">
+<a href="https://compsci.uncg.edu/">Department</a>
+</div>
+<div class="navother">
+<a href="teaching.html">Teaching</a>
+</div>
+<div class="navother">
+<a href="research.html">Research</a>
+</div>
+<div class="navcurrent">
+<a href="publications.php">Publications</a>
+</div>
+<div class="navother">
+<a href="vita.php">Vita</a>
+</div>
+<div class="navother">
+<a href="links.php">Links</a>
+</div>
+<div class="navother">
+<a href="contact.php">Contact</a>
+</div>
+<img src="pics/navtail.png" alt="Menu End">
+</div>
+</td><td valign="top"><div class="main">
+
+
+<h2> Publications </h2>
+
+<p>This material is presented to ensure timely dissemination of scholarly
+and technical work.  Copyright and all rights therein are retained by
+authors or by other copyright holders.  All persons copying this
+information are expected to adhere to the terms and constraints
+invoked by each author's copyright.  In most cases, these works may
+not be reposted without the explicit permission of the copyright
+holder.</p>
+
+<OL>
+
+<H3> Computer Security and Cryptography</h3>
+
+
+<p><li> S. R. Tate and K. Xu.
+  "Mobile Agent Security Through Multi-Agent Cryptographic Protocols",
+  <cite>Proceedings of the 4th International Conference on Internet
+  Computing (IC 2003)</cite>, pp. 462-468.
+  
+<p><li> S. R. Tate and K. Xu.
+  "On Garbled Circuits and Constant Round Secure Function Evaluation",
+  <cite>CoPS Lab Technical Report 2003-02</cite>, 2003.
+  
+<p><li> 
+S. P. Joglekar and S. R. Tate.  "ProtoMon: Embedded Monitors for
+Cryptographic Protocol Intrusion Detection and Prevention,"
+<EM>Journal of Universal Computer Science (JUCS)</EM>, Vol.&nbsp;11,
+No.&nbsp;1, 2005, pp.&nbsp;83-103.
+<p>(Preliminary version published in <EM>Proceedings of the 2004 IEEE Conference
+on Information Technology: Coding and Computing (ITCC), Information
+Assurance and Security Track</EM>, 2004, pp. 81-88.)</p>
+
+<p><li>V. Gunupudi and S. R. Tate.  "Performance Evaluation of Data
+Integrity Mechanisms for Mobile Agents," <EM>Proceedings of the 2004
+IEEE Conference on Information Technology: Coding and Computing
+(ITCC), Information Assurance and Security Track</EM>, 2004,
+pp. 62-69.
+
+<p><li>K. Xu and S. R. Tate.  "Universally Composable Secure Mobile
+Agent Computation," <EM>Proceedings of the 7th International
+Conference on Information Security (ISC)</EM>, 2004, pp. 304-317.
+
+<p><LI>V. Gunupudi and S. R. Tate.  "SAgent:  A Security Framework for JADE," 
+<EM>Proceedings of the 5th International Joint Conference on
+Autonomous Agents and Multiagent Systems (AAMAS)</EM>, 2006,
+pp. 1116-1118.
+
+<p><LI>H. Ge and S. R. Tate.
+"Efficient Authenticated Key-Exchange for Devices with a Trusted
+Manager," <EM>Proceedings of the 3rd IEEE International
+Conference on Information Technology (ITNG) - Embedded
+Cryptographic Systems track</EM>, 2006, pp. 198-203.
+
+<p><LI>H. Ge and S. R. Tate.
+"A Group Signature Scheme with Signature Claiming and Variable
+Linkability," <EM>Proceedings of the 25th IEEE International
+Performance, Computing, and Communications Conference (IPCCC)</EM>,
+2006, pp. 497-504.  [PDF available soon]
+
+<p><LI>H. Ge and S. R. Tate.     "Traceable Signature: Better Efficiency and Beyond,"
+<EM>Proceedings of Applied Cryptography and
+Information Security (ACIS)</EM>, 2006, pp. 327-337.
+    [<a href="papers/TraceableSignatures.pdf">PDF</a>]
+
+
+<p><LI>V. Gunupudi, S. R. Tate, and K. Xu.  "Experimental Evaluation of Security Protocols in SAgent,"
+<EM>Proceedings of the International Workshop on
+Privacy and Security in Agent-based Collaborative Environments
+(PSACE)</EM>, 2006, pp. 60-74.  [PDF available soon]
+
+<p><LI>V. Gunupudi and S. R. Tate.  "Exploring Data Integrity Protection in SAgent,"
+<EM>Proceedings of the International Workshop on
+Privacy and Security in Agent-based Collaborative Environments
+(PSACE)</EM>, 2006, pp. 35-49.  [PDF available soon]
+
+<p><LI>V. Gunupudi and S. R. Tate.
+"Design of the SAgent Security Framework for JADE,"
+<EM>Proceedings of the 18th Annual IASTED International
+Conference on Parallel and Distributed Computing and Systems (PDCS)</EM>,
+2006, pp. 90-95.  [PDF available soon]
+
+<p><LI>H. Ge and S. R. Tate.
+"A Direct Anonymous Attestation Scheme for Embedded Devices,"
+<EM>Proceedings of the 10th International Conference on Theory and
+Practice of Public-Key Cryptography (PKC)</EM>, 2007, pp. 16-30.
+[PDF available soon]
+
+<p><LI>V. Gunupudi and S. R. Tate. "Random Oracle Instantiation in Distributed Protocols Using Trusted
+Platform Modules," <EM>3rd IEEE International
+  Symposium on Security in Networks and Distributed Systems (SSNDS)</EM>,
+proceedings as part of the <EM>21st International Conference on
+  Advanced Information Networking and Applications Workshops</EM>, 
+2007, pp. 463-469.
+    [<a href="papers/SSNDS-Oracles.pdf">PDF</a>]
+
+<p><LI>P. Yu and S. R. Tate.  "An Online/Offline Signature Scheme Based on the Strong RSA
+Assumption," <EM>3rd IEEE International
+  Symposium on Security in Networks and Distributed Systems (SSNDS)</EM>,
+proceedings as part of the <EM>21st International Conference on
+  Advanced Information Networking and Applications Workshops</EM>, 
+2007, pp. 601-606.
+
+<p><LI>V. Gunupudi and S. R. Tate. "Generalized Non-interactive Oblivious Transfer using Count-Limited
+Objects with Applications to Secure Mobile Agents," <EM>12th
+  International Conference on Financial Cryptography and Data
+  Security</EM>, 2008, pp.&nbsp;98-112.
+    [<a href="papers/FC08-GNIOT.pdf">PDF</a>]
+
+<p><LI>P. Yu and S. R. Tate.   "Online/Offline Signature Schemes for Devices with Limited Computing
+Capabilities," <EM>RSA Conference 2008, Cryptographers' Track (CT-RSA)</EM>, 
+2008, pp.&nbsp;301-317.
+
+<p><li>S. R. Tate and R. Vishwanathan.
+"Improving Cut-and-Choose in Verifiable Encryption and Fair Exchange
+Protocols using Trusted Computing Technology," <em>Proceedings of
+  the 23rd Annual IFIP WG 11.3 Working Conference on Data and
+  Application Security</em>, 2009, pp. 252-267.
+    [<a href="papers/dbsec_verifencryption.pdf">PDF</a>]
+    [<a href="http://eprint.iacr.org/2009/427">Expanded version on ePrint</a>]
+
+		   <p><li>S. R. Tate.  "Digital Signatures and Electronic Signatures," Chapter in <em>The Handbook of Technology Management</em>, Hossein Bidgoli, ed., John Wiley & Sons, 2009.
+
+<p><li>S. R. Tate and R. Vishwanathan.
+"<a href="pubs/wallet">Performance Evaluation of TPM-based Digital Wallets</a>," 
+<EM>Proceedings of the 2010 International Symposium on Performance Evaluation of Computer and Telecommunication Systems</EM>, 
+2010, pp. 179-186.
+
+<p><li>V. Gunupudi and S. R. Tate.
+"<a href="pubs/tpmsim">Timing-Accurate TPM Simulation for What-If Explorations in Trusted Computing</a>," to appear in the 
+<EM>Proceedings of the 2010 International Symposium on Performance Evaluation of Computer and Telecommunication Systems</EM>, 
+2010, pp. 171-178.
+
+<p><li>Y. Kong, J. Deng, and S. R. Tate.
+"A Distributed Public Key Caching Scheme in Large Wireless
+Networks," <em>Proceedings of the IEEE Global Telecommunications
+Conference -- Communication & Information System Security (GLOBECOM
+'10)</em>, 2010.
+
+<p><li>S. R. Tate and R. Vishwanathan.
+"<a href="pubs/tpmsfe">General Secure Function
+Evaluation Using Standard Trusted Computing Hardware</a>,"
+<em>Proceedings of the 9th Annual Conference on Privacy, Security,
+and Trust (PST)</em>, 2011, pp. 221-228.
+
+<p><li>S. R. Tate, R. Vishwanathan, and L. Everhart.
+"<a href="pubs/cloud">Multi-user dynamic proofs of data possession using trusted
+hardware</a>," <em>Proceedings of the 3rd ACM Conference on Data and
+Application Security and Privacy (CODASPY '13)</em>, 2013, 
+pp. 353-364.
+
+<p><li>S. R. Tate, R. Vishwanathan, and S. Weeks.
+"<a href="pubs/plaintextrand">Encrypted Secret Sharing and Analysis by Plaintext Randomization</a>,"
+<em>Proceedings of the 16th Information Security Conference</em>, 2013, 
+pp. 49-65.
+
+<p><li>S. R. Tate and R. Vishwanathan.
+"<a href="pubs/attrsigs">Expiration and Revocation of Keys for Attribute-Based Signatures</a>,"
+<em>Proceedings of the 29th Annual IFIP WG 11.3 Working
+Conference on Data and Application Security</em>, 2015, pp. 153-169.
+
+<p><li>S. R. Tate, M. Bollinadi, and J. Moore.
+"<a href="pubs/vulnerabilities">Characterizing Vulnerabilities in a Major Linux Distribution</a>," in
+<em>Proceedings of the 32nd International Conference on Software
+Engineering \& Knowledge Engineering (SEKE)</em>, 2020, pp. 538-543.
+
+<p><li>S. R. Tate and B. Yuan.  "<a href="pubs/buildenv">Minimum Size
+Build Environment Sets and Graph Coloring</a>," in <em>Proceedings of
+the 17th International Conference on Software Technologies
+(ICSOFT)</em>, 2022, pp. 57-67.
+
+<p><li>S.R. Tate and B. Yuan. "<a href="pubs/buildexper">On the
+Efficiency of Building Large Collections of Software: Modeling,
+Algorithms, and Experimental Results</a>," in <i>Springer
+Communications in Computer and Information Science</i>, vol 1859,
+pp. 145-168, July 2023.
+
+  <H3> On-line and Dynamic Algorithms </H3>
+
+<p><LI> M. Kao and S. R. Tate.  
+``Online Matching with Blocked Input'',
+<CITE> Information Processing Letters</CITE>, Vol. 38, May 1991,
+pp. 113--116.
+    [<a href="papers/blkmatch.pdf">PDF</a>]
+
+<p><LI> M. Kao, J. H. Reif, and S. R. Tate.  ``Searching in an
+    Unknown Environment: An Optimal Randomized Algorithm for the
+Cow-Path Problem'', <CITE>Information and Computation</CITE>,
+Vol. 133, No. 1, 1996, pp. 62-80.
+    [<a href="papers/cowpath.pdf">PDF</a>]
+
+<p><LI> J. H. Reif and S. R. Tate.  ``Dynamic Algebraic Algorithms'',
+<CITE>Proceedings of the Fifth Annual ACM-SIAM Symposium on Discrete
+Algorithms</CITE>, 1994, pp. 290--301.
+    [ Not available.  See the J. of Algorithms paper below for a
+      journal version which supercedes this one. ]
+
+<p><LI> J. H. Reif and S. R. Tate.  
+``Dynamic Parallel Tree Contraction'', <CITE>Proceedings of the Symposium on
+Parallel Algorithms and Architecture</CITE>, 1994, pp. 114--121.
+    [<a href="papers/dyntree.pdf">PDF</a>]
+
+<p><li> J. H. Reif and S. R. Tate.
+``On Dynamic Algorithms for Algebraic Problems'',
+<CITE>Journal of Algorithms</CITE>, Vol. 22, No. 2, 1997, pp. 347-371.
+    [<a href="papers/dynalg2.pdf">PDF</a>]
+
+<p><li> M.-Y. Kao and S. R. Tate.  ``On-Line Difference Maximization'',
+<cite>SIAM Journal on Discrete Mathematics</cite>, Vol. 12, No. 1,
+1999, pp. 78--90 (abstract published in <cite>Proceedings of the Eighth
+Annual ACM-SIAM Symposium on Discrete Algorithms</cite>, 1997,
+pp. 175-182).
+    [<a href="papers/onlinemax.pdf">PDF</a>]
+     
+<H3> Parallel Algorithms and Circuit Complexity </H3>
+
+<p><LI> J. H. Reif and S. R. Tate.  
+``Optimal Size Integer Division Circuits'', <CITE> SIAM Journal on
+Computing</CITE>, Vol. 19, No. 5, October 1990, pp. 912--924.
+    [<a href="papers/div.pdf">PDF</a>]
+
+<p><LI> J. H. Reif and S. R. Tate.  ``On Threshold Circuits and
+Polynomial Computation'', <CITE>SIAM Journal on Computing</CITE>,
+Vol. 21, No. 5, October 1992, pp. 896--908.
+    [<a href="papers/thresh.pdf">PDF</a>]
+
+<p><LI> J. H. Reif and S. R. Tate.  ``Optimal Size Integer Division
+Circuits'', <CITE>Proceedings of the 21st Annual ACM Symposium on
+Theory of Computing</CITE>, 1989, pp. 264--270.
+
+<p><LI> S. R. Tate.  
+``Newton Iteration and Integer Division'', Chapter
+12 in <CITE>Synthesis of Parallel Algorithms</CITE>, edited by John
+H. Reif, pp. 539--572, 1993.  San Mateo, CA: Morgan Kaufmann
+Publishers.
+    [<a href="papers/divchap.pdf">PDF</a>]
+
+<H3> Robotics </H3>
+
+<p><LI> J. H. Reif and S. R. Tate.  ``Continuous Alternation'',
+<CITE>Algorithmica</CITE>, Vol. 10, 1993, pp. 151--181.
+    [<a href="papers/pursuit.ps">PostScript</a>]
+
+<p><LI> J. H. Reif and S. R. Tate.  ``Approximate Kinodynamic Planning
+Using L_2-norm Dynamic Bounds'', <CITE>Computers and Mathematics with
+Applications</CITE>, Vol. 27, No. 5, 1994, pp. 29--44.
+    [<a href="papers/l2motion.pdf">PDF</a>]
+
+<H3> Molecular Dynamics, Algebraic Algorithms, and Geometry </H3>
+
+<p><LI> V. Pan, J. H. Reif, and S. R. Tate.  ``The Power of Combining the
+Techniques of Algebraic and Numerical Computing: Improved Approximate
+Multipoint Polynomial Evaluation and Improved Multipole Algorithms'',
+<CITE>Proceedings of the 33rd Annual Symposium on Foundations of
+Computer Science</CITE>, 1992, pp. 703--713.
+
+<p><LI> J. H. Reif and S. R. Tate.  ``The Complexity of N-body Simulation'',
+<CITE>20th Annual International Conference on Automata, Languages, and
+Programming</CITE>, 1993, pp. 162--176.
+    [<a href="papers/nbodysim.ps">PostScript</a>]
+
+<p><LI> S. R. Tate.  ``Stable Computation of the Complex Roots of
+Unity'', <CITE>IEEE Transactions on Signal Processing</CITE>,
+Vol. 43, No. 7, 1995, pp. 1709--1711.
+    [<a href="papers/rootunity.ps">PostScript</a>]
+
+<p><li>
+J. H. Reif and S. R. Tate.  ``Fast Spatial Decomposition and Closest
+Pair Computation for Limited Precision Input'', <cite>Algorithmica</cite>, 
+Vol. 28, 2000, pp. 271--287.
+
+<p><li> J. H. Reif and S. R. Tate.  ``Fast Spatial Decomposition and
+Closest Pair Computation for Limited Precision Input'',
+<cite>Algorithmica</cite>, Vol. 28, 2000, pp. 271-287.
+    [<a href="papers/decompose.ps">PostScript</a>]
+     
+<p><li> J. H. Reif and S. R. Tate.  ``N-Body Simulation I: Fast
+Algorithms for Potential Field Evaluation and Trummer's Problem'',
+<cite>UNT Computer Science Technical Report N-96-002</cite>, 1996.
+    [<a href="papers/nbody1.ps">PostScript</a>]
+
+<p><li> S. R. Tate and K. Xu.  ``General-Purpose Spatial Decomposition
+    Algorithms:  Experimental Results", <cite>2nd Workshop on
+    Algorithm Engineering and Experimentation (ALENEX)</cite>, 2000,
+    pp. 197-216.
+    [<a href="papers/decexper.pdf">PDF</a>]
+    
+<H3> Data Compression </H3>
+
+<p><LI> S. R. Tate.  ``Band Ordering in Lossless Compression of
+Multispectral Images'', <cite>IEEE Transactions on Computers</cite>,
+Vol. 46, No. 4, 1997, pp. 477-483 (preliminary version published in
+<CITE>Proceedings of the Data Compression Conference</CITE>, 1994,
+pp. 311--320).
+    [<a href="papers/bandorder.ps">PostScript</a>]
+
+<p><LI> S. R. Tate.  ``Lossless Compression of Region Edge Maps'',
+Duke University Computer Science Technical Report CS-1992-09.
+    [<a href="papers/edgecomp.ps">PostScript</a>]
+
+<p><li> B. Chapin and S. Tate.
+    "Higher Compression from the Burrows-Wheeler Transform by Modified
+    Sorting", abstract in <cite>Proceedings of the Data
+    Compression Conference</cite>, 1998.
+    [<a href="papers/bwtsort.pdf">PDF</a>]
+    
+<H3> Computer Science Education </H3>
+
+<p><li>P. Sroufe, S. Tate, R. Dantu, E. Celikel.  "Experiences during a Collegiate Cyber Defense Competition", <em>Journal of Applied Security Research</em>, Vol. 16, No. 3, July 2010.
+
+<p><li>L. S. Iyer, X. Zhao, A. Chow, and S. R. Tate.
+"Computer Science and Information Technology (CSIT) Identity: An
+Integrative Theory to Explain Gender Gap in IT," <em>Proceedings of
+the International Conference on Information Systems (ICIS)</em>, 2011.
+
+<p><li>B. L. Kurtz, J. B. Fenwick, R. Tashakkori, A. Esmaili, and S. R. Tate.
+"Active Learning During Lecture Using Tablets," 
+<em>Proceedings of the SIGCSE Technical Symposium</em>, 2014, pp. 121-126.
+[<a href="http://dl.acm.org/citation.cfm?id=2538907">ACM Digital Library</a>]
+
+<p><li>L. J. Crotts and S. R. Tate.
+"Comparison of Natural Deduction Theorem Provers used in Electronic
+Tutoring Systems," in <em>Proceedings of the 6th International
+Conference on Education and E-Learning (ICEEL)</em>, 2022, to appear.
+
+<p><li>L. J. Crotts and S. R. Tate.
+"Promoting a Common Testbed for Natural Deduction Tutoring
+Systems," in <em>Proceedings of the 6th International Conference
+on Education and E-Learning (ICEEL)</em>, 2022, to appear.
+
+<H3> Miscellaneous </H3>
+
+<p><LI> S. R. Tate.  ``Arithmetic Circuit Complexity and Motion
+Planning'', Ph. D.  Dissertation, Duke University, 1991.
+    [<a href="papers/thesis.pdf">PDF</a>]
+
+<p><LI> S. R. Tate.  ``Report on the Workshop on Data and Image
+Compression Needs and Uses in the Scientific Community'', CESDIS
+Technical Report TR-93-99.
+
+<p><li> M.-Y. Kao and S.R. Tate.  ``Designing Proxies for Stock Market
+    Indices is Computationally Hard'',
+    <cite>Quantitative Finance</cite>, Vol. 1, No. 3, May 2001, pp. 361-371.
+    (Preliminary version published in <cite>Proceedings of the ACM-SIAM
+    Symposium on Discrete Algorithms</cite>, 1999)
+    [<a href="papers/proxies.pdf">PDF</a>]
+
+<p><li> M.-Y. Kao, A. Nolte, and S. R. Tate.  ``The Risk Profile Problem for
+Stock Portfolio Optimization,'' <cite>Proceedings of the
+32nd Annual ACM Symposium on Theory of Computing (STOC)</cite>, 2000,
+pp. 228-234.
+    [<a href="papers/profile.pdf">PDF</a>]
+
+
+</OL>
+
+
+
+</div></td></tr></table>
+</body></html>
+
+

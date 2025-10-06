@@ -1,0 +1,13 @@
+@media screen and (min-width:768px) {
+ .jumbotron {
+  padding-top:72px;
+  padding-bottom:24px
+ }
+ .container .jumbotron,.container-fluid .jumbotron {
+  padding-right:60px;
+  padding-left:60px
+ }
+ .jumbotron .h1,.jumbotron h1 {
+  font-size:63px
+ }
+}
