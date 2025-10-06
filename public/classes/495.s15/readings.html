@@ -1,0 +1,315 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.9" />
+<title>CSC 495&#8201;&#8212;&#8201;Readings</title>
+<link rel="stylesheet" href="classstyle.css" type="text/css" />
+
+
+</head>
+
+<body class="article">
+<div class="classheader">
+<table border="0" cellpadding="0" cellspacing="0">
+<tbody><tr><td><img src="Matrix.jpg" alt="CSC 495: Software Security" /></td>
+<td style="padding:4px;">CSC 495/680<br/>
+Software Security<br/>
+<div style="padding-top:0.5em;"><a href="http://www.uncg.edu/cmp/">Dept of Computer Science</a></div>
+<a href="http://www.uncg.edu/">UNC Greensboro</a>
+</td></tr>
+</tbody></table>
+</div>
+<div class="classnav" style="font-family:arial;width:auto;float:left;margin-top:1em;">
+<div class="classnavHead">Navigation</div>
+<div class="classnavItem"><a href="index.html">HOME</a></div>
+<div class="classnavItem"><a href="syllabus.html">SYLLABUS</a></div>
+<div class="classnavItem"><a href="sched.html">SCHEDULE</a></div>
+<div class="classnavActive"><a href="readings.html">READINGS</a></div>
+<div class="classnavItem"><a href="notes.html">NOTES</a></div>
+<div class="classnavItem"><a href="handouts.html">HANDOUTS</a></div>
+<div class="classnavItem"><a href="assign.html">ASSIGNMENTS</a></div>
+<div class="classnavItem"><a href="https://blackboard.uncg.edu/">BLACKBOARD</a></div>
+<div class="classnavItem"><a href="moreinfo.html">MORE INFO</a></div>
+</div>
+<div class="classcontent" id="content">
+<div class="sect1">
+<h2 id="_csc_495_8201_8212_8201_readings">CSC 495&#8201;&#8212;&#8201;Readings</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_readings_on_responsible_disclosure_read_before_jan_15">Readings on Responsible Disclosure (read before Jan. 15)</h3>
+<div class="ulist"><ul>
+<li>
+<p>
+<a href="https://en.wikipedia.org/wiki/Responsible_disclosure">Wikipedia entry
+  on Responsible Disclosure</a> (general overview)
+</p>
+</li>
+<li>
+<p>
+<a href="https://www.schneier.com/essays/archives/2007/01/schneier_full_disclo.html">Bruce Schneier on disclosure and vulnerability reporting</a>
+</p>
+</li>
+<li>
+<p>
+<a href="http://www.csoonline.com/article/2865215/operating-system-security/google-unveils-windows-8-1-vulnerability-releases-sample-code.html">Google unveils Windows 8.1 vulnerability, releases sample code</a> - a recent controversial case
+</p>
+</li>
+</ul></div>
+</div>
+<div class="sect2">
+<h3 id="_readings_on_security_background_and_vulnerability_markets_read_before_jan_20">Readings on Security Background and Vulnerability Markets (read before Jan. 20)</h3>
+<div class="ulist"><ul>
+<li>
+<p>
+<a href="http://www.tomsguide.com/us/zero-day-exploit-definition,news-17903.html">What is a Zero-Day Exploit</a> - from Tom&#8217;s Guide
+</p>
+</li>
+<li>
+<p>
+<a href="http://h30499.www3.hp.com/t5/HP-Security-Research-Blog/Pwn2Own-2014-A-recap/ba-p/6413622#.VLf4mF2350w">Pwn2Own 2014: A recap</a>
+</p>
+</li>
+<li>
+<p>
+<a href="http://en.wikipedia.org/wiki/Bug_bounty_program">Bug Bounty Program</a> - Wikipedia entry
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Assignment: Find two companies that offer cash rewards as part of a bug bounty program, and look up details (amounts, conditions, etc.) - be prepared to discuss this in class on Jan. 20
+</p>
+</li>
+</ul></div>
+</li>
+</ul></div>
+</div>
+<div class="sect2">
+<h3 id="_readings_on_process_memory_models_read_before_jan_27">Readings on Process/Memory Models (read before Jan. 27)</h3>
+<div class="ulist"><ul>
+<li>
+<p>
+This is a 3-part series on Linux processes - light on explanation but gives a good "big picture" (all by Himanshu Arora, March 2012):
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+<a href="http://www.thegeekstuff.com/2012/03/linux-processes-environment/">Linux Processes - environment extern, environ, getenv, setenv</a>
+</p>
+</li>
+<li>
+<p>
+<a href="http://www.thegeekstuff.com/2012/03/linux-processes-memory-layout/">Linux Processes - Memory layout, exit, and _exit C functions</a>
+</p>
+</li>
+<li>
+<p>
+<a href="http://www.thegeekstuff.com/2012/03/c-process-control-functions/">Linux Processes - Process IDs, fork, execv, wait, waitpid</a>
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+More detail on process memory management and layout - read this after you get the "big picture"!
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+<a href="http://duartes.org/gustavo/blog/post/anatomy-of-a-program-in-memory/">Anatomy of a Program in Memory</a> - by Gustavo Duarte (Jan 27, 2009)
+</p>
+</li>
+</ul></div>
+</li>
+</ul></div>
+</div>
+<div class="sect2">
+<h3 id="_readings_on_buffer_overflows_read_before_feb_10">Readings on Buffer Overflows (read before Feb. 10)</h3>
+<div class="ulist"><ul>
+<li>
+<p>
+<a href="http://cwe.mitre.org/data/definitions/120.html">CWE-120: Buffer Copy without Checking Size of Input (Classic Buffer Overflow)</a> - number 3 on CWE/SANS "<a href="http://cwe.mitre.org/top25/">Top 25 Most Dangerous Software Errors</a>"  (see also the broader category &#8220;<a href="http://cwe.mitre.org/data/definitions/119.html">CWE-119</a>: Improper Restriction of Operations within the Bounds of a Memory Buffer&#8221;)
+</p>
+</li>
+<li>
+<p>
+<a href="http://phrack.org/issues/49/14.html">Smashing The Stack For Fun And Profit</a> by Aleph One (Phrack 49, 1996) - the most famous (infamous?) description of stack-based buffer overflows and how to exploit them
+</p>
+</li>
+</ul></div>
+</div>
+<div class="sect2">
+<h3 id="_readings_on_other_memory_safety_issues_read_before_feb_17">Readings on Other Memory Safety Issues (read before Feb. 17)</h3>
+<div class="ulist"><ul>
+<li>
+<p>
+<a href="http://cwe.mitre.org/data/definitions/131.html">CWE-131: Incorrect Calculation of Buffer Size</a> (#20 on Top 25 Most Dangerous Software Errors)
+</p>
+</li>
+<li>
+<p>
+<a href="http://cwe.mitre.org/data/definitions/676.html">CWE-676: Use of Potentially Dangerous Functions</a> (#18 on Top 25 Most Dangerous Software Errors)
+</p>
+</li>
+<li>
+<p>
+<a href="http://cwe.mitre.org/data/definitions/190.html">CWE-190: Integer Overflow or Wraparound</a> (#24 on Top 25 Most Dangerous Software Errors)
+</p>
+</li>
+<li>
+<p>
+<a href="http://cwe.mitre.org/data/definitions/134.html">CWE-134: Uncontrolled Format String</a> (#23 on Top 25 Most Dangerous Software Errors)
+</p>
+</li>
+</ul></div>
+</div>
+<div class="sect2">
+<h3 id="_readings_on_exploring_understanding_large_codebases_read_before_feb_26">Readings on Exploring/Understanding Large Codebases (read before Feb. 26)</h3>
+<div class="ulist"><ul>
+<li>
+<p>
+George V. Neville-Neil, <a href="https://queue.acm.org/detail.cfm?id=945136">Code Spelunking:
+  Exploring Cavernous Code Bases</a>, <em>Queue</em>, Vol. 1, No. 6, Sept. 2003,
+  pp. 42-48.
+</p>
+</li>
+<li>
+<p>
+George V. Neville-Neil, <a href="https://queue.acm.org/detail.cfm?id=1483108">Code Spelunking
+    Redux</a>, <em>Queue</em>, Vol. 6, No. 7, Jan. 2009, pp. 26-33.
+</p>
+</li>
+</ul></div>
+</div>
+<div class="sect2">
+<h3 id="_reading_on_stack_protection_read_by_thursday_march_19">Reading on Stack Protection (read by Thursday, March 19)</h3>
+<div class="ulist"><ul>
+<li>
+<p>
+<a href="http://krebsonsecurity.com/2013/06/windows-security-101-emet-4-0/">Windows Security 101: EMET 4.0</a> - overview of Microsoft Enhanced Mitigation Experience Toolkit, written by Brian Krebs (KrebsOnSecurity)
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+<a href="http://www.pcworld.com/article/2101640/researchers-bypass-protections-in-microsofts-emet-antiexploitation-tool.html">Researchers blow past all protections in Microsoft&#8217;s EMET anti-exploitation tool</a> - PCWorld article that is a good reminder that no security protection is perfect.
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+Crispin Cowan, Carlton Pu, Dave Maier, Jonathan Walpole, Peat Bakke, Steve Beattie, Aaron Grier, Perry Wagle, Qian Zhang, and Heather Hinton. <a href="https://www.usenix.org/conference/7th-usenix-security-symposium/stackguard-automatic-adaptive-detection-and-prevention">StackGuard: Automatic Adaptive Detection and Prevention of Buffer-Overflow Attacks</a>, <em>Proceedings of the 7th USENIX Security Symposium</em>, 1998.
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+This was a very influential research paper that introduced the idea of stack canaries - something that is now standard in every major C compiler
+</p>
+</li>
+<li>
+<p>
+<em>Read at least sections 1-3 by March 19, and everything by March 24</em>
+</p>
+</li>
+</ul></div>
+</li>
+</ul></div>
+</div>
+<div class="sect2">
+<h3 id="_videos_on_clang_static_analyzer_watch_by_thursday_march_26">Videos on clang static analyzer (watch by Thursday, March 26)</h3>
+<div class="ulist"><ul>
+<li>
+<p>
+<a href="http://llvm.org/devmtg/2008-08/Kremenek_StaticAnalyzer_Hi.m4v">Video of presentation by Ted Kremenek (Apple) introducing the Clang static analyzer</a> - poor quality video - see slides below
+</p>
+</li>
+<li>
+<p>
+<a href="http://llvm.org/devmtg/2008-08/Kremenek_StaticAnalyzer.pdf">Slides from presentation by Ted Kremenek (Apple) introducing the Clang static analyzer</a>
+</p>
+</li>
+</ul></div>
+</div>
+<div class="sect2">
+<h3 id="_injection_vulnerabilities_read_by_tuesday_april_14">Injection vulnerabilities (read by Tuesday, April 14)</h3>
+<div class="ulist"><ul>
+<li>
+<p>
+<a href="http://cwe.mitre.org/data/definitions/89.html">CWE-89: Improper Neutralization of Special Elements in an SQL Command (SQL Injection)</a> (#1 on Top 25 Most Dangerous Software Errors)
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Additional reading: <a href="https://www.owasp.org/index.php/Top_10_2013-A1-Injection">OWASP #1</a>)
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+<a href="http://cwe.mitre.org/data/definitions/78.html">CWE-78: Improper Neutralization of Special Elements used in an OS Command (OS Command Injection)</a> (#2 on Top 25 Most Dangerous Software Errors)
+</p>
+</li>
+</ul></div>
+</div>
+<div class="sect2">
+<h3 id="_browser_and_javascript_based_exploits_read_by_tuesday_april_21">Browser and JavaScript based exploits (read by Tuesday, April 21)</h3>
+<div class="ulist"><ul>
+<li>
+<p>
+<a href="http://cwe.mitre.org/data/definitions/79.html">CWE-79: Improper Neutralization of Input During Web Page Generation (<em>Cross-site Scripting</em>)</a> (#4 on Top 25 Most Dangerous Software Errors)
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Additional reading: <a href="https://www.owasp.org/index.php/Top_10_2013-A3-Cross-Site_Scripting_(XSS)">OWASP #3</a>
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+<a href="http://cwe.mitre.org/data/definitions/352.html">CWE-352: Cross-Site Request Forgery (CSRF)</a> (#12 on Top 25 Most Dangerous Software Errors)
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Additional reading: <a href="https://www.owasp.org/index.php/Top_10_2013-A8-Cross-Site_Request_Forgery_(CSRF)">OWASP #8</a>)
+</p>
+</li>
+</ul></div>
+</li>
+</ul></div>
+</div>
+<div class="sect2">
+<h3 id="_secure_design_principles_read_before_thursday_april_23">Secure Design Principles (Read before Thursday, April 23)</h3>
+<div class="ulist"><ul>
+<li>
+<p>
+Reading: Chapter 13 ("Design Principles") in <a href="http://nob.cs.ucdavis.edu/book/book-aands/">Computer Security: Art and Science</a> by Matt Bishop (chapter available as a "sample chapter" on that web page
+</p>
+</li>
+<li>
+<p>
+<a href="https://www.securecoding.cert.org/confluence/display/seccode/Top+10+Secure+Coding+Practices">CERT: Top 10 Secure Coding Practices</a>
+</p>
+</li>
+<li>
+<p>
+More detail on <a href="https://buildsecurityin.us-cert.gov/articles/knowledge/principles/least-privilege">Least Privilege</a>
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+</div>
+</div>
+<div style="clear:both;"></div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2015-04-20 15:45:38 EDT
+</div>
+</div>
+</body>
+</html>

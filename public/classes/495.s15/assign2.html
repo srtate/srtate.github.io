@@ -1,0 +1,243 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.9" />
+<title>CSC 495&#8201;&#8212;&#8201;Assignment 2&#8201;&#8212;&#8201;Due Tuesday, March 3</title>
+<link rel="stylesheet" href="classstyle.css" type="text/css" />
+
+
+</head>
+
+<body class="article">
+<div class="classheader">
+<table border="0" cellpadding="0" cellspacing="0">
+<tbody><tr><td><img src="Matrix.jpg" alt="CSC 495: Software Security" /></td>
+<td style="padding:4px;">CSC 495/680<br/>
+Software Security<br/>
+<div style="padding-top:0.5em;"><a href="http://www.uncg.edu/cmp/">Dept of Computer Science</a></div>
+<a href="http://www.uncg.edu/">UNC Greensboro</a>
+</td></tr>
+</tbody></table>
+</div>
+<div class="classnav" style="font-family:arial;width:auto;float:left;margin-top:1em;">
+<div class="classnavHead">Navigation</div>
+<div class="classnavItem"><a href="index.html">HOME</a></div>
+<div class="classnavItem"><a href="syllabus.html">SYLLABUS</a></div>
+<div class="classnavItem"><a href="sched.html">SCHEDULE</a></div>
+<div class="classnavItem"><a href="readings.html">READINGS</a></div>
+<div class="classnavItem"><a href="notes.html">NOTES</a></div>
+<div class="classnavItem"><a href="handouts.html">HANDOUTS</a></div>
+<div class="classnavActive"><a href="assign.html">ASSIGNMENTS</a></div>
+<div class="classnavItem"><a href="https://blackboard.uncg.edu/">BLACKBOARD</a></div>
+<div class="classnavItem"><a href="moreinfo.html">MORE INFO</a></div>
+</div>
+<div class="classcontent" id="content">
+<div class="paragraph"><p>A <a href="assign2.pdf">printable PDF</a> is available.</p></div>
+<div class="sect1">
+<h2 id="_csc_495_8201_8212_8201_assignment_2_8201_8212_8201_due_tuesday_march_3">CSC 495&#8201;&#8212;&#8201;Assignment 2&#8201;&#8212;&#8201;Due Tuesday, March 3</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>This is a one-week assignment, and will count for half as many
+points as the typical two-week assignment.</p></div>
+<div class="olist arabic"><ol class="arabic">
+<li>
+<p>
+For this question you will perform a very simple exploit of a
+<a href="http://cwe.mitre.org/data/definitions/134.html">CWE-134: Uncontrolled
+Format String</a> vulnerability. The goal here is a simple
+information-gathering exploit&#8201;&#8212;&#8201;there are more dangerous exploits that
+can take control of a system, but this question focuses on the more
+simple problem of finding a secret that is stored in memory.
+</p>
+<div class="paragraph"><p>As a first step, study the C source code on <code>cmpunix</code> in
+<code>/csc495/hw2/q1/simple-fmt.c</code>&#8201;&#8212;&#8201;there is a pre-compiled executable
+saved as <code>simple-fmt</code> that you can run in that same directory. In the
+source code you should see a variable named <code>secretNum</code>, and your goal
+is to discover this value by running the program and providing the
+right input. This code has the
+simplest possible kind of format string vulnerability, and there are
+some additional helpful features to make it easier to exploit (notice
+the variables <code>clue1</code> and <code>clue2</code>). The executable is readable and was
+compiled with debugging information, so if you want to explore more
+than just looking at the source code you can run it in <code>gdb</code>.</p></div>
+<div class="paragraph"><p><em>Your challenge:</em> Once you have a good handle on how this program
+works and how to exploit the vulnerability, look in the
+<code>/csc495/hw2/q1/challenges</code> directory. There are &#8220;personalized&#8221;
+executables for each student in that directory, named by student user
+names. The only one of those that you can access is your own, and you
+have execute permission but not read permission (so you can&#8217;t dump the
+program or run it in a debugger and find the secret that way). The
+source for these executables is exactly the same as <code>simple-fmt.c</code>,
+just with a different secret for each one. Exploit the format string
+vulnerability and find the secret (it&#8217;s a number less than one
+million)!</p></div>
+<div class="paragraph"><p><em>What to turn in:</em> Describe what you did to exploit the vulnerability
+and find the secret.  You should describe this in enough detail so
+that someone could read your description and repeat the steps to break
+the code. Next, describe <em>why</em> this worked (what precisely is going on
+when the exploit runs). Finally, give the secret number that you
+discovered.</p></div>
+</li>
+<li>
+<p>
+For this question, you are going to explore a real program that has
+format string vulnerabilities in it. This is a &#8220;to-scale&#8221; problem&#8201;&#8212;&#8201;the source code is an
+<a href="https://en.wikipedia.org/wiki/File_Transfer_Protocol"><code>ftp</code></a> server
+that was widely used in the 1990s and early 2000s, and consists of a
+little over 22,000 lines of C code. While not large by today&#8217;s
+standards (by comparison, the Apache web server has over 250,000 lines
+of code), this is certainly larger enough to make it infeasible to
+look for vulnerabilities without making use of tools to assist your
+search.
+</p>
+<div class="paragraph"><p>In parts a-c below, you will need to figure out the correct shell
+command to solve the problem, mostly figuring out how to properly
+invoke <code>grep</code> and possibly pipe or redirect the output. You will need to
+turn in a &#8220;typescript&#8221; showing this command invocation. For full
+documentation on how to create a typescript, you can type &#8220;<code>man
+script</code>&#8221;, but the only thing you really need to know is that typing
+&#8220;<code>script ~/parta-script.txt</code>&#8221; will invoke a sub-shell and keep a
+record of your interactions with that shell session in the file named
+<code>parta-script.txt</code> in your home directory. It will keep recording
+everything until you exit the sub-shell, which you can do by typing
+the command <code>exit</code> at the shell prompt, or by simply pressing ctrl-d
+at the command prompt. Figure out the command you need to solve the
+problem first, and <em>then</em> start the typescript&#8201;&#8212;&#8201;I don&#8217;t need to see
+all your failed attempts, just the one that works after you have
+figured it out! Each part below tells you what filename you should use
+for the typescript, so that I can find it. This problem depends
+heavily on you knowing how to use the <code>grep</code> command&#8201;&#8212;&#8201;if you haven&#8217;t
+used this before, or aren&#8217;t familiar with regular expressions, see the
+tutorials that are linked on the &#8220;<a href="http://www.uncg.edu/cmp/faculty/srtate/495.s15/moreinfo.html">MORE INFO</a>&#8221; section of the class
+web page.</p></div>
+<div class="olist loweralpha"><ol class="loweralpha">
+<li>
+<p>
+As a first step, gather some statistics on the source code, which
+is in directory <code>/csc495/hw2/q2</code> on <code>cmpunix</code>. Go into the <code>src</code>
+subdirectory and take a look. The source code is made up of <code>.c</code> files
+(C source code), <code>.h</code> files (C header files), and <code>.y</code> files (these
+are yacc files, which you may have never heard of, but don&#8217;t worry about
+that!). How many of each kind of file are there? Don&#8217;t just count by
+hand&#8201;&#8212;&#8201;use <code>ls</code> piped in to <code>wc</code> to find the answer.
+</p>
+<div class="paragraph"><p><em>What to turn in:</em> Leave a typescript named <code>parta-script.txt</code> in your
+home directory, as described above, showing your invocation of the
+correct command. In your written homework submission, describe
+how you found the answer (in other words, why the command shown in
+your typescript works) and give the actual answer (counts for various
+types of files).</p></div>
+</li>
+<li>
+<p>
+Next, let&#8217;s see how big the potential for format string
+vulnerabilities is. Format string vulnerabilities generally come from
+a call to either the <code>syslog</code> function or a function from the <code>printf</code>
+family (including <code>printf</code>, <code>fprintf</code>, <code>sprintf</code>, <code>vfprintf</code>, etc.).
+First, concentrate on <code>syslog</code>: come up with a <code>grep</code> invocation that
+will extract all the calls to the <code>syslog</code> function. Work on finding
+the right regular expression so that <code>grep</code> <em>only</em> extracts <code>syslog</code>
+function calls,
+and not things like <code>#include</code> directives for
+<code>syslog.h</code>. One you&#8217;ve figured out the right command there should be
+one line of output for each call to <code>syslog</code>, so pipe the output
+through <code>wc</code> to count the number of calls to <code>syslog</code>.
+</p>
+<div class="paragraph"><p>Next, lets explore these calls to see if any have the potential for a
+format string vulnerability. The first idea is to capture the output
+of the <code>grep</code> command you just figured out so that you can go through
+the calls one-by-one to see if there are any problems. Unfortunately,
+some calls span multiple lines of source code, so <code>grep</code> doesn&#8217;t
+extract the code you need to look at. Look up the <code>-A</code> option to <code>grep</code>
+in the man page and see what it does, and then experiment with
+including a <code>-A1</code> option to your <code>grep</code> command. Also, look up the <code>-n</code>
+option&#8201;&#8212;&#8201;use this so you can find the <code>syslog</code> calls easily
+later. Use these options and redirect the output of this <code>grep</code> command
+to a file so you have examine the <code>syslog</code> calls&#8201;&#8212;&#8201;note that you&#8217;ll
+need to redirect to a file in your home directory (or somewhere
+similar) since you don&#8217;t have write permission in the source code
+directory!</p></div>
+<div class="paragraph"><p>Finally, go through the list and throw out
+calls that cannot cause format string vulnerabilities. Bring the <code>grep</code>
+output up in a text editor (<code>vi</code>, <code>vim</code>, <code>nano</code>, and <code>emacs</code> are all
+available on <code>cmpunix</code>). Go through and delete every <code>syslog</code> call
+in which the 2nd parameter starts with a quote&#8201;&#8212;&#8201;that&#8217;s an instance
+where a literal string is used for the format string, so there&#8217;s no
+chance of a format string vulnerability! For example, here&#8217;s one set
+of 3 lines that resulted from my <code>grep</code> run:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>ftpd.c:954:     syslog(LOG_ERR, "getpeername (%s): %m", argv[0]);
+ftpd.c-955-#ifndef DEBUG
+--</code></pre>
+</div></div>
+<div class="paragraph"><p>There&#8217;s no way this can result in a format string vulnerability, so we
+don&#8217;t need to consider it any more. Delete those three lines from your
+file of <code>syslog</code> calls! Keep doing this&#8201;&#8212;&#8201;once you get the hang of
+it, you can go through all of the <code>syslog</code> calls pretty
+quickly. Alternatively, you can copy-and-paste the potentially
+dangerous calls to a separate file. If you do this correctly, there
+will only be a very few potentially dangerous calls. How many did you
+find? Report the file and line number of each potentially dangerous call.</p></div>
+<div class="paragraph"><p><em>What to turn in:</em> Leave a typescript named <code>partb-script.txt</code> in your
+home directory showing how you used <code>grep</code> to generate the initial
+list of function calls. In your written homework submission,
+describe how this command works and give the answers to the questions
+asked above (how many potentially dangerous system calls are there,
+and give a list by file and line number).</p></div>
+</li>
+<li>
+<p>
+Repeat the last part for functions in the <code>printf</code> family. Find the
+total number of calls, the number of potentially dangerous calls, and
+list the file and line number of each potentially dangerous call. This
+is complicated by the fact that the format string can be at different
+positions in the parameter list (e.g., the first parameter for <code>printf</code>, the
+second parameter for <code>fprintf</code>, and the third parameter for
+<code>snprintf</code>), so make sure you are careful about this.
+</p>
+<div class="paragraph"><p><em>What to turn in:</em> The same information as in part b, but save the
+typescript in your home directory as <code>partc-script.txt</code>.</p></div>
+</li>
+<li>
+<p>
+For this part, you will take one of the potentially dangerous calls
+from part c and see if it really does cause a problem. Recall that a
+format string vulnerability arises when a user/attacker can provide
+the format string, so we will trace the source of each &#8220;potentially
+dangerous&#8221; format string back to see if it is in fact a problem. We
+will do this for the call to <code>vsnprintf</code> on line 5290 of ftpd.c, which
+you should have identified in part c.
+</p>
+<div class="paragraph"><p>First note that the format string is a variable <code>fmt</code> which comes in
+as a parameter to the function <code>vreply</code>&#8201;&#8212;&#8201;so where does this
+parameter come from? To determine this, find all calls of the function
+<code>vreply</code> and see what is provided for the 3rd parameter. There are
+only two choices: one in the <code>reply</code> function, and one in the <code>lreply</code>
+function. Finally: do the same thing you did in parts b and c for
+these two function calls. There are, in fact, a <em>lot</em> of calls to
+these two functions, so it&#8217;s a lot to look through, but only a few are
+potentially dangerous. Do you see any that seem to be a particular
+problem? Explain in as much detail as you can what you discover in
+working through this part.</p></div>
+<div class="paragraph"><p><em>What to turn in:</em> There&#8217;s no need for a typescript for this part, so just
+answers the questions above in your written solution.</p></div>
+<div class="paragraph"><p><em>Note: Two of these calls were in fact the source of a real format
+string vulnerability that was exploited on real systems. Note that the
+vulnerability isn&#8217;t obvious just from looking at <code>printf</code> calls&#8201;&#8212;&#8201;you have to trace those back to find where the arguments come from!</em></p></div>
+</li>
+</ol></div>
+</li>
+</ol></div>
+</div>
+</div>
+</div>
+<div style="clear:both;"></div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2015-02-25 11:34:58 EST
+</div>
+</div>
+</body>
+</html>

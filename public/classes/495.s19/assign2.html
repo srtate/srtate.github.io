@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>Assignment 2 -- Due Wed, Feb 13</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="https://home.uncg.edu/cmp/faculty/srtate/css/class_srtate.css" rel="stylesheet">
+
+  </head>
+
+
+  <body>
+
+        <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark uncg-navbar fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="https://www.uncg.edu/">
+          <img class="collapse navbar-collapse" src="https://home.uncg.edu/cmp/faculty/srtate/img/uncg_class.png" alt="UNC Greensboro">
+          <img class="navbar-toggler" src="https://home.uncg.edu/cmp/faculty/srtate/img/uncg_mobile.png" alt="UNCG">
+        </a>
+        <div class="navbar-brand d-flex flex-column text-left"
+	     style="line-height: 1.2;">
+          <span>CSC 495/680</span>
+          <span class="small collapse navbar-collapse"><em>Modern Cryptography</em></span>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link " href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="syllabus.html">Syllabus</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="schedule.html">Schedule</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="assignments.html">Assignments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://uncg.instructure.com/">Canvas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- Page Content -->
+    <div class="container">
+   
+        <h3 id="assignment-2-due-wednesday-february-13">Assignment 2: Due Wednesday, February 13</h3>
+<ol type="1">
+<li><p>Textbook, page 38, Exercise 2.6(b)</p></li>
+<li><p>Consider the following encryption scheme: The keyspace <span class="math inline">𝒦</span> is the set of all permutations of <span class="math inline">0, 1, ..., 7</span> and both the plaintext message space <span class="math inline">ℳ</span> and the ciphertext message space <span class="math inline">𝒞</span> are the set of all 8-bit bytes. The encryption scheme <span class="math inline"><em>Π</em> = (Gen, Enc, Dec)</span></p>
+<ul>
+<li><span class="math inline">Gen</span>: Selects a random permutation from <span class="math inline">𝒦</span></li>
+<li><span class="math inline">Enc</span>: To compute <span class="math inline">Enc<sub><em>k</em></sub>(<em>m</em>)</span>, permute the bits of <span class="math inline"><em>m</em></span> using permutation <span class="math inline"><em>k</em></span>. For example, if <span class="math inline"><em>k</em></span> is a permutation that maps 0 to 7, 1 to 6, 2 to 5, 3 to 4, and so on, it will reverse the bits, so the encryption of plaintext byte “11001010” would produce ciphertext “01010011.”</li>
+<li><span class="math inline">Dec</span>: To compute <span class="math inline">Dec<sub><em>k</em></sub>(<em>c</em>)</span>, the inverse of permutation <span class="math inline"><em>k</em></span> is applied to <span class="math inline"><em>c</em></span>.</li>
+</ul>
+<p>Prove that <span class="math inline"><em>Π</em></span> is <em>not</em> perfectly indistinguishable. You must define a specific adversary <span class="math inline">𝒜</span> and use Definition 2.5 directly (you cannot use any of the equivalent formulations).</p></li>
+<li><p>You solved Exercise 2.6(a) in Assignment 1, so think about that situation a little more. In that problem, plaintext and keyspace sets had sizes <span class="math inline">|ℳ| = 5</span> and <span class="math inline">|𝒦| = 6</span>. Theorem 2.10 established the <span class="math inline">|𝒦| ≥ |ℳ|</span> is a necessary condition for a perfectly secret encryption scheme, and that condition is satisfied in this case. Is that condition sufficient? In other words, is it possible to have a perfectly secret encryption scheme where <span class="math inline">|ℳ| = 5</span> and the <span class="math inline">Gen</span> draws a key uniformly from a keyspace with <span class="math inline">|𝒦| = 6</span>? (<em>Hint</em>: Make sure you completely understand the proof of Theorem 2.10! Also note that this is <em>not</em> asking about the specific encryption scheme from Exercise 2.6(a) – I’m asking if there is any way to define a perfectly secure scheme for the given plaintext and keyspace sets.)</p></li>
+<li><p>Textbook, page 40, Exercise 2.13(a)</p></li>
+<li><p>At the beginning of Chapter 3, the authors have a discussion about key sizes that would be sufficient for concrete security against brute force attacks (we also did this in class, using supercomputer speeds from the <a href="https://www.top500.org/">Top 500</a> list). For this problem, you should do a similar analysis but using extreme, over-the-top assumptions about the attacker’s computational capabilities (obviously far, <em>far</em> beyond what any conventional computer, now or ever, could do).</p>
+<p>Consider if you could convert <em>the entire planet</em> into one big computer (suggestion: read <em>The Hitchhiker’s Guide to the Galaxy</em> if you haven’t) — do some research and find a good estimate for how many atoms are in the Earth, making sure you use a reliable source and include a citation in your answer. Assume that you can make a logic gate using just 8 atoms. Next, assume that you can clock those gates at the fastest imaginable speed, the frequency of ultraviolet light, which would be a 1,000 THz computer, and testing a key takes 1000 Boolean operations. Finally, a “super-secure” cipher is one that cannot be brute-forced (on average) in under 128 years. What keysize would need to be used so that a cipher is “super-secure” against attacks using this ultra-fast full-planet computer? You can (and should!) estimate all values as powers of two when you solve this problem, and be sure to show your work.</p></li>
+<li><p>Textbook, page 102, Exercise 3.1</p></li>
+<li><p>Textbook, page 102, Exercise 3.4</p></li>
+</ol>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.9" />
+<title>CSC 495&#8201;&#8212;&#8201;Assignment 1&#8201;&#8212;&#8201;Due Thursday, February 19</title>
+<link rel="stylesheet" href="classstyle.css" type="text/css" />
+
+
+</head>
+
+<body class="article">
+<div class="classheader">
+<table border="0" cellpadding="0" cellspacing="0">
+<tbody><tr><td><img src="Matrix.jpg" alt="CSC 495: Software Security" /></td>
+<td style="padding:4px;">CSC 495/680<br/>
+Software Security<br/>
+<div style="padding-top:0.5em;"><a href="http://www.uncg.edu/cmp/">Dept of Computer Science</a></div>
+<a href="http://www.uncg.edu/">UNC Greensboro</a>
+</td></tr>
+</tbody></table>
+</div>
+<div class="classnav" style="font-family:arial;width:auto;float:left;margin-top:1em;">
+<div class="classnavHead">Navigation</div>
+<div class="classnavItem"><a href="index.html">HOME</a></div>
+<div class="classnavItem"><a href="syllabus.html">SYLLABUS</a></div>
+<div class="classnavItem"><a href="sched.html">SCHEDULE</a></div>
+<div class="classnavItem"><a href="readings.html">READINGS</a></div>
+<div class="classnavItem"><a href="notes.html">NOTES</a></div>
+<div class="classnavItem"><a href="handouts.html">HANDOUTS</a></div>
+<div class="classnavActive"><a href="assign.html">ASSIGNMENTS</a></div>
+<div class="classnavItem"><a href="https://blackboard.uncg.edu/">BLACKBOARD</a></div>
+<div class="classnavItem"><a href="moreinfo.html">MORE INFO</a></div>
+</div>
+<div class="classcontent" id="content">
+<div class="paragraph"><p>A <a href="assign1.pdf">printable PDF</a> is available.</p></div>
+<div class="sect1">
+<h2 id="_csc_495_8201_8212_8201_assignment_1_8201_8212_8201_due_thursday_february_19">CSC 495&#8201;&#8212;&#8201;Assignment 1&#8201;&#8212;&#8201;Due Thursday, February 19</h2>
+<div class="sectionbody">
+<div class="olist arabic"><ol class="arabic">
+<li>
+<p>
+Find a story on a recent (within the past year) software
+vulnerability that led to a security breach. You need to find a story
+that talks about how a specific software vulnerability was involved,
+so not just any security story will do! Write a brief summary
+of the incident in your own words, describing what software was
+involved, what the vulnerability was, and what the consequences
+were. Be as specific as you can - in particular, if possible provide a
+CVE code (see <a href="http://cve.mitre.org">http://cve.mitre.org</a> for reference) for the specific
+software vulnerability, provide one or more CWE codes (see
+<a href="http://cwe.mitre.org/">http://cwe.mitre.org/</a> for reference) for the type of weakness(es)
+involved, and even include a CAPEC ID (see <a href="http://capec.mitre.org/">http://capec.mitre.org/</a>)
+for the type of attack if possible.
+</p>
+</li>
+<li>
+<p>
+As we discussed in class, &#8220;Calling Conventions&#8221; specify how
+arguments passed to a function in a high-level language are actually
+provided to a function when it is compiled to assembly/machine
+language. While we discussed this some in class, do some investigation
+on calling conventions for Intel architecture in a 32-bit model
+(sometimes called the IA-32 or i386 or x86 model) and a 64-bit model
+(usually called the x86-64 model). For the 32-bit model, describe in
+your own words the standard <code>cdecl</code> calling convention, and describe
+any differences between the Linux/gcc method and the Microsoft
+method. Do the same for the 64-bit model (both the System V AMD64 ABI
+method and the Microsoft method).
+</p>
+<div class="paragraph"><p>Finally, notice that stack-based calling conventions typically push
+arguments on the stack in a right-to-left order. Work through the
+specifics of how such a calling convention works for the <code>printf</code>
+function, and use this to explain why the right-to-left ordering is
+important. Be very specific, down to the underlying assembly language&#8201;&#8212;&#8201;what would the difficulty be if arguments were pushed in a left-to
+right order?</p></div>
+</li>
+<li>
+<p>
+In this problem you will explore
+&#8220;<a href="http://cwe.mitre.org/data/definitions/798.html">CWE-798</a>: Use of
+Hard-coded Credentials.&#8221; This is number 7 on the CWE/SANS
+<a href="http://cwe.mitre.org/top25/index.html">Top 25 Most Dangerous Software
+Errors</a> list, where it is described as follows (read more at the
+provided links):
+</p>
+<div class="quoteblock">
+<div class="content">
+<div class="paragraph"><p>Hard-coding a secret password or cryptographic key into your program is
+bad manners, even though it makes it extremely convenient - for
+skilled reverse engineers. While it might shrink your testing and
+support budgets, it can reduce the security of your customers to dust.</p></div>
+</div>
+</div>
+<div class="paragraph"><p>For this problem, you will practice being a &#8220;skilled reverse
+engineer&#8221; on three different executables provided for you (named
+<code>findpass1</code>, <code>findpass2</code>, and <code>findpass3</code>), each using a different
+method for hard-coding a password with increasing levels of
+protection. Each program is a setuid executable, which runs as a
+different user (<code>hw1user1</code>, <code>hw1user2</code>, and <code>hw1user3</code>) and prompts
+for a password. If you enter the right password, a shell is executed
+that runs with the effective user id (euid) set to that user, which
+will allow you to read a file that is protected so that it is readable
+only by that user.</p></div>
+<div class="paragraph"><p>The first two programs are required work for this assignment, but the
+third is more challenging and is extra credit!</p></div>
+<div class="paragraph"><p><em>What to do</em>: You first need to locate the programs with the embedded
+passwords, so log in to your account on <code>cmpunix</code> and go into the
+directory <code>/csc495/hw1/findpass</code> and look for a directory named by
+your user name (each student has their own custom programs to reverse
+engineer, all with different passwords!). In your own personal
+directory you will find the executable files and protected data files
+that you are to work with. There are lots of standard tools you can
+use to gather information and try to reverse engineer the programs,
+including <code>gdb</code>, <code>strings</code>, and <code>objdump</code>.</p></div>
+<div class="paragraph"><p><em>What to turn in</em>: For each program, describe what you did to break
+the file and find the password. You should describe this in enough
+detail so that someone could read your description and repeat the
+steps to break the code. In addition to this description, you need to
+say what the password was for the program and what the contents of the
+secret file are. (Hint: all passwords are 6 letter words, and all
+secret file contents are 8 digit hexadecimal numbers.)</p></div>
+</li>
+<li>
+<p>
+In this problem you will exploit a program with stack-based buffer
+overflow vulnerability
+(<a href="http://cwe.mitre.org/data/definitions/120.html">CWE-120</a>: Classic
+Buffer Overflow) that follows from the use of an unsafe
+function. While modern systems have multiple protections against
+buffer overflow exploits, making them very difficult to perform, I
+have purposefully turned off these protections to make this exploit
+easier. It is still quite challenging however, so don&#8217;t think you can
+get this done at the last minute! The following things have been done
+to make this easier to attack: it is compiled as a 32-bit executable
+with an executable stack, no stack protection, and ASLR turned off.
+</p>
+<div class="paragraph"><p>Here is the basic information: The <code>cmpunix</code> system is running a
+super-simplified web server that you can connect to from <code>cmpunix</code> on
+port 8888. This port is <em>not</em> open to the Internet, so you must log in
+to <code>cmpunix</code> via <code>ssh</code> - to see the web server running, you can either
+use port forwarding over ssh to connect from your own system (I&#8217;ll
+demonstrate how to do this in class), or you can use the command &#8220;<code>nc
+localhost 8888</code>&#8221; to connect from the shell prompt.</p></div>
+<div class="paragraph"><p>The source code that is running on the web server is available on
+<code>cmpunix</code> at <code>/csc495/hw1/buffoverflow/badhttpd.c</code>, so your first task
+is to read through this code, understand how it works, and find the
+buffer overflow vulnerability.</p></div>
+<div class="olist loweralpha"><ol class="loweralpha">
+<li>
+<p>
+This code provides a handy &#8220;helpful to the hacker&#8221; function: when
+there is a segmentation fault, caused by the program attempting to
+access an invalid memory location, it will report that fact <em>and</em> give
+the illegal memory address that the program was trying to access. Try
+connecting to the program using the &#8216;nc` command above, and type about
+80 `A&#8217; characters and see what happens. Then try 40 A&#8217;s and 40
+B&#8217;s. Once you understand how that works, figure out how to modify
+parts of that input so that you can figure out where the return
+address is stored relative to the start of the input buffer. In other
+words, is it 12 bytes from the beginning? 40 bytes from the beginning?
+80 bytes from the beginning? <em>To turn in</em>: Give the value you
+discovered (where the function return address is relative to the start
+of the beginning of the input buffer), and describe the process you
+used to determine this.
+</p>
+</li>
+<li>
+<p>
+For this part, you are going to go for a full exploit, not just
+crashing the server like you did in part a. This is very tricky if
+you&#8217;ve never done it before, so you will have to be persistent! If you
+can get a shell through the server, you can easily complete this
+exercise. This is a stack-smashing attack, and there are many
+references on-line explaining how to do this, including the &#8220;Smashing the
+Stack for Fun and Profit&#8221; article that is linked under the
+<a href="http://www.uncg.edu/cmp/faculty/srtate/495.s15/readings.html">Readings
+section</a> of the class web site. You can use any resources that you can
+locate on-line, including code, but be sure to cite your sources in
+your solution write-up. Also note that &#8220;any resources that you can
+locate on-line&#8221; does not include solutions of other students!
+</p>
+<div class="paragraph"><p>What nefarious thing do you need to accomplish? The server can only
+read files from the system, and has no capability for writing or
+saving files, so your goal is to exploit the system in a way that
+allow you to write to a file in the account of the user that is
+running the web server (user <code>hw1user4</code>). In particular, you should
+create a file named by your user name, with some text contents. For
+example, if your user name were <code>stsnape</code> you could create a file
+named <code>stsnape.txt</code> with the contents &#8220;The Half-Blood Prince was
+here.&#8221; For this part, you should write up what you did to exploit the
+server to turn in with your homework, in addition to leaving that file
+on the system. If you don&#8217;t get the full exploit accomplished, you
+should at least write up a description of what you tried and describe
+how close you felt you were to completing the exploit.</p></div>
+<div class="paragraph"><p><em>Extra incentive for not putting this off:</em> 5 points extra credit will
+be given to the <em>first</em> student with a successful exploit.</p></div>
+</li>
+</ol></div>
+</li>
+<li>
+<p>
+One way to try to avoid buffer overflow problems is to keep track
+of the size of every buffer you allocate so that you can always check
+to make sure there&#8217;s enough room for an operation before performing
+it. You could define a "sized buffer" type like this:
+</p>
+<div class="listingblock">
+<div class="content">
+<pre><code>struct sizedbuff_s {
+    unsigned int size;
+    char data[0];
+};</code></pre>
+</div></div>
+<div class="paragraph"><p>This structure adds a size field, so needs slightly more memory, but
+can potentially result in safer code. Here&#8217;s an example of how an
+allocation might work, where this code gets a buffer size from the
+(untrusted!) user and then allocates and zeros out the new block of
+memory:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>int i;
+unsigned int user_size = get_size_from_user();
+unsigned int struct_size = sizeof(unsigned int) + user_size;
+struct sizedbuff_s *mybuffer =
+    (struct sizedbuff_s *)malloc(struct_size);
+
+for (i=0; i&lt;user_size; i++)
+    mybuffer-&gt;data[i] = 0;</code></pre>
+</div></div>
+<div class="paragraph"><p>Unfortunately, while this helps us avoid buffer overflows, it actually
+has a different vulnerability. What precisely is this vulnerability,
+how can the user trigger it, and what are the consequences? When you
+answer how the vulnerability is triggered, be very specific: what
+specific value would be supplied on a 32-bit machine, and what
+<em>precisely</em> would happen. (Hint: CWE 190)</p></div>
+</li>
+<li>
+<p>
+Now that you have seen programs with security vulnerabilities in
+the previous two problems, you are going to see how well you can do at
+writing a secure program. First create a directory named <code>securefiles</code>
+under your home directory, and in that directory create at least 3
+different text files. Set permissions so that you can read those
+files, but no other non-root user on the system can. Also create a
+file in your home directory named <code>secretstuff.txt</code> that no one else
+can read. Finally, write a program that will be compiled to an
+executable named <code>getfile</code> in your home directory that does the
+following: prompt the user for a password and a file name, and output
+the contents of that file from the <code>securefiles</code> directory (if it
+exists). Here are the basic security requirements: It should be impossible
+for an attacker who does not know the password to reverse engineer it
+from the executable, and it should be impossible for an attacker to
+get the contents of any file outside of the <code>securefiles</code> directory
+(so in particular it should be impossible to read <code>secretstuff.txt</code>
+from your home directory, even for a user that knows the
+password). Your executable program <code>getfile</code> should be a setuid
+executable that any user on the system can access and run. Have
+another student test your program from their account to make sure they
+can access the files that they should be able to! In addition to the stated
+high-level security goals, make sure you follow good coding practices:
+don&#8217;t use unsafe functions, always check return values and handle
+exceptions properly, etc.
+</p>
+</li>
+</ol></div>
+</div>
+</div>
+</div>
+<div style="clear:both;"></div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2015-02-05 13:52:33 EST
+</div>
+</div>
+</body>
+</html>

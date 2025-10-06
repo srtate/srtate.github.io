@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.9" />
+<title>CSC 495&#8201;&#8212;&#8201;Assignment 4&#8201;&#8212;&#8201;Due Tuesday, April 28</title>
+<link rel="stylesheet" href="classstyle.css" type="text/css" />
+
+
+</head>
+
+<body class="article">
+<div class="classheader">
+<table border="0" cellpadding="0" cellspacing="0">
+<tbody><tr><td><img src="Matrix.jpg" alt="CSC 495: Software Security" /></td>
+<td style="padding:4px;">CSC 495/680<br/>
+Software Security<br/>
+<div style="padding-top:0.5em;"><a href="http://www.uncg.edu/cmp/">Dept of Computer Science</a></div>
+<a href="http://www.uncg.edu/">UNC Greensboro</a>
+</td></tr>
+</tbody></table>
+</div>
+<div class="classnav" style="font-family:arial;width:auto;float:left;margin-top:1em;">
+<div class="classnavHead">Navigation</div>
+<div class="classnavItem"><a href="index.html">HOME</a></div>
+<div class="classnavItem"><a href="syllabus.html">SYLLABUS</a></div>
+<div class="classnavItem"><a href="sched.html">SCHEDULE</a></div>
+<div class="classnavItem"><a href="readings.html">READINGS</a></div>
+<div class="classnavItem"><a href="notes.html">NOTES</a></div>
+<div class="classnavItem"><a href="handouts.html">HANDOUTS</a></div>
+<div class="classnavActive"><a href="assign.html">ASSIGNMENTS</a></div>
+<div class="classnavItem"><a href="https://blackboard.uncg.edu/">BLACKBOARD</a></div>
+<div class="classnavItem"><a href="moreinfo.html">MORE INFO</a></div>
+</div>
+<div class="classcontent" id="content">
+<div class="paragraph"><p>A <a href="assign4.pdf">printable PDF</a> is available.</p></div>
+<div class="sect1">
+<h2 id="_csc_495_8201_8212_8201_assignment_4_8201_8212_8201_due_tuesday_april_28">CSC 495&#8201;&#8212;&#8201;Assignment 4&#8201;&#8212;&#8201;Due Tuesday, April 28</h2>
+<div class="sectionbody">
+<div class="paragraph"><p><em>Note: April 18 is the last day of classes for the semester, but that
+day will actually follow the Friday class schedule which means we
+won&#8217;t meet. You can drop your completed assignment off in my office on
+the 28th, or you can turn it in early during our last class meeting
+(April 23), or you can email me your assignment (I prefer to receive
+hardcopy, but will accept emailed submissions for this assignment).</em></p></div>
+<div class="olist arabic"><ol class="arabic">
+<li>
+<p>
+The goal of this question is for you to learn a little about the
+most cutting-edge static analysis tools for PHP, and to get a little
+more experience with security research. To start, you should read the
+following paper (handed out in class, but also available from the link
+below):
+</p>
+<div class="quoteblock">
+<div class="content">
+<div class="paragraph"><p>Johannes Dahse and Thorsten Holz. &#8220;Simulation of Built-in PHP
+Features for Precise Static Code Analysis,&#8221; <em>Proceedings of the
+Network and Distributed System Symposium (NDSS)</em>, 2014. Available at
+<a href="http://www.internetsociety.org/doc/simulation-built-php-features-precise-static-code-analysis">http://www.internetsociety.org/doc/simulation-built-php-features-precise-static-code-analysis</a></p></div>
+</div>
+</div>
+<div class="paragraph"><p>As you start reading this paper, focus on high-level ideas and don&#8217;t
+worry about all the details. You can go back and fill in details
+later, once you see the &#8220;big picture.&#8221;</p></div>
+<div class="olist loweralpha"><ol class="loweralpha">
+<li>
+<p>
+After reading the paper, set it aside and write a one paragraph
+summary of the paper in your own words. Make sure you use the term
+&#8220;taint analysis&#8221; and describe what this term means.
+</p>
+</li>
+<li>
+<p>
+The authors listed several PHP language features that make static
+analysis difficult. Pick one such language feature that you found
+surprising or interesting, describe it, and explain why it causes
+difficulties for static analysis.
+</p>
+</li>
+<li>
+<p>
+Do you consider this research to be a success? Use the
+results as described in the Introduction and more fully in Section IV
+to justify your answer.
+</p>
+</li>
+<li>
+<p>
+Listings 15 and 16 (on pages 11 and 12) show how an XSS
+vulnerability is exploited in the <code>osCommerce</code> software. In
+particular, if the exploit URL in Listing 16 is used, then the <code>echo</code>
+statement in Listing 15 will output HTML that contains a cross-site
+scripting exploit. Work through this code and give the exact HTML
+output that is produced in this exploit.
+</p>
+</li>
+<li>
+<p>
+Published research papers contain comparisons and references to
+related work that was published prior the paper, so someone reading
+the paper has some context for the work, and can find prior papers to
+see how the ideas have evolved. A natural question when reading a
+paper turns this around to ask &#8220;What related work has been done
+<em>after</em> this was published?&#8221; Obviously, the paper can&#8217;t include
+references to work that hadn&#8217;t been done before the paper was
+published, so people use citation search engines to find papers that
+cite this one. Google Scholar, at
+<a href="http://scholar.google.com/">http://scholar.google.com</a> is a good
+example of this. For this part, go to Google Scholar and type in the
+first part of the title of this paper to find it. Next, look for the
+&#8220;Cited by ..&#8221; link with this paper, and click on it. This will
+provide a list of subsequent papers that have cited this paper as
+related prior work. For this paper in particular, compare the papers
+that come up in this search with the description of &#8220;Future work&#8221; in
+the final paragraph of the paper. Find a paper that reports on a
+future work item&#8201;&#8212;&#8201;give a reference to this paper, with a brief
+description of the problem that it addresses. <br />
+</p>
+</li>
+</ol></div>
+</li>
+<li>
+<p>
+For this question, read the short essay:
+</p>
+<div class="quoteblock">
+<div class="content">
+<div class="paragraph"><p>Shriram Krighnamurthi and Jan Vitek. &#8220;The Real Software Crisis:
+Repeatability as a Core Value,&#8221; <em>Communications of the ACM</em>, March
+2015, pp. 34&#8212;36. Available at
+<a href="http://cacm.acm.org/magazines/2015/3/183593-the-real-software-crisis/fulltext">http://cacm.acm.org/magazines/2015/3/183593-the-real-software-crisis/fulltext</a></p></div>
+</div>
+</div>
+<div class="paragraph"><p>Think about how this relates to Section IV.F. of the paper from the
+first question, where the authors try to compare their system to
+previous systems, but had to make somewhat indirect comparisons since
+the code for previous systems wasn&#8217;t available to make head-to-head
+comparisons. The essay gives several reasons why software
+(&#8220;artifacts&#8221;) might not be published, and there are also clear
+benefits to making the code public. What is your opinion? Take a
+position either for or against requiring publishing research software
+(no being wishy-washy!), and write a short argument for your
+position. Justify your position in the context of the essay, making
+sure you address arguments both for and against publishing that are
+outlined in that essay.</p></div>
+</li>
+<li>
+<p>
+Consider the following PHP code for checking a user&#8217;s login
+credentials (username and password). Assume that nothing has been done
+elsewhere in the code to sanitize user inputs.
+</p>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.6
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>$query <span style="color: #990000">=</span> <span style="color: #FF0000">"SELECT login FROM users WHERE login='"</span><span style="color: #990000">.</span> $_POST<span style="color: #990000">[</span><span style="color: #FF0000">'userid'</span><span style="color: #990000">]</span> <span style="color: #990000">.</span>
+            <span style="color: #FF0000">"' AND password='"</span> <span style="color: #990000">.</span> $_POST<span style="color: #990000">[</span><span style="color: #FF0000">'pass'</span><span style="color: #990000">]</span> <span style="color: #990000">.</span> <span style="color: #FF0000">"'"</span><span style="color: #990000">;</span>
+
+$resp <span style="color: #990000">=</span> $dbconn<span style="color: #990000">-&gt;</span><span style="font-weight: bold"><span style="color: #000000">query</span></span><span style="color: #990000">(</span>$query<span style="color: #990000">);</span>
+<span style="font-weight: bold"><span style="color: #0000FF">if</span></span> <span style="color: #990000">(</span>$resp<span style="color: #990000">-&gt;</span>num_rows <span style="color: #990000">&gt;</span> <span style="color: #993399">0</span><span style="color: #990000">)</span> <span style="color: #990000">{</span>
+    $_SESSION<span style="color: #990000">[</span><span style="color: #FF0000">'loggedin'</span><span style="color: #990000">]</span> <span style="color: #990000">=</span> <span style="color: #993399">1</span><span style="color: #990000">;</span>
+    $_SESSION<span style="color: #990000">[</span><span style="color: #FF0000">'username'</span><span style="color: #990000">]</span> <span style="color: #990000">=</span> $_POST<span style="color: #990000">[</span><span style="color: #FF0000">'userid'</span><span style="color: #990000">];</span>
+<span style="color: #990000">}</span> <span style="font-weight: bold"><span style="color: #0000FF">else</span></span> <span style="color: #990000">{</span>
+    $_SESSION<span style="color: #990000">[</span><span style="color: #FF0000">'loggedin'</span><span style="color: #990000">]</span> <span style="color: #990000">=</span> <span style="color: #993399">0</span><span style="color: #990000">;</span>
+<span style="color: #990000">}</span></tt></pre></div></div>
+<div class="olist loweralpha"><ol class="loweralpha">
+<li>
+<p>
+Describe this vulnerability in the same style used on your midterm
+exam. Specifically, give the following four pieces of information: (a)
+a description of the <em><span class="underline">vulnerability</span></em>, (b) a brief
+description of how an attacker could <em><span class="underline">exploit</span></em> the
+vulnerability, (c) what the <em><span class="underline">consequences</span></em> of the attack
+are (revealing secrets, taking over the machine, etc.), and (d) at
+least one way to <em><span class="underline">correct the problem</span></em>. For each answer,
+clearly label the parts of
+your answer using the emphasized words above.
+</p>
+</li>
+<li>
+<p>
+For this part, describe an exploit in detail. In other words, give
+a specific input that an attacker could use to log in as user
+&#8220;admin&#8221;, even without knowing the password.  Also give the resulting
+<code>$query</code> string for your input.
+</p>
+</li>
+</ol></div>
+</li>
+</ol></div>
+</div>
+</div>
+</div>
+<div style="clear:both;"></div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2015-04-14 13:43:34 EDT
+</div>
+</div>
+</body>
+</html>

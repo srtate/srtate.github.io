@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>Assignment 5 -- Due Wed, April 10</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="https://home.uncg.edu/cmp/faculty/srtate/css/class_srtate.css" rel="stylesheet">
+
+  </head>
+
+
+  <body>
+
+        <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark uncg-navbar fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="https://www.uncg.edu/">
+          <img class="collapse navbar-collapse" src="https://home.uncg.edu/cmp/faculty/srtate/img/uncg_class.png" alt="UNC Greensboro">
+          <img class="navbar-toggler" src="https://home.uncg.edu/cmp/faculty/srtate/img/uncg_mobile.png" alt="UNCG">
+        </a>
+        <div class="navbar-brand d-flex flex-column text-left"
+	     style="line-height: 1.2;">
+          <span>CSC 495/680</span>
+          <span class="small collapse navbar-collapse"><em>Modern Cryptography</em></span>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link " href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="syllabus.html">Syllabus</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="schedule.html">Schedule</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="assignments.html">Assignments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://uncg.instructure.com/">Canvas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- Page Content -->
+    <div class="container">
+   
+        <h3 id="assignment-5-due-wednesday-april-10">Assignment 5: Due Wednesday, April 10</h3>
+<ol type="1">
+<li><p>Textbook, page 338, Exercise 8.3</p></li>
+<li><p>Textbook, page 338, Exercise 8.5</p></li>
+<li><p>In the previous section on pseudorandom generators (PRGs), the functions took a binary string as input (the “seed”) and produced a longer binary string as the output. However, pseudorandom numbers do not always have to work with just binary strings. Consider a group-generation algorithm <span class="math inline">𝒢</span> that on input <span class="math inline">1<sup><em>n</em></sup></span> outputs a description of a cyclic group <span class="math inline">𝔾</span> with prime order <span class="math inline"><em>q</em></span> and generator <span class="math inline"><em>g</em></span>. Now consider creating a pseudorandom generator that takes pairs of values from <span class="math inline">ℤ<sub><em>q</em></sub></span> as input (seed), and produces three values from <span class="math inline">𝔾</span> as output. Note that since <span class="math inline">𝔾</span> is the same size as <span class="math inline">ℤ<sub><em>q</em></sub></span>, this does provide expansion, as we expect from a PRG. In particular, given values <span class="math inline"><em>x</em><sub>1</sub>, <em>x</em><sub>2</sub> ∈ ℤ<sub><em>q</em></sub></span>, <span class="math inline"><em>G</em>(<em>x</em><sub>1</sub>, <em>x</em><sub>2</sub>)</span> computes the three-value tuple <span class="math inline">(<em>g</em><sup><em>x</em><sub>1</sub></sup>, <em>g</em><sup><em>x</em><sub>2</sub></sup>, <em>g</em><sup><em>x</em><sub>1</sub><em>x</em><sub>2</sub></sup>)</span>.</p>
+<p>Prove that this is a secure PRG if the Decisional-Diffie-Hellman (DDH) problem is hard relative to <span class="math inline">𝒢</span>.</p>
+<p>Note: The logic is really simple here, so put your effort into making sure your write-up is as clear and precise as possible!</p></li>
+<li><p>Determine the points on the elliptic curve <span class="math inline"><em>E</em> : <em>y</em><sup>2</sup> = <em>x</em><sup>3</sup> + <em>x</em> + 6</span> with a modulus of <span class="math inline"><em>p</em> = 11</span>. How many points are on the curve?</p></li>
+<li><p>For the elliptic curve defined in the previous problem, compute the sum <span class="math inline">(2, 7) + (7, 2) + (10, 2)</span>.</p></li>
+<li><p>Textbook, page 373, Exercise 10.3</p></li>
+<li><p>Textbook, page 373, Exercise 10.4</p></li>
+</ol>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

@@ -1,0 +1,660 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.9" />
+<title>CSC 495&#8201;&#8212;&#8201;Topics and Schedule</title>
+<link rel="stylesheet" href="classstyle.css" type="text/css" />
+
+
+</head>
+
+<body class="article">
+<div class="classheader">
+<table border="0" cellpadding="0" cellspacing="0">
+<tbody><tr><td><img src="Matrix.jpg" alt="CSC 495: Software Security" /></td>
+<td style="padding:4px;">CSC 495/680<br/>
+Software Security<br/>
+<div style="padding-top:0.5em;"><a href="http://www.uncg.edu/cmp/">Dept of Computer Science</a></div>
+<a href="http://www.uncg.edu/">UNC Greensboro</a>
+</td></tr>
+</tbody></table>
+</div>
+<div class="classnav" style="font-family:arial;width:auto;float:left;margin-top:1em;">
+<div class="classnavHead">Navigation</div>
+<div class="classnavItem"><a href="index.html">HOME</a></div>
+<div class="classnavItem"><a href="syllabus.html">SYLLABUS</a></div>
+<div class="classnavActive"><a href="sched.html">SCHEDULE</a></div>
+<div class="classnavItem"><a href="readings.html">READINGS</a></div>
+<div class="classnavItem"><a href="notes.html">NOTES</a></div>
+<div class="classnavItem"><a href="handouts.html">HANDOUTS</a></div>
+<div class="classnavItem"><a href="assign.html">ASSIGNMENTS</a></div>
+<div class="classnavItem"><a href="https://blackboard.uncg.edu/">BLACKBOARD</a></div>
+<div class="classnavItem"><a href="moreinfo.html">MORE INFO</a></div>
+</div>
+<div class="classcontent" id="content">
+<div class="sect1">
+<h2 id="_csc_495_8201_8212_8201_topics_and_schedule">CSC 495&#8201;&#8212;&#8201;Topics and Schedule</h2>
+<div class="sectionbody">
+<div class="paragraph"><p><em>Since this is the first time we have offered a class like this, the
+schedule and list of topics will be pretty dynamic. Topics will be
+modified as needed, based at least partially on student interests, and
+the pace will be adjusted to match how quickly students are mastering
+the material.</em></p></div>
+<div class="sect2">
+<h3 id="_initial_topics">Initial Topics</h3>
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>Tuesday, January 13:</strong> Class Introduction and Motivation
+</p>
+</li>
+<li>
+<p>
+<strong>Thursday, January 15:</strong> Responsible disclosure, ethics, and class
+   target application selection
+</p>
+</li>
+<li>
+<p>
+<strong>Tuesday, January 20:</strong> Class cancelled
+</p>
+</li>
+<li>
+<p>
+<strong>Thursday, January 22:</strong> Vulnerabilities and Defense in Depth; Security Overview; and Vulnerability Markets
+</p>
+</li>
+<li>
+<p>
+<strong>Tuesday, January 27</strong>:
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Finish discussion of vulnerability markets
+</p>
+</li>
+<li>
+<p>
+Start on systems review - compiling C and using gdb to examine resulting code
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+<strong>Thursday, January 29</strong>:
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+User-level memory issues: process memory layout, byte ordering, alignment
+</p>
+</li>
+<li>
+<p>
+System-level memory issues: Virtual memory vs. physical memory, page tables
+</p>
+</li>
+<li>
+<p>
+Kernel control over memory maps and inter-process memory protection
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+<strong>Tuesday, February 3</strong>:
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+The 15-minute "2-minute history of Unix"
+</p>
+</li>
+<li>
+<p>
+Process properties: looking at memory maps, users, priorities, and more
+</p>
+</li>
+<li>
+<p>
+Assembly language: basic review, and AT&amp;T vs Intel
+</p>
+</li>
+<li>
+<p>
+Using gdb and the disassembler to reverse engineer a program (tracing our helloworld program, and solving a level from the Leviathan wargame)
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+<strong>Thursday, February 5</strong>:
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+C for Java Programmers: Comparison to Java, compilation toolchain (preprocessor, etc.), data types (primitive and defined), primitive type sizes
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+<strong>Tuesday, February 10</strong>:
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Tutorial on basic Unix/Linux use: role of PuTTY, the shell, working directories, basic commands, filesystem (relative vs absolute paths), &#8230;
+</p>
+</li>
+<li>
+<p>
+Unix file permissions - user/group/other, and setuid programs
+</p>
+</li>
+<li>
+<p>
+Assignment 1 tips and discussion - problem 3
+</p>
+</li>
+<li>
+<p>
+Basics of network communication: TCP/IP, ports, and use of netcat
+</p>
+</li>
+<li>
+<p>
+Assignment 1 tips and discussion - problem 4 (demo of solution!)
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+<strong>Thursday, February 12</strong>:
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+C for Java programmers (code samples on <code>cmpunix</code> in <code>/home/srtate/code</code>)
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+parameter passing and calling conventions (stack frames, automatic vs static variables, parameters and return values) - look at assembly language produced by the C compiler!
+</p>
+</li>
+<li>
+<p>
+passing arrays - pointers and blocks of memory
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+Buffer overflow basics and stack smashing
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+<strong>Tuesday, February 17</strong>: Snow Day
+</p>
+</li>
+<li>
+<p>
+<strong>Thursday, February 19</strong>:
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Finish up "C for Java programmers"
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+pointers and pointer arithmetic (incl. casting pointers)
+</p>
+</li>
+<li>
+<p>
+user-defined data types: struct and <code>typedef</code>
+</p>
+</li>
+<li>
+<p>
+memory management - malloc() and free()
+</p>
+</li>
+<li>
+<p>
+process creation and termination - fork and exec
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+Overview of the <a href="http://cwe.mitre.org/top25/">CWE/SANS Top 25 Most Dangerous Software Errors</a>
+</p>
+</li>
+<li>
+<p>
+Quick look at CWE-120 (Classic Buffer Overflow)
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+<strong>Tuesday, February 24</strong>: Snow Day
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+See <a href="file:///home/srt/public_html/495/assign.html">Assignment 2</a> distributed online
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+<em>Note</em>: Video tutorials available in blackboard on exploring code for format string vulnerabilities - very help for doing this assignment!
+</p>
+</li>
+</ul></div>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+<strong>Thursday, February 26</strong>: Snowpocalypse Day&#8201;&#8212;&#8201;<em>see video lectures in Blackboard</em>
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Buffer Overflow (Top 25 #3 - <a href="http://cwe.mitre.org/data/definitions/120.html">CWE-120</a>)
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Real world examples include recent <a href="https://nakedsecurity.sophos.com/2015/01/29/the-ghost-vulnerability-what-you-need-to-know/">GHOST vulnerability</a> (<a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-0235">CVE-2015-0235</a>) and <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-9328">CVE 2014-9328</a> vulnerability in ClamAV
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+Incorrect Calculation of Buffer Size (Top 25 #20 - <a href="http://cwe.mitre.org/data/definitions/131.html">CWE-131</a>)
+</p>
+</li>
+<li>
+<p>
+Use of Potentially Dangerous Functions (Top 25 #18 - <a href="http://cwe.mitre.org/data/definitions/676.html">CWE-676</a>)
+</p>
+</li>
+<li>
+<p>
+Integer Overflow or Wraparound (Top 25 #24 - <a href="http://cwe.mitre.org/data/definitions/190.html">CWE-190</a>)
+</p>
+</li>
+<li>
+<p>
+Uncontrolled Format String (Top 25 #23 - <a href="http://cwe.mitre.org/data/definitions/134.html">CWE-134</a>)
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+<strong>Reading</strong>: Code spelunking and how to read code
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+George V. Neville-Neil, <a href="https://queue.acm.org/detail.cfm?id=945136">Code Spelunking:
+  Exploring Cavernous Code Bases</a>, <em>Queue</em>, Vol. 1, No. 6, Sept. 2003,
+  pp. 42-48.
+</p>
+</li>
+<li>
+<p>
+George V. Neville-Neil, <a href="https://queue.acm.org/detail.cfm?id=1483108">Code Spelunking
+    Redux</a>, <em>Queue</em>, Vol. 6, No. 7, Jan. 2009, pp. 26-33.
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+<strong>Tuesday, March 3</strong>: Mid-term Exam Discussion and Review
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+If additional time: Practice with code exploration and manual searching for control hijacking vulnerabilities
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+<strong>Thursday, March 5</strong>: Mid-Term Exam
+</p>
+</li>
+</ul></div>
+<hr />
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>March 9-13</strong>: Spring Break
+</p>
+</li>
+</ul></div>
+<hr />
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>Tuesday, March 17</strong>:
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Discussion of mid-term and assignments 1 and 2
+</p>
+</li>
+<li>
+<p>
+High-level look at research in computer security (publishing standards, main conferences, etc.) and assignment of StackGuard paper as reading
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+<strong>Thursday, March 19</strong>: Protection Mechanisms and Tools for Memory/Buffer Vulnerabilities
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Dynamic Protection Mechanisms (including StackGuard, ASLR, and
+  non-executable stacks)
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+<strong>Tuesday, March 24</strong>:
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Static Analysis: Fundamental Limitations and Existing Tools
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+<strong>Thursday, March 26</strong>:
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Finish static analysis tool demo
+</p>
+</li>
+<li>
+<p>
+Start overview of web application development
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+<strong>Tuesday, March 31</strong>:
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Basic web application model - client, server, communication
+</p>
+</li>
+<li>
+<p>
+Web threat model
+</p>
+</li>
+<li>
+<p>
+HTTP
+</p>
+</li>
+<li>
+<p>
+Using browser developer tools
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+<strong>Thursday, April 2</strong>:
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Crypto: symmetric vs public key
+</p>
+</li>
+<li>
+<p>
+Content: rendering, documents, and the DOM
+</p>
+</li>
+<li>
+<p>
+Cookies and intro to same-origin policy
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+<strong>Tuesday, April 7</strong>:
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Same-origin policy
+</p>
+</li>
+<li>
+<p>
+Server side technologies: static HTML and server-side includes
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+<strong>Thursday, April 9</strong>:
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Server side technologies: CGI scripts, PHP, and databases
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+<strong>Tuesday, April 14</strong>:
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+A little more about databases
+</p>
+</li>
+<li>
+<p>
+Injection vulnerabilities
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+SQL Injection (Top 25 #1 - <a href="http://cwe.mitre.org/data/definitions/89.html">CWE-89</a> ; <a href="https://www.owasp.org/index.php/Top_10_2013-A1-Injection">OWASP #1</a>)
+</p>
+</li>
+</ul></div>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+<strong>Thursday, April 16</strong>:
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Continuing injection vulnerabilities
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+More detail and examples on SQL Injection
+</p>
+</li>
+<li>
+<p>
+OS Command Injection (Top 25 #2 - <a href="http://cwe.mitre.org/data/definitions/78.html">CWE-78</a>)
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+Using <a href="https://www.owasp.org/index.php/Category:OWASP_WebGoat_Project">OWASP WebGoat</a>, <a href="http://www.dvwa.co.uk/">DVWA</a>, and <a href="http://overthewire.org/wargames/natas/">Natas</a> to learn more about web application vulnerabilities
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+<strong>Tuesday, April 21</strong>:
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Final SQL/Command Injection topics
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Protection using prepared statements (example on <code>cmpunix</code>)
+</p>
+</li>
+<li>
+<p>
+A look at a real SQL Injection vulnerability in deployed code
+</p>
+</li>
+<li>
+<p>
+Command injection - basic idea and look at CWE
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+JavaScript/Browser exploitation issues
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Cross-Site Scripting (Top 25 #4 - <a href="http://cwe.mitre.org/data/definitions/79.html">CWE-79</a> ; <a href="https://www.owasp.org/index.php/Top_10_2013-A3-Cross-Site_Scripting_(XSS)">OWASP #3</a>)
+</p>
+</li>
+<li>
+<p>
+Cross-Site Request Forgery (Top 25 #12 - <a href="http://cwe.mitre.org/data/definitions/352.html">CWE-352</a> ; <a href="https://www.owasp.org/index.php/Top_10_2013-A8-Cross-Site_Request_Forgery_(CSRF)">OWASP #8</a>)
+</p>
+</li>
+</ul></div>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+<strong>Thursday, April 23</strong>:
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Secure design principles
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Reading: Chapter 13 ("Design Principles") in <a href="http://nob.cs.ucdavis.edu/book/book-aands/">Computer Security: Art and Science</a> by Matt Bishop (chapter available as a "sample chapter" on that web page
+</p>
+</li>
+<li>
+<p>
+<a href="https://www.securecoding.cert.org/confluence/display/seccode/Top+10+Secure+Coding+Practices">CERT: Top 10 Secure Coding Practices</a>
+</p>
+</li>
+<li>
+<p>
+More detail on <a href="https://buildsecurityin.us-cert.gov/articles/knowledge/principles/least-privilege">Least Privilege</a>
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+Basic info for Final Exam
+</p>
+</li>
+<li>
+<p>
+Class evaluation
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+<strong>Tuesday, April 28</strong>: No class meeting, but <a href="assign4.html">Assignment 4 due</a>
+</p>
+</li>
+<li>
+<p>
+<strong>Thursday, April 30</strong>: Final Exam (3:30-6:30)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+</div>
+</div>
+<div style="clear:both;"></div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2015-04-20 16:06:31 EDT
+</div>
+</div>
+</body>
+</html>

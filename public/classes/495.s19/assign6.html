@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>Assignment 6 -- Due Wed, April 24</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="https://home.uncg.edu/cmp/faculty/srtate/css/class_srtate.css" rel="stylesheet">
+
+  </head>
+
+
+  <body>
+
+        <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark uncg-navbar fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="https://www.uncg.edu/">
+          <img class="collapse navbar-collapse" src="https://home.uncg.edu/cmp/faculty/srtate/img/uncg_class.png" alt="UNC Greensboro">
+          <img class="navbar-toggler" src="https://home.uncg.edu/cmp/faculty/srtate/img/uncg_mobile.png" alt="UNCG">
+        </a>
+        <div class="navbar-brand d-flex flex-column text-left"
+	     style="line-height: 1.2;">
+          <span>CSC 495/680</span>
+          <span class="small collapse navbar-collapse"><em>Modern Cryptography</em></span>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link " href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="syllabus.html">Syllabus</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="schedule.html">Schedule</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="assignments.html">Assignments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://uncg.instructure.com/">Canvas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- Page Content -->
+    <div class="container">
+   
+        <h3 id="assignment-6-due-wednesday-april-24">Assignment 6: Due Wednesday, April 24</h3>
+<ol type="1">
+<li><p>For this question, you are to encrypt your student ID number and email it to me using the following techniques (both ciphertexts can be sent in the same email – in your homework submission, include sourcecode for any programs or scripts you use for this):</p>
+<ol type="a">
+<li><p>Use El Gamal (Construction 11.16 from page 401) where <span class="math inline">𝔾 = ℤ<sub><em>p</em></sub><sup>*</sup></span> with the following parameters:</p>
+<ul>
+<li><span class="math inline"><em>p</em> = 464993439931570547979550227933964978576598599085962282831943</span></li>
+<li><span class="math inline"><em>q</em> = 464993439931570547979550227933964978576598599085962282831942</span></li>
+<li><span class="math inline"><em>g</em> = 5</span></li>
+</ul>
+<p>My public key is <span class="math inline"><em>h</em> = 172866579982319669645400780540840375136256388175443622418405</span></p></li>
+<li><p>Use “Plain RSA” (Construction 11.26 on page 411), with my public key:</p>
+<ul>
+<li><span class="math inline"><em>N</em> = 476730946651693646843886355464839842551165163503076622166931</span></li>
+<li><span class="math inline"><em>e</em> = 65537</span></li>
+</ul>
+<p></li>
+<li><p>The following ciphertext is an encrypted 9-digit number, created using plain RSA and my public key from part b. Find the plaintext number.</p>
+<ul>
+<li><span class="math inline"><em>c</em> = 261372532316415927324065794192994884700818255521781600373233</span></li>
+</ul>
+<p>
+<p>[<em>Hint: You don’t have to factor or otherwise break the RSA key to solve this problem. Think about what the main weakness of “plain RSA” is, and why we don’t use it in practice. For reference, my Python program to solve this took about 15 minutes to run, and the Java version took about 5 minutes.</em>]</p></li>
+</ol></li>
+<li><p>Page 433, Exercise 11.2</p></li>
+<li><p>Consider the following problem: A government agency would like its users to be able to received encrypted emails, but because of public records laws all emails must be securely saved in an archive. The proposed solution is for all emails to go through a gateway that not only sends the original ciphertext to the receiver, but also “translates” the ciphertext to create an encryption of the same message under the archive server’s public key which it sends to the archive. The trick is that the email gateway must do this re-encryption without learning anything about the plaintext message (so decrypting the message is ruled out!).</p>
+<p>To help understand the problem, the following diagram shows what we want to do.</p>
+<p><img src="Proxy_Reencryption.png" /></p>
+<p>This problem is called “proxy re-encryption,” and seems somewhat magical, but it turns out that it is not hard to solve for El Gamal encryption (as given in Construction 11.16 from page 401). The following questions explore various aspects of this problem and the solution for El Gamal. Assume that El Gamal is working over a group <span class="math inline">𝔾</span> of prime size <span class="math inline"><em>q</em></span>, with generator <span class="math inline"><em>g</em></span>. You can assume there is a simple bijective mapping between numbers in the range 0 to <span class="math inline"><em>q</em> − 1</span> (i.e., messages) and elements of the group, which can be efficiently computed in both directions.</p>
+<ol type="a">
+<li><p>Proxy re-encryption is impossible (for any public key cryptosystem) if the gateway only knows public information (keys <span class="math inline"><em>P</em><em>K</em><sub><em>R</em></sub></span> and <span class="math inline"><em>P</em><em>K</em><sub><em>S</em></sub></span>). Give a clear explanation of why this must be the case.</p></li>
+<li><p>If the email gateway knows a “translation key” <span class="math inline"><em>T</em><em>K</em><sub><em>R</em></sub> := [<em>S</em><em>K</em><sub><em>R</em></sub> ⋅ <em>S</em><em>K</em><sub><em>S</em></sub><sup> − 1</sup> mod <em>q</em>]</span>, then proxy re-encryption for El Gamal is possible. Derive an algorithm that takes a ciphertext <span class="math inline"><em>c</em><sub><em>R</em></sub> = ⟨<em>r</em><sub><em>R</em></sub>, <em>s</em><sub><em>R</em></sub>⟩</span> that was produced by encrypting some message <span class="math inline"><em>m</em></span> (unknown to the email gateway) with public key <span class="math inline"><em>P</em><em>K</em><sub><em>R</em></sub></span>, and produces a new ciphertext <span class="math inline"><em>c</em><sub><em>S</em></sub> = ⟨<em>r</em><sub><em>S</em></sub>, <em>s</em><sub><em>S</em></sub>⟩</span> that is an encryption of the same message but under public key <span class="math inline"><em>P</em><em>K</em><sub><em>S</em></sub></span>. Prove that your algorithm works correctly. [<em>Big Hint: If <span class="math inline"><em>y</em></span> is random and uniformly distributed over <span class="math inline">ℤ<sub><em>q</em></sub></span>, then <span class="math inline"><em>y</em>′ = [<em>y</em> ⋅ <em>T</em><em>K</em><sub><em>R</em></sub> mod <em>q</em>]</span> is also uniformly distributed. What would the encryption of <span class="math inline"><em>m</em></span> be for public key <span class="math inline"><em>P</em><em>K</em><sub><em>S</em></sub></span> if the randomness used in the encryption algorithm were <span class="math inline"><em>y</em>′</span>?</em>]</p></li>
+<li><p>Prove that with this system, the email gateway cannot compute message <span class="math inline"><em>m</em></span>. For this part, we require a “break” to give the entire message <span class="math inline"><em>m</em></span>, not just some information about <span class="math inline"><em>m</em></span> – for a stronger version, see the extra credit at the end of this problem. [<em>Hint: Imagine that there is a PPT algorithm that takes <span class="math inline"><em>T</em><em>K</em><sub><em>R</em></sub></span> and <span class="math inline"><em>c</em><sub><em>R</em></sub></span> as input, and produces <span class="math inline"><em>m</em></span> as output. Show how this algorithm can be used to create an adversary is successful in the CPA experiment against El Gamal.</em>]</p></li>
+<li><p>A remaining challenge is how the email gateway can get <span class="math inline"><em>T</em><em>K</em><sub><em>R</em></sub></span> without someone trusting someone else with their private key (since it is computed from two private keys). One additional trick can solve this problem! First, assume that the gateway has an El Gamal keypair <span class="math inline">(<em>P</em><em>K</em><sub><em>G</em></sub>, <em>S</em><em>K</em><sub><em>G</em></sub>)</span>, and then the following steps are taken:</p>
+<ul>
+<li><p>The receiver encrypts its secret key as <span class="math inline">(<em>r</em>, <em>s</em>) ← <em>E</em><sub><em>P</em><em>K</em><sub><em>G</em></sub></sub>(<em>S</em><em>K</em><sub><em>R</em></sub>)</span> which it sends to the archive server <span class="math inline"><em>S</em></span>.</p></li>
+<li><p>The archive server computes the multiplicative inverse of its private key (mod q), <span class="math inline"><em>t</em> := [<em>S</em><em>K</em><sub><em>S</em></sub><sup> − 1</sup> mod <em>q</em>]</span>, then picks a uniform <span class="math inline"><em>k</em> ← {0, ..., <em>q</em> − 1}</span>. and computes <span class="math inline"><em>r</em>′ := <em>r</em> ⋅ <em>g</em><sup><em>k</em></sup></span> and <span class="math inline"><em>s</em>′ := <em>s</em> ⋅ <em>P</em><em>K</em><sub><em>G</em></sub><sup><em>k</em></sup> ⋅ <em>t</em></span>, and sends <span class="math inline">(<em>r</em>′, <em>s</em>′)</span> to the gateway <span class="math inline"><em>G</em></span>.</p></li>
+<li><p><span class="math inline"><em>G</em></span> performs the normal El Gamal decryption on <span class="math inline">(<em>r</em>′, <em>s</em>′)</span> to get a plaintext value <span class="math inline"><em>v</em></span>.</p></li>
+</ul>
+<p>Expand the first step with formulas for El Gamal encryption, carry those formulas through step 2 to get formulas for <span class="math inline"><em>r</em>′</span> and <span class="math inline"><em>s</em>′</span>, and then show that this is an appropriate encryption of <span class="math inline"><em>T</em><em>K</em><sub><em>R</em></sub></span>. Explain why, if all parties follow this protocol honestly, no one can get any information about any other party’s private key.</p></li>
+<li><p>(<strong>Extra Credit.</strong>) For extra credit, write out a careful proof that this proxy re-encryption method achieves even stronger security than proved in part c above. In particular, show that the email gateway cannot learn <em>any information</em> about message <span class="math inline"><em>m</em></span>. To do this, define a CPA-style experiment for the proxy re-encryption problem that challenges an attacker to distinguish between two chosen messages, using the available information, and define a security criterion of what it means for a proxy re-encryption scheme to be CPA-secure. Finally, create a reduction-based proof that shows that if El Gamal encryption is CPA-secure, then this proxy re-encryption scheme is also CPA-secure.</p></li>
+</ol></li>
+<li><p>[<em>Note: This problem is stated for Schnorr’s signature scheme, but if you prefer you can answer this question for Schnorr’s identification scheme, given on page 456 of the textbook.</em>] Schnorr’s signature scheme (Construction 12.12 on page 458) was originally invented as a signature scheme that could be used on devices that were computationally weak, like smartcards. The most expensive part of the signature algorithm is the computation of <span class="math inline"><em>I</em> := <em>g</em><sup><em>k</em></sup></span> for random <span class="math inline"><em>k</em></span> (all other operations are simple and fast). Noticing that this computation is just the exponentiation of a random value, and it doesn’t depend on either the keys (public or private) or on the message being signed, it is worth considering whether some enhancements could be made to avoid computing <span class="math inline"><em>I</em> := <em>g</em><sup><em>k</em></sup></span> on the smartcard.</p>
+<p>Consider a smartcard that is managed by an organization with three parties involved in our threat model: a security manager, who creates the public/private keypair <span class="math inline">(<em>x</em>, <em>y</em>)</span> and loads <span class="math inline"><em>x</em></span> and possibly some additional private data into the smartcard; the user, who can use the card to sign whatever messages he or she wants; and an observer who sees signatures but doesn’t get to choose the messages being signed. The security manager is completely trusted, but any method that can be used by either the user or the observer to extract the private key from the card is a security breach and should be prevented.</p>
+<p>Consider each of the following scenarios from the standpoint of both an observer and a dishonest user, and determine whether each scheme is secure with respect to each of these parties. If it is not secure, explain how security can be compromised. If it is secure, give a well-justified argument why this is the case (you don’t have to give a formal proof, but your reasoning should be clear and complete).</p>
+<ol type="a">
+<li><p><em>Re-using <span class="math inline">(<em>k</em>, <em>I</em>)</span> pairs.</em> The security manager picks a single <span class="math inline"><em>k</em></span> value and computes <span class="math inline"><em>I</em> := <em>g</em><sup><em>k</em></sup></span> before loading this pair of values <span class="math inline">(<em>k</em>, <em>I</em>)</span> into the chip for later user. When signatures are made, this same <span class="math inline"><em>k</em></span> and <span class="math inline"><em>I</em></span> value is used every time. The reasoning here is that since neither <span class="math inline"><em>k</em></span> nor <span class="math inline"><em>I</em></span> depend on the message, we should be able to use the same value every time. Determine the security of this scheme.</p></li>
+<li><p><em>The user computes and loads many <span class="math inline">(<em>k</em>, <em>I</em>)</span> pairs.</em> In this scenario, the security manager only loads the card’s keypair, but the card provides a mechanism for the user to compute a list of <span class="math inline">(<em>k</em>, <em>I</em>)</span> pairs outside the card, on a more powerful computer, and load them into the card for later use. The card ensures that each <span class="math inline">(<em>k</em>, <em>I</em>)</span> pair is used only once. Determine the security of this scheme.</p></li>
+<li><p><em>Security-manager computes and loads many <span class="math inline">(<em>k</em>, <em>I</em>)</span> pairs.</em> This is the same as the previous scenario, except the keypairs are computed and loaded into the card by the security manager. The card ensures that each pair is used only once, so if the user uses up all of the loaded pairs, then they must go back to the security manager to get the card “charged up” with new pairs. Determine the security of this scheme.</p></li>
+</ol>
+<p></li>
+<li><p>Consider the following “2-of-n” secret sharing problem: There is a community of <span class="math inline"><em>n</em></span> users for which there is an unknown secret <span class="math inline"><em>s</em></span> that is set by a trusted administrator, who then generates “shares” of this secret <span class="math inline"><em>s</em><sub>1</sub>, <em>s</em><sub>2</sub>, ..., <em>s</em><sub><em>n</em></sub></span>, one of each user. A single user’s share gives no information about the secret, but if any two users get together they can use their two shares in order to compute the secret <span class="math inline"><em>s</em></span>. To simplify matters, we will assume that all values are in the range <span class="math inline">0</span> to <span class="math inline"><em>p</em> − 1</span> for some prime number <span class="math inline"><em>p</em></span>.</p>
+<p>The following scheme solves this problem — this is really just Shamir’s secret sharing scheme, described in Section 13.3.1 of the textbook, but limited to (2,n) secret-sharing:</p>
+<ul>
+<li>The administrator picks a random value <span class="math inline"><em>r</em></span> that is uniformly distributed over <span class="math inline">0, …, <em>p</em> − 1</span>.</li>
+<li>Each share is the pair <span class="math inline"><em>s</em><sub><em>i</em></sub> = (<em>i</em>, <em>v</em><sub><em>i</em></sub>)</span>, where <span class="math inline"><em>v</em><sub><em>i</em></sub> = [<em>s</em> + <em>i</em> ⋅ <em>r</em> mod <em>p</em>])</span>.</li>
+</ul>
+<p>
+<p>To see that this solves the 2-of-n secret sharing problem, answer the following questions:</p>
+<ol type="a">
+<li><p>Derive an algorithm that can take two different shares, <span class="math inline"><em>s</em><sub><em>i</em></sub> = (<em>i</em>, <em>v</em><sub><em>i</em></sub>)</span> and <span class="math inline"><em>s</em><sub><em>j</em></sub> = (<em>j</em>, <em>v</em><sub><em>j</em></sub>)</span>, and compute the secret <span class="math inline"><em>s</em></span>.</p></li>
+<li><p>Prove that one share gives no information about the secret. In other words, prove that <span class="math inline"><em>P</em><em>r</em>[<em>s</em><sub><em>i</em></sub> = (<em>i</em>, <em>v</em><sub><em>i</em></sub>)] = 1/<em>p</em></span> regardless of the secret <span class="math inline"><em>s</em></span>, where the probability is taken over the random choice of <span class="math inline"><em>r</em></span>. [<em>Note: This is the same condition as equation (2.1) from the textbook, which was the condition for perfect secrecy in encryption, and so this implies perfect secrecy for this secret-sharing scheme.</em>]</p></li>
+<li><p>Show that the modulus must be prime in order for this to work. To show this, find a non-prime modulus <span class="math inline"><em>n</em></span> (like <span class="math inline"><em>n</em> = 8</span>) and two different secrets <span class="math inline"><em>s</em></span> and <span class="math inline"><em>s</em>′</span> can give two users the exact same shares for both secrets <span class="math inline"><em>s</em></span> or <span class="math inline"><em>s</em>′</span>. This shows that the secret cannot be uniquely determined by these two users, so the scheme doesn’t work.</p></li>
+</ol></li>
+</ol>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

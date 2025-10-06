@@ -1,0 +1,328 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.9" />
+<title>CSC 495/680&#8201;&#8212;&#8201;Spring 2015&#8201;&#8212;&#8201;Class Information and Syllabus</title>
+<link rel="stylesheet" href="classstyle.css" type="text/css" />
+
+
+<script type="text/javascript" src="https://home.uncg.edu/cmp/faculty/srtate/495.s15/classstyle.js"></script>
+<script type="text/javascript">
+/*<![CDATA[*/
+asciidoc.install();
+/*]]>*/
+</script>
+</head>
+
+<body class="article">
+<div class="classheader">
+<table border="0" cellpadding="0" cellspacing="0">
+<tbody><tr><td><img src="Matrix.jpg" alt="CSC 495: Software Security" /></td>
+<td style="padding:4px;">CSC 495/680<br/>
+Software Security<br/>
+<div style="padding-top:0.5em;"><a href="http://www.uncg.edu/cmp/">Dept of Computer Science</a></div>
+<a href="http://www.uncg.edu/">UNC Greensboro</a>
+</td></tr>
+</tbody></table>
+</div>
+<div class="classnav" style="font-family:arial;width:auto;float:left;margin-top:1em;">
+<div class="classnavHead">Navigation</div>
+<div class="classnavItem"><a href="index.html">HOME</a></div>
+<div class="classnavActive"><a href="syllabus.html">SYLLABUS</a></div>
+<div class="classnavItem"><a href="sched.html">SCHEDULE</a></div>
+<div class="classnavItem"><a href="readings.html">READINGS</a></div>
+<div class="classnavItem"><a href="notes.html">NOTES</a></div>
+<div class="classnavItem"><a href="handouts.html">HANDOUTS</a></div>
+<div class="classnavItem"><a href="assign.html">ASSIGNMENTS</a></div>
+<div class="classnavItem"><a href="https://blackboard.uncg.edu/">BLACKBOARD</a></div>
+<div class="classnavItem"><a href="moreinfo.html">MORE INFO</a></div>
+</div>
+<div class="classcontent" id="content">
+<div class="paragraph"><p>A <a href="syllabus.pdf">printable PDF</a> is available.</p></div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph"><p><strong>Instructor:</strong> <a href="http://www.uncg.edu/cmp/faculty/srtate/index.php">Stephen
+R. Tate (Steve)</a> <br />
+<strong>Lectures:</strong> Tues/Thurs 2:00-3:15, Petty 227 <br />
+<strong>Office:</strong> Petty 166 <br />
+<strong>Office Hours:</strong> Tues/Thurs 10:30-12:00, or by appointment<br />
+<strong>Phone:</strong> 336-256-xxxx [old number] <br />
+<strong>E-mail:</strong>
+<script type="text/javascript">var teststring = "utvcvgBwpei0gfw";for (i=0;i<teststring.length;i++) {document.write(String.fromCharCode(teststring.charCodeAt(i)-2));}</script><noscript type="text/javascript"><img src="https://home.uncg.edu/cmp/faculty/srtate/pics/email.png" /></noscript></p></div>
+<div class="paragraph"><p><strong>Class Web Page:</strong>
+<a href="http://www.uncg.edu/cmp/faculty/srtate/495/"><code>http://www.uncg.edu/cmp/faculty/srtate/495/</code></a></p></div>
+<div class="paragraph"><p><strong>Prerequisites:</strong> <em>Required</em>: CSC 330. <em>Recommended</em>: CSC 339 or other experience
+with C, C++, or another language that supports raw pointers.</p></div>
+<div class="paragraph"><p><strong>Course Description:</strong> This course will cover common vulnerabilities in
+software, and how software bugs can have serious security
+consequences. We will consider buffer overflows, return-oriented
+programming, stack smashing, integer overflow, SQL injection,
+cross-site scripting, and other classes of vulnerabilities. We will
+also look at techniques for avoiding these vulnerabilities, ranging
+from good programming practices to the use of static analysis and
+other tools. The course will be experimental, with students locating,
+exploiting, and fixing vulnerabilities throughout the semester.</p></div>
+<div class="paragraph"><p><strong>Student Learning Outcomes:</strong> Upon successful completion of this course
+students will be able to</p></div>
+<div class="olist arabic"><ol class="arabic">
+<li>
+<p>
+identify common types of software-based security vulnerabilities,
+</p>
+</li>
+<li>
+<p>
+describe the consequences of common types of software-based security vulnerabilities,
+</p>
+</li>
+<li>
+<p>
+classify common patterns of attacks and vulnerabilities,
+</p>
+</li>
+<li>
+<p>
+use tools to improve robustness of software,
+</p>
+</li>
+<li>
+<p>
+perform a basic security audit of a software system, and
+</p>
+</li>
+<li>
+<p>
+discuss fundamental computational limitations of automated software analysis.
+</p>
+</li>
+</ol></div>
+<div class="paragraph"><p><strong>Textbook and Readings:</strong> There is no textbook for this course. The
+course will be organized around readings that are freely available on
+the Internet, taken largely (but not exclusively!) from the following sources:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<a href="http://cwe.mitre.org/">MITRE Common Weakness Enumeration (CWE) documentation</a>
+</p>
+</li>
+<li>
+<p>
+<a href="http://www.owasp.org/">The Open Web Application Security Project (OWASP) documentation</a>
+</p>
+</li>
+<li>
+<p>
+<a href="http://capec.mitre.org/">MITRE Common Attack Pattern Enumeration and Classification</a>
+</p>
+</li>
+<li>
+<p>
+<a href="http://www.securecoding.cert.org/">CERT secure coding standards</a>
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>In addition, students will read several research papers to gain
+familiarity with current research standards and trends in software
+security. Graduate students will read additional and more advanced
+research papers. Readings will be posted and updated regularly in the
+&#8220;<a href="readings.html">Readings</a>&#8221; section of the class web site.</p></div>
+<div class="paragraph"><p><strong>Technology and Programming Languages:</strong> We will look at a <em>lot</em> of
+code in this class. Activities will involve working with Linux systems
+and with a wide variety of programming languages, including assembly
+language, C, C++, JavaScript, PHP, and more. Students are not
+expected to know all of these languages currently, but should be
+proficient programmers with good knowledge of assembly language,
+C++, and Java. None of the other languages that we will use are
+based on radically different concepts, and as upper-level computer
+science students you should be able follow examples in these languages
+and pick up enough of the basics to do the exercises required for the
+class.</p></div>
+<div class="paragraph"><p>This class will make heavy use of a Linux environment and Linux tools.
+No prior experience with Linux is necessary, but students
+without prior experience are expected to learn the necessary skills
+on their own.</p></div>
+<div class="paragraph"><p><strong>Class-Selected &#8220;Target Programs&#8221;:</strong> In order to gain experience
+auditing software for security vulnerabilities, the class will select
+(through an in-class discussion the first week of the semester) 2-5
+open source software projects that will be used throughout the
+semester. As we discuss different types of vulnerabilities, students
+will be assigned the task of checking for each of these types of
+vulnerabilities in the target software.</p></div>
+<div class="paragraph"><p><strong>Ethics and Responsible Disclosure:</strong> Students should not, under any
+circumstance, test for vulnerabilities in deployed systems that they
+do not have permission to test in such a manner. The lab facilities
+available to students are more than adequate for setting up test
+systems and allowing for experimentation.  Any vulnerabilities
+discovered in software systems should be reported using standards of
+responsible disclosure. This will be discussed in class, and if there
+are any questions about experimentation or disclosure you should speak
+with the instructor.</p></div>
+<div class="paragraph"><p><strong>Teaching Methods and Assignments:</strong> This class will meet for two
+75-minute periods per week, and class meetings will consist of a
+combination of lecture/presentation, discussion, and in-class
+exercises. Students must to come to class prepared, having done all
+required readings, and are expected to participate in in-class
+activities. Grades are based on student work done in assignments and
+exams.</p></div>
+<div class="paragraph"><p><em>In-Class Exercises:</em> Some class days will include in-class activities
+that can involve working through problems or completing tasks on a
+worksheet. Students must complete these activities during the class
+period in which they are distributed.</p></div>
+<div class="paragraph"><p><em>Assignments:</em> There will be approximately four homework assignments
+during the semester. Assignments may include problems that involve
+analyzing existing code for security vulnerabilities (either manually
+or using analysis tools), writing code to explore the consequences of
+vulnerabilities, and patching software to remove
+vulnerabilities. Homeworks may also include written questions that
+involve discussion or analysis in a more general setting (not
+code-based).</p></div>
+<div class="paragraph"><p><em>Exams:</em> There will be one mid-term exam on Thursday, March 5, during
+the regular class period. The final exam will be held according to the
+official UNCG Final Exam Schedule, which lists the time for this exam
+as Thursday, April 30, 3:30-6:30. The format of the final exam for
+this class might be unconventional: more information will be provided
+at least two weeks before the end of classes.</p></div>
+<div class="paragraph"><p><em>Graduate Students:</em> In addition to the work described above, graduate
+students will be given approximately four research papers during the
+semester to read and report on with a 1-2 page written summary and
+critique. In addition, graduate students will complete a project based
+on current research in a software security topic of their own choosing,
+with the result typically being a 10-15 page survey paper summarizing
+research related to that topic.</p></div>
+<div class="paragraph"><p><strong>Evaluation and Grading:</strong> Each student work product will be graded, and
+the student&#8217;s final grade will be determined by assigning each category
+of work a weighted score according to the following distribution:</p></div>
+<div class="tableblock">
+<table rules="all"
+style="margin-left:auto; margin-right:auto;"
+width="60%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 1. Undergraduates</caption>
+<col width="66%" />
+<col width="33%" />
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">Assignments and Class Exercises</p></td>
+<td align="center" valign="top"><p class="table">45%</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">Mid-term Exam</p></td>
+<td align="center" valign="top"><p class="table">25%</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">Final Exam</p></td>
+<td align="center" valign="top"><p class="table">30%</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tableblock">
+<table rules="all"
+style="margin-left:auto; margin-right:auto;"
+width="60%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 2. Graduate Students</caption>
+<col width="66%" />
+<col width="33%" />
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">Assignments and Class Exercises</p></td>
+<td align="center" valign="top"><p class="table">40%</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">Mid-term Exam</p></td>
+<td align="center" valign="top"><p class="table">20%</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">Final Exam</p></td>
+<td align="center" valign="top"><p class="table">25%</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">Research Reports Project</p></td>
+<td align="center" valign="top"><p class="table">15%</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="paragraph"><p><strong>Topic Outline and Calendar:</strong> Since this class has not been offered
+before, the timing and precise list of topics may change during the
+semester. For the current and planned list of topics and dates, please
+see the &#8220;<a href="sched.html">Schedule</a>&#8221; area of the class web site.</p></div>
+<div class="paragraph"><p><strong>Academic Integrity:</strong> Students are expected to be familiar with and
+abide by the UNCG Academic Integrity Policy, which is online at
+<a href="http://academicintegrity.uncg.edu/">http://academicintegrity.uncg.edu/</a></p></div>
+<div class="paragraph"><p>Assignments in this class are for individual work, unless explicitly
+stated otherwise. General concepts and material covered in the class
+may be discussed with other students or in study groups, but specific
+assigned problems should not be discussed and all submitted work
+should be entirely your own.  If you use external references
+(including web sites, books, etc.) in preparing your solutions, you
+should clearly mark the part(s) of your solution influenced by these
+references and provide clear citations to the source of information
+you are using. Sharing your own work is a serious violation of academic
+integrity, and if homework is copied then <em>both</em> the person who
+actually did the work and the person who copied it will be punished.
+Any incidents of academic dishonesty will be handled strictly,
+resulting in either a zero on the assignment or an F in the class,
+depending on the severity of the incident, and incidents will be
+reported to the appropriate UNCG office.</p></div>
+<div class="paragraph"><p><strong>Attendance Policy:</strong> Attendance will not be taken in class, and is
+voluntary; however, all students are responsible for everything done
+or said in class (this can include changes in assignments, due dates,
+etc.). Note that this is a very dynamic class, based on a collection
+of readings rather than a structured textbook, so it is highly
+unlikely that a student who regularly misses classes will be
+successful in the course. The university allows for a limited number
+of excused absences for religious observances&#8201;&#8212;&#8201;students who plan to
+take such an absence should notify the instructor at least two weeks
+in advance so that accommodations can be made (see the late work
+policy below). It is the student&#8217;s responsibility to obtain notes from
+another student if they miss class.</p></div>
+<div class="paragraph"><p><strong>Late Policy and Makeup Exams:</strong> Assignments are due at the beginning
+of class on the due date, and may be turned in up to 7 calendar days
+late with a 25% late penalty. Students with planned absences, whether
+for university events, religious observance, or other reason, are
+expected to make arrangements with the instructor to turn in
+assignments or take exams before the scheduled date of the assignment
+or test. No assignment will be accepted more than 7 calendar days
+after the original due date!</p></div>
+<div class="paragraph"><p>Exam/test dates will be announced at least two weeks in advance, and
+may be made up only if it was missed due to an extreme emergency and
+arrangements are made before the exam date. Exams (including the
+final) may not be taken early or late due to personal travel plans.</p></div>
+<div class="paragraph"><p><strong>In-class Behavior:</strong> When you are in class you should be focused on
+the class, and you should act in a professional and mature
+manner. During class there should be no eating, drinking,
+e-cigarettes, cellphone use, non-class related laptop, or anything
+else that does not pertain to the class activities. Any distracting
+items may be confiscated at the discretion of the instructor.</p></div>
+<div class="paragraph"><p><strong>ADA Statement:</strong> UNCG seeks to comply fully with the Americans with
+Disabilities Act (ADA). Students requesting accommodations based on a
+disability must be registered with the Office of Accessibility Resources
+and Services located in 215 Elliott University Center: (336) 334-5440
+(or <a href="http://ods.uncg.edu"><code>http://ods.uncg.edu</code></a>).</p></div>
+<div class="paragraph"><p><strong>University Closings:</strong> If university facilities are closed due to flu
+outbreak or other emergencies, it does not mean that classes are
+canceled. In such an event, please check the class web page and
+Blackboard site for information about if and how the class will proceed.</p></div>
+<div class="paragraph"><p><strong>Commercial note-taking services:</strong> Selling class notes for commercial
+gain or purchasing such class notes in this or any other course at UNCG
+is a violation of the University&#8217;s Copyright Policy and of the Student
+Code of Conduct. Sharing notes for studying purposes, or borrowing notes
+to make up for absences, without commercial gain, are not violations.</p></div>
+</div>
+</div>
+</div>
+<div style="clear:both;"></div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2015-01-12 22:22:28 EST
+</div>
+</div>
+</body>
+</html>

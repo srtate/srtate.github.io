@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>CSC 581 - Fall 2018 - Assignments</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="https://home.uncg.edu/cmp/faculty/srtate/css/class_srtate.css" rel="stylesheet">
+
+  </head>
+
+
+  <body>
+
+        <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark uncg-navbar fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="https://www.uncg.edu/">
+          <img class="collapse navbar-collapse" src="https://home.uncg.edu/cmp/faculty/srtate/img/uncg_class.png" alt="UNC Greensboro">
+          <img class="navbar-toggler" src="https://home.uncg.edu/cmp/faculty/srtate/img/uncg_mobile.png" alt="UNCG">
+        </a>
+        <div class="navbar-brand d-flex flex-column text-left"
+	     style="line-height: 1.2;">
+          <span>CSC 581</span>
+          <span class="small collapse navbar-collapse"><em>Principles of Computer Security</em></span>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link " href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="syllabus.html">Syllabus</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="schedule.html">Schedule</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="assignments.html">Assignments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://uncg.instructure.com/">Canvas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- Page Content -->
+    <div class="container">
+   
+        <h1 id="csc-581---fall-2018---assignments">CSC 581 - Fall 2018 - Assignments</h1>
+<p>The following assignments have been given, with due dates as shown:</p>
+<ul>
+<li><p><a href="assign1.pdf">Assignment 1</a> – Due: Tuesday, September 11</p></li>
+<li><p>Assignment 2 – Due: Tuesday, September 25</p>
+<p>Complete the “<a href="http://www.cis.syr.edu/~wedu/seed/Labs_16.04/Software/Environment_Variable_and_SetUID/">Environment Variable and Set-UID Lab</a>” from the Syracuse SEED Labs. You are encouraged to work on your own computer – install VirtualBox, download and set up the SEED Labs Ubuntu 16.04 virtual machine, and do your work there. Alternatively, you can use the SEED Lab image hosted on the class server (we will go over this in class, and a summary of instructions is <a href="servervms.html">available here</a>.</p>
+<p>Your assignment submission will be a lab report, describing what you did, what you saw, and what you learned. This should be typed and submitted electronically in <a href="https://uncg.instructure.com/">Canvas</a>.</p></li>
+<li><p>Assignment 3 – Due: <del>Tuesday, October 16</del> Thursday, October 18</p>
+<p>Complete the “<a href="http://www.cis.syr.edu/~wedu/seed/Labs_16.04/Software/Buffer_Overflow/">Buffer-Overflow Vulnerability Lab</a>” from the Syracuse SEED Labs. As in the last assignment, you can either use a virtual machine on your own computer, or the one that is set up for you on the class server.</p></li>
+<li><p>Assignment 4 – Due: Tuesday, November 6</p>
+<p>Complete the "<a href="http://www.cis.syr.edu/~wedu/seed/Labs_16.04/Networking/TCP_Attacks/">TCP/IP Attack Lab</a> from the Syracuse SEED Labs.</p>
+<p>Note that this lab requires multiple virtual machines running simultaneously. Each virtual machine takes up a good chunk of RAM, so if you are running this on a machine with less than 8GB RAM then running 3 VMs simultaneously is a bit of a stretch. It is perfectly acceptable to do this lab with just two VMs, with the “attacker” tasks being executed on the client or server VMs. That’s a little less realistic, but you use and see all the same concepts.</p>
+<p>Tip 1: Make sure you follow the instructions in the SEED Lab VirtualBox setup manual for setting up multiple virtual machines (Appendix B). To make your work a little easier, you should look into the “Customization” directory on the SEED Lab VMs to make each VM look a little different (visual cues are very helpful!). Note that one step is missing: To install the custom icons in the Launch bar, the <code>.desktop</code> files must be executable. Just go into the <code>Customization</code> directory and execute the command “<code>chmod a+x *.desktop</code>” to fix this problem.</p>
+<p>Tip 2: Unfortunately, “NAT Network” mode is broken in the standard Ubuntu VirtualBox packages. If your host computer is running Ubuntu (or a variant, like Mint) then you should install the VirtualBox packages from Oracle – not from Ubuntu.</p>
+<p>Tip 3: The third main task, interfering with video streaming, won’t work with modern, robust video stream sites (like YouTube). Try it anyway and see what happens. For 5 points extra credit, use Wireshark to capture packets so you can see what is going on when this attack is launched against a browser streaming a YouTube video and explain what happens. Note that video streaming sends a <em>lot</em> of packets, so only capture 2 or 3 seconds of streaming under this attack or you’ll have way too much to look at.</p>
+<p>And finally: Everything in this lab can be done with the <code>netwox</code> tool automating the attacks. For up to 25 points extra credit, do the exercises with Scapy. You’ll need to do some tutorials to see how to make Scapy work (and you’ll need to be able to write simple Python programs), but this is a very beneficial exercise if you have the time to take it on!</p></li>
+<li><p>Assignment 5 – Due: Tuesday, November 27</p>
+<p>This assignment uses the OWASP SecurityShepherd lessons and challenges that are available on the class server. First, follow the instructions that are on Canvas or were given in class to register for an account on the server. You will see a menu on the left side of the screen giving different “levels” of challenges, with increasing difficulty. Everyone should be able to do all of the “Field Training” and “Private” level challenges, and a few of the harder ones.</p>
+<p>You should write up a brief (1-2 sentences) description of each level solved describing the solution and how you figured it out, and should submit this write-up in Canvas. The maximum possible assignment grade is calculated based on the number points earned from challenges, translated as follows:</p>
+<ul>
+<li><p>90 points: 60% (this corresponds to all “Field Training” challenges)</p></li>
+<li><p>150 points: 70% (all “Field Training” and at least two “Private”)</p></li>
+<li><p>405 points: 85% (all “Field Training” and “Private”)</p></li>
+<li><p>500 points: 100% (at least two challenges above “Private”)</p></li>
+</ul>
+<p>Anything above 500 points will provide extra credit (up to 25% extra credit)</p>
+<p>Tips and hints will be posted to Canvas.</p></li>
+</ul>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

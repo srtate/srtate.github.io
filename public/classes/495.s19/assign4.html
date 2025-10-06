@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Stephen R. Tate">
+
+    <title>Assignment 4 -- Due Wed, March 27</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="https://home.uncg.edu/cmp/faculty/srtate/css/class_srtate.css" rel="stylesheet">
+
+  </head>
+
+
+  <body>
+
+        <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark uncg-navbar fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="https://www.uncg.edu/">
+          <img class="collapse navbar-collapse" src="https://home.uncg.edu/cmp/faculty/srtate/img/uncg_class.png" alt="UNC Greensboro">
+          <img class="navbar-toggler" src="https://home.uncg.edu/cmp/faculty/srtate/img/uncg_mobile.png" alt="UNCG">
+        </a>
+        <div class="navbar-brand d-flex flex-column text-left"
+	     style="line-height: 1.2;">
+          <span>CSC 495/680</span>
+          <span class="small collapse navbar-collapse"><em>Modern Cryptography</em></span>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link " href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="syllabus.html">Syllabus</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="schedule.html">Schedule</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="assignments.html">Assignments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://uncg.instructure.com/">Canvas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- Page Content -->
+    <div class="container">
+   
+        <h3 id="assignment-4-due-wednesday-march-27">Assignment 4: Due Wednesday, March 27</h3>
+<ol type="1">
+<li><p>Textbook, page 148, Exercise 4.7, parts a and b.</p>
+<p><em>Hint:</em> Make sure you understand Construction 4.7 and why each part of the construction is needed. Each one protects against a particular weakness that the MACs in this problem are vulnerable to.</p></li>
+<li><p>An “error-detecting code” is a fixed-length code computed from a message, similar to how a MAC tag is computed from a message, and is designed to detect random errors in transmission. One of the most popular error-detecting codes is called a “Cyclic Redundancy Check,” with one important version abbreviated CRC32 since it produces a 32-bit error-detecting code. For this question, the actual CRC32 algorithm is irrelevant, but you need to know that for any messages <span class="math inline"><em>m</em><sub>1</sub></span> and <span class="math inline"><em>m</em><sub>2</sub></span>, <span class="math inline"><em>C</em><em>R</em><em>C</em>32(<em>m</em><sub>1</sub> ⊕ <em>m</em><sub>2</sub>) = <em>C</em><em>R</em><em>C</em>32(<em>m</em><sub>1</sub>) ⊕ <em>C</em><em>R</em><em>C</em>32(<em>m</em><sub>2</sub>)</span> (mathematically, this means that CRC32 is “a homomorphism with respect to exclusive-or”).</p>
+<p>The original designers of security for 802.11 wireless ethernet (WiFi) created WEP (Wired Equivalent Privacy) with the goal of providing cryptographic protections. They knew that CRC32 wasn’t strong enough to protect against malicious adversaries, so they created a MAC by exclusive-or’ing the output of CRC32 with a value computed with a pseudo-random function <span class="math inline"><em>F</em> : {0, 1}<sup><em>n</em></sup> × {0, 1}<sup>*</sup> → {0, 1}<sup>32</sup></span> with a random input. In particular, they created a canonical MAC in which the MAC function is computed using key <span class="math inline"><em>k</em></span> and message <span class="math inline"><em>m</em></span> as follows:</p>
+<ul>
+<li>Select random 32-bit random <span class="math inline"><em>r</em></span></li>
+<li>Compute <span class="math inline"><em>t</em> := <em>F</em><sub><em>k</em></sub>(<em>r</em>) ⊕ <em>C</em><em>R</em><em>C</em>32(<em>m</em>)</span></li>
+<li>Return the pair <span class="math inline">⟨<em>r</em>, <em>t</em>⟩</span> as the tag</li>
+</ul>
+<p>Prove that this is not a secure MAC. This should follow from the fact that CRC32 is a homomorphism, and <em>not</em> from the length of the tag. (If the tag being so short bothers you, pretend that it is 256 bits long instead of 32 bits.)</p></li>
+<li><p>Textbook, page 149, Exercise 4.12</p>
+<p><em>Hint:</em> This is a modified version of the proof to Theorem 4.8. Even though it is similar to the proof in the book, you need to write out the entire proof — don’t just talk about what changes, but rather give a full, self-contained proof.</p></li>
+<li><p>Textbook, page 191, Exercise 5.10</p>
+<p><em>Note:</em> This is unfortunately a common way that people attempt to create a MAC, and it is totally insecure when used with a hash function built using the Merkle-Damgard construction, like MD5, SHA1, or SHA2. How common is it to mistakenly do this? If you look back at your textbook from CSC 581, you’ll see that the authors of that book actually used this insecure construction for a MAC in Section 1.3.4 (page 36). Ouch.</p></li>
+<li><p>Consider a fixed-length hash function <span class="math inline">(Gen, <em>h</em>)</span> that takes inputs of length <span class="math inline">2<em>n</em></span> and produces an output with length <span class="math inline"><em>n</em></span> that is fully-secure (collision-resistant, second-preimage resistant, and preimage resistant). Now consider a user that wants to use this hash function for inputs that are twice as long (<span class="math inline">4<em>n</em></span> bits). He decides that since the outputs of the hash function look random, and exclusive-or with random values produces a random value, he can just hash the two halves of the input separately and exclusive-or the results together. More specifically, he creates a hash function <span class="math inline">(Gen, <em>g</em>)</span> that computes function <span class="math inline"><em>g</em></span> for a <span class="math inline">4<em>n</em></span>-bit input value <span class="math inline"><em>x</em></span> by first chopping it into two <span class="math inline">2<em>n</em></span>-bit pieces <span class="math inline"><em>x</em><sub>1</sub></span> and <span class="math inline"><em>x</em><sub>2</sub></span> (so <span class="math inline"><em>x</em> = <em>x</em><sub>1</sub> ∥ <em>x</em><sub>2</sub></span>), and then <span class="math inline"><em>g</em><sup><em>s</em></sup>(<em>x</em><sub>1</sub> ∥ <em>x</em><sub>2</sub>) = <em>h</em><sup><em>s</em></sup>(<em>x</em><sub>1</sub>) ⊕ <em>h</em><sup><em>s</em></sup>(<em>x</em><sub>2</sub>)</span>.</p>
+<p>Is <span class="math inline">(Gen, <em>g</em>)</span> collision resistant? Is it second-preimage resistant? Justify your answer (your justification needs to be clear, precise, and unambiguous, but you don’t need to write full mathematical proofs).</p></li>
+</ol>
+
+    </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+  </body>
+
+</html>

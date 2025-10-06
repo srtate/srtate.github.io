@@ -1,0 +1,368 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.9" />
+<title>CSC 495&#8201;&#8212;&#8201;Assignment 3&#8201;&#8212;&#8201;Due Tuesday, April 14</title>
+<link rel="stylesheet" href="classstyle.css" type="text/css" />
+
+
+</head>
+
+<body class="article">
+<div class="classheader">
+<table border="0" cellpadding="0" cellspacing="0">
+<tbody><tr><td><img src="Matrix.jpg" alt="CSC 495: Software Security" /></td>
+<td style="padding:4px;">CSC 495/680<br/>
+Software Security<br/>
+<div style="padding-top:0.5em;"><a href="http://www.uncg.edu/cmp/">Dept of Computer Science</a></div>
+<a href="http://www.uncg.edu/">UNC Greensboro</a>
+</td></tr>
+</tbody></table>
+</div>
+<div class="classnav" style="font-family:arial;width:auto;float:left;margin-top:1em;">
+<div class="classnavHead">Navigation</div>
+<div class="classnavItem"><a href="index.html">HOME</a></div>
+<div class="classnavItem"><a href="syllabus.html">SYLLABUS</a></div>
+<div class="classnavItem"><a href="sched.html">SCHEDULE</a></div>
+<div class="classnavItem"><a href="readings.html">READINGS</a></div>
+<div class="classnavItem"><a href="notes.html">NOTES</a></div>
+<div class="classnavItem"><a href="handouts.html">HANDOUTS</a></div>
+<div class="classnavActive"><a href="assign.html">ASSIGNMENTS</a></div>
+<div class="classnavItem"><a href="https://blackboard.uncg.edu/">BLACKBOARD</a></div>
+<div class="classnavItem"><a href="moreinfo.html">MORE INFO</a></div>
+</div>
+<div class="classcontent" id="content">
+<div class="paragraph"><p>A <a href="assign3.pdf">printable PDF</a> is available.</p></div>
+<div class="sect1">
+<h2 id="_csc_495_8201_8212_8201_assignment_3_8201_8212_8201_due_tuesday_april_14">CSC 495&#8201;&#8212;&#8201;Assignment 3&#8201;&#8212;&#8201;Due Tuesday, April 14</h2>
+<div class="sectionbody">
+<div class="olist arabic"><ol class="arabic">
+<li>
+<p>
+This problem deals with the clang output at
+<a href="http://cs.uncg.edu/faculty/srtate/495.s15/clang.html">http://cs.uncg.edu/faculty/srtate/495.s15/clang.html</a>
+and in particular the report for <code>clamav-0.98.5</code>. Bring up the report
+for the first item in the API Bug Group, referring to line 711 of
+<code>libltdl/ltdl.c</code>&#8201;&#8212;&#8201;the claim is that <code>filename</code> could be NULL,
+leading to a null pointer dereference when <code>strcpy</code> is
+called. However, this actually can never happen. For this problem,
+write a clear argument showing why there cannot be a null pointer
+dereference at this line (do this similar to the argument
+we wrote in class on March 26). <em>Hint: Look at how the variables
+<code>filename</code> and <code>filenamesize</code> are initialized and how they change
+relative to one another in the while loop starting at line 697.
+Combining this with the test on line 701, you should be able to
+prove that <code>filename</code> will not only never be NULL on line 711, but
+that it is in fact pointing to a buffer large enough to hold a copy of <code>dir_name</code>.</em>
+</p>
+</li>
+<li>
+<p>
+The <code>cppcheck</code> tool sometimes tries to guess the intentions of the
+programmer based on how the code is written, rather than exhaustively
+trying execution paths. One of the common warnings says &#8220;Possible
+null pointer dereference: xxxx - otherwise it is redundant to check it
+against null,&#8221; where xxxx is a variable name. This message will have
+two indicated line numbers in the source file, where the first one is
+the questionable use of a variable (possibly a null pointer
+dereference), and the second one is a line in which the programmer
+tested whether the variable was null, with no change to the variable
+between these two spots. The reasoning is this: why would the
+programmer test whether the variable was null, unless there is a
+possibility that it could in fact be null. And if it could be null, it
+shouldn&#8217;t be dereferenced.
+</p>
+<div class="olist loweralpha"><ol class="loweralpha">
+<li>
+<p>
+There are quite a few of these messages in the <code>cppcheck</code> output for
+<code>clamav-0.98.5</code> in the class
+<a href="http://cs.uncg.edu/faculty/srtate/495.s15/clang.html">sample static
+analysis outputs</a>. In each of the locations listed below, there is in
+fact no possibility of a null pointer dereference, and it&#8217;s the second
+part of the statement (&#8220;it is redundant to check it&#8221;) that is the
+case. For this problem, you are to look at one of these locations in
+the code, and write up a clear argument about why that pointer usage
+cannot be a null pointer dereference. The location you should look at
+is determined by the first letter of your UNCG/cmpunix username, and
+the location is assigned in the following table.
+</p>
+<div class="tableblock">
+<table rules="all"
+style="margin-left:auto; margin-right:auto;"
+width="80%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 1. Assignment of cppcheck notices by first letter of username</caption>
+<col width="25%" />
+<col width="75%" />
+<tbody>
+<tr>
+<td align="center" valign="top"><p class="table">c-d</p></td>
+<td align="left" valign="top"><p class="table"><code>freshclam/manager.c:851</code></p></td>
+</tr>
+<tr>
+<td align="center" valign="top"><p class="table">e-i</p></td>
+<td align="left" valign="top"><p class="table"><code>libclamav/readdb.c:232</code></p></td>
+</tr>
+<tr>
+<td align="center" valign="top"><p class="table">j</p></td>
+<td align="left" valign="top"><p class="table"><code>sigtool/sigtool.c:2259</code></p></td>
+</tr>
+<tr>
+<td align="center" valign="top"><p class="table">k-p</p></td>
+<td align="left" valign="top"><p class="table"><code>sigtool/sigtool.c:2348</code></p></td>
+</tr>
+<tr>
+<td align="center" valign="top"><p class="table">s-w</p></td>
+<td align="left" valign="top"><p class="table"><code>win32/3rdparty/libxml2/SAX2.c:1170</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li>
+<p>
+One of the messages is a little harder to reason about than the
+others, and requires looking at how a variable changes across two
+different functions, as well as thinking about how Boolean expression
+short-cutting works. Write up a clear argument for location
+<code>shared/actions.c:85</code>
+</p>
+</li>
+<li>
+<p>
+If the check is redundant, can you think of any reason it is good
+to keep in the code?
+</p>
+</li>
+</ol></div>
+</li>
+<li>
+<p>
+For this problem, you are to run both the clang static analyzer and
+<code>cppcheck</code> on <code>getfile.c</code> that you wrote in Assignment 1.
+This will identify potential problems, and you should address each
+one by either fixing the problem or writing a justification of why
+this really isn&#8217;t a problem. If you did not get this program written
+with your earlier assignment, you can use the one that is on <code>cmpunix</code>
+under <code>/csc495/hw3/getfile.c</code>.
+</p>
+<div class="paragraph"><p>Before you start, make a copy of your original file as
+<code>getfile-orig.c</code>&#8201;&#8212;&#8201;this will allow me to compare your final version,
+after you make corrections, with the original code.</p></div>
+<div class="olist loweralpha"><ol class="loweralpha">
+<li>
+<p>
+You will first need to set up directories so that the clang static
+analyzer will be able to output its HTML report somewhere that you can
+access with a web browser. First create a subdirectory named
+<code>public_html</code> under your home directory using the <code>mkdir</code> command.
+</p>
+<div class="paragraph"><p>Next, you need to run the clang static analyzer using the
+<code>scan-build-3.6</code> program&#8201;&#8212;&#8201;you will need to tell it where to output
+the report (<code>~/public_html</code>) and the command to use to build your
+program (using the <code>gcc</code> compiler. The following command does this:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>scan-build-3.6 -o ~/public_html gcc getfile.c</code></pre>
+</div></div>
+<div class="paragraph"><p>Unfortunately, since the <code>cmpunix</code> system is set up by default to
+protect files so that other users can&#8217;t read them, that means the web
+server on <code>cmpunix</code> won&#8217;t be able to read them either. You need to
+change permissions so that the files can be read, and the easiest way
+to do that is with a command that says to recursively look at the
+files and directories in <code>~/public_html</code> and make them readable by all
+users:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>chmod --recursive a+r ~/public_html</code></pre>
+</div></div>
+<div class="paragraph"><p>After running that command, you should be able to see the report by
+bringing up a web browser on your local machine, and going to the web
+page <code>http://cmpunix.uncg.edu/~username</code> (where you replace <code>username</code>
+with your actual user name). You&#8217;ll actually see a directory listing
+with the scan results, where the name of the directory containing your
+report has the timestamp of when it was run. Go into that directory to
+see the actual report.
+For each error or warning, in
+your written assignment solution you should either describe how you
+fixed the problem, or justify that it isn&#8217;t actually a problem.</p></div>
+</li>
+<li>
+<p>
+Run <code>cppcheck</code> using the following command:
+</p>
+<div class="listingblock">
+<div class="content">
+<pre><code>cppcheck --enable=warning getfile.c 2&gt;cppcheck-errs.txt</code></pre>
+</div></div>
+<div class="paragraph"><p>This will output any errors and warnings to a file named
+<code>cppcheck-errs.txt</code>, which you can then look through to examine any
+problems. You should leave this file in your home directory so that I
+can find it when grading assignments. For each error or warning, in
+your written assignment solution you should either describe how you
+fixed the problem, or justify that it isn&#8217;t actually a problem.</p></div>
+</li>
+</ol></div>
+</li>
+<li>
+<p>
+In this question, you will work with the basics of the HTTP
+protocol, and demonstrate why it is hopeless to hide secrets in
+different parts of HTTP or to base decisions on trust in honest
+browser functioning. There are multiple ways to solve each of the
+parts below, and hints are given for one particular solution. The
+descriptions assume you are using the Google Chrome browser, but
+Firefox works pretty much the same as far as these questions go.
+</p>
+<div class="paragraph"><p>To start this question, use Google Chrome to access
+<a href="http://cmpunix.uncg.edu/hw3">http://cmpunix.uncg.edu/hw3</a>&#8201;&#8212;&#8201;note that
+if you start this problem and come back to it later, always start
+here, and don&#8217;t jump to an intermediate page directly. Each question
+below will reveal some &#8220;secret&#8221; that could be classified as
+&#8220;Steve&#8217;s ultimate pronouncements on nerd culture&#8221;&#8201;&#8212;&#8201;that might not
+make sense now, but it should as you get through these questions. For
+each part below, in your written homework solution give a clear
+description of actions you took to answer the question, and give the
+secret that you discover (feel free to disagree with the secret, but
+you must justify your disagreement!).</p></div>
+<div class="olist loweralpha"><ol class="loweralpha">
+<li>
+<p>
+When you click on the &#8220;Question 4 page&#8221; link, there will be a
+secret value returned in a custom HTTP header field. You can&#8217;t view
+HTTP headers without making a special effort to see them, and I would
+recommend using the Web Developer&#8217;s tools that are built in to all
+recent versions of Google Chrome. First type Shift-Ctrl-I to bring up
+the developer tool console (if this doesn&#8217;t work, you may have to go
+into the Chrome menu to find the tools). Next, select the &#8220;Network&#8221;
+tab in the tools console, and then click the &#8220;Question 4 page&#8221; link
+in the main browser window. After that page loads, click on the
+&#8220;hw3q4.php&#8221; entry in the network panel and look through the Response
+Headers for one that contains &#8220;CSC 495&#8221; in the name. That&#8217;s your
+first secret!
+</p>
+</li>
+<li>
+<p>
+Cookies are another place where some naive developers try to hide
+secrets. There are multiple ways to examine cookies, but if you are
+using the Chrome developer&#8217;s tools just click on &#8220;Resources&#8221; in the
+developer frame, and drill down under &#8220;Cookies&#8221; in the left-hand
+resources pane. Again, look for a cookie with &#8220;CSC 495&#8221; in the
+name. That&#8217;s your second secret!
+</p>
+</li>
+<li>
+<p>
+After completing parts a and b, you should be at a web page with a
+button at the bottom labeled &#8220;Click Here to Go On.&#8221; For this part,
+you are going to see how this works and how to tamper with its
+behavior. In the Chrome developer&#8217;s tools, click on the magnifying
+glass, which is a tool that lets you select an element in the main web
+page to examine. After selecting this tool, as you move the mouse over
+the web page, different parts will be highlighted, so hover over the
+button so that only the text in the button is highlighted and click
+there. That should show you the HTML form that this button belongs to
+in the developer window. Here&#8217;s an interesting trick: You can change
+the HTML that is loaded into the browser in the developer window. To
+do this, double click on an HTML field or attribute, and type in new
+values. To succeed at this part, you will need to change a field in
+the form, and the name of the field gives you a big hint as to what
+you should change it to. If you make the correct modification and then
+click the button, you&#8217;ll get to a page that reveals the next secret.
+</p>
+</li>
+<li>
+<p>
+After completing the last challenge, you&#8217;ll be teased that there is
+another secret waiting to be revealed. To do this, you&#8217;ll tamper with
+another part of the HTTP request: the cookies. Cookies seem hard to
+change directly in the browser: You can&#8217;t just go into the cookies
+resource pane and change them, so how do you do it? Can the server
+trust the values it receives? Again, there are several ways to do
+this, but the most powerful technique to know about is how to directly
+execute JavaScript statements in your browser. Here&#8217;s a web page that
+will give you a &#8220;how to&#8221;:
+<a href="http://nategood.com/quickly-add-and-edit-cookies-in-chrome">http://nategood.com/quickly-add-and-edit-cookies-in-chrome</a>
+(If you have difficulty making that work, enter the JavaScript at the
+prompt in the &#8220;Console&#8221; tab of developer tools rather than in the
+address bar&#8201;&#8212;&#8201;I think that&#8217;s
+easier anyway). After you change the
+cookie (you&#8217;ll have to figure out which one!), reload the page and the
+final secret should be revealed.
+</p>
+</li>
+<li>
+<p>
+In parts a-d, you saw that various normally-invisible parts of the
+HTTP protocol can be examined using the right tools, and values sent
+between browser and server can be tampered with so that a web server
+should never trust that a browser is behaving honestly. For this
+question part, try to come up with a way that a server could embed
+data into an HTTP interaction in such a way that it is both private
+and tamper-proof. You don&#8217;t need to know anything more about HTTP than
+what you used in parts a-d, but think about the basic ideas of
+cryptography that we are discussing in class. Describe your solution
+here&#8201;&#8212;&#8201;I don&#8217;t expect a perfect solution, but am more interested in
+how you think through this problem.
+</p>
+</li>
+</ol></div>
+</li>
+<li>
+<p>
+The browser same-origin policy (SOP) consists of several different
+policies, including an SOP for DOM access and an SOP for cookie
+access. The SOP for DOM access is based on the triple (protocol, host,
+port), while the SOP for sending cookies to sites involves the domain
+and path. Cookies designated &#8220;secure&#8221; are sent by the browser over
+HTTPS only. In current browsers, reading document.cookie in an HTTP
+context does not reveal secure cookies.
+</p>
+<div class="paragraph"><p>Suppose the SOP for DOM access was defined using only host and port
+(as was the case in Safari until Safari 3.0) and did not include the
+protocol.</p></div>
+<div class="olist loweralpha"><ol class="loweralpha">
+<li>
+<p>
+A &#8220;network attacker&#8221; is someone who can intercept and modify
+network communications. Explain how such an attacker could steal
+facebook.com cookies that are designated &#8220;secure.&#8221; Hint: A facebook
+user may login using a form served over https, but then receive a
+facebook.com page served over http. Consider injecting Javascript into the
+page served over http.
+</p>
+</li>
+<li>
+<p>
+A &#8220;web attacker&#8221; can set up a malicious web site and entice a
+browser to visit any site, but cannot intercept or forge network
+packets. Assume the user is willing to visit any site set up by the
+web attacker, but the web attacker can only set up web sites at
+domains other than facebook.com. For this part let&#8217;s assume that the
+facebook.com site has no XSS vulnerabilities. Under these assumptions,
+is it possible for a web attacker to steal facebook.com cookies that
+are designated &#8220;secure?&#8221; Describe an attack or explain why you believe
+none exists.
+</p>
+</li>
+</ol></div>
+</li>
+</ol></div>
+<div class="paragraph"><p><span class="small">Credit: The same-origin policy question is from CS155 at
+Stanford University</span></p></div>
+</div>
+</div>
+</div>
+<div style="clear:both;"></div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2015-03-30 21:40:56 EDT
+</div>
+</div>
+</body>
+</html>
