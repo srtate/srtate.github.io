@@ -1,0 +1,181 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title>CSC 330:  Advanced Data Structures</title>
+<link href="https://home.uncg.edu/cmp/faculty/srtate/classstyle.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td width="800"><img src="330banner.jpg" alt="CSC 330: Advanced Data Structures" /></td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+<col width="150" />
+<col width="700" />
+<tr><td valign="top">
+<div class="navigate">
+<div class="navhead">Navigation</div>
+<div class="navother">
+<a href="index.php.html">Class Home</a>
+</div>
+<div class="navother">
+<a href="syllabus.php.html">Syllabus</a>
+</div>
+<div class="navother">
+<a href="handouts.php.html">Handouts</a>
+</div>
+<div class="navother">
+<a href="assign.php.html">Assignments</a>
+</div>
+<div class="navother">
+<a href="moreinfo.php.html">More Information</a>
+</div>
+<img src="https://home.uncg.edu/cmp/faculty/srtate/pics/navtail.png" />
+</div>
+</td><td valign="top"><div class="main">
+
+<p>A <a href="assign1.pdf">printable PDF</a> is available.</p>
+
+    <H1 ALIGN=CENTER>Assignment 1 -- Using Binary Search Trees<BR><FONT SIZE=+2><I>Due:
+      Monday, September 14</I></FONT></H1>
+    
+    
+    
+<P><P><B>Objectives:</B> This assignment has two objectives: First, to get
+students started using and programming in the Unix environment, and
+second, to experiment with lookup tables based on lists and trees and
+consider performance under various scenarios.
+<P><B>High-Level Description:</B>  You will write a program that reads
+a large text file, and keeps track of how many times each word occurs
+in the file using a list and a binary search tree.  You will measure
+the time required by both implementations on several different inputs,
+and describe what affects the performance in each case.  The
+programming for this assignment is not terribly deep or complicated,
+but you will working on a new system and you should
+not underestimate the challenges that this can raise -- do <EM>not</EM>
+wait until the last minute to start this assignment!
+<P>you will use the binary search tree implementations from the book, as
+well as files supplied specifically for this assignment.
+Unfortunately, the code from the book is not compatible with the most
+modern compilers (such as the one on the <CODE>cmpunix</CODE> machine that
+you'll be using!), so do not download the code from the textbook
+publisher or authors.  Instead, go to the <A HREF="assign.php.html">assignments
+  link</A> on the class web page, and follow that to download
+corrected versions.  Alternatively, you can copy the code directly on
+the <CODE>cmpunix</CODE> system from directory <CODE>~srtate/330/assign1</CODE>.
+<P>Your program will need to keep track of pairs consisting of a word and
+an integer count.  In order to do this, you should define a class for
+these pairs, with a constructor and methods to retrieve the current
+count, increment the count, get the word, etc.  You should also
+provide operator overloads for the <CODE>==</CODE> and <CODE>&lt;</CODE> comparison
+operators.  I'll call this "<CODE>pairClass</CODE>" in this handout, but
+you can feel free to name it however you'd like.
+<P>You will code up two alternative ways of keeping track of these pairs:
+using a list (use the STL <CODE>list</CODE> class) and a binary search tree
+(use the <CODE>stree</CODE> class from the book with the provided code).
+To see how to do this, look through the main file,
+<CODE>wordreader.cpp</CODE>: it reads a word at a time
+from standard input and then calls a function <CODE>findAndInc()</CODE> for
+each word it reads.  This function should look for the word in your
+data structure, and if it finds the word it should increment the count
+for that word -- if it doesn't find the word, then it's a new word
+and should be added to the data structure (with count 1).  Since you
+will be using both a list and a tree to keep track of the words, you
+will need to write <EM>two</EM> implementations of this function with
+slightly different function signatures: <PRE>
+   void findAndInc(stree&lt;pairClass&gt; &amp;allWords, const string &amp;word)
+   void findAndInc(list&lt;pairClass&gt; &amp;allWords, const string &amp;word)
+</PRE>
+
+By doing it this way, you can simply change the declaration of your
+data structure on the first line of the <CODE>main</CODE> function, and when
+you recompile the compiler will automatically link that call to the
+correct version of the <CODE>findAndInc()</CODE> function.
+<P>Finally, notice that wordreader.cpp calls a <CODE>processWords()</CODE>
+function (again, one of two functions, depending on the type of your
+data structure).  You should use this function to print out the words
+in your data structure along with the count of each one -- see the
+sample output below for an example.  The words should be sorted, so
+for your list implementation you may want to use the <CODE>sort()</CODE>
+method provided by the STL <CODE>list</CODE> class before printing.
+<P><I>Testing and Analysis:</I> When you are writing and debugging your
+code, you will probably want to use a small input file, such as the
+one in the "sample input" below.  For testing with text from files
+(rather than entered from the keyboard) you should use input
+redirection.  Once you are convinced that your code works correctly,
+you will use some large text files provided in directory
+<CODE>~srtate/data/assign1</CODE> for testing.  There are three files,
+<CODE>test1.txt</CODE>, <CODE>test2.txt</CODE>, and <CODE>test3.txt</CODE>, and all
+three consist of the full text of <EM>The Count of Monte Cristo</EM>,
+plus information at the beginning that varies by test case.
+<P>You should run all three test files through your program using the
+list data structure, and then all three using the tree data structure.
+So that you are really timing just the data structure operations, you
+can comment out the call to <CODE>processWords()</CODE> in the main program.
+Use the Unix <CODE>time</CODE> command to time your program.  For example,
+you might run the program like this:
+<PRE>
+    time ./wordreader &lt;~srtate/data/assign1/test1.txt
+</PRE>
+This will print 3 different times -- the one you want to report is
+the "user" time, which reflects the amount of time your program
+actually spent executing on the CPU.  Feel free to adjust the compiler
+flags in the <CODE>Makefile</CODE> to experiment with optimization settings
+(e.g., using "<CODE>-O4</CODE>" when compiling), but make sure you use
+consistent flags when comparing implementations.
+<P>Finally, look at the test data files, and think about why the
+different implementations performed as they did for the different
+input files.  Write a brief report giving a table of your measured
+times and explaining the performance -- explain why the different
+implementations performed well or didn't perform well on different
+inputs.  It is important that you are as precise in your descriptions
+as possible, and use terminology and notation that is standard in
+computer science.  For example, you should be referring to concepts
+"worst case," "best case," and "average case," and should be
+describing performance in terms of asymptotic notation ("big-oh
+notation", although if you want to really be precise you should use better
+notations such as "theta" notation).
+<P><B>To Turn In:</B> Use the <CODE>330submit</CODE> program (see 
+<A HREF="grading.php.html">Handout 3</A>)
+in order to turn in your code, using assignment name <CODE>assign1</CODE>.
+You should submit every file that you have created or modified (you
+can also include the <CODE>.h</CODE> files that were provided to you, but
+this isn't necessary -- they should <EM>not</EM> be changed!).
+On the due date, you should turn in a printout of your code along with your
+report giving your performance analysis.
+<P><B>Sample Input/Output:</B>
+<BLOCKQUOTE><CENTER>
+<FONT SIZE=+2>SAMPLE INPUT
+</FONT></CENTER></BLOCKQUOTE>
+<P><hr><PRE>
+Peter Piper picked a peck of pickled peppers,
+A peck of pickled pepers Peter Piper picked;
+If Peter Piper picked a peck of pickled peppers,
+Where's the peck of pickled peppers Peter Piper picked?
+</PRE>
+<P><hr>
+<BLOCKQUOTE><CENTER>
+<FONT SIZE=+2>SAMPLE OUTPUT
+</FONT></CENTER></BLOCKQUOTE>
+<P><hr><PRE>
+a: 3
+if: 1
+of: 4
+peck: 4
+pepers: 1
+peppers: 3
+peter: 4
+picked: 4
+pickled: 4
+piper: 4
+the: 1
+where's: 1
+</PRE>
+<P><hr>
+
+
+</div></td></tr>
+</table>
+
+</body> </html>
+

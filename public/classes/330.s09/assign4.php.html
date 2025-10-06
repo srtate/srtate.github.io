@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title>CSC 330:  Advanced Data Structures</title>
+<link href="https://home.uncg.edu/cmp/faculty/srtate/classstyle.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td width="800"><img src="330banner.jpg" alt="CSC 330: Advanced Data Structures" /></td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+<col width="150" />
+<col width="700" />
+<tr><td valign="top">
+<div class="navigate">
+<div class="navhead">Navigation</div>
+<div class="navother">
+<a href="index.php.html">Class Home</a>
+</div>
+<div class="navother">
+<a href="syllabus.php.html">Syllabus</a>
+</div>
+<div class="navother">
+<a href="handouts.php.html">Handouts</a>
+</div>
+<div class="navother">
+<a href="assign.php.html">Assignments</a>
+</div>
+<div class="navother">
+<a href="moreinfo.php.html">More Information</a>
+</div>
+<img src="https://home.uncg.edu/cmp/faculty/srtate/pics/navtail.png" />
+</div>
+</td><td valign="top"><div class="main">
+
+<p>A <a href="assign4.pdf">printable PDF</a> is available.</p>
+
+    <H1 ALIGN=CENTER>Assignment 4 -- Comparing Heapsort Alternatives<BR><FONT SIZE=+2><I>Due:
+      Monday, November 9</I></FONT></H1>
+    
+    
+    
+<P><P><B>Objective:</B> The objective of this assignment is for students
+to experiment with variations of the heapsort algorithm, including a
+degree-3 heap and variations with and without the <I>O(n)</I> time
+"makeHeap" procedure.
+<P><B>High-Level Description:</B>  
+The idea of a binary heap is easy to extend to trees with larger
+degree.  For any constant <I>k</I>, a degree <I>k</I> max-heap is a
+complete <I>k</I>-ary tree in which the key at any node is greater than or
+equal to the keys in all of its children.  Here's an
+example of a degree 3 max-heap:
+<BLOCKQUOTE><CENTER>
+<IMG  SRC="pics/prog4.png">
+</CENTER></BLOCKQUOTE>
+Such heaps can be mapped to arrays in a manner similar to what you've
+seen for binary heaps, and insert and delete operations can still
+be done in <I>O(logn)</I> time.
+<P><B>Details:</B> 
+On the class web page (and on the <CODE>cmpunix</CODE> machine), I have 
+<A HREF="assign.php.html">provided you with
+code</A> for a binary heap, which basically the code we
+experimented with in class, but cleaned up and with comments added.
+This code includes the functions <CODE>bubbleUp</CODE> and <CODE>bubbleDown</CODE>
+that operate on standard binary heaps.  The first new sorting function
+you should provide uses a <CODE>bubbleUp</CODE> based technique for creating
+the heap -- in other words, the heap should be created by doing an
+"insert" for each data element in which the new element is bubbled
+up the heap to the correct location.  Note that this replaces the
+<I>O(n)</I> <CODE>makeHeap</CODE> procedure with an <I>O(nlogn)</I> heap
+construction, so part of this assignment is to see what difference
+this makes in practice.
+<P>Next, create degree-3 versions of the
+<CODE>bubbleUp</CODE> and <CODE>bubbleDown</CODE> functions (suggestion: you
+could consider calling these <CODE>bubbleUp3</CODE> and
+<CODE>bubbleDown3</CODE>).  Then you can use these functions to make two new
+sorting functions that are similar to your existing binary heap
+functions, but using the degree-3 bubbling functions.
+<P>In the end, you will have four sorting functions, and they should all
+take exactly the same parameters so that you can simply change the
+name of the function used in <CODE>main</CODE> and re-compile in order to
+test the efficiency of the different sorting functions.  Please use
+the names below (exactly!):
+<PRE>
+void hsort(int data[], size_t n);   // Standard heapsort - provided
+void ahsort(int data[], size_t n);  // Alt heapsort - using bubbleUp
+void hsort3(int data[], size_t n);  // Degree 3 heap and makeHeap
+void ahsort3(int data[], size_t n); // Degree 3 heap and bubbleUp3
+</PRE>
+
+I will test your code by removing your <CODE>main</CODE> function and
+inserting my own testing code to see that your sorting functions are
+actually sorting properly, so it is vital that you use these names and
+exactly these parameters.
+<P>When you are developing these sorting functions, you will obviously
+want to test thoroughly by printing out answers and making sure that
+the sorts are working correctly, but when all four are working
+correctly you should remove all print statements and just leave a call
+to the sorting function for 2,000,000 items.  Run each sorting
+algorithm five times, using the "<CODE>time</CODE>" command, and record
+the 5 times in a table (remember to use the "user time").  Then for
+each function throw out the lowest and highest times, and average the
+remaining three times, and list this as the "average time" for the
+function.  Your table should look something like this (these are
+completely made-up times -- don't expect them to be anything like the
+times you get!):
+<BLOCKQUOTE><CENTER>
+<TABLE><TR><TD COLSPAN="1" ALIGN="LEFT">
+Function </TD><TD COLSPAN="5" ALIGN="CENTER"> Measured Times </TD><TD COLSPAN="1" ALIGN="CENTER"> Average</TD></TR>
+<TR><TD COLSPAN="1" ALIGN="LEFT">
+hsort </TD><TD COLSPAN="1" ALIGN="CENTER"> 1.123 </TD><TD COLSPAN="1" ALIGN="CENTER"> 1.119 </TD><TD COLSPAN="1" ALIGN="CENTER"> 1.139 </TD><TD COLSPAN="1" ALIGN="CENTER"> 1.117 </TD><TD COLSPAN="1" ALIGN="CENTER"> 1.121 </TD><TD COLSPAN="1" ALIGN="CENTER"> 1.121 </TD></TR>
+<TR><TD COLSPAN="1" ALIGN="LEFT">
+ahsort </TD><TD COLSPAN="1" ALIGN="CENTER"> ... </TD><TD COLSPAN="1" ALIGN="CENTER"> ... </TD><TD COLSPAN="1" ALIGN="CENTER"> ... </TD><TD COLSPAN="1" ALIGN="CENTER"> ... </TD><TD COLSPAN="1" ALIGN="CENTER"> ... </TD><TD COLSPAN="1" ALIGN="CENTER"> ... </TD></TR>
+<TR><TD COLSPAN="1" ALIGN="LEFT">
+hsort3 </TD><TD COLSPAN="1" ALIGN="CENTER"> ... </TD><TD COLSPAN="1" ALIGN="CENTER"> ... </TD><TD COLSPAN="1" ALIGN="CENTER"> ... </TD><TD COLSPAN="1" ALIGN="CENTER"> ... </TD><TD COLSPAN="1" ALIGN="CENTER"> ... </TD><TD COLSPAN="1" ALIGN="CENTER"> ... </TD></TR>
+<TR><TD COLSPAN="1" ALIGN="LEFT">
+ahsort3 </TD><TD COLSPAN="1" ALIGN="CENTER"> ... </TD><TD COLSPAN="1" ALIGN="CENTER"> ... </TD><TD COLSPAN="1" ALIGN="CENTER"> ... </TD><TD COLSPAN="1" ALIGN="CENTER"> ... </TD><TD COLSPAN="1" ALIGN="CENTER"> ... </TD><TD COLSPAN="1" ALIGN="CENTER"> ... </TD></TR>
+<TR><TD COLSPAN="1" ALIGN="LEFT">
+</TD></TR></TABLE>
+
+</CENTER></BLOCKQUOTE>
+Finally, write a short analysis comparing the four functions.
+Don't just report your times, but think about why the different
+functions behave as they do -- in what ways is a degree-3 heap more
+efficient than a binary heap, and in what ways is it less efficient?
+What do you think would happen if you used a degree-4 heap?  What
+about a degree-100 heap?
+<P><B>To Turn In:</B> Use the <CODE>330submit</CODE> program (see
+<A HREF="grading.php.html">Handout 3</A>) in order to turn in your code, using
+assignment name <CODE>assign4</CODE>.  Turn in your table of running times
+and analysis along with a printout of your code in class.
+<P><B>Sample Input/Output:</B>
+There is no sample input/output for this program.
+
+
+</div></td></tr>
+</table>
+
+</body> </html>
+

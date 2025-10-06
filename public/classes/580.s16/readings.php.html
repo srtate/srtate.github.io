@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+<title>CSC 580:  Cryptography and Security in Computing</title>
+<link href="https://home.uncg.edu/cmp/faculty/srtate/classstyle.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td width="800"><img src="580banner.jpg" alt="CSC 580: Cryptography and Security in Computing" /></td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+<col width="150" />
+<col width="700" />
+<tr><td valign="top">
+<div class="navigate">
+<div class="navhead">Navigation</div>
+<div class="navother">
+<a href="index.php.html">Class Home</a>
+</div>
+<div class="navother">
+<a href="syllabus.php.html">Syllabus</a>
+</div>
+<div class="navcurrent">
+<a href="readings.php.html">Readings</a>
+</div>
+<div class="navother">
+<a href="handouts.php.html">Handouts</a>
+</div>
+<div class="navother">
+<a href="assign.php.html">Assignments</a>
+</div>
+<div class="navother">
+<a href="http://canvas.uncg.edu/">Canvas</a>
+</div>
+<div class="navother">
+<a href="moreinfo.php.html">More Information</a>
+</div>
+<img src="https://home.uncg.edu/cmp/faculty/srtate/pics/navtail.png" alt="" />
+</div>
+</td><td valign="top"><div class="main">
+
+<h2>Readings</h2>
+
+<p>This page will list all the non-textbook readings that students are responsible for in CSC 580. Note that some readings are for graduate students only, while others are for all students in the class. Note: some papers are not publicly available due to copyright, and in that case links go through the UNCG library proxy - this will directly access the paper if you are on a UNCG IP address, and otherwise it will ask you to log in with your UNCG account. Non-UNCG people trying to follow these links: Sorry... Try googling the title to see if other versions are publicly available.</p>
+
+<h3>Readings for All Students</h3>
+
+
+<p><i>This reading list is a "work in progress" - additional readings may be added throughout the course of the semester, and deadlines for completing readings will be announced in class.</i></p>
+
+<ul>
+
+<li>(Optional, but helpful!)
+<a href="http://arstechnica.com/security/2013/10/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography/">A (relatively easy to understand) primer on elliptic curve cryptography</a>
+<p><i>
+This is a technical-press article that gives a good overview not just of elliptic curve cryptography (ECC) but also of general public key crypto leading up to ECC. Written for readers that are technically astute but who are not cryptographers, this is a nicely written introduction to the important ideas behind ECC.
+</i></p></li>
+
+<li>(Required)
+Matt Green, <a href="http://blog.cryptographyengineering.com/2013/09/the-many-flaws-of-dualecdrbg.html">The Many Flaws of Dual_EC_DRBG</a> (from Matt's blog, "<a href="http://blog.cryptographyengineering.com/">A Few Thoughts on Cryptographic Engineering</a>")
+<p><i>
+This is a nice description of the flaws and possible backdoor that is in the Dual_EC_DRBG pseudorandom number generator that is included in the NIST <a href="http://csrc.nist.gov/publications/nistpubs/800-90A/SP800-90A.pdf">SP800-90A</a> document ("Recommendation foRandom Number Generation Using Deterministic Random Bit Generators"). Some additional information on how vulnerabilities are reflected in use of Dual_EC_DRBG in real-world cryptographic libraries is given in the report <a href="http://dualec.org/">On the Practical Exploitability of Dual EC in TLS Implementations</a> (this is not required reading).
+</i></p></li>
+
+<li>(Required)
+Roger Dingledine, Nick Mathewson, and Paul Syverson. "Tor: The Second-Generation Onion Router," <i>USENIX Security Symposium</i>, 2004, pp. 21ff.
+<p><i>
+This is the original "design document" that described Tor. The design has grown and evolved since then, but this still provides a good overview. For people that want the most up-to-date Tor specifications, see the
+<a href="https://www.torproject.org/docs/documentation.html.en">Tor Project Documentation Page</a>.
+</i></p></li>
+
+<li><b>Case Study:</b> (Required)
+T. Kohno, T., A. Stubblefield, A.D. Rubin, D.S. Wallach. "<a href="http://avirubin.com/vote.pdf">Analysis of an electronic voting system</a>," <i>IEEE Symposium on Security and Privacy</i>, 2004, pp.27-40.
+<p><i>
+This is an excellent audit of a system in which security should have been paramount, an electronic voting machine used in real elections, but which was full of security-breaking implementation flaws. This paper illustrates just how easy it is for implementers with poor understanding of security concepts to make an insecure system, and how important it is to pay attention to the details.
+Note: The link goes to a version on Avi Rubin's web site - this version is formatted differently than the "official" version, and may or may not contain exactly the same content.
+</i></p>
+</li>
+
+</ul>
+
+</ul>
+
+<h3>Readings for Graduate Students</h3>
+
+<p>The following readings are required of graduate students, who will write short reports on each research reading. These are all research papers, and go a little deeper technically than the readings above for all students. Note that while this course is an introduction to cryptography, these papers focus more on correct implementation and use of cryptography -- pure crypto research papers, as exemplified by the top-tier <a href="http://www.iacr.org/meetings/crypto/">CRYPTO</a> conference, typically have a depth that is beyond what is expected in this first, introductory course. Graduate students who are interested in the field are encouraged to take a look at some of these papers, and perhaps dive into some of this depth in their class project.</p>
+
+<ul>
+<li> <p>(Report due: Thurs., Feb 11) Keaton Mowery, Michael Wei, David Kohlbrenner, Hovav Shacham, Steven Swanson, "<a href="http://canta.ucsd.edu/~kmowery/personal/papers/earlyentropy.pdf">Welcome to the Entropics: Boot-Time Entropy in Embedded Devices</a>," <i>IEEE Symposium on Security and Privacy</i>, 2013, pp. 589-603.
+</p></li>
+<li> <p>(Report due: Thurs., March 3) Manuel Egele, David Brumley, Yanick Fratantonio, and Christopher Kruegel. 2013. <a href="http://dl.acm.org.libproxy.uncg.edu/citation.cfm?doid=2508859.2516693">An empirical study of cryptographic misuse in android applications</a>," in <i>Proceedings of the 2013 ACM Conference on Computer and Communications Security (CCS '13)</i>, 2013, pp. 73-84.
+</p></li>
+<li> <p>(Report due: Thurs., March 24) Nadia Heninger, Zakir Durumeric, Eric Wustrow, and J. Alex Halderman. "Mining Your Ps and Qs: Detection of Widespread Weak Keys in Network Devices," <i>USENIX Security Symposium</i>, 2012, pp. 205-220. Available at <a href=" https://www.usenix.org/conference/usenixsecurity12/technical-sessions/presentation/heninger"> https://www.usenix.org/conference/usenixsecurity12/technical-sessions/presentation/heninger</a></p></li>
+
+<li><p>(Optional reading - no report due) David Adrian, Karthikeyan Bhargavan, Zakir Durumeric, Pierrick Gaudry, Matthew Green, J. Alex Halderman, Nadia Heninger, Drew Springall, Emmanuel Thomé, Luke Valenta, Benjamin VanderSloot, Eric Wustrow, Santiago Zanella-Béguelin, and Paul Zimmermann. 2015. <a href="http://dl.acm.org.libproxy.uncg.edu/citation.cfm?id=2813707">Imperfect Forward Secrecy: How Diffie-Hellman Fails in Practice</a>. In <i>Proceedings of the 22nd ACM Conference on Computer and Communications Security (CCS '15)</i>, 2015, pp. 5-17.</p></li>
+
+</ul>
+
+
+</div></td></tr>
+</table>
+
+</body> </html>
+

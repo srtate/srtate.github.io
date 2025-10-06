@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+<title>CSC 580:  Cryptography and Security in Computing</title>
+<link href="https://home.uncg.edu/cmp/faculty/srtate/classstyle.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td width="800"><img src="580banner.jpg" alt="CSC 580: Cryptography and Security in Computing" /></td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+<col width="150" />
+<col width="700" />
+<tr><td valign="top">
+<div class="navigate">
+<div class="navhead">Navigation</div>
+<div class="navother">
+<a href="index.php.html">Class Home</a>
+</div>
+<div class="navother">
+<a href="syllabus.php.html">Syllabus</a>
+</div>
+<div class="navother">
+<a href="handouts.php.html">Handouts</a>
+</div>
+<div class="navother">
+<a href="assign.php.html">Assignments</a>
+</div>
+<div class="navother">
+<a href="http://blackboard.uncg.edu/">Blackboard</a>
+</div>
+<div class="navother">
+<a href="moreinfo.php.html">More Information</a>
+</div>
+<img src="https://home.uncg.edu/cmp/faculty/srtate/pics/navtail.png" alt="" />
+</div>
+</td><td valign="top"><div class="main">
+
+<p>A <a href="assign5.pdf">printable PDF</a> is available.</p>
+
+    <H1 ALIGN=CENTER>Assignment 5 - Due Tuesday, April 16</H1>
+
+<EM>Notes:</EM> This assignment is optional -- you may use it to
+replace your lowest assignment grade if that would benefit
+you. Whether you do the assignment for a grade or not, these are good
+problems to test your understanding when preparing for the final
+exam. Also note that the due date is not a class day, so you will need
+to drop your assignment off at my office before noon on April 30.
+<OL><LI>The SSH protocol can use digital signatures to perform authentication
+without having to enter a password. Let's say you want to be able to
+log in from your home system to two remote systems, RemoteA and
+RemoteB. You create an identity on your home system, which is a
+keypair: the signing (private) key is kept on the home system only,
+while the verification (public) key is copied to both RemoteA and
+RemoteB. When you connect to RemoteA to log in, it sends a random
+challenge nonce to your home system, which is signed and sent back to
+RemoteA. Since RemoteA has the verification key, it can verify the
+signature to authenticate you.
+<UL><LI>(a) If an attacker gains full access to system RemoteB, what
+  information is stored on that system that is potentially
+  compromised?
+<LI>(b) With this information, can the attacker log in to RemoteA?
+  Why or why not? Be as
+  precise as possible, referring to the security properties of digital
+  signatures (page 399).
+<LI>(c) With this information, can the attacker log in to your home
+  system? Why or why not?
+<LI>(d) What if the access to RemoteB included the ability for the
+  attacker to monitor the plaintext of all communication with
+  RemoteB -- does that change the answer to any of the preceding
+  questions?
+<LI>(e) Now consider a scenario in which basic passwords are used
+  for authentication. As before, the same authentication information
+  (in this case a password) is shared between the two remote
+  systems. If the attacker has fully compromised RemoteB in this
+  scenario, is access to any other system possible?
+</UL>
+<LI>Consider the following authentication scheme, which is a slightly
+simplified version of standard HTML digest authentication. Using a
+secure cryptographic hash function <I>H</I> (meeting all security goals
+given in Table 11.1), if the user with user id <I>u</I> has password <I>p</I>,
+then the server stores <I>y=H(u||p)</I> in its user database. Then when a
+user seeks to authenticate, the server generates a random nonce <I>n</I>
+which it sends to the client system, which in turn gets a user name
+<I>u</I> and password <I>p</I> from the user, computes <I>z=H(H(u||p)||n)</I> locally
+and sends the result back to the server. The server can then compute
+<I>H(y||n)</I> and see if these values match. Answer the following
+questions, with explanations (they're not really just yes/no
+questions!).
+<UL><LI>(a) An eavesdropper sees both <I>n</I> and <I>z</I> as they are
+  transmitted. Can the eavesdropper figure out the user's password?
+<LI>(b) An attacker breaks into the server, copies the
+  authentication database, so learns the value <I>y</I>. Can she compute
+  the user's password from this?
+<LI>(c) If an attacker obtains the server's user database, and
+  consequently learns <I>y</I>, can the attacker log in to the system as
+  user <I>u</I>?
+</UL>
+<LI>The previous question gave an example of a challenge-response
+authentication protocol. Fred announces that he has a new
+authentication protocol where the server doesn't need to remember the
+nonce <I>n</I> while it is waiting for a response. In Fred's protocol, the
+server again generates a nonce <I>n</I> but then MACs <I>n</I> using a
+secret key <I>K</I> that only it knows, as <I>c=MAC(K,n)</I>. Fred calls <I>c</I> an
+"authenticator", since it authenticates that that <I>n</I> was indeed
+generated by the server. Both <I>n</I> and <I>c</I> are sent to the client,
+which operates as in the previous question, except that when <I>z</I> is
+sent to the server, the client also sends back <I>n</I> and <I>c</I>. Upon
+receiving these values, the server checks the authenticator <I>c</I> to
+make sure that <I>n</I> was a value it generated (it didn't store it!), and
+then proceeds as before. Unfortunately, there's a problem with this
+authentication protocol -- what is it? What kinds of solutions can
+you think of?
+<LI>Joe deals with very sensitive information, and he is worried that a
+virus might get on his system and compromise everything, giving an
+attacker access to all his files and even the things he types such as
+passwords. He needs to be able to sign electronic files, but if the
+signing key is kept on his system the virus could access the key and
+sign anything the attacker wanted. Even if the user had to type a
+passphrase to unlock (i.e., decrypt) the signing key, the virus could
+monitor those keystrokes and subsequently unlock the private key for
+its own nefarious purposes. Joe's solution is to use a smartcard: a
+device that can be plugged in to his system that does the actual
+signing. The data is sent from the system to the smartcard, the card
+signs it, and the signed value is returned to the user for
+transmission. The signing key never leaves the smartcard, which is
+locked down tightly and not vulnerable to viruses. While this makes
+matters harder for the virus/attacker, the attacker can still get
+signatures on whatever data it wants. How? Can you think of a solution
+to this problem? (Warning: just speculate a little on a possible
+approach -- there is no really good solution known for this problem,
+so don't get stuck for too long trying to design a great solution!)
+<LI>Clearly a hash function that has the strong collision resistance
+  property also has weak collision resistance. What about the next
+  step down? Does a hash function that has weak collision resistance
+  also satisfy the one-way property (see Table 11.1 on page 336 for
+  these terms)? To answer this question, consider a hash function <I>H(x)</I>
+  that produces <I>k</I>-bit hash codes, and satisfies all three of these
+  security properties. Now construct a hash function <I>H'(x)</I> that
+  produces <I>(k+1)</I>-bit hash codes as follows: If <I>x</I> is exactly <I>k</I> bits
+  long, then output <I>0||x</I> (a single 0 bit followed by <I>x</I>); otherwise
+  output <I>1||H(x)</I> (a single 1 bit followed by the <I>H</I>-hash code of <I>x</I>). Is
+  <I>H'(x)</I> weakly collision resistant? Is it one-way? Justify your
+  answers!
+<LI>ElGamal encryption was described in Section 10.2 of the
+  textbook. In this problem, you are to explore how ElGamal measures
+  up in terms of the formal security models we discussed.
+<UL><LI>(a) It is impossible for "textbook RSA" to be IND-CPA
+  secure. Why is that, and does ElGamal have the same problem?
+<LI>(b) Let <I>(C<sub>1</sub>,C<sub>2</sub>)</I> be an ElGamal ciphertext, computed as shown
+  in Figure 10.3 (page 307). Write out formulas (in terms of <I>alpha</I>,
+  <I>k</I>, <I>Y<sub>A</sub></I> and <I>M</I>) for <I>alpha&#183;C<sub>1</sub></I> and <I>Y<sub>A</sub>&#183;C<sub>2</sub></I>, where 
+  operations are preformed mod <I>q</I>.
+<LI>(c) What result would be produced if you ran fake ElGamal
+  ciphertext <I>(alpha&#183;C<sub>1</sub>,Y<sub>A</sub>&#183;C<sub>2</sub>)</I> through the ElGamal
+  decryption function?
+<LI>(d) Use these observations to create an attack algorithm that
+  wins the CCA game against ElGamal. In addition to describing the
+  algorithms, remember to analyze the advantage of your adversary in
+  this game.
+</UL>
+<EM>As an aside, the message you should learn from this problem is that
+textbook RSA cannot be IND-CPA secure, much less IND-CCA secure. ElGamal in
+fact does turn out to be IND-CPA secure, but it is not IND-CCA secure.</EM>
+<LI>Alice uses a stream cipher that generates a "key stream" of
+bytes <I>k<sub>1</sub>, k<sub>2</sub>, ..., k<sub>n</sub></I> that is exclusive-ORed with the
+plaintext <I>p<sub>1</sub>, p<sub>2</sub>, ..., p<sub>n</sub></I> to produce ciphertext bytes <I>c<sub>1</sub>, c<sub>2</sub>,
+..., c<sub>n</sub></I>.  Imagine that Alice shows you the first part of
+the plaintext (say it's a header), and you also have access to the ciphertext.
+You make a suggestion regarding the header that will be followed by
+the unsuspecting Alice and will allow you to decode the entire message
+<EM>regardless</EM> of how secure the key stream is!  Here's how: you
+tell Alice to delete the first character <CODE>&amp;</CODE> (or something else
+in the header) because it's not needed, and then re-encrypt the text.
+Alice obliges by decrypting her file, deleting the <CODE>&amp;</CODE> from
+the header, and then re-encrypts with the same key stream.  If the
+deleted character is originally in position <I>m</I> (which you know, since you've
+seen the header), then she is encrypting the plaintext 
+<I>p<sub>1</sub>,p<sub>2</sub>,...,p<sub>m-1</sub>,p<sub>m+1</sub>,...,p<sub>n</sub></I>.
+Show how you can use the two ciphertexts, along with knowledge of
+the position <I>m</I> and character <CODE>&amp;</CODE>, in order to decode the entire
+message!
+<LI>This is a programming problem. The standard way to compute
+multiplicative inverses modulo <I>p</I> is to use the Extended Euclidean
+Algorithm, as described in Chapter 4. When the modulus <I>p</I> is prime,
+you can also compute <I>a<sup>p-2</sup> mod p</I>, which will give the
+multiplicative inverse of <I>a</I>.
+<UL><LI>(a) Why is <I>a<sup>p-2</sup> mod p</I> the multiplicative inverse of <I>a</I>?
+  The reason is pretty simple, so don't give a long convoluted
+  argument -- a single, unambiguous sentence is all you need!
+<LI>(b) Implement both of these methods for
+large (1000+ bit) integers. Note that if you are careful about your
+choice of programming language, you can use a built-in function for
+the modular powering so that this second implementation would be a
+single line!
+<P>Once you are sure your implementations work correctly, time
+them on a 1024-bit modulus. To do this, you'll need a 1024-bit prime
+-- the best way for you to do this would be to find a way to generate
+your own large random prime, either by typing up the Miller-Rabin
+primality testing algorithm, or using any of the mathematics packages
+that have this functionality built in. If you really can't 
+generate your own large random prime, you can use the one
+at <A HREF="1024bitprime.html">this link</A>
+(you'll still have to get it into your program!).
+Note that your programs should be too fast to accurately time directly
+without
+using some advanced profiling tools. The easiest way around this is to
+iterate your test as many times as necessary so that the overall time
+is around 30 seconds. If you iterate <I>n</I> times, just divide your final
+time by <I>n</I> and you've got the time for one modular inverse calculation.
+</UL>
+</OL>
+
+
+</div></td></tr>
+</table>
+
+</body> </html>
+

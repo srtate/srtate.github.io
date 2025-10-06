@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+<title>CSC 580:  Cryptography and Security in Computing</title>
+<link href="https://home.uncg.edu/cmp/faculty/srtate/classstyle.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td width="800"><img src="580banner.jpg" alt="CSC 580: Cryptography and Security in Computing" /></td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+<col width="150" />
+<col width="700" />
+<tr><td valign="top">
+<div class="navigate">
+<div class="navhead">Navigation</div>
+<div class="navother">
+<a href="index.php.html">Class Home</a>
+</div>
+<div class="navother">
+<a href="syllabus.php.html">Syllabus</a>
+</div>
+<div class="navother">
+<a href="sched.php.html">Schedule</a>
+</div>
+<div class="navother">
+<a href="readings.php.html">Readings</a>
+</div>
+<div class="navother">
+<a href="handouts.php.html">Handouts</a>
+</div>
+<div class="navother">
+Assignments
+</div>
+<div class="navother">
+&nbsp;&nbsp;&bullet; <a href="homework.php.html">HW Problems</a>
+</div>
+<div class="navother">
+&nbsp;&nbsp;&bullet; <a href="project.php.html">Project</a>
+</div>
+<div class="navother">
+<a href="http://docs.oracle.com/javase/8/docs/technotes/guides/security/crypto/CryptoSpec.html">JCA Ref Guide</a>
+</div>
+<div class="navother">
+<a href="http://docs.oracle.com/javase/8/docs/api/">Java API Docs</a>
+</div>
+<div class="navother">
+<a href="http://canvas.uncg.edu/">Canvas</a>
+</div>
+<div class="navother">
+<a href="moreinfo.php.html">More Information</a>
+</div>
+<img src="https://home.uncg.edu/cmp/faculty/srtate/pics/navtail.png" alt="" />
+</div>
+</td><td valign="top"><div class="main">
+
+<p>A <a href="projphase1.pdf">printable PDF</a> is available.</p>
+
+<center><h1>Project Phase 1 -- Due Tuesday, February 7</h1></center>
+
+<P><P><P>Review the system requirements from the project's "Basic
+Information" handout, and consider a situation in which a user Alice wishes
+to start a secure chat session with Bob. During the chat session, she
+will send at least one secure message to Bob, and will receive one
+secure reply from him. As you work on the following
+problems, think in particular about the second through fourth security
+requirements from that handout (the first requirement deals
+with efficiency rather than security, and we will deal with that later).
+<P>At this point in the class you are not expected to know much
+about how cryptographic protections work or what the requirements
+are for applying various security techniques. This does create a
+challenge in thinking through the design, but do the best you can --
+we will discuss design ideas and adjust as you learn more.
+<OL><LI>Draw a basic system model for the secure chat system that shows the
+different parties (Alice, Bob, and the chat hub). Label parts of the
+diagram where data might be stored or transmitted, and outline three
+basic operational steps:
+<UL><LI>Alice establishes a session with Bob.
+  <LI>Alice sends a message to Bob.
+  <LI>Bob sends a message to Alice.
+</UL>
+For each step, describe what information/data each participant must
+start the step with, and what confidentiality and integrity
+requirements exist for that data. Note that "data" means more than
+just a message that needs to be sent, and should include secrets or
+public information that is used to
+protect other data and to identify users. Also do your
+best to describe how much trust is placed in the chat hub (for
+example, is the hub trusted with secret information? is it trusted to
+identify chat participants?).
+<p><LI>Consider security requirements two through four from the original
+handout, and for each one draw an attack tree for attacks against that
+security goal. Types of attacks to consider include compromising an
+end-user's system, compromising the chat hub, and intercepting or
+tampering with communication anywhere in the system.
+</OL>
+
+
+</div></td></tr>
+</table>
+
+</body> </html>
+

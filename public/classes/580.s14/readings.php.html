@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+<title>CSC 580:  Cryptography and Security in Computing</title>
+<link href="https://home.uncg.edu/cmp/faculty/srtate/classstyle.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td width="800"><img src="580banner.jpg" alt="CSC 580: Cryptography and Security in Computing" /></td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+<col width="150" />
+<col width="700" />
+<tr><td valign="top">
+<div class="navigate">
+<div class="navhead">Navigation</div>
+<div class="navother">
+<a href="index.php.html">Class Home</a>
+</div>
+<div class="navother">
+<a href="syllabus.php.html">Syllabus</a>
+</div>
+<div class="navcurrent">
+<a href="readings.php.html">Readings</a>
+</div>
+<div class="navother">
+<a href="handouts.php.html">Handouts</a>
+</div>
+<div class="navother">
+<a href="assign.php.html">Assignments</a>
+</div>
+<div class="navother">
+<a href="http://blackboard.uncg.edu/">Blackboard</a>
+</div>
+<div class="navother">
+<a href="moreinfo.php.html">More Information</a>
+</div>
+<img src="https://home.uncg.edu/cmp/faculty/srtate/pics/navtail.png" alt="" />
+</div>
+</td><td valign="top"><div class="main">
+
+<h2>Readings</h2>
+
+<p>This page will list all the non-textbook readings that students are responsible for in CSC 580. Note that some readings are for graduate students only, while others are for all students in the class. Note: some papers are not publicly available due to copyright, and in that case links go through the UNCG library proxy - this will directly access the paper if you are on a UNCG IP address, and otherwise it will ask you to log in with your UNCG account. Non-UNCG people trying to follow these links: Sorry... Try googling the title to see if other versions are publicly available.</p>
+
+<h3>Readings for All Students</h3>
+
+<ul>
+<li> (Read by Wed., Jan 15) <a href="http://www.theguardian.com/world/2013/sep/05/nsa-how-to-remain-secure-surveillance">NSA surveillance: A guide to staying secure</a>, Bruce Schneier, Sept. 6, 2013
+<p><i>This is an article written by Bruce Schneier that provides a good summary of NSA activities based on documents and information from Edward Snowden. It's a newpaper article, written for a non-technical audience, so is a relatively light read. This article gives lots of "food for thought" as far as what a very powerful adversary can do in regards to computer and information security, and will provide some context for various protection measures that we will discuss in this class.</i></p></li>
+
+<li>(Read by Wed., Jan 22) Ken Thompson. <a href="http://dl.acm.org.libproxy.uncg.edu/citation.cfm?doid=358198.358210">Reflections on trusting trust</a>," <i>Communications of the ACM</i>, Vol. 27, No. 8, Aug. 1984, pp. 761-763.
+<p><i>This is a classic -- it comes from Ken Thompson's Turing Award Lecture, and vividly illustrates the importance of thinking about what parts of a system are trustworthy. Every person who develops software that has potential security issues (pretty much every person who develops software) should read this ahd think about the consequences.</i></p></li>
+
+<li>(Read by Mon., April 14) <a href="http://arstechnica.com/security/2013/09/fatal-crypto-flaw-in-some-government-certified-smartcards-makes-forgery-a-snap/">Fatal crypto flaw in some government-certified smartcards makes forgery a snap</a>, Ars Technica, Sept. 16, 2013.
+<p><i>This is a news story about a flaw in smartcards used as part of the Taiwanese Citizen Digital Certificate program led to trivially-breakable keys. There is more technical information available in the cited research paper, but this is a pretty light read about the probem. For a similar example of problems generating RSA keys, see the paper by Heninger et al. below ("Mining your Ps and Qs") in the graduate student readings.</i></p></li>
+
+<li>(Optional, but good to read before Mon., April 14)
+<a href="http://arstechnica.com/security/2013/10/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography/">A (relatively easy to understand) primer on elliptic curve cryptography</a>
+<p><i>
+This is a technical-press article that gives a good overview not just of elliptic curve cryptography (ECC) but also of general public key crypto leading up to ECC. Written for readers that are technically astute but who are not cryptographers, this is a nicely written introduction to the important ideas behind ECC.
+</i></p></li>
+
+<li>(Read by Wed., April 16)
+Matt Green, <a href="http://blog.cryptographyengineering.com/2013/09/the-many-flaws-of-dualecdrbg.html">The Many Flaws of Dual_EC_DRBG</a> (from Matt's blog, "<a href="http://blog.cryptographyengineering.com/">A Few Thoughts on Cryptographic Engineering</a>")
+<p><i>
+This is a nice description of the flaws and possible backdoor that is in the Dual_EC_DRBG pseudorandom number generator that is included in the NIST <a href="http://csrc.nist.gov/publications/nistpubs/800-90A/SP800-90A.pdf">SP800-90A</a> document ("Recommendation foRandom Number Generation Using Deterministic Random Bit Generators"). Some additional information on how vulnerabilities are reflected in use of Dual_EC_DRBG in real-world cryptographic libraries is given in the report <a href="http://dualec.org/">On the Practical Exploitability of Dual EC in TLS Implementations</a> (this is not required reading).
+</i></p></li>
+
+<li><b>Case Study 1:</b> (Read by Mon., April 21)
+<a href="http://www.truecrypt.org/docs/">TrueCrypt Documentation</a> -- read "Introduction" and "Beginner's Tutorial" to get a feel for how the system works, and at least the first four sections under "Technical Details" (Notation, Encryption Scheme, Modes of Operation, and Header Key Derivation).
+<p><i>
+TrueCrypt is a cross-platform system for encrypting storage volumes, which can be backing files or full disk partitions. In typical use, a filesystem will be built on an encrypted volume so that all data stored in the filesystem is protected. We will discuss the ongoing major project to audit TrueCrypt for security vulnerabilities, the <a href="http://istruecryptauditedyet.com/">IsTrueCryptAuditedYet?</a> project in class.
+</i></p>
+</li>
+
+<li><b>Case Study 2:</b> (Required for Assignment 6, which is due Mon., April 28)
+T. Kohno, T., A. Stubblefield, A.D. Rubin, D.S. Wallach. "<a href="http://avirubin.com/vote.pdf">Analysis of an electronic voting system</a>," <i>IEEE Symposium on Security and Privacy</i>, 2004, pp.27-40.
+<p><i>
+This is an excellent audit of a system in which security should have been paramount, an electronic voting machine used in real elections, but which was full of security-breaking implementation flaws. This paper illustrates just how easy it is for implementers with poor understanding of security concepts to make an insecure system, and how important it is to pay attention to the details.
+Note: The link goes to a version on Avi Rubin's web site - this version is formatted differently than the "official" version, and may or may not contain exactly the same content.
+</i></p>
+</li>
+
+</ul>
+
+<p><i>
+Note: We are almost certainly not going to get to Bitcoin because of the number of days we have missed due to snow and ice, but I'm going to leave this reading here anyway. You aren't required to read this for the CSC 580 class, but many of you might find it interesting.
+</i></p>
+
+<ul>
+<li><a href="http://www.michaelnielsen.org/ddi/how-the-bitcoin-protocol-actually-works/">How the Bitcoin protocol actually works</a>, by Michael Nielsen, Dec. 6, 2013
+<p><i>
+This is a blog posting that does an excellent job of breaking down the fundamental ideas behind Bitcoin. This is write-up is a nice middle ground between the <a href="http://bitcoin.org/bitcoin.pdf">original Bitcoin paper</a>, which is good at outlining the general idea but has very few details, and <a href="https://en.bitcoin.it/">the Bitcoin wiki</a> which has a ton of technical information.
+</i></p></li>
+
+
+</ul>
+
+<h3>Readings for Graduate Students</h3>
+
+<p>The following readings are required of graduate students, who will write short reports on each research reading. These are all research papers, and go a little deeper technically than the readings above for all students. Note that while this course is an introduction to cryptography, these papers focus more on correct implementation and use of cryptography -- pure crypto research papers, as exemplified by the top-tier <a href="http://www.iacr.org/meetings/crypto/">CRYPTO</a> conference, typically have a depth that is beyond what is expected in this first, introductory course. Graduate students who are interested in the field are encouraged to take a look at some of these papers, and perhaps dive into some of this depth in their class project.</p>
+
+<ul>
+<li> <p>(Report due: Mon., Feb 3) J. Alex Halderman, Seth D. Schoen, Nadia Heninger, William Clarkson, William Paul, Joseph A. Calandrino, Ariel J. Feldman, Jacob Appelbaum, Edward W. Felten. "Lest We Remember: Cold Boot Attacks on Encryption Keys," <i>USENIX Security Symposium</i>, 2008, pp. 45-60. Available from <a href="https://www.usenix.org/legacy/events/sec08/tech/">https://www.usenix.org/legacy/events/sec08/tech/</a> (direct link: <a href="https://www.usenix.org/legacy/events/sec08/tech/full_papers/halderman/halderman.pdf">https://www.usenix.org/legacy/events/sec08/tech/full_papers/halderman/halderman.pdf</a>)</p></li>
+
+<li> <p>(Report due: Mon., Feb 17) Keaton Mowery, Michael Wei, David Kohlbrenner, Hovav Shacham, Steven Swanson, "<a href="http://www.computer.org.libproxy.uncg.edu/csdl/proceedings/sp/2013/4977/00/4977a589-abs.html">Welcome to the Entropics: Boot-Time Entropy in Embedded Devices</a>," <i>IEEE Symposium on Security and Privacy</i>, 2013, pp. 589-603.
+</p></li>
+<li> <p>(Report due: Wed., Mar 19) Manuel Egele, David Brumley, Yanick Fratantonio, and Christopher Kruegel. 2013. <a href="http://dl.acm.org.libproxy.uncg.edu/citation.cfm?doid=2508859.2516693">An empirical study of cryptographic misuse in android applications</a>," in <i>Proceedings of the 2013 ACM Conference on Computer and Communications Security (CCS '13)</i>, 2013, pp. 73-84.
+</p></li>
+<li> <p>(Report due: Mon., Mar 31) Nadia Heninger, Zakir Durumeric, Eric Wustrow, and J. Alex Halderman. "Mining Your Ps and Qs: Detection of Widespread Weak Keys in Network Devices," <i>USENIX Security Symposium</i>, 2012, pp. 205-220. Available at <a href=" https://www.usenix.org/conference/usenixsecurity12/technical-sessions/presentation/heninger"> https://www.usenix.org/conference/usenixsecurity12/technical-sessions/presentation/heninger</a></p></li>
+</ul>
+
+
+</div></td></tr>
+</table>
+
+</body> </html>
+

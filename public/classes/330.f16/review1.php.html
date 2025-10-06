@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title>CSC 330:  Advanced Data Structures</title>
+<link href="https://home.uncg.edu/cmp/faculty/srtate/classstyle.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td width="800"><img src="330banner.jpg" alt="CSC 330: Advanced Data Structures" /></td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+<col width="150" />
+<col width="700" />
+<tr><td valign="top">
+<div class="navigate">
+<div class="navhead">Navigation</div>
+<div class="navother">
+<a href="index.php.html">Class Home</a>
+</div>
+<div class="navother">
+<a href="syllabus.php.html">Syllabus</a>
+</div>
+<div class="navother">
+<a href="http://users.cis.fiu.edu/~weiss/dsj4/code/">Textbook Code</a>
+</div>
+<div class="navother">
+<a href="handouts.php.html">Handouts</a>
+</div>
+<div class="navother">
+<a href="assign.php.html">Assignments</a>
+</div>
+<div class="navother">
+<a href="http://docs.oracle.com/javase/8/docs/api/">Java API Docs</a>
+</div>
+<div class="navother">
+<a href="moreinfo.php.html">More Information</a>
+</div>
+<img src="https://home.uncg.edu/cmp/faculty/srtate/pics/navtail.png" />
+</div>
+</td><td valign="top"><div class="main">
+
+<p>A <a href="review1.pdf">printable PDF</a> is available.</p>
+
+    <H1 ALIGN=CENTER>Review Sheet for Exam 1</H1>
+    
+    
+    <P>Exam 1 covers topics from textbook Chapter 6, Chapter 18, Sections
+19.1-19.5, and Chapter 20.  The topics include container
+classes and iterators (the collections API), general trees, binary
+trees, binary search trees (unbalanced, AVL, and red-black trees), 
+and hash tables.  Questions will be of four basic types:
+<UL><LI>Factual questions that test your knowledge of basic terminology and
+  facts (matching, definitions, or short answer).
+<LI>Conceptual questions about data structures that might involve
+  describing in words or pictures some data structure or operation on
+  a data structure.
+<LI>Programming questions where you have to write Java code for a data
+  structure implementation (giving data representation and/or methods)
+  or code using a data structure.
+<LI>Analysis questions where you have to analyze the efficiency of
+  data structure operations or code that uses the covered data
+  structures.
+</UL>
+<P>The following are some sample questions that give a feel for the types
+and difficulty of questions that you might see on the exam.  For each
+question I have also estimated a reasonable upper bound on the amount
+of time to answer the question -- that information won't be on the
+exam, but I have put it here so you can evaluate how efficiently you
+are answering the questions.
+<OL><LI>(Binary Trees/Programming - 15 min) Give Java code that defines
+  a <CODE>BinaryNode</CODE> class to represent a node in
+  a binary tree (only give the member variables, not any methods).
+  Using your definitions, write a function that counts the number of
+  nodes that have exactly 1 child.
+<p><LI>(Binary Trees/Analysis - 12 min) Prove that the black height of a
+  red-black tree with <I>n</I> nodes is <I>O(logn)</I>. Don't just write formulas --
+  some explanation of what the formulas represent is required!
+<p><LI>(Binary Trees/Conceptual/Factual - 5 min) Draw a simple
+  (unbalanced) binary search tree after
+  inserting the following keys (in this order):  181, 632, 439, 906,
+  108, 589, 398, 732, 836.  What is the depth of the resulting tree?
+  How many leaves does it have?
+<p><LI>(Hash Tables and BSTs/Factual - 3 min) Describe one advantage
+  and one disadvantage of hash tables as compared to red-black trees.
+<p><LI>(Cumulative/Programming and Analysis - 12 min) Write
+  a function which takes two <CODE>Collection</CODE> objects and returns
+  boolean indicating whether any item in the first collection appears
+  in the second one.  What is the time complexity of your function if
+  the collections are linked lists? What is the time complexity if
+  they are red-black trees?
+<p><LI>(Hash Tables/Conceptual - 8 min) Consider an 8-bucket hash table using
+  separate chaining -- hash function values range from 0
+  to 7, and consider using a hash function that gives the following values:
+<P>Key 632 hashes to 0<BR>Key 906 hashes to 2<BR>Keys 108, 732, and 836 hash to 4<BR>Keys 181 and 589 hash to 5<BR>Key 398 hashes to 6<BR>Key 439 hashes to 7
+<P>Draw the hash table after insertions are performed in this order: 
+181, 632, 439, 906, 108, 589, 398, 732, 836.  Could we use an 8-entry
+hash table using linear probing for this same data?  Why or why not?
+</OL>
+
+
+
+<p>&nbsp;</p>
+
+
+</div></td></tr>
+</table>
+
+</body> </html>
+

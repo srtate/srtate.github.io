@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+<title>CSC 580:  Cryptography and Security in Computing</title>
+<link href="https://home.uncg.edu/cmp/faculty/srtate/classstyle.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td width="800"><img src="580banner.jpg" alt="CSC 580: Cryptography and Security in Computing" /></td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+<col width="150" />
+<col width="700" />
+<tr><td valign="top">
+<div class="navigate">
+<div class="navhead">Navigation</div>
+<div class="navother">
+<a href="index.php.html">Class Home</a>
+</div>
+<div class="navother">
+<a href="syllabus.php.html">Syllabus</a>
+</div>
+<div class="navother">
+<a href="readings.php.html">Readings</a>
+</div>
+<div class="navother">
+<a href="handouts.php.html">Handouts</a>
+</div>
+<div class="navother">
+<a href="assign.php.html">Assignments</a>
+</div>
+<div class="navother">
+<a href="http://canvas.uncg.edu/">Canvas</a>
+</div>
+<div class="navother">
+<a href="moreinfo.php.html">More Information</a>
+</div>
+<img src="https://home.uncg.edu/cmp/faculty/srtate/pics/navtail.png" alt="" />
+</div>
+</td><td valign="top"><div class="main">
+
+<p>A <a href="assign1.pdf">printable PDF</a> is available.</p>
+
+    <H1 ALIGN=CENTER>Assignment 1 - Due Tuesday, February 2</H1>
+
+<P><P><P><EM>Note: Remember that one of the main goals of this class is to
+  develop your skills in reasoning about security, so show your work
+  and explain your reasoning on all problems - for homework problems,
+  your thought process is as important as the final answer!</EM>
+<OL><LI>This question looks into the problem of malware inside point-of-sale
+systems (systems that you use to pay for a purchase in a store), which
+is a huge problem for retailers.
+<OL><LI>Do some Internet research and learn how traditional (magnetic
+  stripe) credit card point-of-sale systems work, and draw a
+  diagram of how a credit card purchase works in such a system. You
+  don't have to be very detailed, but show all the major components
+  (including the magstripe reader, the merchant's computers/network,
+  and the payment authorizer) and indicate
+  whether sensitive data is encrypted in each system or communication link.
+<LI>Read about the infamous 2013 attack on
+Target stores in the following two stories
+<UL><LI><A HREF="http://krebsonsecurity.com/2014/01/a-first-look-at-the-target-intrusion-malware/">A First Look at the Target Intrusion, Malware</A> -- Krebs on Security
+<LI><A HREF="http://krebsonsecurity.com/2014/01/a-closer-look-at-the-target-malware-part-ii/">A Closer Look at the Target Malware, Part II</A> -- Krebs on Security<BR></UL>
+Write a brief summary (less than a page), being careful to use
+proper terminology. In particular, what <EM>assets</EM> were compromised
+in this <EM>attack</EM>? (Hint: Think broadly: stolen information is
+certainly an asset, but so is company infrastructure.) For these
+assets, what are <EM>confidentiality</EM>, <EM>integrity</EM>, and
+<EM>availability</EM> goals, and were they compromised? Where was a
+<EM>vulnerability</EM> used as an <EM>attack vector</EM>? (This is
+complex: there were certainly multiple attack vectors, some of which
+are not publicly known - just summarize the ones described in the
+stories referenced above.) Describe specifically where the adversary
+(malware) was in your picture from part (a).
+<LI>Find information on how newer, chip-card, point-of-sale systems work,
+and give a modified version of your diagram from part (a) showing this
+newer system. Would an adversary in the same position as in part (b)
+be successful in the newer system? Explain why or why not.
+</OL>
+<p><LI>Textbook, page 56, Problem 2.1.
+<p><LI>In this problem, we generalize the affine Caesar cipher from the
+  previous problem to work
+  over bytes (with values <I>0..255</I>) rather than letters of the
+  alphabet.
+<OL><LI>If we did all operations mod 256 instead of mod 26, describe
+  which keys <I>[a,b]</I> (where <I>0 &lt;= a,b &lt;= 255</I>) would be valid and
+  which would be invalid.
+<LI>What if we performed operations mod
+  257. What are the invalid keys now?
+</OL>
+<p><LI>For this problem, you are to experiment with recognizing English
+  text in a program, using that to break by brute force an affine cipher with operations
+  performed mod 256 (as in part (a) of the previous problem). It turns
+  out that almost all English text files are made up of pure ASCII
+  characters, and satisfy the following three properties:
+<UL><LI>All ASCII characters have values between 0 and 127 (inclusive).
+<LI>Between 13% and 18% of the characters are a space.
+<LI>Between 8% and 12% of the characters are an 'E' (upper or
+  lower case).
+</UL>
+ On the
+  class web page with this assignment, you will find example encryption code in
+  C++, Java, and Python (with the plaintext missing) as well as a stub
+  for each of these languages that defines your challenge ciphertext
+  as a string constant.
+Answer the following questions:
+<OL><LI>How many valid keys are there for this cipher (i.e., what is the
+  size of the keyspace)?
+<LI>When you try all valid keys with the challenge ciphertext, how many keys result in decrypted plaintext that satisfies all
+  three of the "typical English message" properties listed above?
+<LI>What is the plaintext for this message?
+</OL>
+<p><LI>Professor Alice had to leave town on a clandestine mission
+  before sending in the final grade for student Mallory, who is taking her
+  class pass/fail. She arranges to use a one-time pad, as described on
+  pages 47-48, giving the one-time pad key to the registrar (Bob) before
+  she leaves. Finally, she sends a message to the registrar that gives
+  Mallory's final grade. Mallory can intercept and modify the message,
+  and while she doesn't know exactly what the plaintext is (and
+  obviously doesn't know the key) she knows that it starts with the
+  plaintext word "fail." Mallory intercepts the ciphertext message
+  "<CODE>SXMHYOCZWITVBLA</CODE>".
+What can she replace this with so that the plaintext message that Bob
+decrypts starts with the word "pass" rather than "fail?"
+<p><LI>Textbook, page 81, Exercise 3.2
+<p><LI>Textbook, page 82, Exercise 3.5
+<p><LI>Consider a company in which only the company president (Alice) has the
+combination to the safe, but in case something happens to Alice she
+would like it so that her two vice-presidents, Bob and Carol, can
+learn the combination if they work together (this is a form of "key
+escrow"). The combination can be specified in 64 bits, so they will
+use DES to accomplish this. Alice shares a secret key <I>K<sub>AB</sub></I> with
+Bob  and a secret key <I>K<sub>AC</sub></I> with Carol, but can't just encrypt the
+combination with <I>K<sub>AB</sub></I> or <I>K<sub>AC</sub></I> because then either one could
+decrypt the safe's combination without cooperating with the
+other. Devise a solution so that Alice can leave a ciphertext with
+them so that they can decrypt the combination if and only if they
+cooperate with each other.
+<P>Describe your solution carefully, saying exactly what operations Alice
+must perform to create the ciphertext, and the operations Bob and
+Carol will use to decrypt the ciphertext and learn the safe's
+combination. Use clear, mathematical notation (so, for example,
+<I>E(K<sub>AB</sub>,M)</I> uses DES to encrypt message <I>M</I> using key <I>K<sub>AB</sub></I>). 
+In your description clearly state how large the ciphertext is.
+</OL>
+
+
+</div></td></tr>
+</table>
+
+</body> </html>
+

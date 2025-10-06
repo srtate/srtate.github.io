@@ -1,0 +1,221 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title>CSC 495/680:  Trusted Computing</title>
+<link href="https://home.uncg.edu/cmp/faculty/srtate/classstyle.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td width="800"><img src="495banner.jpg" alt="CSC 589: Trusted Computing" /></td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+<col width="150" />
+<col width="700" />
+<tr><td valign="top">
+<div class="navigate">
+<div class="navhead">Navigation</div>
+<div class="navother">
+<a href="index.php.html">Class Home</a>
+</div>
+<div class="navother">
+<a href="syllabus.php.html">Syllabus</a>
+</div>
+<div class="navother">
+<a href="handouts.php.html">Handouts</a>
+</div>
+<div class="navother">
+<a href="slides.php.html">Lecture Slides</a>
+</div>
+<div class="navother">
+<a href="assign.php.html">Assignments</a>
+</div>
+<div class="navother">
+<a href="moreinfo.php.html">More Information</a>
+</div>
+<img src="https://home.uncg.edu/cmp/faculty/srtate/pics/navtail.png" />
+</div>
+</td><td valign="top"><div class="main">
+
+<p>A <a href="projects.pdf">printable PDF</a> is available.</p>
+
+    <H1 ALIGN=CENTER>Project Information</H1>
+    
+    
+    <P>As described on the class syllabus, graduate students will do a final
+research-oriented project in lieu of the final exam.  From the
+syllabus:
+<BLOCKQUOTE>Graduate students will not have a final exam, but each graduate
+student must do a research project in which they explore an area of
+research (and a minimum of three research papers) and write a report
+of approximately 10 pages summarizing research in that area.
+</BLOCKQUOTE>
+In the past 5 years there has been a significant amount of research in
+trusted computing and other hardware-enhanced security techniques, and
+this should be the basis of your project and report.  The three
+research papers you choose should be peer-reviewed research papers --
+not web pages or product documentation or anything like that.  At
+least two papers should be specifically about trusted computing, but
+the third could be a general research background paper.  For example,
+if you wanted to do a project on Private Information Retrieval, one
+paper could be one of the initial papers (from the early to mid
+1990's) that describes the problem and solutions that pre-date trusted
+computing.
+<P>The
+project will have various "milestones," with the following due dates:
+<DL><DT><B><I>Project topic selection:</I></B><DD>  Monday, November 15
+<DT><B><I>References selected and paper outline:</I></B><DD>
+  Monday, November 22
+<DT><B><I>Draft submitted for feedback (optional):</I></B><DD>
+  Friday, December 3
+<DT><B><I>Final report due:</I></B><DD> Friday, December
+  10 (7:00 PM)
+</DL>
+You should email the final report to me by the due date -- please
+email me a PDF (not a DOC or other format).
+<P>What follows are some possible project topics.  This is by no means an
+exhaustive list, and you should feel free to look for other topics and
+to browse research literature for other topics that interest you.
+(<I>Note: The printed version of this handout gives bibliographic
+  references that allow you to find the paper with a little bit of
+  work -- the online version of this handout has links to these
+  papers when possible, although for some links you need to be on the
+  UNCG campus so that you can use the library's subscription to these
+  publications.</I>)
+<H2><A NAME="1">Other hardware-enhanced security architectures</A></H2>
+<P>Trusted computing technology, as defined by the Trusted Computing
+Group, is not the only way to enhance security through hardware
+additions or modifications.  Surveying some alternative approaches,
+highlighting strengths and weaknesses of different approaches, could
+be an interesting project.  Some of the papers you might consider are
+the following:
+<UL><LI>Benjie Chen and Robert Morris.  "<A HREF="http://www.usenix.org/events/hotos03/tech/chenb.html">Certifying program execution
+  with secure processors</A>."  In <EM>Proceedings of the 9th conference
+    on Hot Topics in Operating Systems - Volume 9</EM>, pages 133-138,
+  2003.
+<LI>Taeho Kgil, Laura Falk, and Trevor Mudge.
+ "<A HREF="http://portal.acm.org/citation.cfm?id=1055626.1055644">ChipLock: support for secure microarchitectures</A>."
+ <EM>SIGARCH Computer Architecture News</EM>, 33(1):134-143, 2005.
+<LI>David Lie, Chandramohan&nbsp;A. Thekkath, Mark Mitchell, Patrick Lincoln, Dan Boneh,
+  John Mitchell, and Mark Horowitz.
+ "<A HREF="http://portal.acm.org/citation.cfm?id=379237">Architectural support for copy and tamper resistant software</A>."
+ <EM>SIGARCH Computer Architecture News</EM>, 28(5):168-177, 2000.
+<LI>David Lie, John Mitchell, Chandramohan&nbsp;A. Thekkath, and Mark Horowitz.
+ "<A HREF="http://www.computer.org/portal/web/csdl/doi/10.1109/SECPRI.2003.1199335">Specifying and verifying hardware for Tamper-Resistant software</A>."
+ In <EM>IEEE Symposium on Security and Privacy</EM>, page 166, 2003.
+<LI>G.&nbsp;Edward Suh, Dwaine Clarke, Blaise Gassend, Marten van Dijk, and Srinivas
+  Devadas.
+ <A HREF="http://portal.acm.org/citation.cfm?id=956417.956575">Efficient memory integrity verification and encryption for secure
+  processors</A>.
+ In <EM>Proceedings of the 36th Annual IEEE/ACM International
+  Symposium on Microarchitecture</EM>, page 339, 2003.
+</UL>
+<H2><A NAME="2">Private Information Retrieval</A></H2>
+<P>Consider a data provider that allows you to make queries against the
+data it holds, but the user would like to make queries in a private
+manner so that the server cannot tell exactly what data has been
+retrieved.  For example, you could have a medical database that
+patients could query, but patient queries have full privacy.  At first
+this seems to be impossible (or at least very difficult), but trusted
+hardware provides some interesting possibilities.  Some of the work in
+this area is in the following papers:
+<UL><LI>A.&nbsp;Iliev and S.W. Smith.
+ <A HREF="http://www.computer.org/portal/web/csdl/doi/10.1109/MSP.2005.49">Protecting client privacy with trusted computing at the server</A>.
+ <EM>IEEE Security and Privacy Magazine</EM>, 3(2):20-28, 2005.
+<LI>A. Iliev and S. Smith, "Private Information Storage with
+  Logarithmic-space Secure Hardware," Information Security Management,
+  Education, and Privacy, Kluwer, 2004, pp. 201-216.
+<LI>Sean&nbsp;W. Smith and D.&nbsp;Safford.
+ <A HREF="http://ieeexplore.ieee.org/xpl/freeabs_all.jsp?arnumber=5386937">Practical server privacy with secure coprocessors</A>.
+ <EM>IBM Systems Journal</EM>, 40(3):683-695, 2001.
+<LI>Peter Williams, Radu Sion, and Bogdan Carbunar.
+ <A HREF="http://portal.acm.org/citation.cfm?id=1455770.1455790">Building castles out of mud: practical access pattern privacy and
+  correctness on untrusted storage</A>.
+ In <EM>Proceedings of the 15th ACM Conference on Computer and
+  Communications Security (CCS)</EM>, pages 139-148, 2008.
+</UL>
+<H2><A NAME="3">Grid or cloud computing or virtualization</A></H2>
+<P>Using computing resources across the Internet is a hot topic these
+days, whether it is to increase the computing power available by
+aggregating computing resources together (grid computing) or simply
+making use of hardware managed remotely (cloud computing).  There are
+clearly some interesting security and privacy issues when your
+computing resources are not under your control, and trusted computing
+technology can be used to increase security and privacy in such a
+situation.  Some papers along these lines are the following:
+<UL><LI>Stefan Berger, Ram&oacute;n C&aacute;ceres, Kenneth&nbsp;A. Goldman, Ronald Perez, Reiner
+  Sailer, and Leendert van Doorn.
+ <A HREF="http://usenix.org/events/sec06/tech/berger.html">vTPM: virtualizing the trusted platform module</A>.
+ In <EM>Proceedings of the 15th USENIX Security Symposium</EM>, 2006.
+<LI>Juan Du, Wei Wei, Xiaohui Gu, and Ting Yu.
+ <A HREF="http://portal.acm.org/citation.cfm?id=1655108.1655120">Towards secure dataflow processing in open distributed systems</A>.
+ In <EM>Proceedings of the 2009 ACM Workshop on Scalable Trusted
+  Computing</EM>, pages 67-72, 2009.
+<LI>M.&nbsp;Lorch, J.&nbsp;Basney, and D.&nbsp;Kafura.
+ <A HREF="http://www.computer.org/portal/web/csdl/doi/10.1109/CCGrid.2004.1336679">A hardware-secured credential repository for grid PKIs</A>.
+ In <EM>Proceedings of the 2004 IEEE International Symposium on
+  Cluster Computing and the Grid</EM>, pages 640-647, 2004.
+<LI>Wenbo Mao, Fei Yan, and Chunrun Chen.
+ <A HREF="http://portal.acm.org/citation.cfm?id=1179474.1179486">Daonity: grid security with behaviour conformity from trusted
+  computing</A>.
+ In <EM>Proceedings of the ACM Workshop on Scalable Trusted
+  Computing</EM>, pages 43-46, 2006.
+</UL>
+<H2><A NAME="4">Attestation issues</A></H2>
+<P>Attestation, or proving that a system is running particular software
+or has particular properties, is a very important feature of trusted
+computing.  As we discussed in class, using secure boot and a static
+root of trust leads to a highly complex system.  Chipset and processor
+support for a dynamic root of trust is one solution, but there are
+other interpretations (sometimes built on a dynamic root of trust) of
+attestation that are interesting to consider.  The following papers
+are examples of work in this area:
+<UL><LI>Fabrizio Baiardi, Diego Cilea, Daniele Sgandurra, and Francesco Ceccarelli.
+ <A HREF="http://portal.acm.org/citation.cfm?id=1530327.1530335">Measuring semantic integrity for remote attestation</A>.
+ In <EM>Proceedings of the 2nd International Conference on Trusted
+  Computing</EM>, pages 81-100, 2009.
+<LI>Liqun Chen, Rainer Landfermann, Hans L&ouml;hr, Markus Rohe, Ahmad-Reza Sadeghi,
+  and Christian St&uuml;ble.
+ <A HREF="http://portal.acm.org/citation.cfm?id=1179474.1179479">A protocol for property-based attestation</A>.
+ In <EM>Proceedings of the first ACM Workshop on Scalable Trusted
+  Computing</EM>, pages 7-16, 2006.
+<LI>Yasuharu Katsuno, Yuji Watanabe, Sachiko Yoshihama, Takuya Mishina, and
+  Michiharu Kudoh.
+ <A HREF="http://portal.acm.org/citation.cfm?id=1179480">Layering negotiations for flexible attestation</A>.
+ In <EM>Proceedings of the First ACM Workshop on Scalable Trusted
+  Computing</EM>, pages 17-20, 2006.
+<LI>Ahmad-Reza Sadeghi and Christian St&uuml;ble.
+ <A HREF="http://portal.acm.org/citation.cfm?id=1065907.1066038">Property-based attestation for computing platforms: caring about
+  properties, not mechanisms</A>.
+ In <EM>Proceedings of the 2004 Workshop on New Security Paradigms</EM>,
+  pages 67-77, 2004.
+<LI>Frederic Stumpf, Andreas Fuchs, Stefan Katzenbeisser, and Claudia Eckert.
+ <A HREF="http://portal.acm.org/citation.cfm?doid=1456455.1456457">Improving the scalability of platform attestation</A>.
+ In <EM>Proceedings of the 3rd ACM Workshop on Scalable Trusted
+  Computing</EM>, pages 1-10, 2008.
+</UL>
+<H2><A NAME="5">Operating system support/issues</A></H2>
+<P>What sort of support from the operating system is required for trusted
+computing applications?  That is the question explored in the
+following research papers:
+<UL><LI>Tal Garfinkel, Mendel Rosenblum, and Dan Boneh.
+ <A HREF="http://www.usenix.org/events/hotos03/tech/garfinkel.html">Flexible OS support and applications for trusted computing</A>.
+ In <EM>Proceedings of the 9th Conference on Hot Topics in Operating
+  Systems</EM>, pages 25-25, 2003.
+<LI>Jason&nbsp;F. Reid and William&nbsp;J. Caelli.
+ <A HREF="http://portal.acm.org/citation.cfm?id=1082308">DRM, trusted computing and operating system architecture</A>.
+ In <EM>Proceedings of the 2005 Australasian Workshop on Grid
+  Computing and E-research</EM>, pages 127-136, 2005.
+<LI>Alan Shieh, Dan Williams, Emin&nbsp;G&uuml;n Sirer, and Fred&nbsp;B. Schneider.
+ <A HREF="http://portal.acm.org/citation.cfm?doid=1095810.1118613">Nexus: a new operating system for trustworthy computing</A>.
+ In <EM>Proceedings of the ACM Symposium on Operating Systems
+  Principles</EM>, pages 1-9, 2005.
+</UL>
+
+
+
+</div></td></tr>
+</table>
+
+</body> </html>
+

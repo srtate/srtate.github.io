@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+<title>CSC 580:  Cryptography and Security in Computing</title>
+<link href="https://home.uncg.edu/cmp/faculty/srtate/classstyle.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td width="800"><img src="580banner.jpg" alt="CSC 580: Cryptography and Security in Computing" /></td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+<col width="150" />
+<col width="700" />
+<tr><td valign="top">
+<div class="navigate">
+<div class="navhead">Navigation</div>
+<div class="navother">
+<a href="index.php.html">Class Home</a>
+</div>
+<div class="navother">
+<a href="syllabus.php.html">Syllabus</a>
+</div>
+<div class="navother">
+<a href="sched.php.html">Schedule</a>
+</div>
+<div class="navother">
+<a href="readings.php.html">Readings</a>
+</div>
+<div class="navother">
+<a href="handouts.php.html">Handouts</a>
+</div>
+<div class="navother">
+Assignments
+</div>
+<div class="navother">
+&nbsp;&nbsp;&bullet; <a href="homework.php.html">HW Problems</a>
+</div>
+<div class="navother">
+&nbsp;&nbsp;&bullet; <a href="project.php.html">Project</a>
+</div>
+<div class="navother">
+<a href="http://docs.oracle.com/javase/8/docs/technotes/guides/security/crypto/CryptoSpec.html">JCA Ref Guide</a>
+</div>
+<div class="navother">
+<a href="http://docs.oracle.com/javase/8/docs/api/">Java API Docs</a>
+</div>
+<div class="navother">
+<a href="http://canvas.uncg.edu/">Canvas</a>
+</div>
+<div class="navother">
+<a href="moreinfo.php.html">More Information</a>
+</div>
+<img src="https://home.uncg.edu/cmp/faculty/srtate/pics/navtail.png" alt="" />
+</div>
+</td><td valign="top"><div class="main">
+
+<p>A <a href="homework10.pdf">printable PDF</a> is available.</p>
+
+<center><h1>Homework 10 &ndash; Due Tuesday, April 11</h1></center>
+
+<OL><LI>Draw and label a picture that illustrates the Merkle-Damgard hash
+function construction. Make sure you clearly label the input to the
+hash function and the output (the hash value).
+<p><LI>Since a MAC is conceptually like adding a key to a hash function, let's try
+taking the key away from a MAC and seeing if it makes a good hash
+function. In particular, consider the Data Authentication Algorithm
+(sometimes called CBC-MAC) using DES, which is described in Section
+12.6, where the input 
+consists of an
+integer number of 64-bit blocks:
+<I>D<sub>1</sub>,...,D<sub>N</sub></I>. We then "take away" the key by setting it to zero,
+and computing
+<blockquote>
+<I>O<sub>1</sub></I> = DES(0, <I>D<sub>1</sub></I>)<br/>
+<I>O<sub>2</sub></I> = DES(0, <I>D<sub>2</sub></I> XOR <I>O<sub>1</sub></I>)<br/>
+&nbsp;&nbsp; ...<br/>
+<I>O<sub>N</sub></I> = DES(0, <I>D<sub>N</sub></I> XOR <I>O<sub>N-1</sub></I>)<br/><br/>
+</blockquote>
+The hash output is <I>O<sub>N</sub></I>. Is this preimage resistant? (<I>Justify your
+answer, giving an attack algorithm if appropriate.</I>)
+<p><LI>For the hash function in the previous problem, can you find
+  collisions efficiently (given <I>D<sub>1</sub>,D<sub>2</sub>,...,D<sub>N</sub></I> can you find a
+  different input that gives the same hash value)?  (<I>Justify your
+answer, giving an attack algorithm if appropriate.</I>)
+</OL>
+
+
+</div></td></tr>
+</table>
+
+</body> </html>
+

@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title>CSC 580:  Cryptography and Security in Computing</title>
+<link href="https://home.uncg.edu/cmp/faculty/srtate/classstyle.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td width="800"><img src="580banner.jpg" alt="CSC 580: Cryptography and Security in Computing" /></td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+<col width="150" />
+<col width="700" />
+<tr><td valign="top">
+<div class="navigate">
+<div class="navhead">Navigation</div>
+<div class="navother">
+<a href="index.php.html">Class Home</a>
+</div>
+<div class="navother">
+<a href="syllabus.php.html">Syllabus</a>
+</div>
+<div class="navother">
+<a href="handouts.php.html">Handouts</a>
+</div>
+<div class="navother">
+<a href="examples.php.html">Class Examples</a>
+</div>
+<div class="navother">
+<a href="assign.php.html">Assignments</a>
+</div>
+<div class="navother">
+<a href="http://blackboard.uncg.edu/">Blackboard</a>
+</div>
+<div class="navother">
+<a href="moreinfo.php.html">More Information</a>
+</div>
+<img src="https://home.uncg.edu/cmp/faculty/srtate/pics/navtail.png" />
+</div>
+</td><td valign="top"><div class="main">
+
+<h2>AES Program Testing</h2>
+
+The following test data should help you test and debug your AES implementation.
+
+<pre>
+  Input Data:     1A512FD1B1C889FF54766DCDFA1B99EA
+  Key:            F0D27321B58DBAD2312BF5607F8D292F
+  Correct Output: 69D065B3801DBB9F4D52164D36F0E1C6 
+</pre>
+
+For ease of testing, here's what that looks like hard-coded into the code template that I provided for this assignment:
+
+<hr>
+
+<pre>
+int main()
+{
+    unsigned char key[AESCipher::KEYLEN] = 
+	{0xf0, 0xd2, 0x73, 0x21, 0xb5, 0x8d, 0xba, 0xd2, 
+	 0x31, 0x2b, 0xf5, 0x60, 0x7f, 0x8d, 0x29, 0x2f};
+    unsigned char plain[AESCipher::BLOCKLEN] = 
+	{0x1a, 0x51, 0x2f, 0xd1, 0xb1, 0xc8, 0x89, 0xff,
+	 0x54, 0x76, 0x6d, 0xcd, 0xfa, 0x1b, 0x99, 0xea};
+    unsigned char cipher[AESCipher::BLOCKLEN];
+
+    AESCipher aesObject;
+
+    aesObject.setKey(key);
+    aesObject.encrypt(plain, cipher);
+
+    printf("\n\nFinal answer:\n");
+    for (int i=0; i&lt;AESCipher::BLOCKLEN; i++)
+        printf("%02x ", (unsigned int)cipher[i]);
+    putchar('\n');
+
+    return 0;
+}
+</pre>
+
+<hr>
+
+If your code is correct, the final answer that is printed should be the following:
+<pre>
+Final answer:
+69 d0 65 b3 80 1d bb 9f 4d 52 16 4d 36 f0 e1 c6 
+</pre>
+
+<hr>
+
+More important than the final answer, is that I picked this data set so that it would give exactly the same values after each stage of the first round as the example given in the book (Section 5.2).  Broken down by stages, here's the output of my program showing the result of each stage:
+
+<pre>
+  Start:
+  1a b1 54 fa 
+  51 c8 76 1b 
+  2f 89 6d 99 
+  d1 ff cd ea 
+  
+  After Initial AddRoundKey:
+  ea 04 65 85 
+  83 45 5d 96 
+  5c 33 98 b0 
+  f0 2d ad c5 
+  
+  After SubBytes:
+  87 f2 4d 97 
+  ec 6e 4c 90 
+  4a c3 46 e7 
+  8c d8 95 a6 
+  
+  After ShiftRows:
+  87 f2 4d 97 
+  6e 4c 90 ec 
+  46 e7 4a c3 
+  a6 8c d8 95 
+  
+  After MixColumns:
+  47 40 a3 4c 
+  37 d4 70 9f 
+  94 e4 3a 42 
+  ed a5 a6 bc 
+  
+  After AddRoundKey:
+  eb 59 8b 1b 
+  40 2e a1 c3 
+  f2 38 13 42 
+  1e 84 e7 d2 
+</pre>
+
+
+
+</div></td></tr>
+</table>
+
+</body> </html>
+

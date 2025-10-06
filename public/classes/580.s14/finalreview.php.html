@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+<title>CSC 580:  Cryptography and Security in Computing</title>
+<link href="https://home.uncg.edu/cmp/faculty/srtate/classstyle.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td width="800"><img src="580banner.jpg" alt="CSC 580: Cryptography and Security in Computing" /></td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+<col width="150" />
+<col width="700" />
+<tr><td valign="top">
+<div class="navigate">
+<div class="navhead">Navigation</div>
+<div class="navother">
+<a href="index.php.html">Class Home</a>
+</div>
+<div class="navother">
+<a href="syllabus.php.html">Syllabus</a>
+</div>
+<div class="navother">
+<a href="readings.php.html">Readings</a>
+</div>
+<div class="navother">
+<a href="handouts.php.html">Handouts</a>
+</div>
+<div class="navother">
+<a href="assign.php.html">Assignments</a>
+</div>
+<div class="navother">
+<a href="http://blackboard.uncg.edu/">Blackboard</a>
+</div>
+<div class="navother">
+<a href="moreinfo.php.html">More Information</a>
+</div>
+<img src="https://home.uncg.edu/cmp/faculty/srtate/pics/navtail.png" alt="" />
+</div>
+</td><td valign="top"><div class="main">
+
+<p>A <a href="finalreview.pdf">printable PDF</a> is available.</p>
+
+    <H1 ALIGN=CENTER>CSC 580 Final Exam Review Sheet</H1>
+
+
+<P><P><P>The final exam in this class will be Friday, May 2, from 7:00 - 10:00
+(it will be designed to take no more than 90 minutes, but you will
+have the entire three hours if you'd like it).  The exam will focus
+primarily on material covered since the midterm exam, but will include
+one or possibly two questions from material covered on the midterm, as well as
+questions which try to pull everything together.  Make sure you review
+the terminology that was introduced in these chapters (terms are given
+at the end of each chapter).
+<P>The midterm provided pretty thorough coverage of Chapters 1 - 6.
+The following is a list of the main topics we have covered since the
+last exam:
+<UL><LI>Formal Security Models (Handout)
+<LI>Chapter 8 (Number theory for public key cryptography)
+<LI>Chapter 9 (Public key crypto basics and RSA)
+<LI>Chapter 10 (Diffie-Hellman, ElGamal, and Elliptic Curves)
+<LI>Chapter 11 (Cryptographic Hash Functions)
+<LI>Chapter 7 (Pseudo-random number generation -- some from the book
+  but also from NIST document, including the Dual_EC_DRBG method and
+  flaws)
+<LI>Chapters 12&amp;13 (MACs and Digital Signatures - basic ideas only)
+<LI>Readings (Case studies - TrueCrypt and Voting Machine Security)
+</UL>
+<P>The final exam will be similar to earlier exams, with the length being
+roughly one question more than the midterm. There will also be a
+"challenge" question that requires you to think more creatively
+about the topics we have covered.  For this question you will have at
+least 2 alternative questions, and you only need to solve one of them.
+Here's a sample "challenge question":
+<UL><LI>The country of Oceania has decided to outlaw encryption but to allow
+integrity-protecting technologies such as hash functions and digital
+signatures.  Since the policy-makers know that hash functions are
+"one-way", they figure people can't use them for encryption.
+However, any secure hash function can be turned into a secure
+symmetric cipher.  Devise a way to do this.  Some answers are better
+than others, but I don't expect perfection here -- you simply need to
+have a reasonable approach:  describe why you think your particular
+technique is secure.
+</UL>
+<P>Below are some samples of the more standard exam questions.
+<UL><LI>The "voting machine security" paper mentioned that this voting
+system used CBC mode in which the IV was always all 0's. Prove that
+this encryption scheme (CBC mode with a constant IV) is not IND-CPA
+secure. Your answer should be fully justified along the lines of the
+problems we did in the "formal security models" unit.
+<LI>The Miller-Rabin primality testing algorithm has two possible
+outputs -- describe what they are and what they mean.  How can you
+increase the reliability of the answer you get from the Miller-Rabin
+algorithm?
+<LI>Describe the Diffie-Hellman key exchange algorithm -- either a
+diagram or formulas are acceptable, as long as the technique is
+clear.  Show why this establishes a secret key, and describe why this
+is believed to be secure (state any computational assumption that is
+made in this justification).
+<LI>Joe makes a system using RSA for public key cryptography, but in the
+key generation routine uses the standard C library <TT>rand()</TT>
+function for random values, which uses a 15-bit value for a seed. Why
+is this insecure? Be very specific in your answer, describing a real,
+practical attack with an explanation of the time complexity of the
+attack.
+</UL>
+
+
+</div></td></tr>
+</table>
+
+</body> </html>
+

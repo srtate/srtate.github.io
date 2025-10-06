@@ -1,0 +1,276 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title>CSC 100:  The Beauty and Joy of Computing</title>
+<link href="https://home.uncg.edu/cmp/faculty/srtate/classstyle.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td width="800"><img src="100banner.jpg" alt="CSC 100: The Beauty and Joy of Computing" /></td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+<col width="150" />
+<col width="700" />
+<tr><td valign="top">
+<div class="navigate">
+<div class="navhead">Navigation</div>
+<div class="navother">
+<a href="index.php.html">Class Home</a>
+</div>
+<div class="navother">
+<a href="syllabus.php.html">Syllabus</a>
+</div>
+<div class="navother">
+<a href="readings.php.html">Readings/Videos</a>
+</div>
+<div class="navother">
+<a href="https://blackboard.uncg.edu/">Blackboard</a>
+</div>
+<div class="navother">
+<a href="sched.php.html">Schedule</a>
+</div>
+<div class="navother">
+<a href="lectures.php.html">Lectures</a>
+</div>
+<div class="navother">
+<a href="handouts.php.html">Handouts</a>
+</div>
+<div class="navother">
+<a href="labs.php.html">Lab Exercises</a>
+</div>
+<div class="navother">
+<a href="assign.php.html">Assignments</a>
+</div>
+<div class="navother">
+<a href="http://groups.google.com/group/bjc-at-uncg?hl=en">Discussions</a>
+</div>
+<div class="navother">
+<a href="moreinfo.php.html">More Information</a>
+</div>
+<img src="https://home.uncg.edu/cmp/faculty/srtate/pics/navtail.png" />
+</div>
+</td><td valign="top"><div class="main">
+
+<p>A <a href="UNCG-CSC100-F13-HW3-Fractals.pdf">printable PDF</a> is available.</p>
+
+<h2>Homework 3 &ndash; Fractal Designs &ndash; Due Wednesday, Nov. 6</h2>
+<p>In Activity 3
+    of Lab 9, you experimented with a recursively generated
+    self-similar shape called a Sierpinski
+    Triangle. In mathematics there are many such shapes that are known
+    as "fractals," and
+    the <a href="http://en.wikipedia.org/wiki/Fractal">Wikipedia page
+    on Fractals</a>
+    has a good discussion with different examples (you aren't required
+    to read this, but you might find it interesting). While fractals
+    are often studied simply for the beauty of the drawings, there are
+    practical uses too: at the bottom of the
+    Wikipedia page is an example that shows a fractal construction of
+    an artificial mountain - many game designers use fractals for
+    generating realistic artificial landscapes for games, and due to
+    the self-similarity of the structure the game can zoom in on this
+    artificial structure at whatever scale is needed. In this
+    homework, you will learn about some self-similar shapes that go
+    beyond the Sierpinski Triangle that you saw in Lab 6, see some
+    examples of where they occur both in nature and in design, and
+    then experiment in BYOB with drawing some recursively-generated
+    shapes.</p>
+<p>Self-similar shapes and drawings can have a high level
+  of symmetry and infinitely-detailed structure. Many societies and
+  artists have found great beauty in fractal designs, and in
+  particular many African geometric designs that are found in fabrics
+  and in village design are based on fractals. This homework has a
+  couple of initial activities that you should do before getting to
+  the main part of the assignment. I have put dates on these
+  activities to indicate when I will assume you have done them, so we
+  can discuss these items briefly in class. However, you are
+  encouraged to work faster than this so you have plenty of time to
+  think about and work on the BYOB code.</p>
+<p class="Standard"><i><u>Activity 1 (finish no later than
+    Wednesday, October 23)</u></i>: Watch the video of
+    the TED talk "Ron Eglash: The fractals at
+    the heart of African designs"
+    at
+ <a href="http://www.ted.com/talks/ron_eglash_on_african_fractals.html">http://www.ted.com/talks/ron_eglash_on_african_fractals.html</a>. The
+    video is 17 minutes, and you should spend at least 30 minutes
+    thinking about the ideas and exploring fractals online.</p>
+
+<p class="Standard"><i><u>Activity 2 (finish no later than
+    Monday, October 28)</u></i>: Go through the online lesson on
+    fractals and design
+    at <a href="http://csdt.rpi.edu/african/African_Fractals/index.html">http://csdt.rpi.edu/african/African_Fractals/index.html</a>,
+    which should take about one hour to complete (that depends on how
+    much time you spend playing with the
+    applets).</p>
+<p class="P5"><i><u>Activity
+    3 (finish no later than Wednesday, November 6)</u></i>: You should
+    create BYOB scripts to draw at least two of the fractals from the
+    preceding online lesson, where the two should be chosen from the
+    list at the end of this activity. How much time should this take?
+    It could take anywhere from as little as one hour to as much as
+    twenty very frustrating hours. If you get really stuck, seek
+    help!</p>
+<p class="P5">What's great about
+    fractal drawings is that it takes very little code to draw very
+    intricate shapes. The bad part is that for such a small amount of
+    code, it can be very difficult to wrap your mind around. In Lab 9
+    you created code to draw a Sierpinski Triangle. Let's walk through
+    how to make a BYOB script to draw a Koch curve (the first example
+    in the lesson above). This will give you another example to look
+    at, think about, and possibly play around with on the computer
+    before you have to make your own fractal drawing
+    code.</p>
+<p class="P5">The idea is fairly
+    straightforward: we pass two parameters, for the size of the
+    drawing and the number of levels of recursion to use. The base
+    case is a 0 level Koch curve, and will just draw a single straight
+    line of the specified length for the base case. At higher levels
+    we make four segments, each of which is a Koch curve at a smaller
+    level. Here's the code:</p>
+<img src="pics/Koch-Def.png" />
+<p class="P5">That's the entire recursive
+    script, and all that's needed to draw Koch curves at whatever
+    level of detail you want. There are a few things you really need
+    to understand about this code which are not obvious at first
+    glance &ndash; make sure you understand <i>why</i> each
+    of these is important before you try writing your own fractal
+    drawing code!</p>
+<ul><li><p>All
+    direction adjustments are relative adjustments and not absolute &ndash;
+    in other words, in recursive code, always use "turn" blocks and
+    never the "point in direction"
+    block.</p></li>
+<li><p>The "sub length" that is calculated depends on the fact that
+    we're turning 60 degrees. If you had a different "seed shape" or
+    even just a different angle in this shape, you'd need to solve a
+    little trigonometry problem to get this right.</p></li>
+<li><p>The sequence of turns should always leave the drawing sprite
+    with the same direction that it started in &ndash; in other words, all
+    turns should cancel out: in this case we have two counterclockwise
+    turns of 60 degrees, which is exactly balanced by a clockwise turn
+    of 120 degrees.</p></li>
+</ul>
+<p>You
+    also need a driver script, and below is an example of a driver
+    script that draws a level 0 Koch curve (remember, this is just a
+    straight line) - it has to set the starting position and
+    orientation, make sure the screen is cleared and the pen is down,
+    and then uses the block we just defined to make the drawing. The
+    output is shown to the right.</p>
+<table border="0" cellspacing="0"
+    cellpadding="0"
+    class="Table2"><colgroup><col width="314"/><col width="407"/></colgroup><tr class="Table21"><td style="text-align:left;width:2.8333in;
+    " class="Table2_A1"><!--Next 'div' was a
+    'text:p'.--><div class="P4"><!--Next ' span' is a draw:frame.
+    --><span style="height:1.0799in;width:1.2201in; padding:0; "
+    class="fr2"
+    id="graphics2"><img style="height:2.7429cm;width:3.0991cm;" alt=""
+    src="pics/Drive-Koch-0.png"/></span></div></td><td style="text-align:left;width:3.6667in;
+    " class="Table2_A1"><!--Next 'div' was a
+    'text:p'.--><div class="P4"><!--Next ' span' is a draw:frame.
+    --><span style="height:2.2598in;width:3in; padding:0; "
+    class="fr2"
+    id="graphics3">
+<img style="height:5.7399cm;width:7.62cm;" alt="" src="pics/koch0.png"/>
+</span></div></td></tr></table>
+<p class="P5">A level 0 Koch curve is very boring, of course. Here's
+    what it looks like if we change the level parameter to 1, 2, 3, 4,
+    and 5:</p>
+<!--Next 'div' was a 'text:p'.--><div class="P5"><!--Next '
+    span' is a draw:frame.  --><span style="height:2.2598in;width:3in;
+    padding:0; " class="fr2"
+    id="a_3"><img style="height:5.7399cm;width:7.62cm;" alt=""
+    src="pics/koch1.png"/></span><!--Next '
+    span' is a draw:frame.  --><span style="height:2.2598in;width:3in;
+    padding:0; " class="fr2"
+    id="a_4"><img style="height:5.7399cm;width:7.62cm;" alt=""
+    src="pics/koch2.png"/></span></div><!--Next 'div' was a
+    'text:p'.--><div class="P5"><!--Next ' span' is a draw:frame.
+    --><span style="height:2.2598in;width:3in; padding:0; "
+    class="fr2" id="a_5"><img style="height:5.7399cm;width:7.62cm;"
+    alt=""
+    src="pics/koch3.png"/></span><!--Next '
+    span' is a draw:frame.  --><span style="height:2.25in;width:3in;
+    padding:0; " class="fr2"
+    id="a_6"><img style="height:5.715cm;width:7.62cm;" alt=""
+    src="pics/koch4.png"/></span></div><!--Next 'div' was a
+    'text:p'.--><div class="P5"><!--Next ' span' is a draw:frame.
+    --><span style="height:2.2598in;width:3in; padding:0; "
+    class="fr2" id="a_7"><img style="height:5.7399cm;width:7.62cm;"
+    alt=""
+    src="pics/koch5.png"/></span></div>
+<p class="P5">Isn't that cool? Just a little
+    bit of BYOB code can draw these amazingly intricate, symmetric,
+    and infinitely detailed
+    pictures!</p>
+<p class="P5">Now for your
+    assignment: You are to create BYOB scripts to draw two of the
+    fractal designs described in the web lesson you followed for the
+    previous activity, restricted to the ones listed below. I think it
+    would be great if you chose one shape from the "fractals in
+    nature" examples and one from the "African fractals" examples, but
+    really any two will be OK. Here are the shapes you can choose
+    from:</p>
+<p class="P5">Fractals in nature:</p><ul><li><p class="P7"
+    style="margin-left:0.381cm;">Organic
+    branching structures ("Application
+    3")</p></li><li><p class="P7"
+    style="margin-left:0.381cm;">Queen
+    Anne's Lace ("Applications
+    3")</p></li><li><p class="P7"
+    style="margin-left:0.381cm;">Fern
+    ("Applications
+    3")</p></li><li><p class="P7"
+    style="margin-left:0.381cm;">Da
+    Vinci branching ("Applications
+    4")</p></li><li><p class="P7"
+    style="margin-left:0.381cm;">Dendrite
+    ("Applications
+    5")</p></li><li><p class="P7"
+    style="margin-left:0.381cm;">River
+    basin ("Applications
+    5")</p></li><li><p class="P7"
+    style="margin-left:0.381cm;">Sierpinski
+    carpet ("Applications
+    6")</p></li><li><p class="P7"
+    style="margin-left:0.381cm;">Lungs
+    ("Applications
+    7")</p></li><li><p class="P7"
+    style="margin-left:0.381cm;">Neuron
+    ("Applications 7" - warning, this one is pretty
+    hard)</p></li>
+</ul>
+<p class="P5">African fractals:</p>
+<ul><li><p class="P8"
+    style="margin-left:0.381cm;">Logone-Bini
+    ("Culture 2" - this one is
+    tricky)</p></li><li><p class="P8"
+    style="margin-left:0.381cm;">Golden
+    rectangle ("Culture
+    2")</p></li><li><p class="P8"
+    style="margin-left:0.381cm;">Baila
+    village ("Culture
+    4")</p></li><li><p class="P8"
+    style="margin-left:0.381cm;">Nankani
+    ("Culture 6")</p></li><li><p class="P8"
+    style="margin-left:0.381cm;">Fulani
+    wedding blanket ("Culture
+    9")</p></li><li><p class="P8"
+    style="margin-left:0.381cm;">Ethiopian
+    cross ("Culture
+    11")</p></li><li><p class="P8"
+    style="margin-left:0.381cm;">Ghanian
+    bull horn ("Culture
+    12")</p></li><li><p class="P8"
+    style="margin-left:0.381cm;">Kitwe
+    community clinic ("Culture
+    17")</p></li></ul>
+
+
+</div></td></tr>
+</table>
+
+</body> </html>
+
+

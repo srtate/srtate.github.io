@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+<title>CSC 580:  Cryptography and Security in Computing</title>
+<link href="https://home.uncg.edu/cmp/faculty/srtate/classstyle.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td width="800"><img src="580banner.jpg" alt="CSC 580: Cryptography and Security in Computing" /></td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+<col width="150" />
+<col width="700" />
+<tr><td valign="top">
+<div class="navigate">
+<div class="navhead">Navigation</div>
+<div class="navother">
+<a href="index.php.html">Class Home</a>
+</div>
+<div class="navother">
+<a href="syllabus.php.html">Syllabus</a>
+</div>
+<div class="navother">
+<a href="readings.php.html">Readings</a>
+</div>
+<div class="navother">
+<a href="handouts.php.html">Handouts</a>
+</div>
+<div class="navother">
+<a href="assign.php.html">Assignments</a>
+</div>
+<div class="navother">
+<a href="http://canvas.uncg.edu/">Canvas</a>
+</div>
+<div class="navother">
+<a href="moreinfo.php.html">More Information</a>
+</div>
+<img src="https://home.uncg.edu/cmp/faculty/srtate/pics/navtail.png" alt="" />
+</div>
+</td><td valign="top"><div class="main">
+
+<p>A <a href="assign4.pdf">printable PDF</a> is available.</p>
+
+    <H1 ALIGN=CENTER>Assignment 4 - Due Thursday, March 24</H1>
+
+<P><P><P><I>Like Assignment 3, this is a slightly shorter
+  assignment, with only 9 days
+  to complete it rather than a full two weeks. Because of this, it
+  will be graded out of 50 points, and count half as much as the
+  regular-length assignments.</I>
+<OL><LI>It's clear that repeating a deterministic block cipher, as in ECB
+mode, is not secure. But what about repeating a secure
+(non-deterministic) cipher? In other words, let <I>E<sub>K</sub>(P) -&gt; C</I>
+be an IND-CCA encryption scheme, and then define a two-block version
+of this by <I>E2<sub>K</sub>(P<sub>1</sub>,P<sub>2</sub>) -&gt; (C<sub>1</sub>,C<sub>2</sub>)=(E<sub>K</sub>(P<sub>1</sub>),E<sub>K</sub>(P<sub>2</sub>))</I>. It turns out that this construction is
+IND-CPA secure, but <EM>not</EM> IND-CCA secure. Prove the second part
+of that statement (in other words, give an adversary that wins the CCA
+game against the <I>E2</I> two-block encryption scheme -- like almost all
+CCA attacks, the trick is to disguise your decryption oracle requests
+so they don't exactly repeat the challenge ciphertext). Make sure you
+analyze the advantage of your adversary!
+<P>
+<LI>(<EM>Note: Taking large modular powers is tricky, but modern
+  programming languages have good support for this -- for example, in Java you can use the
+  <TT>modPow</TT> function in the <TT>BigInteger</TT> class, and in
+  Python you can use the built-in <TT>pow</TT> function, where
+  <TT>pow(a,x,n)</TT> computes <I>a<sup>x</sup>mod n</I>.</EM>)
+Consider the value <I>n=8911</I> (this is a composite number with factors
+7, 19, and 67). 
+<UL><LI>(a) Select three different random <I>a</I> values in the range
+  <I>2,...,8909</I> that are relatively prime to <I>n</I>, and calculate
+  <I>a<sup>n-1</sup>mod n</I> for each of these three <I>a</I> values. Does it seem
+  that <I>n</I> behaves like a prime number as far as Fermat's Little
+  Theorem is concerned?
+<LI>(b) Use your random <I>a</I> values from part (a) to run the
+  Miller-Rabin primality-testing algorithm on <I>n</I>, showing each
+  step. If your first <I>a</I> value returns "composite" you can stop
+  with just that one simulation -- otherwise, try the other <I>a</I>
+  values until you get "composite."
+</UL>
+<p>
+<LI>What are the primitive roots of 31? (A very simple program can quickly
+solve this problem.)
+<p>
+<LI>All traditional public-key algorithms rely heavily on computing large
+modular powers, and in this problem you will explore the computational
+cost of modular powering. This problem assumes you will program this
+in Java -- if you really want to use Python or another language, talk to me about this as
+an alternative.
+<UL><LI>(a) Implement a function in Java that takes a single parameter,
+  representing a number of bits, and does the following: Use the
+  <TT>BigInteger</TT> constructor that generates a random big integer
+  with the specified number of bits to generate three different random
+  big integers, say <I>a</I>, <I>b</I>, and <I>n</I>. Next, simply call the
+  <TT>BigInteger</TT> method <TT>modPow</TT> to compute <I>a<sup>b</sup>mod n</I> and return the result. Test this on some very small values (like 3
+  bits), print the generated values and results, and check the results
+  using a calculator. For this part, turn in a printout of your
+  function and show the results of your testing.
+<LI>(b) Use the "profiling" tool in NetBeans to benchmark this
+  function (you're really profiling the built-in <TT>modPow</TT>
+  method on random inputs) and see how long it takes to compute
+  modular powers on 4000, 8000, and 16000 bit inputs (you can remove
+  the printing functions you put in for part a). You should run
+  each input size 3-5 times and record the average time (more
+  iterations are better -- think about automating this!). If you are
+  unsure how to use the profiling tool, documentation is available on
+  the class web site.
+<LI>(c) Modular powering algorithms generally take <I>Theta(n<sup>c</sup>)</I> time,
+  but what exactly is <I>c</I>? Figure it out! Here's what you need to do:
+  Assume that the running time is <I>T(n)=k&#183;n<sup>c</sup></I> for some constants <I>k</I>
+  and <I>c</I>, and use the times you measured for 2000 and 4000 bit
+  powering to plug in to write out formulas for <I>T(4000)</I> and
+  <I>T(8000)</I>. Now you have two equations with two unknowns -- solve
+  for <I>c</I>! Repeat the calculation using <I>T(8000)</I> and <I>T(16000)</I> and
+  see if your results are consistent. You may very well see some small
+  inconsistencies here -- don't worry about this for now!
+<LI>(d) Now that you know the running time of <TT>modPow</TT>, use this
+  to estimate the running time for 32,000 bit inputs. Calculate this
+  using the values you found, and <EM>then</EM> run a test with this
+  input size and report on how accurate you were.
+<LI>(e) Given all of these results, why might there be some
+  inconsistencies between measurements? Are there other issues that
+  come into play other than just CPU speed? Can you think of a way in
+  which cache size might make a difference?
+</UL>
+</OL>
+
+
+</div></td></tr>
+</table>
+
+</body> </html>
+

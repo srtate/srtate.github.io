@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title>CSC 495:  Problem Solving and Programming</title>
+<link href="https://home.uncg.edu/cmp/faculty/srtate/classstyle.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td width="800"><img src="495banner.jpg" alt="CSC 495: Problem Solving and Programming" /></td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+<col width="150" />
+<col width="700" />
+<tr><td valign="top">
+<div class="navigate">
+<div class="navhead">Navigation</div>
+<div class="navother">
+<a href="index.php.html">Class Home</a>
+</div>
+<div class="navother">
+<a href="syllabus.php.html">Syllabus</a>
+</div>
+<div class="navother">
+<a href="handouts.php.html">Handouts</a>
+</div>
+<div class="navother">
+<a href="assign.php.html">Assignments</a>
+</div>
+<div class="navother">
+<a href="ninja.php.html">Ninja Points</a>
+</div>
+<div class="navother">
+<a href="http://span.uncg.edu/495/">Class Code</a>
+</div>
+<div class="navother">
+<a href="solutions.php.html">Solutions</a>
+</div>
+<div class="navother">
+<a href="moreinfo.php.html">More Information</a>
+</div>
+<img src="https://home.uncg.edu/cmp/faculty/srtate/pics/navtail.png" />
+</div>
+</td><td valign="top"><div class="main">
+
+<h2>Timing Code Examples</h2>
+
+<p>
+This page gives examples of timing code in both Java and C++.  There
+are several approaches to making timing work, but you should keep in
+mind the following: first, because of the inefficiency of system calls
+to read the current time, you shouldn't get the time very often
+&ndash; preferably no more than once every several seconds.
+</p>
+
+<p>
+The idea with these examples is the following:  since we don't know
+how much time a single iteration of refinement takes, we do a certain
+number of iterations, and keep doubling the number of iterations until
+we exceed 10 seconds.  Now we do additional iterations in blocks of
+this many, so each block takes 10 to 20 seconds.  Finally, we stop as
+soon as we exceed the defined "runLimit" - by setting this to 29
+minutes, we should never run in longer than 29 minutes and 20
+seconds.  This has enough safety to make sure it finishes in under 30
+minutes, but still runs for about as long as it can.
+</p>
+
+<h3>Java Code</h3>
+
+<pre>
+  final double runLimit = 29*60.0;
+
+  double startTime = System.currentTimeMillis()/1000.0;
+
+  initialize();
+
+  long iterations = 0;
+  long checkTime = 10, timeStep = 10;
+  while (true) {
+      refine();
+      if (++iterations >= checkTime) {
+          double elapsed = System.currentTimeMillis()/1000.0 - startTime;
+
+          if (elapsed >= runLimit)
+              break;
+
+          if (elapsed < 10.0) {
+              checkTime *= 2;
+              timeStep = checkTime;
+          } else {
+              checkTime += timeStep;
+          }
+          System.out.println(iterations);
+      }
+  }
+</pre>
+
+<h3>C++ Code</h3>
+
+<pre>
+    const double runLimit = 29*60.0;
+
+    struct timeval start;
+    gettimeofday(&start, NULL);
+    double startTime = start.tv_sec + start.tv_usec/1000000.0;
+
+    initialize();
+
+    long long iterations = 0;
+    long long checkTime = 10, timeStep = 10;
+    while (true) {
+        refine();
+        if (++iterations >= checkTime) {
+            struct timeval now;
+            gettimeofday(&now, NULL);
+            double elapsedTime = now.tv_sec + now.tv_usec/1000000.0 - startTime;
+
+            if (elapsedTime >= runLimit)
+                break;
+
+            if (elapsedTime < 10.0) {
+                checkTime *= 2;
+                timeStep = checkTime;
+            } else {
+                checkTime += timeStep;
+            }
+        }
+    }
+</pre>
+
+
+</div></td></tr>
+</table>
+
+</body> </html>
+

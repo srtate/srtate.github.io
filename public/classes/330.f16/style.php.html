@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title>CSC 330:  Advanced Data Structures</title>
+<link href="https://home.uncg.edu/cmp/faculty/srtate/classstyle.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td width="800"><img src="330banner.jpg" alt="CSC 330: Advanced Data Structures" /></td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+<col width="150" />
+<col width="700" />
+<tr><td valign="top">
+<div class="navigate">
+<div class="navhead">Navigation</div>
+<div class="navother">
+<a href="index.php.html">Class Home</a>
+</div>
+<div class="navother">
+<a href="syllabus.php.html">Syllabus</a>
+</div>
+<div class="navother">
+<a href="http://users.cis.fiu.edu/~weiss/dsj4/code/">Textbook Code</a>
+</div>
+<div class="navother">
+<a href="handouts.php.html">Handouts</a>
+</div>
+<div class="navother">
+<a href="assign.php.html">Assignments</a>
+</div>
+<div class="navother">
+<a href="http://docs.oracle.com/javase/8/docs/api/">Java API Docs</a>
+</div>
+<div class="navother">
+<a href="moreinfo.php.html">More Information</a>
+</div>
+<img src="https://home.uncg.edu/cmp/faculty/srtate/pics/navtail.png" />
+</div>
+</td><td valign="top"><div class="main">
+
+<p>A <a href="style.pdf">printable PDF</a> is available.</p>
+
+    <H1 ALIGN=CENTER>CSC 330 Java Coding Style Rules</H1>
+    
+    <P>These rules are based on the original standard <EM>Code Conventions
+  for the Java Programming Language</EM>, produced by Sun (the original
+creators of Java) and available at
+<BLOCKQUOTE><CENTER>
+<A HREF="http://www.oracle.com/technetwork/java/codeconvtoc-136057.html"><TT>http://www.oracle.com/technetwork/java/codeconvtoc-136057.html</TT></A>
+</CENTER></BLOCKQUOTE>
+While these code conventions are no longer actively maintained, they
+form the basis of most professional style guidelines for Java, such as
+Google's <A HREF="https://google.github.io/styleguide/javaguide.html">Java Style
+  Guide</A>.  You are
+expected to follow these style guidelines for all programming
+assignments in this class, although you will not lose points for
+following the style from either the CSC 230 book (see Appendix A) or
+the CSC 330 book (no style guidelines are explicitly stated in the
+book, but are implied through their code examples).
+<OL><P><LI>Required comments at the top of every file include: your name,
+  assignment number, a brief (one line) description of what is in the
+  file, the last date modified, and a statement that you followed the
+  UNCG Academic Integrity Policy on the assignment. This is slightly
+  different from the <EM>Code Conventions</EM>, because we're in a class
+  setting.
+<P><LI><EM>All</EM> data elements in a class should be private, or
+possibly of package or protected scope if there is a compelling reason
+for this.
+<P><LI>Proper indentation is an absolute must!  Consistently use 2-4
+characters for each indentation level -- the exact number of spaces
+is up to your personal taste, but be consistent!
+<P><LI>All lines should be at most 80 characters long.
+<P><LI>Use whitespace and blank lines to increase readability.
+<P><LI>Use meaningful but concise names for classes, methods, and
+variables.  Class names should be nouns, begin with a capital letter, and
+each word of a multi-word name should start with a capital letter
+(Examples: <CODE>Tree</CODE>, <CODE>BinaryTree</CODE>, and
+<CODE>BinarySearchTree</CODE>).  Method names should be verbs, start with a
+lower case letter, and start subsequent words with upper case letters
+(Examples: <CODE>setData()</CODE>, <CODE>isEmpty()</CODE>, and <CODE>getNext()</CODE>).
+Variables in a class should start with a lower case letter and
+capitalize subsequent words (like method names), but should be nouns
+(Examples: <CODE>root</CODE>, <CODE>rightChild</CODE>, and <CODE>vertexList</CODE>).
+Local variables in a function should also have meaningful names, with
+an exception being for simple loop variables (<CODE>i</CODE> is ok for an
+integer loop, <CODE>x</CODE> for a variable in numeric code, etc.).
+<P><LI>Should consistently order class definitions as follows:  static
+variables, instance variables, constructors, and finally the methods
+(grouped by functionality).
+<P><LI>Use modular, multi-file construction.
+Each source file should contain only <EM>one</EM> public class or
+interface (although a file may include private classes or nested
+classes in support of the main public class should be in the same
+file).
+<P><LI>Provide constructors to make sure objects are initialized
+    properly.
+<P><LI>Variables should be declared with as narrow a scope as possible,
+  including declaring loop variables in a for statement. If a variable
+  is only used within a single block, it should be declared within
+  that block. <EM>Never</EM> declare a variable outside of a method
+  unless it is truly part of the object or class state (i.e., don't
+  use an instance variable as a lazy way to pass values from one
+  method to another). Local variables should be declared as close to their
+  first use a possible, and should always be initialized.
+<P><LI>Use parentheses for grouping expressions, especially 
+  precedence is not obvious.
+<P><LI>Use braces around every block of code, including single-line
+  blocks after an "if" statement or loop construct. I prefer
+  "Egyptian style" brace placement, which puts open braces at the
+  end of lines rather than on a line by itself (this is fairly
+  universal in professional style guides, but almost every
+  introductory programming book does it differently).
+<P><LI>Put comments before each function or method, and at the
+beginning of each source file.  Your comments should in
+"javadoc style," which allows a
+description of your class to be extracted and formatted in HTML.  Make
+sure you clearly state the purpose of each method, what parameters the
+method expects, and the meaning of the return value (if any).  Rule of
+thumb:  I should have all the information I need to call a function
+and interpret the results by looking only at the function comments (I
+shouldn't have to look at the code at all).
+<P><LI>Comment unclear parts of the code, although your goal should be
+  to make code as clear as possible so that it is "self-documenting"
+  and does not need additional explanation. Comments are very
+  helpful with variable declarations, if there is information that is
+  not clear from the variable name (how it's used, assumptions about
+  legal values, etc.).
+<P><LI>Don't improvise -- if there's no rule stated, but all code you
+  see is written a particular way, imitate that and don't make up your
+  own non-standard style.
+</OL>
+
+<p>&nbsp;</p>
+
+
+</div></td></tr>
+</table>
+
+</body> </html>
+

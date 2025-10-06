@@ -1,0 +1,180 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title>CSC 100:  The Beauty and Joy of Computing</title>
+<link href="https://home.uncg.edu/cmp/faculty/srtate/classstyle.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td width="800"><img src="100banner.jpg" alt="CSC 100: The Beauty and Joy of Computing" /></td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+<col width="150" />
+<col width="700" />
+<tr><td valign="top">
+<div class="navigate">
+<div class="navhead">Navigation</div>
+<div class="navother">
+<a href="index.php.html">Class Home</a>
+</div>
+<div class="navother">
+<a href="syllabus.php.html">Syllabus</a>
+</div>
+<div class="navother">
+<a href="https://blackboard.uncg.edu/">Blackboard</a>
+</div>
+<div class="navother">
+<a href="sched.php.html">Schedule</a>
+</div>
+<div class="navother">
+<a href="lectures.php.html">Lectures</a>
+</div>
+<div class="navother">
+<a href="handouts.php.html">Handouts</a>
+</div>
+<div class="navother">
+<a href="labs.php.html">Lab Exercises</a>
+</div>
+<div class="navother">
+<a href="assign.php.html">Assignments</a>
+</div>
+<div class="navother">
+<a href="http://groups.google.com/group/bjc-at-uncg?hl=en">Discussions</a>
+</div>
+<div class="navother">
+<a href="http://uncg-csc-100.blogspot.com">Steve's Class Blog</a>
+</div>
+<div class="navother">
+<a href="moreinfo.php.html">More Information</a>
+</div>
+<img src="https://home.uncg.edu/cmp/faculty/srtate/pics/navtail.png" />
+</div>
+</td><td valign="top"><div class="main">
+
+<h1>Solutions to In-Class Practice Problems</h1>
+
+<p>The solutions given here are the ones we developed in class, based on the <a href="handout4.php.html">practice problems</a> handed out at the beginning of class.</p>
+<p>
+      Below are pictures of the solutions, and you can also download the BYOB project file:
+<ul>
+      <li><a href="Practice.ypr.html">Practice.ypr</a> - this is the BYOB project file that contains all of these solutions. You should save this as a file on your system, and then open it up using BYOB.</li>
+</ul>
+</p>
+<p><b><i>Make a reporter block that reports the average of two input parameters.</i></b></p>
+<table><tr><td>
+<img src="pics/practice1/block-average.png" />
+</td><td>
+This was a really simple problem, and just required putting the
+formula to average two numbers into the "report" slot of the block
+editor. The main point of this example was to demonstrate different
+scopes of variables, and to introduce the naming conventions that
+we'll use in this class: parameters start with the letter p followed
+by a descriptive name (and script variables will start with an s
+followed by a descriptive name).
+</td></tr></table>
+<p><i><b>Make a reporter block that reports the absolute value of its input parameter</b></i></p>
+
+<table><tr><td>
+<img src="pics/practice1/block-abs.png" />
+</td><td>
+
+This was to illustrate the use of a conditional (the if statement) in
+the solution, along with using report blocks rather than the default
+report slot. There are several ways to do this, and students in the
+class selected the if-then-else block - you could also have used the
+plain "if" block, and put "pX" into the default report slot.
+(<i>Note: There is a block provided by BYOB that reports the absolute
+value of its parameter, but that's not the point - the point is to see
+how such a block could be implemented.)
+
+</td></tr></table>
+
+<p><i><b>Make a reporter block that reports an estimate of the square root of its input parameter</b></i></p>
+
+<table><tr><td>
+<img src="pics/practice1/block-sqrt.png" />
+</td><td>
+
+<p>
+The two key components to this solution are the "script" variable and
+the repeat loop.  The formula for how to refine an approximation to
+the square root function is really not important, but the pattern of
+the code is: we have an approximate answer, and a way to make the
+answer better, and so we iterate over that process a few times to get
+a really accurate approximation.  We used the "average" block that we
+produced ourselves above, which is interesting: once we have created a
+block, we can use it exactly like any of the built-in blocks.
+</p><p>
+Notes: Just like absolute value, there is a block provided by BYOB
+that reports the square root, and the built-in block should be used if
+you really want to compute the square root. It's also interesting to
+point out that many students think that computers just magically know
+how to give square roots, and don't think about it;
+however, that's not the case: inside every computer is an algorithm like this that someone has implemented 
+so that the computer can compute square roots -
+there's no such thing as magic!
+</p>
+</td></tr></table>
+
+<p><i><b>Make a predicate block that reports whether the parameter is a prime number.</b></i></p>
+
+<table><tr><td>
+<img src="pics/practice1/block-prime.png" />
+</td><td>
+Important points with this example: it's a predicate block, and uses a
+very common pattern for iteration.  When checking if a number "pX" is
+prime, we need to check whether any of the numbers in the range
+[2,pX-1] divide evenly into pX.  If any of them do, it's not prime; otherwise 
+(if none of them do), it is prime.  We know exactly how many
+values are in this range (it's pX-2), so we repeat that many times,
+and we have a script variable "sCounter" that counts up - it takes the
+value 2, then 3, then 4, then 5, ...  We initialize sCounter to its
+first value (2) before the repeat loop, and increment it (change it by 1)
+as the last thing inside the repeat loop.  This is at least the third
+time you have seen this pattern of loop in this class - and it won't
+be the last!  (<i>Note: There are efficiency improvements that can be made here - don't assume that this is the best way to test whether a number is prime!</i>)
+</td></tr></table>
+
+<p><i><b>Write a script that stamps out some number of sprites, horizontally centered around the current location</b></i></p>
+
+<table><tr><td>
+<img src="pics/practice1/centeredstamping.png" />
+</td><td>
+<p>
+The only thing tricky with this script is the formula in the "move"
+block right in the middle.  It's important to know that the sprite
+we're working with is Alonzo, and Alonzo is 104 pixels wide - so at
+50% scale, he's 52 pixels wide.  We have this 52 hard-coded into this
+script in two places, and those would have to change if we used a
+different sprite (unfortunately, there's no easy way in BYOB to
+determine the width of a sprite other than to look at the costume and
+hard-code the width from that).
+</p>
+<p>
+To understand the formula, think how you far you need to move to the left in order for the stamped sprites to be centered.  Let's think about a few examples:
+<ul>
+<li>If you need to stamp one copy, Alonzo is already in the right position, so we shouldn't move at all</li>
+<li>If you want to stamp two copies, you need to shift left one half the sprite width: If Alonzo's current position is the "center line", then the center of the left sprite is half of its width away from the center line.</li>
+<li>If you want to stamp three copies, you need to shift one full width to the left: the middle sprite is in Alonzo's current position, and the one on the left is positioned one sprite width to the left of that.</li>
+</ul>
+
+To come up with a formula for how far to move left, we need to fit
+those observations: 1 copy should give an offset of 0, 2 copies should
+give 0.5, 3 copies should give 1, etc.  The formula that fits this is
+(copies-1)/2.  Since this is measured in "sprite widths to move to the
+left", each sprite width is a move of -52 pixels (negative becuse it's
+to the left).  This is exactly what the formula in this script does.
+</p>
+
+</td></tr></table>
+
+<p>&nbsp;</p>
+
+
+</div></td></tr>
+</table>
+
+</body> </html>
+
+

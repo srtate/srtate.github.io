@@ -1,0 +1,9 @@
+import hashlib
+
+d="\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+m = hashlib.sha256()
+m.update(d)
+print(m.hexdigest())
+
+
+

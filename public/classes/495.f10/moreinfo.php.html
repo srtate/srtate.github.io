@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title>CSC 495/680:  Trusted Computing</title>
+<link href="https://home.uncg.edu/cmp/faculty/srtate/classstyle.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td width="800"><img src="495banner.jpg" alt="CSC 589: Trusted Computing" /></td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+<col width="150" />
+<col width="700" />
+<tr><td valign="top">
+<div class="navigate">
+<div class="navhead">Navigation</div>
+<div class="navother">
+<a href="index.php.html">Class Home</a>
+</div>
+<div class="navother">
+<a href="syllabus.php.html">Syllabus</a>
+</div>
+<div class="navother">
+<a href="handouts.php.html">Handouts</a>
+</div>
+<div class="navother">
+<a href="slides.php.html">Lecture Slides</a>
+</div>
+<div class="navother">
+<a href="assign.php.html">Assignments</a>
+</div>
+<div class="navcurrent">
+<a href="moreinfo.php.html">More Information</a>
+</div>
+<img src="https://home.uncg.edu/cmp/faculty/srtate/pics/navtail.png" />
+</div>
+</td><td valign="top"><div class="main">
+
+<h2>More Information</h2>
+
+<p>
+The definitive source for technical information on trusted computing is from the <a href="http://www.trustedcomputinggroup.org/">Trusted Computing Group</a> website, where all the relevant specifications can be found.  The following links are particularly useful:
+<ul>
+  <li> <a href="http://www.trustedcomputinggroup.org/developers/trusted_platform_module">Trusted Platform Module documentation</a> - including TPM specifications and other documentation</li>
+  <li> <a href="http://www.trustedcomputinggroup.org/resources/tcg_software_stack_tss_specification">Trusted Software Stack documentation</a> - including TSS specification, architecture overview, etc.
+<ul>
+   <li> Latest TSS spec: <a href="http://www.trustedcomputinggroup.org/files/resource_files/6479CD77-1D09-3519-AD89EAD1BC8C97F0/TSS_1_2_Errata_A-final.pdf">TCG Software Stack (TSS) Specification, Version 1.2, Errata A</a></li>
+</ul>
+</li>
+</ul>
+</p>
+
+
+<h4>Direct Anonymous Attestation</h4>
+<p>
+    There are several papers that can help you understant direct anonymous attestation.  First, a good paper that gives background and basic definitions for group signatures:
+    <blockquote> Guiseppe Ateniese, Jan Camenisch, Marc Joye, and Gene Tsudik.  "<a href="http://www.zurich.ibm.com/~jca/papers/group2000.pdf">A Practical and Provably Secure Coalition-Resistant Group Signature Scheme</a>", Proceedings of CRYPTO 2000, pages 255-270.</blockquote>
+			    The following paper describes a digital signature scheme that has an important property:  it is designed to support efficient protocols that deal with signatures (including zero-knowledge proofs about signatures).  This signature scheme is the basis for the DAA protocol:
+    <blockquote> Jan Camenisch and Anna Lysyanskaya.  <a href="http://www.zurich.ibm.com/~jca/papers/camlys02b.pdf">A Signature Scheme with Efficient Protocols</a> (paper originally published in the 3rd International Conference on Security in Communication Networks)</blockquote>
+					And last but not least is the DAA paper itself:
+    <blockquote> Ernie Brickell, Jan Camenisch, and Liqun Chen.  "<a href="http://eprint.iacr.org/2004/205">Direct Anonymous Attestation</a>" (link to full version of the paper published at ACM CCS 2004)</blockquote>
+</p>
+
+<h4>Trusted Computing in Virtualization and Cloud Computing</h4>
+
+<p>
+In cloud computing, a remote computing resource is provided to a user,
+and the most challenging security question is this:  How can we give the user some
+assurance that the remote computing resource provides an appropriately
+protected environment, safe even from attacks by a dishonest provider?
+Such remote environments are typically run in virtual machines, and so
+the integrity of this virtual machine environment is a very big issue in
+cloud computing.  The following papers give an overview of security issues and trusted computing approaches when dealing with cloud computing and virtualization.
+</p>
+
+<p>
+The following paper is from the TCG, and gives a very high-level overview of some cloud computing security issues and solutions based on trusted computing technology.  The TCG obviously wants to promote their solutions, so this reads a little like an advertisement in spots, but the section on "Critical Areas for Cloud Computing" gives some good information at a very light level.
+<blockquote>
+Trusted Computing Group.  "<a href="http://www.trustedcomputinggroup.org/resources/cloud_computing_and_security__a_natural_match">Cloud Computing and Security -- A Natural Match</a>," TCG whitepaper, April 2010.
+</blockquote>
+
+The next paper describes sHype, a virtual machine monitor (or hypervisor), that makes use of Intel and AMD hardware virtualization support.  While that part doesn't have much to do with trusted computing, the paper does describe a very iteresting contribution:  how to virtualize TPM services (primarily discussed on page 29):
+<blockquote>
+R. Perez, L. van Doorn, and R. Sailer, "<a href="http://doi.ieeecomputersociety.org/10.1109/MSP.2008.135">Virtualization and Hardware-Based Security</a>," IEEE Security & Privacy Magazine, vol. 6, no. 5, pp. 24-31, 2008.
+</blockquote>
+
+The next paper is on Terra, a virtual machine based system developed at Stanford.  This is a very well-written paper, and does an excellent job of explaining how a real system was designed and built that provides the benefits of trusted computing technology in a distributed, virtualized environment.
+<blockquote>
+Tal Garfinkel, Ben Pfaff, Jim Chow, Mendel Rosenblum, and Dan
+Boneh. "<a href="http://crypto.stanford.edu/~dabo/abstracts/terra.html">Terra: a virtual machine-based platform for trusted
+computing</a>." In Proceedings of the Nineteenth ACM Symposium on Operating
+Systems Principles (SOSP), 2003, pp. 193-206.
+</blockquote>
+
+I'm including the following paper because it is fairly recent, and looks specifically at cloud computing.  I don't see how this does much more than the Terra system in the previous paper, but it's a short paper and worth reading:
+<blockquote>
+Nuno Santos, Krishna P. Gummadi, and Rodrigo Rodrigues.  "<a href="http://www.mpi-sws.org/~gummadi/papers/trusted_cloud.pdf">Towards
+Trusted Cloud Computing</a>," Proceedings of the Workshop On Hot Topics in
+Cloud Computing (HotCloud), June 2009.
+</blockquote>
+
+</p>
+
+
+</div></td></tr>
+</table>
+
+</body> </html>
+

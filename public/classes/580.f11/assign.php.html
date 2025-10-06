@@ -1,0 +1,235 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+<title>CSC 580:  Cryptography and Security in Computing</title>
+<link href="https://home.uncg.edu/cmp/faculty/srtate/classstyle.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td width="800"><img src="580banner.jpg" alt="CSC 580: Cryptography and Security in Computing" /></td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+<col width="150" />
+<col width="700" />
+<tr><td valign="top">
+<div class="navigate">
+<div class="navhead">Navigation</div>
+<div class="navother">
+<a href="index.php.html">Class Home</a>
+</div>
+<div class="navother">
+<a href="syllabus.php.html">Syllabus</a>
+</div>
+<div class="navother">
+<a href="handouts.php.html">Handouts</a>
+</div>
+<div class="navcurrent">
+<a href="assign.php.html">Assignments</a>
+</div>
+<div class="navother">
+<a href="http://blackboard.uncg.edu/">Blackboard</a>
+</div>
+<div class="navother">
+<a href="moreinfo.php.html">More Information</a>
+</div>
+<img src="https://home.uncg.edu/cmp/faculty/srtate/pics/navtail.png" alt="" />
+</div>
+</td><td valign="top"><div class="main">
+
+<h2>Assignments</h2>
+
+<ol>
+<li><p><i>Assignment 1:  Due Friday, September 9</i></p><p>
+<ul>
+<li>Page 60, Problem 2.1 (Hint: A program to test which a values work is really trivial to write)</li>
+<li>Page 60, Problem 2.2 (You're determining the size of the keyspace for affine Caesar ciphers - how secure is this?)</li>
+<li>Page 97, Problem 3.1<br />
+In addition to answering the problem in the book, answer this question:  Give a good estimate for log<sub>2</sub>(2<sup>n</sup>!) that makes it easier to compare to n*2<sup>n</sup> - in order to do this, you'll need to use Stirling's approximation (look it up online if you don't remember it)</li>
+</ul>
+</p></li>
+<li><p><i>Assignment 2:  Due Friday, September 16</i></p><p>
+<ul>
+<li>Page 99, Problem 3.8</li>
+<li>Page 142, Problems 4.1-4.6</li>
+</ul>
+</p></li>
+<li><p><i>Assignment 3:  Due Friday, September 23</i></p><p>
+<ul>
+     <li>Write a program which does modular polynomial arithmetic with coefficients from GF(2) - your code should be general purpose, and work for different polynomial moduli of different degrees (up to a limit that makes sense).  Use your program to recalculate tables as in Table 4.7, but for the modulus x^3+x^2+1 - turn in your code as well as the resulting tables.</li>
+<li>Page 179, Problem 5.1</li>
+<li>Page 179, Problem 5.2</li>
+</ul>
+</p></li>
+<li><p><i>Assignment 4:  Due Friday, October 14</i></p><p>
+<ul><li>See <a href="assign4.php.html">handout</a>.</li></ul>
+</p></li>
+<li><p><i>Assignment 5:  Due Friday, October 21</i></p><p>
+<ul>
+<li>Page 240, Problem 7.6</li>
+<li>Page 241, Problem 7.7</li>
+<li>Programming Problem: For this problem, you will need the files in
+the zip file <a href="assign5.zip">assign5.zip</a><br/>
+In this zip file is a simple stream encryption/decryption program
+(provided in both C and Java).  This program reads input from a file
+and outputs to stdout, which you can capture with an output redirect.
+After compiling the C version of the program, you would run it as
+follows (assuming you're working on a Unix/Linux system):
+<pre>
+    ./simplecrypt test.in >t.out
+</pre>
+If you're using the Java version, after compiling you would run like this:
+<pre>
+    java SimpleCrypt test.in >t.out
+</pre>
+This code just generates a pseudorandom stream, using the standard
+algorithm from ANSI C compilers, and XORs it with the input file to
+get the output.  The seed for the PRNG (which is hardcoded in the
+program) is the key.  Note that if you take the output and run the
+program again, providing the ciphertext as input, it should recover
+the plaintext.
+<p>
+Also included in the zip file is cipher1.txt - this is a ciphertext
+that was created with this program, but with a different key.  Your
+task is to write a program that breaks this encryption and provides
+the plaintext.  The plaintext is standard 7-bit ASCII, so one thing
+you'll have to decide is how to recognize a correct decryption in your
+program.  For this homework problem, provide a printout of your
+program as well as a printout of the recovered plaintext.
+</p>
+</li>
+<li>Question 1 on Programming Problem:  How long did it take your
+program to break the encryption?  Estimate what the worst-case
+time for such a break would be?</li>
+<li>Question 2 on Programming Problem:  The seed used in this
+implementation is a 32-bit integer.  However, if you look for multiple
+decryption keys (i.e., if you don't stop after you find one that
+works) you'll see that only the least significant 24-bits are
+important because of the way this is used.  Examine the code and
+describe as clearly as you can why only 24 bits of the seed are
+important.</li>
+</ul>
+</p></li>
+
+<li><p><i>Assignment 6:  Due Friday, October 28</i></p><p>
+<ul>
+<li>Page 264, Problem 8.10</li>
+<li>Page 264, Problem 8.11</li>
+<li>Page 264, Problem 8.16</li>
+<li><p>In this problem, you are to explore the question of how much
+the Chinese Remainder Theorem (CRT) can help in some common cryptographic
+operations.  We will be covering RSA in class soon (before this
+homework is due!), and the main computation in RSA is a
+large modular powering.  The simple algorithm for powering with an
+n-bit moduls is O(n<sup>3</sup>) time - there are, in fact, faster
+algorithms, but for this problem assume that computing this power is
+exactly proportional to n<sup>3</sup> (with the unit of time adjusted so the constant here is 1).</p>
+
+<p> In the decryption operation of RSA, the decryptor knows the
+private key, and so at least potentially knows the prime factorization
+of the n-bit modulus m, which is the product of two large prime
+numbers - say m=p*q, where p and q are prime and each is n/2 bits.  So
+to compute a^b mod m, we could do it as follows: compute a^b mod p and
+a^b mod q, and then use the CRT to combine these results and obtain
+the powering mod m.  For the sake of this problem, assume that doing
+this last step - the CRT combining - takes 3*n<sup>2</sup> time (using
+the same unit of time as in the previous paragraph).
+<ol type="a">
+<li> How much time does this new algorithm for modular powering take, including the CRT step?</li>
+<li> If the straightforward modular powering algorithm runs in 8ms, what is the running time of the CRT-based algorithm?  State the time in ms, and also say how much faster it is than the original algorithm (twice as fast?  10 times faster?).</li>
+</ol>
+</p>
+
+</li>
+
+</ul>
+</p>
+<p><li><p><i>Assignment 7:  Due Friday, November 11</i></p><p>
+<ul><li>See <a href="assign7.pdf">handout</a>.</li></ul>
+</p></li></p>
+
+<p><li><p><i>Assignment 8:  Due Friday, November 18</i></p><p>
+The purpose of this assignment is for you to see how to use cryptographic hash functions in your code, and to give you some insight into speed and other issues with regards to SHA-1.  You will be writing code that computes SHA1 hashes.  For examples of how to do this in a variety of languages, see <a href="sha1examples.php.html">this examples page</a>.
+<ul>
+<li>Write a program that computes and prints the SHA1 hash value of your name.</li>
+<li>Write a program that computes hashes of many different inputs, and
+counts up how many bits are set in the output for each hash value.
+The output for this problem should be a histogram of the number of
+times each bit count occurred.  I don't care how you generate the
+different inputs - they can be random, or you can make a big binary
+counter - just make sure your inputs are all different (at least with high
+probability).  You can either write code to output a histogram from
+your program, or you can just output the counts use
+Excel or some other program that can create the histogram.  For
+an example of what the histogram might look like, <a
+href="sha1histogram.txt">click here</a>.  Your program should be able
+to run through at least a million hash values in a reasonable amount
+of time - my solution that created that histogram processed 1,000,000
+hashes in about 0.3 seconds on linux.uncg.edu.</li>
+<li>Time your program, and report both the overall time and number of hashes, and then report the time as the number of hashes computed per second.  How long would it take to compute 2<sup>160</sup> hash values?</li>
+<li>If the output hash values were completely random, then each of the 160 output bits would be a one with probability 1/2.  Therefore, the distribution of bit counts would be a binomial distribution, and so the probability of an output having 80 bits set to one would be Binomial[160,80]/2^160.  What is this probability?  (Hint:  Use Mathematica - the format of the formula in the preceding sentence is a valid Mathematica formula.)  What is the probability of having just 50 bits set to one?
+</li>
+
+<li>If you run 1,000,000 trials, what is the probability that at least
+one trial will have exactly 50 bits set?  (Hint: Calculate the
+probability that none of the trials will have 50 bits set - if this
+probability is <i>p</i> then the answer to this problem is 1-<i>p</i>.)
+Note that there is really no way to do this problem without something
+that does very high precision arithmetic - we'll do some more example
+with Mathematica in class so that you can see how this works.</li>
+
+<li>If you run 1,000,000 trials, what is the probability that at least one trial will have exactly 40 bits set?</li>
+<b>Bonus questions:</b>
+<li>If you run 1,000,000 trials, what is the probability that at least one trial will have 40 <i>or fewer</i> bits set?</li>
+<li>How many trials would have have to run before the probability of having an output with 40 or fewer bits set is greater than 1/2?</li>
+</ul>
+</p></li></p>
+
+<p><li><p><i><b>Optional</b> Assignment 9:  Due Monday, November 28</i></p><p>
+This is an optional assignment, for those that aren't too stuffed with stuffing from Thanksgiving to think straight.  If you choose to do this assignment, the grade will replace your lowest assignment grade.
+</p><p>
+<ul>
+<li>Clearly a hash function that has the strong collision resistance property also has weak collision resistance.  What about the next step down?  Does a hash function that has weak collision resistance also satisfy the one-way property (see Table 11.1 on page 336 for these terms)?  To answer this question, consider a hash function H(x) that produces k-bit hash codes, and satisfies all three of these security properties.  Now construct a hash function H'(x) that produces (k+1)-bit hash codes as follows:  If x is exactly k bits long, then output 0||x (a single 0 bit followed by x); otherwise output 1||H(x) (a single 1 bit followed by the H-hash code of x).  Is H'(x) weakly collision resistant?  Is it one-way?  Justify your answers!</li>
+<li>Page 393, Problem 12.1.  Note that certain properties of the encryption function can affect your answer to this question - if you assume that the encryption function behaves in any particular way, make sure you clearly describe that!  I'm more interested in whether you can identify the right properties and reason about them than whether you can get the absolute perfect answer (which depends on knowing a little more about error correcting codes than the book provides).</li>
+<li>Page 408, Problem 13.2.  To be specific, if s=0 then an attacker is given an avenue for a very powerful attack - figure out and describe this attack.</li>
+<li>Page 408, Problem 13.3.  Like in 13.2, define a specific attack made possible in this situation.</li>
+</ul>
+</p></li></p>
+
+<li><p><i>Assignment 10:  Due Monday, December 5</i></p><p>
+<ul>
+<li>Page 408, Problem 13.6 (note that this problem shares some similarities to the generator finding problem from Assignment 7, so you may want to refer to that problem for ideas if you need them).</li>
+<li>Page 441, Problem 14.1</li>
+<li>Page 442, Problem 14.4</li>
+<li>Describe, in your own words, how a certificate could be used by a
+browser to authenticate the origin of web site content.  Your solution
+doesn't have to describe a real protocol - it can be a very scaled
+down protocol that just addresses the site origin issue.  Be sure to
+describe how all the parts fit together (both server opertations and
+browser operations), including giving reasoning about why the user can
+trust that the web site content comes from the claimed source.</li>
+</ul>
+</p></li>
+
+</ol>
+
+<hr>
+
+<h4>Graduate Student Research Readings</h4>
+
+<ul>
+      <p><li>Reading 1 - Report due Monday, Oct 17 - Thai Duong and Juliano Rizzo, "Here Come the XOR Ninjas," May 13, 2011 draft.</li></p>
+      <p><li>Reading 2 - Report due Monday, Nov 7 - Sandy Clark, Travis Goodspeed, Perry Metzger, Zachary Wasserman, Kevin Xu, and Matt Blaze, "Why (Special Agent) Johnny (Still) Can't Encrypt: A Security Analysis of the APCO Project 25 Two-Way Radio System," <a href="http://www.usenix.org/events/sec11/">2012 USENIX Security Symposium</a>. [<a href="http://www.usenix.org/events/sec11/tech/full_papers/Clark.pdf">Online copy</a>]</li></p>
+
+</ul>
+
+
+
+
+</div></td></tr>
+</table>
+
+</body> </html>
+

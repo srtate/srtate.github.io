@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title>CSC 330:  Advanced Data Structures</title>
+<link href="https://home.uncg.edu/cmp/faculty/srtate/classstyle.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td width="800"><img src="330banner.jpg" alt="CSC 330: Advanced Data Structures" /></td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+<col width="150" />
+<col width="700" />
+<tr><td valign="top">
+<div class="navigate">
+<div class="navhead">Navigation</div>
+<div class="navother">
+<a href="index.php.html">Class Home</a>
+</div>
+<div class="navother">
+<a href="syllabus.php.html">Syllabus</a>
+</div>
+<div class="navother">
+<a href="handouts.php.html">Handouts</a>
+</div>
+<div class="navother">
+<a href="assign.php.html">Assignments</a>
+</div>
+<div class="navother">
+<a href="moreinfo.php.html">More Information</a>
+</div>
+<img src="https://home.uncg.edu/cmp/faculty/srtate/pics/navtail.png" />
+</div>
+</td><td valign="top"><div class="main">
+
+<p>A <a href="grading.pdf">printable PDF</a> is available.</p>
+
+    <H1 ALIGN=CENTER>Submission Procedures and Grading Guidelines</H1>
+    
+    
+    <P><B>Submission Procedures:</B> In this class you will be using a program
+called "<CODE>330submit</CODE>" to turn in your programs electronically.
+This program sends copies to me so that they can be checked and
+graded.  <CODE>330submit</CODE> is run from the command line on the
+<CODE>cmpunix</CODE> system.
+The general form of the command is
+"<CODE>330submit programno files</CODE>", where "<CODE>programno</CODE>"
+is of the form "<CODE>program1</CODE>", "<CODE>program2</CODE>", and so on,
+and "<CODE>files</CODE>" is a list of files which may contain wildcards.
+<P>I highly recommend that when you do an assignment, you have a
+directory just for that assignment.  When you're finished, clean out
+all object files and any extra stuff that's in the directory (this is
+really easy if you put a "<CODE>clean</CODE>" target in your
+<CODE>Makefile</CODE>), and then run <CODE>330submit</CODE> with the wildcard
+"<CODE>*</CODE>" as the file name.  This submits all files in your current
+directory, which should include all the files that make up your
+program.  For example, to do this for Programming Assignment 2, you would type
+<BLOCKQUOTE><CENTER>
+<CODE>330submit program2 *</CODE>
+</CENTER></BLOCKQUOTE>
+One important thing to note is that the case of the assignment name is
+significant.  It will <EM>not</EM> work if you use the upper case version
+"PROGRAM2".  As another example, if you wanted to explicitly give all
+the file names, then the files for programming assignment 2 might be submitted
+with the command:
+<PRE>
+    330submit program2 Makefile ListStack.* BlockStack.*
+</PRE>
+Note that you should be sure to turn in your <CODE>Makefile</CODE>!
+<P>There's also a special assignment name of "<CODE>question</CODE>" that you
+can use to submit code to me that you have a question about.  If
+you need to ask me a question about a program (and have tried to
+contact the grader first!), you can send me a copy of your code by
+using
+<PRE>
+    330submit question *
+</PRE>
+<P><P><B>Grading Guidelines:</B>
+Your programs will be judged on several criteria, which are shown
+below, along with the questions that they address.  In addition to the
+percentages below, the style guidelines give some "major rules" with
+specific point-value penalties for violating -- these will be applied
+regardless of whether the total penalty exceeds the amount for
+"style" given below.
+<DL><DT><B><B>Correctness (50 percent):</B></B><DD>  Does the program compile correctly?
+Does the program do what it's supposed to do?
+<DT><B><B>Design (20 percent):</B></B><DD> Are operations broken down into
+functions and procedures in a reasonable way?  Are ADT's clearly
+defined, implementation independent, and sensible? 
+<DT><B><B>Style (10 percent):</B></B><DD>  Is the program indented
+properly?  Do variables have meaningful names?  
+<DT><B><B>Robustness (10 percent):</B></B><DD>  Does the program handle
+erroneous or unexpected input gracefully?
+<DT><B><B>Documentation (10 percent):</B></B><DD> Do all program files begin
+with a comment that identifies the author, the contents, and the
+compiler used for that particular file?  Are all the procedures and
+functions clearly documented using Doxygen comments?  Are unclear parts
+of code documented?
+</DL>
+<P>Notice that correctness is only half of the grade.  Design and style
+are very important: you write an English paper by first laying out how
+you want the information presented, then writing a rough draft that
+makes all your points, and then polishing the style of that rough
+draft.  Writing a program is much the same: first design how things
+should be organized, then do a "rough draft" that consists of a
+working implementation, and then go back and polish your code, adding
+all the required comments and make sure style guidelines are followed.
+Unfortunately, many people hand in their "rough draft" programs,
+thinking that a working program is all they need.  If you do that in
+this class, you probably will not pass.
+<P>A program that does not compile will get at most 50% of the possible
+points for an assignment.  If you add comments after getting your
+program working, then be sure you test it again before submitting it.
+It is actually fairly easy to make working code inoperable when adding
+comments (by forgetting to close a comment, for example).  Even if
+your program is entirely correct except for a small mistake of this
+type, you will still get a maximum of 50%.  We will use exactly the
+same environment to grade your assignments as you use for testing, so
+there is no excuse for a program that doesn't compile.
+<P>In addition, most programming assignments are given with some sample
+inputs and outputs.  If your program does not work correctly on those
+sample inputs, you will get at most 75% of the possible points for an
+assignment.  Your programs will also be tested on other inputs, but be
+sure, at the very least, that your programs work correctly on the
+supplied examples.
+
+
+
+</div></td></tr>
+</table>
+
+</body> </html>
+

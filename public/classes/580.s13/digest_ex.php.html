@@ -1,0 +1,234 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+<title>CSC 580:  Cryptography and Security in Computing</title>
+<link href="https://home.uncg.edu/cmp/faculty/srtate/classstyle.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td width="800"><img src="580banner.jpg" alt="CSC 580: Cryptography and Security in Computing" /></td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+<col width="150" />
+<col width="700" />
+<tr><td valign="top">
+<div class="navigate">
+<div class="navhead">Navigation</div>
+<div class="navother">
+<a href="index.php.html">Class Home</a>
+</div>
+<div class="navother">
+<a href="syllabus.php.html">Syllabus</a>
+</div>
+<div class="navother">
+<a href="handouts.php.html">Handouts</a>
+</div>
+<div class="navother">
+<a href="assign.php.html">Assignments</a>
+</div>
+<div class="navother">
+<a href="http://blackboard.uncg.edu/">Blackboard</a>
+</div>
+<div class="navother">
+<a href="moreinfo.php.html">More Information</a>
+</div>
+<img src="https://home.uncg.edu/cmp/faculty/srtate/pics/navtail.png" alt="" />
+</div>
+</td><td valign="top"><div class="main">
+
+<h2>Sample Code -- Computing Message Digests</h2>
+
+<p>
+This page contains examples of computing message digests in a variety of languages. The examples show the computation of a SHA-256 digest, but in all cases changing a single line of code will allow you to change that to SHA-1, SHA-512, or any of the other hash functions supported by that language and cryptographic library.
+Note that since HTML requires quoting of certain characters it may or
+may not work to copy and paste code from this page.  To simplify
+matters, at the top of each code block is a link to the code that you
+can download (right click, "Save Link As...").  Examples are given
+below for C, C++, Java, C#, and Python.
+</p>
+
+<h4>Message Digests in C or C++</h4>
+
+<p>C and C++ do not have cryptographic functions in the standard
+language and library definitions, and cryptography is typically
+performed using the widely-distributed OpenSSL cryptographic library.
+If your system has the development version of these libraries
+installed (like the student-accessible UNCG linux host
+prdile.uncg.edu), then you can access the crypto functions such as message digests from C or C++
+by including the header file &lt;openssl/evp.h&gt; - when you compile
+you will have to also tell the compiler to link in the crypto library,
+so to compile the code below you would use the command:
+<pre>
+    gcc digest-in-c.c -lcrypto
+</pre>
+</p>
+
+<p>
+C code:  <a href="code/digest-in-c.c">Download Link</a>
+<div style="border:2px solid #336699;padding:8px 16px;">
+<pre>
+#include &lt;stdio.h&gt;
+#include &lt;openssl/evp.h&gt;
+
+typedef unsigned char byte;
+
+int main()
+{
+    EVP_MD_CTX ctx;
+    const int DataLen = 30;
+    byte digest[EVP_MAX_MD_SIZE];
+    unsigned int outLen;
+    int i;
+    byte* testdata = (byte *)malloc(DataLen);
+
+    for (i=0; i&lt;DataLen; i++) testdata[i] = 0;
+
+    EVP_DigestInit(&ctx, EVP_sha256());
+    EVP_DigestUpdate(&ctx, testdata, DataLen);
+    EVP_DigestFinal(&ctx, digest, &outLen);
+
+    for (i=0; i&lt;outLen; i++)
+	printf("%02x", digest[i]);
+    putchar('\n');
+
+    return 0;
+}
+</pre>
+</div>
+</p>
+<p>In C++ the technique is basically identical (you're using the same
+library, after all), but the command you use is "g++" rather than
+"gcc".  I also changed the code to use C++ style output, although if I weren't trying to stay "pure C++" I would use the C-language output formatting function (printf) in the C++ code since I think it's a much nicer way of doing output.
+</p>
+<p>
+C++ code:  <a href="code/digest-in-cpp.cpp">Download Link</a>
+<div style="border:2px solid #336699;padding:8px 16px;">
+<pre>
+#include &lt;iostream&gt;
+#include &lt;iomanip&gt;
+#include &lt;openssl/evp.h&gt; 
+
+using namespace std;
+
+typedef unsigned char byte;
+
+int main(int argc, char *argv[]) {
+    const int DataLen = 30;
+    EVP_MD_CTX ctx;
+    byte digest[EVP_MAX_MD_SIZE];
+    unsigned int outLen;
+
+    byte* testdata = new byte[DataLen];
+    for (int i=0; i&lt;DataLen; i++) testdata[i] = 0;
+
+    EVP_DigestInit(&ctx, EVP_sha256());
+    EVP_DigestUpdate(&ctx, testdata, DataLen);
+    EVP_DigestFinal(&ctx, digest, &outLen);
+
+    for (unsigned int i=0; i&lt;outLen; i++)
+	cout &lt;&lt; setfill('0') &lt;&lt; setw(2) &lt;&lt; hex &lt;&lt; (int)digest[i];
+    cout &lt;&lt; dec &lt;&lt; endl;
+
+    return 0;
+}
+</pre>
+</div>
+</p>
+
+<h4>Message Digests in Java</h4>
+<p>
+Java does have some basic cryptography in the standard library, so the
+following code should work on any system.  Unfortunately, I recently
+discovered that while the UNCG linux host has a Java runtime
+environment available, it does not have the compiler installed.  This
+should work on any of the Windows-based lab machines though, through
+NetBeans or other Java development tools.
+</p>
+<p>
+Java code:  <a href="code/Digest_in_Java.java.html">Download Link</a>
+<div style="border:2px solid #336699;padding:8px 16px;">
+<pre>
+import java.util.*;
+import java.security.*;
+
+public class Digest_in_Java {
+    public static void main(String argv[]) {
+	try {
+	    MessageDigest md = MessageDigest.getInstance("SHA-256");
+	    final int DataLen = 30;
+	    byte[] testdata = new byte[DataLen];
+	    byte[] digest = md.digest(testdata);
+
+	    for (int i=0; i&lt;digest.length; i++)
+		System.out.format("%02x", digest[i]&0xff);
+	    System.out.println();
+
+	} catch (Exception e) {
+	    System.out.println("Exception "+e);
+	}
+    }
+}
+</pre>
+</div>
+</p>
+
+
+<h4>Message Digests in C-Sharp</h4>
+<p>
+OK, just for fun I decided to see how this works in C#.  Please keep
+in mind that this is the second C# program I have written in my life,
+and the first one just printed "Hello world"!!!
+</p>
+<p>
+C# code:  <a href="code/Digest_in_CSharp.cs.html">Download Link</a>
+<div style="border:2px solid #336699;padding:8px 16px;">
+<pre>
+using System.Security.Cryptography;
+
+namespace DigestInCSharp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            const int DataLen = 30;
+            HashAlgorithm hash = HashAlgorithm.Create("SHA256");
+            byte[] input = new byte[DataLen];
+            byte[] digest = hash.ComputeHash(input);
+            System.Console.WriteLine(System.BitConverter.ToString(digest));
+        }
+    }
+}
+</pre>
+</div>
+</p>
+
+<h4>Message Digests in Python</h4>
+<p>
+And finally, here's how you can compute message digests in Python. Note that the final call here is to "hexdigest" so that the produced value is a printable string. Most likely real code would use "digest" to get the actual digest rather than a printable string.
+</p>
+<p>
+Python code:  <a href="code/digest-in-python.py.html">Download Link</a>
+<div style="border:2px solid #336699;padding:8px 16px;">
+<pre>
+import hashlib
+
+d="\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+m = hashlib.sha256()
+m.update(d)
+print(m.hexdigest())
+</pre>
+</div>
+</p>
+
+
+
+</div></td></tr>
+</table>
+
+</body> </html>
+
+

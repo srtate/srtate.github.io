@@ -1,0 +1,232 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+<title>CSC 580:  Cryptography and Security in Computing</title>
+<link href="https://home.uncg.edu/cmp/faculty/srtate/classstyle.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td width="800"><img src="580banner.jpg" alt="CSC 580: Cryptography and Security in Computing" /></td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+<col width="150" />
+<col width="700" />
+<tr><td valign="top">
+<div class="navigate">
+<div class="navhead">Navigation</div>
+<div class="navother">
+<a href="index.php.html">Class Home</a>
+</div>
+<div class="navother">
+<a href="syllabus.php.html">Syllabus</a>
+</div>
+<div class="navother">
+<a href="sched.php.html">Schedule</a>
+</div>
+<div class="navother">
+<a href="readings.php.html">Readings</a>
+</div>
+<div class="navother">
+<a href="handouts.php.html">Handouts</a>
+</div>
+<div class="navother">
+Assignments
+</div>
+<div class="navother">
+&nbsp;&nbsp;&bullet; <a href="homework.php.html">HW Problems</a>
+</div>
+<div class="navother">
+&nbsp;&nbsp;&bullet; <a href="project.php.html">Project</a>
+</div>
+<div class="navother">
+<a href="http://docs.oracle.com/javase/8/docs/technotes/guides/security/crypto/CryptoSpec.html">JCA Ref Guide</a>
+</div>
+<div class="navother">
+<a href="http://docs.oracle.com/javase/8/docs/api/">Java API Docs</a>
+</div>
+<div class="navother">
+<a href="http://canvas.uncg.edu/">Canvas</a>
+</div>
+<div class="navcurrent">
+<a href="moreinfo.php.html">More Information</a>
+</div>
+<img src="https://home.uncg.edu/cmp/faculty/srtate/pics/navtail.png" alt="" />
+</div>
+</td><td valign="top"><div class="main">
+
+<h2>More Information</h2>
+
+<p>
+There is a lot of great information about cryptography and computer security out there, both in print and on the Web.  Here is a list of references that I think are particularly good or relevant for this class:
+</p>
+
+<h3>High-Quality, Free Resources</h3>
+
+<ul>
+<li> <a href="http://cacr.uwaterloo.ca/hac/">Handbook of Applied Cryptography</a></li>
+<li> <a href="http://www.cl.cam.ac.uk/~rja14/book.html">Security Engineering</a> by Ross Anderson</li>
+<li> <a href="http://cseweb.ucsd.edu/~mihir/cse207/classnotes.html">Introduction to Modern Cryptography</a> by Mihir Bellare and Phillip Rogaway. Called "lecture notes" but really a textbook on the formal approach to cryptography.</li>
+</ul>
+
+
+<h3>Material for "Security Overview"</h3>
+
+<h4>Key Organizations and Standards Bodies/Sources</h4>
+
+<ul>
+<li> <p><a href="http://www.nist.gov">NIST</a> (National Institute of Standards and Technology)<br />
+<i>US Government organization defining technology standards and other useful information</i><br />
+NIST has a <a href="http://csrc.nist.gov/">Computer Security Division</a> which publishes the "<a href="http://csrc.nist.gov/publications/PubsSPs.html">800-series</a>" of publications on Computer Security.  See especially:
+<ul>
+<li> SP 800-12 - An Introduction to Computer Security:  The NIST Handbook</li>
+<li> SP 800-21 - Guidelines for Implementing Cryptography in the Federal Government</li>
+<li> SP 800-53 Rev. 3 - Recommended Security Controls for Federal Information Systems and Organizations</li>
+<li> SP 800-57 - Recommendation for Key Management</li>
+<li> SP 800-61 - Computer Security Incident Handling Guide</li>
+</ul>
+</p>
+</li>
+<li><p><a href="http://www.nist.gov/itl/fips.cfm">FIPS</a> (Federal Information Processing Standards)<br />
+Run under the Information Technology Laboratory at NIST, publishes <a href="http://www.nist.gov/itl/fipscurrent.cfm">standards</a> for how government systems must be run (including standard cryptographic algorithms such as AES, DSS, etc.)<br />
+</p></li>
+<li><p><a href="http://www.ietf.org">IETF</a> (Internet Engineering Task Force)<br />
+Publishes internet standards, protocol definitions (including IP, TCP, TLS, etc.), and other documents as <a href="http://www.rfc-editor.org/">RFCs</a>.  Non-protocol documents of particular interest include:
+<ul>
+<li> <a href="ftp://ftp.rfc-editor.org/in-notes/rfc4949.txt">RFC 4949</a> - Internet Security Glossary, Version 2</li>
+<li> <a href="ftp://ftp.rfc-editor.org/in-notes/rfc2350.txt">RFC 2340</a> - Expectations for Computer Security Incident Response</li>
+<li> <a href="http://www.rfc-editor.org/rfc/rfc2196.txt">RFC 2196</a> - Site Security Handbook</li>
+<li> <a href="http://www.rfc-editor.org/rfc/rfc2504.txt">RFC 2504</a> - Users' Security Handbook</li>
+</ul>
+</p></li>
+<li><p><a href="http://www.itu.int/ITU-T/">ITU-T</a> (International Telecommunication Union - Telecommunicaion Standardization Sector)<br />
+Publishes the "<a href="http://www.itu.int/rec/T-REC-X/en">X-series</a>" recommendations, including
+<ul>
+<li> <a href="http://www.itu.int/rec/T-REC-X.200/en">X.200</a> - Open Systems Interconnection (OSI) - Basic Reference Model</li>
+<li> <a href="http://www.itu.int/rec/T-REC-X.500/en">X.500</a> - OSI Directory</li>
+<li> <a href="http://www.itu.int/rec/T-REC-X.800/en">X.800</a> - OSI Security Architecture</li>
+</ul>
+</p></li>
+</ul>
+
+<h4>Miscellaneous items from overview</h4>
+<ul>
+<li> <a href="http://xkcd.com/538/">XKCD comic about realistic attacks</a></li>
+</ul>
+
+<h4>Designing security in</h4>
+<ul>
+<li> <a href="https://www.securecoding.cert.org/confluence/display/seccode/SEI+CERT+Coding+Standards">SEI CERT Secure Coding Standards</a></li>
+<li> <a href="https://buildsecurityin.us-cert.gov/bsi/home.html">Build Security In</a> - US-CERT project to improve software assurance</li>
+<li> <a href="http://www.amazon.com/Writing-Secure-Second-Michael-Howard/dp/0735617228">Writing Secure Code, Second Edition</a> - Book by Michael Howard and David LeBlanc</li>
+<li> <a href="http://www.sans.org/top25-software-errors/">CWE/SANS Top 25 Most Dangerous Software Errors</a> - very important stuff for software developers to know!</li>
+</ul>
+
+<h3>Material for "Classical Encryption Techniques"</h3>
+
+<h4>Interesting and/or unsolved ciphers</h4>
+
+<ul>
+<li> <a href="http://www.ciphermysteries.com/">Cipher Mysteries</a> - blog about "The latest news, views, research, and reviews on uncreacked historical ciphers"</li>
+<li> <a href="http://elonka.com/UnsolvedCodes.html">Famous Unsolved Codes and Ciphers</a></li>
+<li> <a href="http://nautil.us/issue/6/secret-codes/the-artist-of-the-unbreakable-code">The Dorabella Cipher</a> (from "The Artist of the Unbreakable Code")</li>
+</ul>
+
+<h4>Information on classic cryptography</h4>
+
+<ul>
+<li> <a href="http://www.braingle.com/brainteasers/codes/onetimepad.php">Braingle One-time Pad Demo</a></li>
+<li> <a href="http://www.amazon.com/Codebreakers-Comprehensive-History-Communication-Internet/dp/0684831309">Codebreakers</a> by David Kahn is a greak book on the history of cryptography (particularly military history)</li>
+<li> <a href="http://www.cryptograms.org/index.php">Puzzle Baron's Cryptograms</a> - information and online puzzles</li>
+</ul>
+
+<h4>Steganogrphy</h4>
+
+<ul>
+<li><a href="http://www.garykessler.net/library/steganography.html">Good article by Gary Kessler</a> on steganography, with examples</li>
+<li><a href="http://www.outguess.org/detection.php">Stegdetect/Outguess</a> - detection and steganography tool from Niels Provos</li>
+</ul>
+
+<h3>DES</h3>
+
+<ul>
+<li> <a href="https://en.wikipedia.org/wiki/Data_Encryption_Standard">Wikipedia page on DES</a></li>
+<ul>
+<li> <a href="https://en.wikipedia.org/wiki/DES_supplementary_material">Wikipedia - supplemental info with tables and diagrams</a></li>
+</ul>
+<li> <a href="http://kathrynneugent.com/des.html">DES Animation</a> by Kathryn Neugent</li>
+</ul>
+
+<h3>Advanced Encryption Standard (AES)</h3>
+
+<ul>
+<li> <a href="http://csrc.nist.gov/publications/fips/fips197/fips-197.pdf">AES Standard</a> - FIPS 197 specification</li>
+<li> <a href="https://web.archive.org/web/20160101091229/http://www.nsa.gov/ia/programs/suiteb_cryptography/">NSA Suite B Cryptography</a> [archive link]</li>
+<li> <a href="http://niatec.info/GetFile.aspx?pid=585">CNSSP-15 fact sheet</a> - on the Use of the Advanced Encryption Standard (AES) to Protect National Security Systems and National Security Information</li>
+    <li> <a href="http://www.formaestudio.com/rijndaelinspector/archivos/rijndaelanimation.html">AES Animation</a> - a very cool flash-based AES animation</li>
+</ul>
+
+<h3>Public-key Cryptography, including Elliptic Curve Information</h3>
+
+<ul>
+<li> <a href="http://arstechnica.com/security/2013/10/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography/">A (relatively easy to understand) primer on elliptic curve cryptography</a> - from Ars Technica</li>
+</ul>
+
+<h3>Security Model References</h3>
+
+<ul>
+<li> <a href="http://en.wikipedia.org/wiki/Ciphertext_indistinguishability">Ciphertext Indistinguishability</a> article at Wikipedia - this is a little terse, and the models seem to assume a public key crypto model, but otherwise it's a reasonable reference</li>
+</ul>
+
+<h3>User Authentication</h3>
+
+<ul>
+<li><a href="http://cookies.lcs.mit.edu/">The Cookie Eater Project</a> at MIT</li>
+<li><a href="http://www.youtube.com/watch?v=kXB0BwwvZ1E">RSA SecureID hack explained</a> (video)</li>
+<li><a href="https://developers.google.com/accounts/docs/OpenID">Google developers description of OpenID</a></li>
+</ul>
+
+<h3>Hash Functions and MACs</h3>
+
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/Cryptographic_hash_function">Wikipedia
+page on Cryptographic Hash Functions</a> - important table that
+include "Best Known Attacks" for different hash algorithms.</li>
+<li><a href="http://www.mscs.dal.ca/~selinger/md5collision/">MD5
+  Collision Demo</a> has a great overview of the vulnerability of MD5
+  with respect its lack of strong collision resistance.  This page
+  gives not just meaningless collisions, but very practical examples of
+  different programs with the same MD5 hash value, and different
+  Postscript files with the same MD5 hash value.</li>
+<li><a href="http://www.wired.com/threatlevel/2008/12/berlin/">Wired
+  article on X.509 certificate forgery</a> - this was a real
+  attack on a Certificate Authority that demonstrated how the MD5
+  weakness led to forged certificates.</li>
+<li><a href="http://sponge.noekeon.org/">The Sponge Functions Corner</a> - the SHA-3 competition winner is based on the idea of "Sponge functions" (as opposed to prior major hash functions which used "compression functions"), and this page has some great info on Sponge functions.</li>
+<li><a href="http://keccak.noekeon.org/">The Keccak sponge function family</a> - the specific function family used in the winning SHA-3 entry.</li>
+<li><a href="https://www.usenix.org/conference/usenixsecurity15/technical-sessions/presentation/beringer">Verified Correctness and Security of OpenSSL HMAC</a> - recent (2015) Usenix Security Symposium paper on a machine-verification of both implementation and security properties of HMAC</li>
+</ul>
+
+<h3>Randomness and pseudorandomness</h3>
+
+Some references to times when randomness/pseudorandomness wasn't as good as it should have been:
+<ul>
+<li><a href="http://www.cs.berkeley.edu/~daw/papers/ddj-netscape.html">Randomness and the Netscape Browser</a> - a 1996 article in Dr. Dobbs Journal on one of the first major browser vulnerabilities</li>
+<li><a href="http://jblevins.org/log/ssh-vulnkey">Debian OpenSSH Vulnerability</a> - 2008 weakness in the OpenSSL library for Debian-based systems, leading to a vulnerability in OpenSSH. [2013 follow-up article in light of NSA revelations: <a href="https://freedom-to-tinker.com/blog/kroll/software-transparency-debian-openssl-bug/">The Debian OpenSSL Bug: Backdoor or Security Accident</a>]</li>
+<li><a href="http://arstechnica.com/security/2013/09/fatal-crypto-flaw-in-some-government-certified-smartcards-makes-forgery-a-snap/">Fatal crypto flaw in some government-certified smartcards makes forgery a snap</a>, Ars Technica, Sept. 16, 2013.</li>
+<li> Nadia Heninger, Zakir Durumeric, Eric Wustrow, and J. Alex Halderman. "Mining Your Ps and Qs: Detection of Widespread Weak Keys in Network Devices," <i>USENIX Security Symposium</i>, 2012, pp. 205-220. Available at <a href=" https://www.usenix.org/conference/usenixsecurity12/technical-sessions/presentation/heninger"> https://www.usenix.org/conference/usenixsecurity12/technical-sessions/presentation/heninger</a></li>
+<li>Matt Green, <a href="http://blog.cryptographyengineering.com/2013/09/the-many-flaws-of-dualecdrbg.html">The Many Flaws of Dual_EC_DRBG</a> (from Matt's blog, "<a href="http://blog.cryptographyengineering.com/">A Few Thoughts on Cryptographic Engineering</a>")</li>
+<li>Don Goodin, <a href="http://arstechnica.com/security/2016/04/neutered-random-number-generator-let-man-rig-million-dollar-lotteries/">Neutered random number generator let man rig million dollar lotteries</a></li>
+</ul>
+
+
+    &nbsp;
+
+
+</div></td></tr>
+</table>
+
+</body> </html>
+

@@ -1,0 +1,166 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title>CSC 330:  Advanced Data Structures</title>
+<link href="https://home.uncg.edu/cmp/faculty/srtate/classstyle.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td width="800"><img src="330banner.jpg" alt="CSC 330: Advanced Data Structures" /></td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+<col width="150" />
+<col width="700" />
+<tr><td valign="top">
+<div class="navigate">
+<div class="navhead">Navigation</div>
+<div class="navother">
+<a href="index.php.html">Class Home</a>
+</div>
+<div class="navother">
+<a href="syllabus.php.html">Syllabus</a>
+</div>
+<div class="navother">
+<a href="http://users.cis.fiu.edu/~weiss/dsj4/code/">Textbook Code</a>
+</div>
+<div class="navother">
+<a href="handouts.php.html">Handouts</a>
+</div>
+<div class="navother">
+<a href="assign.php.html">Assignments</a>
+</div>
+<div class="navother">
+<a href="http://docs.oracle.com/javase/8/docs/api/">Java API Docs</a>
+</div>
+<div class="navother">
+<a href="moreinfo.php.html">More Information</a>
+</div>
+<img src="https://home.uncg.edu/cmp/faculty/srtate/pics/navtail.png" />
+</div>
+</td><td valign="top"><div class="main">
+
+<p>A <a href="assign0.pdf">printable PDF</a> is available.</p>
+
+    <H1 ALIGN=CENTER>Assignment 0 - Due Thursday, September 1</H1>
+    
+    
+    <P><EM>Note: This is a "test assignment" to try out a new process
+  using Bitbucket to manage assignments and submissions. You will
+  receive a grade, but it will only be out of 20 points instead of the
+  usual 100 points.</EM>
+<P><B>Context:</B> Version control systems (like git, subversion, and
+mercurial) are one of the most important kinds of tools that a
+professional developer uses on a daily basis. There are several online
+services, like GitHub and Bitbucket, that enhance a basic version
+control system with various other tools for effective teamwork, such
+as issue trackers and communication tools. We are going to experiment
+with using <A HREF="http://bitbucket.org">Bitbucket</A> and git in this
+class to manage assignments and student submissions. Use of git will
+be somewhat simplistic since we don't have team assignments, but there
+are several benefits to this approach for CSC 330. First, this gives
+you some experience with a very powerful tool, even if we
+only use a small part of it. Second, git is designed for managing
+multi-file programming projects, and so is a much better way to manage
+and submit programming work than Canvas. Third, we will talk a little
+about features that are useful even in a single-developer setting,
+such as the use of branches to test out ideas that may or may not
+work. And finally, git support is integrated into NetBeans, so after
+you initialize your project through the Bitbucket web site your work
+(including assignment submission) is done directly in NetBeans.
+<P>This is an experiment for this semester, and we haven't tried this
+before. The main goal of this assignment is to test out the ideas and
+see if they are promising enough to use throughout the semester.
+<OL><LI>First, you need to create a free account at
+<A HREF="https://bitbucket.org"><CODE>https://bitbucket.org</CODE></A>. At the
+web site, click the green "Get started" button to sign up for an
+account, which will bring up a screen asking for your email
+address. <EM><U>Use your UNCG email here, not a personal
+    email.</U></EM> After entering your email, you will go through a standard
+process for creating an online account, which includes entering your
+full name (use your real name!), selecting a password, and solving a
+CAPTCHA. The system will send you an email, and you will need to use
+the link in that email to confirm your account before your account is
+enabled. In confirming your email, you will pick a username for your
+account - it isn't all that important what you pick here, but use
+something that isn't too long and is easy to remember.
+<p>
+<LI>Once you have completed the previous steps and your account is
+created, send me an email to let me know that you created your
+account. I will add you to a team named "UNCG CSC 330" as soon
+as possible -- definitely within 24 hours.
+<p>
+<LI>Once you are a member of the "UNCG CSC 330" team, log in to the
+Bitbucket web site, and you will see your "Dashboard" with
+recently-updated repositories listed. While the "Assign0" repository
+that you need for this assignment is probably visible, explore a
+little to see what is possible. Click on the "Repositories" tab at
+the top of the Dashboard, and you'll see that you can filter
+repositories by Owner and Project. "Owner" will allow you to just
+see the "UNCG CSC 330" repositories, and "Project" will allow you
+to filter by in-class examples or assignments. Filter by project
+"Assignments" and you'll see that at this time the only repository
+is "Assign0." Now click "Assign0," which will take you to
+the "Overview" screen for the repository.
+<P>Depending on how wide your browser window is, you'll either see a menu
+on the left of the page with actions and navigation options, or you'll
+see a bar with icons that you can expand to the full menu by clicking
+the double arrow at the bottom of the window. Expand the menu if you
+need to, and then click "Fork" to make your own personal copy of the
+"Assign0" repository. It will ask you for a name, which defaults to
+"Assign0" -- I want you to add a dash and your UNCG username after
+the name. For example, mine would be "Assign0-srtate." Once you have
+made that change click the "Fork repository" button.
+<p>
+<LI>After forking, the web site will take you to the Overview page for
+your new repository. Click the "Settings" command from the left
+menu, and then select "Access management." Under groups, click the
+"Select a group" dropdown menu and choose "ClassAdmin" and click
+the "Add" button to give read access to the instructor and grader.
+Finally, go back to the "Overview" screen and make a note of the URL
+at the top - this is how you will access the repository from
+NetBeans.
+<p>
+<LI>Start NetBeans, and from the "Team" menu at the top select "Git"
+and "Clone..." This will bring up a window that asks for a
+"Repository URL," and you should enter the URL from the previous
+step. Enter your Bitbucket username and password below that, and then
+click "Finish" at the bottom (you can also click through options
+screens using "Next" if you prefer). A window should pop up saying
+the project was cloned, and give you an option to open the project,
+which you should do.
+<p>
+<LI>At this, point your project should appear in the NetBeans "Projects"
+pane, and you can work with it like you would any other project. For
+this assignment, if you go down into the source code, there is a
+single Java source file that includes a comment with instructions on
+what to change in the file. In addition to that change to the code,
+put a comment with your name at the top of the file.
+<p>
+<LI>Once you have successfully made your changes, select the main project
+entry ("Assignment0") in the project pane, right click on it, and go
+down to "Git" and "Commit..."  It is vital that you do this from
+the project name in the project pane, and <EM>not</EM> from the "Team"
+menu! They may look the same, but the "Commit" in the "Team"
+window will only commit a single file rather than the entire
+project. In your commit window, type a brief commit message describing
+what you have changed, and then click "Commit" at the bottom.
+<p>
+<LI>From the Team menu, select "Remote" and "Push to Upstream" to
+update your files on Bitbucket.
+<p>
+<LI>Finally, on the Bitbucket web site, go to your repository (the one with
+your username in the repository name) and click "Create pull
+request" under "Actions" in the left menu. You can add a note under
+"Description," but that isn't necessary. 
+</OL>
+
+
+<p>&nbsp;</p>
+
+
+</div></td></tr>
+</table>
+
+</body> </html>
+

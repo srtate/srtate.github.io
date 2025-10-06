@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+<title>CSC 580:  Cryptography and Security in Computing</title>
+<link href="https://home.uncg.edu/cmp/faculty/srtate/classstyle.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td width="800"><img src="580banner.jpg" alt="CSC 580: Cryptography and Security in Computing" /></td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+<col width="150" />
+<col width="700" />
+<tr><td valign="top">
+<div class="navigate">
+<div class="navhead">Navigation</div>
+<div class="navother">
+<a href="index.php.html">Class Home</a>
+</div>
+<div class="navother">
+<a href="syllabus.php.html">Syllabus</a>
+</div>
+<div class="navother">
+<a href="readings.php.html">Readings</a>
+</div>
+<div class="navother">
+<a href="handouts.php.html">Handouts</a>
+</div>
+<div class="navother">
+<a href="assign.php.html">Assignments</a>
+</div>
+<div class="navother">
+<a href="http://blackboard.uncg.edu/">Blackboard</a>
+</div>
+<div class="navother">
+<a href="moreinfo.php.html">More Information</a>
+</div>
+<img src="https://home.uncg.edu/cmp/faculty/srtate/pics/navtail.png" alt="" />
+</div>
+</td><td valign="top"><div class="main">
+
+<p>A <a href="assign1.pdf">printable PDF</a> is available.</p>
+
+    <H1 ALIGN=CENTER>Assignment 1 - Due Monday, February 3</H1>
+
+
+<P><P><P><EM>Note: Remember that one of the main goals of this class is to
+  develop your skills in reasoning about security, so show your work
+  and explain your reasoning on all problems - for homework problems,
+  your thought process is as important as the final answer!</EM>
+<OL><LI><p>In this question, you should read about the recent security breach at
+Target stores, and write a summary taking into account the security
+goals and terminology from Chapter 1 of your textbook. For information
+on this security breach, you should read at least the following three
+articles
+-- there's certainly plenty more out there if you want to read more,
+but these cover the important technical points:
+<UL><LI><p><A HREF="http://krebsonsecurity.com/2014/01/a-first-look-at-the-target-intrusion-malware/">A First Look at the Target Intrusion, Malware</A> -- Krebs on Security</p>
+<LI><p><A HREF="http://krebsonsecurity.com/2014/01/a-closer-look-at-the-target-malware-part-ii/">A Closer Look at the Target Malware, Part II</A> -- Krebs on Security<BR></p><LI><p><A HREF="http://blog.cryptographyengineering.com/2013/12/can-hackers-decrypt-targets-pin-data.html">Can hackers decrypt Target's PIN data?</A> -- by Matthew Green <BR><I>Warning: This one is a little more dense to read, and uses
+  some cryptographic terms we have not covered yet. Still, try to read
+  it and see what you can get out of it. If the terminology is a big
+  enough barrier where you can't get the "big picture," then ask me
+  about things that are unclear, and I'll fill in details as needed.</I></p>
+</UL>
+Your summary should be brief (less than a page), but be careful to use
+proper terminology. In particular, what <EM>assets</EM> were compromised
+in this <EM>attack</EM>? (Hint: Think broadly: stolen information is
+certainly an asset, but so is company infrastructure.) For these
+assets, what are <EM>confidentiality</EM>, <EM>integrity</EM>, and
+<EM>availability</EM> goals, and were they compromised? Where was a
+<EM>vulnerability</EM> used as an <EM>attack vector</EM>? (This is
+complex: there were certainly multiple attack vectors, some of which
+are not publicly known - just summarize the ones described in the
+stories referenced above.)</p>
+<LI><p>Textbook, page 56, Problem 2.1.</p>
+<LI><p>Following up on textbook Problem 2.1, how many valid keys are
+  there in the system described in the textbook problem? If we
+  slightly increased the alphabet size to 29 (so operations are
+  performed mod 29), what does your discovery from Problem 2.1(c) tell
+  you about which values of <I>a</I> are allowed now, and how many valid
+  keys are there in this situation?</p>
+<LI><p>In some systems, different keys can produce the same
+  transformation, so the keyspace seems larger than it actually is.
+  Consider the following illustration of
+  this: Joe decides to strengthen the affine cipher in the preceding
+  question by performing the affine cipher twice with two different
+  keys: the plaintext is first transformed using key <I>[a<sub>1</sub>,b<sub>1</sub>]</I>,
+  giving intermediate ciphertext <I>C<sub>1</sub></I>, and then <I>C<sub>1</sub></I> is transformed
+  using a different key <I>[a<sub>2</sub>,b<sub>2</sub>]</I> to produce the final ciphertext
+  <I>C</I>. The full key is then the set of four values <I>a<sub>1</sub>, b<sub>1</sub>, a<sub>2</sub>,
+  b<sub>2</sub></I>, where each <I>[a<sub>i</sub>,b<sub>i</sub>]</I> satisfies the necessary requirements
+  for an affine cipher.
+<UL><LI>[(a)] How many such keys are there?
+<LI>[(b)] How many different transformations are possible, and how
+  can a brute force search be performed much faster than the number of
+  keys from part (a) would suggest?
+</UL></p>
+<LI><p>The book describes the one-time pad on pages 47 and 48 using 
+  letter-based operations (mod 26), and we are discussing the exclusive-or binary
+  version of a one-time pad in class. In this question, each bit of
+  the key is randomly chosen, independently of all other key bits, and
+  we explore the
+  importance of a uniform distribution for key bits.
+<UL><LI>[(a)] Consider a system in which each bit of the key is uniformly
+  distributed, so has probability 1/2 of being 0 and 1/2 of being
+  1. Given a one-byte ciphertext that is hexadecimal <I>A7</I> (binary
+  <I>10100111</I>) what is the probability that the plaintext is <I>4F</I>? What is
+  the probability that the plaintext is <I>58</I>? Is there any rational reason
+  to prefer one of these possible plaintexts over the other?
+<LI>[(b)] Consider a system in which the bits of the key are biased:
+  each bit is 0 with probability 1/4 and 1 with probability 3/4.
+  Given a one-byte ciphertext that is hexadecimal <I>A7</I>
+  what is the probability that the plaintext is <I>4F</I>? What is
+  the probability that the plaintext is <I>58</I>? Is there any rational reason
+  to prefer one of these possible plaintexts over the other?
+</UL>
+</p>
+<LI><p>Consider the Feistel network shown in the book in Figure 3.3
+  (page 69). Consider a round function <I>F</I> that satisfies the formula
+  <I>F(not(R),not(K))=F(R,K)</I> for all inputs <I>R</I> and <I>K</I>,
+  where the <I>not(X)</I> notation indicates the bitwise complement
+  of <I>X</I>. In words, if you consider computing <I>F(R,K)</I> and then flip
+  all the bits of both <I>R</I> and <I>K</I>, the result stays the same.  This
+  seems like a strange property for the round function to satisfy, but
+  in fact the DES round function has this property!</p>
+<P>Let <I>E(K,P)</I> refer to the full 16-round Feistel cipher in Figure 3.3,
+where the round function <I>F</I> satisfies this property. What is
+<I>E(not(K),not(P))</I>? Give a clear justification of your
+answer -- the justification is more important than the formula for the answer!</p>
+<LI><p>Textbook, page 82, problem 3.6.</p>
+</OL>
+
+
+
+
+</div></td></tr>
+</table>
+
+</body> </html>
+

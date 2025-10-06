@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title>CSC 330:  Advanced Data Structures</title>
+<link href="https://home.uncg.edu/cmp/faculty/srtate/classstyle.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td width="800"><img src="330banner.jpg" alt="CSC 330: Advanced Data Structures" /></td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+<col width="150" />
+<col width="700" />
+<tr><td valign="top">
+<div class="navigate">
+<div class="navhead">Navigation</div>
+<div class="navother">
+<a href="index.php.html">Class Home</a>
+</div>
+<div class="navother">
+<a href="syllabus.php.html">Syllabus</a>
+</div>
+<div class="navother">
+<a href="handouts.php.html">Handouts</a>
+</div>
+<div class="navother">
+<a href="assign.php.html">Assignments</a>
+</div>
+<div class="navother">
+<a href="moreinfo.php.html">More Information</a>
+</div>
+<img src="https://home.uncg.edu/cmp/faculty/srtate/pics/navtail.png" />
+</div>
+</td><td valign="top"><div class="main">
+
+<p>A <a href="assign2.pdf">printable PDF</a> is available.</p>
+
+    <H1 ALIGN=CENTER>Assignment 2 -- Using Maps<BR><FONT SIZE=+2><I>Due:
+      Wednesday, September 23</I></FONT></H1>
+    
+    
+    
+<P><P><B>Objective:</B> The objective of this assignment is for students
+to work with and show they understand how to use associative
+containers (course objective 5 from the syllabus).  <I>This
+  program is shorter and less involved than others in this class, so
+  this assignment will be graded out of 50 points -- half the weight
+  of other assignments.</I>
+<P><B>High-Level Description:</B>  
+In the first assignment you wrote a program to figure out word
+frequencies:  how often a word appears in a text file.  In this
+assignment you are to consider character frequencies, but also
+consider the notion of "context" -- in this case the "context" is
+the preceding character, so rather than counting the number of times
+the character "<TT>u</TT>" occurs (for example), you will count the
+number of times "<TT>u</TT>" follows "<TT>q</TT>", how many times
+"<TT>u</TT>" follows "<TT>r</TT>", and so on.
+<P><B>Details:</B> You are to write two programs for this assignment,
+<TT>count1.cpp</TT> and <TT>count2.cpp</TT>.  Both programs read the
+input (from standard input) character-by-character, and update counts
+after each character is read.  Use <TT>cin.get()</TT> for character input.
+<P>For <TT>count1.cpp</TT> you are simply to keep track of how many times
+each character occurs.  This is a basic <TT>map&lt;char,int&gt;</TT> object
+that increments the count as each character is seen.  At the end of
+the program, print out each character and the number of times it
+occurs.
+<P>For <TT>count2.cpp</TT> you are to keep a <EM>separate</EM> set of
+counts for each context -- in other words, for each character
+"context" (meaning the previous character) you will have a complete
+set of counts.  This is a map of maps -- and part of this assignment
+is to figure out exactly what that means as a C++ <TT>map</TT>
+declaration, and to use it in your program.  At the end of the
+program, print out each pair of characters and the count of the number
+of times that pair occurred.
+<P>See the sample input and output
+below
+and follow the basic form shown there for your program's output.
+<P><B>To Turn In:</B> Use the <CODE>330submit</CODE> program (see 
+<A HREF="grading.php.html">Handout 3</A>)
+in order to turn in your code, using assignment name <CODE>assign2</CODE>.
+You should submit all of your code (for both programs) so that it can
+be compiled and tested.  On the due date, you should turn in a
+printout of your code.
+<P><B>Sample Input/Output:</B>
+<BLOCKQUOTE><CENTER>
+<FONT SIZE=+2>SAMPLE INPUT
+</FONT></CENTER></BLOCKQUOTE>
+<P><hr><PRE>
+Whammer Jammer
+</PRE>
+<P><hr>
+<BLOCKQUOTE><CENTER>
+<FONT SIZE=+2>SAMPLE OUTPUT (FROM COUNT1)
+</FONT></CENTER></BLOCKQUOTE>
+<P><hr><PRE>
+
+: 1
+ : 1
+J: 1
+W: 1
+a: 2
+e: 2
+h: 1
+m: 4
+r: 2
+</PRE>
+<P><hr>
+<BLOCKQUOTE><CENTER>
+<FONT SIZE=+2>SAMPLE OUTPUT (FROM COUNT2)
+</FONT></CENTER></BLOCKQUOTE>
+<P><hr><PRE>
+( ,J): 1
+(J,a): 1
+(W,h): 1
+(a,m): 2
+(e,r): 2
+(h,a): 1
+(m,e): 2
+(m,m): 2
+(r,
+): 1
+(r, ): 1
+</PRE>
+
+
+
+</div></td></tr>
+</table>
+
+</body> </html>
+

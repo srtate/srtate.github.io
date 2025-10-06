@@ -1,0 +1,14 @@
+def sum_of_multiples(limit):
+    sum = 0
+    for i in range(1, limit):
+        if (i%3 == 0) or (i%5 == 0):
+            sum += i
+    return sum
+
+def count_DNA(string):
+    counts = { 'A': 0, 'C': 0, 'G': 0, 'T': 0 }
+    for c in string:
+        counts[c] += 1
+    return counts
+
+

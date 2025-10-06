@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title>CSC 330:  Advanced Data Structures</title>
+<link href="https://home.uncg.edu/cmp/faculty/srtate/classstyle.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td width="800"><img src="330banner.jpg" alt="CSC 330: Advanced Data Structures" /></td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+<col width="150" />
+<col width="700" />
+<tr><td valign="top">
+<div class="navigate">
+<div class="navhead">Navigation</div>
+<div class="navother">
+<a href="index.php.html">Class Home</a>
+</div>
+<div class="navother">
+<a href="syllabus.php.html">Syllabus</a>
+</div>
+<div class="navother">
+<a href="handouts.php.html">Handouts</a>
+</div>
+<div class="navother">
+<a href="assign.php.html">Assignments</a>
+</div>
+<div class="navother">
+<a href="moreinfo.php.html">More Information</a>
+</div>
+<img src="https://home.uncg.edu/cmp/faculty/srtate/pics/navtail.png" />
+</div>
+</td><td valign="top"><div class="main">
+
+<p>A <a href="assign5.pdf">printable PDF</a> is available.</p>
+
+    <H1 ALIGN=CENTER>Assignment 5 -- Graph Adjacency Matrix<BR><FONT SIZE=+2><I>Due:
+      Monday, December 7</I></FONT></H1>
+    
+    
+    
+<P><B>Objective:</B> The objective of this assignment is for students
+to gain experience working with graphs by implementing the graph class
+using an adjacency matrix (rather than the adjacency list used in the
+book's implementation).
+<I>This
+  program is longer and more involved than others assignments in this class, so
+  this assignment will be graded out of 150 points -- in other words,
+  it will count one and a half times as much as your previous full
+  assignments.</I>
+<P><B>What To Do:</B>  
+This programming assignment comes straight out of the book:  Do
+Programming Project (exercise) 42, on page 1019.  You will be
+modifying the book's graph class, and code for that implementation can
+be found
+<A HREF="assign.php.html">here</A>.
+<P>Unfortunately, the graphs given in the book do not match the problem
+description.  The problem asks for the graph to be output twice, and
+the graphs that your program should have at that time are drawn in
+Figure 16-29 (page 1020).  However, it's not clear what the original
+input graph is -- it's clearly <EM>not</EM> Figure 16-28(a) as stated
+in the problem.  Please use the graph below for your original input:
+<BLOCKQUOTE><CENTER>
+<IMG  SRC="pics/a5graph.png">
+</CENTER></BLOCKQUOTE>
+You'll need to encode this in the graph file format used by the book's
+graph input function.
+<P>Note that I'll also test your implementation with different graphs, so
+please test your implementation thoroughly so that you are confident
+that your code works correctly in general.   My test graphs will have
+no more than 25 vertices, so it is safe for you to use MAXGRAPHSIZE of
+25.
+<P><B>To Turn In:</B> Use the <CODE>330submit</CODE> program (see 
+<A HREF="grading.php.html">Handout 3</A>)
+in order to turn in your code, using assignment name <CODE>assign5</CODE>.
+On the due date, you should turn in a
+printout of your code.
+<P><B>Sample Input/Output:</B>
+<BLOCKQUOTE><CENTER>
+<FONT SIZE=+2>SAMPLE INPUT
+</FONT></CENTER></BLOCKQUOTE>
+<P><hr><P><P><EM>You should create a file containing the input graph shown on the
+  previous page.</EM>
+<P><P><hr>
+<BLOCKQUOTE><CENTER>
+<FONT SIZE=+2>SAMPLE OUTPUT
+</FONT></CENTER></BLOCKQUOTE>
+<P><hr><PRE>
+    Result of breadth-first search from A:
+    A
+    B
+    C
+    D
+    E
+    
+    Graph after first two operations:
+    A: in-degree 1  out-degree 2
+        Edges: B (4)  D (6)  
+    B: in-degree 1  out-degree 1
+        Edges: A (2)  
+    D: in-degree 1  out-degree 1
+        Edges: E (4)  
+    E: in-degree 1  out-degree 0
+        Edges: 
+    
+    Final graph:
+    A: in-degree 2  out-degree 2
+        Edges: B (4)  D (6)  
+    B: in-degree 1  out-degree 2
+        Edges: A (2)  F (5)  
+    F: in-degree 2  out-degree 1
+        Edges: A (3)  
+    D: in-degree 1  out-degree 1
+        Edges: E (4)  
+    E: in-degree 1  out-degree 1
+        Edges: F (2)  
+</PRE>
+
+
+</div></td></tr>
+</table>
+
+</body> </html>
+

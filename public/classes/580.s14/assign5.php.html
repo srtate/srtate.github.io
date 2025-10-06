@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+<title>CSC 580:  Cryptography and Security in Computing</title>
+<link href="https://home.uncg.edu/cmp/faculty/srtate/classstyle.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td width="800"><img src="580banner.jpg" alt="CSC 580: Cryptography and Security in Computing" /></td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+<col width="150" />
+<col width="700" />
+<tr><td valign="top">
+<div class="navigate">
+<div class="navhead">Navigation</div>
+<div class="navother">
+<a href="index.php.html">Class Home</a>
+</div>
+<div class="navother">
+<a href="syllabus.php.html">Syllabus</a>
+</div>
+<div class="navother">
+<a href="readings.php.html">Readings</a>
+</div>
+<div class="navother">
+<a href="handouts.php.html">Handouts</a>
+</div>
+<div class="navother">
+<a href="assign.php.html">Assignments</a>
+</div>
+<div class="navother">
+<a href="http://blackboard.uncg.edu/">Blackboard</a>
+</div>
+<div class="navother">
+<a href="moreinfo.php.html">More Information</a>
+</div>
+<img src="https://home.uncg.edu/cmp/faculty/srtate/pics/navtail.png" alt="" />
+</div>
+</td><td valign="top"><div class="main">
+
+<p>A <a href="assign5.pdf">printable PDF</a> is available.</p>
+
+<p><em>Note: You are strongly encouraged to use the PDF version linked above. The formatting is much better than the version shown below.</em></p>
+
+    <H1 ALIGN=CENTER>Assignment 5 - Due Monday, April 14</H1>
+
+<P><P><P><I>Note: This homework assignment is worth 50 points.</I>
+<OL><LI><p>The beginning of this problem is similar to a problem on your last
+homework: Use Table 8.1 on page 234 to pick two random primes (<I>p</I> and
+<I>q</I>) in the range <I>1500,...,2000</I>. Compute <I>n=pq</I> and <I>phi(n)</I>,
+and .  let's use <I>b</I> to represent <I>phi(n)</I> (i.e., <I>b=phi(n)</I>). Find
+the prime factorization of <I>b</I> and then use the equation from Problem
+8.12 (page 264) to find <I>phi(b)</I>. Pick a random <I>e</I> that is
+relatively prime to <I>b</I>, and use the technique from Problem 5 on your
+last homework to compute the multiplicative inverse of <I>e</I> modulo <I>b</I>
+-- call this <I>d</I>. Finally, verify that these values work as RSA keys:
+Pick two different random messages <I>m<sub>1</sub></I> and <I>m<sub>2</sub></I> in the range
+<I>0,...,n-1</I> -- for each one, compute <I>c<sub>i</sub>=m<sub>i</sub><sup>e</sup> mod n</I> and
+<I>r<sub>i</sub>=c<sub>i</sub><sup>d</sup> mod n</I>, and if everything works you should have <I>m<sub>i</sub>=r<sub>i</sub></I>.</p>
+<LI><p>OAEP, described at the bottom of page 277 in the textbook and
+illustrated in Figure 9.10, is a very important technique -- without
+it, the RSA encryption function is deterministic and stateless, and so
+cannot be IND-CPA secure! However, using OAEP (or any technique that
+adds non-determinism) reduces the size of plaintexts that can be
+encrypted. Assuming that OAEP is using a 160-bit seed and a hash
+function that produces a 160-bit value, how large a plaintext can be
+handled using RSA with 2048-bit key? Note that you can't really get
+enough information from the brief description in the book to determine
+this -- search and find a more precise description of OAEP online
+(and make sure you cite any source that you use!).</p>
+<LI><p>The "man-in-the-middle attack" for the Diffie-Hellman Key Exchange
+(described starting on page 290) is a serious problem that stems from
+the fact that Alice cannot guarantee that the message she sends to Bob
+is the same as the message that Bob receives. Consider using a public
+web site (like a discussion forum) as follows: Alice and Bob post
+their values <I>Y<sub>A</sub></I> and <I>Y<sub>B</sub></I> on this site, and they retrieve the other
+side's value from this site. Alice and Bob can also check the web site
+(from different hosts if they want to disguise their identity) to see
+if the correct value is being provided by the public web site. Does
+this solve the problem? Address issues such as how you identify
+another user, whether the communication link that Alice and/or Bob
+uses is compromised, etc.</p>
+<LI><p>Page 311, Problem 10.12</p>
+<LI><p>Page 311, Problem 10.13</p>
+</OL>
+
+
+
+</div></td></tr>
+</table>
+
+</body> </html>
+

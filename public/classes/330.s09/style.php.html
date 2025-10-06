@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title>CSC 330:  Advanced Data Structures</title>
+<link href="https://home.uncg.edu/cmp/faculty/srtate/classstyle.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td width="800"><img src="330banner.jpg" alt="CSC 330: Advanced Data Structures" /></td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+<col width="150" />
+<col width="700" />
+<tr><td valign="top">
+<div class="navigate">
+<div class="navhead">Navigation</div>
+<div class="navother">
+<a href="index.php.html">Class Home</a>
+</div>
+<div class="navother">
+<a href="syllabus.php.html">Syllabus</a>
+</div>
+<div class="navother">
+<a href="handouts.php.html">Handouts</a>
+</div>
+<div class="navother">
+<a href="assign.php.html">Assignments</a>
+</div>
+<div class="navother">
+<a href="moreinfo.php.html">More Information</a>
+</div>
+<img src="https://home.uncg.edu/cmp/faculty/srtate/pics/navtail.png" />
+</div>
+</td><td valign="top"><div class="main">
+
+<p>A <a href="style.pdf">printable PDF</a> is available.</p>
+
+    <H1 ALIGN=CENTER>CSC 330 C++ Coding Style Rules</H1>
+    
+    
+    <H1><A NAME="1">Major Rules</A></H1>
+<P><EM>Each violation</EM> of these rules will count 15 points off your
+final grade on the assignment.  That means that if you have 4 global
+variables in your program, I'll immediately knock of <EM>60 points</EM>.
+<OL><LI><EM>No</EM> global variables.
+<LI><EM>All</EM> data elements in a class should be private.
+<LI>Never put executable code in a <CODE>.h</CODE> header file unless it
+either (a) is in a template class or (b) is a very short function that
+could benefit significantly by "inlining".
+<LI>Never <CODE>#include</CODE> any file <EM>except</EM> a <CODE>.h</CODE> file.
+<LI>Required comments at the top of every file include: your name,
+    a brief (one line) description of what is in the file,
+    and the last date modified.
+</OL>
+<H1><A NAME="2">Other Rules</A></H1>
+<P>These additional rules are not as severe as the rules above, but
+violations will still result in some points being taken off.
+<OL start="6"><LI>Proper indentation is an absolute must!  Use at least 2
+characters for each indentation level, and at most 8 (I think 4 gives
+a nice indented structure, although I leave this up to your personal
+taste).
+<LI>Lines of source code should be at most 80 characters long --
+  lines should not "wrap around" on printouts.
+<LI>Use whitespace and blank lines to increase readability.
+<LI>Use meaningful but concise names for classes, methods, and
+variables.  Class names and variables should be nouns and the
+beginning of new words in a multi-word name should start with a
+capital letter 
+(Examples: <CODE>tree</CODE>, <CODE>binaryTree</CODE>,
+<CODE>binarySearchTree</CODE>, <CODE>rightChild</CODE>, <CODE>vertexList</CODE>, etc.).  
+Method and function names should be verbs, start with a
+lower case letter, and start subsequent words with upper case letters
+(Examples: <CODE>setData()</CODE>, <CODE>isEmpty()</CODE>, and <CODE>getNext()</CODE>).
+Local variables to a function should also have meaningful names, with
+an exception being for simple loop variables (<CODE>i</CODE> is ok for an
+integer loop, <CODE>cp</CODE> for a character pointer, etc.).
+Note that names from the STL or in the book don't always strictly
+follow these guidelines, but in your own code please try to be
+consistent in following these rules.
+<LI>Use modular, multi-file construction with a <CODE>Makefile</CODE>.
+Files to implement a class <CODE>myClass</CODE> should be called
+<CODE>myClass.h</CODE> and <CODE>myClass.cpp</CODE>.
+<LI>Use constructors and destructors to make sure objects are initialized
+    properly and dynamic storage is returned properly (and be careful
+    to include copy constructors and assignment overloads where necessary). 
+<LI>Avoid the C preprocessor -- use <CODE>const</CODE> and <CODE>inline</CODE>
+    as provided by C++ instead.
+<LI>Use operator overloading with care -- using overloading for
+  well-understood operations (like <CODE>++</CODE> for iterators) is fine,
+  but if you get "creative" in using operator overloading it just
+  makes your code hard to understand.
+<LI>Variable initialization/declaration: Declare variables as close
+to their first use a possible, and initialize them in the declaration.
+Loop variables that are only useful inside the loop should be declared
+inside the <CODE>for</CODE> statement.  Note that the book does not do this
+-- they use the older "C-style" declarations at the top of a
+function/block.  This is really "old-school" and should be avoided.
+<LI>Large objects can be passed as arguments as a <CODE>const</CODE>
+    reference -- this avoids making a local copy, and still protects
+    the integrity of the data.
+<LI>Use <CODE>const</CODE> wherever appropriate -- this helps the compiler catch
+    mistakes before they happen.
+<LI>Use parentheses for grouping expressions, especially in cases
+where precedence is not obvious.
+<LI>Put comments before each function or method, and at the
+beginning of each source file.  Your comments should be in
+"Doxygen style", which allows a
+description of your class to be extracted and formated in HTML.  The
+example code for these style guidelines shows how these comments
+should look.
+<LI>Comment unclear parts of the code.
+</OL>
+
+
+</div></td></tr>
+</table>
+
+</body> </html>
+

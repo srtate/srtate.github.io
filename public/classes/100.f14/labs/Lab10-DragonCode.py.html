@@ -1,0 +1,43 @@
+
+import random
+import time
+
+dragon = snappy.Sprite((40,70), snappy.CostumeBuiltIn('dragon1-a'))
+dragon.loadCostume(snappy.CostumeBuiltIn('dragon1-b'))
+dragon.setSize(50)
+dragon.setRotStyle(0)
+
+hitflag = False
+
+@snappy.startOnGreenFlag()
+def dragonmove():
+    global hitflag
+    starttime = time.time()
+    hitcount = 0
+    while hitcount < 5:
+        hitflag = False
+        edge = random.randint(1,3)
+        if edge == 1:
+            dragon.goTo((-197,random.randint(-70, 140)))
+            dragon.pointInDirection(random.randint(45, 135))
+        elif edge == 2:
+            dragon.goTo((random.randint(-197, 200), 140))
+            dragon.pointInDirection(random.randint(135, 225))
+        else:
+            dragon.goTo((200,random.randint(-70, 140)))
+            dragon.pointInDirection(random.randint(-135, -45))
+        while not hitflag:
+            dragon.move(7)
+            dragon.if_on_edge_bounce()
+            if dragon.location[1] < -70:
+                dragon.pointInDirection(180-dragon.direction)
+        hitcount += 1
+    elapsedtime = time.time() - starttime
+    dragon.goTo((0,0))
+    for i in range(5):
+        dragon.changeSizeBy(10)
+    dragon.switchToCostume(1)
+    dragon.wait(1)
+    dragon.switchToCostume(0)
+    dragon.say("Out!!! You got me 5 times in %.2f seconds!" % elapsedtime)
+        

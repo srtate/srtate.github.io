@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+<title>CSC 580:  Cryptography and Security in Computing</title>
+<link href="https://home.uncg.edu/cmp/faculty/srtate/classstyle.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td width="800"><img src="580banner.jpg" alt="CSC 580: Cryptography and Security in Computing" /></td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+<col width="150" />
+<col width="700" />
+<tr><td valign="top">
+<div class="navigate">
+<div class="navhead">Navigation</div>
+<div class="navother">
+<a href="index.php.html">Class Home</a>
+</div>
+<div class="navother">
+<a href="syllabus.php.html">Syllabus</a>
+</div>
+<div class="navother">
+<a href="readings.php.html">Readings</a>
+</div>
+<div class="navother">
+<a href="handouts.php.html">Handouts</a>
+</div>
+<div class="navother">
+<a href="assign.php.html">Assignments</a>
+</div>
+<div class="navother">
+<a href="http://blackboard.uncg.edu/">Blackboard</a>
+</div>
+<div class="navother">
+<a href="moreinfo.php.html">More Information</a>
+</div>
+<img src="https://home.uncg.edu/cmp/faculty/srtate/pics/navtail.png" alt="" />
+</div>
+</td><td valign="top"><div class="main">
+
+<p>A <a href="assign4.pdf">printable PDF</a> is available.</p>
+
+<p><em>Note: You are strongly encouraged to use the PDF version linked above. The formatting is much better than the version shown below.</em></p>
+
+    <H1 ALIGN=CENTER>Assignment 4 - Due Wednesday, April 2</H1>
+
+<OL><LI><p>A "key recovery attack" takes a matching plaintext/ciphertext pair
+<I>(P,C)</I> and finds a key <I>K</I> such that <I>E<sub>K</sub>(P)=C</I>. We can formalize
+this by saying that there is a probabilistic polynomial time algorithm
+<I>findkey(P,C)</I> that computes <I>K</I>. Show that if such a
+function exists, then the encryption scheme is not IND-CPA secure (to
+do this, define the adversary functions <I>A<sub>1</sub><sup>E</sup></I> and
+<I>A<sub>2</sub><sup>E</sup></I> for the chosen-plaintext game, where the adversary
+functions can call both the encryption oracle and the <I>findkey</I> function). In addition to giving the algorithms, analyze
+the advantage of your adversary algorithm under the assumption that
+<I>findkey</I> always succeeds.
+<LI><p>In the handout on security models, it was shown that no stateless,
+deterministic encryption can be IND-CPA secure. For this problem,
+consider CBC mode in which the IV is picked in a way that can be
+predicted by the adversary (but may be stateful and/or non-deterministic).
+<UL><LI><p>(a) Describe CBC mode using algorithm specifications (both
+  encryption and decryption), where the IV is selected during
+  encryption using a function named <I>getIV(lambda)</I>.
+  You need to give names to both full CBC as well as individual 
+  block cipher encryption/decryption functions. 
+<LI><p>(b) Assume the adversary has a <I>predictIV()</I> function
+  that always predicts the next IV that will be returned by <I>getIV(lambda)</I> (and hence the next IV that will be used in an
+  encryption). Define adversary algorithms <I>A<sub>1</sub><sup>E</sup></I> and
+  <I>A<sub>2</sub><sup>E</sup></I> that can win the CPA game. (Hint: Think about
+  what is fed into the block cipher as plaintext. Can you arrange
+  it so that you can do multiple encryptions in which the same values
+  are fed into the block cipher?) Do a quick analysis of your
+  algorithms to find the advantage of your adversary.
+<LI><p>(c) What if the <I>predictIV</I> algorithm isn't perfect?
+  In other words, what if <I>predictIV</I> only predicts the
+  correct IV with probability <I>p</I>? What is the advantage now?
+<LI><p>(d) CBC-Chain mode is a variant of CBC mode in which the
+  encryption function keeps a record of the last ciphertext block
+  produced, and uses that as the IV for the next encryption (so a
+  series of CBC-Chain encryptions is the same as a single long CBC
+  encryption). Show that CBC-Chain mode is not IND-CPA
+  secure. (Note: This attack appears in the real world as part of the
+  basis for the BEAST attack on SSL, discovered in 2011.)
+</UL>
+<LI><p>It's clear that repeating a deterministic block cipher, as in ECB
+mode, is not secure. But what about repeating a secure
+(non-deterministic) cipher? In other words, let <I>E<sub>K</sub>(P) -&gt; C</I>
+be an IND-CCA encryption scheme, and then define a two-block version
+of this by <I>E2<sub>K</sub>(P<sub>1</sub>,P<sub>2</sub>) -&gt; (C<sub>1</sub>,C<sub>2</sub>)=(E<sub>K</sub>(P<sub>1</sub>),E<sub>K</sub>(P<sub>2</sub>))</I>. It turns out that this construction is
+IND-CPA secure, but <EM>not</EM> IND-CCA secure. Prove the second part
+of that statement (in other words, give an adversary that wins the CCA
+game against the <I>E2</I> two-block encryption scheme -- like almost all
+CCA attacks, the trick is to disguise your decryption oracle requests
+so they don't exactly repeat the challenge ciphertext). Make sure you
+analyze the advantage of your adversary!
+<LI><p>(<EM>Note: Taking large modular powers is tricky, but modern
+  programming languages have good support for this -- for example, in Java you can use the
+  <TT>modPow</TT> function in the <TT>BigInteger</TT> class, and in
+  Python you can use the built-in <TT>pow</TT> function, where
+  <TT>pow(a,x,n)</TT> computes <I>a<sup>x</sup>mod n</I>.</EM>)
+Consider the value <I>n=8911</I> (this is a composite number with factors
+7, 19, and 67). 
+<UL><LI><p>(a) Select three different random <I>a</I> values in the range
+  <I>2,...,8909</I> that are relatively prime to <I>n</I>, and calculate
+  <I>a<sup>n-1</sup>mod n</I> for each of these three <I>a</I> values. Does it seem
+  that <I>n</I> behaves like a prime number as far as Fermat's Little
+  Theorem is concerned?
+<LI><p>(b) Use your random <I>a</I> values from part (a) to run the
+  Miller-Rabin primality-testing algorithm on <I>n</I>, showing each
+  step. If your first <I>a</I> value returns "composite" you can stop
+  with just that one simulation -- otherwise, try the other <I>a</I>
+  values until you get "composite."
+</UL>
+<LI><p><A NAME="1">
+Use</A> Table 8.1 on page 235 to pick two random primes (<I>p</I> and <I>q</I>) in
+the range <I>1500,...,2000</I>. Compute <I>n=pq</I> and <I>phi(n)</I>. Pick a random <I>a</I>
+in the range <I>2,...,n-1</I> such that it is relatively prime to <I>n</I>.
+Compute
+<I>b=a<sup>phi(n)-1</sup>mod n</I>. Finally, compute the product <I>a&#183;bmod n</I>. What does this tell you about the relation between <I>a</I> and
+<I>b</I>? Will this relationship always hold for any values that you pick
+according to these directions? Justify your answer.
+<LI><p>What are the primitive roots of 31? (A very simple program can quickly
+solve this problem.)
+<LI><p>Understanding the density of prime numbers is important for reasoning
+about lots of things in cryptography. The basis for
+this question is the "Prime Number Theorem," which states that the
+number of prime numbers less than or equal to <I>n</I> (written <I>pi(n)</I>)
+is approximately equal to <I>(x)/(lnx)</I>.
+<UL><LI><p>(a) Estimate the number of 512-bit prime numbers (here,
+  "512-bit" means with no leading zeroes, so a number <I>x</I> is 512
+  bits if <I>2<sup>511</sup> &lt;= x&lt;2<sup>512</sup></I>).
+<LI><p>(b) The RSA cryptosystem uses a modulus that is the product of
+  two large prime numbers, and if you could factor the modulus you
+  could break the system. Sometimes when people hear this, they think
+  that if the modulus is restricted to be the product of 512-bit prime
+  numbers then they can make a table of all 512-bit prime numbers and
+  use that table to factor the modulus. Is that reasonable? How big
+  would such a table be? What is the size of the largest hard drive
+  that you can buy today? See if you can estimate the total amount of
+  disk storage that has ever been manufactured in the history of
+  mankind. How does that compare to the size required for such a table?
+<LI><p>(c) When picking a random prime number, a typical algorithm
+  will pick a random odd integer, use the Miller-Rabin primality
+  testing algorithm to see if it's prime, and if it's not prime start
+  over by picking a different random odd integer. How many iterations
+  would you expect this to take if you wanted to pick a random 512-bit
+  prime number? <I>Hint</I>: This is the scenario that is sketched at the
+  end of Section 8.3, but with a different size (200 bits rather than
+  512 bits). For this part, adjust the reasoning to 512 bits, and be a
+  little more formal and careful in the analysis, using your result
+  from part (a).
+<LI><p>(d) Picking a random <EM>odd</EM> number to start is really just
+  a way of saying we are excluding multiples of 2. We can quickly test
+  and adjust a random number so that it is not a multiple of other
+  small primes as well.  Redo part (c) where when we pick a random
+  number we ensure that it is not a multiple of 2, 3, 5, 7, 11, or
+  13 before running Miller-Rabin. How many iterations (in other words,
+  how many Miller-Rabin tests) are expected now?
+</UL>
+</OL>
+
+
+</div></td></tr>
+</table>
+
+</body> </html>
+

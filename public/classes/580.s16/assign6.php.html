@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+<title>CSC 580:  Cryptography and Security in Computing</title>
+<link href="https://home.uncg.edu/cmp/faculty/srtate/classstyle.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td width="800"><img src="580banner.jpg" alt="CSC 580: Cryptography and Security in Computing" /></td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+<col width="150" />
+<col width="700" />
+<tr><td valign="top">
+<div class="navigate">
+<div class="navhead">Navigation</div>
+<div class="navother">
+<a href="index.php.html">Class Home</a>
+</div>
+<div class="navother">
+<a href="syllabus.php.html">Syllabus</a>
+</div>
+<div class="navother">
+<a href="readings.php.html">Readings</a>
+</div>
+<div class="navother">
+<a href="handouts.php.html">Handouts</a>
+</div>
+<div class="navother">
+<a href="assign.php.html">Assignments</a>
+</div>
+<div class="navother">
+<a href="http://canvas.uncg.edu/">Canvas</a>
+</div>
+<div class="navother">
+<a href="moreinfo.php.html">More Information</a>
+</div>
+<img src="https://home.uncg.edu/cmp/faculty/srtate/pics/navtail.png" alt="" />
+</div>
+</td><td valign="top"><div class="main">
+
+<p>A <a href="assign6.pdf">printable PDF</a> is available (the PDF is particularly recommended for this assignment).</p>
+
+    <H1 ALIGN=CENTER>Assignment 6 - Due Thursday, April 21</H1>
+
+<OL><LI>For this problem you will need to compute some SHA-256 hash values, so
+you will need software to do that. You can either locate and install
+free software on your own computer, or you can log in to the UNCG
+Linux host <TT>prdile.uncg.edu</TT> and use the <TT>sha256sum</TT>
+program.
+<OL><LI>Create a text file that contains only your name, and compute the
+  SHA-256 digest of that file. Give the first 10 hexadecimal digits of
+  the digest as the answer to this problem.
+<LI>Change the text file by changing a single letter in your name
+  (creating a "typo"). Compute the SHA-256 digest of this modified
+  file, and give the first 10 hexadecimal digits of
+  the digest as the answer to this problem. <I>Also give the
+    input so that I know what "typo" you created.</I>
+<LI>How similar are these digests? Are any of the hexadecimal digits
+  the same?
+</OL>
+<p><LI>Hash values are very useful for identifying files and programs,
+  since they give a short identifier for the file contents (regardless
+  of the name used). For example, if some malware left a program named
+  "WORD.EXE" on your computer and you saw the file, how could you
+  tell if that file is a genuine
+  copy of MS Word, or not? For this problem, explore on the Internet
+  for malware hash databases. Once you find one and learn a little
+  about how it works, look up the following SHA-1 hash (you may want to cut
+  and paste this from the electronic copy on the class web page):
+<PRE>
+         7183c7694c3ba61f7ccaa350712666141f31b324
+</PRE>
+  If you found something with this hash value on your computer, what
+  is it? Report what you find as your answer to this question (you
+  don't need to go into great depth, but at least give its name and
+  explain what it is).    
+<p><LI>Clearly a hash function that has the strong collision resistance
+  property also has weak collision resistance. What about the next
+  step down? Does a hash function that has weak collision resistance
+  also satisfy the one-way property (see Table 11.1 on page 323 for
+  these terms)? To answer this question, consider a hash function <I>H(x)</I>
+  that produces <I>k</I>-bit hash codes, and satisfies all three of these
+  security properties. Now construct a hash function <I>H'(x)</I> that
+  produces <I>(k+1)</I>-bit hash codes as follows: If <I>x</I> is exactly <I>k</I> bits
+  long, then output <I>0|x</I> (a single 0 bit followed by <I>x</I>); otherwise
+  output <I>1|H(x)</I> (a single 1 bit followed by the <I>H</I>-hash code of <I>x</I>). Is
+  <I>H'(x)</I> weakly collision resistant? Is it one-way? Justify your
+  answers!
+<p><LI>Consider a function <I>f:{0,1}<sup>n</sup> -&gt; {0,1}<sup>h</sup></I> that satisfies
+the one-way and collision-resistance (both weak and strong) properties
+of a cryptographic hash function, even though it only works on
+fixed-size input blocks.  Joe needs a function like this, but it has
+to work on <EM>pairs</EM> of <I>n</I>-bit inputs, so he defines
+<I>g:{0,1}<sup>n</sup>&#215;{0,1}<sup>n</sup> -&gt; {0,1}<sup>h</sup></I> as
+<BLOCKQUOTE><I>  g(x,y) = f(x(XOR)y) . </I></BLOCKQUOTE>
+Is this function one-way?  Does it satisfy the weak collision
+resistance property?  Justify both answers!
+<p><LI>Consider a hardware device that has a random 256-bit secret <I>k</I> built
+into the hardware, where a user can supply a bitstring <I>x</I> to the
+hardware and it will compute HMAC<I>(k,x)</I> (the HMAC is computed using
+hash function SHA-256). Consider a system that uses this hardware to
+create a 256-bit key for AES: The user supplies a 4-digit PIN for <I>x</I>,
+and then the output of the hardware HMAC is an AES key that is used to
+encrypt some sensitive data. Given a potential key, we can quickly tell
+whether it is the correct key by attempting a decryption using it. For
+this problem, assume that HMAC with SHA-256 satisfies the desired MAC
+security properties from Section 12.4 of the textbook.
+<OL><LI>Consider a case where the data encrypted in this manner is
+  captured, but the device itself is not available to the attacker. In addition to
+  having the data, the attacker knows the algorithm that is used and
+  knows that <I>x</I> is a 4-digit PIN (but doesn't know <I>x</I>). How secure is this? Reason about
+  the "best possible attack" given the security of HMAC, and give
+  some indication of how much time this would take. I'm not looking
+  for a mathematical proof -- informal reasoning is
+ OK, but make sure the logic of your reasoning is clear!
+<LI>If the device is captured as well, so that the attacker can
+  access the HMAC-computing hardware device, what is the best attack
+  in this case? How much time would this take (state any assumptions
+  you need to make about the speed of the hardware device, etc.).
+<LI>What if the hardware keeps track of the number of failed
+  attempts, and wipes out the embedded secret after 10 incorrect
+  entries to the device? How does this affect what the attacker can do?
+</OL>
+<I>This is basically the scenario presented with newer iPhone
+  hardware, although Apple apparently provides a way 
+  to update the firmware of the security hardware which leaves a
+  security hole.</I>
+<p><LI>Textbook page 230, Problem 7.6.
+<p><LI>Alice uses a stream cipher that generates a "key stream" of
+bytes <I>k<sub>1</sub>, k<sub>2</sub>, ..., k<sub>n</sub></I> that is exclusive-ORed with the
+plaintext <I>p<sub>1</sub>, p<sub>2</sub>, ..., p<sub>n</sub></I> to produce ciphertext bytes <I>c<sub>1</sub>, c<sub>2</sub>,
+..., c<sub>n</sub></I>.  Imagine that Alice shows you the first part of
+the plaintext (say it's a header), and you also have access to the ciphertext.
+You make a suggestion regarding the header that will be followed by
+the unsuspecting Alice and will allow you to decode the entire message
+<EM>regardless</EM> of how secure the key stream is!  Here's how: you
+tell Alice to delete the first character <CODE>&amp;</CODE> (or something else
+in the header) because it's not needed, and then re-encrypt the text.
+Alice obliges by decrypting her file, deleting the <CODE>&amp;</CODE> from
+the header, and then re-encrypts with the same key stream.  If the
+deleted character is originally in position <I>m</I> (which you know, since you've
+seen the header), then she is encrypting the plaintext 
+<I>p<sub>1</sub>,p<sub>2</sub>,...,p<sub>m-1</sub>,p<sub>m+1</sub>,...,p<sub>n</sub></I>.
+Show how you can use the two ciphertexts, along with knowledge of
+the position <I>m</I> and character <CODE>&amp;</CODE>, in order to decode the entire
+message!
+</OL>
+
+
+
+</div></td></tr>
+</table>
+
+</body> </html>
+
+
+

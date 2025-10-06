@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+<title>CSC 580:  Cryptography and Security in Computing</title>
+<link href="https://home.uncg.edu/cmp/faculty/srtate/classstyle.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td width="800"><img src="580banner.jpg" alt="CSC 580: Cryptography and Security in Computing" /></td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+<col width="150" />
+<col width="700" />
+<tr><td valign="top">
+<div class="navigate">
+<div class="navhead">Navigation</div>
+<div class="navother">
+<a href="index.php.html">Class Home</a>
+</div>
+<div class="navother">
+<a href="syllabus.php.html">Syllabus</a>
+</div>
+<div class="navother">
+<a href="handouts.php.html">Handouts</a>
+</div>
+<div class="navother">
+<a href="assign.php.html">Assignments</a>
+</div>
+<div class="navother">
+<a href="http://blackboard.uncg.edu/">Blackboard</a>
+</div>
+<div class="navother">
+<a href="moreinfo.php.html">More Information</a>
+</div>
+<img src="https://home.uncg.edu/cmp/faculty/srtate/pics/navtail.png" alt="" />
+</div>
+</td><td valign="top"><div class="main">
+
+<p>A <a href="assign4.pdf">printable PDF</a> is available.</p>
+
+    <H1 ALIGN=CENTER>Assignment 4 - Due Tuesday, April 16</H1>
+
+<OL><LI>In this problem you are to experiment with SHA-256 by writing some
+  programs that gather some statistics. In addition to answering some
+  relevant questions about the distribution of SHA-256 digests, you will
+  gain experience using a real cryptographic library in your
+  code. You can code this up in C, C++, Java, C#, or Python -- examples 
+  in each of these languages are given
+<A HREF="digest_ex.php.html">here</A>.
+Submit your programs for parts a and b through Blackboard, and include the
+output or results in your written solution that you turn in during class.
+<UL><LI>(a) Write a program that computes and prints the SHA-256 hash
+  value of your name. The output should be printed in hexadecimal.
+<LI>(b) Write a program that computes hashes of many different inputs,
+  and counts how many 1-bits are in the output for each hash
+  value. The output for this problem should be a histogram of the
+  number of times each bit count occurred. I don't care how you
+  generate the different inputs -- they can be random, or you can make
+  a big binary counter -- just make sure your inputs are all different
+  (at least with high probability). You can either write code to
+  output a histogram from your program, or you can output the
+  counts and use Excel or some other program that can create the
+  histogram. For an example of what the histogram might look like,
+<A HREF="dighistogram.txt">click here</A>.
+ Your program should be able to run through at least a
+  million hash values in a reasonable amount of time -- my solution
+  processed 1,000,000 hashes in a little less than a
+  second on UNCG's <TT>prdile.uncg.edu</TT> system.
+<LI>(c) Time your program, and report both the overall time and number
+  of hashes, and then report the time as the number of hashes computed
+  per second. How long would it take to compute <I>2<sup>128</sup></I> hash values
+  (the number needed for a birthday attack against weak collision
+  resistance)? How long would it take to compute <I>2<sup>256</sup></I> hash values
+  (the number needed for a brute-force attack on strong collision resistance)?
+<LI>(d) If the output hash values were completely random, then each of
+  the 256 output bits would be a one with probability 1/2. Therefore,
+  the distribution of bit counts would be a binomial distribution, and
+  so the probability of an output having 128 bits set to one would be
+  <TT>Binomial[256,128]/2^256</TT>. What is this
+  probability? (Hint: Use Mathematica -- the format of the formula in
+  the preceding sentence is a valid Mathematica formula.) What is the
+  probability of having just 100 bits set to one?
+<LI>(e) If you run 1,000,000 trials, what is the probability that at
+  least one trial will have exactly 100 bits set? (Hint: Calculate the
+  probability that none of the trials will have 100 bits set -- if this
+  probability is <I>p</I> then the answer to this problem is <I>1-p</I>.) Note that
+  there is really no way to do this problem without something that
+  does very high precision arithmetic -- we'll do some more example
+  with Mathematica in class so that you can see how this works.
+<LI>(f) If you run 1,000,000 trials, what is the probability that at
+  least one trial will have exactly 90 bits set? What about 80 bits?
+</UL>
+<p>
+<LI>Since a MAC is conceptually like adding a key to a hash function, let's try
+taking the key away from a MAC and seeing if it makes a good hash
+function. In particular, consider the Data Authentication Algorithm
+(sometimes called CBC-MAC) using DES, which is described in Section
+12.6, where the input 
+consists of an
+integer number of 64-bit blocks:
+<I>D<sub>1</sub>,...,D<sub>N</sub></I>. We then "take away" the key by setting it to zero,
+and computing
+<PRE>
+        O1 = DES(0,D_1)
+        O2 = DES(0,D2 XOR O1)
+          ...
+    O(N-1) = DES(0, D(N-1) XOR O(N-2))
+        ON = DES(0,DN XOR O(N-1))
+</PRE>
+The hash output is <I>O<sub>N</sub></I>. Is this a one-way function (i.e., preimage
+resistant)? Can you find collisions efficiently (given
+<I>D<sub>1</sub>,D<sub>2</sub>,...,D<sub>N</sub></I> can you find a different input that gives the
+same hash value)? Clearly justify your answers, giving attack
+algorithms as appropriate.
+<p>
+<LI>The Digital Signature Algorithm (see Figure 13.4 on page 405) starts
+by selecting a random <I>k</I> value, after which <I>r=(g<sup>k</sup> mod p) mod q</I>
+becomes part of the signature. Since <I>k</I> is just a random value, not
+related to the signer's private key, is it important to protect <I>k</I>?
+In particular, what would be the consequences if an attacker could
+learn <I>k</I> in addition to the signature <I>(r,s)</I>?
+<p>
+<LI>Public key algorithms are really nice for key management purposes: you
+don't have to have a pre-shared secret with another party in order to
+protect confidentiality (using public-key encryption) or integrity
+(using digital signatures). However, public-key operations are
+computationally intensive. Consider a scenario in which remote sites
+are sending streams of small data packets to a central data monitoring
+facility, and you want to protect the integrity of each data packet
+to insure that it hasn't been tampered with (imagine that they are
+alarm signals, for instance). There are no pre-shared secrets between
+the central data monitoring system and the remote sites, but the
+central site does know each remote system's
+<EM>public keys</EM> for both encryption and signing. One solution
+would be to have the remote site digitally sign every packet that it
+sends, and the monitor can verify these packets using the remote
+site's public verification key. However, this involves a public key
+signing and verification operation for each packet, which is
+inefficient.
+<P>Design a solution for this problem that uses public key cryptography
+to set up some values when a remote site initially connects to the
+monitoring site, and then uses fast algorithms for each
+packet. "Fast algorithms" could include hash functions and MACs, but
+no public key encryption or signature operations. Carefully describe
+your system, and justify that it provides good security (I'm not
+looking for a formal statement and proof, but I do want a clear,
+logical argument).
+<LI>The "textbook RSA" signature algorithm uses RSA keys as discussed in
+RSA encryption, with a public verification key <I>K<sub>V</sub>=(n,e)</I> and private
+signing key <I>K<sub>S</sub>=(n,d)</I>, and
+signs a short message <I>M</I> using the formula <I>RSASign(K<sub>s</sub>,M)=M<sup>d</sup> mod n</I>. In practice two things differ from this description: First, to
+allow the message <I>M</I> to be longer than the modulus <I>n</I>, we sign a
+hash of <I>M</I> rather than <I>M</I> itself. Second, padding is added before
+applying the RSA function, much like OAEP padding is used in
+encryption (a common padding technique for digital signatures is
+called PSS). It's interesting to explore the
+<I>RSASign</I> function <EM>without</EM> these security/practice improvements
+though, since it has some interesting properties.
+<P>Let's say Sigourney runs a public "signing service" -- she
+publishes her public key <I>K<sub>V</sub></I>, and will sign any value a customer
+sends to her as long the customer pays $10 per signature. Alice would
+like to use this service to sign a value <I>x in {1,...,n-1}</I>, but
+the data Alice wants signed contains confidential information that she
+doesn't want to reveal to Sigourney.
+<UL><LI>(a) Since <I>K<sub>v</sub>=(n,e)</I> is public, Alice knows these values and
+  can do the following: Alice picks a random value
+  <I>S in {1,...,n-1}</I> and computes <I>B=S<sup>e</sup> mod n</I>. The value <I>B</I> is
+  uniformly distributed over <I>{1,...,n-1}</I> (meaning every value
+  has the same probability) -- justify this statement!
+<LI>(b) Next, Alice computes <I>y=x&#183;B mod n</I>. What can you say
+  about the distribution of <I>y</I> (justify your answer)?
+<LI>(c) Alice sends <I>y</I> to Sigourney, pays her $10, and gets
+  back the result <I>z=RSASign(K<sub>S</sub>,y)</I>. Write out the formula that
+  describes <I>z</I> in terms of <I>S</I>, <I>x</I>, <I>d</I>, and <I>n</I>.
+<LI>(d) Alice now has <I>z</I>, a signature on <I>y</I> created by
+  Sigourney. How can this signature be turned into a signature on <I>x</I>,
+  the original value that she wanted signed?
+</UL>
+<p>
+<I>Note: The process described in this problem is known as "RSA
+  signature blinding" and was the basis of the first "electronic
+  cash" system, designed in the mid-1980's by David Chaum.</I>
+</OL>
+
+
+
+</div></td></tr>
+</table>
+
+</body> </html>
+

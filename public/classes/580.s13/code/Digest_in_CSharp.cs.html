@@ -1,0 +1,16 @@
+﻿using System.Security.Cryptography;
+
+namespace DigestInCSharp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            const int DataLen = 30;
+            HashAlgorithm hash = HashAlgorithm.Create("SHA256");
+            byte[] input = new byte[DataLen];
+            byte[] digest = hash.ComputeHash(input);
+            System.Console.WriteLine(System.BitConverter.ToString(digest));
+        }
+    }
+}

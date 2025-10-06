@@ -1,0 +1,61 @@
+import snappy
+import random
+
+
+bomb1 = snappy.Sprite((124,37), snappy.CostumeBuiltIn('bomb'))
+bomb2 = snappy.Sprite((37,-137), snappy.CostumeBuiltIn('bomb'))
+hat = snappy.Sprite((-56,-119), snappy.CostumeBuiltIn('wizardhat'))
+hat.setSize(50)
+
+@snappy.startOnGreenFlag()
+def hatmove():
+    while True:
+        hat.goTo((random.randint(-220,220), random.randint(-146,146)))
+        hat.wait(3)
+
+@snappy.startOnGreenFlag()
+def bomb1move():
+    while True:
+        bomb1.goTo((random.randint(-220,220), random.randint(-146,146)))
+        bomb1.wait(2.5)
+
+@snappy.startOnGreenFlag()
+def bomb2move():  
+    while True:
+        bomb2.goTo((random.randint(-220,220), random.randint(-146,146)))
+        bomb2.wait(2.5)
+
+@snappy.startOnGreenFlag()
+def startCar():
+    Car()
+
+class Car(snappy.Sprite):
+    def __init__(self):
+        snappy.Sprite.__init__(self, (0,0), snappy.CostumeBuiltIn('car2'), hidden=True)
+        self.loadCostume(snappy.CostumeBuiltIn('car-cow'))
+        self.loadCostume(snappy.CostumeBuiltIn('car-blue'))
+        self.loadCostume(snappy.CostumeBuiltIn('car-bug'))
+        self.setSize(60)
+        self.setRotStyle(0)
+        self.goTo((random.randint(-139,139), random.randint(-133,133)))
+        self.pointInDirection(random.randint(0, 360))
+        # Car-specific attributes are speed and style
+        self.speed = random.randint(5,10)
+        self.style = random.randint(0,3)
+        self.switchToCostume(self.style)
+        self.show()
+        snappy.launch(self.move_car_forever)
+
+    def move_car_forever(self):
+        while True:
+            self.move(self.speed)
+            self.if_on_edge_bounce()
+            if self.touching(hat):
+                self.goTo((random.randint(-139,139), random.randint(-133,133)))
+                Car()
+            elif self.touching(bomb1) or self.touching(bomb2):
+                self.kill()
+                return
+
+snappy.start()
+

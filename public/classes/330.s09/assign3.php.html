@@ -1,0 +1,150 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title>CSC 330:  Advanced Data Structures</title>
+<link href="https://home.uncg.edu/cmp/faculty/srtate/classstyle.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td width="800"><img src="330banner.jpg" alt="CSC 330: Advanced Data Structures" /></td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+<col width="150" />
+<col width="700" />
+<tr><td valign="top">
+<div class="navigate">
+<div class="navhead">Navigation</div>
+<div class="navother">
+<a href="index.php.html">Class Home</a>
+</div>
+<div class="navother">
+<a href="syllabus.php.html">Syllabus</a>
+</div>
+<div class="navother">
+<a href="handouts.php.html">Handouts</a>
+</div>
+<div class="navother">
+<a href="assign.php.html">Assignments</a>
+</div>
+<div class="navother">
+<a href="moreinfo.php.html">More Information</a>
+</div>
+<img src="https://home.uncg.edu/cmp/faculty/srtate/pics/navtail.png" />
+</div>
+</td><td valign="top"><div class="main">
+
+<p>A <a href="assign3.pdf">printable PDF</a> is available.</p>
+
+
+    <H1 ALIGN=CENTER>Assignment 3 -- Performance of Red-Black Trees<BR><FONT SIZE=+2><I>Due:
+      Monday, October 19</I></FONT></H1>
+    
+    
+    
+<P><P><B>Objective:</B> The objective of this assignment is for students
+to experiment with red-black trees to gain insight into typical
+performance of this data structure.
+<P><B>High-Level Description:</B>  
+The performance of lookup operations in a red-black tree depends on
+the depth of the tree, which is guaranteed to be at most
+<I>2log<sub>2</sub>(n+1)</I> (see page 702 of the textbook).  This formula gives an
+absolute, guaranteed upper-bound on performance, but leaves open the
+question of what <EM>typical</EM> performance is.  For this assignment,
+you are to modify the word-counting program from Assignment 1 to use
+the red-black tree implementation provided by the textbook authors in
+file <CODE>d_rbtree.h</CODE> (you may start from either your solution to
+Assignment 1 or the instructor-written solution), and then print
+statistics out about the actual red-black tree that has been
+constructed.
+<P><B>Details:</B>  For this assignment you will be modifying both the
+word-counting program from Assignment 1 and the file <CODE>d_rbtree.h</CODE>.
+Note that, like in
+Assignment 1, the version of files distributed by the textbook authors
+doesn't work on modern compilers, so you should download the modified
+versions from the class web site.  You should add a public method
+<CODE>printStats()</CODE> to the <CODE>rbtree</CODE> class (adding the code to
+<CODE>d_rbtree.h</CODE>) that prints the following values:  The calculated
+minimum and maximum possible depths for any red-black tree with this
+many nodes, the actual depth of this tree, the average depth of the
+tree where each node is equally likely, and the average depth of the
+tree where nodes are weighted by the count of the number of times the
+word occurs (more details below and discussed in class).
+<P>To calculate the minimum and maximum values, it is useful to
+be able to calculate logarithms, floors, and ceilings.  These
+functions are available if you put <CODE>#include &lt;cmath&gt;</CODE> at
+the top of your file.  The signatures for the functions you might need
+are:
+<FONT SIZE=-1><PRE>
+    double log2(double x);
+    double ceil(double x);
+    double floor(double x);
+</PRE>
+</FONT>
+<P>The average depth (unweighted and weighted) gives an indication of
+average lookup time in the tree.  The idea with the unweighted average
+depth is this:  if you pick a word at random, where all words have
+equal probability of being chosen, what is the expected depth of the
+node containing that word?  For the weighted average the idea is the
+same, except that words don't have equal probabilities -- the words
+have probabilities that are equal to their proportion of occurrence in
+the input.
+<P>Mathematically, consider that we have <I>n</I> different words
+in the file, with counts <I>c<sub>1</sub>,c<sub>2</sub>,...,c<sub>n</sub></I>.  After constructing the
+tree, these words are at depths <I>d<sub>1</sub>,d<sub>2</sub>,...,d<sub>n</sub></I>.  The unweighted
+average depth and weighted average depth are given by
+(see PDF file for better formatting)
+<BLOCKQUOTE><I>  (1)/(n) SUM<sub>i=1</sub><sup>n</sup> d<sub>i</sub>  
+and 
+(SUM<sub>i=1</sub><sup>n</sup> c<sub>i</sub> d<sub>i</sub>)/(SUM<sub>i=1</sub><sup>n</sup> c<sub>i</sub>)  . </I></BLOCKQUOTE>
+<P>To get counts, simply write your function that computes the weighted
+average depth assuming that it will only be called with a
+<CODE>pairClass</CODE> object in the nodes, and you can call
+<CODE>getCount()</CODE> (or whatever you called this method in your class).
+This is a huge assumption, and such code may not work with all
+C++ compilers -- however, it does work on the <CODE>g++</CODE>
+compiler on our <CODE>cmpunix</CODE> system.
+<P><B>To Turn In:</B> Use the <CODE>330submit</CODE> program (see 
+<A HREF="grading.php.html">Handout 3</A>)
+in order to turn in your code, using assignment name <CODE>assign3</CODE>.
+You need to turn in a printout of your code in class, and if you do
+the extra credit (see below) you should turn that written solution in
+along with your printout.
+<P><B>Extra Credit (up to 20 points):</B>  
+What is the absolute worst-case red-black tree that you can construct
+(in other words, the largest possible depth for some number <I>n</I> of nodes)?
+Can you make a tree that actually has depth <I>2log<sub>2</sub>(n+1)</I>?  To answer
+this question, describe a general process for creating a worst-case
+tree -- it should be possible to follow your construction process to
+make larger and larger trees following the same process/pattern.
+After clearly describing the process, analyze the relation between the
+number of nodes (<I>n</I>) and the depth (<I>d</I>).  Can you get close to
+<I>d=2log<sub>2</sub>(n+1)</I>?
+<P><B>Sample Input/Output:</B>
+<BLOCKQUOTE><CENTER>
+<FONT SIZE=+2>SAMPLE INPUT
+</FONT></CENTER></BLOCKQUOTE>
+<P><hr><PRE>
+Peter Piper picked a peck of pickled peppers,
+A peck of pickled peppers Peter Piper picked;
+If Peter Piper picked a peck of pickled peppers,
+Where's the peck of pickled peppers Peter Piper picked?
+</PRE>
+<P><hr>
+<BLOCKQUOTE><CENTER>
+<FONT SIZE=+2>SAMPLE OUTPUT
+</FONT></CENTER></BLOCKQUOTE>
+<P><hr><PRE>
+Minimum possible depth: 3
+Maximum possible depth: 7
+Actual depth of tree: 3
+Average (unweighted) depth: 2
+Average (weighted) depth: 1.88235
+</PRE>
+
+
+</div></td></tr>
+</table>
+
+</body> </html>
+

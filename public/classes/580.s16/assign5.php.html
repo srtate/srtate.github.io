@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+<title>CSC 580:  Cryptography and Security in Computing</title>
+<link href="https://home.uncg.edu/cmp/faculty/srtate/classstyle.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td width="800"><img src="580banner.jpg" alt="CSC 580: Cryptography and Security in Computing" /></td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+<col width="150" />
+<col width="700" />
+<tr><td valign="top">
+<div class="navigate">
+<div class="navhead">Navigation</div>
+<div class="navother">
+<a href="index.php.html">Class Home</a>
+</div>
+<div class="navother">
+<a href="syllabus.php.html">Syllabus</a>
+</div>
+<div class="navother">
+<a href="readings.php.html">Readings</a>
+</div>
+<div class="navother">
+<a href="handouts.php.html">Handouts</a>
+</div>
+<div class="navother">
+<a href="assign.php.html">Assignments</a>
+</div>
+<div class="navother">
+<a href="http://canvas.uncg.edu/">Canvas</a>
+</div>
+<div class="navother">
+<a href="moreinfo.php.html">More Information</a>
+</div>
+<img src="https://home.uncg.edu/cmp/faculty/srtate/pics/navtail.png" alt="" />
+</div>
+</td><td valign="top"><div class="main">
+
+<p>A <a href="assign5.pdf">printable PDF</a> is available.</p>
+
+    <H1 ALIGN=CENTER>Assignment 5 - Due Thursday, April 7</H1>
+
+<OL><LI>ElGamal encryption was described in Section 10.2 of the textbook. In
+this problem, you are to explore how ElGamal measures up in terms of
+the formal security models we discussed.
+<UL><LI>(a) It is impossible for "textbook RSA" (meaning RSA without
+  any padding or randomness) to be IND-CPA
+  secure. Why is that, and does ElGamal have the same problem?
+<LI>(b) Let <I>(C<sub>1</sub>,C<sub>2</sub>)</I> be an ElGamal ciphertext, computed as shown
+  in Figure 10.3 (page 293). Write out formulas (in terms of <I>alpha</I>,
+  <I>k</I>, <I>Y<sub>A</sub></I> and <I>M</I>) for <I>alpha&#183;C<sub>1</sub></I> and <I>Y<sub>A</sub>&#183;C<sub>2</sub></I>, where 
+  operations are preformed mod <I>q</I>.
+<LI>(c) What result would be produced if you ran fake ElGamal
+  ciphertext <I>(alpha&#183;C<sub>1</sub>,Y<sub>A</sub>&#183;C<sub>2</sub>)</I> through the ElGamal
+  decryption function?
+<LI>(d) Use these observations to create an attack algorithm that
+  wins the CCA game against ElGamal. In addition to describing the
+  algorithms, remember to analyze the advantage of your adversary in
+  this game.
+</UL>
+<EM>As an aside, the message you should learn from this problem is that
+textbook RSA cannot be IND-CPA secure, much less IND-CCA secure. ElGamal in
+fact does turn out to be IND-CPA secure, but it is not IND-CCA secure.</EM>
+<P>
+<LI>Consider two 1024-bit large primes <I>p</I> and <I>q</I> such that <I>n=pq</I> is a
+2048-bit modulus that we want to use for RSA. Since the exponent <I>e</I>
+in RSA is a public value (it is part of the public key) it is common
+to use small, specially chosen values of <I>e</I> so that encryption is
+particularly fast.
+<UL><LI>(a) In the "exponentiation by repeated squaring" algorithm, if <I>e</I>
+  is chosen randomly (a random 2048-bit exponent), what is the average
+  number of modular multiplications that would need to be performed to
+  do an RSA encryption?
+  (<I>Hint: If you look at the recursive version of this
+    algorithm, at each level of recursion either 1 or 2 modular
+    multiplications must be performed, depending on whether the
+    exponent at that level of recursion is even or odd. The
+    probability that the exponent is even is exactly the
+    probability that a specific bit of the original, random exponent
+    is 0, which should should be <I>(1)/(2)</I>.</I>)
+<LI>(b) If we always use <I>e=3</I>, how many modular multiplications are
+  needed for an RSA encryption? How much faster is this than the
+  general case from part (a)?
+<LI>(c) What restrictions does the modulus <I>n</I> (or the primes <I>p</I> and
+  <I>q</I>) need to satisfy in order to use <I>e=3</I>?
+<LI>(d) If we always use <I>e=65537</I>, how many modular multiplications are
+  needed for an RSA encryption? How much faster is this than the
+  general case from part (a)?
+<LI>(e) What restrictions does the modulus <I>n</I> (or the primes <I>p</I> and
+  <I>q</I>) need to satisfy in order to use <I>e=65537</I>?
+<LI>(f) (Extra Credit!) Alice would like to send the same message <I>M</I> to
+  three different recipients, all of whom have their own RSA public
+  keys with 2048-bit moduli and a fixed exponent <I>e=3</I>. In other
+  words, she sends out messages <I>c<sub>1</sub>=M<sup>3</sup>mod n<sub>1</sub></I>, <I>c<sub>2</sub>=M<sup>3</sup>mod n<sub>2</sub></I>, and <I>c<sub>3</sub>=M<sup>3</sup>mod n<sub>3</sub></I>. Eve captures these messages, and can
+  decode the message <I>M</I> even without knowing the private keys. How?
+  (<I>Hint: The Chinese Remainder Theorem from Section 8.4 is
+    very useful!</I>) If the messages are padded independently with OAEP
+  before encryption with RSA, does this fix this flaw? Explain.
+</UL>
+<p>
+<LI>The "man-in-the-middle attack" for the Diffie-Hellman Key Exchange
+(described starting on page 290) is a serious problem that stems from
+the fact that Alice cannot guarantee that the message she sends to Bob
+is the same as the message that Bob receives. Consider using a public
+web site (like a discussion forum) as follows: Alice and Bob post
+their values <I>Y<sub>A</sub></I> and <I>Y<sub>B</sub></I> on this site, and they retrieve the other
+side's value from this site. Alice and Bob can also check the web site
+(from different hosts if they want to disguise their identity) to see
+if the correct value is being provided by the public web site. Does
+this solve the problem? Address issues such as how you identify
+another user, whether the communication link that Alice and/or Bob
+uses is compromised, etc.
+<p>
+<LI>Imagine that a very powerful <EM>passive adversary</EM> is capturing all
+Internet traffic and archiving it (perhaps in a big data center in
+Utah) in case it is useful at some point in the future. At some point
+a computer is compromised, and all data from
+that computer is retrieved, including secret keys. If communications
+that were archived from 
+<EM>prior to this compromise</EM> remain secure, and can't be decrypted even with
+knowledge of the stolen secret keys, we say the communication protocol
+that was used has <EM>forward secrecy</EM>. Consider the following two
+methods for an encrypted session:
+<DL><DT><B>Using RSA.</B><DD> At the beginning of the year a server generates an
+  RSA keypair and sends the public key to all clients (this is a
+  reliable key distribution, and can't be corrupted). To establish an
+  encrypted session later in the year, the client generates a random AES
+  session key, encrypts it with the server's public key, and sends the
+  ciphertext to the server. The server then uses its private key to
+  decrypt the session key, and then the client and server send all
+  subsequent communication encrypted by AES with the session key.
+<DT><B>Using Diffie-Hellman.</B><DD> In this scenario, there are no
+  pre-distributed keys, and the client and server perform a
+  Diffie-Hellman key exchange as shown in Figure 10.1 in the
+  textbook. After the key exchange, both client and server take the
+  least significant 256 bits of the generated shared secret and uses
+  it as an AES key for the rest of the session.
+</DL>
+For each of these two methods, answer the following questions (with
+justification - if it is insecure, your justification should include
+a clear description of how to break the security).
+<UL><LI>(a) Does the method have forward secrecy?
+<LI>(b) Is the method secure against man-in-the-middle (active) attacks?
+</UL>
+<p><LI>Consider the elliptic curve <I>E<sub>13</sub>(1,1)</I>; that is, the curve is
+  defined by <I>y<sup>2</sup>=x<sup>3</sup>+x+1</I> with a modulus of <I>p=13</I>. 
+<UL><LI>(a) Determine all of
+  the points in <I>E<sub>13</sub>(1,1)</I>. (<I>Hint: Start by calculating the
+    right-hand side of the equation for all values of <I>x</I>.</I>)
+<LI>(b) Compute the sum <I>(4,2)+(8,12)</I> in <I>E<sub>13</sub>(1,1)</I>.
+</UL>
+</OL>
+
+
+</div></td></tr>
+</table>
+
+</body> </html>
+

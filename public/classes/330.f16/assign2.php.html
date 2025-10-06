@@ -1,0 +1,167 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title>CSC 330:  Advanced Data Structures</title>
+<link href="https://home.uncg.edu/cmp/faculty/srtate/classstyle.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td width="800"><img src="330banner.jpg" alt="CSC 330: Advanced Data Structures" /></td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+<col width="150" />
+<col width="700" />
+<tr><td valign="top">
+<div class="navigate">
+<div class="navhead">Navigation</div>
+<div class="navother">
+<a href="index.php.html">Class Home</a>
+</div>
+<div class="navother">
+<a href="syllabus.php.html">Syllabus</a>
+</div>
+<div class="navother">
+<a href="http://users.cis.fiu.edu/~weiss/dsj4/code/">Textbook Code</a>
+</div>
+<div class="navother">
+<a href="handouts.php.html">Handouts</a>
+</div>
+<div class="navother">
+<a href="assign.php.html">Assignments</a>
+</div>
+<div class="navother">
+<a href="http://docs.oracle.com/javase/8/docs/api/">Java API Docs</a>
+</div>
+<div class="navother">
+<a href="moreinfo.php.html">More Information</a>
+</div>
+<img src="https://home.uncg.edu/cmp/faculty/srtate/pics/navtail.png" />
+</div>
+</td><td valign="top"><div class="main">
+
+<p>A <a href="assign2.pdf">printable PDF</a> is available.</p>
+
+    <H1 ALIGN=CENTER>Assignment 2 - Due Monday, October 3 at Noon</H1>
+    
+    
+    <P><B>Note:</B> This assignment has an unusual deadline, which is not
+on a class day. Your first exam is on Tuesday, October 4, and I don't
+want you to have to choose between a last minute push to complete this
+assignment and studying for the exam. I would still encourage you to
+try to get this finished by the preceding Friday, at the latest.
+<P><B>Objectives:</B> There are three objectives for this assignment:
+<UL><LI>Master details of red-black tree insertion
+<LI>Get further practice writing recursive functions on trees
+<LI>Learn about basic experimental analysis and profiling
+</UL>
+<P><B>Background:</B>
+Insertion into a red-black tree can either be done with bottom-up tree
+balancing, as described in Section 19.5.1, or with top-down tree
+adjustments, as described in Section 19.5.2. The code in the book uses
+the top-down method, which is nice because all tree adjustments are
+done in a single pass down the tree when searching for the insertion
+point. In contrast, the bottom-up balancing requires two passes: one
+down the tree to find the insertion point, and then a pass back up the
+tree for adjusting the tree. However, the bottom-up approach makes
+some applications of red-black trees much easier, so it's worth
+considering this approach further.  We can simplify the bottom-up
+method (and avoid recursion) by including a "parent" pointer in each
+node, allowing us to easily move up the tree as well as down.
+<P>Here's the technique in a nutshell: Do a standard unbalanced binary
+search tree insertion first, and color the new node red. After just
+the insertion of the new red node into a non-empty red-black tree,
+it's clear that all red-black tree properties are still satisfied,
+with the possible exception of property 3 (page 715). In other words,
+if the parent of the new node is also red, then we have just created a
+red child of a red node, which is not allowed (call this a "red-red
+violation"). If we have a red-red violation, we can correct it at
+this position with a rotation (single or double), as described in
+Section 19.5.1, which may create a single red-red violation higher in
+the tree. If there's a new violation, we move up the tree and repeat
+this process, continuing up the tree until there are either no more
+violations or we reach the root. If the algorithm goes all the way up
+the tree to the root, there is a possibility that the root is changed
+to a red node -- in that case, it should simply be recolored black so
+that red-black tree property 2 is satisfied. More details on this are
+in the textbook, and we will discuss it thoroughly in class.
+<P><B>What To Do:</B> Start with the code in Bitbucket, as in previous
+assignments: fork the "Assign2" repository, rename it to include
+your username, grant read access to the class administrators, and then
+use NetBeans on your computer to clone it so you can work with
+it. This NetBeans project contains the full unbalanced binary search
+tree implementation (from Section 19.1), the full top-down red-black
+tree implementation (from Section 19.5), and an incomplete class
+<CODE>AltRedBlackTree</CODE> that is the start of a bottom-up rebalancing
+implementation. I have slightly modified this code so that the
+<CODE>RedBlackTree</CODE> and <CODE>AltRedBlackTree</CODE> are subclasses of the
+<CODE>BinarySearchTree</CODE> class, so that operations that don't depend on
+the rebalancing operations on red-black trees can be done by generic
+code that will work for all binary search trees (operations such as
+the finding keys, counting numbers of nodes, etc.). In object-oriented
+design terminology this is a good way to organize these classes,
+since a <CODE>RedBlackTree</CODE> IS-A <CODE>BinarySearchTree</CODE> with some
+additional functionality for maintaining the red-black balance properties.
+<P>Your first task
+is to study the book's red-black tree implementation, along with the
+explanation in the book, and make sure you completely understand
+it. Then you should do the following:
+<UL><LI>Finish the implementation of the <CODE>AltRedBlackTree</CODE> class
+  for the bottom-up rebalancing technique. Note that the node
+  definition in this class (<CODE>AltRBNode</CODE>) includes a parent
+  pointer, as described above. The basic insertion routine is
+  provided, and you need to write the <CODE>adjustTree()</CODE> method that
+  does the bottom-up rebalancing. Make sure you test your
+  implementation thoroughly, which will require writing some internal
+  testing procedures (some basic tests are provided in the <CODE>main</CODE>
+  method in the <CODE>AltRedBlackTree</CODE> class, although this probably
+  isn't enough to test everything - you can run this <CODE>main</CODE>
+  function by selecting the file in the projects pane of NetBeans,
+  right clicking and selecting "Run File").
+<p><LI>The main project class, <CODE>Assign2</CODE>, includes code to print
+  out statistics about the tree, but you will need to implement a few
+  new methods in the <CODE>BinarySearchTree</CODE> class: <CODE>getSize()</CODE>,
+  <CODE>getHeight()</CODE>, and
+  <CODE>getInternalPathLength()</CODE>. [<I>Hint: See Figures 18.19 and
+      18.21 in the book.</I>]
+<p><LI>Once you are confident that your tree implementation and
+  statistics methods are working correctly, run the main 
+  program in the <CODE>Assign2</CODE> class, which will builds trees and prints
+  out statistics about the trees that these implementations
+  build. This will run six tests: each of the three implementations is
+  run once with randomly ordered insertions, and once with insertions
+  in sorted order.
+<p><LI>NetBeans has a built-in profiler that will measure how much time
+  each of the testing methods takes to build its tree, and you
+  should use this to get a feel for the real-world timing 
+  of these implementations. Specific instructions on how to
+  run the profiler and interpret the results are on the class web
+  site. When the run completes, make sure you take a snapshot of the
+  results, and then do a "Save Snapshot to Project" to store the
+  results (do this before you commit your files and push to
+  upstream!).
+</UL>
+<P><I>Hint:</I> Note that some of the internal methods from the
+provided <CODE>RedBlackTree</CODE> class can be used either directly or with
+small changes (especially the various rotation methods). You can cut
+and paste these into the <CODE>AltRedBlackTree</CODE> class as a starting
+point. The biggest change you'll need to make to the rotation
+functions is to make sure parent pointers are modified correctly.
+<P><B>Submission Instructions:</B> Using NetBeans, commit all changes
+to your project and do a "push to
+upstream" to put the most up-to-date files on the Bitbucket
+server. Remember: Do <EM>not</EM> create a pull request -- 
+I will clone your repository (if it exists
+and you granted me access) at noon on the due date, and will
+assume that is your submission. If you intend to keep working on your
+project and submit late, please let me know by email, and I will
+ignore your repository until the late submission deadline.
+
+<p>&nbsp;</p>
+
+
+</div></td></tr>
+</table>
+
+</body> </html>
+

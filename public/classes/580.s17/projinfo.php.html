@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+<title>CSC 580:  Cryptography and Security in Computing</title>
+<link href="https://home.uncg.edu/cmp/faculty/srtate/classstyle.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td width="800"><img src="580banner.jpg" alt="CSC 580: Cryptography and Security in Computing" /></td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+<col width="150" />
+<col width="700" />
+<tr><td valign="top">
+<div class="navigate">
+<div class="navhead">Navigation</div>
+<div class="navother">
+<a href="index.php.html">Class Home</a>
+</div>
+<div class="navother">
+<a href="syllabus.php.html">Syllabus</a>
+</div>
+<div class="navother">
+<a href="sched.php.html">Schedule</a>
+</div>
+<div class="navother">
+<a href="readings.php.html">Readings</a>
+</div>
+<div class="navother">
+<a href="handouts.php.html">Handouts</a>
+</div>
+<div class="navother">
+Assignments
+</div>
+<div class="navother">
+&nbsp;&nbsp;&bullet; <a href="homework.php.html">HW Problems</a>
+</div>
+<div class="navother">
+&nbsp;&nbsp;&bullet; <a href="project.php.html">Project</a>
+</div>
+<div class="navother">
+<a href="http://docs.oracle.com/javase/8/docs/technotes/guides/security/crypto/CryptoSpec.html">JCA Ref Guide</a>
+</div>
+<div class="navother">
+<a href="http://docs.oracle.com/javase/8/docs/api/">Java API Docs</a>
+</div>
+<div class="navother">
+<a href="http://canvas.uncg.edu/">Canvas</a>
+</div>
+<div class="navother">
+<a href="moreinfo.php.html">More Information</a>
+</div>
+<img src="https://home.uncg.edu/cmp/faculty/srtate/pics/navtail.png" alt="" />
+</div>
+</td><td valign="top"><div class="main">
+
+<p>A <a href="projinfo.pdf">printable PDF</a> is available.</p>
+
+<center><h1>CSC 580 Ongoing Project &ndash; Basic Information</h1></center>
+
+<P><P><P>During the course of the semester, you will develop the core
+communication/management library for a secure online chat system. This
+library will be implemented in Java, using the Java Cryptography
+Architecture (JCA), which is standard and common across desktop,
+server, and mobile Java platforms (including Android). The project is
+broken into pieces, assigned every 2-3 weeks, that will involve
+design and analysis of security and efficiency, experimental testing
+of algorithms and JCA components to aid in design decision-making, and
+implementation of core functionality. The project will focus on
+information and communication issues, and we will not spend time
+working on a user interface. You can view this as a secure
+communication library that could be used by any user front-end. The
+chat clients will make use of a "chat hub," which is a server that can
+connect and provide services to users. The exact functionality and trust
+requirements of the hub will be determined in the design phase.
+<P>There are certain requirements that the system must meet, as well as
+some decisions that will be made after in-class discussion.
+At each "decision point" we will take the best ideas
+from the class, and standardize on that design for everyone moving
+forward.
+<P><P><B>Security Requirements:</B> The system must 
+<UL><LI>Support message sizes from small SMS-sized text messages to
+  large multimedia messages (e.g., pictures)
+<LI>Protect the confidentiality of messages so that only the
+  intended recipients can get any meaningful information about message
+  contents
+<LI>Protect the integrity of messages so that the recipient has
+  assurance that the message they view is the same message the sender
+  sent  
+<LI>Provide assurance that the person you are chatting with is the
+  person you are intending to chat with
+</UL>
+<P><P><B>Other Considerations:</B> Questions to resolve through class
+discussion include
+<UL><LI>How much should the chat hub be trusted with identities and keys?
+<LI>Is there a way to securely back up secret keys and identities?
+<LI>Should the system disguise who is chatting with whom?
+<LI>Should it be possible to see old messages (technically, do we
+  provide forward security)?
+</UL>
+
+
+</div></td></tr>
+</table>
+
+</body> </html>
+

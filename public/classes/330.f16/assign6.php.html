@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title>CSC 330:  Advanced Data Structures</title>
+<link href="https://home.uncg.edu/cmp/faculty/srtate/classstyle.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td width="800"><img src="330banner.jpg" alt="CSC 330: Advanced Data Structures" /></td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+<col width="150" />
+<col width="700" />
+<tr><td valign="top">
+<div class="navigate">
+<div class="navhead">Navigation</div>
+<div class="navother">
+<a href="index.php.html">Class Home</a>
+</div>
+<div class="navother">
+<a href="syllabus.php.html">Syllabus</a>
+</div>
+<div class="navother">
+<a href="http://users.cis.fiu.edu/~weiss/dsj4/code/">Textbook Code</a>
+</div>
+<div class="navother">
+<a href="handouts.php.html">Handouts</a>
+</div>
+<div class="navother">
+<a href="assign.php.html">Assignments</a>
+</div>
+<div class="navother">
+<a href="http://docs.oracle.com/javase/8/docs/api/">Java API Docs</a>
+</div>
+<div class="navother">
+<a href="moreinfo.php.html">More Information</a>
+</div>
+<img src="https://home.uncg.edu/cmp/faculty/srtate/pics/navtail.png" />
+</div>
+</td><td valign="top"><div class="main">
+
+<p>A <a href="assign6.pdf">printable PDF</a> is available.</p>
+
+    <H1 ALIGN=CENTER>Assignment 6 - Due Thursday, December 1</H1>
+    
+    
+    <P><B>Objective:</B> The objective of this assignment is for you to
+combine several algorithms and data structures that we have seen in
+this class to implement an algorithm for finding strongly connected
+components in a graph.
+<P><B>Background:</B> A <EM>strongly connected component</EM> in a
+directed graph is a maximal subgraph such that there is a directed
+path between any two vertices in the component (in both
+directions). In class, we wrote code for depth first search in order
+to find regular connected components in an undirected graph, and in
+this assignment you are to use depth first search to find strongly
+connected components in a directed graph. The algorithm, described
+below, requires two depth first search operations (slightly modified
+from what we wrote in class), a stack (you can use the stack provided
+by <CODE>java.util.Stack</CODE>), and a graph transpose operation (which you
+wrote for the previous assignment). To describe the algorithm,
+consider the following graph, where the dark edges show the edges
+explored in a depth first search of this graph:
+<BLOCKQUOTE><CENTER>
+<img src="a6graph1.png" />
+</CENTER></BLOCKQUOTE>
+To find strongly connected components, you should use "Kosaraju's
+algorithm", which works as follows:
+<OL><LI>Use depth first search to explore the graph -- in our
+    example, 
+    <I>A</I> is visited first, and then we follow the edge to <I>E</I>, and from
+    <I>E</I> we first
+    explore to neighbor <I>D</I>, etc. During the depth first search,
+    push vertices onto a stack when the depth first search has finished
+    exploring all neighbors and the algorithm is about to
+    backtrack. In our example, vertices are pushed on the stack in the
+    following order: <I>C,D,G,F,E,A,H,J,I,B</I> (another way of looking at
+    what this is that we're doing a postorder traversal of the depth
+    first search tree, pushing vertices on the stack during that traversal). <I>Hint: The stack
+      should be a stack of vertex <EM>names</EM>, not vertex objects,
+      since you'll need to find these vertices in a <EM>different</EM>
+      graph below.</I>
+<p><LI>Next, take the transpose of the graph (pictured below for
+      our example -- ignore the dashed outlines for now).
+<BLOCKQUOTE><CENTER>
+<img src="a6graph2.png" />
+</CENTER></BLOCKQUOTE>
+<LI>Finally, do the same depth first search exploration and
+  component printing for the transposed graph that we did in class,
+  <EM>except</EM> instead of a top-level loop that iterates through
+  vertices using the <CODE>vertexMap</CODE>, you'll iterate through the
+  vertices by popping them off the stack you created in step 1.
+  So in our example, we first pop "B" off the stack, and perform
+  a depth first search to determine the vertices that are reachable
+  from "B" in the transposed graph, giving <I>B,J,I</I> as the first
+  strongly connected component. Next, "I" and "J" are popped off
+  the stack, but since they have been visited we don't do anything
+  with them. Next off the stack is "H" so we perform a depth first
+  search from <I>H</I> and see that <I>H</I> is in a strongly connected
+  component by itself. Continuing in this manner, we explore from <I>A</I>
+  to get component <I>A,C,D,E</I>, and then from <I>F</I> to get component
+  <I>F,G</I>. The dashed outlines on the graph show these components (while
+  they are shown in the transposed graph, these are also strongly
+  connected components in the original graph -- do you see why?).
+</OL>
+<P><B>What To Do:</B> Start with the code in
+Bitbucket, as in previous assignments: fork the "Assign6"
+repository, rename it to include your username, grant read access to
+the class administrators, and then use NetBeans on your computer to
+clone it so you can work with it. This is just a copy of the code we
+worked with in class, including our class-written depth first search
+code (slightly cleaned up from class). The repository also contains
+two data files, "<CODE>a6graph1.in</CODE>" and "<CODE>a6graph2.in</CODE>": the
+first contains the example graph that we used in the discussion above,
+and the second reflects results from a big chess tournament (we'll say
+more about this in class). You should implement the algorithm
+described above, printing out strongly connected components in the
+same style as we printed regular connected components from an
+undirected graph.
+<P><B>Submission Instructions:</B> Using NetBeans, commit all changes
+to your project and do a "push to
+upstream" to put the most up-to-date files on the Bitbucket
+server. Remember: Do <EM>not</EM> create a pull request -- 
+I will clone your repository (if it exists
+and you granted me access) at 12:30 on the due date, and will
+assume that is your submission. If you intend to keep working on your
+project and submit late, please let me know by email, and I will
+ignore your repository until the late submission deadline.
+
+<p>&nbsp;</p>
+
+
+</div></td></tr>
+</table>
+
+</body> </html>
+

@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+<title>CSC 580:  Cryptography and Security in Computing</title>
+<link href="https://home.uncg.edu/cmp/faculty/srtate/classstyle.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td width="800"><img src="580banner.jpg" alt="CSC 580: Cryptography and Security in Computing" /></td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+<col width="150" />
+<col width="700" />
+<tr><td valign="top">
+<div class="navigate">
+<div class="navhead">Navigation</div>
+<div class="navother">
+<a href="index.php.html">Class Home</a>
+</div>
+<div class="navother">
+<a href="syllabus.php.html">Syllabus</a>
+</div>
+<div class="navother">
+<a href="readings.php.html">Readings</a>
+</div>
+<div class="navother">
+<a href="handouts.php.html">Handouts</a>
+</div>
+<div class="navother">
+<a href="assign.php.html">Assignments</a>
+</div>
+<div class="navother">
+<a href="http://canvas.uncg.edu/">Canvas</a>
+</div>
+<div class="navother">
+<a href="moreinfo.php.html">More Information</a>
+</div>
+<img src="https://home.uncg.edu/cmp/faculty/srtate/pics/navtail.png" alt="" />
+</div>
+</td><td valign="top"><div class="main">
+
+<p>A <a href="assign3.pdf">printable PDF</a> is available.</p>
+
+    <H1 ALIGN=CENTER>Assignment 3 - Due Thursday, February 25</H1>
+
+<P><P><P><I>This assignment is shorter than normal, with only 9 days
+  to complete it rather than a full two weeks. Because of this, it
+  will be graded out of 50 points, and count half as much as the
+  regular-length assignments.</I>
+<OL><LI>Consider a system for playing encrypted video, where the video is
+stored in a large (multi-gigabyte) file using AES in CBC mode. One
+property you'd like to have in a video player is the ability to jump
+to an arbitrary spot in the video -- skip ahead to the 30 minute mark,
+for instance. The ciphertext value of any block depends
+on all of the data before it, so it is  somewhat surprising that this random
+access into a CBC-encrypted file is possible. Describe how you can start
+decrypting at an arbitrary position in the encrypted video stream. Be
+precise in your answer and justify why this works.
+<p><LI>For the same reason that it is vital that a one-time pad key to be
+used only once, CTR mode requires that the initial counter value is
+not reused. Unfortunately, Lazy Davy doesn't understand this. When he
+implements a system using AES in CTR mode, he picks a random initial
+counter value and hard-codes it into the system, and every encryption
+uses that same initial counter value. Davy's software is on a system
+that is kept in a locked room, but you have managed to gain access
+while carrying a thumb drive and have enough time to encrypt one file
+of up to 100,000 bytes of your choosing (a chosen plaintext attack --
+you can't copy the code or steal the AES key). Given this setup, you
+can perform an encryption so that you can easily decrypt any
+subsequent encrypted message that is up to 100,000 bytes long and
+encrypted with the same AES key. Explain exactly how you would do
+this: What plaintext would you use for your one chosen plaintext
+encryption? How would you use the information you learn to decrypt a
+subsequent message? Do you learn or need to know the AES key? Why or
+why not?
+<p><LI>Think about how CTR mode is similar to an XOR-based one-time pad, and
+answer the following question, giving an informal justification: Is
+AES in CTR mode a nonmalleable cipher?
+<p><LI>A "key recovery attack" takes a matching plaintext/ciphertext pair
+<I>(P,C)</I> and finds a key <I>K</I> such that <I>E<sub>K</sub>(P)=C</I>. We can formalize
+this by saying that there is a probabilistic polynomial time algorithm
+<I>findkey(P,C)</I> that computes <I>K</I>. Show that if such a
+function exists, then the encryption scheme is not IND-CPA secure (to
+do this, define the adversary functions <I>A<sub>1</sub><sup>E</sup></I> and
+<I>A<sub>2</sub><sup>E</sup></I> for the chosen-plaintext game, where the adversary
+functions can call both the encryption oracle and the <I>findkey</I> function). In addition to giving the algorithms, analyze
+the advantage of your adversary algorithm under the assumption that
+<I>findkey</I> always succeeds. <I>(Note: Winning the
+  IND-CPA game is easy -- what I'm really looking for here is a
+  clear and rigorous proof of this in context of formal security
+  models.)</I>
+</OL>
+
+
+
+</div></td></tr>
+</table>
+
+</body> </html>
+

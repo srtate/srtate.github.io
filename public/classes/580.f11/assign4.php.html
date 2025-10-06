@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+<title>CSC 580:  Cryptography and Security in Computing</title>
+<link href="https://home.uncg.edu/cmp/faculty/srtate/classstyle.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td width="800"><img src="580banner.jpg" alt="CSC 580: Cryptography and Security in Computing" /></td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+<col width="150" />
+<col width="700" />
+<tr><td valign="top">
+<div class="navigate">
+<div class="navhead">Navigation</div>
+<div class="navother">
+<a href="index.php.html">Class Home</a>
+</div>
+<div class="navother">
+<a href="syllabus.php.html">Syllabus</a>
+</div>
+<div class="navother">
+<a href="handouts.php.html">Handouts</a>
+</div>
+<div class="navother">
+<a href="assign.php.html">Assignments</a>
+</div>
+<div class="navother">
+<a href="http://blackboard.uncg.edu/">Blackboard</a>
+</div>
+<div class="navother">
+<a href="moreinfo.php.html">More Information</a>
+</div>
+<img src="https://home.uncg.edu/cmp/faculty/srtate/pics/navtail.png" alt="" />
+</div>
+</td><td valign="top"><div class="main">
+
+<p>A <a href="assign4.pdf">printable PDF</a> is available.</p>
+
+    <H1 ALIGN=CENTER>Assignment 4 - Due Friday, October 14</H1>
+    
+    
+    <P>The first two problems are from the book, and deal with error
+propagation in two block cipher modes.
+<OL><LI>Page 216, Problem 6.4
+<LI>Page 216, Problem 6.8
+</OL>
+<P>The remaining problems explore the security models that we discussed
+in class, in particular the notion of indistinguishability under
+chosen plaintext attack.  First, let's review the ideas and define
+some notation.
+<P>We define security in terms of a "game" that an adversary plays
+against "oracles" -- if you can define an adversary that wins the
+game with probability significantly better than making a random guess,
+then the scheme is insecure.  Conversely, if no adversary can win the
+game with probability non-negligibly higher than guessing then the
+scheme is secure.  Note that it's much easier to prove a scheme is
+insecure than to prove that one is secure!
+<P>The "IND-CPA game" is as
+follows.  At the beginning of the game the oracle(s) randomly choose a
+key for the encryption scheme that is being attacked.  During the
+game, there are two oracles that the adversary can interact with,
+called <TT>Encrypt</TT> and <TT>Challenge</TT>.  If the adversary
+calls <TT>Encrypt</TT><I>(M)</I> for some message <I>M</I>, the oracle encrypts
+<I>M</I> using the key that it selected at the beginning of the game and
+returns the ciphertext.  The other oracle takes two plaintext inputs,
+chosen however the adversary wants, and is called by
+<TT>Challenge</TT><I>(M<sub>0</sub>,M<sub>1</sub>)</I>.  The <TT>Challenge</TT> oracle picks a
+random bit <I>b in {0,1}</I> and returns <TT>Encrypt</TT><I>(M<sub>b</sub>)</I> without
+letting the adversary know what <I>b</I> was chosen.  Note that
+<TT>Challenge</TT> can only be called once for the duration of the
+game.  At the end of the
+game, the adversary must guess the value of <I>b</I> (in other words, which
+plaintext did the <TT>Challenge</TT> oracle encrypt?) -- if the
+adversary is correct, than it wins the game.  Clearly it's easy to
+make an adversary that wins with probability <I>(1)/(2)</I> just by
+guessing randomly, so the challenge is to win with probability
+significantly greater than <I>(1)/(2)</I>.  In all of the problems
+below, the adversary can win every time (i.e., it wins with
+probability 1).
+<OL><LI>A <EM>deterministic</EM> encryption scheme is one that produces
+  the same ciphertext every time the same plaintext is encrypted.
+  Prove that a deterministic encryption scheme cannot be IND-CPA
+  secure.  More specifically, carefully and precisely define an
+  adversary algorithm that wins the IND-CPA game against any
+  deterministic encryption scheme.  Define the adversary using pseudo
+  code, and make sure you give your reasoning describing why this wins
+  the IND-CPA game.
+<LI>It turns out that ECB mode is horribly insecure with respect to
+  the IND-CPA game.  Devise an adversary that can win the IND-CPA game
+  against an ECB mode scheme by only using a single call to the
+  <TT>Challenge</TT> oracle, and never calling the 
+  <TT>Encrypt</TT> oracle.
+<LI>When we talked about CBC mode, we stressed that the IV should be
+  unpredictable.  What if this is not the case?  Consider an
+  encryption scheme that uses CBC mode with a standard deterministic
+  block cipher so that encryption of a message <I>M</I> produces a
+  ciphertext of the form <I> &lt; IV,C &gt; </I>, where <I>IV</I> is the
+  initialization vector for CBC mode encryption of <I>M</I>.  Now assume
+  that we have some function <TT>Predict</TT><I>(IV)</I> that computes
+  <I>IV'</I> with the following property:  if a call to <TT>Encrypt</TT>
+  produces <I> &lt; IV,C &gt; </I> then the next call to
+  <TT>Encrypt</TT> will produce a ciphertext of the form <I> &lt; IV',C' &gt; </I> (for example, if we used a counter for the IVs, then
+  we could predict the next IV).  Show that if this is the case then the
+  scheme is not IND-CPA secure -- again define the adversary
+  carefully, but in this case you can call <TT>Encrypt</TT> in
+  addition to the oracles.
+</OL>
+
+
+</div></td></tr>
+</table>
+
+</body> </html>
+

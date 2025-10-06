@@ -1,0 +1,23 @@
+public class gf28mult {
+    final static int m = 0x11b;
+    static int mult28(int a, int b) {
+	int ans = 0;
+
+	while (a != 0) {
+	    if ((a & 1) == 1) {
+		ans = ans ^ b;
+ 	    }
+	    b = b << 1;
+	    if (b >= 0x100) {
+		b = b ^ m;
+	    }
+	    a = a >> 1;
+	}
+
+	return ans;
+    }
+
+    public static void main(String argv[]) {
+	System.out.printf("%02x\n", mult28(0x16, 0x64));
+    }
+}

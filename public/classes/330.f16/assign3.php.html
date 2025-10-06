@@ -1,0 +1,196 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title>CSC 330:  Advanced Data Structures</title>
+<link href="https://home.uncg.edu/cmp/faculty/srtate/classstyle.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td width="800"><img src="330banner.jpg" alt="CSC 330: Advanced Data Structures" /></td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+<col width="150" />
+<col width="700" />
+<tr><td valign="top">
+<div class="navigate">
+<div class="navhead">Navigation</div>
+<div class="navother">
+<a href="index.php.html">Class Home</a>
+</div>
+<div class="navother">
+<a href="syllabus.php.html">Syllabus</a>
+</div>
+<div class="navother">
+<a href="http://users.cis.fiu.edu/~weiss/dsj4/code/">Textbook Code</a>
+</div>
+<div class="navother">
+<a href="handouts.php.html">Handouts</a>
+</div>
+<div class="navother">
+<a href="assign.php.html">Assignments</a>
+</div>
+<div class="navother">
+<a href="http://docs.oracle.com/javase/8/docs/api/">Java API Docs</a>
+</div>
+<div class="navother">
+<a href="moreinfo.php.html">More Information</a>
+</div>
+<img src="https://home.uncg.edu/cmp/faculty/srtate/pics/navtail.png" />
+</div>
+</td><td valign="top"><div class="main">
+
+<p>A <a href="assign3.pdf">printable PDF</a> is available.</p>
+
+    <H1 ALIGN=CENTER>Assignment 3 - Due Tuesday, October 25</H1>
+    
+    
+    <P><B>Objectives:</B> There are four objectives for this assignment:
+<UL>
+<LI>Learn how to create and use a Java <CODE>Comparator</CODE> class
+<LI>To explore different data structures and algorithms for finding
+  the smallest elements in a dataset
+<LI>Compare experimental to theoretical running time results
+<LI>Write a brief experimental results report comparing algorithms
+</UL>
+<P><B>Background:</B>
+Distributed with the initial code for this assignment is
+precinct-level voting data from the 2012 presidential election, covering 37 states
+and a total of 86,476 precincts, based on data from the
+<A HREF="http://hdl.handle.net/1902.1/21919">Harvard Election Data Archive</A>
+(available under a Creative Commons license)
+that was cleaned up slightly for this assignment. The
+<CODE>vote2012.dat</CODE> file in the project's root directory contains this data,
+with each line listing a state, county, and precinct followed by the total number of
+votes for the Democratic candidate (Barack Obama) followed by the
+number of votes for the Republican candidate (Mitt Romney), with all
+data fields separated by semicolons. The provided code reads in this
+file and creates an <CODE>ArrayList</CODE> of <CODE>PrecinctVotes</CODE> objects
+for you to work with. Note that
+not all lines have all fields, so some of the strings fields (like the 
+"county" information) may be empty -- this shouldn't affect your
+solution to this assignment.
+<P>Using <I>n</I> to represent the total number of precincts (so for this
+particular data, <I>n=86,476</I>), 
+your goal is to identify the <I>m</I> precincts (for some <I>m &lt;= n</I> that is
+provided) with the narrowest margin of victory. You
+will test the following four algorithms for this problem, carefully
+comparing the performance of the algorithms -- Algorithm 1 is
+implemented for you (it's just two lines after you create the
+necessary comparator!), but you'll need to implement the others:
+<DL><DT><B><I>Algorithm 1: Sorting all the data first.</I></B><DD> This algorithm
+  sorts all <I>n</I> items, and then copies the smallest <I>m</I> items into a new
+  list. This algorithm takes <I>Theta(nlogn)</I> time.
+<p><DT><B><I>Algorithm 2: Keeping the smallest <I>m</I> items in an array.</I></B><DD>
+  This option processes the data one element at a time, keeping track
+  of the <I>m</I> smallest items in an array (you decide whether the
+  data in the array should be kept in sorted order or not). This
+  algorithm takes <I>Theta(nm)</I> time.
+<p><DT><B><I>Algorithm 3: Keeping the smallest <I>m</I> items in a red-black
+      tree.</I></B><DD> This algorithm uses a Java <CODE>TreeSet</CODE> to keep all
+  items in a red-black tree. The first <I>m</I> items are simply added to
+  the tree, and then once there are <I>m</I> items in the tree the
+  algorithm can check in <I>O(logm)</I> time whether a new item should be
+  inserted into the tree (removing the largest item so the size
+  remains <I>m</I>) -- to find the largest item in the tree (for comparison)
+  you should use the <CODE>last()</CODE> method, and to remove the largest use
+  <CODE>pollLast()</CODE>.
+  This algorithm takes <I>Theta(nlogm)</I> time.
+<p><DT><B><I>Algorithm 4: Keeping the smallest <I>m</I> items in a binary
+      heap.</I></B><DD>  For this algorithm, keep the data in a max heap so
+  that you can quickly locate the maximum item out of the <I>m</I> values
+  you are tracking. Use the standard Java
+  <CODE>PriorityQueue</CODE> class, but the
+  <CODE>Comparator</CODE> should make a max heap! Once <I>m</I> items are put into a max
+  heap, you can quickly locate the largest item
+  (using method <CODE>peek()</CODE>) and remove it if necessary (using
+  method <CODE>poll()</CODE>. This algorithm takes <I>Theta(nlogm)</I> time.
+</DL>
+Every algorithm should return the <I>m</I> smallest values in a
+<CODE>List&lt;PrecinctVotes&gt;</CODE>, but the order in the list isn't
+important. Note that the asymptotic time used by the last two algorithms is the
+same, but the constants hidden by the asymptotic notation will be
+different. Which do you think will be the more efficient implementation?
+<P><B>What To Do:</B> Start with the code in Bitbucket, as in previous
+assignments: fork the "Assign3" repository, rename it to include
+your username, grant read access to the class administrators, and then
+use NetBeans on your computer to clone it so you can work with
+it.
+<P>The first thing you should do is to create a <CODE>Comparator</CODE> class for <CODE>PrecinctVotes</CODE> objects. In order to sort
+<CODE>PrecinctVotes</CODE> objects or put them into any kind of ordered data
+structure, you will need to create a class that implements the
+<CODE>Comparator&lt;PrecinctVotes&gt;</CODE> interface. Implement this as a
+nested class inside the <CODE>PrecinctVotes</CODE> class so that the
+comparator can directly access the <CODE>PrecinctVotes</CODE> instance
+variables. You should implement this comparator in such a way that 
+<CODE>PrecinctVotes</CODE> object <CODE>a</CODE> is less than <CODE>b</CODE> if the
+absolute value of the vote difference is smaller, or if the vote
+difference is the same and the state, county, and precinct (in that
+order) is smaller. Note that for one of the implementations, you'll
+actually need the reverse of this comparator -- see the
+<CODE>reversed()</CODE> method in the <CODE>Comparator</CODE> class for an
+easy solution!
+<P>Next, implement the four algorithms described above, and
+test them thoroughly to make sure each one works correctly. Other than
+selecting the comparator <EM>this should be completely
+  generic</EM> and independent of the <CODE>PrecinctVotes</CODE> class.
+Run your program with the profiler to time how long
+each implementation takes to process the precinct data, when the value of <I>m</I>
+is set to 100, 1000, 5000, 10000, and 20000. For each value of <I>m</I>,
+run it once in the profiler without recording times, and then run it
+three more times and average the times for each algorithm. Record
+the times in a table, like this:
+<style type="text/css">
+tr.data {
+}
+table.data {
+  border-spacing: 0px;
+}
+td.data {
+  padding: 4px;
+  border: 1px solid black;
+  margin: 0px;
+  vertical-align: top;
+}
+</style>
+<BLOCKQUOTE><CENTER>
+<TABLE class="data"><TR><TD class="data" COLSPAN="1" ALIGN="LEFT">
+</TD><TD class="data" COLSPAN="1" ALIGN="CENTER"> 100 </TD><TD class="data" COLSPAN="1" ALIGN="CENTER"> 1000 </TD><TD class="data" COLSPAN="1" ALIGN="CENTER"> 5000 </TD><TD class="data" COLSPAN="1" ALIGN="CENTER"> 10,000 </TD><TD class="data" COLSPAN="1" ALIGN="CENTER"> 20,000 </TD></TR>
+<TR><TD class="data" COLSPAN="1" ALIGN="LEFT">
+Array </TD><TD class="data" COLSPAN="1" ALIGN="CENTER"> 21.1 </TD><TD class="data" COLSPAN="1" ALIGN="CENTER"> 101.1 </TD><TD class="data" COLSPAN="1" ALIGN="CENTER"> 511 </TD><TD class="data" COLSPAN="1" ALIGN="CENTER"> 1879 </TD><TD class="data" COLSPAN="1" ALIGN="CENTER"> 4574  </TD></TR>
+<TR><TD class="data" COLSPAN="1" ALIGN="LEFT">
+Sort </TD><TD class="data" COLSPAN="1" ALIGN="CENTER"> 88.7 </TD><TD class="data" COLSPAN="1" ALIGN="CENTER"> 91.2 </TD><TD class="data" COLSPAN="1" ALIGN="CENTER"> 84.5 </TD><TD class="data" COLSPAN="1" ALIGN="CENTER"> 85.6  </TD><TD class="data" COLSPAN="1" ALIGN="CENTER"> 81.6  </TD></TR>
+<TR><TD class="data" COLSPAN="1" ALIGN="LEFT">
+Tree </TD><TD class="data" COLSPAN="1" ALIGN="CENTER"> 38.0 </TD><TD class="data" COLSPAN="1" ALIGN="CENTER"> 59.3 </TD><TD class="data" COLSPAN="1" ALIGN="CENTER"> 76.2 </TD><TD class="data" COLSPAN="1" ALIGN="CENTER"> 89.2  </TD><TD class="data" COLSPAN="1" ALIGN="CENTER"> 102.4  </TD></TR>
+<TR><TD class="data" COLSPAN="1" ALIGN="LEFT">
+Heap </TD><TD class="data" COLSPAN="1" ALIGN="CENTER"> 27.4 </TD><TD class="data" COLSPAN="1" ALIGN="CENTER"> 37.9 </TD><TD class="data" COLSPAN="1" ALIGN="CENTER"> 50.2 </TD><TD class="data" COLSPAN="1" ALIGN="CENTER"> 60.3  </TD><TD class="data" COLSPAN="1" ALIGN="CENTER"> 66.1  </TD></TR>
+</TABLE>
+</div>
+
+</CENTER></BLOCKQUOTE>
+Finally, write a brief report describing the results of your
+tests. Your report should have 3 sections: "Algorithms Tested" (in
+which you describe, in your own words, the algorithms that you
+implemented), "Experimental Results" (with the table of times and a
+brief explanation of what is in the table, such as time units), and
+finally "Comparison with Theoretical Model" (where you compare the
+time measured for <I>m=20,000</I> with an estimate you calculate from the
+asymptotic running time and the times with <I>m &lt;= 10000</I>).
+We will talk more about that last section in class.
+<P><B>Submission Instructions:</B> For this assignment, you will have
+both code and an experiment report to turn in. For the code, do what
+you've done in previous assignments: commit all changes
+to your project and do a "push to
+upstream" to put the most up-to-date files on the Bitbucket
+server. 
+You should turn in the report on paper in class.
+
+
+<p>&nbsp;</p>
+
+
+</div></td></tr>
+</table>
+
+</body> </html>
+

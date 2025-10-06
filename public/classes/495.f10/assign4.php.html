@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title>CSC 495/680:  Trusted Computing</title>
+<link href="https://home.uncg.edu/cmp/faculty/srtate/classstyle.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td width="800"><img src="495banner.jpg" alt="CSC 589: Trusted Computing" /></td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+<col width="150" />
+<col width="700" />
+<tr><td valign="top">
+<div class="navigate">
+<div class="navhead">Navigation</div>
+<div class="navother">
+<a href="index.php.html">Class Home</a>
+</div>
+<div class="navother">
+<a href="syllabus.php.html">Syllabus</a>
+</div>
+<div class="navother">
+<a href="handouts.php.html">Handouts</a>
+</div>
+<div class="navother">
+<a href="slides.php.html">Lecture Slides</a>
+</div>
+<div class="navother">
+<a href="assign.php.html">Assignments</a>
+</div>
+<div class="navother">
+<a href="moreinfo.php.html">More Information</a>
+</div>
+<img src="https://home.uncg.edu/cmp/faculty/srtate/pics/navtail.png" />
+</div>
+</td><td valign="top"><div class="main">
+
+<p>A <a href="assign4.pdf">printable PDF</a> is available.</p>
+
+    <H1 ALIGN=CENTER>CSC 495/680 Assignment 4 - Due Monday, December 6</H1>
+    
+    
+    <P><B>General Information:</B> The purpose of this assignment is to
+give students several ways to improve their class average.  This
+assignment is optional, but if students choose to do one of these
+exercises then the grade will replace their lowest assignment grade.
+Students can elect to write a quality tutorial on some aspect of
+trusted computing, or can do a coding assignment.
+<P><B>Tutorial Writing Options:</B>
+For this option, you can write a tutorial on any significant aspect of
+trusted computing -- examples of topics are the following:
+<OL><LI>Key migration (TPM v1.1 style) -- concepts and mechanics
+<LI>CMK migration -- concepts and mechanics
+<LI>Identity management -- creating, certifying, and using identity
+  keys
+<LI>Integrity measurements -- PCRs, static vs. dynamic root of
+  trust, etc.
+</OL>
+I want to stress that these should be high-quality, professional style
+tutorials -- they must be designed to teach, not just to show that you
+know the material.  Tutorials should include high-quality
+pictures/diagrams, clear scenario examples, and tested code samples.
+These will be published on the web, and a common "style" file will
+be used for all tutorials (which will be provided to those choosing
+this option).
+<P>Only one student may write about any specific topic.  Additional
+topics are possible, but must be approved by the instructor.
+<P><B>Coding Option:</B> 
+If you prefer to write code rather than a tutorial, you can extend the
+last assignment (on key migration) into a full-fledged key management
+and backup system, based on <EM>keys stored in the TSS persistent
+storage</EM>.  Keys should be managed as follows: each user will create
+a migratable user root key below SK, and additional migratable keys
+will be created below this.  Note that there is a small challenge to
+this:  The labhost machines, by default, share a common filesystem,
+and hence the user persistent storage is the same on all the labhost
+machines -- however, keys under SK can only work on the one machine
+they were created on.  The easy solution to this is to have a
+different persistent storage database on each machine (the more
+difficult solution is to manage UUIDs very, very carefully), and code
+to use a distinct persistent storage database per machine will be
+provided to you on the labhost machines.
+<P>The precise details of how your system
+works are up to you (although you can, and probably should, run
+designs by me to make sure they satisfy the requirements), but you
+should provide at least the following capabilities:
+<UL><LI>A program that sets up a machine for use -- this should create
+  a user root key and store it in persistent storage.
+<LI>A function which can be called by any program to create a new
+  key and register it in user persistent storage.  This should support
+  any key type supported by TSS (sign, bind, etc.) -- the key type
+  will be provided by the application calling your function, and the
+  job of your function is simply to create the key and register it.
+  The process for assigning and managing UUIDs is up to you, but must
+  be sensible.
+<LI>A program to create a backup archive for your keys.  This will
+  create a migration blob for the user root key for a given
+  destination key (provided in a file, for example), and then bundle
+  this in a file with <EM>all</EM> of the user's registered keys.  If
+  the user has created 100 keys, all 100 keys should be represented in
+  this file.  The
+  random part of the migration blob should be saved in a separate file.
+<LI>A program which takes a backup archive created as just described,
+  and a file with the user root's "random part" of the migration,
+  and installs the entire key hierarchy on the current machine.
+  You'll need to consider what to do if the current machine already
+  has a user root key on that machine, or if UUIDs are duplicated.
+</UL>
+
+
+</div></td></tr>
+</table>
+
+</body> </html>
+

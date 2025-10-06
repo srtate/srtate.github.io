@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+<title>CSC 580:  Cryptography and Security in Computing</title>
+<link href="https://home.uncg.edu/cmp/faculty/srtate/classstyle.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td width="800"><img src="580banner.jpg" alt="CSC 580: Cryptography and Security in Computing" /></td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+<col width="150" />
+<col width="700" />
+<tr><td valign="top">
+<div class="navigate">
+<div class="navhead">Navigation</div>
+<div class="navother">
+<a href="index.php.html">Class Home</a>
+</div>
+<div class="navother">
+<a href="syllabus.php.html">Syllabus</a>
+</div>
+<div class="navother">
+<a href="readings.php.html">Readings</a>
+</div>
+<div class="navother">
+<a href="handouts.php.html">Handouts</a>
+</div>
+<div class="navother">
+<a href="assign.php.html">Assignments</a>
+</div>
+<div class="navother">
+<a href="http://blackboard.uncg.edu/">Blackboard</a>
+</div>
+<div class="navother">
+<a href="moreinfo.php.html">More Information</a>
+</div>
+<img src="https://home.uncg.edu/cmp/faculty/srtate/pics/navtail.png" alt="" />
+</div>
+</td><td valign="top"><div class="main">
+
+<p>A <a href="assign6.pdf">printable PDF</a> is available.</p>
+
+<p><em>Note: You are strongly encouraged to use the PDF version linked above. The formatting is much better than the version shown below.</em></p>
+
+    <H1 ALIGN=CENTER>Assignment 6 - Due Monday, April 28</H1>
+
+<OL><LI><p>Consider the following authentication scheme, which is a slightly
+simplified version of standard HTML digest authentication. Using a
+secure cryptographic hash function <I>H</I> (meeting all security goals
+given in Table 11.1), if the user with user id <I>u</I> has password <I>p</I>,
+then the server stores <I>y=H(u|p)</I> in its user database. Then when a
+user seeks to authenticate, the server generates a random nonce <I>n</I>
+which it sends to the client system, which in turn gets a user name
+<I>u</I> and password <I>p</I> from the user, computes <I>z=H(H(u|p)|n)</I> locally
+and sends the result back to the server. The server can then compute
+<I>H(y|n)</I> and see if these values match. Answer the following
+questions, with explanations (they're not really just yes/no
+questions!).
+<UL><LI>(a) An eavesdropper sees both <I>n</I> and <I>z</I> as they are
+  transmitted. Can the eavesdropper figure out the user's password?
+<LI>(b) An attacker breaks into the server, copies the
+  authentication database, so learns the value <I>y</I>. Can she compute
+  the user's password from this?
+<LI>(c) If an attacker obtains the server's user database, and
+  consequently learns <I>y</I>, can the attacker log in to the system as
+  user <I>u</I>?
+</UL>
+<LI><p>Clearly a hash function that has the strong collision resistance
+  property also has weak collision resistance. What about the next
+  step down? Does a hash function that has weak collision resistance
+  also satisfy the one-way property (see Table 11.1 on page 323 for
+  these terms)? To answer this question, consider a hash function <I>H(x)</I>
+  that produces <I>k</I>-bit hash codes, and satisfies all three of these
+  security properties. Now construct a hash function <I>H'(x)</I> that
+  produces <I>(k+1)</I>-bit hash codes as follows: If <I>x</I> is exactly <I>k</I> bits
+  long, then output <I>0|x</I> (a single 0 bit followed by <I>x</I>); otherwise
+  output <I>1|H(x)</I> (a single 1 bit followed by the <I>H</I>-hash code of <I>x</I>). Is
+  <I>H'(x)</I> weakly collision resistant? Is it one-way? Justify your
+  answers!
+<LI><p>With a basic understanding of hash functions, you can understand what
+a "proof of work" problem is, which is integral to systems like
+Bitcoin. Use Google to find reliable references that
+describe how a "proof of work" is implemented in Bitcoin, and describe
+this process in your own words. What cryptographic property of hash
+functions is most relevant for such a proof of work to provided the
+necessary properties?
+<LI>ElGamal encryption was described in Section 10.2 of the
+  textbook. In this problem, you are to explore how ElGamal measures
+  up in terms of the formal security models we discussed.
+<UL><LI>(a) It is impossible for "textbook RSA" to be IND-CPA
+  secure. Why is that, and does ElGamal have the same problem?
+<LI>(b) Let <I>(C<sub>1</sub>,C<sub>2</sub>)</I> be an ElGamal ciphertext, computed as shown
+  in Figure 10.3 (page 293). Write out formulas (in terms of <I>alpha</I>,
+  <I>k</I>, <I>Y<sub>A</sub></I> and <I>M</I>) for <I>alpha&#183;C<sub>1</sub></I> and <I>Y<sub>A</sub>&#183;C<sub>2</sub></I>, where 
+  operations are preformed mod <I>q</I>.
+<LI>(c) What result would be produced if you ran fake ElGamal
+  ciphertext <I>(alpha&#183;C<sub>1</sub>,Y<sub>A</sub>&#183;C<sub>2</sub>)</I> through the ElGamal
+  decryption function?
+<LI>(d) Use these observations to create an attack algorithm that
+  wins the CCA game against ElGamal. In addition to describing the
+  algorithms, remember to analyze the advantage of your adversary in
+  this game.
+</UL>
+<EM>As an aside, the message you should learn from this problem is that
+textbook RSA cannot be IND-CPA secure, much less IND-CCA secure. ElGamal in
+fact does turn out to be IND-CPA secure, but it is not IND-CCA secure.</EM>
+<LI><p>This is a programming problem. The standard way to compute
+multiplicative inverses modulo <I>p</I> is to use the Extended Euclidean
+Algorithm, as described in Chapter 4. When the modulus <I>p</I> is prime,
+you can also compute <I>a<sup>p-2</sup> mod p</I>, which will give the
+multiplicative inverse of <I>a</I>.
+<UL><LI>(a) Why is <I>a<sup>p-2</sup> mod p</I> the multiplicative inverse of <I>a</I>?
+  The reason is pretty simple, so don't give a long convoluted
+  argument -- a single, unambiguous sentence is all you need!
+<LI>(b) Implement both of these methods for
+large (1000+ bit) integers. Note that if you are careful about your
+choice of programming language, you can use a built-in function for
+the modular powering so that this second implementation would be a
+single line!
+<P>Once you are sure your implementations work correctly, time
+them on a 1024-bit modulus. To do this, you'll need a 1024-bit prime
+-- the best way for you to do this would be to find a way to generate
+your own large random prime, either by typing up the Miller-Rabin
+primality testing algorithm, or using any of the mathematics packages
+that have this functionality built in. If you really can't 
+generate your own large random prime, you can use the one
+at <A HREF="1024bitprime.html">this link</A>
+(you'll still have to get it into your program!).
+Note that your programs should be too fast to accurately time directly
+without
+using some advanced profiling tools. The easiest way around this is to
+iterate your test as many times as necessary so that the overall time
+is around 30 seconds. If you iterate <I>n</I> times, just divide your final
+time by <I>n</I> and you've got the time for one modular inverse calculation.
+</UL>
+<LI>This question is based on "Case Study 2" (Analysis of an electronic
+voting system) that is available in the "<a href="readings.php.html">Readings</a>" section of the
+class web page.
+<UL><LI>(a) Novices often underestimate how important good
+  randomization is to security. Describe two different aspects in
+  which algorithms/protocols in the studied electronic voting system
+  were either deterministic or used poor randomization, leading to
+  security vulnerabilities. For each one, describe what the software did, what
+  vulnerability this leads to (give an actual attack!), and how to
+  correct the problem.
+<LI>(b) The key used for DES, as described in Section 4.4, is
+  hard-coded in the software, which is terrible. Furthermore, while
+  the key looks like it should be a densely-code hexadecimal value, it
+  is really a string of ASCII characters. If you didn't have access to
+  the software, but wanted to brute force this key, how difficult
+  would it be? To answer this question, ...
+<UL><LI>If the key is a string of ASCII characters, where each character
+  is either a digit (0-9), an uppercase letter in the range A-F, or a
+  lowercase letter 'h', what is the size of the keyspace? DES
+  brute-forcing software written for GPUs can test a little over a
+  billion keys/second -- how much time would it take to brute force a
+  key from this keyspace?
+<LI>Repeat the preceding calculations (size of keyspace and time to
+  brute force) if they keys were less restricted: characters can be
+  any uppercase or lowercase letter in addition to any digit.
+</UL>
+<LI>(c)The authors suggest using a voter-verified paper audit trail
+  (this does exist on all electronic voting machines that I have used
+  in North Carolina). Lets say that there are 10,000 electronic voting
+  machines in North Carolina (this is a number I just made up, and
+  it's probably way off the mark) -- if an adversary decided that
+  they needed to tamper with 10% of the voting machines in order to
+  have a significant chance of affecting the outcome of the election,
+  and an audit of the paper-trail would reveal any malicious activity,
+  how many randomly chosen machines should be audited so that the
+  probability of detecting the fraud is over 95%?
+</UL>
+</OL>
+
+
+
+</div></td></tr>
+</table>
+
+</body> </html>
+

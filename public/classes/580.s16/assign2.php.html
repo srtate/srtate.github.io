@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+<title>CSC 580:  Cryptography and Security in Computing</title>
+<link href="https://home.uncg.edu/cmp/faculty/srtate/classstyle.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td width="800"><img src="580banner.jpg" alt="CSC 580: Cryptography and Security in Computing" /></td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+<col width="150" />
+<col width="700" />
+<tr><td valign="top">
+<div class="navigate">
+<div class="navhead">Navigation</div>
+<div class="navother">
+<a href="index.php.html">Class Home</a>
+</div>
+<div class="navother">
+<a href="syllabus.php.html">Syllabus</a>
+</div>
+<div class="navother">
+<a href="readings.php.html">Readings</a>
+</div>
+<div class="navother">
+<a href="handouts.php.html">Handouts</a>
+</div>
+<div class="navother">
+<a href="assign.php.html">Assignments</a>
+</div>
+<div class="navother">
+<a href="http://canvas.uncg.edu/">Canvas</a>
+</div>
+<div class="navother">
+<a href="moreinfo.php.html">More Information</a>
+</div>
+<img src="https://home.uncg.edu/cmp/faculty/srtate/pics/navtail.png" alt="" />
+</div>
+</td><td valign="top"><div class="main">
+
+<p>A <a href="assign2.pdf">printable PDF</a> is available.</p>
+
+    <H1 ALIGN=CENTER>Assignment 2 - Due Tuesday, February 16</H1>
+
+
+<OL><LI>Compute the following GCD's using the Euclidean algorithm
+  presented in Section 4.2. Show each step and intermediate result.
+<UL><LI>(a) gcd(20259, 41962)
+<LI>(b) gcd(750588,374851)
+</UL>
+<p><LI>Compute gcd(472,7107) using the <EM>Extended</EM> Euclidean
+  algorithm given in Section 4.3. Show each step and intermediate
+  result. Note that for inputs <I>a</I> and <I>b</I>, the Extended Euclidean
+  algorithm finds not only gcd<I>(a,b)</I> but also values <I>x</I> and <I>y</I> so
+  that <I>ax+by=gcd(a,b)</I> -- make sure you clearly mark <I>x</I> and <I>y</I> in
+  your final answer.
+<p><LI>Textbook page 125, Problem 4.2
+<p><LI>Textbook page 125, Problem 4.3
+<p><LI>Textbook page 126, Problem 4.12, adding the additional requirement that <i>a</i> and <i>b</i> are natural numbers, and for part (a) further assume
+  that <I>a &gt;= b</I> -- this way no values will be negative.
+<p><LI>For the following questions, use polynomial arithmetic over GF(2):
+<UL><LI>(a) What is the product of <I>x<sup>5</sup>+x<sup>4</sup>+1</I> and <I>x<sup>5</sup>+x<sup>4</sup>+x<sup>3</sup></I>?
+<LI>(b) What are the quotient and remainder when <I>x<sup>10</sup>+x<sup>7</sup>+x<sup>5</sup>+x<sup>4</sup>+x<sup>3</sup></I>
+is divided by <I>x<sup>8</sup>+x<sup>4</sup>+x<sup>3</sup>+x+1</I>? 
+<LI>(c) What is the product of <I>x<sup>5</sup>+x<sup>4</sup>+1</I> and <I>x<sup>5</sup>+x<sup>4</sup>+x<sup>3</sup></I> modulo
+  <I>x<sup>8</sup>+x<sup>4</sup>+x<sup>3</sup>+x+1</I>?
+</UL>
+<p><LI>Pick two random 8-bit values, <I>x</I> and <I>y</I>, write them in
+  hexadecimal, with the only condition being that the number of "1
+  bits" in each of <I>x</I> and <I>y</I> must be between 3 and 6 bits
+  (inclusive). Next, treating these as elements from <I>GF(2<sup>8</sup>)</I> (using
+  the "AES modulus" of <I>m(x)=x<sup>8</sup>+x<sup>4</sup>+x<sup>3</sup>+x+1</I>), calculate the
+  product of <I>x</I> and <I>y</I> -- show your work, and for full credit do
+  all operations in binary representation (don't write out
+  polynomials)! [<I>This problem and the next two are "create
+      your own unique problem" problems. If you pick random values,
+      then your values and your problem/solution will be different
+      from everyone else's in the class.</I>]
+<p><LI>Select a random 8-bit value (with at least 2 bits set to 1), and show
+  the work required to find the AES S-box mapping for this value. Your
+  final result should agree with the look-up table given in Table
+  5.2. [<I>Hint: You can select your 8-bit value so that it is
+      "easy to invert," but you should still have some randomness in your
+      selection -- don't just pick the easiest value.</I>]
+<p><LI>For this question, you are to work through the first four steps of AES
+encryption (the initial AddRoundKey followed by the first 3 steps in
+round 1). Show enough work to demonstrate how you calculated the
+result of each step.
+<UL><LI>(a) Pick a 16 byte plaintext and 16 byte key. You can 
+  pick some random values, or write down some pattern, but don't use
+  anything obvious -- I don't want to see any two students with the
+  same values! Write down your values in the <I>4&#215;4</I> state matrix
+  form used in the book.
+<LI>(b) Perform the initial AddRoundKey step on the values from (a).
+<LI>(c) Perform SubBytes on the result of part (b).
+<LI>(d) Perform ShiftRows on the result of part (c).
+<LI>(e) Perform MixColumns on the result of part (d).
+</UL>
+</OL>
+
+
+</div></td></tr>
+</table>
+
+</body> </html>
+
