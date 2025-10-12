@@ -10,6 +10,9 @@ The addition of security-oriented hardware devices such as Trusted Platform Modu
 
 In this paper we also describe our work incorporating these performance profiles into an existing software-based TPM simulator. This modified simulator then allows us to add new functionality with performance that accurately reflects the time such functionality would require if implemented in actual devices. As an example application of this, we describe results of our experiments with implementing random oracles on TPMs, using enhanced functionality not available on existing TPMs.
 
+### Resources and Downloads
+
+* [Conference paper - author's copy](/publications/2010-TPMSim-GunupudiTate.pdf)
 
 
 
