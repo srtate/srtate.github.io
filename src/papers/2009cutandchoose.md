@@ -22,3 +22,8 @@ Damgard and which is formalized here.  Finally, this paper shows how
 this new non-interactive verifiable escrow scheme can be used to
 create an efficient optimistic protocol for fair exchange of
 signatures.
+
+### Resources and Downloads
+
+* [Conference paper - author's copy](/publications/2009-VerifiableEncryption.pdf)
+
