@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title>CSC 589:  Trusted Computing and Security Models</title>
+<link href="../css/classstyle.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td width="800"><img src="589banner.jpg" alt="CSC 589: Trusted Computing and Security Models" /></td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+<col width="150" />
+<col width="700" />
+<tr><td valign="top">
+<div class="navigate">
+<div class="navhead">Navigation</div>
+<div class="navother"><a href="index.php.html">Class Home</a></div>
+<div class="navother"><a href="syllabus.php.html">Syllabus</a></div>
+<div class="navother"><a href="handouts.php.html">Handouts</a></div>
+<div class="navcurrent"><a href="assign.php.html">Assignments</a></div>
+<div class="navother"><a href="slides.php.html">Slides/Papers</a></div>
+<div class="navother"><a href="moreinfo.php.html">More Information</a></div>
+<img src="../img/navtail.png" />
+</div>
+</td><td valign="top"><div class="main">
+<HTML>
+<!-- HTML file produced from file: assign3.tex --
+ -- using Hyperlatex v 2.3.1 (c) Otfried Cheong--
+ -- on Emacs 22.1.1, Wed Apr 23 16:22:51 2008 -->
+<HEAD>
+<TITLE>CSC 589:  Assignment 3</TITLE>
+
+</HEAD><BODY>
+
+
+
+
+    <H1 ALIGN=CENTER>Assignment 3:  Due Thursday, April 24</H1>
+    
+    
+    <P>We saw in class that in order for a symmetric encryption scheme to be
+CPA-secure it must be either stateful or randomized.  One way to make
+a deterministic scheme randomized is to simply pad a portion of the
+plaintext with random bits.  In this assignment you are to consider
+what security this gives for a typical symmetric block cipher.
+<OL><LI>Consider a basic <EM>deterministic</EM> symmetric encryption
+  scheme <I>SE=(K,E,D)</I> in which
+  the encryption and decryption algorithms map fixed-length blocks of
+  bits to fixed-length blocks of bits (a standard "block cipher").
+  Define, using the proper notation, what these functions do (make
+  sure you specific domain, range, keyspace, etc.).  Using this,
+  create a randomized symmetric encryption scheme <I>RSE</I> that
+  takes input blocks exactly half the length of the deterministic
+  scheme, and pads the other half with random bits.  Define the
+  functions of this scheme as precisely as you can (give actual algorithms).
+<P><EM>Important note:</EM>  Do this <EM><U>soon</U></EM>, and if you
+have any question at all about whether you've done this right, come
+see me.  If you start off wrong here, there is no way you can do the
+next part.
+<LI>Come up with the best attack (an adversary <I>A</I>) you can against this scheme (in the
+  ind-cpa sense).  Give a precise analysis of how well your attack
+  works, in terms of the number of oracle queries (<I>q</I>) and time of
+  the adversary.  You analysis so be precise enough where you end up
+  with a formula for your adversary's advantage 
+<I>Adv<sub>RSE</sub><sup><FONT SIZE=-3>&nbsp;ind-cpa</sup>(A)</I>.
+<LI>Now explore how secure this is:  DES is a block cipher in which
+  input and output blocks are 64 bits long -- how many queries are
+  necessary before the advantage is <I> &gt;= 1/2</I>?  Do you consider this
+  secure?   AES uses blocks that are 128 bits long -- how many
+  queries are necessary before the advantage is <I> &gt;= 1/2</I>?  Do you
+  consider this secure?
+<P></FONT></OL>
+<HR ><ADDRESS>Steve Tate / University of North Texas / 940-565-4864 /
+<A HREF="mailto:srt@cs.unt.edu">srt@cs.unt.edu</A><BR>
+<!-- hhmts start -->
+Last modified: Wed Apr 23 16:22:51 2008
+<!-- hhmts end --></ADDRESS><BR>
+</BODY></HTML>
+
+</div></td></tr>
+</table>
+
+</body> </html>

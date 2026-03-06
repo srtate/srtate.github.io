@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title>CSC 589:  Trusted Computing and Security Models</title>
+<link href="../css/classstyle.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td width="800"><img src="589banner.jpg" alt="CSC 589: Trusted Computing and Security Models" /></td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+<col width="150" />
+<col width="700" />
+<tr><td valign="top">
+<div class="navigate">
+<div class="navhead">Navigation</div>
+<div class="navother"><a href="index.php.html">Class Home</a></div>
+<div class="navother"><a href="syllabus.php.html">Syllabus</a></div>
+<div class="navother"><a href="handouts.php.html">Handouts</a></div>
+<div class="navcurrent"><a href="assign.php.html">Assignments</a></div>
+<div class="navother"><a href="slides.php.html">Slides/Papers</a></div>
+<div class="navother"><a href="moreinfo.php.html">More Information</a></div>
+<img src="../img/navtail.png" />
+</div>
+</td><td valign="top"><div class="main">
+
+<p>A <a href="assign2.pdf">printable PDF</a> is available.</p>
+
+    <H1 ALIGN=CENTER>Assignment 2:  Due Thursday, March 6</H1>
+    
+    
+    <OL><LI>For the first part of this assignment, you are to become familiar with
+the TPM/J software and our use of Subversion within the lab to keep a
+repository of software.
+<P>Subversion is a popular "version control system" -- a system that
+tracks changes to a set of files.  For our work on TPM/J, we'll use
+Subversion to keep several main "branches" of TPM/J code that we're
+working on:  A "distribution branch" which holds the code exactly as
+distributed from the original authors, a "SPAN working version" that
+contains changes that are made available to everyone in the lab, and
+your own personal working version.  You can run Subversion on any
+system you'd like to get and manage your code, using either the text
+or a GUI interface, but unless you have a machine with a TPM it would
+be best (by far) to do your work on the SPAN Lab machines.
+<P><I>Getting started:</I>  The first thing you need to do is "check
+out" a copy of the code repository with this command:
+<PRE>
+    svn co https://span.uncg.edu/svn/tpmjwork
+</PRE>
+The first time you run this it will complain about the Certificate
+from the SPAN server, but if you tell it to accept this certificate
+permanently it will keep it as a "good certificate."  You will need
+to enter your SPAN account login information next, and then it will
+create a directory "<CODE>tpmjwork</CODE>" that contains the current code
+repository.  Inside this you'll find subdirectories "<CODE>dist</CODE>"
+(for the distribution branch of TPM/J), "<CODE>span</CODE>" (for the SPAN
+Lab version), and "<CODE>users/youruserid</CODE>" for your own copy.
+<P><I>Making your initial copy:</I>  Before you change any code, you
+will need to copy it into your space.  To do this, from inside the
+<CODE>tpmjwork</CODE> directory, issue the command:
+<PRE>
+    svn copy dist/tpmj-alpha0.3.0 users/youruserid
+</PRE>
+<P><I>Saving any changes you make:</I>  If you make changes to code and
+want to "check in" your modified version, you can go into a
+directory that contains all changes (for example, in
+<CODE>tpmjwork/users/youruserid/tpmj-alpha0.3.0</CODE>), and issue the
+command
+<PRE>
+    svn commit
+</PRE>
+This will bring up an editor for you to type some comments that
+describe the changes you've made to this revision, and then the
+changes are copied up to the server.  By default this editor is
+"<CODE>vim</CODE>" on the SPAN Lab machines, but you can change the
+environment variable "<CODE>EDITOR</CODE>" to make it use whatever editor
+you want.
+<P><I>Adding and removing files and directories:</I>  If you add new
+files that you want included in the repository and tracked by
+subversion, you need to use the Subversion "<CODE>add</CODE>" command.
+For example, if you wanted to add the file <CODE>newfile.java</CODE> in the
+current directory, you'd use
+<PRE>
+    svn add newfile.java
+</PRE>
+Similarly, to add a new directory, use the Subversion "<CODE>mkdir</CODE>"
+command, and to remove files or directories, use "<CODE>rm</CODE>".
+<P><I>Finally, what to do for this homework problem:</I>  First, do the
+steps above to set up the subversion repository for your work.  Then
+create a new directory called "<CODE>scripts</CODE>" under
+<CODE>tpmj-alpha0.3.0</CODE> and create a file <CODE>README.txt</CODE> in this
+directory where you leave a brief message (anything for now).  Make
+sure you set it up so Subversion tracks this directory and file, and
+then commit your changes to the repository.
+<LI>TPMs perform a variety of operations, and most of the time in these
+operations comes from the time required for basic underlying
+cryptographic operations.  We would like to be able to have an
+accurate "timing model" of a TPM so that we can evaluate the
+efficiency of algorithms without having to implement them, and so that
+we can estimate the time a TPM would need in order to perform
+operations that we could proposing adding to a TPM.
+<P>You should first write up a plan that includes how you will create
+your model (what are you going to time and how are you going to time
+it) and, just as important, how you will <EM>validate</EM> your
+model. For example, you could select certain TPM operations based on
+the cryptographic operations they perform, and time them to deduce the
+times for the basic cryptographic operations.  Then you could use
+these results to estimate the time for operations you have <EM>not</EM>
+timed, and see if this agrees.  For possible operations to use, you
+can use the information in our book, or in the TPM specifications (see
+the class web site), or in the TPM/J code.  For the planning part, you
+may discuss ideas with others in the class, but the final design and
+plan should be yours.
+<P>Finally, following your plan, you should create and validate your
+model using the SPAN Lab machines.  If your plan requires creating any
+scripts or additional code, be sure to check the code in to the code
+repository when you're finished.  Your assignment submission should
+include a final description of your timing model along with the values
+you have measured.
+<LI>Cryptography Notes:  Problem 3.1.
+<LI>Cryptography Notes:  Problem 3.3 (the example we cover in class is
+close to a solution for this, but it doesn't satisfy the requirements
+perfectly;  a small modification works, but try to come up with a
+solution that is more significantly different).  The most important
+part of this problem is to provide a complete and rigorous proof
+regarding the security of your construction -- not a "sketch" of a
+proof, or an "outline", but a full and complete proof.
+<LI>(<I>Graduate students only</I>)
+Cryptography Notes:  Problem 3.9.
+</OL>
+
+
+
+
+</div></td></tr>
+</table>
+
+</body> </html>

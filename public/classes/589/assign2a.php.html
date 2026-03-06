@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title>CSC 589:  Trusted Computing and Security Models</title>
+<link href="../css/classstyle.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td width="800"><img src="589banner.jpg" alt="CSC 589: Trusted Computing and Security Models" /></td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+<col width="150" />
+<col width="700" />
+<tr><td valign="top">
+<div class="navigate">
+<div class="navhead">Navigation</div>
+<div class="navother"><a href="index.php.html">Class Home</a></div>
+<div class="navother"><a href="syllabus.php.html">Syllabus</a></div>
+<div class="navother"><a href="handouts.php.html">Handouts</a></div>
+<div class="navcurrent"><a href="assign.php.html">Assignments</a></div>
+<div class="navother"><a href="slides.php.html">Slides/Papers</a></div>
+<div class="navother"><a href="moreinfo.php.html">More Information</a></div>
+<img src="../img/navtail.png" />
+</div>
+</td><td valign="top"><div class="main">
+
+<p>A <a href="assign2a.pdf">printable PDF</a> is available.</p>
+
+<P>The "graduate student only" problem given in Assignment 2 was not a
+good choice.  You can still work on that as a "challenge problem,"
+but the following question is better, and should be substituted for
+the original problem.
+<OL><LI>[5.] In section 3.4.3 it was shown that PRP-CCA security implies
+  PRP-CPA security.  In this question, you are to consider the
+  converse: if a family of permutations is PRP-CPA
+  secure, is it necessarily PRP-CCA secure?
+<P>To answer this, consider a family of permutations 
+<I>F:{0,1}<sup>k</sup>&#215;{0,1}<sup>k</sup> -&gt; {0,1}<sup>k</sup></I> (note that <I>l=k</I>)
+that is secure -- meaning that any adversary that is reasonably
+bounded on resources has "low" advantage <I><B>A</B>dv<sub>F</sub><sup><FONT SIZE=-3>&nbsp;prp-cpa</FONT></sup>(A)</I>.  We don't
+know, and make no assumptions about, whether <I>F</I> is secure in the
+PRP-CCA sense.
+<P>First, use <I>F</I> to define a new family of permutations
+<I>G:{0,1}<sup>k</sup>&#215;{0,1}<sup>k</sup> -&gt; {0,1}<sup>k</sup></I> such that <I>G</I> is
+secure in the PRP-CPA sense (roughly as secure as <I>F</I>), and yet <I>G</I> is
+definitely <EM>not</EM> secure in the PRP-CCA sense.
+<P>You should clearly define your function <I>G</I>, and then carefully and
+completely prove two things:  that for any adversary <I>B</I>,
+<I><B>A</B>dv<sub>G</sub><sup><FONT SIZE=-3>&nbsp;prp-cpa</FONT></sup>(B)</I> is not much higher than <I><B>A</B>dv<sub>F</sub><sup><FONT SIZE=-3>&nbsp;prp-cpa</FONT></sup>(A)</I> for some
+similarly-resourced adversary <I>A</I>, and that there exists an adversary
+<I>D</I> such that <I><B>A</B>dv<sub>G</sub><sup><FONT SIZE=-3>&nbsp;prp-cca</FONT></sup>(D)</I> is high (close to 1).  
+<P>After the formal parts, think about what this means, and write out in
+a few English (non-mathematical) sentences what this really means.
+Given the choice between two families of permutations, one of which
+was proven secure in the PRP-CPA sense and one of which was proven
+secure in the PRP-CCA sense, which would you prefer and why?
+<P><P><I>Hint:</I> What you want to do is make it so that the value of the
+key is easily extracted from a particular query to the <I>G<sup>-1</sup></I>
+oracle.  For example, you could define <I>G<sub>K</sub>(x)</I> from <I>F<sub>K</sub>(x)</I> in such
+a way that <I>G<sub>K</sub>(K)=0<sup>k</sup></I>.  Notice how this allows a CCA adversary
+to extract the key from a single call to the <I>G<sup>-1</sup></I> oracle, and yet
+it doesn't necessary help (assuming the rest of it is defined
+correctly) if all you can query is <I>G</I>.  Defining such a <I>G</I> is part
+of the challenge here (remember that XOR is your friend), and
+then you need to complete the proofs.
+</OL>
+
+
+
+</div></td></tr>
+</table>
+
+</body> </html>

@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title>CSC 653:  Advanced Theory of Computation</title>
+<link href="../css/classstyle.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td width="800"><img src="653banner.jpg" alt="CSC 653: Advanced Theory of Computing" /></td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+<col width="150" />
+<col width="700" />
+<tr><td valign="top">
+<div class="navigate">
+<div class="navhead">Navigation</div>
+<div class="navother"><a href="index.php.html">Class Home</a></div>
+<div class="navother"><a href="syllabus.php.html">Syllabus</a></div>
+<div class="navother"><a href="handouts.php.html">Handouts</a></div>
+<div class="navcurrent"><a href="assign.php.html">Assignments</a></div>
+<div class="navother"><a href="moreinfo.php.html">More Information</a></div>
+<img src="../img/navtail.png" />
+</div>
+</td><td valign="top"><div class="main">
+
+<p>A <a href="assign5.pdf">printable PDF</a> is available.</p>
+
+<h2>Assignment 5:  Due Thursday, October 30</h2>
+
+<OL><LI>Page 294, Exercise 7.1 (parts a,b,e,f)
+<LI>Page 295, Exercise 7.7
+<LI>Page 296, Problem 7.20
+<LI>Page 296, Problem 7.21
+<LI>Page 296, Problem 7.25
+<LI>Page 297, Problem 7.29
+<LI>Page 299, Problem 7.44
+</OL>
+<P>The following problem is a "challenge problem" -- you are not
+required to do it, but if you get a good solution you will
+receive extra credit (up to 15 points).
+<OL><LI>The class NP can be approached from the standpoint of logic,
+  as opposed to non-deterministic computation.  We use the notion of a
+  "polynomial-time predicate" -- a logical predicate (a function
+  that evaluates to true or false) <I>P(x,y)</I> is a polynomial-time
+  predicate if a deterministic Turing machine decides the language
+  <I>L={ &lt; x,y &gt; |P(x,y)</I> is true<I>}</I> in polynomial time
+  (or more informally, an algorithm calculates <I>P(x,y)</I> in polynomial
+  time).
+<UL><LI>[(a)] Show that <I>L in NP</I> if and only if there exists a
+  polynomial <I>p(n)</I> and a polynomial time predicate <I>P(x,y)</I> such that
+<I>L={ x| exist w in {0,1}<sup>p(n)</sup>, P(x,w)</I> is true <I>}</I>
+<LI>[(b)] If we replace the existential quantifier in part (a) with a
+  universal quantifier, we can consider the class of all languages <I>L</I>
+  that can be written as
+<I>L={ x| forall w in {0,1}<sup>p(n)</sup>, P(x,w)</I> is true <I>}</I>.  What
+  can you say about the complexity of such an <I>L</I> (hint: what can you
+  say about the complexity of <I>L</I>)?   There's a name for the
+  complexity class of all such <I>L</I>'s, which is mentioned briefly in
+  this chapter -- can you find it?
+<LI>[(c)] Consider if you had more than one quantifier, like 
+<I>L={ x| forall w<sub>1</sub> in {0,1}<sup>p(n)</sup>exist w<sub>2</sub> in {0,1}<sup>p(n)</sup>, P(x,w<sub>1</sub>,w<sub>2</sub>)</I> is true <I>}</I>.
+  What can you say about the complexity of such a language (relation to
+  P?  NP? other classes?).
+</UL>
+</OL>
+
+
+
+</div></td></tr>
+</table>
+
+</body> </html>

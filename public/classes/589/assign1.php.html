@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title>CSC 589:  Trusted Computing and Security Models</title>
+<link href="../css/classstyle.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td width="800"><img src="589banner.jpg" alt="CSC 589: Trusted Computing and Security Models" /></td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+<col width="150" />
+<col width="700" />
+<tr><td valign="top">
+<div class="navigate">
+<div class="navhead">Navigation</div>
+<div class="navother"><a href="index.php.html">Class Home</a></div>
+<div class="navother"><a href="syllabus.php.html">Syllabus</a></div>
+<div class="navother"><a href="handouts.php.html">Handouts</a></div>
+<div class="navcurrent"><a href="assign.php.html">Assignments</a></div>
+<div class="navother"><a href="slides.php.html">Slides/Papers</a></div>
+<div class="navother"><a href="moreinfo.php.html">More Information</a></div>
+<img src="../img/navtail.png" />
+</div>
+</td><td valign="top"><div class="main">
+
+<p>A <a href="assign1.pdf">printable PDF</a> is available.</p>
+
+<P><P><P><B>Objectives:</B>  There are two objectives with this assignment:
+To start you thinking about models of security and to give you some
+practice using LaTeX in writing mathematical material.  Therefore,
+solutions should be prepared
+using LaTeX!
+<OL><LI>Write up the coin-flipping protocol from Bellare/Rogaway Section
+  1.2.3 in your own words, using a step-by-step presentation (use an
+  <CODE>enumerate</CODE> environment in LaTeX).  Next, make a table of some
+  values of <I>p</I>, <I>q</I>, and <I>N</I> that could be used by Alice to commit to
+  a 0 and to a 1 (at least two examples for each value).  Obviously,
+  to be able to write this out you'll want to use values that are much
+  smaller than the 500-bit primes mentioned in the notes, but this is
+  simply to illustrate the process, not to give values that would
+  provide any security.  Your table should look something
+  like this:
+<BLOCKQUOTE><CENTER>
+<TABLE><TR><TD COLSPAN="1" ALIGN="CENTER">
+Bit Committed </TD><TD COLSPAN="1" ALIGN="CENTER"> <I>p</I> </TD><TD COLSPAN="1" ALIGN="CENTER"> <I>q</I> </TD><TD COLSPAN="1" ALIGN="CENTER"> <I>N</I> </TD></TR>
+<TR><TD COLSPAN="1" ALIGN="CENTER">
+0 </TD><TD COLSPAN="1" ALIGN="CENTER"> ... </TD><TD COLSPAN="1" ALIGN="CENTER"> ... </TD><TD COLSPAN="1" ALIGN="CENTER"> ... </TD></TR>
+<TR><TD COLSPAN="1" ALIGN="CENTER">
+0 </TD><TD COLSPAN="1" ALIGN="CENTER"> ... </TD><TD COLSPAN="1" ALIGN="CENTER"> ... </TD><TD COLSPAN="1" ALIGN="CENTER"> ... </TD></TR>
+<TR><TD COLSPAN="1" ALIGN="CENTER">
+1 </TD><TD COLSPAN="1" ALIGN="CENTER"> ... </TD><TD COLSPAN="1" ALIGN="CENTER"> ... </TD><TD COLSPAN="1" ALIGN="CENTER"> ... </TD></TR>
+<TR><TD COLSPAN="1" ALIGN="CENTER">
+1 </TD><TD COLSPAN="1" ALIGN="CENTER"> ... </TD><TD COLSPAN="1" ALIGN="CENTER"> ... </TD><TD COLSPAN="1" ALIGN="CENTER"> ... </TD></TR>
+<TR><TD COLSPAN="1" ALIGN="CENTER">
+</TD></TR></TABLE>
+
+</CENTER></BLOCKQUOTE>
+<LI>The most fundamental notion of computational complexity used in
+discussing the security of cryptographic protocols is
+the notion of polynomial-time algorithms.  Specifically, we would like
+for our protocols to be such that no polynomial-time algorithm can
+break them.  A key assumption for many public-key algorithms is that
+there is no polynomial-time algorithm for factoring -- in other
+words, an algorithm that can take the product of two
+large prime numbers (<I>N=pq</I>) as input and produce the factors <I>p</I> and <I>q</I>.
+<P>Consider the basic algorithm of trying all integers from
+<I>2,...,N-1</I> as possible divisors and testing them all using a trial
+division.  This
+obviously is a correct factoring algorithm, but what is the complexity
+of the algorithm?  Carefully justify your analysis, and clearly
+justify your answer to 
+the basic question:  Is this a polynomial time algorithm?
+<LI>(<I>Graduate Students Only</I>) Answer this question with as much
+  detail and justification as you can: a pseudorandom number generator
+  (a "PRNG" -- described in Section 1.2.1) should be one-way in the
+  sense that if you are given <I>b</I> bits of output you cannot (in
+  polynomial time) compute the seed used by the PRNG.  What does this
+  mean as far the size of the seed?  Can it be a constant number of
+  bits (unrelated to <I>b</I>)?  Could it be <I>Theta(logb)</I> bits?  What
+  is the right restriction on the size?
+</OL>
+
+
+
+
+</div></td></tr>
+</table>
+
+</body> </html>
