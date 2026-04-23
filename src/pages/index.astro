@@ -14,10 +14,16 @@ import Layout from "../layouts/Layout.astro";
 		margin:0px 3rem 1rem 0px;
 		font-size:0.875rem;
 	  }
+          .varmargin {
+                margin-left: 3rem;
+          }
 	  @media (max-width: 700px) {
 	    .toppic {
 		  display: none;
 	    }
+            .varmargin {
+                margin-left: 0rem;
+            }
 </style>
 	<div class="p-4">
 		<div
@@ -25,7 +31,7 @@ import Layout from "../layouts/Layout.astro";
 		>
 			<div class="ms-5 d-flex flex-top">
 				<img class="rounded-circle toppic" style="height: 150px" src="/img/headshot.jpg" />
-				<div class="ms-5">
+				<div class="varmargin">
 					<div class="fs-4">
 						Stephen R. Tate &nbsp;&nbsp; (Steve)
 					</div>
