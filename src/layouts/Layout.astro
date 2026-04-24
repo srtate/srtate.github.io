@@ -8,8 +8,8 @@
     <title>Home Page - Stephen R. Tate</title>
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-  </head>
+<!--   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">  -->
+</head>
   <body>
     <style>
       @media (min-width: 992px) {
@@ -28,7 +28,7 @@
         .sidebar {
           position: -webkit-sticky;
           position: sticky;
-          top: 5rem;
+          top: 1rem;
           display: block !important;
           height: calc(100vh - 6rem);
           padding-left: 0.25rem;
@@ -56,6 +56,7 @@
         .secondary-nav {
            display: block;
            padding-left: 2rem;
+           background: #ccc;
         }
         .srtSidebar {
 
@@ -64,7 +65,7 @@
           display: none;
         }
         .srtNavlink {
-          margin: 0.4rem;
+          margin: 0.6rem;
         }
         .sidelinks {
           padding: 0rem 1.5rem;
@@ -76,11 +77,13 @@
         }
       }
     </style>
-
-    <header id="srtate-header" class="fixed-=top">
+    
+    <header id="srtate-header" class="">
     <nav class="secondary-nav">
       <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#srtSidebarCollapse">
-      <i class="bi bi-layout-text-sidebar-reverse"></i>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-layout-text-sidebar-reverse" viewBox="0 0 16 16">
+  <path d="M12.5 3a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1zm0 3a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1zm.5 3.5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 .5-.5m-.5 2.5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1z"/>
+  <path d="M16 2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zM4 1v14H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zm1 0h9a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5z"/></svg>
       </button>
       <span>Website Menu &ndash; Stephen R. Tate</span>
     </nav>
