@@ -15,7 +15,6 @@
     "astro": "^6.1.9",
     "astro-bootstrap": "^0.0.15",
     "bootstrap": "^5.3.5",
-    "headroom.js": "^0.12.0",
     "rehype-katex": "^7.0.1",
     "remark-math": "^6.0.0"
   }
